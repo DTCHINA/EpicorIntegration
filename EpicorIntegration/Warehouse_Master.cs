@@ -14,11 +14,22 @@ namespace EpicorIntegration
     {
         public PartData Pdata = new PartData();
 
+        public DataSet Whse_DS = new DataSet();
+
         public Warehouse_Master(PartData _Pdata)
         {
             InitializeComponent();
 
             Pdata = _Pdata;
+        }
+
+        public Warehouse_Master(string PartNumber, string Plant)
+        {
+            InitializeComponent();
+
+            partnum_txt.Text = PartNumber;
+
+            plant_txt.Text = Plant;
         }
 
         private void Warehouse_Master_Load(object sender, EventArgs e)
@@ -28,6 +39,61 @@ namespace EpicorIntegration
             whse_cbo.DisplayMember = DataList.WarehseDataSet().Tables[0].Columns["Description"].ToString();
 
             whse_cbo.ValueMember = "WarehouseCode";
+
+            Whse_DS.Tables.Add();
+
+            Whse_DS.Tables[0].Columns.Add(new DataColumn("WarehouseCode", typeof(System.String)));
+
+            Whse_DS.Tables[0].Columns.Add(new DataColumn("WarehouseName", typeof(System.String)));
+
+            WhseDataGrid.DataSource = Whse_DS.Tables[0];
         }
+
+        private void done_btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void add_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool toAdd = true;
+
+                foreach (DataRow dr in Whse_DS.Tables[0].Rows)
+                {
+                    if (dr["WarehouseCode"] == whse_cbo.SelectedValue.ToString())
+                        toAdd = false;
+                }
+
+                if (toAdd)
+                {
+                    DataRow dr = Whse_DS.Tables[0].NewRow();
+
+                    dr["WarehouseCode"] = whse_cbo.SelectedValue.ToString();
+
+                    dr["WarehouseName"] = whse_cbo.Text;
+
+                    Whse_DS.Tables[0].Rows.Add(dr);
+
+                    rem_btn.Enabled = true;
+                }
+            }
+            catch { MessageBox.Show("An error occured adding this record to the database", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void rem_btn_Click(object sender, EventArgs e)
+        {
+            if (WhseDataGrid.CurrentCellAddress.Y != -1)
+            {
+                Whse_DS.Tables[0].Rows.RemoveAt(WhseDataGrid.CurrentCellAddress.Y);
+
+                if (WhseDataGrid.Rows.Count < 1)
+                    rem_btn.Enabled = false;
+            }
+            else
+                MessageBox.Show("Selected a row first!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+        }
+
     }
 }

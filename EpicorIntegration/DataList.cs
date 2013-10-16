@@ -214,6 +214,7 @@ namespace EpicorIntegration
 
         public static DataSet WarehseDataSet()
         {
+            //Should diversify this call to use other than MfgSys as plant
             DataSet ds = (DataSet)BOReader.GetList("WarehseSearch", "MfgSys", "");
 
             EpicClose();
