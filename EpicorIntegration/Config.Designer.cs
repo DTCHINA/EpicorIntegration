@@ -39,6 +39,7 @@
             this.cancelbtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.mtlreseq_cbo = new System.Windows.Forms.ComboBox();
+            this.ecogp_btn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -97,7 +98,7 @@
             // 
             this.logininfobtn.Location = new System.Drawing.Point(12, 187);
             this.logininfobtn.Name = "logininfobtn";
-            this.logininfobtn.Size = new System.Drawing.Size(78, 23);
+            this.logininfobtn.Size = new System.Drawing.Size(75, 23);
             this.logininfobtn.TabIndex = 3;
             this.logininfobtn.Text = "Login Info";
             this.logininfobtn.UseVisualStyleBackColor = true;
@@ -142,11 +143,22 @@
             this.mtlreseq_cbo.Size = new System.Drawing.Size(144, 21);
             this.mtlreseq_cbo.TabIndex = 0;
             // 
+            // ecogp_btn
+            // 
+            this.ecogp_btn.Location = new System.Drawing.Point(93, 187);
+            this.ecogp_btn.Name = "ecogp_btn";
+            this.ecogp_btn.Size = new System.Drawing.Size(75, 23);
+            this.ecogp_btn.TabIndex = 7;
+            this.ecogp_btn.Text = "&Eco Group";
+            this.ecogp_btn.UseVisualStyleBackColor = true;
+            this.ecogp_btn.Click += new System.EventHandler(this.ecogp_btn_Click);
+            // 
             // Config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(186, 256);
+            this.Controls.Add(this.ecogp_btn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.savebtn);
@@ -178,5 +190,6 @@
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox mtlreseq_cbo;
+        private System.Windows.Forms.Button ecogp_btn;
     }
 }

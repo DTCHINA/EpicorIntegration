@@ -138,5 +138,17 @@ namespace EpicorIntegration.Properties {
                 return ((string)(this["ENGDataConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("BKH")]
+        public string ecogroup {
+            get {
+                return ((string)(this["ecogroup"]));
+            }
+            set {
+                this["ecogroup"] = value;
+            }
+        }
     }
 }

@@ -51,7 +51,7 @@
     <StartupObject>EpicorIntegration.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Norco Round.ico</ApplicationIcon>
+    <ApplicationIcon>N2.0_sm.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Epicor.Mfg.BO.BomSearch">
@@ -71,6 +71,9 @@
     </Reference>
     <Reference Include="Epicor.Mfg.BO.EpiSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.EpiSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.GenXData">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.GenXData.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.Menu">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Menu.dll</HintPath>
@@ -114,6 +117,9 @@
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IEpiSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IEpiSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IGenXData">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IGenXData.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IOpMaster">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IOpMaster.dll</HintPath>
@@ -174,6 +180,30 @@
     <Compile Include="Bill_Master.Designer.cs">
       <DependentUpon>Bill_Master.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckIn_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckIn_Master.Designer.cs">
+      <DependentUpon>CheckIn_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckOutUndo_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckOutUndo_Master.Designer.cs">
+      <DependentUpon>CheckOutUndo_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckOut_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckOut_Master.Designer.cs">
+      <DependentUpon>CheckOut_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config_DefaultGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Config_DefaultGroup.Designer.cs">
+      <DependentUpon>Config_DefaultGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="ENGDataDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -184,6 +214,12 @@
     </Compile>
     <Compile Include="Epic_Master.Designer.cs">
       <DependentUpon>Epic_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Item_Approve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Item_Approve.Designer.cs">
+      <DependentUpon>Item_Approve.cs</DependentUpon>
     </Compile>
     <Compile Include="Item_CopyFrom.cs">
       <SubType>Form</SubType>
@@ -230,6 +266,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerialMask_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SerialMask_Master.Designer.cs">
+      <DependentUpon>SerialMask_Master.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse_Master.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,11 +326,26 @@
     <EmbeddedResource Include="Bill_Master.resx">
       <DependentUpon>Bill_Master.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CheckIn_Master.resx">
+      <DependentUpon>CheckIn_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckOutUndo_Master.resx">
+      <DependentUpon>CheckOutUndo_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckOut_Master.resx">
+      <DependentUpon>CheckOut_Master.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Config.resx">
       <DependentUpon>Config.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Config_DefaultGroup.resx">
+      <DependentUpon>Config_DefaultGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Epic_Master.resx">
       <DependentUpon>Epic_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Item_Approve.resx">
+      <DependentUpon>Item_Approve.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Item_CopyFrom.resx">
       <DependentUpon>Item_CopyFrom.cs</DependentUpon>
@@ -318,6 +375,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SerialMask_Master.resx">
+      <DependentUpon>SerialMask_Master.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Warehouse_Master.resx">
       <DependentUpon>Warehouse_Master.cs</DependentUpon>
     </EmbeddedResource>
@@ -395,6 +455,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\N2.0.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="N2.0_sm.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

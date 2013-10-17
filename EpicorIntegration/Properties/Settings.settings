@@ -42,5 +42,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=ENGSVR01;Initial Catalog=ENGData;User ID=sa;Password=Norco!2013</Value>
     </Setting>
+    <Setting Name="ecogroup" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BKH</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -12,7 +12,6 @@ namespace EpicorIntegration
 {
     public class DataList
     {
-
         public static BLConnectionPool EpicConn = new BLConnectionPool(Properties.Settings.Default.uname, Properties.Settings.Default.passw, "AppServerDC://" + Properties.Settings.Default.svrname + ":" + Properties.Settings.Default.svrport);
 
         public static void EpicClose()
@@ -266,6 +265,17 @@ namespace EpicorIntegration
             EngWb.CheckOut(GroupID, PartNumber, Revision, "", DateTime.Today, false, false, false, true, false, out CheckedOutRevNum, out altMethodMsg, out altMethodFlg);
 
             EpicClose();
+        }
+
+        public static void UndoCheckOutPart(string GroupID, string PartNumber, string Revision)
+        {
+            EngWorkBench EngWb = new EngWorkBench(EpicConn);
+
+            EngWorkBenchDataSet ds = new EngWorkBenchDataSet();
+
+            ds = EngWb.GetDatasetForTree(GroupID,PartNumber,Revision,"",DateTime.Today,false,true);
+
+            EngWb.UndoCheckOut(GroupID, PartNumber, Revision,"", DateTime.Today, false, false, false, true, ds);
         }
 
         public static void ApprovePart(EngWorkBenchDataSet EngDataSet,string GroupID,string PartNumber, string Revision)

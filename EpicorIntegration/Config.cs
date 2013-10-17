@@ -114,5 +114,20 @@ namespace EpicorIntegration
         {
 
         }
+
+        private void ecogp_btn_Click(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.validated)
+            {
+                Config_DefaultGroup DefGroup = new Config_DefaultGroup();
+
+                DefGroup.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Must validate login before attempting!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
     }
 }

@@ -37,30 +37,17 @@ Item_Master:
 Accept preload from template
 Use template but retain original preload values
 Set condition and fields for (IF TYPE=P -> SET LEAD TIME/SAFETY STOCK) //Maybe
-Set condition and fields for (IF TYPE=M -> USEREV = TRUE, QTYBEARING = TRUE)
-Set condition and fields for (IF Frame or Flo-Machine -> TRACKSERIAL = TRUE)
-On Warehouse Add -> Create set up to add subsequent Warehouse locations
-Set Planner (BAL, ADNIK, FLO)
+Set condition and fields for (IF Frame or Flo-Machine -> TRACKSERIAL = TRUE) //Maybe
 
 Serial Number:
-Create form
-Defaulto create serial mask, 'ELK', prefix with BAL or FLO
 
 Config:
 Grid Color schema changes
 
 CheckIn_Master:
-Create form
-Approve and check in part
 
 CheckOut_Master:
-Create form
-Check out part
 
 Revision_Master:
-Option to check out part
-
-CheckIn_Master:
-Create form
 
 

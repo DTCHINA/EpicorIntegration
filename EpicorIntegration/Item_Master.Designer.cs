@@ -57,10 +57,10 @@
             this.userevision = new System.Windows.Forms.CheckBox();
             this.trackserial = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.copy_btn = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.addwhse_btn = new System.Windows.Forms.Button();
+            this.planner_cbo = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.copy_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -354,11 +354,12 @@
             this.trackserial.TabIndex = 32;
             this.trackserial.Text = "Track Serial Number";
             this.trackserial.UseVisualStyleBackColor = true;
+            this.trackserial.CheckedChanged += new System.EventHandler(this.trackserial_CheckedChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.addwhse_btn);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.planner_cbo);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.whse_cbo);
@@ -371,15 +372,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Plants";
             // 
-            // copy_btn
+            // addwhse_btn
             // 
-            this.copy_btn.Location = new System.Drawing.Point(20, 507);
-            this.copy_btn.Name = "copy_btn";
-            this.copy_btn.Size = new System.Drawing.Size(75, 23);
-            this.copy_btn.TabIndex = 35;
-            this.copy_btn.Text = "Copy From...";
-            this.copy_btn.UseVisualStyleBackColor = true;
-            this.copy_btn.Click += new System.EventHandler(this.copy_btn_Click);
+            this.addwhse_btn.Location = new System.Drawing.Point(254, 70);
+            this.addwhse_btn.Name = "addwhse_btn";
+            this.addwhse_btn.Size = new System.Drawing.Size(75, 23);
+            this.addwhse_btn.TabIndex = 31;
+            this.addwhse_btn.Text = "&Add";
+            this.addwhse_btn.UseVisualStyleBackColor = true;
+            this.addwhse_btn.Click += new System.EventHandler(this.addwhse_btn_Click);
+            // 
+            // planner_cbo
+            // 
+            this.planner_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.planner_cbo.FormattingEnabled = true;
+            this.planner_cbo.Location = new System.Drawing.Point(8, 112);
+            this.planner_cbo.Name = "planner_cbo";
+            this.planner_cbo.Size = new System.Drawing.Size(321, 21);
+            this.planner_cbo.TabIndex = 30;
             // 
             // label6
             // 
@@ -390,24 +400,15 @@
             this.label6.TabIndex = 29;
             this.label6.Text = "Planner:";
             // 
-            // comboBox1
+            // copy_btn
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(8, 112);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(321, 21);
-            this.comboBox1.TabIndex = 30;
-            // 
-            // addwhse_btn
-            // 
-            this.addwhse_btn.Location = new System.Drawing.Point(254, 70);
-            this.addwhse_btn.Name = "addwhse_btn";
-            this.addwhse_btn.Size = new System.Drawing.Size(75, 23);
-            this.addwhse_btn.TabIndex = 31;
-            this.addwhse_btn.Text = "&Add";
-            this.addwhse_btn.UseVisualStyleBackColor = true;
-            this.addwhse_btn.Click += new System.EventHandler(this.addwhse_btn_Click);
+            this.copy_btn.Location = new System.Drawing.Point(20, 507);
+            this.copy_btn.Name = "copy_btn";
+            this.copy_btn.Size = new System.Drawing.Size(75, 23);
+            this.copy_btn.TabIndex = 35;
+            this.copy_btn.Text = "Copy From...";
+            this.copy_btn.UseVisualStyleBackColor = true;
+            this.copy_btn.Click += new System.EventHandler(this.copy_btn_Click);
             // 
             // Item_Master
             // 
@@ -466,7 +467,7 @@
         private System.Windows.Forms.CheckBox qtybearing;
         private System.Windows.Forms.CheckBox userevision;
         private System.Windows.Forms.CheckBox trackserial;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox planner_cbo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button addwhse_btn;
     }

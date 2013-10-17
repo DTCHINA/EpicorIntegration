@@ -37,19 +37,20 @@
             this.Searchbtn = new System.Windows.Forms.Button();
             this.Searchtxt = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.revdesc_txt = new System.Windows.Forms.TextBox();
-            this.currev_txt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.newrev_txt = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.currev_txt = new System.Windows.Forms.TextBox();
+            this.revdesc_txt = new System.Windows.Forms.TextBox();
+            this.checkout_chk = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // savebtn
             // 
-            this.savebtn.Location = new System.Drawing.Point(12, 263);
+            this.savebtn.Location = new System.Drawing.Point(12, 300);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 36;
@@ -60,7 +61,7 @@
             // cancelbtn
             // 
             this.cancelbtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelbtn.Location = new System.Drawing.Point(139, 263);
+            this.cancelbtn.Location = new System.Drawing.Point(140, 300);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
             this.cancelbtn.TabIndex = 35;
@@ -130,42 +131,10 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part";
             // 
-            // revdesc_txt
-            // 
-            this.revdesc_txt.Location = new System.Drawing.Point(6, 121);
-            this.revdesc_txt.Name = "revdesc_txt";
-            this.revdesc_txt.Size = new System.Drawing.Size(181, 20);
-            this.revdesc_txt.TabIndex = 40;
-            // 
-            // currev_txt
-            // 
-            this.currev_txt.Location = new System.Drawing.Point(87, 47);
-            this.currev_txt.Name = "currev_txt";
-            this.currev_txt.Size = new System.Drawing.Size(100, 20);
-            this.currev_txt.TabIndex = 41;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 105);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 13);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Revision Description:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "Cur Revision:";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 76);
+            this.label3.Location = new System.Drawing.Point(6, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 45;
@@ -178,13 +147,58 @@
             this.newrev_txt.Size = new System.Drawing.Size(100, 20);
             this.newrev_txt.TabIndex = 44;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Cur Revision:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 105);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 13);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Revision Description:";
+            // 
+            // currev_txt
+            // 
+            this.currev_txt.Location = new System.Drawing.Point(87, 47);
+            this.currev_txt.Name = "currev_txt";
+            this.currev_txt.Size = new System.Drawing.Size(100, 20);
+            this.currev_txt.TabIndex = 41;
+            // 
+            // revdesc_txt
+            // 
+            this.revdesc_txt.Location = new System.Drawing.Point(9, 121);
+            this.revdesc_txt.Name = "revdesc_txt";
+            this.revdesc_txt.Size = new System.Drawing.Size(178, 20);
+            this.revdesc_txt.TabIndex = 40;
+            // 
+            // checkout_chk
+            // 
+            this.checkout_chk.AutoSize = true;
+            this.checkout_chk.Checked = true;
+            this.checkout_chk.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkout_chk.Location = new System.Drawing.Point(21, 263);
+            this.checkout_chk.Name = "checkout_chk";
+            this.checkout_chk.Size = new System.Drawing.Size(99, 17);
+            this.checkout_chk.TabIndex = 41;
+            this.checkout_chk.Text = "Check Out Part";
+            this.checkout_chk.UseVisualStyleBackColor = true;
+            // 
             // Revision_Master
             // 
             this.AcceptButton = this.Searchbtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelbtn;
-            this.ClientSize = new System.Drawing.Size(227, 301);
+            this.ClientSize = new System.Drawing.Size(227, 335);
+            this.Controls.Add(this.checkout_chk);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.savebtn);
@@ -201,6 +215,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -220,5 +235,6 @@
         private System.Windows.Forms.TextBox revdesc_txt;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox newrev_txt;
+        private System.Windows.Forms.CheckBox checkout_chk;
     }
 }
