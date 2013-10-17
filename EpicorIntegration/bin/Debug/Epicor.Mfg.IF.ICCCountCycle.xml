@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.IF.ICCCountCycle</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.CCTagDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCTagDataSet.CCTagDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCTagDataSet.CCTagRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCTagDataSet.CCTagRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCCountCycleDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCCountCycleDataSet.CCHdrDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCCountCycleDataSet.CCDtlDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCCountCycleDataSet.LegalNumGenOptsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCCountCycleDataSet.CCHdrRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCCountCycleDataSet.CCDtlRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCCountCycleDataSet.LegalNumGenOptsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCCountCycleDataSet.CCHdrRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCCountCycleDataSet.CCDtlRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCCountCycleDataSet.LegalNumGenOptsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.IF.ICCCountCycle">
+            <summary>
+            Count Cycle program.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetNewCCHdr(Epicor.Mfg.BO.CCCountCycleDataSet,System.String,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetNewCCDtl(Epicor.Mfg.BO.CCCountCycleDataSet,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.DeleteByID(System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetByID(System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetRows(System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.Update(Epicor.Mfg.BO.CCCountCycleDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.UpdateExt(Epicor.Mfg.BO.UpdExtCCCountCycleDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetAvailTranDocTypes(System.String@)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.CancelPI(Epicor.Mfg.BO.CCCountCycleDataSet)">
+            <summary>
+            This procedure will delete all records relating to a physical inventory cycle.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CCCountCycleDataSet">Epicor.Mfg.BO.CCCountCycleDataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.CloseCCDtlNoTags(Epicor.Mfg.BO.CCCountCycleDataSet,System.String@)">
+            <summary>
+            Closes Parts on the Cycle with no associated Tags if the user indicates to do so after Post Counts.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CCCountCycleDataSet">Epicor.Mfg.BO.CCCountCycleDataSet</param>
+            <param name="pcMessage">Non-error, informational message.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GenerateRecountTags(Epicor.Mfg.BO.CCCountCycleDataSet)">
+            <summary>
+            </summary>
+            <param name="ds">The CCCountCycle data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GenerateTags(System.Int32@,System.Int32@,Epicor.Mfg.BO.CCCountCycleDataSet)">
+            <summary>
+            </summary>
+            <param name="vFirstTag">First Tag generated integer </param>
+            <param name="vLastTag">Last Tag generated integer </param>
+            <param name="ds">The CCCountCycle data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetBlankTags(System.Boolean@,Epicor.Mfg.BO.CCCountCycleDataSet,Epicor.Mfg.BO.CCTagDataSet)">
+            <summary>
+            </summary>
+            <param name="vBlankTagsAvail">Blank tags available for void logical </param>
+            <param name="ds">The CCCountCycle data set </param>
+            <param name="ds1">The CCTag data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetCycles(System.String,System.Int32,System.Int32,System.String@)">
+            <param name="ipWarehouseCode">Selected Warehouse.</param>
+            <param name="ipPeriod">period.</param>
+            <param name="ipYear">Year.</param>
+            <param name="opCycles">opCycles.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetLegalNumGenOpts(Epicor.Mfg.BO.CCCountCycleDataSet,System.Boolean@)">
+            <summary>
+            Returns the legal number generation options.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CCCountCycleDataSet">The CCCountCycleDataSet dataset </param>
+            <param name="requiresUserInput">Requires User Input </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetPartTranPKs(System.String,System.Int32,System.Int32,System.Int32,System.String@)">
+            <summary>
+            Return Primary Keys for generated PartTran records.
+            </summary>
+            <param name="ipWarehouseCode">The Warehouse Code </param>
+            <param name="ipCCYear">The CCYear </param>
+            <param name="ipCCMonth">The CCMonth </param>
+            <param name="ipCycleSeq">The CycleSeq </param>
+            <param name="partTranPKs">The PartTranPKs number </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetPeriods(System.String,System.Int32,System.String@)">
+            <param name="ipWarehouseCode">Selected Warehouse.</param>
+            <param name="ipYear">Selected Year</param>
+            <param name="opPeriodList">list of periods.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetWarehouses(System.String@)">
+            <param name="opWhseList">list of warehouses.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.GetYears(System.String,System.String@)">
+            <param name="ipWarehouseCode">Selected Warehouse.</param>
+            <param name="opYears">opYears.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.PostCount(Epicor.Mfg.BO.CCCountCycleDataSet,System.String@,System.Boolean@)">
+            <summary>
+            Post Count.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CCCountCycleDataSet">Epicor.Mfg.BO.CCCountCycleDataSet</param>
+            <param name="pcMessage">Non-error, informational message.</param>
+            <param name="noTags">Flag indicating if parts with no tags were skipped.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.ReverseStartCount(Epicor.Mfg.BO.CCCountCycleDataSet)">
+             <summary>
+            
+             </summary>
+             <param name="ds">The CCCountCycle data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.StartCountSequence(Epicor.Mfg.BO.CCCountCycleDataSet)">
+             <summary>
+            
+             </summary>
+             <param name="ds">The CCCountCycle data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.ValidateVoidPartNum(System.String@,Epicor.Mfg.BO.CCCountCycleDataSet)">
+            <summary>
+            Validate void tags by part number
+            </summary>
+            <param name="warnmsg">Warning message to return to UI </param>
+            <param name="ds">The CCCountCycle data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.VoidBlankTags(Epicor.Mfg.BO.CCTagDataSet,System.String@)">
+            <summary>
+            </summary>
+            <param name="ds">The CCTag data set </param>
+            <param name="vTextMessage">Message to display in UI </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ICCCountCycle.VoidTagsByPart(Epicor.Mfg.BO.CCCountCycleDataSet)">
+            <summary>
+            Validate void tags by part number
+            </summary>
+            <param name="ds">The CCCountCycle data set </param>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCHdrListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCHdrListDataSet.CCHdrListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCHdrListDataSet.CCHdrListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.CCHdrListDataSet.CCHdrListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtCCCountCycleDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtCCCountCycleDataSet.CCHdrDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtCCCountCycleDataSet.CCDtlDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtCCCountCycleDataSet.LegalNumGenOptsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtCCCountCycleDataSet.CCHdrRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtCCCountCycleDataSet.CCDtlRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtCCCountCycleDataSet.LegalNumGenOptsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtCCCountCycleDataSet.CCHdrRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtCCCountCycleDataSet.CCDtlRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtCCCountCycleDataSet.LegalNumGenOptsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>

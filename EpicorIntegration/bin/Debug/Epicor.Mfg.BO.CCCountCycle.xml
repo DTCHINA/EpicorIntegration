@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.BO.CCCountCycle</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.CCCountCycle">
+            <summary>
+            Client side business object for CCCountCycle.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.Proxy.CCCountCycleImpl">
+            <summary>
+            Count Cycle program.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Proxy constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetNewCCHdr(Epicor.Mfg.BO.CCCountCycleDataSet,System.String,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetNewCCDtl(Epicor.Mfg.BO.CCCountCycleDataSet,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.DeleteByID(System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetByID(System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetRows(System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.Update(Epicor.Mfg.BO.CCCountCycleDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.UpdateExt(Epicor.Mfg.BO.UpdExtCCCountCycleDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetAvailTranDocTypes(System.String@)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.CancelPI(Epicor.Mfg.BO.CCCountCycleDataSet)">
+            <summary>
+            This procedure will delete all records relating to a physical inventory cycle.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CCCountCycleDataSet">Epicor.Mfg.BO.CCCountCycleDataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.CloseCCDtlNoTags(Epicor.Mfg.BO.CCCountCycleDataSet,System.String@)">
+            <summary>
+            Closes Parts on the Cycle with no associated Tags if the user indicates to do so after Post Counts.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CCCountCycleDataSet">Epicor.Mfg.BO.CCCountCycleDataSet</param>
+            <param name="pcMessage">Non-error, informational message.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GenerateRecountTags(Epicor.Mfg.BO.CCCountCycleDataSet)">
+            <summary>
+            </summary>
+            <param name="ds">The CCCountCycle data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GenerateTags(System.Int32@,System.Int32@,Epicor.Mfg.BO.CCCountCycleDataSet)">
+            <summary>
+            </summary>
+            <param name="vFirstTag">First Tag generated integer </param>
+            <param name="vLastTag">Last Tag generated integer </param>
+            <param name="ds">The CCCountCycle data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetBlankTags(System.Boolean@,Epicor.Mfg.BO.CCCountCycleDataSet,Epicor.Mfg.BO.CCTagDataSet)">
+            <summary>
+            </summary>
+            <param name="vBlankTagsAvail">Blank tags available for void logical </param>
+            <param name="ds">The CCCountCycle data set </param>
+            <param name="ds1">The CCTag data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetCycles(System.String,System.Int32,System.Int32,System.String@)">
+            <param name="ipWarehouseCode">Selected Warehouse.</param>
+            <param name="ipPeriod">period.</param>
+            <param name="ipYear">Year.</param>
+            <param name="opCycles">opCycles.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetLegalNumGenOpts(Epicor.Mfg.BO.CCCountCycleDataSet,System.Boolean@)">
+            <summary>
+            Returns the legal number generation options.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CCCountCycleDataSet">The CCCountCycleDataSet dataset </param>
+            <param name="requiresUserInput">Requires User Input </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetPartTranPKs(System.String,System.Int32,System.Int32,System.Int32,System.String@)">
+            <summary>
+            Return Primary Keys for generated PartTran records.
+            </summary>
+            <param name="ipWarehouseCode">The Warehouse Code </param>
+            <param name="ipCCYear">The CCYear </param>
+            <param name="ipCCMonth">The CCMonth </param>
+            <param name="ipCycleSeq">The CycleSeq </param>
+            <param name="partTranPKs">The PartTranPKs number </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetPeriods(System.String,System.Int32,System.String@)">
+            <param name="ipWarehouseCode">Selected Warehouse.</param>
+            <param name="ipYear">Selected Year</param>
+            <param name="opPeriodList">list of periods.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetWarehouses(System.String@)">
+            <param name="opWhseList">list of warehouses.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.GetYears(System.String,System.String@)">
+            <param name="ipWarehouseCode">Selected Warehouse.</param>
+            <param name="opYears">opYears.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.PostCount(Epicor.Mfg.BO.CCCountCycleDataSet,System.String@,System.Boolean@)">
+            <summary>
+            Post Count.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CCCountCycleDataSet">Epicor.Mfg.BO.CCCountCycleDataSet</param>
+            <param name="pcMessage">Non-error, informational message.</param>
+            <param name="noTags">Flag indicating if parts with no tags were skipped.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.ReverseStartCount(Epicor.Mfg.BO.CCCountCycleDataSet)">
+             <summary>
+            
+             </summary>
+             <param name="ds">The CCCountCycle data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.StartCountSequence(Epicor.Mfg.BO.CCCountCycleDataSet)">
+             <summary>
+            
+             </summary>
+             <param name="ds">The CCCountCycle data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.ValidateVoidPartNum(System.String@,Epicor.Mfg.BO.CCCountCycleDataSet)">
+            <summary>
+            Validate void tags by part number
+            </summary>
+            <param name="warnmsg">Warning message to return to UI </param>
+            <param name="ds">The CCCountCycle data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.VoidBlankTags(Epicor.Mfg.BO.CCTagDataSet,System.String@)">
+            <summary>
+            </summary>
+            <param name="ds">The CCTag data set </param>
+            <param name="vTextMessage">Message to display in UI </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CCCountCycleImpl.VoidTagsByPart(Epicor.Mfg.BO.CCCountCycleDataSet)">
+            <summary>
+            Validate void tags by part number
+            </summary>
+            <param name="ds">The CCCountCycle data set </param>
+        </member>
+        <member name="P:Epicor.Mfg.Proxy.CCCountCycleImpl.CallContext">
+            <summary>
+            Call context dataset
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.BO.CCCountCycle.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.BO.SysMonitor</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.SysMonitor">
+            <summary>
+            Client side business object for SysMonitor.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.Proxy.SysMonitorImpl">
+            <summary> SysMonitor main object
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.SysMonitorImpl.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Proxy constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.SysMonitorImpl.CancelTask(System.Int32)">
+            <summary>
+            Use to terminate a running task.
+            </summary>
+            <param name="sysTaskNum">
+            System Task Number to be terminated.
+            </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.SysMonitorImpl.GetScheduledTasks(System.String)">
+             <summary>
+             To return the SysMonitorSchedDataSet which contains the scheduled tasks for a user.
+             </summary>
+             <param name="userIDent">User ID for which you want the schedule tasks.
+             Leave blank to consider all users.
+            </param>
+             <returns type="Epicor.Mfg.BO.SysMonitorSchedDataSet">The SysMonitorSched dataSet</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.SysMonitorImpl.GetTaskHistory(System.Int32,System.String)">
+            <summary>
+            To return Task history records for the current user for a specified number of days.
+            </summary>
+            <param name="taskNumOfDays">The number of days from today you wish to retrieve task history for.</param>
+            <param name="rptUserID">User ID for which you want SysRptLst and SysTask records.
+            Leave this blank to consider all users for available reports.</param>
+            <returns type="Epicor.Mfg.BO.SysMonitorTaskHistDataSet">The SysMonitorTaskHist dataSet</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.SysMonitorImpl.GetTasksNReports(System.String,System.String)">
+            <summary>
+            To return the SysMonitorDataSet which contains the SysTask and SysRptLst tables.
+            </summary>
+            <param name="rptUserID">User ID for which you want SysRptLst and SysTask records.
+            Leave this blank to consider all users for available reports.</param>
+            <param name="rptWorkStationID">Computer/Workstation name for which you want SysRptLst records.
+            Leave this blank to consider ALL workstations for available reports</param>
+            <returns type="Epicor.Mfg.BO.SysMonitorDataSet">The SysMonitor dataSet</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.SysMonitorImpl.UpdateSysMonitorDS(Epicor.Mfg.BO.SysMonitorDataSet)">
+            <summary>
+            Use to commit updates and deletions of the SysMonitor dataset to the database.
+            Does NOT support adding new records.
+            Does NOT support deletion of SysTask records.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.SysMonitorDataSet"> The SysMonitor dataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.SysMonitorImpl.UpdateSysMonitorSched(Epicor.Mfg.BO.SysMonitorSchedDataSet)">
+            <summary>
+            Use to commit deletions of the SysMonitor dataset to the database.
+            Does NOT support adding or updating of records.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.SysMonitorSchedDataSet">The SysMonitorSched dataSet</param>
+        </member>
+        <member name="P:Epicor.Mfg.Proxy.SysMonitorImpl.CallContext">
+            <summary>
+            Call context dataset
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.BO.SysMonitor.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+    </members>
+</doc>

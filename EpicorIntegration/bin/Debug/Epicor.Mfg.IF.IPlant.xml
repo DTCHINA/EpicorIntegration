@@ -1,0 +1,295 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.IF.IPlant</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet.ETCAddressDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet.ETCMessageDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet.ETCAddressRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet.ETCMessageRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet.ETCAddressRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet.ETCMessageRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantDataSet.PlantDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantDataSet.PlantAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantDataSet.PlantEGLCDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantDataSet.PlantRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantDataSet.PlantAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantDataSet.PlantEGLCRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantDataSet.PlantRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantDataSet.PlantAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantDataSet.PlantEGLCRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.IF.IPlant">
+            <summary>
+            Plant Business Object
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.GetNewPlant(Epicor.Mfg.BO.PlantDataSet)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.GetNewPlantAttch(Epicor.Mfg.BO.PlantDataSet,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.GetNewPlantEGLC(Epicor.Mfg.BO.PlantDataSet,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.DeleteByID(System.String)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.GetByID(System.String)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.GetRows(System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.Update(Epicor.Mfg.BO.PlantDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.UpdateExt(Epicor.Mfg.BO.UpdExtPlantDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.ETCAfterAddrVal(Epicor.Mfg.BO.PlantDataSet,Epicor.Mfg.BO.ETCAddrValidationDataSet,System.String)">
+            <summary>
+            After the tax integration has been called, update the Plant address if it
+            was changed.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.PlantDataSet">The Plant data set </param>
+            <param name="ds1" type="Epicor.Mfg.BO.ETCAddrValidationDataSet">The ETCAddrValidation data set </param>
+            <param name="plantID">Plant.Plant</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.ETCValidateAddress(System.String,System.Boolean@,System.Boolean@,System.String@)">
+            <summary>
+            Call tax integration and loads temp tables from the results.
+            </summary>
+            <returns type="Epicor.Mfg.BO.ETCAddrValidationDataSet">The ETCAddrValidation data set </returns>
+            <param name="plantID">Plant.Plant</param>
+            <param name="statusFlag">Set to true if the integration is up, false if down.</param>
+            <param name="errorFlag">If true, an error occured.</param>
+            <param name="errorMsg">If Error Flag is true, this is the associated message.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.GetAllPlants">
+            <summary>
+            This Method Get all Companies Plants
+            </summary>
+            <returns type="Epicor.Mfg.BO.PlantListDataSet">Plant List dataset.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.GetCompleteList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This method is the same as GetList(), except that it causes a bypass of the call to
+            removeUnauthorizedRows. It is to be used only in the situations where the
+            user is allowed to see Plants for which they are not authorized, such as in
+            this example from Vantage Help for Multi-Plant Management:
+            The selection list for Plants will include all Plants for the To option
+            when creating Plant to Plant transfers. However, when receiving a Plant
+            to Plant transfer the user must be authorized to the receiving Plant.
+            </summary>
+            <param name="whereClause">(optional)Additional Where conditions.</param>
+            <returns type="Epicor.Mfg.BO.PlantListDataSet">Plant List dataset.</returns>
+            <param name="pageSize"></param>
+            <param name="absolutePage"> </param>
+            <param name="morePages">Returns TRUE if there are more pages. </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.GetDisabledFields(System.String@)">
+            <summary>
+            This method will send a list of fields to be disabled on the UI
+            side if either the Multi-Plant or Advanced Planning and Scheduling
+            license is not available or MRP, data collection and field service.
+            </summary>
+            <param name="disabledList">Returns the list of fields to be disabled </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.IsAuthorizedForPlant(System.String,System.Boolean@)">
+            <summary>
+            IsAuthorizedForPlant determines whether the logged user is allowed to access a specific plant
+            </summary>
+            <param name="plantID">The plant ID parameter.</param>
+            <param name="isValid">True if authorized for that plant, false if plant does not exist,
+            and throws an exception if not authorized</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.OnChangeOfCalendarID(System.String,Epicor.Mfg.BO.PlantDataSet)">
+            <summary>
+            This method validates the CalendarID
+            </summary>
+            <param name="calendarID"> Proposed Calendar ID field </param>
+            <param name="ds" type="Epicor.Mfg.BO.PlantDataSet">The Plant data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPlant.PlantCostIDChanged(System.String@)">
+            <summary>
+            This method should be called anytime the PlantCostID is changed when updating a plant record (this
+            method does not need to be called when adding a record). This method returns message text to
+            present to the user in question form. The question informs the user Plant General Ledger Cost
+            values will need to be updated, do they wish to continue with this change.
+            </summary>
+            <param name="pcQuestion">Question message passed back from the business logic.</param>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantListDataSet.PlantListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantListDataSet.PlantListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PlantListDataSet.PlantListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtPlantDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtPlantDataSet.PlantDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtPlantDataSet.PlantAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtPlantDataSet.PlantEGLCDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtPlantDataSet.PlantRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtPlantDataSet.PlantAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtPlantDataSet.PlantEGLCRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtPlantDataSet.PlantRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtPlantDataSet.PlantAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtPlantDataSet.PlantEGLCRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>

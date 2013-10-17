@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.IF.IPartOnHandWhse</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseDataSet.PartOnHandWhseDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseDataSet.PartOnHandBinDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseDataSet.PartBinInfoDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseDataSet.PartOnHandWhseRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseDataSet.PartOnHandBinRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseDataSet.PartBinInfoRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseDataSet.PartOnHandWhseRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseDataSet.PartOnHandBinRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseDataSet.PartBinInfoRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.IF.IPartOnHandWhse">
+            <summary> Part quantity on hand by warehouse
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IPartOnHandWhse.GetPartOnHandWhse(System.String,System.String)">
+            <summary>
+            Get the Part quantity on hand records from the parameters.
+            </summary>
+            <returns type="Epicor.Mfg.BO.PartOnHandWhseDataSet">The PartOnHandWhse data set</returns>
+            <param name="cPartNum">The Part Number </param>
+            <param name="cPlant">The plant </param>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseListDataSet.PartOnHandWhseListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseListDataSet.PartOnHandWhseListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhseListDataSet.PartOnHandWhseListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>

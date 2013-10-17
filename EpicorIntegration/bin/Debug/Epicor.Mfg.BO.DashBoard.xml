@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.BO.DashBoard</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.DashBoard">
+            <summary>
+            Client side business object for DashBoard.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.Proxy.DashBoardImpl">
+            <summary>
+            This business object is designed to store the data for the DashBoard which is usually contained
+            within XML files. The data will be "chunked" into data blocks of 30K (Progress Limit) or less.
+            Each "chunk" will become an individual record with DashBdDef as the parent record. This BO
+            Will have a custom "update" called StoreData and will not allow the base "update" method to
+            function.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Proxy constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.GetNewDashBdDef(Epicor.Mfg.BO.DashBoardDataSet,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.GetNewDashBdBAQ(Epicor.Mfg.BO.DashBoardDataSet,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.GetNewDashBdChunk(Epicor.Mfg.BO.DashBoardDataSet,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.GetNewDashBdLike(Epicor.Mfg.BO.DashBoardDataSet,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.DeleteByID(System.String,System.String,System.String,System.String)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.GetByID(System.String,System.String,System.String,System.String)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.GetRows(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.Update(Epicor.Mfg.BO.DashBoardDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.UpdateExt(Epicor.Mfg.BO.UpdExtDashBoardDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.GetDashboardsWithBAQ(System.String,System.String)">
+            <summary>
+            This methods returns a "list" dataset with possible DashBdDef records that
+            match the current company, inputted productid and inputted queryid for each
+            DashBdBAQ record.
+            </summary>
+            <param name="ipProductId">The productid to return data for. </param>
+            <param name="ipQueryID">The queryid to return data for. </param>
+            <returns>Dashboard definition list dataset</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.GetDashboardsWithLike(System.String,System.String)">
+            <summary>
+            This methods returns a "list" dataset with possible DashBdDef records that
+            match the current company, inputted productid and inputted likefield for each
+            DashBdLike record.
+            </summary>
+            <param name="ipProductId">The productid to return data for. </param>
+            <param name="ipLikeField">The likefield to return data for. </param>
+            <returns>Dashboard definition list dataset</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.GetDashboardsRecs(System.String,System.String,System.String@,System.String@)">
+            <summary>
+            This methods returns a "list" dataset with possible DashBdDef records that
+            match the current company, inputted productid and inputted likefield for each
+            DashBdLike record.
+            </summary>
+            <param name="ipDefinitionID">The Dashboard ID. </param>
+            <param name="ipProductId">The productid to return data for. </param>
+            <param name="opListID">A return list of the BAQ Ids referenced by the dashboard. </param>
+            <param name="opListGlobal">A return list of the Global Flags for list of BAQ in opListID. </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.DashBoardImpl.StoreData(Epicor.Mfg.BO.DashBoardDataSet)">
+            <summary>
+            This methods should be ran instead of the base Update method.
+            This method will require the dataset to come in, next it will delete all DashBdChunk,
+            DashBdBAQ, DashBdLike records associated with each ttDashBdDet in the dataset while also deleting
+            the DashBdDef records in the database. Next the ttDashBdDef table will be the driving force behind
+            the creation of new DashBdDef, DashBdChunk, DashBdBAQ, and DashBdLike records in the database.
+            The values for the fields in these records will come from what is in the dataset.
+            This 'StoreData' process is basically a complete 'overlay' of the DashBoard data.
+            This method will require that all dataset records have a value of 'A' in the corresponding
+            rowident field/column.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.DashBoardDataSet">Dashboard dataset</param>
+        </member>
+        <member name="P:Epicor.Mfg.Proxy.DashBoardImpl.CallContext">
+            <summary>
+            Call context dataset
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.BO.DashBoard.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.BO.PartOnHandWhse</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.PartOnHandWhse">
+            <summary>
+            Client side business object for PartOnHandWhse.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.Proxy.PartOnHandWhseImpl">
+            <summary> Part quantity on hand by warehouse
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.PartOnHandWhseImpl.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Proxy constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.PartOnHandWhseImpl.GetPartOnHandWhse(System.String,System.String)">
+            <summary>
+            Get the Part quantity on hand records from the parameters.
+            </summary>
+            <returns type="Epicor.Mfg.BO.PartOnHandWhseDataSet">The PartOnHandWhse data set</returns>
+            <param name="cPartNum">The Part Number </param>
+            <param name="cPlant">The plant </param>
+        </member>
+        <member name="P:Epicor.Mfg.Proxy.PartOnHandWhseImpl.CallContext">
+            <summary>
+            Call context dataset
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.BO.PartOnHandWhse.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+    </members>
+</doc>
