@@ -78,6 +78,8 @@ namespace EpicorIntegration
 
                     rem_btn.Enabled = true;
                 }
+                else
+                    MessageBox.Show("Item already exists!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
             catch { MessageBox.Show("An error occured adding this record to the database", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
