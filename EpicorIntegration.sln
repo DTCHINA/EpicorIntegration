@@ -3,6 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpicorIntegration", "EpicorIntegration\EpicorIntegration.csproj", "{E20EDB1A-3F4D-4F23-AC1A-F67D8CA4CCAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPDM_Bill_Cutlist_Import", "EPDM_Addin\EPDM_Bill_Cutlist_Import.csproj", "{7D39909D-B428-4827-8D9D-66AF5723C317}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPDMDebugApp", "EPDMDebugApp\EPDMDebugApp.csproj", "{779F7804-3B9A-4E4B-865E-8B8C67735D7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidworksAddin-EpicorIntegration", "SolidworksAddin-EpicorIntegration\SolidworksAddin-EpicorIntegration.csproj", "{7ACEDAA9-2DE8-4485-837A-E7D58812A6DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaultExplorerControl", "VaultExplorerControl\VaultExplorerControl.csproj", "{3CEAD42E-408C-44EF-A1AF-7ADB38C441BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +21,22 @@ Global
 		{E20EDB1A-3F4D-4F23-AC1A-F67D8CA4CCAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E20EDB1A-3F4D-4F23-AC1A-F67D8CA4CCAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E20EDB1A-3F4D-4F23-AC1A-F67D8CA4CCAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D39909D-B428-4827-8D9D-66AF5723C317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D39909D-B428-4827-8D9D-66AF5723C317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D39909D-B428-4827-8D9D-66AF5723C317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D39909D-B428-4827-8D9D-66AF5723C317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{779F7804-3B9A-4E4B-865E-8B8C67735D7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{779F7804-3B9A-4E4B-865E-8B8C67735D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{779F7804-3B9A-4E4B-865E-8B8C67735D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{779F7804-3B9A-4E4B-865E-8B8C67735D7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ACEDAA9-2DE8-4485-837A-E7D58812A6DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ACEDAA9-2DE8-4485-837A-E7D58812A6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ACEDAA9-2DE8-4485-837A-E7D58812A6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ACEDAA9-2DE8-4485-837A-E7D58812A6DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CEAD42E-408C-44EF-A1AF-7ADB38C441BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CEAD42E-408C-44EF-A1AF-7ADB38C441BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CEAD42E-408C-44EF-A1AF-7ADB38C441BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CEAD42E-408C-44EF-A1AF-7ADB38C441BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
