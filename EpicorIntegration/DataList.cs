@@ -63,6 +63,21 @@ namespace EpicorIntegration
             return ds;
         }
 
+        public static string ReferencePartType(string partnumber)
+        {
+            Part part = new Part(EpicConn);
+
+            PartDataSet Pdata = new PartDataSet();
+
+            string Type = "";
+
+            Pdata = part.GetByID(partnumber);
+
+            EpicClose();
+
+            return Type;
+        }
+
         public static string AdvanceRevision(string CurrentRevision)
         {
             char[] InVal = CurrentRevision.ToUpper().ToCharArray();

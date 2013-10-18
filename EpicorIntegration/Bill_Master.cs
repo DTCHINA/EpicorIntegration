@@ -184,6 +184,8 @@ namespace EpicorIntegration
 
         private void Bill_Master_Load(object sender, EventArgs e)
         {
+            DataList.ReferencePartType("Test12");
+
             BillDataGrid.SelectionChanged += BillDataGrid_SelectionChanged;
 
             BillDataGrid.ClearSelection();

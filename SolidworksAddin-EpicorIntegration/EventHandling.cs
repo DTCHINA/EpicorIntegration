@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using SldWorks = SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 

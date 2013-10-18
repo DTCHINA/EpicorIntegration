@@ -1,15 +1,13 @@
-using System;
-using System.Runtime.InteropServices;
-using System.Collections;
-using System.Reflection;
-
 using SolidWorks.Interop.sldworks;
-using SolidWorks.Interop.swpublished;
 using SolidWorks.Interop.swconst;
+using SolidWorks.Interop.swpublished;
 using SolidWorksTools;
 using SolidWorksTools.File;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.InteropServices;
 
 
 namespace SolidworksAddin_EpicorIntegration
@@ -43,7 +41,7 @@ namespace SolidworksAddin_EpicorIntegration
         #endregion
 
         #region Property Manager Variables
-        UserPMPage ppage = null;
+        //UserPMPage ppage = null;
         #endregion
 
 
@@ -347,63 +345,19 @@ namespace SolidworksAddin_EpicorIntegration
 
         public Boolean AddPMP()
         {
-            ppage = new UserPMPage(this);
+            //ppage = new UserPMPage(this);
             return true;
         }
 
         public Boolean RemovePMP()
         {
-            ppage = null;
+            //ppage = null;
             return true;
         }
 
         #endregion
 
         #region UI Callbacks
-        public void CreateCube()
-        {
-            //make sure we have a part open
-            string partTemplate = iSwApp.GetUserPreferenceStringValue((int)swUserPreferenceStringValue_e.swDefaultTemplatePart);
-            if ((partTemplate != null) && (partTemplate != ""))
-            {
-                IModelDoc2 modDoc = (IModelDoc2)iSwApp.NewDocument(partTemplate, (int)swDwgPaperSizes_e.swDwgPaperA2size, 0.0, 0.0);
-
-                modDoc.InsertSketch2(true);
-                modDoc.SketchRectangle(0, 0, 0, .1, .1, .1, false);
-                //Extrude the sketch
-                IFeatureManager featMan = modDoc.FeatureManager;
-                featMan.FeatureExtrusion(true,
-                    false, false,
-                    (int)swEndConditions_e.swEndCondBlind, (int)swEndConditions_e.swEndCondBlind,
-                    0.1, 0.0,
-                    false, false,
-                    false, false,
-                    0.0, 0.0,
-                    false, false,
-                    false, false,
-                    true,
-                    false, false);
-            }
-            else
-            {
-                System.Windows.Forms.MessageBox.Show("There is no part template available. Please check your options and make sure there is a part template selected, or select a new part template.");
-            }
-        }
-
-
-        public void ShowPMP()
-        {
-            if (ppage != null)
-                ppage.Show();
-        }
-
-        public int EnablePMP()
-        {
-            if (iSwApp.ActiveDoc != null)
-                return 1;
-            else
-                return 0;
-        }
 
         public void FlyoutCallback()
         {
@@ -588,6 +542,24 @@ namespace SolidworksAddin_EpicorIntegration
         }
 
         #endregion
+
+        bool ISwAddin.ConnectToSW(object ThisSW, int Cookie)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool ISwAddin.DisconnectFromSW()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetPartInfo()
+        {
+        }
+
+        public void GetAssemblyBill()
+        {
+        }
     }
 
 }
