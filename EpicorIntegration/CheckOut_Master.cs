@@ -30,6 +30,26 @@ namespace EpicorIntegration
             partnumber_txt.TextChanged += partnumber_txt_TextChanged;
         }
 
+        public CheckOut_Master(string partnumber)
+        {
+            InitializeComponent();
+
+            gid_cbo.DataSource = DataList.GroupIDDataSet().Tables[0];
+
+            gid_cbo.ValueMember = "Description";
+
+            gid_cbo.DisplayMember = "GroupID";
+
+            if (Properties.Settings.Default.ecogroup != "" || Properties.Settings.Default.ecogroup != null)
+            {
+                gid_cbo.Text = Properties.Settings.Default.ecogroup;
+            }
+
+            partnumber_txt.Text = partnumber;
+
+            partnumber_txt.TextChanged += partnumber_txt_TextChanged;
+        }
+
         void PartTextChanged_Reset()
         {
             PartTextChanged.Stop();

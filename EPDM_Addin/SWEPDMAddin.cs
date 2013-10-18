@@ -1246,9 +1246,9 @@ namespace EPDM_Addin
         void EdmLib.IEdmAddIn5.GetAddInInfo(ref EdmAddInInfo poInfo, IEdmVault5 poVault, IEdmCmdMgr5 poCmdMgr)
         {
             //Fill in the AddIn's description
-            poInfo.mbsAddInName = "Dekker EPDM Addin";
-            poInfo.mbsCompany = "Dekker Vacuum Technologies";
-            poInfo.mbsDescription = "Dekker EPDM Addin";
+            poInfo.mbsAddInName = "Norco EPDM/Epicor Integration";
+            poInfo.mbsCompany = "Norco Industries";
+            poInfo.mbsDescription = "Norco EPDM/Epicor Integration";
             poInfo.mlAddInVersion = 1;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
@@ -1286,31 +1286,6 @@ namespace EPDM_Addin
                         edmVault.MsgBox(0, " EPDM_Addin", EdmMBoxType.EdmMbt_OKOnly, "SolidWorks EPDM Addin");
                         break;
                     case EdmCmdType.EdmCmd_PostAdd:
-                        /***
-                        //Needs way to avoid trying to rename already named files
-
-                        EdmCmdData[] Temp = (EdmCmdData[])ppoData;
-
-                        IEdmVault7 vault = (IEdmVault7)poCmd.mpoVault;
-
-                        EPDM.Utils.DataHelper helper = new EPDM.Utils.DataHelper();
-
-                        foreach (EdmCmdData file in Temp)
-                        {
-                            IEdmFile5 filetorename = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID2);
-
-                            string filepath = filetorename.GetLocalPath(file.mlObjectID1);
-
-                            FileInfo fileinfo = new FileInfo(filepath);
-
-                            string filename = fileinfo.Name.TrimEnd (fileinfo.Extension.ToCharArray());
-
-                            if (fileinfo != null)
-                            {
-                                filetorename.Rename(0, "NEWSTUFF" + fileinfo.Extension, true);
-                            }
-                        }
-                        ***/
                         break;
                     case EdmCmdType.EdmCmd_PostAddFolder:
                         break;

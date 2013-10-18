@@ -1,3 +1,4 @@
+using EpicorIntegration;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using SolidWorks.Interop.swpublished;
@@ -17,8 +18,8 @@ namespace SolidworksAddin_EpicorIntegration
     /// </summary>
     [Guid("5ba23c4a-3a49-4a42-b263-3b5599e7dd07"), ComVisible(true)]
     [SwAddin(
-        Description = "SolidworksAddin_EpicorIntegration description",
-        Title = "SolidworksAddin_EpicorIntegration",
+        Description = "Norco SolidWorks/Epicor Integration Addin",
+        Title = "Solidworks/Epicor Integration",
         LoadAtStartup = true
         )]
     public class SwAddin : ISwAddin
@@ -553,11 +554,41 @@ namespace SolidworksAddin_EpicorIntegration
             throw new NotImplementedException();
         }
 
-        public void GetPartInfo()
+        public void OpenItemMaster()
+        {
+            ModelDoc2 ModDoc = (ModelDoc2)SwApp.ActiveDoc;
+
+            ConfigurationManager SWConfMgr = ModDoc.ConfigurationManager;
+
+            Configuration SwConf = SWConfMgr.ActiveConfiguration;
+
+            Component2 Comp2 = (Component2)SwConf.GetRootComponent();
+
+            string partnum = ModDoc.GetTitle();
+
+            string desc = ModDoc.GetCustomInfoValue(ModDoc.ConfigurationManager.ActiveConfiguration.Description.ToString(), "Description");
+
+            decimal weight = ModDoc.GetMassProperties()[5];
+
+            Item_Master I_M = new Item_Master(partnum, desc, weight);
+
+            I_M.ShowDialog();
+        }
+
+        public void OpenCheckOutPart()
+        {
+
+        }
+
+        public void OpenOperationsMaster()
         {
         }
 
-        public void GetAssemblyBill()
+        public void OpenBillMaster_Drw()
+        {
+        }
+
+        public void OpenBillMaster_Assm()
         {
         }
     }

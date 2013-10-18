@@ -66,6 +66,27 @@ namespace EpicorIntegration
             }
         }
 
+        public Item_Master(string PartNumber, string Description, decimal Weight)
+        {
+            InitializeComponent();
+
+            try
+            {
+                //Fill fields on form with inputs
+
+                Partnumber_txt.Text = PartNumber;
+
+                Description_txt.Text = Description;
+
+                NetWeight.Value = Weight;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error importing data fields.  Default values will show.\n" + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
         public Item_Master(string PartNumber,string Description,string Type, decimal Weight, decimal Volume,string Group, string Class)
         {
             InitializeComponent();
@@ -193,7 +214,8 @@ namespace EpicorIntegration
         {
             AllToUpper();
 
-            if (Partnumber_txt.Text.Substring(0, 3) == "201")
+            //201XXXXX is a frame, 404XXXXX is a Flo-machine - both need to be serialized
+            if (Partnumber_txt.Text.Substring(0, 3) == "201" || Partnumber_txt.Text.Substring(0,3) == "404")
                 trackserial.Checked = true;
         }
 
@@ -423,7 +445,14 @@ namespace EpicorIntegration
         {
             if (trackserial.Checked)
             {
-                SerialMask_Master SM = new SerialMask_Master();
+                string prefix = "";
+
+                if (Partnumber_txt.Text.Substring(0, 3) == "201")
+                    prefix = "BAL";
+                if (Partnumber_txt.Text.Substring(0, 3) == "404")
+                    prefix = "FLO";
+
+                SerialMask_Master SM = new SerialMask_Master(prefix);
 
                 SM.ShowDialog();
 
@@ -433,5 +462,6 @@ namespace EpicorIntegration
                     SerialPrefix = SM.Prefix;
             }
         }
+
     }
 }

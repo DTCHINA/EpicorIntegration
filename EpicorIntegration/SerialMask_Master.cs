@@ -20,6 +20,13 @@ namespace EpicorIntegration
             InitializeComponent();
         }
 
+        public SerialMask_Master(string _prefix)
+        {
+            InitializeComponent();
+
+            serialprefix_txt.Text = _prefix;
+        }
+
         private void SerialMask_Master_Load(object sender, EventArgs e)
         {
 

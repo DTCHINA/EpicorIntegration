@@ -218,7 +218,7 @@
     <Compile Include="Item_Approve.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Item_Approve.Designer.cs">
+    <Compile Include="Item_Approve.designer.cs">
       <DependentUpon>Item_Approve.cs</DependentUpon>
     </Compile>
     <Compile Include="Item_CopyFrom.cs">

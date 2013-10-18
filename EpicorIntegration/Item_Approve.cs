@@ -119,10 +119,5 @@ namespace EpicorIntegration
         {
             gid_desc.Text = gid_cbo.SelectedValue.ToString();
         }
-
-        private void Item_Approve_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
