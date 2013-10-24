@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Epicor.Mfg.BO;
 using Epicor.Mfg.Core;
-using Epicor.Mfg.BO;
-using Epicor.Mfg.Lib;
+using System;
+using System.Windows.Forms;
 
 namespace EpicorIntegration
 {
@@ -22,7 +14,13 @@ namespace EpicorIntegration
 
         private void EpicLogin_Load(object sender, EventArgs e)
         {
+            try
+            {
+                Uname.Text = Properties.Settings.Default.uname;
 
+                Passw.Text = Properties.Settings.Default.passw;
+            }
+            catch { }
         }
 
         private const int CP_NOCLOSE_BUTTON = 0x200;

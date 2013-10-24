@@ -73,7 +73,7 @@ namespace EpicorIntegration.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool validated {
             get {
                 return ((bool)(this["validated"]));
@@ -109,7 +109,7 @@ namespace EpicorIntegration.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("part")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Part")]
         public string mtlreqtype {
             get {
                 return ((string)(this["mtlreqtype"]));

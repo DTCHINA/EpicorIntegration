@@ -1,7 +1,0 @@
-﻿Changelog:
-
-0.8.0.0
-12/17/2012
-Initial coding
-Renamed Project "EPDM Bill/Cutlist Import"
-			
