@@ -12,9 +12,11 @@ namespace EpicorIntegration
 {
     public partial class CheckIn_Master : Form
     {
-        public CheckIn_Master()
+        public CheckIn_Master(string partnumber)
         {
             InitializeComponent();
+
+            partnumber_txt.Text = partnumber;
 
             gid_cbo.DataSource = DataList.GroupIDDataSet().Tables[0];
 
@@ -86,6 +88,11 @@ namespace EpicorIntegration
 
                 PartTextChanged.Enabled = false;
             }
+        }
+
+        private void CheckIn_Master_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

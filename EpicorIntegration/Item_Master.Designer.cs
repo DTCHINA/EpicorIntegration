@@ -279,6 +279,7 @@
             // 
             // savebtn
             // 
+            this.savebtn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.savebtn.Location = new System.Drawing.Point(209, 507);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
@@ -402,6 +403,7 @@
             // 
             // copy_btn
             // 
+            this.copy_btn.Enabled = false;
             this.copy_btn.Location = new System.Drawing.Point(20, 507);
             this.copy_btn.Name = "copy_btn";
             this.copy_btn.Size = new System.Drawing.Size(75, 23);

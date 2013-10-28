@@ -590,5 +590,12 @@ namespace EpicorIntegration
 
             UpdateDataSet();
         }
+
+        private void saveandclose_btn_Click(object sender, EventArgs e)
+        {
+            SaveChanges();
+
+            this.Close();
+        }
     }
 }

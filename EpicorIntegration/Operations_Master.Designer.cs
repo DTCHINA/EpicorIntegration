@@ -59,7 +59,7 @@
             this.ProdStandard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stdformat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrimaryResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.MajorContainer)).BeginInit();
+            this.saveclose_btn = new System.Windows.Forms.Button();
             this.MajorContainer.Panel1.SuspendLayout();
             this.MajorContainer.Panel2.SuspendLayout();
             this.MajorContainer.SuspendLayout();
@@ -79,6 +79,7 @@
             // 
             // MajorContainer.Panel1
             // 
+            this.MajorContainer.Panel1.Controls.Add(this.copy_btn);
             this.MajorContainer.Panel1.Controls.Add(this.gid_txt);
             this.MajorContainer.Panel1.Controls.Add(this.label5);
             this.MajorContainer.Panel1.Controls.Add(this.rev_txt);
@@ -245,8 +246,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.copy_btn);
             this.groupBox1.Controls.Add(this.newbtn);
+            this.groupBox1.Controls.Add(this.saveclose_btn);
             this.groupBox1.Controls.Add(this.removebtn);
             this.groupBox1.Controls.Add(this.cancelbtn);
             this.groupBox1.Controls.Add(this.savebtn);
@@ -258,7 +259,8 @@
             // 
             // copy_btn
             // 
-            this.copy_btn.Location = new System.Drawing.Point(6, 103);
+            this.copy_btn.Enabled = false;
+            this.copy_btn.Location = new System.Drawing.Point(397, 22);
             this.copy_btn.Name = "copy_btn";
             this.copy_btn.Size = new System.Drawing.Size(75, 23);
             this.copy_btn.TabIndex = 14;
@@ -390,6 +392,17 @@
             this.PrimaryResourceGrpDesc.ReadOnly = true;
             this.PrimaryResourceGrpDesc.Width = 134;
             // 
+            // saveclose_btn
+            // 
+            this.saveclose_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.saveclose_btn.Location = new System.Drawing.Point(6, 105);
+            this.saveclose_btn.Name = "saveclose_btn";
+            this.saveclose_btn.Size = new System.Drawing.Size(75, 23);
+            this.saveclose_btn.TabIndex = 15;
+            this.saveclose_btn.Text = "Save/Close";
+            this.saveclose_btn.UseVisualStyleBackColor = true;
+            this.saveclose_btn.Click += new System.EventHandler(this.saveclose_btn_Click);
+            // 
             // Operations_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,7 +419,6 @@
             this.MajorContainer.Panel1.ResumeLayout(false);
             this.MajorContainer.Panel1.PerformLayout();
             this.MajorContainer.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MajorContainer)).EndInit();
             this.MajorContainer.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -448,5 +460,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PrimaryResourceGrpDesc;
         private System.Windows.Forms.Button copy_btn;
         private System.Windows.Forms.Button bom_btn;
+        private System.Windows.Forms.Button saveclose_btn;
     }
 }

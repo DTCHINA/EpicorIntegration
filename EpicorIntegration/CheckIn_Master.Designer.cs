@@ -126,6 +126,7 @@
             // 
             // confirm_btn
             // 
+            this.confirm_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.confirm_btn.Location = new System.Drawing.Point(12, 232);
             this.confirm_btn.Name = "confirm_btn";
             this.confirm_btn.Size = new System.Drawing.Size(75, 23);
@@ -176,6 +177,7 @@
             this.MinimizeBox = false;
             this.Name = "CheckIn_Master";
             this.Text = "Check In Item";
+            this.Load += new System.EventHandler(this.CheckIn_Master_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);

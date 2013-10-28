@@ -56,9 +56,11 @@ namespace EpicorIntegration
             prodstd_cbo.SelectedIndex = 0;
         }
 
-        public Operations_Master(string PartNumber, string GroupID, string Rev)
+        public Operations_Master(string PartNumber, string Rev)
         {
             InitializeComponent();
+
+            string GroupID = Properties.Settings.Default.ecogroup;
 
             OPDataGrid.AutoGenerateColumns = false;
 
@@ -243,6 +245,21 @@ namespace EpicorIntegration
                 EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["Stdformat"] = prodstd_cbo.SelectedItem.ToString();
             }
             catch { }
+        }
+
+        private void saveclose_btn_Click(object sender, EventArgs e)
+        {
+            EngWB.Update(EngWBDS);
+
+            EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+
+            resource_show.Enabled = true;
+
+            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+
+            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+
+            this.Close();
         }
     }
 }

@@ -68,6 +68,7 @@
             this.UOMCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PartTimer = new System.Windows.Forms.Timer(this.components);
+            this.saveandclose_btn = new System.Windows.Forms.Button();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -139,6 +140,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.saveandclose_btn);
             this.groupBox2.Controls.Add(this.copy_btn);
             this.groupBox2.Controls.Add(this.newbtn);
             this.groupBox2.Controls.Add(this.removebtn);
@@ -152,7 +154,7 @@
             // 
             // copy_btn
             // 
-            this.copy_btn.Location = new System.Drawing.Point(6, 103);
+            this.copy_btn.Location = new System.Drawing.Point(6, 74);
             this.copy_btn.Name = "copy_btn";
             this.copy_btn.Size = new System.Drawing.Size(75, 23);
             this.copy_btn.TabIndex = 14;
@@ -172,7 +174,7 @@
             // 
             // removebtn
             // 
-            this.removebtn.Location = new System.Drawing.Point(6, 74);
+            this.removebtn.Location = new System.Drawing.Point(6, 45);
             this.removebtn.Name = "removebtn";
             this.removebtn.Size = new System.Drawing.Size(75, 23);
             this.removebtn.TabIndex = 1;
@@ -193,7 +195,7 @@
             // 
             // savebtn
             // 
-            this.savebtn.Location = new System.Drawing.Point(6, 45);
+            this.savebtn.Location = new System.Drawing.Point(6, 103);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 3;
@@ -463,6 +465,17 @@
             this.PartTimer.Interval = 750;
             this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
             // 
+            // saveandclose_btn
+            // 
+            this.saveandclose_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.saveandclose_btn.Location = new System.Drawing.Point(7, 181);
+            this.saveandclose_btn.Name = "saveandclose_btn";
+            this.saveandclose_btn.Size = new System.Drawing.Size(75, 23);
+            this.saveandclose_btn.TabIndex = 15;
+            this.saveandclose_btn.Text = "Save/Close";
+            this.saveandclose_btn.UseVisualStyleBackColor = true;
+            this.saveandclose_btn.Click += new System.EventHandler(this.saveandclose_btn_Click);
+            // 
             // Bill_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -528,6 +541,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn UOMCode;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ViewAsAsm;
+        private System.Windows.Forms.Button saveandclose_btn;
 
     }
 }
