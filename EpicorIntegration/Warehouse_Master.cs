@@ -62,7 +62,7 @@ namespace EpicorIntegration
 
                 foreach (DataRow dr in Whse_DS.Tables[0].Rows)
                 {
-                    if (dr["WarehouseCode"] == whse_cbo.SelectedValue.ToString())
+                    if (dr["WarehouseCode"].ToString() == whse_cbo.SelectedValue.ToString())
                         toAdd = false;
                 }
 

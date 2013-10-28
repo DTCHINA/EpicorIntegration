@@ -37,7 +37,7 @@ namespace EPDMAddin_EpicorIntegration
 
         private void Config_Select_Load(object sender, EventArgs e)
         {
-            if (config_cbo.Items.Count == 2 && config_cbo.Items[0] == "@" && config_cbo.Items[1] == "Default")
+            if (config_cbo.Items.Count == 2 && config_cbo.Items[0].ToString() == "@" && config_cbo.Items[1].ToString() == "Default")
             {
                 SelectedConfig = "@";
 

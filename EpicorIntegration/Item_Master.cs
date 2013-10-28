@@ -354,13 +354,10 @@ namespace EpicorIntegration
             if (pdata.Net_Weight_UM != "")
                 uomweight_cbo.SelectedText = pdata.Net_Weight_UM;
 
-            if (pdata.TrackSerial != null)
                 trackserial.Checked = pdata.TrackSerial;
 
-            if (pdata.QtyBearing != null)
                 qtybearing.Checked = pdata.QtyBearing;
 
-            if (pdata.UseRevision != null)
                 userevision.Checked = pdata.UseRevision;
             
             /*if (pdata.Net_Vol != 0)
@@ -409,7 +406,7 @@ namespace EpicorIntegration
 
         private void type_cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (type_cbo.SelectedValue == "M")
+            if (type_cbo.SelectedValue.ToString() == "M")
             {
                 qtybearing.Checked = true;
                 userevision.Checked = true;

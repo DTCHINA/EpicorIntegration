@@ -25,7 +25,7 @@ namespace EpicorIntegration
             set { _EngWBDS = value; }
         }
 
-        public Bill_Master()
+        public Bill_Master(List<string> BillParts, List<string> BillQty, string ParentNumber)
         {
             InitializeComponent();
 
@@ -50,6 +50,82 @@ namespace EpicorIntegration
             BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
 
             this.FormClosing += Bill_Master_FormClosing;
+
+            parent_txt.Text = ParentNumber;
+
+            UpdateParentDesc();
+
+            gid_txt.Text = Properties.Settings.Default.ecogroup;
+        }
+
+        public void AddBillItems(List<string> BillParts, List<string> BillQty)
+        {
+            for (int i = 0; i < BillParts.Count; i++)
+            {
+                try
+                {
+                    EngWB.GetNewECOMtl(EngWBDS, gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "");
+
+                    int rowindex = BillDataGrid.Rows.Count - 1;
+
+                    BillDataGrid.ClearSelection();
+
+                    BillDataGrid.CurrentCell = BillDataGrid.Rows[rowindex].Cells[0];
+
+                    //qty_num.ValueChanged -= qty_num_ValueChanged;
+
+                    //ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
+
+                    //partnum_txt.TextChanged -= partnum_txt_TextChanged;
+
+                    qty_num.Value = decimal.Parse(BillQty[i]);
+
+                    ops_cbo.SelectedIndex = 0;
+
+                    partnum_txt.Text = BillParts[i];
+
+                    #region Update Description
+
+                    Part Part = new Part(DataList.EpicConn);
+
+                    PartListDataSet PartList = new PartListDataSet();
+
+                    string WhereClause = "PartNum = '" + partnum_txt.Text + "'";
+
+                    int pagesize = 1;
+
+                    bool morePages;
+
+                    PartList = Part.GetList(WhereClause, pagesize, 0, out morePages);
+
+                    DataList.EpicClose();
+
+                    desc_txt.Text = PartList.Tables[0].Rows[0]["PartDescription"].ToString();
+
+                    Part = null;
+
+                    PartList.Dispose();
+
+                    PartList = null;
+
+                    #endregion
+
+                    //qty_num.ValueChanged += qty_num_ValueChanged;
+
+                    //ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
+
+                    //partnum_txt.TextChanged += partnum_txt_TextChanged;
+
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["RelatedOperation"] = ops_cbo.SelectedValue;
+
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["QtyPer"] = 1;
+
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"] = false;
+
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"] = uom_cbo.Text;
+                }
+                catch { }
+            }
         }
 
         void Bill_Master_FormClosing(object sender, FormClosingEventArgs e)
@@ -364,10 +440,6 @@ namespace EpicorIntegration
 
         private void PartTimer_Tick(object sender, EventArgs e)
         {
-            string opMessage;
-
-            string opMsgType;
-
             try
             {
                 if (partnum_txt.Text != "")
@@ -428,6 +500,56 @@ namespace EpicorIntegration
                 PartList = null;
             }
             catch { desc_txt.Text = ""; }
+        }
+
+        private void UpdateParentDesc()
+        {
+            Part Part = new Part(DataList.EpicConn);
+
+            PartListDataSet PartList = new PartListDataSet();
+
+            string WhereClause = "PartNum = '" + parent_txt.Text + "'";
+
+            int pagesize = 1;
+
+            bool morePages;
+
+            PartList = Part.GetList(WhereClause, pagesize, 0, out morePages);
+
+            DataList.EpicClose();
+
+            parentdesc_txt.Text = PartList.Tables[0].Rows[0]["PartDescription"].ToString();
+
+            Part = null;
+
+            PartList.Dispose();
+
+            PartList = null;
+        }
+
+        private void UpdateParentRev()
+        {
+            Part Part = new Part(DataList.EpicConn);
+
+            PartListDataSet PartList = new PartListDataSet();
+
+            string WhereClause = "PartNum = '" + parent_txt.Text + "'";
+
+            int pagesize = 1;
+
+            bool morePages;
+
+            PartList = Part.GetList(WhereClause, pagesize, 0, out morePages);
+
+            DataList.EpicClose();
+
+            parentrev_txt.Text = PartList.Tables[0].Rows[0]["PartRevision"].ToString();
+
+            Part = null;
+
+            PartList.Dispose();
+
+            PartList = null;
         }
 
         private void partnum_txt_TextChanged(object sender, EventArgs e)

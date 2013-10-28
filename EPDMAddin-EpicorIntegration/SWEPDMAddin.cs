@@ -27,10 +27,19 @@ namespace EPDMAddin_EpicorIntegration
             poInfo.mlRequiredVersionMinor = 4;
 
             poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update Item in Epicor", 0, 0);
-            poCmdMgr.AddCmd(2, "Epicor Integration\\Add/Update OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update OOM and BOM in Epicor", 0, 0);
+
+            poCmdMgr.AddCmd(2, "Epicor Integration\\Add Item,OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to add an Item, a revision, an OOM and BOM in Epicor", 0, 0);
+            
             poCmdMgr.AddCmd(3, "Epicor Integration\\Add Revision", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to add revision to Item in Epicor", 0, 0);
-            poCmdMgr.AddCmd(4, "Epicor Integration\\Check Out Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Checks out Item in Epicor (Not Enterprise PDM)", 0, 0);
-            poCmdMgr.AddCmd(5, "Epicor Integration\\Check In/Approve Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to Approve and Check In Item to Epicor", 0, 0);
+
+            poCmdMgr.AddCmd(4, "Epicor Integration\\Add/Update OOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update OOM in Epicor", 0, 0);
+
+            poCmdMgr.AddCmd(5, "Epicor Integration\\Add/Update BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update BOM in Epicor", 0, 0);
+            
+            poCmdMgr.AddCmd(6, "Epicor Integration\\Check Out Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Checks out Item in Epicor (Not Enterprise PDM)", 0, 0);
+            
+            poCmdMgr.AddCmd(7, "Epicor Integration\\Check In/Approve Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to Approve and Check In Item to Epicor", 0, 0);
+            
             poCmdMgr.AddCmd(-1, "Epicor Integration\\Add-in Configuration", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to configure Epicor Integration Add-in", 0, 0);
 
             //uncomment this line to add all hooks
@@ -45,7 +54,7 @@ namespace EPDMAddin_EpicorIntegration
 
             string LocalPath = Part.GetLocalPath(path.ID);
 
-            long Local = Part.GetLocalVersionNo(LocalPath);
+            long Local = Part.GetLocalVersionNo(path.ID);
 
             int Server = Part.CurrentVersion;
 
@@ -104,9 +113,170 @@ namespace EPDMAddin_EpicorIntegration
             return retval;        
         }
 
-        public void GetItemInfo()
+        public void AddRevision(IEdmVault7 vault, EdmCmdData file)
         {
+            object partnum_val;
 
+            object rev_val;
+
+            IEdmFile5 part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
+
+            IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
+
+            string selected_config = DetermineConfig(part);
+
+            var.GetVar("Number", selected_config, out partnum_val);
+
+            var.GetVar("Revision", selected_config, out rev_val);
+
+            Revision_Master RM = new Revision_Master(partnum_val.ToString(), rev_val.ToString(), "", "");
+
+            RM.ShowDialog();
+        }
+
+        public void AddOOM(IEdmVault7 vault, EdmCmdData file)
+        {
+            object partnum_val;
+
+            object rev_val;
+
+            IEdmFile5 part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
+
+            IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
+
+            string selected_config = DetermineConfig(part);
+
+            var.GetVar("Number", selected_config, out partnum_val);
+
+            var.GetVar("Revision", selected_config, out rev_val);
+
+            Operations_Master OM = new Operations_Master(
+        }
+
+        public void AddBill(IEdmVault7 vault, EdmCmdData file)
+        {
+            IEdmEnumeratorVariable5 var;
+
+            string selected_config;
+
+            IEdmFile7 part = (IEdmFile7)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
+
+            if (UpdateItemRef(part, vault))
+            {
+                var = part.GetEnumeratorVariable();
+
+                selected_config = DetermineConfig(part);
+
+                IEdmBomMgr BomMgr = (IEdmBomMgr)vault.CreateUtility(EdmUtility.EdmUtil_BomMgr);
+
+                Array LayoutVal;
+
+                Array BomVal = Array.CreateInstance(typeof(EdmBomInfo), 1);
+
+                Array ColumnVal;
+
+                BomMgr.GetBomLayouts(out LayoutVal);
+
+                IEdmBomMgr EdmBomMgr = (IEdmBomMgr)vault.CreateUtility(EdmUtility.EdmUtil_BomMgr);
+
+                Array BomLayouts;
+
+                EdmBomMgr.GetBomLayouts(out BomLayouts);
+
+                EdmBomView BomView = part.GetComputedBOM(1, 0, selected_config, 2);
+
+                BomView.GetRows(out BomVal);
+
+                BomView.GetColumns(out ColumnVal);
+
+                EdmBomColumn ColVal = (EdmBomColumn)ColumnVal.GetValue(0);
+
+                List<string> BillQty = new List<string>();
+
+                List<string> BillNumbers = new List<string>();
+
+                List<string> BillLevel = new List<string>();
+
+                string ParentNumber = "";
+
+                for (int i = 0; i < BomVal.Length; i++)
+                {
+                    IEdmBomCell bominfo = (IEdmBomCell)BomVal.GetValue(i);
+
+                    object Value;
+
+                    object CompVal;
+
+                    string Config;
+
+                    bool RO;
+
+                    int itemlevel = bominfo.GetTreeLevel();
+
+                    if (itemlevel == 0)
+                    {
+                        bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out Value, out CompVal, out Config, out RO);
+
+                        ParentNumber = Value.ToString();
+                    }
+
+                    if (itemlevel != 1)
+                    {
+                        EdmBomColumnType ColType = EdmBomColumnType.EdmBomCol_RefCount;
+
+                        bominfo.GetVar(0, ColType, out Value, out CompVal, out Config, out RO);
+
+                        BillQty.Add(Value.ToString());
+
+                        ColType = EdmBomColumnType.EdmBomCol_PartNumber;
+
+                        bominfo.GetVar(0, ColType, out Value, out CompVal, out Config, out RO);
+
+                        BillNumbers.Add(Value.ToString());
+                    }
+                }
+
+                Bill_Master BM = new Bill_Master(BillNumbers, BillQty, ParentNumber);
+
+                BM.ShowDialog();
+            }
+        }
+
+        public void GetItemInfo(IEdmVault7 vault, EdmCmdData file)
+        {                           
+            IEdmFile5 part;
+ 
+            IEdmEnumeratorVariable5 var;
+
+            string selected_config;
+
+            object partnum_val;
+
+            object desc_val;
+
+            object weight_val;
+                         
+            part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
+
+            if (UpdateItemRef(part, vault))
+            {
+                var = part.GetEnumeratorVariable();
+
+                selected_config = DetermineConfig(part);
+
+                var.GetVar("Number", selected_config, out partnum_val);
+
+                var.GetVar("Description", selected_config, out desc_val);
+
+                var.GetVar("Weight", selected_config, out weight_val);
+
+                if (partnum_val != null)
+                {
+                    EpicorIntegration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), decimal.Parse(weight_val.ToString()));
+
+                    item.ShowDialog();
+                }
+            }
         }
 
         void EdmLib.IEdmAddIn5.OnCmd(ref EdmCmd poCmd, ref System.Array ppoData)
@@ -115,10 +285,16 @@ namespace EPDMAddin_EpicorIntegration
 
             IEdmVault5 edmVault = poCmd.mpoVault as IEdmVault5;
 
+            EdmCmdData[] Temp = (EdmCmdData[])ppoData;
+
+            IEdmVault7 vault = (IEdmVault7)poCmd.mpoVault;
+
+            DataHelper helper = new DataHelper();
+
             try
             {
                 switch (poCmd.meCmdType)
-                {
+                {    
                     case EdmCmdType.EdmCmd_CardButton:
                         break;
                     case EdmCmdType.EdmCmd_CardInput:
@@ -130,45 +306,44 @@ namespace EPDMAddin_EpicorIntegration
                     case EdmCmdType.EdmCmd_Menu:
                         switch(poCmd.mlCmdID)
                         {
-                            case 1:            
-                                EdmCmdData[] Temp = (EdmCmdData[])ppoData;
-
-                                IEdmVault7 vault = (IEdmVault7)poCmd.mpoVault;
-
-                                DataHelper helper = new DataHelper();
+                            case 1:
+                                #region Item Master
 
                                 foreach (EdmCmdData file in Temp)
                                 {
-                                    IEdmFile5 part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
-
-                                    if (UpdateItemRef(part, vault))
-                                    {
-                                        IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
-
-                                        object value;
-
-                                        var.GetVar("Number",DetermineConfig(part), out value);
-
-                                        if (value == null)
-                                            break;
-
-                                        //EpicorIntegration.Item_Master item = new Item_Master(value.ToString(), "", 0);
-
-                                        //item.ShowDialog();
-                                    }
+                                    GetItemInfo(vault, file);
                                 }
-                                //Item_Master
                                 break;
+                                #endregion
                             case 2:
-                                //Bill_Master
+                                //Add Item/Rev/OOM/BOM
                                 break;
                             case 3:
-                                //Revision_Master
+                                #region Add Revision
+
+                                foreach (EdmCmdData file in Temp)
+                                {
+                                    AddRevision(vault, file);
+                                }
+
+                                #endregion
                                 break;
                             case 4:
-                                //CheckOut_Master
+                                //OOM_Master
                                 break;
                             case 5:
+                                #region Bill Master
+
+                                foreach (EdmCmdData file in Temp)
+                                {
+                                    AddBill(vault, file);
+                                }
+                                break;
+                                #endregion
+                            case 6:
+                                //CheckOut_Master
+                                break;
+                            case 7:
                                 //CheckIn_Master
                                 break;
                             case -1:

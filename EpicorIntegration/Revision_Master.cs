@@ -16,13 +16,13 @@ namespace EpicorIntegration
         public Revision_Master()
         {
             InitializeComponent();
-
+            /*
             gid_cbo.DataSource = DataList.GroupIDDataSet().Tables[0];
 
             gid_cbo.ValueMember = "Description";
 
             gid_cbo.DisplayMember = "GroupID";
-
+            */
             Searchtxt.Leave += Searchtxt_TextChanged;
         }
 
@@ -42,13 +42,13 @@ namespace EpicorIntegration
         public Revision_Master(string PartNumber, string Revision, string RevisionDesc, string GroupID)
         {
             InitializeComponent();
-
+            /*
             gid_cbo.DataSource = DataList.GroupIDDataSet().Tables[0];
 
             gid_cbo.ValueMember = "Description";
 
             gid_cbo.DisplayMember = "GroupID";
-
+            */
             MessageBox.Show("Auto-select groupID still missing");
 
             Searchtxt.Text = PartNumber;
@@ -60,11 +60,13 @@ namespace EpicorIntegration
             revdesc_txt.Text = RevisionDesc;
 
             Searchtxt.Leave += Searchtxt_TextChanged;
+
+            gid_desc.Text = Properties.Settings.Default.ecogroup;
         }
 
         private void gid_cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            gid_desc.Text = gid_cbo.SelectedValue.ToString();
+            //gid_desc.Text = gid_cbo.SelectedValue.ToString();
         }
 
         private void Revision_Master_Load(object sender, EventArgs e)
@@ -79,7 +81,7 @@ namespace EpicorIntegration
             bool valid = DataList.CreatePartRevision(Searchtxt.Text, currev_txt.Text, newrev_txt.Text, revdesc_txt.Text);
 
             if (checkout_chk.Checked)
-                DataList.CheckOutPart(gid_cbo.Text, Searchtxt.Text, newrev_txt.Text);
+                DataList.CheckOutPart(gid_desc.Text, Searchtxt.Text, newrev_txt.Text);
            
             this.Close();
         }

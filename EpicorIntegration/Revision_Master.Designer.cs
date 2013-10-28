@@ -33,7 +33,6 @@
             this.cancelbtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gid_desc = new System.Windows.Forms.TextBox();
-            this.gid_cbo = new System.Windows.Forms.ComboBox();
             this.Searchbtn = new System.Windows.Forms.Button();
             this.Searchtxt = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -50,7 +49,7 @@
             // 
             // savebtn
             // 
-            this.savebtn.Location = new System.Drawing.Point(12, 300);
+            this.savebtn.Location = new System.Drawing.Point(18, 268);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 36;
@@ -61,7 +60,7 @@
             // cancelbtn
             // 
             this.cancelbtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelbtn.Location = new System.Drawing.Point(140, 300);
+            this.cancelbtn.Location = new System.Drawing.Point(129, 268);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
             this.cancelbtn.TabIndex = 35;
@@ -72,30 +71,19 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.gid_desc);
-            this.groupBox1.Controls.Add(this.gid_cbo);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(202, 83);
+            this.groupBox1.Size = new System.Drawing.Size(202, 51);
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ECO Group";
             // 
             // gid_desc
             // 
-            this.gid_desc.Location = new System.Drawing.Point(6, 46);
+            this.gid_desc.Location = new System.Drawing.Point(6, 19);
             this.gid_desc.Name = "gid_desc";
             this.gid_desc.Size = new System.Drawing.Size(186, 20);
             this.gid_desc.TabIndex = 1;
-            // 
-            // gid_cbo
-            // 
-            this.gid_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.gid_cbo.FormattingEnabled = true;
-            this.gid_cbo.Location = new System.Drawing.Point(6, 19);
-            this.gid_cbo.Name = "gid_cbo";
-            this.gid_cbo.Size = new System.Drawing.Size(186, 21);
-            this.gid_cbo.TabIndex = 0;
-            this.gid_cbo.SelectedIndexChanged += new System.EventHandler(this.gid_cbo_SelectedIndexChanged);
             // 
             // Searchbtn
             // 
@@ -124,7 +112,7 @@
             this.groupBox2.Controls.Add(this.revdesc_txt);
             this.groupBox2.Controls.Add(this.Searchbtn);
             this.groupBox2.Controls.Add(this.Searchtxt);
-            this.groupBox2.Location = new System.Drawing.Point(12, 101);
+            this.groupBox2.Location = new System.Drawing.Point(12, 69);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(202, 156);
             this.groupBox2.TabIndex = 40;
@@ -184,7 +172,7 @@
             this.checkout_chk.AutoSize = true;
             this.checkout_chk.Checked = true;
             this.checkout_chk.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkout_chk.Location = new System.Drawing.Point(21, 263);
+            this.checkout_chk.Location = new System.Drawing.Point(21, 231);
             this.checkout_chk.Name = "checkout_chk";
             this.checkout_chk.Size = new System.Drawing.Size(99, 17);
             this.checkout_chk.TabIndex = 41;
@@ -197,7 +185,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelbtn;
-            this.ClientSize = new System.Drawing.Size(227, 335);
+            this.ClientSize = new System.Drawing.Size(227, 304);
             this.Controls.Add(this.checkout_chk);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -225,7 +213,6 @@
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox gid_desc;
-        private System.Windows.Forms.ComboBox gid_cbo;
         private System.Windows.Forms.Button Searchbtn;
         private System.Windows.Forms.TextBox Searchtxt;
         private System.Windows.Forms.GroupBox groupBox2;

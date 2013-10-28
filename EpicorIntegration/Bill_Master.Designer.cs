@@ -60,7 +60,6 @@
             this.mtlseq_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.BillDataGrid = new System.Windows.Forms.DataGridView();
-            this.PartTimer = new System.Windows.Forms.Timer(this.components);
             this.MtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MtlPartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,7 +67,7 @@
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UOMCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).BeginInit();
+            this.PartTimer = new System.Windows.Forms.Timer(this.components);
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -121,7 +120,6 @@
             this.parentrev_txt.Name = "parentrev_txt";
             this.parentrev_txt.Size = new System.Drawing.Size(82, 20);
             this.parentrev_txt.TabIndex = 10;
-            this.parentrev_txt.Text = "A";
             // 
             // label7
             // 
@@ -138,7 +136,6 @@
             this.gid_txt.Name = "gid_txt";
             this.gid_txt.Size = new System.Drawing.Size(82, 20);
             this.gid_txt.TabIndex = 8;
-            this.gid_txt.Text = "TW";
             // 
             // groupBox2
             // 
@@ -235,7 +232,6 @@
             this.parent_txt.Name = "parent_txt";
             this.parent_txt.Size = new System.Drawing.Size(137, 20);
             this.parent_txt.TabIndex = 1;
-            this.parent_txt.Text = "Test12";
             // 
             // groupBox1
             // 
@@ -400,11 +396,6 @@
             this.BillDataGrid.Size = new System.Drawing.Size(554, 200);
             this.BillDataGrid.TabIndex = 1;
             // 
-            // PartTimer
-            // 
-            this.PartTimer.Interval = 750;
-            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
-            // 
             // MtlSeq
             // 
             this.MtlSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -465,7 +456,12 @@
             this.ViewAsAsm.HeaderText = "View As Assembly";
             this.ViewAsAsm.Name = "ViewAsAsm";
             this.ViewAsAsm.ReadOnly = true;
-            this.ViewAsAsm.Width = 88;
+            this.ViewAsAsm.Width = 98;
+            // 
+            // PartTimer
+            // 
+            this.PartTimer.Interval = 750;
+            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
             // 
             // Bill_Master
             // 
@@ -483,7 +479,6 @@
             this.MajorHorizSplit.Panel1.ResumeLayout(false);
             this.MajorHorizSplit.Panel1.PerformLayout();
             this.MajorHorizSplit.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).EndInit();
             this.MajorHorizSplit.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
