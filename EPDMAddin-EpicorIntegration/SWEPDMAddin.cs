@@ -49,11 +49,15 @@ namespace EPDMAddin_EpicorIntegration
         {
             bool retval = false;
 
-            IEdmFolder5 path = vault.RootFolder;
+            IEdmSearch5 search = vault.CreateSearch();
 
-            string LocalPath = Part.GetLocalPath(path.ID);
+            search.FileName = Part.Name;
 
-            long Local = Part.GetLocalVersionNo(path.ID);
+            IEdmSearchResult5 result = search.GetFirstResult();
+
+            string LocalPath = Part.GetLocalPath(result.ParentFolderID);
+
+            long Local = Part.GetLocalVersionNo(LocalPath);
 
             int Server = Part.CurrentVersion;
 
@@ -105,7 +109,7 @@ namespace EPDMAddin_EpicorIntegration
         {
             bool retval = false;
 
-            if (!HaveUpToDateItemRef(Part,vault))
+            if (!HaveUpToDateItemRef(Part, vault))
             {
                 DialogResult dr = MessageBox.Show("This requires that you get the latest version of this file. Continue?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -117,7 +121,10 @@ namespace EPDMAddin_EpicorIntegration
                 }
                 else
                     retval = false;
-            }   
+            }
+            else
+                retval = true;
+
             return retval;
         }
 
@@ -308,6 +315,8 @@ namespace EPDMAddin_EpicorIntegration
             {
                 var = part.GetEnumeratorVariable();
 
+                decimal weight_fallback = 0;
+
                 selected_config = DetermineConfig(part);
 
                 var.GetVar("Number", selected_config, out partnum_val);
@@ -316,9 +325,12 @@ namespace EPDMAddin_EpicorIntegration
 
                 var.GetVar("Weight", selected_config, out weight_val);
 
+                if (weight_val != null)
+                    decimal.TryParse(weight_val.ToString(), out weight_fallback);
+
                 if (partnum_val != null)
                 {
-                    EpicorIntegration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), decimal.Parse(weight_val.ToString()));
+                    EpicorIntegration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback);
 
                     item.ShowDialog();
 

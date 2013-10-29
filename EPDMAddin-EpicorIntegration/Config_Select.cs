@@ -41,6 +41,8 @@ namespace EPDMAddin_EpicorIntegration
             {
                 SelectedConfig = "@";
 
+                this.DialogResult = DialogResult.OK;
+
                 this.Close();
             }
         }
