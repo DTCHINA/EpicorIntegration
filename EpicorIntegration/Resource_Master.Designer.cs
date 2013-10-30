@@ -53,13 +53,13 @@
             this.ResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpDtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).BeginInit();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ResourceGrid)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ResourceGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // MajorHorizSplit
@@ -334,12 +334,12 @@
             this.MajorHorizSplit.Panel1.ResumeLayout(false);
             this.MajorHorizSplit.Panel1.PerformLayout();
             this.MajorHorizSplit.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).EndInit();
             this.MajorHorizSplit.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ResourceGrid)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ResourceGrid)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -78,9 +78,9 @@ namespace EpicorIntegration
 
             opmast_cbo.DataSource = ds.Tables["OPMaster"];
 
-            opmast_cbo.ValueMember = ds.Tables["OPMaster"].Columns["OPCode"].ToString();
+            opmast_cbo.ValueMember = "OPCode";//ds.Tables["OPMaster"].Columns["OPCode"].ToString();
 
-            opmast_cbo.DisplayMember = ds.Tables["OPMaster"].Columns["OPDesc"].ToString();
+            opmast_cbo.DisplayMember = "OPDesc";// ds.Tables["OPMaster"].Columns["OPDesc"].ToString();
 
             EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 

@@ -23,9 +23,22 @@ namespace EpicorIntegration
             Pdata = _Pdata;
         }
 
+        public Warehouse_Master()
+        {
+            try
+            {
+                InitializeComponent();
+            }
+            catch { }
+        }
+
         public Warehouse_Master(string PartNumber, string Plant)
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch { }
 
             partnum_txt.Text = PartNumber;
 

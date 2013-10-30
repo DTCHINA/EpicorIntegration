@@ -1,13 +1,8 @@
-﻿using System;
+﻿using Epicor.Mfg.BO;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-//using System.Threading.Tasks;
 using System.Windows.Forms;
-using Epicor.Mfg.BO;
 
 namespace EpicorIntegration
 {
@@ -30,6 +25,12 @@ namespace EpicorIntegration
             InitializeComponent();
 
             BillDataGrid.AutoGenerateColumns = false;
+
+            partnum_txt.Text = ParentNumber;
+
+            gid_txt.Text = Properties.Settings.Default.ecogroup;
+
+            parentrev_txt.Text = DataList.GetCurrentRev(ParentNumber);
 
             partnum_txt.Leave += partnum_txt_Leave;
 
@@ -255,7 +256,7 @@ namespace EpicorIntegration
 
             Searchfrm.Close();
 
-            Searchfrm.Dispose();
+            //Searchfrm.Dispose();
         }
 
         private void Bill_Master_Load(object sender, EventArgs e)

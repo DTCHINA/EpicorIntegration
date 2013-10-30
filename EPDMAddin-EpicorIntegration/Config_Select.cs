@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using EdmLib;
+using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace EPDMAddin_EpicorIntegration
 {
@@ -13,9 +9,28 @@ namespace EPDMAddin_EpicorIntegration
     {
         public string SelectedConfig;
 
-        public Config_Select()
+        IEdmVault7 Vault;
+
+        EdmCmdData File;
+
+        public Config_Select(IEdmVault7 vault, EdmCmdData file)
         {
             InitializeComponent();
+
+            this.SizeChanged += Config_Select_SizeChanged;
+
+            Vault = vault;
+
+            File = file;
+        }
+
+        void Config_Select_SizeChanged(object sender, EventArgs e)
+        {
+            cancel_btn.Location = new Point(this.Width - 104, cancel_btn.Location.Y);
+
+            config_cbo.Size = new Size(this.Width - 41, config_cbo.Height);
+
+            pnum_txt.Size = new Size(this.Width - 41, pnum_txt.Size.Height);
         }
 
         private void select_btn_Click(object sender, EventArgs e)
@@ -32,7 +47,19 @@ namespace EPDMAddin_EpicorIntegration
 
         private void config_cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                IEdmFile5 part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
 
+                IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
+
+                object number;
+
+                var.GetVar("Number", config_cbo.Text, out number);
+
+                pnum_txt.Text = number.ToString();
+            }
+            catch { }
         }
 
         private void Config_Select_Load(object sender, EventArgs e)

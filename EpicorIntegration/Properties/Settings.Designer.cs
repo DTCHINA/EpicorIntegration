@@ -37,7 +37,7 @@ namespace EpicorIntegration.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("hgdmccl")]
+        [global::System.Configuration.DefaultSettingValueAttribute("hgddmccl")]
         public string passw {
             get {
                 return ((string)(this["passw"]));

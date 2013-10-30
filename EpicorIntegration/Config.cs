@@ -106,7 +106,11 @@ namespace EpicorIntegration
 
         private void Config_Load(object sender, EventArgs e)
         {
+            ServerName.Text = Properties.Settings.Default.svrname;
 
+            SeverPort.Text = Properties.Settings.Default.svrport;
+
+            mtlreseq_cbo.SelectedValue = Properties.Settings.Default.mtlreqtype;
         }
 
         private void ecogp_btn_Click(object sender, EventArgs e)

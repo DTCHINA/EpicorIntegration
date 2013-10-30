@@ -39,7 +39,7 @@ namespace EPDMAddin_EpicorIntegration
             
             poCmdMgr.AddCmd(7, "Epicor Integration\\Check In/Approve Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to Approve and Check In Item to Epicor", 0, 0);
             
-            poCmdMgr.AddCmd(-1, "Epicor Integration\\Add-in Configuration", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to configure Epicor Integration Add-in", 0, 0);
+            poCmdMgr.AddCmd(-1, "Epicor Integration\\Add-in Configuration", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to configure Epicor Integration Add-in", 0, 0);
 
             //uncomment this line to add all hooks
             AddAllHooks(poCmdMgr);
@@ -75,7 +75,7 @@ namespace EPDMAddin_EpicorIntegration
 
             IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
 
-            string selected_config = DetermineConfig(part);
+            string selected_config = DetermineConfig(part,vault,file);
 
             var.GetVar("Number", selected_config, out partnum_val);
 
@@ -94,7 +94,7 @@ namespace EPDMAddin_EpicorIntegration
 
             IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
 
-            string selected_config = DetermineConfig(part);
+            string selected_config = DetermineConfig(part,vault,file);
 
             var.GetVar("Number", selected_config, out partnum_val);
 
@@ -128,7 +128,7 @@ namespace EPDMAddin_EpicorIntegration
             return retval;
         }
 
-        public string DetermineConfig(IEdmFile5 Part)
+        public string DetermineConfig(IEdmFile5 Part, IEdmVault7 vault, EdmCmdData file)
         {
             string retval = "@";
 
@@ -136,7 +136,7 @@ namespace EPDMAddin_EpicorIntegration
 
             IEdmPos5 pos = list.GetHeadPosition();
 
-            Config_Select config = new Config_Select();
+            Config_Select config = new Config_Select(vault, file);
 
             pos = list.GetHeadPosition();
 
@@ -167,7 +167,7 @@ namespace EPDMAddin_EpicorIntegration
 
             IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
 
-            string selected_config = DetermineConfig(part);
+            string selected_config = DetermineConfig(part,vault,file);
 
             var.GetVar("Number", selected_config, out partnum_val);
 
@@ -190,7 +190,7 @@ namespace EPDMAddin_EpicorIntegration
 
             IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
 
-            string selected_config = DetermineConfig(part);
+            string selected_config = DetermineConfig(part,vault,file);
 
             var.GetVar("Number", selected_config, out partnum_val);
 
@@ -215,7 +215,7 @@ namespace EPDMAddin_EpicorIntegration
             {
                 var = part.GetEnumeratorVariable();
 
-                selected_config = DetermineConfig(part);
+                selected_config = DetermineConfig(part, vault, file);
 
                 IEdmBomMgr BomMgr = (IEdmBomMgr)vault.CreateUtility(EdmUtility.EdmUtil_BomMgr);
 
@@ -317,7 +317,7 @@ namespace EPDMAddin_EpicorIntegration
 
                 decimal weight_fallback = 0;
 
-                selected_config = DetermineConfig(part);
+                selected_config = DetermineConfig(part,vault,file);
 
                 var.GetVar("Number", selected_config, out partnum_val);
 
@@ -341,6 +341,20 @@ namespace EPDMAddin_EpicorIntegration
             }
             else
                 return DialogResult.Cancel;
+        }
+
+        public bool ValidSelection(EdmCmdData file)
+        {
+            string file_ext = file.mbsStrData1.Substring(file.mbsStrData1.LastIndexOf('.') + 1).ToUpper();
+
+            if (file_ext != "SLDASM" && file_ext != "SLDPRT")
+            {
+                MessageBox.Show("Must be run on SolidWorks Parts/Assemblies.  Cannot continue!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return false;
+            }
+            else
+                return true;
         }
 
         void EdmLib.IEdmAddIn5.OnCmd(ref EdmCmd poCmd, ref System.Array ppoData)
@@ -375,7 +389,8 @@ namespace EPDMAddin_EpicorIntegration
 
                                 foreach (EdmCmdData file in Temp)
                                 {
-                                    GetItemInfo(vault, file);
+                                    if (ValidSelection(file))
+                                        GetItemInfo(vault, file);
                                 }
                                 #endregion
                                 break;
@@ -384,20 +399,23 @@ namespace EPDMAddin_EpicorIntegration
 
                                 foreach (EdmCmdData file in Temp)
                                 {
-                                    if (GetItemInfo(vault, file) == DialogResult.Cancel)
-                                        break;
+                                    if (ValidSelection(file))
+                                    {
+                                        if (GetItemInfo(vault, file) == DialogResult.Cancel)
+                                            break;
 
-                                    if (CheckOutPart (vault,file) == DialogResult.Cancel)
-                                        break;
+                                        if (CheckOutPart(vault, file) == DialogResult.Cancel)
+                                            break;
 
-                                    if (AddOOM(vault,file) == DialogResult.Cancel)
-                                        break;
+                                        if (AddOOM(vault, file) == DialogResult.Cancel)
+                                            break;
 
-                                    if (AddBill(vault, file) == DialogResult.Cancel)
-                                        break;
+                                        if (AddBill(vault, file) == DialogResult.Cancel)
+                                            break;
 
-                                    if (CheckInPart(vault, file) == DialogResult.Cancel)
-                                        break;
+                                        if (CheckInPart(vault, file) == DialogResult.Cancel)
+                                            break;
+                                    }
                                 }
 
                                 #endregion
@@ -407,7 +425,8 @@ namespace EPDMAddin_EpicorIntegration
 
                                 foreach (EdmCmdData file in Temp)
                                 {
-                                    CheckOutPart(vault, file);
+                                    if (ValidSelection(file))
+                                        CheckOutPart(vault, file);
                                 }
                                 #endregion
                                 break;
@@ -416,7 +435,8 @@ namespace EPDMAddin_EpicorIntegration
 
                                 foreach (EdmCmdData file in Temp)
                                 {
-                                    AddRevision(vault, file);
+                                    if (ValidSelection(file))
+                                        AddRevision(vault, file);
                                 }
 
                                 #endregion
@@ -426,7 +446,8 @@ namespace EPDMAddin_EpicorIntegration
 
                                 foreach (EdmCmdData file in Temp)
                                 {
-                                    AddOOM(vault, file);
+                                    if (ValidSelection(file))
+                                        AddOOM(vault, file);
                                 }
 
                                 #endregion
@@ -436,7 +457,8 @@ namespace EPDMAddin_EpicorIntegration
 
                                 foreach (EdmCmdData file in Temp)
                                 {
-                                    AddBill(vault, file);
+                                    if (ValidSelection(file))
+                                        AddBill(vault, file);
                                 }
                                 #endregion
                                 break;
@@ -445,7 +467,8 @@ namespace EPDMAddin_EpicorIntegration
 
                                 foreach (EdmCmdData file in Temp)
                                 {
-                                    CheckInPart(vault, file);
+                                    if (ValidSelection(file))
+                                        CheckInPart(vault, file);
                                 }
                                 #endregion
                                 break;

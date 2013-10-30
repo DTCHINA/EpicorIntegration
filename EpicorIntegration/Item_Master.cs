@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Epicor.Mfg.BO;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-//using System.Threading.Tasks;
 using System.Windows.Forms;
-using Epicor.Mfg.Core;
-using Epicor.Mfg.BO;
-using EpicorIntegration.Properties;
-using Epicor.Mfg.Lib;
 
 namespace EpicorIntegration
 {
@@ -174,7 +165,7 @@ namespace EpicorIntegration
 
                 uomclass_cbo.SelectedIndex = 2;
 
-                type_cbo.SelectedIndex = 0;
+                //type_cbo.SelectedIndex = 0;
                 /*
                 uomvol_cbo.DataSource = DataList.UOMVolumeDataSet().Tables[0];
 
@@ -421,7 +412,7 @@ namespace EpicorIntegration
         private void addwhse_btn_Click(object sender, EventArgs e)
         {
             //instance with partdataset
-            Warehouse_Master wm = new Warehouse_Master(Partnumber_txt.Text,plant_cbo.Text);
+            Warehouse_Master wm = new Warehouse_Master();//Partnumber_txt.Text,plant_cbo.Text);
 
             wm.ShowDialog();
 

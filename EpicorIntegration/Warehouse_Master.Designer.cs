@@ -44,8 +44,8 @@
             this.whse_cbo = new System.Windows.Forms.ComboBox();
             this.WarehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WarehouseCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.WhseDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.WhseDataGrid)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();

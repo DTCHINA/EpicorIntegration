@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-//using System.Threading.Tasks;
-using System.Data;
-using Epicor.Mfg.BO;
+﻿using Epicor.Mfg.BO;
 using Epicor.Mfg.Core;
 using Epicor.Mfg.Lib;
+using System;
+using System.Data;
 
 namespace EpicorIntegration
 {
