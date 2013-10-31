@@ -222,6 +222,77 @@ namespace EpicorIntegration
             Description_txt.Text = Description_txt.Text.ToUpper();
         }
 
+        private void UpdateFormSet(string Pnum)
+        {
+            Part Part = new Part(DataList.EpicConn);
+
+            PartDataSet Pdata = new PartDataSet();
+
+            Pdata = Part.GetByID(Pnum);
+
+            Description_txt.Text = Pdata.Tables["Part"].Rows[0]["PartDescription"].ToString();
+
+            NetWeight.Value = decimal.Parse(Pdata.Tables["Part"].Rows[0]["NetWeight"].ToString());
+
+            uomweight_cbo.SelectedValue = Pdata.Tables["Part"].Rows[0]["NetWeightUOM"].ToString();
+
+            uom_cbo.SelectedValue = Pdata.Tables["Part"].Rows[0]["IUM"].ToString();
+
+            class_cbo.SelectedValue = Pdata.Tables["Part"].Rows[0]["ClassID"].ToString();
+
+            type_cbo.SelectedValue = Pdata.Tables["Part"].Rows[0]["TypeCode"].ToString();
+
+            group_cbo.SelectedValue = Pdata.Tables["Part"].Rows[0]["ProdCode"].ToString();
+        }
+
+        private PartDataSet UpdateDataSet(PartDataSet Pdata)
+        {
+            Part Part = new Part(DataList.EpicConn);
+
+            DataList.AddDatum(Pdata, "Part", 0, "PartDescription", Description_txt.Text);
+
+            //SearchWord has 8 character limit
+            if (Description_txt.Text.Length > 8)
+                DataList.AddDatum(Pdata, "Part", 0, "SearchWord", Description_txt.Text.Substring(0, 8));
+            else
+                DataList.AddDatum(Pdata, "Part", 0, "SearchWord", Description_txt.Text);
+
+            DataList.AddDatum(Pdata, "Part", 0, "NetWeight", NetWeight.Text);
+
+            DataList.AddDatum(Pdata, "Part", 0, "NetWeightUOM", uomweight_cbo.SelectedValue.ToString());
+
+            //DataList.AddDatum(Pdata, "Part", 0, "NetVolume", NetVolume.Text);
+
+            //DataList.AddDatum(Pdata, "Part", 0, "NetVolumeUOM", uomvol_cbo.SelectedValue.ToString());
+
+            DataList.AddDatum(Pdata, "Part", 0, "IUM", uom_cbo.SelectedValue.ToString());
+
+            DataList.AddDatum(Pdata, "Part", 0, "ClassID", class_cbo.SelectedValue.ToString());
+
+            string Type_Code = type_cbo.SelectedItem.ToString();
+
+            Part.ChangePartTypeCode(Type_Code, Pdata);
+
+            Part.ChangePartProdCode(group_cbo.SelectedValue.ToString(), Pdata);
+
+            //add trackserial number if necessary
+            if (trackserial.Checked && (SerialPrefix != "" || SerialPrefix != null))
+            {
+                Part.ChangePartSNBaseDataType("MASK", Pdata);
+
+                Part.ChangeSNMask("ELK", Pdata);
+
+                Part.ChangePartSNMaskPrefixSuffix(SerialPrefix, "", Pdata);
+            }
+            else
+            {
+                if (SerialPrefix == "" || SerialPrefix == null)
+                    MessageBox.Show("Cannot use null serial prefix.  Set the prefix or uncheck 'Track Serial Number'", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return Pdata;
+        }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             if (trackserial.Checked && (SerialPrefix == "" || SerialPrefix == null))
@@ -248,74 +319,37 @@ namespace EpicorIntegration
 
                     Part.GetPartXRefInfo(ref PartNumber, "", "", out serialWarning, out questionString, out multipleMatch);
 
-                    if (!multipleMatch)
+                    Part.GetNewPart(Pdata);
+
+                    Part.ChangePartNum(PartNumber, Pdata);
+
+                    Pdata = UpdateDataSet(Pdata);
+
+                    //Add data to allow BO to create plant tables
+                    Part.Update(Pdata);
+
+                    //retrieve the new copy of the data
+                    Pdata = Part.GetByID(PartNumber);
+
+                    if (whse_cbo.Items.Count > 0)
                     {
-                        Part.GetNewPart(Pdata);
-
-                        Part.ChangePartNum(PartNumber, Pdata);
-
-                        DataList.AddDatum(Pdata, "Part", 0, "PartDescription", Description_txt.Text);
-
-                        //SearchWord has 8 character limit
-                        if (Description_txt.Text.Length > 8)
-                            DataList.AddDatum(Pdata, "Part", 0, "SearchWord", Description_txt.Text.Substring(0, 8));
-                        else
-                            DataList.AddDatum(Pdata, "Part", 0, "SearchWord", Description_txt.Text);
-
-                        DataList.AddDatum(Pdata, "Part", 0, "NetWeight", NetWeight.Text);
-
-                        DataList.AddDatum(Pdata, "Part", 0, "NetWeightUOM", uomweight_cbo.SelectedValue.ToString());
-
-                        //DataList.AddDatum(Pdata, "Part", 0, "NetVolume", NetVolume.Text);
-
-                        //DataList.AddDatum(Pdata, "Part", 0, "NetVolumeUOM", uomvol_cbo.SelectedValue.ToString());
-
-                        DataList.AddDatum(Pdata, "Part", 0, "IUM", uom_cbo.SelectedValue.ToString());
-
-                        DataList.AddDatum(Pdata, "Part", 0, "ClassID", class_cbo.SelectedValue.ToString());
-
-                        string Type_Code = type_cbo.SelectedItem.ToString();
-
-                        Part.ChangePartTypeCode(Type_Code, Pdata);
-
-                        Part.ChangePartProdCode(group_cbo.SelectedValue.ToString(), Pdata);
-
-                        //add trackserial number if necessary
-                        if (trackserial.Checked && SerialPrefix != "")
+                        for (int i = 0; i < whse_cbo.Items.Count; i++)
                         {
-                            Part.ChangePartSNBaseDataType("MASK", Pdata);
 
-                            Part.ChangeSNMask("ELK", Pdata);
+                            whse_cbo.SelectedIndex = i;
 
-                            Part.ChangePartSNMaskPrefixSuffix(SerialPrefix, "", Pdata);
+                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "PrimWhse", whse_cbo.SelectedValue.ToString());
+
+                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "PrimWhseDescription", whse_cbo.Text);
+
+                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "DBRowIdent", null);
                         }
-                        else
-                        {
-                            if (SerialPrefix == "" || SerialPrefix == null)
-                                MessageBox.Show("Cannot use null serial prefix.  Set the prefix or uncheck 'Track Serial Number'", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
-                        //Add data to allow BO to create plant tables
-                        Part.Update(Pdata);
-
-                        //retrieve the new copy of the data
-                        Pdata = Part.GetByID(PartNumber);
-
-                        DataList.UpdateDatum(Pdata, "PartPlant", 0, "PrimWhse", whse_cbo.SelectedValue.ToString());
-
-                        DataList.UpdateDatum(Pdata, "PartPlant", 0, "PrimWhseDescription", whse_cbo.Text);
-
-                        DataList.UpdateDatum(Pdata, "PartPlant", 0, "DBRowIdent", null);
 
                         //Update with warehouse information
                         Part.Update(Pdata);
+                    }
 
-                        DataList.EpicClose();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Part already exists in database!  Use revision to make changes.");
-                    }
+                    DataList.EpicClose();
                 }
                 catch (System.Exception ex)
                 {
@@ -397,16 +431,20 @@ namespace EpicorIntegration
 
         private void type_cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (type_cbo.SelectedValue.ToString() == "M")
+            try
             {
-                qtybearing.Checked = true;
-                userevision.Checked = true;
+                if (type_cbo.Text == "Manufactured")
+                {
+                    qtybearing.Checked = true;
+                    userevision.Checked = true;
+                }
+                else
+                {
+                    qtybearing.Checked = false;
+                    userevision.Checked = false;
+                }
             }
-            else
-            {
-                qtybearing.Checked = false;
-                userevision.Checked = false;
-            }
+            catch { }
         }
 
         private void addwhse_btn_Click(object sender, EventArgs e)

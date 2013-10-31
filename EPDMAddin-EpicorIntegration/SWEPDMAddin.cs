@@ -151,6 +151,8 @@ namespace EPDMAddin_EpicorIntegration
 
             config.ShowDialog();
 
+            retval = config.SelectedConfig;
+
             if (config.DialogResult == System.Windows.Forms.DialogResult.Cancel)
                 return "";
 
@@ -323,7 +325,7 @@ namespace EPDMAddin_EpicorIntegration
 
                 var.GetVar("Description", selected_config, out desc_val);
 
-                var.GetVar("Weight", selected_config, out weight_val);
+                var.GetVar("Mass", selected_config, out weight_val);
 
                 if (weight_val != null)
                     decimal.TryParse(weight_val.ToString(), out weight_fallback);
