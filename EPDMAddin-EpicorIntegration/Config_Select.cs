@@ -57,7 +57,10 @@ namespace EPDMAddin_EpicorIntegration
 
                 var.GetVar("Number", config_cbo.Text, out number);
 
-                pnum_txt.Text = number.ToString();
+                pnum_txt.Text = "";
+
+                if (number != null)
+                    pnum_txt.Text = number.ToString();
             }
             catch { }
         }

@@ -325,7 +325,11 @@ namespace EPDMAddin_EpicorIntegration
 
                 var.GetVar("Description", selected_config, out desc_val);
 
-                var.GetVar("Mass", selected_config, out weight_val);
+                //Weight is typically @ config
+                var.GetVar("NetWeight", selected_config, out weight_val);
+
+                if (weight_val == null)
+                    var.GetVar("NetWeight", "@", out weight_val);
 
                 if (weight_val != null)
                     decimal.TryParse(weight_val.ToString(), out weight_fallback);
@@ -339,7 +343,11 @@ namespace EPDMAddin_EpicorIntegration
                     return item.DialogResult;
                 }
                 else
+                {
+                    MessageBox.Show("Part number was a null value!\n\nEnsure that custom properties are completely filled out.", "Missing Properties!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+
                     return DialogResult.Cancel;
+                }
             }
             else
                 return DialogResult.Cancel;
@@ -406,7 +414,7 @@ namespace EPDMAddin_EpicorIntegration
                                         if (GetItemInfo(vault, file) == DialogResult.Cancel)
                                             break;
 
-                                        if (CheckOutPart(vault, file) == DialogResult.Cancel)
+                                        if (AddRevision(vault, file) == DialogResult.Cancel)
                                             break;
 
                                         if (AddOOM(vault, file) == DialogResult.Cancel)

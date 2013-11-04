@@ -125,6 +125,8 @@ namespace EpicorIntegration
 
                 type_cbo.DisplayMember = "Description";
 
+                type_cbo.SelectedIndex = 0;
+
                 group_cbo.DataSource = DataList.ProdGrupDataSet ().Tables[0];
                 
                 group_cbo.DisplayMember = "Description";
@@ -269,6 +271,10 @@ namespace EpicorIntegration
 
             DataList.AddDatum(Pdata, "Part", 0, "ClassID", class_cbo.SelectedValue.ToString());
 
+            DataList.AddDatum(Pdata, "Part", 0, "QtyBearing", qtybearing.Checked.ToString());
+
+            DataList.AddDatum(Pdata, "Part", 0, "UsePartRev", userevision.Checked.ToString());
+
             string Type_Code = type_cbo.SelectedItem.ToString();
 
             Part.ChangePartTypeCode(Type_Code, Pdata);
@@ -278,16 +284,20 @@ namespace EpicorIntegration
             //add trackserial number if necessary
             if (trackserial.Checked && (SerialPrefix != "" || SerialPrefix != null))
             {
-                Part.ChangePartSNBaseDataType("MASK", Pdata);
-
-                Part.ChangeSNMask("ELK", Pdata);
-
-                Part.ChangePartSNMaskPrefixSuffix(SerialPrefix, "", Pdata);
-            }
-            else
-            {
                 if (SerialPrefix == "" || SerialPrefix == null)
                     MessageBox.Show("Cannot use null serial prefix.  Set the prefix or uncheck 'Track Serial Number'", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    DataList.AddDatum(Pdata, "Part", 0, "EnableSerialNum", trackserial.Checked.ToString());
+
+                    DataList.AddDatum(Pdata, "Part", 0, "TrackSerialNum", trackserial.Checked.ToString());
+
+                    Part.ChangePartSNBaseDataType("MASK", Pdata);
+
+                    Part.ChangeSNMask("ELK", Pdata);
+
+                    Part.ChangePartSNMaskPrefixSuffix(SerialPrefix, "", Pdata);
+                }
             }
 
             return Pdata;
@@ -448,10 +458,30 @@ namespace EpicorIntegration
         }
 
         private void addwhse_btn_Click(object sender, EventArgs e)
-        {
-            //instance with partdataset
-            Warehouse_Master wm = new Warehouse_Master();//Partnumber_txt.Text,plant_cbo.Text);
+        {   
+            Warehouse_Master wm = new Warehouse_Master(Partnumber_txt.Text, plant_cbo.Text);
 
+            if (whse_cbo.Items.Count > 0)
+            {
+                wm.Whse_DS.Tables.Add();
+
+                wm.Whse_DS.Tables[0].Columns.Add(new DataColumn("WarehouseCode", typeof(System.String)));
+
+                wm.Whse_DS.Tables[0].Columns.Add(new DataColumn("WarehouseName", typeof(System.String)));
+
+                for (int i = 0; i < whse_cbo.Items.Count; i++)
+                {
+                    DataRow dr = wm.Whse_DS.Tables[0].NewRow();
+
+                    whse_cbo.SelectedIndex = i;
+
+                    dr["WarehouseCode"] = whse_cbo.SelectedValue;
+
+                    dr["WarehouseName"] = whse_cbo.Text;
+
+                    wm.Whse_DS.Tables[0].Rows.Add(dr);
+                }
+            }
             wm.ShowDialog();
 
             //get added warehouse list from form
@@ -465,6 +495,10 @@ namespace EpicorIntegration
 
             DataList.EpicClose();
 
+            if (whse_cbo.Items.Count > 0)
+                addwhse_btn.Text = "&Edit";
+            else
+                addwhse_btn.Text = "&Add";
         }
 
         private void trackserial_CheckedChanged(object sender, EventArgs e)

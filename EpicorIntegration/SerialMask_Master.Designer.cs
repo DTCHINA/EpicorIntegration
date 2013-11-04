@@ -43,8 +43,10 @@
             // 
             this.mask_txt.Location = new System.Drawing.Point(9, 32);
             this.mask_txt.Name = "mask_txt";
+            this.mask_txt.ReadOnly = true;
             this.mask_txt.Size = new System.Drawing.Size(99, 20);
             this.mask_txt.TabIndex = 0;
+            this.mask_txt.TabStop = false;
             this.mask_txt.Text = "ELK";
             // 
             // label1
@@ -71,7 +73,7 @@
             this.serialprefix_txt.Location = new System.Drawing.Point(21, 99);
             this.serialprefix_txt.Name = "serialprefix_txt";
             this.serialprefix_txt.Size = new System.Drawing.Size(99, 20);
-            this.serialprefix_txt.TabIndex = 3;
+            this.serialprefix_txt.TabIndex = 0;
             // 
             // label2
             // 
@@ -84,6 +86,7 @@
             // 
             // cancel_btn
             // 
+            this.cancel_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancel_btn.Location = new System.Drawing.Point(154, 96);
             this.cancel_btn.Name = "cancel_btn";
             this.cancel_btn.Size = new System.Drawing.Size(75, 23);
@@ -104,8 +107,10 @@
             // 
             // SerialMask_Master
             // 
+            this.AcceptButton = this.ok_btn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cancel_btn;
             this.ClientSize = new System.Drawing.Size(241, 140);
             this.Controls.Add(this.ok_btn);
             this.Controls.Add(this.cancel_btn);

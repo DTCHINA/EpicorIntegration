@@ -53,11 +53,14 @@ namespace EpicorIntegration
 
             whse_cbo.ValueMember = "WarehouseCode";
 
-            Whse_DS.Tables.Add();
+            if (Whse_DS.Tables.Count < 1)
+            {
+                Whse_DS.Tables.Add();
 
-            Whse_DS.Tables[0].Columns.Add(new DataColumn("WarehouseCode", typeof(System.String)));
+                Whse_DS.Tables[0].Columns.Add(new DataColumn("WarehouseCode", typeof(System.String)));
 
-            Whse_DS.Tables[0].Columns.Add(new DataColumn("WarehouseName", typeof(System.String)));
+                Whse_DS.Tables[0].Columns.Add(new DataColumn("WarehouseName", typeof(System.String)));
+            }
 
             WhseDataGrid.DataSource = Whse_DS.Tables[0];
         }
