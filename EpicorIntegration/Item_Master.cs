@@ -7,17 +7,13 @@ namespace EpicorIntegration
 {
     public partial class Item_Master : Form
     {
-        public PartData PartDatum
-        {
-            get
-            {
-                PartData PartDatum = new PartData();
-
-                return PartDatum;
-            }
-        }
-
         public string SerialPrefix;
+
+        public string _PartNumber;
+
+        public string _Description;
+
+        public decimal _Weight;
 
         public Item_Master()
         {
@@ -70,6 +66,12 @@ namespace EpicorIntegration
                 Description_txt.Text = Description;
 
                 NetWeight.Value = Weight;
+
+                _PartNumber = PartNumber;
+
+                _Description = Description;
+
+                _Weight = Weight;
             }
             catch (Exception ex)
             {
@@ -93,6 +95,12 @@ namespace EpicorIntegration
                 type_cbo.SelectedIndex = type_cbo.Items.IndexOf(Type);
 
                 NetWeight.Value = Weight;
+
+                _PartNumber = PartNumber;
+
+                _Description = Description;
+
+                _Weight = Weight;
 
                 //NetVolume.Value = Volume;
 
@@ -196,6 +204,23 @@ namespace EpicorIntegration
 
                 this.Close();
             }
+
+            if (DataList.PartExists(Partnumber_txt.Text))
+            {
+                UpdateFormSet(Partnumber_txt.Text);
+
+                if (Description_txt.Text != _Description || NetWeight.Value != _Weight)
+                {
+                    DialogResult DR = MessageBox.Show("Override Epicor values with values from the model?\n\n" + _Description + " → " + Description_txt.Text + "\n" + _Weight.ToString() + " → " + NetWeight.Value.ToString(), "Property Override", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (DR == DialogResult.Yes)
+                    {
+                        Description_txt.Text = _Description;
+
+                        NetWeight.Value = _Weight;
+                    }
+                }
+            }
         }
 
         void Description_txt_Leave(object sender, EventArgs e)
@@ -245,35 +270,56 @@ namespace EpicorIntegration
             type_cbo.SelectedValue = Pdata.Tables["Part"].Rows[0]["TypeCode"].ToString();
 
             group_cbo.SelectedValue = Pdata.Tables["Part"].Rows[0]["ProdCode"].ToString();
+
+            trackserial.Checked = bool.Parse(Pdata.Tables[0].Rows[0]["TrackSerialNum"].ToString());
+
+            qtybearing.Checked = bool.Parse(Pdata.Tables[0].Rows[0]["QtyBearing"].ToString());
+
+            userevision.Checked = bool.Parse(Pdata.Tables[0].Rows[0]["UsePartRev"].ToString());
+
+            whse_cbo.DataSource = Pdata.Tables["PartWhse"];
+
+            whse_cbo.DisplayMember = "WarehouseDescription";
+
+            whse_cbo.ValueMember = "WarehouseCode";
+
+            for (int i = 0; i < Pdata.Tables["PartPlant"].Rows.Count; i++)
+            {
+                if (Pdata.Tables["PartPlant"].Rows[i]["Plant"].ToString() == "MfgSys")
+                    planner_cbo.Text = Pdata.Tables["PartPlant"].Rows[i]["PersonID"].ToString();
+            }
         }
 
-        private PartDataSet UpdateDataSet(PartDataSet Pdata)
+        private PartDataSet UpdateDataSet(PartDataSet Pdata, DataViewRowState RowState)
         {
             Part Part = new Part(DataList.EpicConn);
 
-            DataList.AddDatum(Pdata, "Part", 0, "PartDescription", Description_txt.Text);
+            DataList.AddDatum(Pdata, "Part", 0, "PartDescription", Description_txt.Text,RowState);
+
+            if (RowState == DataViewRowState.Unchanged)
+                RowState = DataViewRowState.ModifiedCurrent;
 
             //SearchWord has 8 character limit
             if (Description_txt.Text.Length > 8)
-                DataList.AddDatum(Pdata, "Part", 0, "SearchWord", Description_txt.Text.Substring(0, 8));
+                DataList.AddDatum(Pdata, "Part", 0, "SearchWord", Description_txt.Text.Substring(0, 8), RowState);
             else
-                DataList.AddDatum(Pdata, "Part", 0, "SearchWord", Description_txt.Text);
+                DataList.AddDatum(Pdata, "Part", 0, "SearchWord", Description_txt.Text, RowState);
 
-            DataList.AddDatum(Pdata, "Part", 0, "NetWeight", NetWeight.Text);
+            DataList.AddDatum(Pdata, "Part", 0, "NetWeight", NetWeight.Text, RowState);
 
-            DataList.AddDatum(Pdata, "Part", 0, "NetWeightUOM", uomweight_cbo.SelectedValue.ToString());
+            DataList.AddDatum(Pdata, "Part", 0, "NetWeightUOM", uomweight_cbo.SelectedValue.ToString(), RowState);
 
             //DataList.AddDatum(Pdata, "Part", 0, "NetVolume", NetVolume.Text);
 
             //DataList.AddDatum(Pdata, "Part", 0, "NetVolumeUOM", uomvol_cbo.SelectedValue.ToString());
 
-            DataList.AddDatum(Pdata, "Part", 0, "IUM", uom_cbo.SelectedValue.ToString());
+            DataList.AddDatum(Pdata, "Part", 0, "IUM", uom_cbo.SelectedValue.ToString(), RowState);
 
-            DataList.AddDatum(Pdata, "Part", 0, "ClassID", class_cbo.SelectedValue.ToString());
+            DataList.AddDatum(Pdata, "Part", 0, "ClassID", class_cbo.SelectedValue.ToString(), RowState);
 
-            DataList.AddDatum(Pdata, "Part", 0, "QtyBearing", qtybearing.Checked.ToString());
+            DataList.AddDatum(Pdata, "Part", 0, "QtyBearing", qtybearing.Checked.ToString(), RowState);
 
-            DataList.AddDatum(Pdata, "Part", 0, "UsePartRev", userevision.Checked.ToString());
+            DataList.AddDatum(Pdata, "Part", 0, "UsePartRev", userevision.Checked.ToString(), RowState);
 
             string Type_Code = type_cbo.SelectedItem.ToString();
 
@@ -288,9 +334,9 @@ namespace EpicorIntegration
                     MessageBox.Show("Cannot use null serial prefix.  Set the prefix or uncheck 'Track Serial Number'", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
-                    DataList.AddDatum(Pdata, "Part", 0, "EnableSerialNum", trackserial.Checked.ToString());
+                    DataList.AddDatum(Pdata, "Part", 0, "EnableSerialNum", trackserial.Checked.ToString(), RowState);
 
-                    DataList.AddDatum(Pdata, "Part", 0, "TrackSerialNum", trackserial.Checked.ToString());
+                    DataList.AddDatum(Pdata, "Part", 0, "TrackSerialNum", trackserial.Checked.ToString(), RowState);
 
                     Part.ChangePartSNBaseDataType("MASK", Pdata);
 
@@ -327,13 +373,26 @@ namespace EpicorIntegration
 
                     string PartNumber = Partnumber_txt.Text;
 
-                    Part.GetPartXRefInfo(ref PartNumber, "", "", out serialWarning, out questionString, out multipleMatch);
+                    DataViewRowState DRState;
 
-                    Part.GetNewPart(Pdata);
+                    if (!DataList.PartExists(PartNumber))
+                    {
+                        Part.GetPartXRefInfo(ref PartNumber, "", "", out serialWarning, out questionString, out multipleMatch);
 
-                    Part.ChangePartNum(PartNumber, Pdata);
+                        Part.GetNewPart(Pdata);
 
-                    Pdata = UpdateDataSet(Pdata);
+                        Part.ChangePartNum(PartNumber, Pdata);
+
+                        DRState = DataViewRowState.Added;
+                    }
+                    else
+                    {
+                        Pdata = Part.GetByID(PartNumber);
+
+                        DRState = DataViewRowState.Unchanged;
+                    }
+
+                    Pdata = UpdateDataSet(Pdata, DRState);
 
                     //Add data to allow BO to create plant tables
                     Part.Update(Pdata);
@@ -355,6 +414,10 @@ namespace EpicorIntegration
                             DataList.UpdateDatum(Pdata, "PartPlant", 0, "DBRowIdent", null);
                         }
 
+                        DataList.UpdateDatum(Pdata, "PartPlant", 0, "PersonID", planner_cbo.Text);
+
+                        DataList.UpdateDatum(Pdata, "PartPlant", 0, "PersonName", planner_cbo.Text);
+
                         //Update with warehouse information
                         Part.Update(Pdata);
                     }
@@ -372,35 +435,35 @@ namespace EpicorIntegration
             }
         }
 
-        private void LoadData(PartData pdata)
+        private void LoadData(PartDataSet pdata)
         {
-            if (pdata.Description != "")
-                Description_txt.Text = pdata.Description;
+            if (pdata.Tables[0].Rows[0]["Description"].ToString() != "")
+                Description_txt.Text = pdata.Tables[0].Rows[0]["Description"].ToString();
 
-            if (pdata.PMT != "")
-                type_cbo.SelectedText = pdata.PMT;
+            if (pdata.Tables[0].Rows[0]["PMT"].ToString() != "")
+                type_cbo.SelectedText = pdata.Tables[0].Rows[0]["PMT"].ToString();
 
-            if (pdata.UOM_Class != "")
-                uomclass_cbo.SelectedText = pdata.UOM_Class;
+            if (pdata.Tables[0].Rows[0]["IUM"].ToString() != "")
+                uomclass_cbo.SelectedText = pdata.Tables[0].Rows[0]["IUM"].ToString();
 
-            if (pdata.Net_Weight != 0)
-                NetWeight.Value = pdata.Net_Weight;
+            if (decimal.Parse(pdata.Tables[0].Rows[0]["NetWeight"].ToString()) != 0)
+                NetWeight.Value = decimal.Parse(pdata.Tables[0].Rows[0]["NetWeight"].ToString());
 
-            if (pdata.Net_Weight_UM != "")
-                uomweight_cbo.SelectedText = pdata.Net_Weight_UM;
+            if (pdata.Tables[0].Rows[0]["NetWeightUOM"].ToString() != "")
+                uomweight_cbo.SelectedText = pdata.Tables[0].Rows[0]["NetWeightUOM"].ToString();
 
-                trackserial.Checked = pdata.TrackSerial;
+            trackserial.Checked = bool.Parse(pdata.Tables[0].Rows[0]["TrackSerialNum"].ToString());
 
-                qtybearing.Checked = pdata.QtyBearing;
+            qtybearing.Checked = bool.Parse(pdata.Tables[0].Rows[0]["QtyBearing"].ToString());
 
-                userevision.Checked = pdata.UseRevision;
+            userevision.Checked = bool.Parse(pdata.Tables[0].Rows[0]["UsePartRev"].ToString());
             
             /*if (pdata.Net_Vol != 0)
                 NetVolume.Value = pdata.Net_Vol;
 
             if (pdata.Net_Vol_UM != "")
                 uomvol_cbo.SelectedText = pdata.Net_Vol_UM;*/
-
+            /*
             if (pdata.Primary_UOM != "")
                 uom_cbo.SelectedText = pdata.Primary_UOM;
 
@@ -414,7 +477,7 @@ namespace EpicorIntegration
                 plant_cbo.SelectedText = pdata.PartPlant;
 
             if (pdata.PlantWhse != "")
-                whse_cbo.SelectedText = pdata.PlantWhse;
+                whse_cbo.SelectedText = pdata.PlantWhse;*/
         }
 
         private void copy_btn_Click(object sender, EventArgs e)
@@ -435,7 +498,7 @@ namespace EpicorIntegration
             {
                 pdata = frm._Pdata;
 
-                LoadData(pdata);
+                //LoadData(pdata);
             }
         }
 

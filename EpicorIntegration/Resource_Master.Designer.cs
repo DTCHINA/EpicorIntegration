@@ -53,13 +53,13 @@
             this.ResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpDtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).BeginInit();
+            this.OprSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            //((System.ComponentModel.ISupportInitialize)(this.ResourceGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResourceGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // MajorHorizSplit
@@ -276,7 +276,8 @@
             this.ResourceGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ResourceGrpDesc,
             this.ResourceDesc,
-            this.OpDtlSeq});
+            this.OpDtlSeq,
+            this.OprSeq});
             this.ResourceGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ResourceGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ResourceGrid.Location = new System.Drawing.Point(0, 0);
@@ -317,6 +318,13 @@
             this.OpDtlSeq.Name = "OpDtlSeq";
             this.OpDtlSeq.ReadOnly = true;
             // 
+            // OprSeq
+            // 
+            this.OprSeq.DataPropertyName = "OprSeq";
+            this.OprSeq.HeaderText = "Opr Seq";
+            this.OprSeq.Name = "OprSeq";
+            this.OprSeq.ReadOnly = true;
+            // 
             // Resource_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,12 +342,11 @@
             this.MajorHorizSplit.Panel1.ResumeLayout(false);
             this.MajorHorizSplit.Panel1.PerformLayout();
             this.MajorHorizSplit.Panel2.ResumeLayout(false);
-            //((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).EndInit();
             this.MajorHorizSplit.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            //((System.ComponentModel.ISupportInitialize)(this.ResourceGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResourceGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -369,5 +376,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceGrpDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDtlSeq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprSeq;
     }
 }

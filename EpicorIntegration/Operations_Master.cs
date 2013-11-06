@@ -114,7 +114,47 @@ namespace EpicorIntegration
         {
             OPDataGrid.SelectionChanged += OPDataGrid_SelectionChanged;
 
+            this.FormClosing += Operations_Master_FormClosing;
+
             FillProdStd();
+        }
+
+        void Operations_Master_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool Changed = false;
+
+            for (int i = 0; i < OPDataGrid.Rows.Count; i++)
+            {
+                if (EngWBDS.Tables["ECOOpr"].Rows[i].RowState == DataRowState.Modified)
+                {
+                    Changed = true;
+
+                    break;
+                }
+            }
+
+            if (Changed)
+            {
+                DialogResult DR = MessageBox.Show("You have unsaved changes.  Do you want to save before closing?", "Warning!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                    if (DR == DialogResult.Yes)
+                    {
+                        EngWB.Update(EngWBDS);
+
+                        EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+
+                        resource_show.Enabled = true;
+
+                        EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+
+                        OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+                    }
+                    else
+                        if (DR == DialogResult.Cancel)
+                        {
+                            e.Cancel = true;
+                        }
+            }
         }
 
         void OPDataGrid_SelectionChanged(object sender, EventArgs e)
@@ -174,13 +214,31 @@ namespace EpicorIntegration
 
             OPDataGrid.CurrentCell = OPDataGrid.Rows[RowIndex].Cells[0];
 
-            EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpCode"] = opmast_cbo.SelectedValue.ToString();
+            OpMaster OpMaster = new Epicor.Mfg.BO.OpMaster(DataList.EpicConn);
+
+            bool morePages;
+
+            DataSet ds = (DataSet)OpMaster.GetRows("", "", "", "", "", "", 100, 0, out morePages);
+
+            DataList.EpicClose();
+
+            EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpCode"] = ds.Tables["OpMaster"].Rows[opmast_cbo.SelectedIndex + 1]["OpCode"].ToString();
 
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpDesc"] = opmast_cbo.Text;
 
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
 
             resource_show.Enabled = false;
+
+            EngWB.Update(EngWBDS);
+
+            EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+
+            resource_show.Enabled = true;
+
+            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+
+            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
         }
 
         private void removebtn_Click(object sender, EventArgs e)
@@ -227,8 +285,35 @@ namespace EpicorIntegration
             catch { }
         }
 
+        private bool CheckForSave(out string message)
+        {
+            bool retval = true;
+            message = "Errors were found for the following operations:\n";
+
+            for (int i = 0; i < OPDataGrid.Rows.Count; i++)
+            {
+                if (EngWBDS.Tables["ECOOpr"].Rows[i]["ProdStandard"].ToString() == "0")
+                    retval = false;
+
+                message += EngWBDS.Tables["ECOOpr"].Rows[i]["OprSeq"].ToString() + "\n";
+
+            }
+
+            message += "\n\nProduction Hours cannot be zero.";
+
+            return retval;
+        }
+
         private void resource_show_Click(object sender, EventArgs e)
         {
+            EngWB.Update(EngWBDS);
+
+            //EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+
+            //EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+
+            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+
             string operation = OPDataGrid["OprSeq", OPDataGrid.CurrentCellAddress.Y].Value.ToString();
 
             Resource_Master Resource_Mast = new Resource_Master(partnumber_txt.Text, rev_txt.Text, gid_txt.Text, operation, EngWBDS);
@@ -249,17 +334,29 @@ namespace EpicorIntegration
 
         private void saveclose_btn_Click(object sender, EventArgs e)
         {
-            EngWB.Update(EngWBDS);
+            string ErrorMsg;
 
-            EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+            if (CheckForSave(out ErrorMsg))
+            {
+                EngWB.Update(EngWBDS);
 
-            resource_show.Enabled = true;
+                EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                resource_show.Enabled = true;
 
-            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
-            this.Close();
+                OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+
+                this.Close();
+            }
+            else
+                MessageBox.Show(ErrorMsg, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void bom_btn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Operations_Master));
             this.MajorContainer = new System.Windows.Forms.SplitContainer();
+            this.copy_btn = new System.Windows.Forms.Button();
             this.gid_txt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.rev_txt = new System.Windows.Forms.TextBox();
@@ -47,8 +48,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.opmast_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.copy_btn = new System.Windows.Forms.Button();
             this.newbtn = new System.Windows.Forms.Button();
+            this.saveclose_btn = new System.Windows.Forms.Button();
             this.removebtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@
             this.ProdStandard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stdformat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrimaryResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saveclose_btn = new System.Windows.Forms.Button();
             this.MajorContainer.Panel1.SuspendLayout();
             this.MajorContainer.Panel2.SuspendLayout();
             this.MajorContainer.SuspendLayout();
@@ -96,6 +96,16 @@
             this.MajorContainer.Size = new System.Drawing.Size(584, 469);
             this.MajorContainer.SplitterDistance = 177;
             this.MajorContainer.TabIndex = 0;
+            // 
+            // copy_btn
+            // 
+            this.copy_btn.Enabled = false;
+            this.copy_btn.Location = new System.Drawing.Point(397, 22);
+            this.copy_btn.Name = "copy_btn";
+            this.copy_btn.Size = new System.Drawing.Size(75, 23);
+            this.copy_btn.TabIndex = 14;
+            this.copy_btn.Text = "&Copy From...";
+            this.copy_btn.UseVisualStyleBackColor = true;
             // 
             // gid_txt
             // 
@@ -169,12 +179,14 @@
             // 
             // bom_btn
             // 
+            this.bom_btn.Enabled = false;
             this.bom_btn.Location = new System.Drawing.Point(385, 48);
             this.bom_btn.Name = "bom_btn";
             this.bom_btn.Size = new System.Drawing.Size(75, 23);
             this.bom_btn.TabIndex = 10;
             this.bom_btn.Text = "Add &BOM";
             this.bom_btn.UseVisualStyleBackColor = true;
+            this.bom_btn.Click += new System.EventHandler(this.bom_btn_Click);
             // 
             // prodstd_cbo
             // 
@@ -257,16 +269,6 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
-            // copy_btn
-            // 
-            this.copy_btn.Enabled = false;
-            this.copy_btn.Location = new System.Drawing.Point(397, 22);
-            this.copy_btn.Name = "copy_btn";
-            this.copy_btn.Size = new System.Drawing.Size(75, 23);
-            this.copy_btn.TabIndex = 14;
-            this.copy_btn.Text = "&Copy From...";
-            this.copy_btn.UseVisualStyleBackColor = true;
-            // 
             // newbtn
             // 
             this.newbtn.Location = new System.Drawing.Point(6, 16);
@@ -276,6 +278,17 @@
             this.newbtn.Text = "&New";
             this.newbtn.UseVisualStyleBackColor = true;
             this.newbtn.Click += new System.EventHandler(this.addbtn_Click);
+            // 
+            // saveclose_btn
+            // 
+            this.saveclose_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.saveclose_btn.Location = new System.Drawing.Point(6, 105);
+            this.saveclose_btn.Name = "saveclose_btn";
+            this.saveclose_btn.Size = new System.Drawing.Size(75, 23);
+            this.saveclose_btn.TabIndex = 15;
+            this.saveclose_btn.Text = "Save/Close";
+            this.saveclose_btn.UseVisualStyleBackColor = true;
+            this.saveclose_btn.Click += new System.EventHandler(this.saveclose_btn_Click);
             // 
             // removebtn
             // 
@@ -392,17 +405,6 @@
             this.PrimaryResourceGrpDesc.ReadOnly = true;
             this.PrimaryResourceGrpDesc.Width = 134;
             // 
-            // saveclose_btn
-            // 
-            this.saveclose_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.saveclose_btn.Location = new System.Drawing.Point(6, 105);
-            this.saveclose_btn.Name = "saveclose_btn";
-            this.saveclose_btn.Size = new System.Drawing.Size(75, 23);
-            this.saveclose_btn.TabIndex = 15;
-            this.saveclose_btn.Text = "Save/Close";
-            this.saveclose_btn.UseVisualStyleBackColor = true;
-            this.saveclose_btn.Click += new System.EventHandler(this.saveclose_btn_Click);
-            // 
             // Operations_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,6 +414,7 @@
             this.Controls.Add(this.MajorContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(600, 507);
             this.Name = "Operations_Master";
             this.Text = "Create Operations";

@@ -59,19 +59,26 @@ namespace EpicorIntegration
             return ds;
         }
 
-        public static string ReferencePartType(string partnumber)
+        public static bool PartExists(string partnumber)
         {
-            Part part = new Part(EpicConn);
+            Part Part = new Part(EpicConn);
 
             PartDataSet Pdata = new PartDataSet();
 
-            string Type = "";
+            try
+            {
+                Pdata = Part.GetByID(partnumber);
+            }
+            catch
+            {
+                EpicClose();
 
-            Pdata = part.GetByID(partnumber);
+                return false;
+            }
 
             EpicClose();
 
-            return Type;
+            return true;
         }
 
         public static string AdvanceRevision(string CurrentRevision)
@@ -124,11 +131,11 @@ namespace EpicorIntegration
         /// <param name="colName"></param>
         /// <param name="Input"></param>
         /// <returns></returns>
-        public static PartDataSet AddDatum(PartDataSet Part, string tableName, int rowNum, string colName, string Input)
+        public static PartDataSet AddDatum(PartDataSet Part, string tableName, int rowNum, string colName, string Input, DataViewRowState RowState)
         {
             DataTable PartDT = Part.Tables[tableName];
 
-            DataRow[] WorkRow = PartDT.Select(null, null, DataViewRowState.Added);
+            DataRow[] WorkRow = PartDT.Select(null, null, RowState);
 
             WorkRow[0] = PartDT.Rows[rowNum];
 
@@ -641,44 +648,6 @@ namespace EpicorIntegration
     }
 
     /// <summary>
-    /// Data structure for Part with all appropriate descriptors
-    /// </summary>
-    public class PartData
-    {
-        public string PartNumber;
-
-        public string Description;
-
-        public string PMT;
-
-        public string UOM_Class;
-
-        public decimal Net_Weight;
-
-        public decimal Net_Vol;
-
-        public string Net_Weight_UM;
-
-        public string Net_Vol_UM;
-
-        public string Primary_UOM;
-
-        public string PartGroup;
-
-        public string PartClass;
-
-        public string PartPlant;
-
-        public string PlantWhse;
-
-        public bool QtyBearing;
-
-        public bool UseRevision;
-
-        public bool TrackSerial;
-    }
-
-    /// <summary>
     /// 
     /// </summary>
     class BOMData
@@ -808,4 +777,44 @@ namespace EpicorIntegration
             }
         }
     }
+
+     /// <summary>
+    /// Data structure for Part with all appropriate descriptors
+    /// </summary>
+    public class PartData
+    {
+        public string PartNumber;
+
+        public string Description;
+
+        public string PMT;
+
+        public string UOM_Class;
+
+        public decimal Net_Weight;
+
+        public decimal Net_Vol;
+
+        public string Net_Weight_UM;
+
+        public string Net_Vol_UM;
+
+        public string Primary_UOM;
+
+        public string PartGroup;
+
+        public string PartClass;
+
+        public string PartPlant;
+
+        public string PlantWhse;
+
+        public bool QtyBearing;
+
+        public bool UseRevision;
+
+        public bool TrackSerial;
+    }
+
+
 }

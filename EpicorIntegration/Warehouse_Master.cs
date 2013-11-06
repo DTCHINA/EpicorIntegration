@@ -12,16 +12,7 @@ namespace EpicorIntegration
 {
     public partial class Warehouse_Master : Form
     {
-        public PartData Pdata = new PartData();
-
         public DataSet Whse_DS = new DataSet();
-
-        public Warehouse_Master(PartData _Pdata)
-        {
-            InitializeComponent();
-
-            Pdata = _Pdata;
-        }
 
         public Warehouse_Master()
         {
@@ -60,6 +51,10 @@ namespace EpicorIntegration
                 Whse_DS.Tables[0].Columns.Add(new DataColumn("WarehouseCode", typeof(System.String)));
 
                 Whse_DS.Tables[0].Columns.Add(new DataColumn("WarehouseName", typeof(System.String)));
+            }
+            else
+            {
+                rem_btn.Enabled = true;
             }
 
             WhseDataGrid.DataSource = Whse_DS.Tables[0];

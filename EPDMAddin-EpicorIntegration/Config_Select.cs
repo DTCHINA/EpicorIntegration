@@ -35,6 +35,8 @@ namespace EPDMAddin_EpicorIntegration
 
         private void select_btn_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.OK;
+
             SelectedConfig = config_cbo.Text;
 
             this.Close();
@@ -75,6 +77,45 @@ namespace EPDMAddin_EpicorIntegration
 
                 this.Close();
             }
+
+            if (OnetoRuleThemAll(out SelectedConfig))
+            {
+                this.DialogResult = DialogResult.OK;
+
+                this.Close();
+            }
+        }
+
+        public bool OnetoRuleThemAll(out string Configuration_Name)
+        {
+            bool retval = false;
+
+            IEdmFile5 part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
+
+            IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
+
+            object number;
+
+            Configuration_Name = null;
+
+            for (int i = 0; i < config_cbo.Items.Count; i++)
+            {
+                config_cbo.SelectedIndex = i;
+
+                var.GetVar("Number", config_cbo.Text, out number);
+
+                if (number != null)
+                {
+                    Configuration_Name = config_cbo.Text;
+
+                    if (retval != true)
+                        retval = true;
+                    else
+                        return false;
+                }
+            }
+
+            return true;
         }
     }
 }

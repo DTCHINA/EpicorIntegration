@@ -50,6 +50,8 @@ namespace EpicorIntegration
         {
             InitializeComponent();
 
+            ResourceGrid.AutoGenerateColumns = false;
+
             FormStart();
 
             partnumber_txt.Text = PartNumber;
@@ -80,6 +82,8 @@ namespace EpicorIntegration
         public Resource_Master()
         {
             InitializeComponent();
+
+            ResourceGrid.AutoGenerateColumns = false;
 
             FormStart();
         }

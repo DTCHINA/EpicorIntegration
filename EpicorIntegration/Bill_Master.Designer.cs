@@ -37,6 +37,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.gid_txt = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.saveandclose_btn = new System.Windows.Forms.Button();
             this.copy_btn = new System.Windows.Forms.Button();
             this.newbtn = new System.Windows.Forms.Button();
             this.removebtn = new System.Windows.Forms.Button();
@@ -60,15 +61,16 @@
             this.mtlseq_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.BillDataGrid = new System.Windows.Forms.DataGridView();
+            this.PartTimer = new System.Windows.Forms.Timer(this.components);
             this.MtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MtlPartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MtlPartNumPartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RelatedOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UOMCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PartTimer = new System.Windows.Forms.Timer(this.components);
-            this.saveandclose_btn = new System.Windows.Forms.Button();
+            this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saveprogress = new System.Windows.Forms.ProgressBar();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -117,8 +119,10 @@
             // 
             // parentrev_txt
             // 
+            this.parentrev_txt.BackColor = System.Drawing.Color.White;
             this.parentrev_txt.Location = new System.Drawing.Point(158, 64);
             this.parentrev_txt.Name = "parentrev_txt";
+            this.parentrev_txt.ReadOnly = true;
             this.parentrev_txt.Size = new System.Drawing.Size(82, 20);
             this.parentrev_txt.TabIndex = 10;
             // 
@@ -133,8 +137,10 @@
             // 
             // gid_txt
             // 
+            this.gid_txt.BackColor = System.Drawing.Color.White;
             this.gid_txt.Location = new System.Drawing.Point(15, 64);
             this.gid_txt.Name = "gid_txt";
+            this.gid_txt.ReadOnly = true;
             this.gid_txt.Size = new System.Drawing.Size(82, 20);
             this.gid_txt.TabIndex = 8;
             // 
@@ -151,6 +157,17 @@
             this.groupBox2.Size = new System.Drawing.Size(88, 239);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
+            // 
+            // saveandclose_btn
+            // 
+            this.saveandclose_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.saveandclose_btn.Location = new System.Drawing.Point(7, 181);
+            this.saveandclose_btn.Name = "saveandclose_btn";
+            this.saveandclose_btn.Size = new System.Drawing.Size(75, 23);
+            this.saveandclose_btn.TabIndex = 15;
+            this.saveandclose_btn.Text = "Save/Close";
+            this.saveandclose_btn.UseVisualStyleBackColor = true;
+            this.saveandclose_btn.Click += new System.EventHandler(this.saveandclose_btn_Click);
             // 
             // copy_btn
             // 
@@ -214,8 +231,10 @@
             // 
             // parentdesc_txt
             // 
+            this.parentdesc_txt.BackColor = System.Drawing.Color.White;
             this.parentdesc_txt.Location = new System.Drawing.Point(158, 25);
             this.parentdesc_txt.Name = "parentdesc_txt";
+            this.parentdesc_txt.ReadOnly = true;
             this.parentdesc_txt.Size = new System.Drawing.Size(226, 20);
             this.parentdesc_txt.TabIndex = 3;
             // 
@@ -230,8 +249,10 @@
             // 
             // parent_txt
             // 
+            this.parent_txt.BackColor = System.Drawing.Color.White;
             this.parent_txt.Location = new System.Drawing.Point(15, 25);
             this.parent_txt.Name = "parent_txt";
+            this.parent_txt.ReadOnly = true;
             this.parent_txt.Size = new System.Drawing.Size(137, 20);
             this.parent_txt.TabIndex = 1;
             // 
@@ -249,6 +270,7 @@
             this.groupBox1.Controls.Add(this.findpart_btn);
             this.groupBox1.Controls.Add(this.mtlseq_txt);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.saveprogress);
             this.groupBox1.Location = new System.Drawing.Point(12, 90);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(436, 161);
@@ -380,9 +402,10 @@
             this.QtyPer,
             this.MtlPartNum,
             this.MtlPartNumPartDescription,
-            this.OpDesc,
+            this.RelatedOperation,
             this.UOMCode,
-            this.ViewAsAsm});
+            this.ViewAsAsm,
+            this.OpDesc});
             this.BillDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BillDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.BillDataGrid.Location = new System.Drawing.Point(0, 0);
@@ -397,6 +420,11 @@
             this.BillDataGrid.ShowRowErrors = false;
             this.BillDataGrid.Size = new System.Drawing.Size(554, 200);
             this.BillDataGrid.TabIndex = 1;
+            // 
+            // PartTimer
+            // 
+            this.PartTimer.Interval = 500;
+            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
             // 
             // MtlSeq
             // 
@@ -427,20 +455,21 @@
             // 
             // MtlPartNumPartDescription
             // 
-            this.MtlPartNumPartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MtlPartNumPartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.MtlPartNumPartDescription.DataPropertyName = "MtlPartNumPartDescription";
             this.MtlPartNumPartDescription.HeaderText = "Description";
             this.MtlPartNumPartDescription.Name = "MtlPartNumPartDescription";
             this.MtlPartNumPartDescription.ReadOnly = true;
+            this.MtlPartNumPartDescription.Width = 85;
             // 
-            // OpDesc
+            // RelatedOperation
             // 
-            this.OpDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OpDesc.DataPropertyName = "OpDesc";
-            this.OpDesc.HeaderText = "Operation";
-            this.OpDesc.Name = "OpDesc";
-            this.OpDesc.ReadOnly = true;
-            this.OpDesc.Width = 78;
+            this.RelatedOperation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.RelatedOperation.DataPropertyName = "RelatedOperation";
+            this.RelatedOperation.HeaderText = "Opr.";
+            this.RelatedOperation.Name = "RelatedOperation";
+            this.RelatedOperation.ReadOnly = true;
+            this.RelatedOperation.Width = 52;
             // 
             // UOMCode
             // 
@@ -458,23 +487,23 @@
             this.ViewAsAsm.HeaderText = "View As Assembly";
             this.ViewAsAsm.Name = "ViewAsAsm";
             this.ViewAsAsm.ReadOnly = true;
-            this.ViewAsAsm.Width = 98;
+            this.ViewAsAsm.Width = 88;
             // 
-            // PartTimer
+            // OpDesc
             // 
-            this.PartTimer.Interval = 750;
-            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
+            this.OpDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OpDesc.DataPropertyName = "OpDesc";
+            this.OpDesc.HeaderText = "Operation";
+            this.OpDesc.Name = "OpDesc";
+            this.OpDesc.ReadOnly = true;
+            this.OpDesc.Width = 78;
             // 
-            // saveandclose_btn
+            // saveprogress
             // 
-            this.saveandclose_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.saveandclose_btn.Location = new System.Drawing.Point(7, 181);
-            this.saveandclose_btn.Name = "saveandclose_btn";
-            this.saveandclose_btn.Size = new System.Drawing.Size(75, 23);
-            this.saveandclose_btn.TabIndex = 15;
-            this.saveandclose_btn.Text = "Save/Close";
-            this.saveandclose_btn.UseVisualStyleBackColor = true;
-            this.saveandclose_btn.Click += new System.EventHandler(this.saveandclose_btn_Click);
+            this.saveprogress.Location = new System.Drawing.Point(75, 43);
+            this.saveprogress.Name = "saveprogress";
+            this.saveprogress.Size = new System.Drawing.Size(211, 23);
+            this.saveprogress.TabIndex = 11;
             // 
             // Bill_Master
             // 
@@ -534,14 +563,16 @@
         private System.Windows.Forms.ComboBox uom_cbo;
         private System.Windows.Forms.CheckBox ViewAsAsm_chk;
         private System.Windows.Forms.Timer PartTimer;
+        private System.Windows.Forms.Button saveandclose_btn;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyPer;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNumPartDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RelatedOperation;
         private System.Windows.Forms.DataGridViewTextBoxColumn UOMCode;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ViewAsAsm;
-        private System.Windows.Forms.Button saveandclose_btn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
+        private System.Windows.Forms.ProgressBar saveprogress;
 
     }
 }

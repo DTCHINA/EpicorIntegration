@@ -49,7 +49,7 @@ namespace EpicorIntegration
 
             gid_cbo.DisplayMember = "GroupID";
             */
-            MessageBox.Show("Auto-select groupID still missing");
+            //MessageBox.Show("Auto-select groupID still missing");
 
             Searchtxt.Text = PartNumber;
 
