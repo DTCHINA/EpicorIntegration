@@ -13,6 +13,10 @@ namespace EPDMAddin_EpicorIntegration
 
         EdmCmdData File;
 
+        IEdmFile5 Part;
+
+        string SearchTerm = null;
+
         public Config_Select(IEdmVault7 vault, EdmCmdData file)
         {
             InitializeComponent();
@@ -22,6 +26,19 @@ namespace EPDMAddin_EpicorIntegration
             Vault = vault;
 
             File = file;
+        }
+
+        public Config_Select(IEdmVault7 vault, IEdmFile5 part, string SearchPart)
+        {
+            InitializeComponent();
+
+            this.SizeChanged += Config_Select_SizeChanged;
+
+            Vault = vault;
+
+            Part = part;
+
+            SearchTerm = SearchPart;
         }
 
         void Config_Select_SizeChanged(object sender, EventArgs e)
@@ -51,7 +68,12 @@ namespace EPDMAddin_EpicorIntegration
         {
             try
             {
-                IEdmFile5 part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
+                IEdmFile5 part;
+
+                if (File.mbsStrData1 == "")
+                    part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
+                else
+                    part = Part;
 
                 IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
 
@@ -84,13 +106,43 @@ namespace EPDMAddin_EpicorIntegration
 
                 this.Close();
             }
+
+            if (SearchTerm != null)
+            {
+                for (int i = 0; i < config_cbo.Items.Count; i++)
+                {
+                    config_cbo.SelectedIndex = i;
+
+                    IEdmEnumeratorVariable5 var = Part.GetEnumeratorVariable();
+
+                    object number = "";
+
+                    var.GetVar("Number", config_cbo.Text, out number);
+                    if (number != null)
+                    {
+                        if (number.ToString() == SearchTerm)
+                        {
+                            this.DialogResult = DialogResult.OK;
+
+                            SelectedConfig = config_cbo.Text;
+
+                            this.Close();
+                        }
+                    }
+                }
+            }
         }
 
         public bool OnetoRuleThemAll(out string Configuration_Name)
         {
             bool retval = false;
 
-            IEdmFile5 part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
+            IEdmFile5 part;
+
+            if (File.mbsStrData1 == "")
+                part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
+            else
+                part = Part;
 
             IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
 

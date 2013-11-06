@@ -41,6 +41,8 @@ namespace EPDMAddin_EpicorIntegration
             
             poCmdMgr.AddCmd(-1, "Epicor Integration\\Add-in Configuration", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to configure Epicor Integration Add-in", 0, 0);
 
+            poCmdMgr.AddCmd(100, "Epicor Integration\\Test Search", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to configure Epicor Integration Add-in", 0, 0);
+
             //uncomment this line to add all hooks
             AddAllHooks(poCmdMgr);
         }
@@ -157,6 +159,37 @@ namespace EPDMAddin_EpicorIntegration
                 return "";
 
             return retval;        
+        }
+
+        public string DetermineConfig(IEdmFile5 Part, IEdmVault7 vault, string SearchTerm)
+        {
+            string retval = "@";
+
+            EdmStrLst5 list = Part.GetConfigurations();
+
+            IEdmPos5 pos = list.GetHeadPosition();
+
+            Config_Select config = new Config_Select(vault, Part,SearchTerm);
+
+            pos = list.GetHeadPosition();
+
+            for (int i = 0; i < list.Count; i++)
+            {
+
+                config.config_cbo.Items.Add(list.GetNext(pos));
+
+            }
+
+            config.config_cbo.SelectedIndex = 0;
+
+            config.ShowDialog();
+
+            retval = config.SelectedConfig;
+
+            if (config.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+                return "";
+
+            return retval;
         }
 
         public DialogResult AddRevision(IEdmVault7 vault, EdmCmdData file)
@@ -353,6 +386,60 @@ namespace EPDMAddin_EpicorIntegration
                 return DialogResult.Cancel;
         }
 
+        public IEdmFile7 FindPartinVault(IEdmVault7 vault, EdmCmdData file, string SearchPart,out string Config)
+        {
+            string selected_config;
+
+            object partnum_val = "";
+
+            IEdmSearch5 Search = vault.CreateSearch();
+
+            Search.Clear();
+            
+            //Search.FileName = SearchPart;
+
+            Search.AddVariable("Number", SearchPart);
+
+            Search.FindFolders = false;
+
+            Search.FindFiles = true;
+
+            IEdmSearchResult5 Result = Search.GetFirstResult();
+            if (Result != null)
+            {
+                IEdmFile7 part = (IEdmFile7)vault.GetObject(EdmObjectType.EdmObject_File, Result.ID);
+
+                IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
+
+                selected_config = DetermineConfig(part, vault, SearchPart);
+
+                var.GetVar("Number", selected_config, out partnum_val);
+                
+                while (partnum_val.ToString() != SearchPart)
+                {
+                    Result = Search.GetNextResult();
+
+                    part = (IEdmFile7)vault.GetObject(EdmObjectType.EdmObject_File, Result.ID);
+
+                    var = part.GetEnumeratorVariable();
+
+                    selected_config = DetermineConfig(part, vault, SearchPart);
+
+                    var.GetVar("Number", selected_config, out partnum_val);
+                }
+
+                Config = selected_config;
+
+                return part;
+            }
+            else
+            {
+                Config = null;
+
+                return null;
+            }
+        }
+
         public bool ValidSelection(EdmCmdData file)
         {
             string file_ext = file.mbsStrData1.Substring(file.mbsStrData1.LastIndexOf('.') + 1).ToUpper();
@@ -485,6 +572,15 @@ namespace EPDMAddin_EpicorIntegration
                             case -1:
                                 Config conf = new Config();
                                 conf.ShowDialog();
+                                break;
+                            case 100:
+                                string Configuration;
+
+                                foreach (EdmCmdData file in Temp)
+                                {
+                                    if (ValidSelection(file))
+                                        FindPartinVault(vault, file, "cheeseburger",out Configuration);
+                                }
                                 break;
                             default:
                                 break;
