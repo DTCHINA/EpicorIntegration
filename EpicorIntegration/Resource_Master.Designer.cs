@@ -54,6 +54,8 @@
             this.ResourceDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpDtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OprSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceGrpID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -251,7 +253,7 @@
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
             this.cancelbtn.TabIndex = 2;
-            this.cancelbtn.Text = "&Cancel";
+            this.cancelbtn.Text = "&Close";
             this.cancelbtn.UseVisualStyleBackColor = true;
             this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
@@ -277,7 +279,9 @@
             this.ResourceGrpDesc,
             this.ResourceDesc,
             this.OpDtlSeq,
-            this.OprSeq});
+            this.OprSeq,
+            this.ResourceID,
+            this.ResourceGrpID});
             this.ResourceGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ResourceGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ResourceGrid.Location = new System.Drawing.Point(0, 0);
@@ -314,6 +318,7 @@
             // OpDtlSeq
             // 
             this.OpDtlSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.OpDtlSeq.DataPropertyName = "OpDtlDesc";
             this.OpDtlSeq.HeaderText = "Description";
             this.OpDtlSeq.Name = "OpDtlSeq";
             this.OpDtlSeq.ReadOnly = true;
@@ -324,6 +329,22 @@
             this.OprSeq.HeaderText = "Opr Seq";
             this.OprSeq.Name = "OprSeq";
             this.OprSeq.ReadOnly = true;
+            // 
+            // ResourceID
+            // 
+            this.ResourceID.DataPropertyName = "ResourceID";
+            this.ResourceID.HeaderText = "ResourceID";
+            this.ResourceID.Name = "ResourceID";
+            this.ResourceID.ReadOnly = true;
+            this.ResourceID.Visible = false;
+            // 
+            // ResourceGrpID
+            // 
+            this.ResourceGrpID.DataPropertyName = "ResourceGrpID";
+            this.ResourceGrpID.HeaderText = "ResourceGrpID";
+            this.ResourceGrpID.Name = "ResourceGrpID";
+            this.ResourceGrpID.ReadOnly = true;
+            this.ResourceGrpID.Visible = false;
             // 
             // Resource_Master
             // 
@@ -377,5 +398,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDtlSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprSeq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceGrpID;
     }
 }

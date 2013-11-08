@@ -22,6 +22,10 @@ namespace EpicorIntegration
             set { _EngWBDS = value; }
         }
 
+        bool Form_Update_Enabled = false;
+
+        bool DB_Update_Enabled = false;
+
         #endregion
 
         public Bill_Master(List<string> BillParts, List<string> BillQty, string ParentNumber)
@@ -354,20 +358,16 @@ namespace EpicorIntegration
             EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
 
             BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+
+            EnableItemDetails();
         }
 
         private void UpdateDataSet()
         {
 
-            qty_num.ValueChanged -= qty_num_ValueChanged;
+            Form_Update_Enabled = false;
 
-            partnum_txt.TextChanged -= partnum_txt_TextChanged;
-
-            ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
-
-            uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
-
-            ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
+            DB_Update_Enabled = false;
             try
             {
                 if (linechanged)
@@ -393,28 +393,16 @@ namespace EpicorIntegration
             }
             catch { }
 
-            qty_num.ValueChanged += qty_num_ValueChanged;
+            Form_Update_Enabled = true;
 
-            partnum_txt.TextChanged += partnum_txt_TextChanged;
-
-            ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
-
-            uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
-
-            ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
+            DB_Update_Enabled = true;
         }
 
         private void UpdateFormFields()
         {
-            qty_num.ValueChanged -= qty_num_ValueChanged;
+            Form_Update_Enabled = false;
 
-            partnum_txt.TextChanged -= partnum_txt_TextChanged;
-
-            ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
-
-            uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
-
-            ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
+            DB_Update_Enabled = false;
 
             if (!linechanged)
             {
@@ -450,15 +438,9 @@ namespace EpicorIntegration
                 }
             }
 
-            qty_num.ValueChanged += qty_num_ValueChanged;
+            Form_Update_Enabled = true;
 
-            partnum_txt.TextChanged += partnum_txt_TextChanged;
-
-            ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
-
-            uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
-
-            ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
+            DB_Update_Enabled = true;
         }
 
         private void UpdateUOM()
@@ -564,28 +546,32 @@ namespace EpicorIntegration
         {
             linechanged = true;
 
-            UpdateDataSet();
+            if (DB_Update_Enabled)
+                UpdateDataSet();
         }
 
         private void uom_cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
             linechanged = true;
 
-            UpdateDataSet();
+            if (DB_Update_Enabled)
+                UpdateDataSet();
         }
 
         private void qty_num_ValueChanged(object sender, EventArgs e)
         {
             linechanged = true;
 
-            UpdateDataSet();
+            if (DB_Update_Enabled)
+                UpdateDataSet();
         }
 
         private void ops_cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
             linechanged = true;
 
-            UpdateDataSet();
+            if (DB_Update_Enabled)
+                UpdateDataSet();
         }
 
         #endregion
@@ -599,6 +585,11 @@ namespace EpicorIntegration
 
         private void newbtn_Click(object sender, EventArgs e)
         {
+
+            Form_Update_Enabled = false;
+
+            DB_Update_Enabled = false;
+
             try
             {
                 BillDataGrid.ClearSelection();
@@ -656,16 +647,32 @@ namespace EpicorIntegration
                 EnableItemDetails();
             }
             catch { }
+
+            Form_Update_Enabled = true;
+
+            DB_Update_Enabled = true;
         }
 
         private void savebtn_Click(object sender, EventArgs e)
         {
+            Form_Update_Enabled = false;
+
+            DB_Update_Enabled = false;
+
             SaveChanges(false);
+
+            Form_Update_Enabled = true;
+
+            DB_Update_Enabled = true;
         }
 
         private void removebtn_Click(object sender, EventArgs e)
         {
-            SaveChanges(false);
+            Form_Update_Enabled = false;
+
+            DB_Update_Enabled = false;
+            if (partnum_txt.Text != "")
+                SaveChanges(false);
 
             int rowindex = BillDataGrid.CurrentCellAddress.Y;
 
@@ -681,6 +688,10 @@ namespace EpicorIntegration
 
             if (BillDataGrid.Rows.Count == 0)
                 removebtn.Enabled = false;
+
+            Form_Update_Enabled = true;
+
+            DB_Update_Enabled = true;
         }
 
         private void copy_btn_Click(object sender, EventArgs e)
@@ -713,7 +724,7 @@ namespace EpicorIntegration
 
         void partnum_txt_Leave(object sender, EventArgs e)
         {
-            if (linechanged)
+            if (linechanged && DB_Update_Enabled)
             {
                 int rowindex = BillDataGrid.CurrentCellAddress.Y;
 
@@ -744,8 +755,6 @@ namespace EpicorIntegration
                     uom_cbo.ValueMember = "UOMCode";
 
                     linechanged = false;
-
-                    //ViewAsAsm_chk.Checked = IsAssembly();
                 }
             }
         }
@@ -754,7 +763,8 @@ namespace EpicorIntegration
         {
             linechanged = false;
 
-            UpdateFormFields();
+            if (Form_Update_Enabled)
+                UpdateFormFields();
 
             if (BillDataGrid.CurrentCell == null)
                 removebtn.Enabled = false;
@@ -764,15 +774,9 @@ namespace EpicorIntegration
 
         private void PartTimer_Tick(object sender, EventArgs e)
         {
-            qty_num.ValueChanged -= qty_num_ValueChanged;
+            Form_Update_Enabled = false;
 
-            partnum_txt.TextChanged -= partnum_txt_TextChanged;
-
-            ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
-
-            uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
-
-            ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
+            DB_Update_Enabled = false;
 
             try
             {
@@ -795,15 +799,9 @@ namespace EpicorIntegration
             }
             catch { desc_txt.Text = ""; }
 
-            qty_num.ValueChanged += qty_num_ValueChanged;
+            Form_Update_Enabled = true;
 
-            partnum_txt.TextChanged += partnum_txt_TextChanged;
-
-            ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
-
-            uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
-
-            ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
+            DB_Update_Enabled = true;
         }
 
         void Bill_Master_FormClosing(object sender, FormClosingEventArgs e)
@@ -859,6 +857,21 @@ namespace EpicorIntegration
             savebtn.Enabled = retval;
 
             saveandclose_btn.Enabled = retval;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form_Update_Enabled = false;
+
+            DB_Update_Enabled = false;
+
+            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+
+            BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+
+            Form_Update_Enabled = true;
+
+            DB_Update_Enabled = true;
         }
     }
 }

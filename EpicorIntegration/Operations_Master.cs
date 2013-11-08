@@ -193,15 +193,19 @@ namespace EpicorIntegration
 
         private void savebtn_Click(object sender, EventArgs e)
         {
-            EngWB.Update(EngWBDS);
+            try
+            {
+                EngWB.Update(EngWBDS);
 
-            EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+                EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
-            resource_show.Enabled = true;
+                resource_show.Enabled = true;
 
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
-            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+                OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error!"); }
         }
 
         private void addbtn_Click(object sender, EventArgs e)
@@ -213,6 +217,8 @@ namespace EpicorIntegration
             OPDataGrid.ClearSelection();
 
             OPDataGrid.CurrentCell = OPDataGrid.Rows[RowIndex].Cells[0];
+
+            opmast_cbo.SelectedIndex = 0;
 
             OpMaster OpMaster = new Epicor.Mfg.BO.OpMaster(DataList.EpicConn);
 
@@ -247,7 +253,7 @@ namespace EpicorIntegration
 
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex].Delete();
 
-            EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+            //EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
             resource_show.Enabled = false;
         }

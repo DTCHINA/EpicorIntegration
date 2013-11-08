@@ -163,7 +163,11 @@ namespace EpicorIntegration
 
         private void savebtn_Click(object sender, EventArgs e)
         {
-            EngWB.Update(EngWB_DS);
+            try
+            {
+                EngWB.Update(EngWB_DS);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error!"); }
         }
 
         private void addbtn_Click(object sender, EventArgs e)
