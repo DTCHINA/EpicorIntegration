@@ -585,6 +585,5 @@ namespace EpicorIntegration
                     SerialPrefix = SM.Prefix;
             }
         }
-
     }
 }

@@ -80,6 +80,77 @@ namespace EpicorIntegration
             BillDataGrid.SelectionChanged += BillDataGrid_SelectionChanged;
 
             UpdateFormFields();
+
+            GetCoils();
+        }
+
+        public List<string> GetCoils()
+        {
+            Part Part = new Part(DataList.EpicConn);
+
+            PartListDataSet PartList = new PartListDataSet();
+
+            string WhereClause = "ClassID = 'PC05'";
+
+            bool morePages;
+
+            PartList = Part.GetList(WhereClause, 0, 0, out morePages);
+
+            DataList.EpicClose();
+
+            List<string> CoilNumbers = new List<string>();
+
+            foreach (DataRow DR in PartList.Tables[0].Rows)
+            {
+                CoilNumbers.Add(DR["PartNum"].ToString());
+            }
+
+            return CoilNumbers;
+        }
+
+        public List<string> GetSheets()
+        {
+            Part Part = new Part(DataList.EpicConn);
+
+            PartListDataSet PartList = new PartListDataSet();
+
+            string WhereClause = "ClassID = 'PC04'";
+
+            bool morePages;
+
+            PartList = Part.GetList(WhereClause, 0, 0, out morePages);
+
+            DataList.EpicClose();
+
+            List<string> SheetNumbers = new List<string>();
+
+            foreach (DataRow DR in PartList.Tables[0].Rows)
+            {
+                SheetNumbers.Add(DR["PartNum"].ToString());
+            }
+
+            return SheetNumbers;
+        }
+
+        /// <summary>
+        /// Sequence to determine if a part is a coil or a sheet based on Type
+        /// </summary>
+        /// <param name="PartNumber"></param>
+        /// <returns>True if part is not a coil/sheet; False if part is coil/sheet</returns>
+        public bool KeepRaw(string PartNumber)
+        {
+            Part Part = new Part(DataList.EpicConn);
+
+            PartDataSet Pdata = new PartDataSet();
+
+            Pdata = Part.GetByID(PartNumber);
+
+            string Type = Pdata.Tables ["Part"].Rows[0]["ClassDescription"].ToString();
+
+            if (Type == "INV COIL" || Type == "INV SHEET")
+                return false;
+            else
+                return true;
         }
 
         public void AddBillItems(List<string> BillParts, List<string> BillQty)
@@ -253,10 +324,12 @@ namespace EpicorIntegration
             }
             #endregion
 
+            
+
             #region Delete Missing Items
             for (int i = EngWBDS.Tables["ECOMtl"].Rows.Count - 1; i > -1; i--)
             {
-                if (!FindItemEpicor[i])
+                if (!FindItemEpicor[i] && KeepRaw(parent_txt.Text))
                 {
                     //Remove items
                     EngWBDS.Tables["ECOMtl"].Rows[i].Delete();

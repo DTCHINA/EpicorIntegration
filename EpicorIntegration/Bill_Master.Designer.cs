@@ -71,6 +71,7 @@
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartTimer = new System.Windows.Forms.Timer(this.components);
             this.EnableNew = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -258,6 +259,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.ViewAsAsm_chk);
             this.groupBox1.Controls.Add(this.uom_cbo);
             this.groupBox1.Controls.Add(this.qty_num);
@@ -502,6 +504,15 @@
             this.EnableNew.Enabled = true;
             this.EnableNew.Tick += new System.EventHandler(this.EnableNew_Tick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(355, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Add &Raw";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Bill_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -570,6 +581,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ViewAsAsm;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
         private System.Windows.Forms.Timer EnableNew;
+        private System.Windows.Forms.Button button1;
 
     }
 }
