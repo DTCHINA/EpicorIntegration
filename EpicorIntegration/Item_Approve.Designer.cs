@@ -192,6 +192,7 @@
             this.MinimizeBox = false;
             this.Name = "Item_Approve";
             this.Text = "Approve Item";
+            this.Load += new System.EventHandler(this.Item_Approve_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);

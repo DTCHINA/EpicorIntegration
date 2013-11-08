@@ -15,7 +15,7 @@ namespace EpicorIntegration
     {
         public bool Approved = false;
 
-        public Item_Approve()
+        public Item_Approve(string PartNumber)
         {
             InitializeComponent();
 
@@ -29,6 +29,8 @@ namespace EpicorIntegration
             {
                 gid_cbo.Text = Properties.Settings.Default.ecogroup;
             }
+
+            partnumber_txt.Text = PartNumber;
         }
 
         private void approval_btn_Click(object sender, EventArgs e)
@@ -99,6 +101,10 @@ namespace EpicorIntegration
             DataList.EpicClose();
 
             DataList.ApprovePart(ds, gid_cbo.Text, partnumber_txt.Text, rev_txt.Text);
+
+            try { DataList.CheckInPart(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text); }
+            catch (Exception ex) { MessageBox.Show("Could not check in part\n\n" + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            finally { this.Close(); }
         }
 
         void PartTextChanged_Reset()
@@ -118,6 +124,11 @@ namespace EpicorIntegration
         private void gid_cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
             gid_desc.Text = gid_cbo.SelectedValue.ToString();
+        }
+
+        private void Item_Approve_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

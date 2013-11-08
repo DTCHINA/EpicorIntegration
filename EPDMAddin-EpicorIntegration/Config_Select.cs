@@ -7,6 +7,8 @@ namespace EPDMAddin_EpicorIntegration
 {
     public partial class Config_Select : Form
     {
+        string StartMethod = "";
+
         public string SelectedConfig;
 
         IEdmVault7 Vault;
@@ -26,6 +28,8 @@ namespace EPDMAddin_EpicorIntegration
             Vault = vault;
 
             File = file;
+
+            StartMethod = "file";
         }
 
         public Config_Select(IEdmVault7 vault, IEdmFile5 part, string SearchPart)
@@ -39,6 +43,8 @@ namespace EPDMAddin_EpicorIntegration
             Part = part;
 
             SearchTerm = SearchPart;
+
+            StartMethod = "part";
         }
 
         void Config_Select_SizeChanged(object sender, EventArgs e)
@@ -70,7 +76,7 @@ namespace EPDMAddin_EpicorIntegration
             {
                 IEdmFile5 part;
 
-                if (File.mbsStrData1 == "")
+                if (StartMethod == "file")
                     part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
                 else
                     part = Part;
@@ -139,7 +145,7 @@ namespace EPDMAddin_EpicorIntegration
 
             IEdmFile5 part;
 
-            if (File.mbsStrData1 == "")
+            if (File.mbsStrData1 != "")
                 part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
             else
                 part = Part;

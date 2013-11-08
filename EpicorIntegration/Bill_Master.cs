@@ -63,6 +63,19 @@ namespace EpicorIntegration
             EnableItemDetails();
 
             this.FormClosing += Bill_Master_FormClosing;
+
+            Setbill(BillParts, BillQty);
+        }
+
+        private void Bill_Master_Load(object sender, EventArgs e)
+        {
+            BillDataGrid.ClearSelection();
+
+            BillDataGrid.CurrentCell = BillDataGrid.Rows[0].Cells[0];
+
+            BillDataGrid.SelectionChanged += BillDataGrid_SelectionChanged;
+
+            UpdateFormFields();
         }
 
         public void AddBillItems(List<string> BillParts, List<string> BillQty)
@@ -99,56 +112,21 @@ namespace EpicorIntegration
             }
         }
 
-        void Bill_Master_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            try
-            {
-                foreach (DataRow dr in EngWBDS.Tables["ECOMtl"].Rows)
-                {
-                    if (dr.RowState == DataRowState.Added)
-                    {
-                        DialogResult DR = MessageBox.Show("Throw away unsaved changes?", "Save?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                        if (DR == DialogResult.No)
-                        {
-                            SaveChanges(false);
-
-                            break;
-                        }
-                        else
-                            return;
-                    }
-                }
-
-                return;
-            }
-            catch { return; }
-        }
-
-        private void HideFields(bool Toggle)
-        {
-            partnum_txt.Visible = Toggle;
-
-            desc_txt.Visible = Toggle;
-
-            mtlseq_txt.Visible = Toggle;
-
-            ops_cbo.Visible = Toggle;
-
-            ViewAsAsm_chk.Visible = Toggle;
-
-            qty_num.Visible = Toggle;
-
-            uom_cbo.Visible = Toggle;
-
-            saveprogress.Visible = !Toggle;
-        }
-
         private void SaveChanges(bool fromNew)
         {
             string opMessage;
 
             string opMsgType;
+
+            qty_num.ValueChanged -= qty_num_ValueChanged;
+
+            partnum_txt.TextChanged -= partnum_txt_TextChanged;
+
+            ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
+
+            uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
+
+            ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
 
             foreach (DataRow DR in EngWBDS.Tables["ECOMtl"].Rows)
             {
@@ -176,9 +154,8 @@ namespace EpicorIntegration
                 }
             }
 
-                EngWB.Update(EngWBDS);
-
-
+            EngWB.Update(EngWBDS);
+            
             if (!fromNew)
             {
                 try
@@ -189,56 +166,22 @@ namespace EpicorIntegration
 
                     EngWB.Update(EngWBDS);
 
-                    EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
-
-                    BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+                    EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);                    
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
-        }
 
-        void partnum_txt_Leave(object sender, EventArgs e)
-        {
-            if (linechanged)
-            {
-                int rowindex = BillDataGrid.CurrentCellAddress.Y;
+            qty_num.ValueChanged += qty_num_ValueChanged;
 
-                string cellval = BillDataGrid["MtlPartNum", rowindex].Value.ToString();
+            partnum_txt.TextChanged += partnum_txt_TextChanged;
 
-                if (cellval == "")
-                {
-                    string opMessage;
+            ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
 
-                    string opMsgType;
+            uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
 
-                    string partnumber = partnum_txt.Text;
+            ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
 
-                    //EngWB.CheckECOMtlMtlPartNum(partnumber, out opMessage, out opMsgType, EngWBDS);
-
-                    rowindex = BillDataGrid.CurrentCellAddress.Y;
-
-                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlPartNum"] = partnumber;
-
-                    //EngWB.ChangeECOMtlMtlPartNum(EngWBDS);
-
-                    DataTable ds = DataList.PartUOM(partnum_txt.Text);
-
-                    uom_cbo.DataSource = ds;
-
-                    uom_cbo.DisplayMember = "UOMCode";
-
-                    uom_cbo.ValueMember = "UOMCode";
-
-                    linechanged = false;
-
-                    //ViewAsAsm_chk.Checked = IsAssembly();
-                }
-            }
-        }
-
-        private void cancelbtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
         }
 
         public int GetNextSeq()
@@ -246,24 +189,6 @@ namespace EpicorIntegration
             int rowcount = BillDataGrid.Rows.Count;
 
             return ++rowcount * 10;
-        }
-
-        private void findpart_btn_Click(object sender, EventArgs e)
-        {
-            SearchPart Searchfrm = new SearchPart("");
-
-            Searchfrm.ShowDialog();
-
-            if (Searchfrm.DialogResult == DialogResult.OK)
-            {
-                partnum_txt.Text = Searchfrm._PartNumber;
-
-                desc_txt.Text = Searchfrm._Description;
-            }
-
-            Searchfrm.Close();
-
-            Searchfrm = null;
         }
 
         private void EnableItemDetails()
@@ -283,122 +208,166 @@ namespace EpicorIntegration
             findpart_btn.Enabled = !(BillDataGrid.Rows.Count == 0);
         }
 
-        private void Bill_Master_Load(object sender, EventArgs e)
+        private void Setbill(List<string> BillItems, List<string> BillQty)
         {
-            BillDataGrid.ClearSelection();
+            qty_num.ValueChanged -= qty_num_ValueChanged;
 
-            BillDataGrid.CurrentCell = BillDataGrid.Rows[0].Cells[0];
+            partnum_txt.TextChanged -= partnum_txt_TextChanged;
 
-            BillDataGrid.SelectionChanged += BillDataGrid_SelectionChanged;
+            uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
 
-            UpdateFormFields();
-        }
+            List<bool> FindItemEpicor = new List<bool>();
 
-        void BillDataGrid_SelectionChanged(object sender, EventArgs e)
-        {
-            linechanged = false;
+            List<bool> FindItemSldWrks = new List<bool>();
 
-            UpdateFormFields();
+            #region Locate items
 
-            if (BillDataGrid.CurrentCell == null)
-                removebtn.Enabled = false;
-            else
-                removebtn.Enabled = true;
-        }
+            for (int i = 0; i < BillItems.Count; i++)
+            {FindItemSldWrks.Add(false);}
 
-        private void newbtn_Click(object sender, EventArgs e)
-        {
+            for (int i = 0; i < EngWBDS.Tables["ECOMtl"].Rows.Count; i++)
+            {FindItemEpicor .Add(false);}
+
+            for (int i = 0; i < BillItems.Count; i++)
+            {
+                for (int j = 0; j < EngWBDS.Tables["ECOMtl"].Rows.Count; j++)
+                {
+                    string DS_val = EngWBDS.Tables["ECOMtl"].Rows[j]["MtlPartNum"].ToString();
+
+                    if (DS_val == BillItems[i])
+                        FindItemSldWrks[i] = true;
+                }
+            }
+
+            for (int i = 0; i < EngWBDS.Tables["ECOMtl"].Rows.Count; i++)
+            {
+                for (int j = 0; j < BillItems.Count; j++)
+                {
+                    if (EngWBDS.Tables["ECOMtl"].Rows[i]["MtlPartNum"].ToString() == BillItems[j])
+                        FindItemEpicor[i] = true;
+                }
+            }
+            #endregion
+
+            #region Delete Missing Items
+            for (int i = EngWBDS.Tables["ECOMtl"].Rows.Count - 1; i > -1; i--)
+            {
+                if (!FindItemEpicor[i])
+                {
+                    //Remove items
+                    EngWBDS.Tables["ECOMtl"].Rows[i].Delete();
+
+                    EngWB.Update(EngWBDS);
+
+                    EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+                }
+            }
+            #endregion
+
+            int rowmod = EngWBDS.Tables["ECOMtl"].Rows.Count;
+
+            #region Add missing items
             try
             {
-                BillDataGrid.ClearSelection();
+                for (int i = 0; i < BillItems.Count; i++)
+                {
+                    if (!FindItemSldWrks[i])
+                    {
+                        try
+                        {
+                            rowmod = EngWBDS.Tables["ECOMtl"].Rows.Count;
+                            //Add item
+                            EngWB.GetNewECOMtl(EngWBDS, gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "");
 
-                SaveChanges(true);
+                            EngWBDS.Tables["ECOMtl"].Rows[rowmod]["MtlPartNum"] = BillItems[i];
 
-                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+                            EngWBDS.Tables["ECOMtl"].Rows[rowmod]["QtyPer"] = BillQty[i];
 
-                BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+                            EngWBDS.Tables["ECOMtl"].Rows[rowmod]["RelatedOperation"] = ops_cbo.SelectedValue;
 
-                qty_num.ValueChanged -= qty_num_ValueChanged;
+                            EngWBDS.Tables["ECOMtl"].Rows[rowmod]["ViewAsAsm"] = false;
 
-                partnum_txt.TextChanged -= partnum_txt_TextChanged;
+                            partnum_txt.Text = BillItems[i];
 
-                ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
+                            DataTable ds = DataList.PartUOM(partnum_txt.Text);
 
-                uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
+                            uom_cbo.DataSource = ds;
 
-                ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
+                            uom_cbo.DisplayMember = "UOMCode";
 
-                EngWB.GetNewECOMtl(EngWBDS, gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "");
-                
-                int rowindex = BillDataGrid.Rows.Count - 1;
+                            uom_cbo.ValueMember = "UOMCode";
 
-                BillDataGrid.ClearSelection();
+                            uom_cbo.SelectedIndex = 0;
 
-                BillDataGrid.CurrentCell = BillDataGrid.Rows[rowindex].Cells[0];
+                            EngWBDS.Tables["ECOMtl"].Rows[rowmod]["UOMCode"] = uom_cbo.SelectedValue;
 
-                qty_num.Value = 1;
-                
-                ops_cbo.SelectedIndex = 0;
+                            decimal qty_val = decimal.Parse(BillQty[i]);
 
-                partnum_txt.Text = "";
+                            EngWBDS.Tables["ECOMtl"].Rows[rowmod]["QtyPer"] = qty_val;
 
-                desc_txt.Text = "";
+                            EngWB.Update(EngWBDS);
 
-                qty_num.ValueChanged += qty_num_ValueChanged;
-
-                partnum_txt.TextChanged += partnum_txt_TextChanged;
-
-                ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
-
-                uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
-
-                ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
-
-                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["RelatedOperation"] = ops_cbo.SelectedValue;
-
-                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["QtyPer"] = 1;
-
-                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"] = false;
-
-                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"] = uom_cbo.Text;
-
-                EnableItemDetails();
+                            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+                        }
+                        catch (Exception ex) { }
+                    }
+                }
             }
-            catch {}
-        }
+            catch (Exception ex) { }
+            #endregion
 
-        private void savebtn_Click(object sender, EventArgs e)
-        {
-            SaveChanges(false);
-        }
+            #region Update per line
+            for (int i = 0; i < BillItems.Count; i++)
+            {
+                for (int j = 0; j < EngWBDS.Tables["ECOMtl"].Rows.Count; j++)
+                {
+                    string EpicValue = EngWBDS.Tables["ECOMtl"].Rows[j]["MtlPartNum"].ToString();
 
-        private void removebtn_Click(object sender, EventArgs e)
-        {
-            SaveChanges(false);
+                    string _BillItem = BillItems[i];
 
-            int rowindex = BillDataGrid.CurrentCellAddress.Y;
+                    decimal EpicQty = decimal.Parse(EngWBDS.Tables["ECOMtl"].Rows[j]["QtyPer"].ToString());
 
-            EngWBDS.Tables["ECOMtl"].Rows[rowindex].Delete();
+                    decimal _BillQty = decimal.Parse(BillQty[i]);
 
-            SaveChanges(false);
+                    if (EpicValue == _BillItem && EpicQty != _BillQty)
+                    {
+                        EngWBDS.Tables["ECOMtl"].Rows[j]["QtyPer"] = BillQty[i];
+                    }
+                }
+            }
+            #endregion
 
-            //EngWB.Update(EngWBDS);
+            try
+            {
+                EngWB.Update(EngWBDS);
+            }
+            catch (Exception ex) { }
+
+            qty_num.ValueChanged += qty_num_ValueChanged;
+
+            partnum_txt.TextChanged += partnum_txt_TextChanged;
+
+            uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
+
+            EngWB.ResequenceMaterials(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, Properties.Settings.Default.mtlreqtype, false, false, false);
 
             EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
 
             BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
-
-            if (BillDataGrid.Rows.Count == 0)
-                removebtn.Enabled = false;
-        }
-
-        private void copy_btn_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void UpdateDataSet()
         {
+
+            qty_num.ValueChanged -= qty_num_ValueChanged;
+
+            partnum_txt.TextChanged -= partnum_txt_TextChanged;
+
+            ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
+
+            uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
+
+            ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
             try
             {
                 if (linechanged)
@@ -423,26 +392,36 @@ namespace EpicorIntegration
                 }
             }
             catch { }
+
+            qty_num.ValueChanged += qty_num_ValueChanged;
+
+            partnum_txt.TextChanged += partnum_txt_TextChanged;
+
+            ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
+
+            uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
+
+            ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
         }
 
         private void UpdateFormFields()
         {
+            qty_num.ValueChanged -= qty_num_ValueChanged;
+
+            partnum_txt.TextChanged -= partnum_txt_TextChanged;
+
+            ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
+
+            uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
+
+            ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
+
             if (!linechanged)
             {
                 int rowindex = BillDataGrid.CurrentCellAddress.Y;
 
                 if (rowindex != -1)
                 {
-                    qty_num.ValueChanged -= qty_num_ValueChanged;
-
-                    partnum_txt.TextChanged -= partnum_txt_TextChanged;
-
-                    ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
-
-                    uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
-
-                    ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
-
                     mtlseq_txt.Text = EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlSeq"].ToString();
 
                     qty_num.Value = int.Parse(EngWBDS.Tables["ECOMtl"].Rows[rowindex]["QtyPer"].ToString());
@@ -468,42 +447,18 @@ namespace EpicorIntegration
                     ViewAsAsm_chk.Checked = Boolean.Parse(EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"].ToString());
 
                     linechanged = true;
-
-                    qty_num.ValueChanged += qty_num_ValueChanged;
-
-                    partnum_txt.TextChanged += partnum_txt_TextChanged;
-
-                    ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
-
-                    uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
-
-                    ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
                 }
             }
-        }
 
-        private void PartTimer_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                if (partnum_txt.Text != "")
-                {
-                    PartTimer.Enabled = false;
+            qty_num.ValueChanged += qty_num_ValueChanged;
 
-                    UpdateDescField();
+            partnum_txt.TextChanged += partnum_txt_TextChanged;
 
-                    UpdateUOM();
+            ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
 
-                    //EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlPartNum"] = partnum_txt.Text;
+            uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
 
-                    //EngWB.CheckECOMtlMtlPartNum(partnum_txt.Text, out opMessage, out opMsgType, EngWBDS);
-
-                    //EngWB.ChangeECOMtlMtlPartNum(EngWBDS);
-
-                    UpdateDataSet();
-                }
-            }
-            catch { desc_txt.Text = ""; }
+            ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
         }
 
         private void UpdateUOM()
@@ -642,5 +597,268 @@ namespace EpicorIntegration
             this.Close();
         }
 
+        private void newbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BillDataGrid.ClearSelection();
+
+                SaveChanges(true);
+
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+
+                BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+
+                qty_num.ValueChanged -= qty_num_ValueChanged;
+
+                partnum_txt.TextChanged -= partnum_txt_TextChanged;
+
+                ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
+
+                uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
+
+                ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
+
+                EngWB.GetNewECOMtl(EngWBDS, gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "");
+
+                int rowindex = BillDataGrid.Rows.Count - 1;
+
+                BillDataGrid.ClearSelection();
+
+                BillDataGrid.CurrentCell = BillDataGrid.Rows[rowindex].Cells[0];
+
+                qty_num.Value = 1;
+
+                ops_cbo.SelectedIndex = 0;
+
+                partnum_txt.Text = "";
+
+                desc_txt.Text = "";
+
+                qty_num.ValueChanged += qty_num_ValueChanged;
+
+                partnum_txt.TextChanged += partnum_txt_TextChanged;
+
+                ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
+
+                uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
+
+                ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
+
+                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["RelatedOperation"] = ops_cbo.SelectedValue;
+
+                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["QtyPer"] = 1;
+
+                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"] = false;
+
+                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"] = uom_cbo.Text;
+
+                EnableItemDetails();
+            }
+            catch { }
+        }
+
+        private void savebtn_Click(object sender, EventArgs e)
+        {
+            SaveChanges(false);
+        }
+
+        private void removebtn_Click(object sender, EventArgs e)
+        {
+            SaveChanges(false);
+
+            int rowindex = BillDataGrid.CurrentCellAddress.Y;
+
+            EngWBDS.Tables["ECOMtl"].Rows[rowindex].Delete();
+
+            SaveChanges(false);
+
+            //EngWB.Update(EngWBDS);
+
+            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+
+            BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+
+            if (BillDataGrid.Rows.Count == 0)
+                removebtn.Enabled = false;
+        }
+
+        private void copy_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void findpart_btn_Click(object sender, EventArgs e)
+        {
+            SearchPart Searchfrm = new SearchPart("");
+
+            Searchfrm.ShowDialog();
+
+            if (Searchfrm.DialogResult == DialogResult.OK)
+            {
+                partnum_txt.Text = Searchfrm._PartNumber;
+
+                desc_txt.Text = Searchfrm._Description;
+            }
+
+            Searchfrm.Close();
+
+            Searchfrm = null;
+        }
+
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        void partnum_txt_Leave(object sender, EventArgs e)
+        {
+            if (linechanged)
+            {
+                int rowindex = BillDataGrid.CurrentCellAddress.Y;
+
+                string cellval = BillDataGrid["MtlPartNum", rowindex].Value.ToString();
+
+                if (cellval == "")
+                {
+                    string opMessage;
+
+                    string opMsgType;
+
+                    string partnumber = partnum_txt.Text;
+
+                    EngWB.CheckECOMtlMtlPartNum(partnumber, out opMessage, out opMsgType, EngWBDS);
+
+                    rowindex = BillDataGrid.CurrentCellAddress.Y;
+
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlPartNum"] = partnumber;
+
+                    EngWB.ChangeECOMtlMtlPartNum(EngWBDS);
+
+                    DataTable ds = DataList.PartUOM(partnum_txt.Text);
+
+                    uom_cbo.DataSource = ds;
+
+                    uom_cbo.DisplayMember = "UOMCode";
+
+                    uom_cbo.ValueMember = "UOMCode";
+
+                    linechanged = false;
+
+                    //ViewAsAsm_chk.Checked = IsAssembly();
+                }
+            }
+        }
+
+        void BillDataGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            linechanged = false;
+
+            UpdateFormFields();
+
+            if (BillDataGrid.CurrentCell == null)
+                removebtn.Enabled = false;
+            else
+                removebtn.Enabled = true;
+        }
+
+        private void PartTimer_Tick(object sender, EventArgs e)
+        {
+            qty_num.ValueChanged -= qty_num_ValueChanged;
+
+            partnum_txt.TextChanged -= partnum_txt_TextChanged;
+
+            ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
+
+            uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
+
+            ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
+
+            try
+            {
+                if (partnum_txt.Text != "")
+                {
+                    PartTimer.Enabled = false;
+
+                    UpdateDescField();
+
+                    UpdateUOM();
+
+                    //EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlPartNum"] = partnum_txt.Text;
+
+                    //EngWB.CheckECOMtlMtlPartNum(partnum_txt.Text, out opMessage, out opMsgType, EngWBDS);
+
+                    //EngWB.ChangeECOMtlMtlPartNum(EngWBDS);
+
+                    UpdateDataSet();
+                }
+            }
+            catch { desc_txt.Text = ""; }
+
+            qty_num.ValueChanged += qty_num_ValueChanged;
+
+            partnum_txt.TextChanged += partnum_txt_TextChanged;
+
+            ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
+
+            uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
+
+            ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
+        }
+
+        void Bill_Master_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                foreach (DataRow dr in EngWBDS.Tables["ECOMtl"].Rows)
+                {
+                    if (dr.RowState == DataRowState.Added)
+                    {
+                        DialogResult DR = MessageBox.Show("Throw away unsaved changes?", "Save?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (DR == DialogResult.No)
+                        {
+                            SaveChanges(false);
+
+                            break;
+                        }
+                        else
+                            return;
+                    }
+                }
+
+                return;
+            }
+            catch { return; }
+        }
+
+        private void EnableNew_Tick(object sender, EventArgs e)
+        {
+            bool retval = true;
+
+            for (int i = 0; i < EngWBDS.Tables["ECOMtl"].Rows.Count; i++)
+            {
+                if (EngWBDS.Tables["ECOMtl"].Rows[i]["MtlPartNum"].ToString() == "")
+                    retval = false;
+
+                if (EngWBDS.Tables["ECOMtl"].Rows[i]["UOMCode"].ToString() == "")
+                    retval = false;
+
+                if (EngWBDS.Tables["ECOMtl"].Rows[i]["RelatedOperation"].ToString() == "")
+                    retval = false;
+
+                if (EngWBDS.Tables["ECOMtl"].Rows[i]["MtlPartNumPartDescription"].ToString() == "")
+                    retval = false;
+
+                if (EngWBDS.Tables["ECOMtl"].Rows[i]["QtyPer"].ToString() == "0")
+                    retval = false;
+            }
+
+            newbtn.Enabled = retval;
+
+            savebtn.Enabled = retval;
+
+            saveandclose_btn.Enabled = retval;
+        }
     }
 }

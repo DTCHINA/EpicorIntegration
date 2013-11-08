@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bill_Master));
             this.MajorHorizSplit = new System.Windows.Forms.SplitContainer();
             this.label8 = new System.Windows.Forms.Label();
@@ -61,7 +61,6 @@
             this.mtlseq_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.BillDataGrid = new System.Windows.Forms.DataGridView();
-            this.PartTimer = new System.Windows.Forms.Timer(this.components);
             this.MtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MtlPartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,7 +69,8 @@
             this.UOMCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saveprogress = new System.Windows.Forms.ProgressBar();
+            this.PartTimer = new System.Windows.Forms.Timer(this.components);
+            this.EnableNew = new System.Windows.Forms.Timer(this.components);
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -270,7 +270,6 @@
             this.groupBox1.Controls.Add(this.findpart_btn);
             this.groupBox1.Controls.Add(this.mtlseq_txt);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.saveprogress);
             this.groupBox1.Location = new System.Drawing.Point(12, 90);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(436, 161);
@@ -393,8 +392,8 @@
             this.BillDataGrid.AllowUserToAddRows = false;
             this.BillDataGrid.AllowUserToDeleteRows = false;
             this.BillDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.BillDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.BillDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BillDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -421,11 +420,6 @@
             this.BillDataGrid.Size = new System.Drawing.Size(554, 200);
             this.BillDataGrid.TabIndex = 1;
             // 
-            // PartTimer
-            // 
-            this.PartTimer.Interval = 500;
-            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
-            // 
             // MtlSeq
             // 
             this.MtlSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -451,7 +445,7 @@
             this.MtlPartNum.HeaderText = "Part Number";
             this.MtlPartNum.Name = "MtlPartNum";
             this.MtlPartNum.ReadOnly = true;
-            this.MtlPartNum.Width = 91;
+            this.MtlPartNum.Width = 84;
             // 
             // MtlPartNumPartDescription
             // 
@@ -478,7 +472,7 @@
             this.UOMCode.HeaderText = "UOM Code";
             this.UOMCode.Name = "UOMCode";
             this.UOMCode.ReadOnly = true;
-            this.UOMCode.Width = 85;
+            this.UOMCode.Width = 78;
             // 
             // ViewAsAsm
             // 
@@ -498,12 +492,15 @@
             this.OpDesc.ReadOnly = true;
             this.OpDesc.Width = 78;
             // 
-            // saveprogress
+            // PartTimer
             // 
-            this.saveprogress.Location = new System.Drawing.Point(75, 43);
-            this.saveprogress.Name = "saveprogress";
-            this.saveprogress.Size = new System.Drawing.Size(211, 23);
-            this.saveprogress.TabIndex = 11;
+            this.PartTimer.Interval = 500;
+            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
+            // 
+            // EnableNew
+            // 
+            this.EnableNew.Enabled = true;
+            this.EnableNew.Tick += new System.EventHandler(this.EnableNew_Tick);
             // 
             // Bill_Master
             // 
@@ -572,7 +569,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UOMCode;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ViewAsAsm;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
-        private System.Windows.Forms.ProgressBar saveprogress;
+        private System.Windows.Forms.Timer EnableNew;
 
     }
 }
