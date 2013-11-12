@@ -229,6 +229,13 @@ namespace EPDMAddin_EpicorIntegration
 
             var.GetVar("Revision", selected_config, out rev_val);
 
+            if (rev_val == null)
+            {
+                MessageBox.Show("Revision cannot be null.  Check that custom properties are filled out in the selected configuration", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return DialogResult.Cancel;
+            }
+
             Operations_Master OM = new Operations_Master(partnum_val.ToString(), rev_val.ToString());
 
             OM.ShowDialog();
@@ -329,11 +336,14 @@ namespace EPDMAddin_EpicorIntegration
 
                         if (Part != null)
                         {
-                            GetItemInfo(vault, Part);
+                            DialogResult DR = MessageBox.Show(BillNumbers[i] + " does not exist in Epicor yet.\n\nClick \"Ok\" to continue.", "Continue?", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+
+                            if (DR == DialogResult.OK)
+                                GetItemInfo(vault, Part);
                         }
                         else
                         {
-                            DialogResult DR = MessageBox.Show("File not found in vault.\nDo you want to manually add this item?", "Part Not Found!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            DialogResult DR = MessageBox.Show("File not found in vault or Epicor.\nDo you want to manually add this item?", "Part Not Found!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                             if (DR == DialogResult.Yes)
                             {
@@ -592,7 +602,7 @@ namespace EPDMAddin_EpicorIntegration
 
         public IEdmFile7 FindPartinVault(IEdmVault7 vault, EdmCmdData file, string SearchPart,out string Config)
         {
-            string selected_config;
+            string selected_config = null;
 
             object partnum_val = "";
 
@@ -615,7 +625,16 @@ namespace EPDMAddin_EpicorIntegration
 
                 IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
 
-                selected_config = DetermineConfig(part, vault, SearchPart);
+                DialogResult DR = MessageBox.Show("A component not entered into Epicor has been located in the vault.\nThe system will attempt to select the correct configuration if necessary.\n\nSearch Part Number: " + SearchPart, "Warning!", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+
+                if (DR == DialogResult.OK)
+                    selected_config = DetermineConfig(part, vault, SearchPart);
+                else
+                {
+                    Config = null;
+
+                    return null;
+                }
 
                 var.GetVar("Number", selected_config, out partnum_val);
                 

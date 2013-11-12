@@ -17,7 +17,13 @@ namespace EPDMAddin_EpicorIntegration
 
         IEdmFile5 Part;
 
-        string SearchTerm = null;
+        public string _SearchTerm = null;
+
+        public string SearchTerm
+        {
+            get { return _SearchTerm; }
+            set { _SearchTerm = value; }
+        }
 
         public Config_Select(IEdmVault7 vault, EdmCmdData file)
         {
@@ -106,13 +112,6 @@ namespace EPDMAddin_EpicorIntegration
                 this.Close();
             }
 
-            if (OnetoRuleThemAll(out SelectedConfig))
-            {
-                this.DialogResult = DialogResult.OK;
-
-                this.Close();
-            }
-
             if (SearchTerm != null)
             {
                 for (int i = 0; i < config_cbo.Items.Count; i++)
@@ -124,6 +123,7 @@ namespace EPDMAddin_EpicorIntegration
                     object number = "";
 
                     var.GetVar("Number", config_cbo.Text, out number);
+
                     if (number != null)
                     {
                         if (number.ToString() == SearchTerm)
@@ -137,6 +137,13 @@ namespace EPDMAddin_EpicorIntegration
                     }
                 }
             }
+            else
+                if (OnetoRuleThemAll(out SelectedConfig))
+                {
+                    this.DialogResult = DialogResult.OK;
+
+                    this.Close();
+                }
         }
 
         public bool OnetoRuleThemAll(out string Configuration_Name)
@@ -145,10 +152,15 @@ namespace EPDMAddin_EpicorIntegration
 
             IEdmFile5 part;
 
-            if (File.mbsStrData1 != "")
+            try
+            {
+                //if (File.mbsStrData1 != "")
                 part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
-            else
+            }
+            catch
+            {
                 part = Part;
+            }
 
             IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
 
