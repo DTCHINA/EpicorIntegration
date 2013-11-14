@@ -144,10 +144,6 @@
             // 
             this.group_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.group_cbo.FormattingEnabled = true;
-            this.group_cbo.Items.AddRange(new object[] {
-            "Purchased",
-            "Manufacturer",
-            "Sales Kit"});
             this.group_cbo.Location = new System.Drawing.Point(8, 229);
             this.group_cbo.Name = "group_cbo";
             this.group_cbo.Size = new System.Drawing.Size(210, 21);
@@ -166,10 +162,6 @@
             // 
             this.class_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.class_cbo.FormattingEnabled = true;
-            this.class_cbo.Items.AddRange(new object[] {
-            "Purchased",
-            "Manufacturer",
-            "Sales Kit"});
             this.class_cbo.Location = new System.Drawing.Point(8, 269);
             this.class_cbo.Name = "class_cbo";
             this.class_cbo.Size = new System.Drawing.Size(210, 21);
@@ -188,10 +180,6 @@
             // 
             this.uomclass_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.uomclass_cbo.FormattingEnabled = true;
-            this.uomclass_cbo.Items.AddRange(new object[] {
-            "Purchased",
-            "Manufacturer",
-            "Sales Kit"});
             this.uomclass_cbo.Location = new System.Drawing.Point(172, 110);
             this.uomclass_cbo.Name = "uomclass_cbo";
             this.uomclass_cbo.Size = new System.Drawing.Size(157, 21);
@@ -212,10 +200,6 @@
             // 
             this.uom_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.uom_cbo.FormattingEnabled = true;
-            this.uom_cbo.Items.AddRange(new object[] {
-            "Purchased",
-            "Manufacturer",
-            "Sales Kit"});
             this.uom_cbo.Location = new System.Drawing.Point(8, 189);
             this.uom_cbo.Name = "uom_cbo";
             this.uom_cbo.Size = new System.Drawing.Size(180, 21);

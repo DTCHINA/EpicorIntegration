@@ -491,6 +491,12 @@ namespace EPDMAddin_EpicorIntegration
 
             object weight_val;
 
+            object product_val;
+
+            object class_val;
+
+            object type_val;
+
             if (UpdateItemRef(Part, vault))
             {
                 var = Part.GetEnumeratorVariable();
@@ -503,6 +509,12 @@ namespace EPDMAddin_EpicorIntegration
 
                 var.GetVar("Description", selected_config, out desc_val);
 
+                var.GetVar("Product", selected_config, out product_val);
+
+                var.GetVar("Class", selected_config, out class_val);
+
+                var.GetVar("Type", selected_config, out type_val);
+
                 //Weight is typically @ config
                 var.GetVar("NetWeight", selected_config, out weight_val);
 
@@ -514,7 +526,7 @@ namespace EPDMAddin_EpicorIntegration
 
                 if (partnum_val != null)
                 {
-                    EpicorIntegration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback);
+                    EpicorIntegration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback, product_val.ToString(), class_val.ToString(), type_val.ToString());
 
                     item.ShowDialog();
 
@@ -545,6 +557,12 @@ namespace EPDMAddin_EpicorIntegration
             object desc_val;
 
             object weight_val;
+
+            object product_val;
+
+            object class_val;
+
+            object type_val;
                          
             part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
 
@@ -560,6 +578,12 @@ namespace EPDMAddin_EpicorIntegration
 
                 var.GetVar("Description", selected_config, out desc_val);
 
+                var.GetVar("Product", selected_config, out product_val);
+
+                var.GetVar("Class", selected_config, out class_val);
+
+                var.GetVar("Type", selected_config, out type_val);
+
                 //Weight is typically @ config
                 var.GetVar("NetWeight", selected_config, out weight_val);
 
@@ -571,7 +595,7 @@ namespace EPDMAddin_EpicorIntegration
 
                 if (partnum_val != null)
                 {
-                    EpicorIntegration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback);
+                    EpicorIntegration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback,product_val.ToString(),class_val.ToString(),type_val.ToString());
 
                     item.ShowDialog();
 

@@ -15,6 +15,12 @@ namespace EpicorIntegration
 
         public decimal _Weight;
 
+        public string _Group;
+
+        public string _Class;
+
+        public string _Type;
+
         public Item_Master()
         {
             InitializeComponent();
@@ -80,7 +86,7 @@ namespace EpicorIntegration
 
         }
 
-        public Item_Master(string PartNumber,string Description,string Type, decimal Weight, decimal Volume,string Group, string Class)
+        public Item_Master(string PartNumber, string Description, decimal Weight, string Group, string Class, string Type)
         {
             InitializeComponent();
 
@@ -92,8 +98,6 @@ namespace EpicorIntegration
 
                 Description_txt.Text = Description;
 
-                type_cbo.SelectedIndex = type_cbo.Items.IndexOf(Type);
-
                 NetWeight.Value = Weight;
 
                 _PartNumber = PartNumber;
@@ -102,11 +106,13 @@ namespace EpicorIntegration
 
                 _Weight = Weight;
 
+                _Group = Group;
+
+                _Class = Class;
+
+                _Type = Type;
+
                 //NetVolume.Value = Volume;
-
-                group_cbo.SelectedIndex = group_cbo.Items.IndexOf(Group);
-
-                class_cbo.SelectedIndex = class_cbo.Items.IndexOf(Class);
             }
             catch (Exception ex)
             {
@@ -221,6 +227,24 @@ namespace EpicorIntegration
                     }
                 }
             }
+
+            try
+            {
+                //group_cbo.SelectedIndex = group_cbo.Items.IndexOf(Group);
+
+                group_cbo.Text = _Group;
+            }
+            catch { }
+            try
+            {
+                class_cbo.Text = _Class;
+            }
+            catch { }
+            try
+            {
+                type_cbo.Text = _Type;
+            }
+            catch { }
         }
 
         void Description_txt_Leave(object sender, EventArgs e)
