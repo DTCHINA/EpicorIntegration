@@ -71,14 +71,21 @@ namespace EpicorIntegration
 
         private void confirm_btn_Click(object sender, EventArgs e)
         {
-            DataList.CheckOutPart(gid_cbo.SelectedValue.ToString(), partnumber_txt.Text, rev_txt.Text);
+            DataList.CheckOutPart(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text);
 
             this.Close();
         }
 
         private void CheckOut_Master_Load(object sender, EventArgs e)
         {
+            rev_txt.Text = DataList.GetCurrentRev(partnumber_txt.Text);
 
+            if (rev_txt.Text == "")
+            {
+                MessageBox.Show("Revision cannot be blank/null.  You must make a revision before checking an item out.\n\nThis form will now close.", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+                this.Close();
+            }
         }
 
         private void gid_cbo_SelectedIndexChanged(object sender, EventArgs e)

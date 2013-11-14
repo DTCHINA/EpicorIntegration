@@ -26,11 +26,10 @@ namespace EPDMAddin_EpicorIntegration
             poInfo.mlRequiredVersionMajor = 6;
             poInfo.mlRequiredVersionMinor = 4;
 
-            poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update Item in Epicor", 0, 0);
-
             poCmdMgr.AddCmd(2, "Epicor Integration\\Add Item,OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to add an Item, a revision, an OOM and BOM in Epicor", 0, 0);
-
-            poCmdMgr.AddCmd(3, "Epicor Integration\\Check Out Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Checks out Item in Epicor (Not Enterprise PDM)", 0, 0);
+            
+            
+poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update Item in Epicor", 0, 0);          
 
             poCmdMgr.AddCmd(4, "Epicor Integration\\Add Revision", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to add revision to Item in Epicor", 0, 0);
 
@@ -39,11 +38,12 @@ namespace EPDMAddin_EpicorIntegration
             poCmdMgr.AddCmd(6, "Epicor Integration\\Add/Update BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update BOM in Epicor", 0, 0);
             
             poCmdMgr.AddCmd(7, "Epicor Integration\\Check In/Approve Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to Approve and Check In Item to Epicor", 0, 0);
+
+            poCmdMgr.AddCmd(3, "Epicor Integration\\Check Out Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Checks out Item in Epicor (Not Enterprise PDM)", 0, 0);
             
             poCmdMgr.AddCmd(-1, "Epicor Integration\\Add-in Configuration", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to configure Epicor Integration Add-in", 0, 0);
 
-            //uncomment this line to add all hooks
-            AddAllHooks(poCmdMgr);
+            poCmdMgr.AddHook(EdmCmdType.EdmCmd_Menu, null);
         }
 
         public bool HaveUpToDateItemRef(IEdmFile5 Part, IEdmVault7 vault)
@@ -227,11 +227,18 @@ namespace EPDMAddin_EpicorIntegration
 
                 var.GetVar("Revision", selected_config, out rev_val);
 
-                Revision_Master RM = new Revision_Master(partnum_val.ToString(), rev_val.ToString(), "", "");
+                if (rev_val == null)
+                {
+                    MessageBox.Show("Item has not been completed and released.  Please make certain that the item has a revision before attempting to add a revision in Epicor.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    Revision_Master RM = new Revision_Master(partnum_val.ToString(), rev_val.ToString(), "", "");
 
-                RM.ShowDialog();
+                    RM.ShowDialog();
 
-                RetVal = RM.DialogResult;
+                    RetVal = RM.DialogResult;
+                }
             }
 
             return RetVal;
@@ -844,83 +851,7 @@ namespace EPDMAddin_EpicorIntegration
 
         void AddAllHooks(IEdmCmdMgr5 poCmdMgr)
         {
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_CardButton, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_CardInput, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_CardListSrc, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_InstallAddIn, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_Menu, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostAdd, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostAddFolder, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostCopy, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostCopyFolder, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostDelete, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostDeleteFolder, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostGet, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostLock, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostMove, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostMoveFolder, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostRename, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostRenameFolder, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostShare, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostState, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostUndoLock, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PostUnlock, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreAdd, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreAddFolder, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreCopy, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreCopyFolder, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreDelete, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreDeleteFolder, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreGet, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreLock, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreMove, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreMoveFolder, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreRename, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreRenameFolder, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreShare, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreState, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreUndoLock, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_PreUnlock, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_SerialNo, null);
-
-            poCmdMgr.AddHook(EdmCmdType.EdmCmd_UninstallAddIn, null);
+            
         }
     }
 }

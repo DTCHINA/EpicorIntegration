@@ -61,9 +61,14 @@ namespace EpicorIntegration
 
                     DialogResult dr = CO_M.ShowDialog();
 
-                    EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+                    if (dr != DialogResult.Cancel)
+                    {
+                        EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
 
-                    BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+                        BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+                    }
+                    else
+                        this.Close();
                 }
                 catch (Exception ex1) {MessageBox .Show (ex1.Message + "\n\nThis process will now close","Error!",MessageBoxButtons.OK,MessageBoxIcon.Error); }
             }
@@ -100,6 +105,28 @@ namespace EpicorIntegration
             BillDataGrid.SelectionChanged += BillDataGrid_SelectionChanged;
 
             UpdateFormFields();
+
+            #region Close if not checked out
+
+            string Message;
+
+            if (!DataList.PartCheckOutStatus(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, out Message))
+            {
+                MessageBox.Show("Part must be checked out by selected Group ID to continue.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                this.Close();
+            }
+            else
+            {
+                if (Message != "Checked Out by GroupID")
+                {
+                    MessageBox.Show("Part must be checked out by selected Group ID to continue.\n\n" + Message, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    this.Close();
+                }
+            }
+
+            #endregion
 
             FillRawMenu();
         }

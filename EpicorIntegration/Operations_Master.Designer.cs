@@ -192,7 +192,7 @@
             // 
             this.prodstd_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.prodstd_cbo.FormattingEnabled = true;
-            this.prodstd_cbo.Location = new System.Drawing.Point(80, 77);
+            this.prodstd_cbo.Location = new System.Drawing.Point(97, 77);
             this.prodstd_cbo.Name = "prodstd_cbo";
             this.prodstd_cbo.Size = new System.Drawing.Size(191, 21);
             this.prodstd_cbo.TabIndex = 9;
@@ -220,10 +220,10 @@
             // 
             // prodhrs_num
             // 
-            this.prodhrs_num.DecimalPlaces = 2;
+            this.prodhrs_num.DecimalPlaces = 6;
             this.prodhrs_num.Location = new System.Drawing.Point(9, 78);
             this.prodhrs_num.Name = "prodhrs_num";
-            this.prodhrs_num.Size = new System.Drawing.Size(65, 20);
+            this.prodhrs_num.Size = new System.Drawing.Size(82, 20);
             this.prodhrs_num.TabIndex = 8;
             this.prodhrs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.prodhrs_num.ValueChanged += new System.EventHandler(this.prodhrs_num_ValueChanged);
@@ -252,7 +252,7 @@
             this.opmast_cbo.FormattingEnabled = true;
             this.opmast_cbo.Location = new System.Drawing.Point(9, 32);
             this.opmast_cbo.Name = "opmast_cbo";
-            this.opmast_cbo.Size = new System.Drawing.Size(262, 21);
+            this.opmast_cbo.Size = new System.Drawing.Size(279, 21);
             this.opmast_cbo.TabIndex = 4;
             this.opmast_cbo.SelectedIndexChanged += new System.EventHandler(this.opmast_cbo_SelectedIndexChanged);
             // 

@@ -271,6 +271,43 @@ namespace EpicorIntegration
             return ds;
         }
 
+        /// <summary>
+        /// Checks to see if part is checked out by someone.  If it is returns true and with a message regarding who and when.
+        /// </summary>
+        /// <param name="GroupID"></param>
+        /// <param name="PartNumber"></param>
+        /// <param name="Revision"></param>
+        /// <param name="Message"></param>
+        /// <returns></returns>
+        public static bool PartCheckOutStatus(string GroupID, string PartNumber,string Revision, out string Message)
+        {
+            Message = "";
+
+            bool retval = false;
+
+            EngWorkBench EngWb = new EngWorkBench(EpicConn);
+
+            EngWorkBenchDataSet EngWbDS = new EngWorkBenchDataSet();
+
+            EngWbDS = EngWb.GetDatasetForTree(GroupID, PartNumber, Revision, "", DateTime.Today, true, false);
+
+            if (EngWbDS.Tables["ECORev"].Rows[0]["CheckedOut"].ToString() == "True" && EngWbDS.Tables["ECORev"].Rows[0]["CheckedOutBy"].ToString() != Environment.UserName.ToString())
+            {
+                retval = true;
+
+                Message = "Item was checked out by " + EngWbDS.Tables["ECORev"].Rows[0]["CheckedOutBy"].ToString() + " on " + EngWbDS.Tables["ECORev"].Rows[0]["CheckedOutDate"].ToString();
+            }
+
+            if (EngWbDS.Tables["ECORev"].Rows[0]["CheckedOut"].ToString() == "True" && EngWbDS.Tables["ECORev"].Rows[0]["CheckedOutBy"].ToString() == Environment.UserName.ToString())
+            {
+                retval = true;
+
+                Message = "Checked Out by GroupID";
+            }
+
+            return retval;
+        }
+
         public static void CheckOutPart(string GroupID, string PartNumber, string Revision)
         {
             string CheckedOutRevNum;

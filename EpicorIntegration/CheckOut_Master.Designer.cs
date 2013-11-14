@@ -75,9 +75,9 @@
             this.currev_chk.CheckState = System.Windows.Forms.CheckState.Checked;
             this.currev_chk.Location = new System.Drawing.Point(6, 97);
             this.currev_chk.Name = "currev_chk";
-            this.currev_chk.Size = new System.Drawing.Size(104, 17);
+            this.currev_chk.Size = new System.Drawing.Size(137, 17);
             this.currev_chk.TabIndex = 2;
-            this.currev_chk.Text = "Current Revision";
+            this.currev_chk.Text = "Current Epicor Revision";
             this.currev_chk.UseVisualStyleBackColor = true;
             this.currev_chk.CheckedChanged += new System.EventHandler(this.currev_chk_CheckedChanged);
             // 

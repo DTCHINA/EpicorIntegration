@@ -77,13 +77,19 @@ namespace EpicorIntegration
         private void savebtn_Click(object sender, EventArgs e)
         {
             //Add revision
+            if (revdesc_txt.Text == "" || revdesc_txt.Text == null)
+            {
+                MessageBox.Show("Revision Description is required", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            else
+            {
+                bool valid = DataList.CreatePartRevision(Searchtxt.Text, currev_txt.Text, newrev_txt.Text, revdesc_txt.Text);
 
-            bool valid = DataList.CreatePartRevision(Searchtxt.Text, currev_txt.Text, newrev_txt.Text, revdesc_txt.Text);
+                if (checkout_chk.Checked)
+                    DataList.CheckOutPart(gid_desc.Text, Searchtxt.Text, newrev_txt.Text);
 
-            if (checkout_chk.Checked)
-                DataList.CheckOutPart(gid_desc.Text, Searchtxt.Text, newrev_txt.Text);
-           
-            this.Close();
+                this.Close();
+            }
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)

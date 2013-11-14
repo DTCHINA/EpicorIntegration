@@ -93,6 +93,10 @@ namespace EpicorIntegration
             ResourceGrid.SelectionChanged += ResourceGrid_SelectionChanged;
 
             ResourceGrid.AutoGenerateColumns = false;
+
+            ResourceGrid.ClearSelection();
+
+            ResourceGrid.CurrentCell = ResourceGrid.Rows[0].Cells[0];
         }
 
         void ResourceGrid_SelectionChanged(object sender, EventArgs e)
@@ -166,6 +170,8 @@ namespace EpicorIntegration
             try
             {
                 EngWB.Update(EngWB_DS);
+
+                this.Close();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error!"); }
         }
@@ -177,7 +183,11 @@ namespace EpicorIntegration
             else
                 EngWB.GetNewECOOpDtl(EngWB_DS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", int.Parse(operation_txt.Text));
 
-            indicies.Add(MaxIndex);;
+            indicies.Add(MaxIndex);
+
+            ResourceGrid.ClearSelection();
+
+            ResourceGrid.CurrentCell = ResourceGrid.Rows[ResourceGrid.Rows.Count].Cells[0];
         }
 
         private void removebtn_Click(object sender, EventArgs e)

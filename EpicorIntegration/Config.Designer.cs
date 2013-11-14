@@ -116,6 +116,7 @@
             // 
             // cancelbtn
             // 
+            this.cancelbtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelbtn.Location = new System.Drawing.Point(93, 216);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
@@ -155,8 +156,10 @@
             // 
             // Config
             // 
+            this.AcceptButton = this.savebtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cancelbtn;
             this.ClientSize = new System.Drawing.Size(186, 256);
             this.Controls.Add(this.ecogp_btn);
             this.Controls.Add(this.groupBox2);

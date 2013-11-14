@@ -215,15 +215,19 @@ namespace EpicorIntegration
             {
                 UpdateFormSet(Partnumber_txt.Text);
 
-                if (Description_txt.Text != _Description || NetWeight.Value != _Weight)
+                if (Description_txt.Text != _Description || NetWeight.Value != _Weight || group_cbo.Text != _Group || class_cbo.Text != _Class || type_cbo.Text != _Type)
                 {
-                    DialogResult DR = MessageBox.Show("Override Epicor values with values from the model?\n\n" + _Description + " → " + Description_txt.Text + "\n" + _Weight.ToString() + " → " + NetWeight.Value.ToString(), "Property Override", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult DR = MessageBox.Show("Override Epicor values with values from the model?\n\n" + _Description + " → " + Description_txt.Text + "\n" + _Weight.ToString() + " → " + NetWeight.Value.ToString() + "\n" + _Group + " → " + group_cbo.Text + "\n" + _Class + " → " + class_cbo.Text + "\n" + _Type + " → " + type_cbo.Text, "Property Override", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (DR == DialogResult.Yes)
                     {
                         Description_txt.Text = _Description;
 
                         NetWeight.Value = _Weight;
+
+                        group_cbo.Text = _Group;
+
+                        class_cbo.Text = _Class;
                     }
                 }
             }
