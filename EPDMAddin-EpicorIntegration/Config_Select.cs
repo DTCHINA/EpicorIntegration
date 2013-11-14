@@ -126,6 +126,14 @@ namespace EPDMAddin_EpicorIntegration
 
             #endregion
 
+            for (int i = config_cbo.Items.Count - 1; i > -1; i--)
+            {
+                config_cbo.SelectedIndex = i;
+
+                if (pnum_txt.Text == "")
+                    config_cbo.Items.RemoveAt(i);
+            }
+
             if (config_cbo.Items.Count == 2 && config_cbo.Items[0].ToString() == "@" && config_cbo.Items[1].ToString() == "Default")
             {
                 SelectedConfig = "Default";

@@ -43,7 +43,147 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
             
             poCmdMgr.AddCmd(-1, "Epicor Integration\\Add-in Configuration", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to configure Epicor Integration Add-in", 0, 0);
 
+            poCmdMgr.AddCmd(-10, "Epicor Integration\\Update Properties from Epicor", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to update file properties from current Epicor values", 0, 0);
+
             poCmdMgr.AddHook(EdmCmdType.EdmCmd_Menu, null);
+        }
+
+        void EdmLib.IEdmAddIn5.OnCmd(ref EdmCmd poCmd, ref System.Array ppoData)
+        {
+            Debug.Print("Command Type: " + poCmd.meCmdType.ToString() + "\n  " + System.DateTime.Now.ToString());
+
+            IEdmVault5 edmVault = poCmd.mpoVault as IEdmVault5;
+
+            EdmCmdData[] Temp = (EdmCmdData[])ppoData;
+
+            IEdmVault7 vault = (IEdmVault7)poCmd.mpoVault;
+
+            DataHelper helper = new DataHelper();
+
+            try
+            {
+                switch (poCmd.meCmdType)
+                {
+                    case EdmCmdType.EdmCmd_Menu:
+                        switch (poCmd.mlCmdID)
+                        {
+                            case 1:
+                                #region Item Master
+
+                                foreach (EdmCmdData file in Temp)
+                                {
+                                    if (ValidSelection(file))
+                                        GetItemInfo(vault, file);
+                                }
+                                #endregion
+                                break;
+                            case 2:
+                                #region Add Item/Rev/OOM/BOM
+
+                                foreach (EdmCmdData file in Temp)
+                                {
+                                    if (ValidSelection(file))
+                                    {
+                                        if (GetItemInfo(vault, file) == DialogResult.Cancel)
+                                            break;
+
+                                        if (AddRevision(vault, file) == DialogResult.Cancel)
+                                            break;
+
+                                        if (AddOOM(vault, file) == DialogResult.Cancel)
+                                            break;
+
+                                        if (AddBill(vault, file) == DialogResult.Cancel)
+                                            break;
+
+                                        if (CheckInPart(vault, file) == DialogResult.Cancel)
+                                            break;
+                                    }
+                                }
+
+                                #endregion
+                                break;
+                            case 3:
+                                #region CheckOut_Master
+
+                                foreach (EdmCmdData file in Temp)
+                                {
+                                    if (ValidSelection(file))
+                                        CheckOutPart(vault, file);
+                                }
+                                #endregion
+                                break;
+                            case 4:
+                                #region Add Revision
+
+                                foreach (EdmCmdData file in Temp)
+                                {
+                                    if (ValidSelection(file))
+                                        AddRevision(vault, file);
+                                }
+
+                                #endregion
+                                break;
+                            case 5:
+                                #region OOM_Master
+
+                                foreach (EdmCmdData file in Temp)
+                                {
+                                    if (ValidSelection(file))
+                                        AddOOM(vault, file);
+                                }
+
+                                #endregion
+                                break;
+                            case 6:
+                                #region Bill Master
+
+                                foreach (EdmCmdData file in Temp)
+                                {
+                                    if (ValidSelection(file))
+                                        AddBill(vault, file);
+                                }
+                                #endregion
+                                break;
+                            case 7:
+                                #region CheckIn_Master
+
+                                foreach (EdmCmdData file in Temp)
+                                {
+                                    if (ValidSelection(file))
+                                        CheckInPart(vault, file);
+                                }
+                                #endregion
+                                break;
+                            case -1:
+                                Config conf = new Config();
+                                conf.ShowDialog();
+                                break;
+                            case -10:
+                                foreach (EdmCmdData file in Temp)
+                                {
+                                    if (ValidSelection(file))
+                                    {
+                                        Update_Properties Update = new Update_Properties(vault, file);
+
+                                        Update.ShowDialog();
+                                    }
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (COMException exp)
+            {
+                string errorName, errorDesc;
+                edmVault.GetErrorString(exp.ErrorCode, out errorName, out errorDesc);
+                edmVault.MsgBox(0, errorDesc, EdmMBoxType.EdmMbt_OKOnly, errorName);
+            }
         }
 
         public bool HaveUpToDateItemRef(IEdmFile5 Part, IEdmVault7 vault)
@@ -600,6 +740,15 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
                 if (weight_val != null)
                     decimal.TryParse(weight_val.ToString(), out weight_fallback);
 
+                if (class_val == null)
+                    class_val = "";
+
+                if (type_val == null)
+                    type_val = "";
+
+                if (product_val == null)
+                    product_val = "";
+
                 if (partnum_val != null)
                 {
                     EpicorIntegration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback,product_val.ToString(),class_val.ToString(),type_val.ToString());
@@ -722,136 +871,6 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
                 return true;
         }
 
-        void EdmLib.IEdmAddIn5.OnCmd(ref EdmCmd poCmd, ref System.Array ppoData)
-        {
-            Debug.Print("Command Type: " + poCmd.meCmdType.ToString() + "\n  " + System.DateTime.Now.ToString());
 
-            IEdmVault5 edmVault = poCmd.mpoVault as IEdmVault5;
-
-            EdmCmdData[] Temp = (EdmCmdData[])ppoData;
-
-            IEdmVault7 vault = (IEdmVault7)poCmd.mpoVault;
-
-            DataHelper helper = new DataHelper();
-
-            try
-            {
-                switch (poCmd.meCmdType)
-                {    
-                    case EdmCmdType.EdmCmd_Menu:
-                        switch(poCmd.mlCmdID)
-                        {
-                            case 1:
-                                #region Item Master
-
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
-                                        GetItemInfo(vault, file);
-                                }
-                                #endregion
-                                break;
-                            case 2:
-                                #region Add Item/Rev/OOM/BOM
-
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
-                                    {
-                                        if (GetItemInfo(vault, file) == DialogResult.Cancel)
-                                            break;
-
-                                        if (AddRevision(vault, file) == DialogResult.Cancel)
-                                            break;
-
-                                        if (AddOOM(vault, file) == DialogResult.Cancel)
-                                            break;
-
-                                        if (AddBill(vault, file) == DialogResult.Cancel)
-                                            break;
-
-                                        if (CheckInPart(vault, file) == DialogResult.Cancel)
-                                            break;
-                                    }
-                                }
-
-                                #endregion
-                                break;
-                            case 3:
-                                #region CheckOut_Master
-
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
-                                        CheckOutPart(vault, file);
-                                }
-                                #endregion
-                                break;
-                            case 4:
-                                #region Add Revision
-
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
-                                        AddRevision(vault, file);
-                                }
-
-                                #endregion
-                                break;
-                            case 5:
-                                #region OOM_Master
-
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
-                                        AddOOM(vault, file);
-                                }
-
-                                #endregion
-                                break;
-                            case 6:
-                                #region Bill Master
-
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
-                                        AddBill(vault, file);
-                                }
-                                #endregion
-                                break;
-                            case 7:
-                                #region CheckIn_Master
-
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
-                                        CheckInPart(vault, file);
-                                }
-                                #endregion
-                                break;
-                            case -1:
-                                Config conf = new Config();
-                                conf.ShowDialog();
-                                break;
-                            default:
-                                break;
-                        }                    
-                        break;
-                    default:
-                        break;
-                }
-            }
-            catch (COMException exp)
-            {
-                string errorName, errorDesc;
-                edmVault.GetErrorString(exp.ErrorCode, out errorName, out errorDesc);
-                edmVault.MsgBox(0, errorDesc, EdmMBoxType.EdmMbt_OKOnly, errorName);
-            }
-        }
-
-        void AddAllHooks(IEdmCmdMgr5 poCmdMgr)
-        {
-            
-        }
     }
 }

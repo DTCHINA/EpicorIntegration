@@ -68,6 +68,12 @@
     <Compile Include="DataHelper.cs" />
     <Compile Include="SWEPDMAddin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Update_Properties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update_Properties.Designer.cs">
+      <DependentUpon>Update_Properties.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="EdmLib">
@@ -101,6 +107,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Config_Select.resx">
       <DependentUpon>Config_Select.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update_Properties.resx">
+      <DependentUpon>Update_Properties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
