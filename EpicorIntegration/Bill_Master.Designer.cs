@@ -48,6 +48,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.parent_txt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
             this.uom_cbo = new System.Windows.Forms.ComboBox();
             this.qty_num = new System.Windows.Forms.NumericUpDown();
@@ -71,7 +72,7 @@
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartTimer = new System.Windows.Forms.Timer(this.components);
             this.EnableNew = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.RawMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -278,6 +279,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(355, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Add &Raw";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // ViewAsAsm_chk
             // 
             this.ViewAsAsm_chk.AutoSize = true;
@@ -408,7 +419,7 @@
             this.ViewAsAsm,
             this.OpDesc});
             this.BillDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BillDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.BillDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.BillDataGrid.Location = new System.Drawing.Point(0, 0);
             this.BillDataGrid.MultiSelect = false;
             this.BillDataGrid.Name = "BillDataGrid";
@@ -504,14 +515,10 @@
             this.EnableNew.Enabled = true;
             this.EnableNew.Tick += new System.EventHandler(this.EnableNew_Tick);
             // 
-            // button1
+            // RawMenu
             // 
-            this.button1.Location = new System.Drawing.Point(355, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Add &Raw";
-            this.button1.UseVisualStyleBackColor = true;
+            this.RawMenu.Name = "RawMenu";
+            this.RawMenu.Size = new System.Drawing.Size(153, 26);
             // 
             // Bill_Master
             // 
@@ -582,6 +589,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
         private System.Windows.Forms.Timer EnableNew;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ContextMenuStrip RawMenu;
 
     }
 }

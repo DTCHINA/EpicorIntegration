@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.IF.ITaskSet</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet.TaskSetDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet.TaskSMilestoneDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet.TaskSDtlDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet.TaskSNxtDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet.TaskSetRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet.TaskSMilestoneRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet.TaskSDtlRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet.TaskSNxtRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet.TaskSetRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet.TaskSMilestoneRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet.TaskSDtlRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetDataSet.TaskSNxtRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.IF.ITaskSet">
+            <summary>
+            Task Set main object.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.GetNewTaskSet(Epicor.Mfg.BO.TaskSetDataSet)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.GetNewTaskSMilestone(Epicor.Mfg.BO.TaskSetDataSet,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.GetNewTaskSDtl(Epicor.Mfg.BO.TaskSetDataSet,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.GetNewTaskSNxt(Epicor.Mfg.BO.TaskSetDataSet,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.DeleteByID(System.String)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.GetByID(System.String)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.GetRows(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.Update(Epicor.Mfg.BO.TaskSetDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.UpdateExt(Epicor.Mfg.BO.UpdExtTaskSetDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.GetCodeDescList(System.String,System.String)">
+            <summary>
+            To return the CodeDescriptionList values of a given table.field.
+            </summary>
+            <param name="tableName"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.BuildNextTaskList(System.String,System.Int32,System.Int32,System.String@)">
+            <summary>
+            Returns a delimited list of next task sequences available in id`desc pairs
+            </summary>
+            <param name="taskSetId">Task Set Id</param>
+            <param name="taskSetSeq">Current Task Sequence</param>
+            <param name="taskNextSeq">Existing Next Task to exclude from list</param>
+            <param name="nextList">Delimited list of available next tasks</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.BuildParentTaskList(System.String,System.String@)">
+            <summary>
+            Returns a delimited list of available parent task sequences in id`desc pairs
+            </summary>
+            <param name="cTaskSetId">Task Set Id</param>
+            <param name="cParentList">Delimited list of Parent(Milestone) tasks</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.BuildStageList(System.String,System.String@)">
+            <summary>
+            Returns a delimited list of available stages in the format "ID`Desc~ID`Desc"
+            </summary>
+            <param name="workflowType">Workflow Type to determine the list of stages</param>
+            <param name="stageList">Delimited list of available stages</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.CopyTaskSet(System.String,System.String,System.String)">
+            <summary>
+            Copies a task set to a new task set
+            </summary>
+            <param name="sourceTaskSetID">The ID of the source task set (copy from)</param>
+            <param name="targetTaskSetID">The ID of the new task set (copy to)</param>
+            <param name="targetTaskSetDesc">The Description of the new task set</param>
+            <returns type="Epicor.Mfg.BO.TaskSetDataSet">The TaskSet DataSet</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.DefaultMilestoneInfo(Epicor.Mfg.BO.TaskSetDataSet)">
+            <summary>
+            This method assigns the RoleCode and CurrentStage based on the task selected
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskSetDataSet">Task Set Data set with changes</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.DefaultNextTaskInfo(Epicor.Mfg.BO.TaskSetDataSet)">
+            <summary>
+            This method updates the TaskSNxt record after the next seq has been selected
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskSetDataSet">Task Set Data set with changes to TaskSNxt </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.DefaultRelatedTaskInfo(Epicor.Mfg.BO.TaskSetDataSet)">
+            <summary>
+            This method updates the RoleCode and Mandatory fields once the TaskId has been selected
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskSetDataSet">Task Set Data set with related task changes </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.GetCRMTaskSetList(System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This method asks for a taskSetId and activeTaskId (currently found on QuoteHed) and
+            it will only return TaskSets that are applicable to those inputs
+            </summary>
+            <param name="taskSetId"> QuoteHed.TaskSetId </param>
+            <param name="activeTaskId"> QuoteHed.ActiveTaskId </param>
+            <param name="pageSize">The page size </param>
+            <param name="absolutePage">The absolute page</param>
+            <param name="morePages">The more pages </param>
+            <returns type="Epicor.Mfg.BO.TaskSetListDataSet">TaskSet List dataset</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.GetListFilterTaskSet(System.String,System.Int32,System.Int32,System.String,System.Boolean@)">
+            <summary>
+            This method is used to filter the search results of TaskSet depending on the
+            current Active TaskID.
+            </summary>
+            <param name="whereClause"> WorkflowType='HelpDesk' And Inactive=true </param>
+            <param name="pageSize"> PageSize </param>
+            <param name="absolutePage"> AbsolutePage </param>
+            <param name="activeTaskID"> HDCase.ActiveTaskID </param>
+            <param name="morePages"> MorePages </param>
+            <returns type="Epicor.Mfg.BO.TaskSetListDataSet">TaskSet List</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.GetNewTaskDetail(Epicor.Mfg.BO.TaskSetDataSet,System.String,System.Int32)">
+            <summary>
+            This method creates the new TaskSDtl record in place of the standard method
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskSetDataSet">Task Set Data set with new record </param>
+            <param name="taskSetID">Task Set Id</param>
+            <param name="parentTaskSeq">TaskSetSeq of the parent milestone</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.ITaskSet.GetTaskSets">
+            <summary>
+            This Method get available Task Sets
+            </summary>
+            <returns type="Epicor.Mfg.BO.WFGroupListDataSet">WFGroup List dataset.</returns>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetListDataSet.TaskSetListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetListDataSet.TaskSetListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.TaskSetListDataSet.TaskSetListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet.TaskSetDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet.TaskSMilestoneDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet.TaskSDtlDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet.TaskSNxtDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet.TaskSetRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet.TaskSMilestoneRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet.TaskSDtlRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet.TaskSNxtRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet.TaskSetRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet.TaskSMilestoneRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet.TaskSDtlRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtTaskSetDataSet.TaskSNxtRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>

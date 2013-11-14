@@ -71,6 +71,9 @@
     <Report>
       <Path>EPDMDebugApp131108.vsp</Path>
     </Report>
+    <Report>
+      <Path>EPDMDebugApp131114.vsp</Path>
+    </Report>
   </Reports>
   <Launches>
     <ProjBinary>

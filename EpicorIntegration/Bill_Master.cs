@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace EpicorIntegration
 {
@@ -44,9 +45,28 @@ namespace EpicorIntegration
 
             parent_txt.Text = ParentNumber;
 
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+            try
+            {
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
 
-            BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+                BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+            }
+            catch (Exception ex) 
+            {
+                try
+                {
+                    MessageBox.Show("You must check part out before continuing.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+
+                    CheckOut_Master CO_M = new CheckOut_Master(parent_txt.Text);
+
+                    DialogResult dr = CO_M.ShowDialog();
+
+                    EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+
+                    BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+                }
+                catch (Exception ex1) {MessageBox .Show (ex1.Message + "\n\nThis process will now close","Error!",MessageBoxButtons.OK,MessageBoxIcon.Error); }
+            }
 
             #region Fill Operations
 
@@ -81,55 +101,46 @@ namespace EpicorIntegration
 
             UpdateFormFields();
 
-            GetCoils();
+            FillRawMenu();
         }
 
-        public List<string> GetCoils()
+        /// <summary>
+        /// Finds current safe parts within the current bill of materials and keeps a separate list of them to add after the bom has been updated (Sheets/Coils/E-Coat)
+        /// </summary>
+        /// <param name="BillParts">Current Epicor Bill of Materials</param>
+        /// <param name="BillQty">Current Epicor Bill of Materials Qty</param>
+        /// <param name="Bill_Qty">Bill of Materials Qty for only Safe items</param>
+        /// <returns>Bill of Materials for only safe items</returns>
+        public List<string> SafeParts(List<string> BillParts, List<string> BillQty, out List<string> Bill_Qty)
         {
-            Part Part = new Part(DataList.EpicConn);
+            List<string> RetVal = new List<string>();
 
-            PartListDataSet PartList = new PartListDataSet();
+            List<string> RetVal_Qty = new List<string>();
 
-            string WhereClause = "ClassID = 'PC05'";
+            List<RawMaterial> ListtoSave = new List<RawMaterial>();
 
-            bool morePages;
+            ListtoSave.AddRange(DataList.GetCoils());
 
-            PartList = Part.GetList(WhereClause, 0, 0, out morePages);
+            ListtoSave.AddRange(DataList.GetEcoat());
 
-            DataList.EpicClose();
+            ListtoSave.AddRange(DataList.GetSheets());
 
-            List<string> CoilNumbers = new List<string>();
-
-            foreach (DataRow DR in PartList.Tables[0].Rows)
+            for (int i = 0; i < BillParts.Count; i++)
             {
-                CoilNumbers.Add(DR["PartNum"].ToString());
+                for (int j = 0; j < ListtoSave.Count; j++)
+                {
+                    if (BillParts[i] == ListtoSave[j].part_number)
+                    {
+                        RetVal.Add(BillParts[i]);
+
+                        RetVal_Qty .Add(BillQty[i]);
+                    }
+                }
             }
 
-            return CoilNumbers;
-        }
+            Bill_Qty = RetVal_Qty;
 
-        public List<string> GetSheets()
-        {
-            Part Part = new Part(DataList.EpicConn);
-
-            PartListDataSet PartList = new PartListDataSet();
-
-            string WhereClause = "ClassID = 'PC04'";
-
-            bool morePages;
-
-            PartList = Part.GetList(WhereClause, 0, 0, out morePages);
-
-            DataList.EpicClose();
-
-            List<string> SheetNumbers = new List<string>();
-
-            foreach (DataRow DR in PartList.Tables[0].Rows)
-            {
-                SheetNumbers.Add(DR["PartNum"].ToString());
-            }
-
-            return SheetNumbers;
+            return RetVal;
         }
 
         /// <summary>
@@ -283,6 +294,11 @@ namespace EpicorIntegration
             findpart_btn.Enabled = !(BillDataGrid.Rows.Count == 0);
         }
 
+        /// <summary>
+        /// Retrieves and Updates bill of materials
+        /// </summary>
+        /// <param name="BillItems"></param>
+        /// <param name="BillQty"></param>
         private void Setbill(List<string> BillItems, List<string> BillQty)
         {
             qty_num.ValueChanged -= qty_num_ValueChanged;
@@ -295,13 +311,23 @@ namespace EpicorIntegration
 
             List<bool> FindItemSldWrks = new List<bool>();
 
+            List<string> AddBack = new List<string>();
+
+            List<string> AddBack_Qty = new List<string>();
+
             #region Locate items
 
             for (int i = 0; i < BillItems.Count; i++)
             {FindItemSldWrks.Add(false);}
 
             for (int i = 0; i < EngWBDS.Tables["ECOMtl"].Rows.Count; i++)
-            {FindItemEpicor .Add(false);}
+            {
+                FindItemEpicor .Add(false);
+
+                AddBack.Add(EngWBDS.Tables["ECOMtl"].Rows[i]["MtlPartNum"].ToString());
+
+                AddBack_Qty.Add(EngWBDS.Tables["ECOMtl"].Rows[i]["QtyPer"].ToString());
+            }
 
             for (int i = 0; i < BillItems.Count; i++)
             {
@@ -324,12 +350,16 @@ namespace EpicorIntegration
             }
             #endregion
 
-            
+            #region Determine what needs to be saved
+
+            AddBack = SafeParts(AddBack, AddBack_Qty, out AddBack_Qty);
+
+            #endregion
 
             #region Delete Missing Items
             for (int i = EngWBDS.Tables["ECOMtl"].Rows.Count - 1; i > -1; i--)
             {
-                if (!FindItemEpicor[i] && KeepRaw(parent_txt.Text))
+                if (!FindItemEpicor[i])
                 {
                     //Remove items
                     EngWBDS.Tables["ECOMtl"].Rows[i].Delete();
@@ -393,6 +423,51 @@ namespace EpicorIntegration
             catch (Exception ex) { }
             #endregion
 
+            #region Add Saved items
+
+            try
+            {
+                for (int i = 0; i < AddBack.Count; i++)
+                {
+                    rowmod = EngWBDS.Tables["ECOMtl"].Rows.Count;
+                    //Add item               
+                    EngWB.GetNewECOMtl(EngWBDS, gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "");
+                
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["MtlPartNum"] = AddBack[i];
+     
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["QtyPer"] = AddBack_Qty[i];
+       
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["RelatedOperation"] = ops_cbo.SelectedValue;
+       
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["ViewAsAsm"] = false;
+      
+                    partnum_txt.Text = AddBack[i];
+            
+                    DataTable ds = DataList.PartUOM(partnum_txt.Text);
+           
+                    uom_cbo.DataSource = ds;
+        
+                    uom_cbo.DisplayMember = "UOMCode";
+        
+                    uom_cbo.ValueMember = "UOMCode";
+     
+                    uom_cbo.SelectedIndex = 0;
+       
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["UOMCode"] = uom_cbo.SelectedValue;
+      
+                    decimal qty_val = decimal.Parse(AddBack_Qty[i]);
+       
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["QtyPer"] = qty_val;
+      
+                    EngWB.Update(EngWBDS);
+       
+                    EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+                }
+            }
+            catch(Exception ex){}
+
+            #endregion
+
             #region Update per line
             for (int i = 0; i < BillItems.Count; i++)
             {
@@ -434,6 +509,8 @@ namespace EpicorIntegration
 
             EnableItemDetails();
         }
+
+        #region Update Info
 
         private void UpdateDataSet()
         {
@@ -606,6 +683,106 @@ namespace EpicorIntegration
             PartList = null;
         }
 
+        private void FillRawMenu()
+        {
+            #region Add Coil Menu
+
+            List<RawMaterial> ListtoSave = new List<RawMaterial>();
+
+            ToolStripMenuItem TS_item = new ToolStripMenuItem();
+
+            TS_item.Name = "Coils";
+
+            TS_item.Text = "Coils";
+
+            ListtoSave = DataList.GetCoils();
+
+            ListtoSave.Sort();
+
+            for (int i = 0; i < ListtoSave.Count; i++)
+            {
+                ToolStripMenuItem TS_sub = new ToolStripMenuItem();
+
+                TS_sub.Name = ListtoSave[i].part_number;
+
+                TS_sub.Text = ListtoSave[i].ToString();
+
+                TS_sub.ToolTipText = ListtoSave[i].part_number;
+
+                TS_item.DropDownItems.Add(TS_sub);
+
+                TS_sub.Click += TS_sub_Click;
+            }
+
+            RawMenu.Items.Add(TS_item);
+
+            #endregion
+
+            #region Add Ecoat menu
+
+            ListtoSave = DataList.GetEcoat();
+
+            ToolStripMenuItem TS_item1 = new ToolStripMenuItem();
+
+            TS_item1.Name = "E-Coat";
+
+            TS_item1.Text = "E-Coat";
+
+            ListtoSave.Sort();
+
+            for (int i = 0; i < ListtoSave.Count; i++)
+            {
+                ToolStripMenuItem TS_sub = new ToolStripMenuItem();
+
+                TS_sub.Name = ListtoSave[i].part_number;
+
+                TS_sub.Text = ListtoSave[i].ToString();
+
+                TS_sub.ToolTipText = ListtoSave[i].part_number;
+
+                TS_item1.DropDownItems.Add(TS_sub);
+
+                TS_sub.Click += TS_sub_Click;
+            }
+
+            RawMenu.Items.Add(TS_item1);
+
+            #endregion
+
+            #region Add Sheet menu
+
+            ListtoSave = DataList.GetSheets(); 
+            
+            ToolStripMenuItem TS_item2 = new ToolStripMenuItem();
+
+            TS_item2.Name = "Sheets";
+
+            TS_item2.Text = "Sheets";
+
+            ListtoSave.Sort();
+
+            for (int i = 0; i < ListtoSave.Count; i++)
+            {
+                ToolStripMenuItem TS_sub = new ToolStripMenuItem();
+
+                TS_sub.Name = ListtoSave[i].part_number;
+
+                TS_sub.Text = ListtoSave[i].ToString();
+
+                TS_sub.ToolTipText = ListtoSave[i].part_number;
+
+                TS_item2.DropDownItems.Add(TS_sub);
+
+                TS_sub.Click += TS_sub_Click;
+            }
+
+            RawMenu.Items.Add(TS_item2);
+
+            #endregion
+        }
+
+        #endregion
+
         #region Changed Values
 
         private void partnum_txt_TextChanged(object sender, EventArgs e)
@@ -648,6 +825,17 @@ namespace EpicorIntegration
         }
 
         #endregion
+
+        #region Control Routines
+
+        void TS_sub_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem TS = (ToolStripMenuItem)sender;
+
+            partnum_txt.Text = TS.ToolTipText;
+
+            PartTimer.Enabled = true;
+        }
 
         private void saveandclose_btn_Click(object sender, EventArgs e)
         {
@@ -945,6 +1133,13 @@ namespace EpicorIntegration
             Form_Update_Enabled = true;
 
             DB_Update_Enabled = true;
+        }
+
+        #endregion
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            RawMenu.Show(button1, new Point(0, button1.Height));
         }
     }
 }

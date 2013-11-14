@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.BO.JobStatus</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.JobStatus">
+            <summary>
+            Client side business object for JobStatus.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.Proxy.JobStatusImpl">
+            <summary>
+            Job Status Maintenance
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Proxy constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.GetNewJobHead(Epicor.Mfg.BO.JobStatusDataSet)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.GetNewJobAsmbl(Epicor.Mfg.BO.JobStatusDataSet,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.DeleteByID(System.String)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.GetByID(System.String)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.GetRows(System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.Update(Epicor.Mfg.BO.JobStatusDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.UpdateExt(Epicor.Mfg.BO.UpdExtJobStatusDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.ChangeJobHeadFirm(System.Boolean,System.String,Epicor.Mfg.BO.JobStatusDataSet)">
+            <summary>
+            This method validates the JobHead.JobFirm and potentially changes the jobreleased
+            fields.
+            This method should run when the JobHead.JobFirm field changes.
+            </summary>
+            <param name="ipProposedJobFirm">The new proposed JobFirm value </param>
+            <param name="jobNum">The job number to search appropriate record </param>
+            <param name="ds">The dataset for the Job Status Maintenance</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.ChangeJobHeadJobEngineered(System.Boolean,System.String,Epicor.Mfg.BO.JobStatusDataSet)">
+            <summary>
+            This method validates the JobHead.JobEngineered and potentially changes the jobreleased field.
+            This method should run when the JobHead.JobEngineered field changes.
+            </summary>
+            <param name="ipProposedJobEngineered">The new proposed JobEngineered value </param>
+            <param name="jobNum">The job number to search appropriate record </param>
+            <param name="ds">The dataset for the Job Status Maintenance</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.ChangeJobHeadJobReleased(System.Boolean,System.String,Epicor.Mfg.BO.JobStatusDataSet)">
+            <summary>
+            This method validates the JobHead.JobReleased and potentially changes the jobengineered
+            and/or jobfirm fields.
+            This method should run when the JobHead.JobReleased field changes.
+            </summary>
+            <param name="ipProposedJobReleased">The new proposed JobReleased value </param>
+            <param name="jobNum">The job number to search appropriate record </param>
+            <param name="ds">The dataset for the Job Status Maintenance</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.GetListFromSelectedKeys(Epicor.Mfg.BO.JobStatusDataSet,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This methods will return all of the JobHeadSearch records which will be a subset
+            of the JobHead records that meet the selection criteria. This method will try
+            to mirror the functionality of the base GetRows method but since we are populating
+            a temp table we need our own public method.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.JobStatusDataSet">The dataset with pupolated key values</param>
+            <param name="pageSize">The page size, used only for UI adaptor </param>
+            <param name="absolutePage">The absolute page, used only for the UI adaptor </param>
+            <param name="morePages">More pages?, used only for the UI adaptor </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.GetRowsFromSelectedKeys(Epicor.Mfg.BO.JobStatusDataSet,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This methods will return all of the JobHeadSearch records which will be a subset
+            of the JobHead records that meet the selection criteria. This method will try
+            to mirror the functionality of the base GetRows method but since we are populating
+            a temp table we need our own public method.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.JobStatusDataSet">The dataset with pupolated key values</param>
+            <param name="pageSize">The page size, used only for UI adaptor </param>
+            <param name="absolutePage">The absolute page, used only for the UI adaptor </param>
+            <param name="morePages">More pages?, used only for the UI adaptor </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.JobStatusImpl.MassUpdate(Epicor.Mfg.BO.JobStatusDataSet)">
+            <summary>
+            Call this method to update multiple JobHead records.
+            </summary>
+            <param name="ds">The dataset for the Job Status Maintenance</param>
+        </member>
+        <member name="P:Epicor.Mfg.Proxy.JobStatusImpl.CallContext">
+            <summary>
+            Call context dataset
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.BO.JobStatus.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+    </members>
+</doc>

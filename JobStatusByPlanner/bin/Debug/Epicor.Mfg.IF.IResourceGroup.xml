@@ -1,0 +1,382 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.IF.IResourceGroup</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.ResourceGroupDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.ResourceGroupAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.ResourceDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.CapResLnkDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.ResourceCalDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.ResourceGroupRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.ResourceGroupAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.ResourceRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.CapResLnkRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.ResourceCalRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.ResourceGroupRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.ResourceGroupAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.ResourceRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.CapResLnkRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupDataSet.ResourceCalRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.IF.IResourceGroup">
+             <summary>
+            Resource Group
+             </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.GetNewResourceGroup(Epicor.Mfg.BO.ResourceGroupDataSet)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.GetNewResourceGroupAttch(Epicor.Mfg.BO.ResourceGroupDataSet,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.GetNewResource(Epicor.Mfg.BO.ResourceGroupDataSet)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.GetNewCapResLnk(Epicor.Mfg.BO.ResourceGroupDataSet,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.GetNewResourceCal(Epicor.Mfg.BO.ResourceGroupDataSet,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.DeleteByID(System.String)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.GetByID(System.String)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.GetRows(System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.Update(Epicor.Mfg.BO.ResourceGroupDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.UpdateExt(Epicor.Mfg.BO.UpdExtResourceGroupDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.GetCodeDescList(System.String,System.String)">
+            <summary>
+            To return the CodeDescriptionList values of a given table.field.
+            </summary>
+            <param name="tableName"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.BuildRsrcGrpResourceCalList(System.String)">
+            <summary>
+            This method will populate the ttResourceCal table using the resource group
+            that was passed in.
+            </summary>
+            <param name="cResourceGrpID">The current Resource GroupID </param>
+            <returns type="Epicor.Mfg.BO.ResourceGroupDataSet">The ResourceGroup data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.BuildRsrcResourceCalList(System.String,System.String)">
+            <summary>
+            This method will populate the ttResourceCal table using the resource group
+            that was passed in.
+            </summary>
+            <param name="cResourceGrpID">The current Resource Group ID </param>
+            <param name="cResourceID">The current Resource ID </param>
+            <returns type="Epicor.Mfg.BO.ResourceGroupDataSet">The ResourceGroup data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.CheckRGPlant(System.String)">
+            <summary>
+            This method will verify that the Resource Group ID entered is from the Current
+            plant.
+            </summary>
+            <param name="cResourceGrpID">The current Resource GroupID </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.CustomizeResourceCalRsrc(System.String,System.String,System.Nullable{System.DateTime},Epicor.Mfg.BO.ResourceGroupDataSet)">
+            <summary>
+            This method will get a current ResourceCal record or create a temporary
+            ResourceCal record to be modified for a RESOURCE. The ProdHours will be
+            defaulted from the weekday of the selected date. If any changes are made
+            to the ttResourceCal record, the UpdateResourceCal method will have to be
+            called to write the temporary ResourceCal record to the database.
+            </summary>
+            <param name="cResourceID">The current Resource ID </param>
+            <param name="cResourceGrpID">The current Resource Group ID </param>
+            <param name="daDate">The selected date to be customized </param>
+            <param name="ds" type="Epicor.Mfg.BO.ResourceGroupDataSet">The ResourceGroup data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.CustomizeResourceCalRsrcGrp(System.String,System.Nullable{System.DateTime},Epicor.Mfg.BO.ResourceGroupDataSet)">
+            <summary>
+            This method will get a current ResourceCal record or create a temporary
+            ResourceCal record to be modified for a RESOURCE GROUP. The ProdHours
+            will be defaulted from the weekday of the selected date. If any changes
+            are made to the ttResourceCal record, the UpdateResourceCal method will have
+            to be called to write the temporary ResourceCal record to the database.
+            </summary>
+            <param name="cResourceGrpID">The current Resource Group ID </param>
+            <param name="daDate">The selected date to be customized </param>
+            <param name="ds" type="Epicor.Mfg.BO.ResourceGroupDataSet">The ResourceGroup data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.DeleteResourceCal(Epicor.Mfg.BO.ResourceGroupDataSet)">
+            <summary>
+            This method will delete ResourceCal record.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.ResourceGroupDataSet">The ResourceGroup data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.InsertNewResource(System.String,System.String,Epicor.Mfg.BO.ResourceGroupDataSet)">
+            <summary>
+            This method creates a new Resource after prompting for the
+            ResourceID and ResourceGrpID.
+            This is to replace the standard GetNewResource .
+            </summary>
+            <param name="ipResourceID">The new resource id value.</param>
+            <param name="ipResourceGrpID">The resourcegrp id value that you are adding this resource to</param>
+            <param name="ds" type="Epicor.Mfg.BO.ResourceGroupDataSet">The ResourceGroup data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.MoveResource(System.String,System.String,System.String)">
+            <summary>
+            This method creates a new Resource after prompting for the
+            ResourceID and ResourceGrpID.
+            This is to replace the standard GetNewResource .
+            </summary>
+            <param name="ipResourceID">The moving resource id value.</param>
+            <param name="ipFromResourceGrpID">The resourcegrp id value that you are moving the resource from.</param>
+            <param name="ipToResourceGrpID">The resourcegrp id value that you are moving the resource to.</param>
+            <returns type="Epicor.Mfg.BO.ResourceGroupDataSet">The ResourceGroup data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.MoveResourceCal(Epicor.Mfg.BO.ResourceGroupDataSet,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            This method will change SpecialDay of ResourceCal record.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.ResourceGroupDataSet">The ResourceGroup data set</param>
+            <param name="pOriginalDay">The original day of the excpetion</param>
+            <param name="pNewDay">The new day the excpetion was moved to</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.SetInactiveFlag(Epicor.Mfg.BO.ResourceGroupDataSet)">
+            <summary>
+            Call this method when the Inactive Flag on the Resource Group changes and the
+            user answer "Yes" to set the inactive flag on the Resources. All of the
+            Resources Inactive flags will be set to equal to the new inactive setting on the
+            Resource Group.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.ResourceGroupDataSet">The ResourceGroup data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.UpdateResourceCal(Epicor.Mfg.BO.ResourceGroupDataSet)">
+            <summary>
+            This method will check to see if the current ttResourceCal record was modified.
+            If it was modified then it compares the capacity from the ttResourceCal
+            the capacity of the production calendar for that day of the week. If they
+            are different, or if it is a special working day or non-working day then
+            it save the ttResourceCal record to the database.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.ResourceGroupDataSet">The ResourceGroup data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.ValidateInspection(System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="ipProposedInspPlan">The new proposed InspPlanPartNum value</param>
+            <param name="ipProposedSpecId">The new proposed SpecID value</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IResourceGroup.ValidateResource(System.String,System.String)">
+            <summary>
+            This method validates that the Resource exists and that it isn't assigned to
+            another Resource Group.
+            </summary>
+            <param name="ipResourceID">The resource id value to validate.</param>
+            <param name="ipResourceGrpID">The resourcegrp id value to validate.</param>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupListDataSet.ResourceGroupListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupListDataSet.ResourceGroupListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ResourceGroupListDataSet.ResourceGroupListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.ResourceGroupDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.ResourceGroupAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.ResourceDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.CapResLnkDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.ResourceCalDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.ResourceGroupRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.ResourceGroupAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.ResourceRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.CapResLnkRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.ResourceCalRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.ResourceGroupRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.ResourceGroupAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.ResourceRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.CapResLnkRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtResourceGroupDataSet.ResourceCalRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>

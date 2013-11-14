@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JobStatusByPlanner.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="uname" Type="System.String" Scope="User">
+      <Value Profile="(Default)">bhooper</Value>
+    </Setting>
+    <Setting Name="passw" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Fortheswarm1</Value>
+    </Setting>
+    <Setting Name="svrname" Type="System.String" Scope="User">
+      <Value Profile="(Default)">EPAPP1</Value>
+    </Setting>
+    <Setting Name="svrport" Type="System.String" Scope="User">
+      <Value Profile="(Default)">9421</Value>
+    </Setting>
+    <Setting Name="validated" Type="System.String" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="allresults" Type="System.String" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="linelimit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="mtlreqtype" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Part</Value>
+    </Setting>
+    <Setting Name="dsAGC" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

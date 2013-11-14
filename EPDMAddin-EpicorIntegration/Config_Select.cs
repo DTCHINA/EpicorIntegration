@@ -103,9 +103,32 @@ namespace EPDMAddin_EpicorIntegration
 
         private void Config_Select_Load(object sender, EventArgs e)
         {
+            #region No selectable part numbers
+
+            int j = 0;
+
+            for (int i = 0; i < config_cbo.Items.Count; i++)
+            {
+                config_cbo.SelectedIndex = i;
+
+                if (pnum_txt.Text != "")
+                    j++;
+            }
+
+            if (j == 0)
+            {
+                this.DialogResult = DialogResult.Cancel;
+
+                MessageBox.Show("There are no properties to determine the part number in this file.  Please correct this and try again.\n\nIf the properties are located in the \"@\" Configuration move them to another configuration.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                this.Close();
+            }
+
+            #endregion
+
             if (config_cbo.Items.Count == 2 && config_cbo.Items[0].ToString() == "@" && config_cbo.Items[1].ToString() == "Default")
             {
-                SelectedConfig = "@";
+                SelectedConfig = "Default";
 
                 this.DialogResult = DialogResult.OK;
 
@@ -148,8 +171,6 @@ namespace EPDMAddin_EpicorIntegration
 
         public bool OnetoRuleThemAll(out string Configuration_Name)
         {
-            bool retval = false;
-
             IEdmFile5 part;
 
             try
@@ -168,6 +189,8 @@ namespace EPDMAddin_EpicorIntegration
 
             Configuration_Name = null;
 
+            int j = 0;
+
             for (int i = 0; i < config_cbo.Items.Count; i++)
             {
                 config_cbo.SelectedIndex = i;
@@ -178,14 +201,14 @@ namespace EPDMAddin_EpicorIntegration
                 {
                     Configuration_Name = config_cbo.Text;
 
-                    if (retval != true)
-                        retval = true;
-                    else
-                        return false;
+                    j++;
                 }
             }
 
-            return true;
+            if (j > 0)
+                return false;
+            else
+                return true;
         }
     }
 }

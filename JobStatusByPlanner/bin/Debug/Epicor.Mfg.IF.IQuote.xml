@@ -1,0 +1,1591 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.IF.IQuote</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet.ETCAddressDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet.ETCMessageDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet.ETCAddressRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet.ETCMessageRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet.ETCAddressRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ETCAddrValidationDataSet.ETCMessageRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteHedDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteHedAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QSalesRPDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteCntDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteComDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteDtlDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteDtlAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteCoPartDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteMscDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteQtyDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QtmmkupDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QtQtyMscDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteHedMscDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.HedTaxSumDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.PartSubsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.TaxConnectStatusDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteHedRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteHedAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QSalesRPRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteCntRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteComRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteDtlRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteDtlAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteCoPartRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteMscRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteQtyRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QtmmkupRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QtQtyMscRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteHedMscRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.HedTaxSumRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.PartSubsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.TaxConnectStatusRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteHedRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteHedAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QSalesRPRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteCntRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteComRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteDtlRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteDtlAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteCoPartRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteMscRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteQtyRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QtmmkupRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QtQtyMscRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.QuoteHedMscRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.HedTaxSumRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.PartSubsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteDataSet.TaxConnectStatusRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.IF.IQuote">
+            <summary>
+            This procedure is used to get field property: Currency Source, Type set in OD
+            the field is from TT-table
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQuoteHed(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQuoteHedAttch(Epicor.Mfg.BO.QuoteDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQSalesRP(Epicor.Mfg.BO.QuoteDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQuoteCnt(Epicor.Mfg.BO.QuoteDataSet,System.Int32,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQuoteCom(Epicor.Mfg.BO.QuoteDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQuoteDtl(Epicor.Mfg.BO.QuoteDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQuoteDtlAttch(Epicor.Mfg.BO.QuoteDataSet,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQuoteCoPart(Epicor.Mfg.BO.QuoteDataSet,System.Int32,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQuoteMsc(Epicor.Mfg.BO.QuoteDataSet,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQuoteQty(Epicor.Mfg.BO.QuoteDataSet,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQtmmkup(Epicor.Mfg.BO.QuoteDataSet,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQtQtyMsc(Epicor.Mfg.BO.QuoteDataSet,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewQuoteHedMsc(Epicor.Mfg.BO.QuoteDataSet,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.DeleteByID(System.Int32)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetByID(System.Int32)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetRows(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.Update(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.UpdateExt(Epicor.Mfg.BO.UpdExtQuoteDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetCodeDescList(System.String,System.String)">
+            <summary>
+            To return the CodeDescriptionList values of a given table.field.
+            </summary>
+            <param name="tableName"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.FindPartAndGetRowID(System.String,System.String@,System.String@,System.String@,System.String@)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.FindFirstPart(System.String,System.Int32,System.String@,System.String@,System.String@,System.String@)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetPartFromRowID(System.String,System.String,System.String@,System.String@)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetCustNumFromRowID(System.String,System.String,System.String@,System.Int32@)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetMfgPartFromRowID(System.String,System.String,System.String@,System.Int32@,System.String@)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.AllowUndoReadyToQuote">
+            <summary>
+            This method exists soley for the purpose of allowing security for
+            unchecking the Ready To Quote flag to be defined
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ApplyOrderBasedDiscount(System.Int32)">
+            <summary>
+            This method applys the OrderBased Discount logic
+            </summary>
+            <param name="quoteNum">The current QuoteHed.QuoteNum field </param>
+            <returns>Returns the updated dataset </returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CalcMaterialMarkup(System.Int32,System.Int32,System.Int32,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Each part class can have its own material markup percentage
+            This method calculates the Material Markup from the Qtmmkup table
+            </summary>
+            <param name="quoteNum">Quote Num</param>
+            <param name="quoteLine">Quote Line</param>
+            <param name="qtyNum"> Quote Qty Number </param>
+            <param name="ds">Returns the updated dataset </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeDiscBreakListCode(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Change the DiscBreakListCode
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteDataSet">The Quote data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeDocOrderUnitPrice(System.Decimal,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Perform the required updates when DocOrderUnitPrice changes.
+            </summary>
+            <param name="newDocOrderUnitPrice">The new DocOrderUnitPrice value.</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteDataSet">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeDtlContractNum(System.Int32,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Method to call when changing the ContractNum field in the Quote Line record.
+            Updates the QuoteDtl with values based on the new ContractNum.
+            </summary>
+            <param name="ipContractNum">Proposed Contract Number</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteDataSet">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeDtlRenewalNbr(System.Int32,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Method to call when changing the RenewalNbr field in the Quote Line record.
+            Updates the QuoteDtl with values based on the new RenewalNbr.
+            </summary>
+            <param name="ipRenewalNbr">Proposed Renewal Number</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteDataSet">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeKitPricing(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Recalculates the parent line's unit price when the kit pricing is set to "P", if the kit pricing is set to "C"
+            the price will be calculated on the AfterUpdate procedure.
+            </summary>
+            <param name="ds">Quote DataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeKitQtyPer(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Used to recalculate the OrderQty of the component kit line using the parent's OrderQuantity
+            </summary>
+            <param name="ds">Quote DataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeMiscPercent(Epicor.Mfg.BO.QuoteDataSet,System.String)">
+            <summary>
+            This method recalculates Misc Charges Amounts when Percentage was changed.
+            </summary>
+            <param name="ds">Returns the updated dataset </param>
+            <param name="tableName">name of table being passed in</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeOrderQty(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Gets the proposed OrderQty and if the current OrderDtl record is a sales kit then it recalculates
+            the order qty of each component based on the proposed OrderQty amount
+            </summary>
+            <param name="ds">Quote dataset to get the dirty OrderDtl and update its components</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeOverrideDiscPriceList(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Rerun the price break calculation if the override price list flag is changed from
+            true to false.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteDataSet">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangePartNum(Epicor.Mfg.BO.QuoteDataSet,System.String)">
+            <summary>
+            Update Quote Detail information when the Part Number is changed.
+            </summary>
+            <param name="ds">Quote dataset</param>
+            <param name="uomCode"> UOM Code (only used for Product Codes)</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangePartNumMaster(System.String@,System.Boolean@,System.Boolean@,System.String@,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String@,System.String@,System.String@,System.Boolean@,System.String@,System.Boolean,System.Boolean,System.String@,System.Boolean@,System.Boolean@,System.String@,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            </summary>
+            <param name="partNum">proposed PartNum</param>
+            <param name="lIsPhantom">bool which identifies whether this is a phantom part. set in 'getPartXRefInfo' logic</param>
+            <param name="lIsSalesKit">bool which identifies whether this is a saleskit part. set in 'getPartXRefInfo' logic</param>
+            <param name="uomCode">associated uomCode for this part. maybe overwritten in chkPartXRefInfo</param>
+            <param name="rowType">part Type for this row</param>
+            <param name="sysRowID">sysRowID for current row</param>
+            <param name="salesKitView">flag to identify whether this OrderDtl record is from salesKitView (or OrderDtlView)</param>
+            <param name="removeKitComponents">flag (set by user unless suppressUserPrompts is true) to ok removing kit components if kit parent changes</param>
+            <param name="suppressUserPrompts">flag to determine is user wants to be able to respond to messages and return to UI</param>
+            <param name="runChkPrePartInfo">flag to determine whether the logic in runChkPrePartInfo is run</param>
+            <param name="vMessage">message for user to respond to</param>
+            <param name="vPMessage">message for user to respond to</param>
+            <param name="vBMessage">message for user to respond to</param>
+            <param name="vSubAvail">logical to show whether substitute parts are available</param>
+            <param name="vMsgType">message type</param>
+            <param name="getPartXRefInfo">flag to determine whether a particular part of validation logic is run</param>
+            <param name="checkChangeKitParent">flag to determine whether a particular part of validation logic is run</param>
+            <param name="cDeleteComponentsMessage">message to display to the user</param>
+            <param name="multipleMatch">indicates there are multiple matches for this part</param>
+            <param name="promptToExplodeBOM">request input from user - display message</param>
+            <param name="explodeBOMerrMessage">explode BOM err message</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteDataSet">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeQuoteCntCustID(System.String,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method takes in a proposed CustID, and if valid, updates the customer-
+            related fields on the QuoteCnt.
+            </summary>
+            <param name="pcCustID">Proposed Customer ID</param>
+            <param name="ds">Quote DataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeQuoteCoPartPartNum(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method validates the QuoteCoPart.CoPartNum and defaults fields associated with the partnum.
+            This method should run when the QuoteCoPart.CoPartNum field changes.
+            </summary>
+            <param name="ds">The Quote data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeQuoteHedUseOTS(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Method to call when changing the UseOTS field.
+            Refreshes the address list
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteDataSet">The Service Contract data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeSellingExpQty(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            </summary>
+            <param name="ds">Quote DataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeShipToCustID(System.String,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Update Ship To Information when Ship To is changed
+            </summary>
+            <param name="iShipToCustID"> Ship To Customer ID </param>
+            <param name="ds">Quote dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ChangeStandardPct(System.String,System.Int32,System.Int32,System.Int32,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method updates the QuoteQty markup percents and the Qtmmkup table using
+            the specified markup record
+            </summary>
+            <param name="markupId">Standard Percent Markup Id</param>
+            <param name="quoteNum"> Quote Number </param>
+            <param name="quoteLine"> Quote Line </param>
+            <param name="qtyNum"> Quote Quantity Number </param>
+            <param name="ds">Returns the updated dataset </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CheckBOMErrors(System.Int32,System.Int32,System.String@)">
+            <summary>
+            This method runs through a quote's BOM and returns a list of assembly and/or
+            materials that are on hold or inactive. Quote Line cannot be engineered or QuoteHed
+            cannot be Quoted until these errors are taken care of
+            </summary>
+            <param name="quoteNum">Quote Number</param>
+            <param name="quoteLine">QuoteLine, 0 for all lines, otherwise only looks a specific line</param>
+            <param name="errorList">contains the Run Out warning messages </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CheckCustomerCreditLimit(Epicor.Mfg.BO.QuoteDataSet,System.String@)">
+            <summary>
+            The method returns a character string if the customer will go over their credit limit
+            and the user is given the choice of continuing or not.
+            </summary>
+            <param name="ds">QuoteDataSet</param>
+            <param name="cCreditLimitMessage">The over credit limit message text </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CheckPhaseID(System.String,System.String)">
+            <summary>
+            The method review if phaseid is availble in ProjPhase Table
+            </summary>
+            <param name="ipProjectID"> Project ID </param>
+            <param name="ipPhaseID"> Phase ID </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CheckPreCustPartInfo(System.String,System.Int32,System.String@)">
+            <summary>
+            The method is to be run on leave of the CustPartNum field
+            before the GetCustPartInfo or Update methods are run.
+            In case existance of CustomerPart it returns Part Number
+            which belongs this CustomerPart.
+            </summary>
+            <param name="xPartNum">The new Customenr Part Number</param>
+            <param name="custNum">The current QuoteHed.CustNum</param>
+            <param name="partNum">The new Part Num for this Customer Part</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CheckPrePartInfo(System.Int32,System.Int32,System.String,System.String@,System.String@,System.String@,System.String@,System.Boolean@,System.String@)">
+            <summary>
+            The method is to be run on leave of the PartNum, Revision and CustPartNum fields
+            before the GetCustPartInfo or Update methods are run. This returns all the questions
+            that need to be asked before a part can be changed.
+            </summary>
+            <param name="quoteNum">The current QuoteHed.QuoteNum field </param>
+            <param name="quoteLine">The current QuoteDtl.QuoteLine field </param>
+            <param name="fieldName">The name of the field you are leaving </param>
+            <param name="partNum">The new PartNum if a substitute part is found, partNum will be the substitute part </param>
+            <param name="vMessage">If the part is configured, asks if it's okay to delete the configuration inputs
+            No means the part cannot be changed </param>
+            <param name="vBMessage">Asks if you want to refresh the QuoteQty records. The answer will be stored in
+            QuoteDtl.RefreshQty </param>
+            <param name="vPMessage">Asks if the user wants to use a substitute part </param>
+            <param name="vSubAvail">Indicates other substitute parts besides the default exist </param>
+            <param name="vMsgType">Indicates what type of message vPMessage is</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CheckPreQuoteCoPartInfo(System.String,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method validates the QuoteCoPart.CoPartNum is not serial tracked or a configured part.
+            </summary>
+            <param name="ipProposedPartNum">The new proposed QuoteCoPart.CoPartNum value</param>
+            <param name="ds">The Quote data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CheckProjectID(System.String)">
+            <summary>
+            The method review if projectid is availble in Project Table
+            </summary>
+            <param name="ipProjectID">Project ID </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CheckQuoteNum(System.Int32)">
+            <summary>
+            This method will check if the quote number entered is valid. If the quote number
+            that's entered doesn't already exist and the number entered is greater than the number defined
+            as the starting quote number in company maintenance, then the quote number is invalid.
+            </summary>
+            <param name="quoteNum"> Quote Number </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CheckQuoteSecurity(System.Int32)">
+            <summary>
+            </summary>
+            <param name="ipquoteNum">The current QuoteHed.QuoteNum field </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CheckRateGrpCode(System.String,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Update Quote Detail information when the Part Number is changed.
+            </summary>
+            <param name="ipRateGrpCode">Currency Rate Group Code </param>
+            <param name="ds">Quote dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CopyLines(System.Int32,System.String,System.Boolean,System.Boolean,System.String@,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method copies lines from other Quotes to the current Quote
+            </summary>
+            <param name="targetQuoteNum">The Quote to write the lines to </param>
+            <param name="sourceQuoteLines">A delimited list of quote lines to be copied. Format - QuoteNum tick QuoteLine tilde QuoteNum tick QuoteLine</param>
+            <param name="mtlCosts">Indicates if Material/Operation Costs should be refreshed</param>
+            <param name="opStds">Indicates if Operation Standards should be refreshed</param>
+            <param name="vMessage">Output list of lines that could not be copied</param>
+            <param name="ds">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CreateOrder(Epicor.Mfg.BO.QuoteDataSet,System.Int32@)">
+            <summary>
+            This method takes the specified QuoteDtl lines and creates a Sales Order
+            </summary>
+            <param name="ds">QuoteDataSet</param>
+            <param name="orderNum">New Order Number </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CreateOrderSaveOTS(Epicor.Mfg.BO.SaveQuoteOTSParamsDataSet,Epicor.Mfg.BO.QuoteDataSet,System.Int32@)">
+            <summary>
+            This method takes the specified QuoteDtl lines and creates a Sales Order
+            after saving the One Time Ship To as Customer.
+            </summary>
+            <param name="ds">SaveQuoteOTSParamsDataSet</param>
+            <param name="ds1">QuoteDataSet</param>
+            <param name="orderNum">New Order Number </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.CreateQuoteDtlComplements(System.Int32,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Create new lines for every complement selected for a given Line,
+            </summary>
+            <param name="iQuoteNum">The Quote Number</param>
+            <param name="ds">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.DefaultOrderFields(System.Int32,System.String@)">
+            <summary>
+            This method takes the Quote and initializes the fields used during CreateOrder.
+            The user will then update the Quote dataset and then call the CreateOrder method
+            to actually create the order.
+            </summary>
+            <param name="quoteNum">Quote Number</param>
+            <param name="creditMessage">If the Customer is on credit hold, this will warn the user before the order can be created </param>
+            <returns></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.DuplicateQuote(System.Int32,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            This method creates a new Quote from an existing quote
+            </summary>
+            <param name="sourceQuote">The Quote to duplicate</param>
+            <param name="sourceLines">List of lines from the source Quote to be copied. If blank
+            all lines will be copied Format:QuoteLine~QuoteLine</param>
+            <param name="mtlCosts">Indicates if Material/Operation Costs should be refreshed</param>
+            <param name="opStds">Indicates if Operation Standards should be refreshed</param>
+            <returns>Returns the new Quote </returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ETCValidateAddress(System.Int32,System.Int32,System.Boolean@,System.Boolean@,System.String@)">
+            <summary>
+            Call tax integration and loads temp tables from the results.
+            </summary>
+            <returns>The ETCAddrValidation data set </returns>
+            <param name="quoteNum">QuoteHed.QuoteNum</param>
+            <param name="quoteLine">QuoteDtl.QuoteLine</param>
+            <param name="statusFlag">Set to true if the integration is up, false if down.</param>
+            <param name="errorFlag">If true, an error occured.</param>
+            <param name="errorMsg">If Error Flag is true, this is the associated message.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.exportQuoteToEST(System.Int32)">
+            <summary>Exports quotation for the Estimating System.</summary>
+            <param name="quoteNum">Quote Number</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetCompetitorInfo(System.Int32,System.Int32,System.String@,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            This method returns default information for the competitor. Method must use
+            parameters instead of the dataset due to the problem with changing the primary key field
+            </summary>
+            <param name="quoteNum">QuoteNum of the QuoteCom record</param>
+            <param name="compNum">Competitor Number of the QuoteCom record</param>
+            <param name="name">Returns the Competitor Name</param>
+            <param name="faxNum">Returns the Competitor Fax#</param>
+            <param name="phoneNum">Returns the Competitor Phone#</param>
+            <param name="emailAddress">Returns the Competitor Email Address</param>
+            <param name="compURL">Returns the Competitor Web Site Address</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetContactInfo(System.Int32,System.Int32,System.String,System.Int32,System.Int32@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            This method returns default information for the Contact. Method must use
+            parameters instead of the dataset due to the problem with changing the primary key field
+            </summary>
+            <param name="quoteNum">QuoteNum of the QuoteCom record</param>
+            <param name="custNum">Customr Number of the QuoteCom record</param>
+            <param name="shipToNum">ShipTo Number of the QuoteCom record</param>
+            <param name="conNum">Contact Number of the QuoteCom record</param>
+            <param name="perConID">Returns the Contact PerConID </param>
+            <param name="perConName">Returns the Contact Name</param>
+            <param name="name">Returns the Contact Name</param>
+            <param name="func">Returns the Contact fucntion</param>
+            <param name="phoneNum">Returns the Contact Phone#</param>
+            <param name="fax">Returns the Contact Fax#</param>
+            <param name="emailAddress">Returns the Contact Email Address</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetCurrencyBase(System.String@)">
+            <summary>
+            This method returns the Base CurrencyCode
+            </summary>
+            <param name="opCurrencyBase">Base Currency</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetCustomerInfo(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method returns default information for the Customer.
+            </summary>
+            <param name="ds">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetCustPartInfo(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Defaults Part Information when the Customer Part Number changes
+            MUST RUN UPDATE AFTER THIS METHOD
+            </summary>
+            <param name="ds">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetDtlUnitPriceInfo(System.Boolean,System.Boolean,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method updates the QuoteDtl unit price and revenue fields when the
+            SellingExpextedQty changes
+            </summary>
+            <param name="skipDiscLookup">Skip lookup of DiscPercent</param>
+            <param name="preserveAmt">Preserve the DiscountAmt</param>
+            <param name="ds">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetExchangeRate(System.String,System.String,System.Decimal@,System.String@)">
+            <summary>
+            This method returns the Exchange Rate information for the selected Currency. The system
+            may not have an exchange rate between the Quote and Base so it may use an middle Currency
+            so that it will go Quote Currency -> Ref Currency -> Base Currency
+            </summary>
+            <param name="vCurrencyCode">Currency selected for the Quote</param>
+            <param name="vRateGrpCode">Currency Rate Group selected for the quote </param>
+            <param name="vExchangeRate">Current exchange rate between the Quote currency and the Ref Currency</param>
+            <param name="vXRateLabel">Label for the Exchange Rate field</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetKitComponents(System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean,System.String@,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Calls GetKitComponents from SalesKitting.p, which creates a list of OrderDtl records
+            that will be treated as kit components of the given OrderLine.
+            </summary>
+            <param name="iPartNum">Part Number of the given QuoteLine</param>
+            <param name="iRevisionNum">Revision Number selected for the given PartNum</param>
+            <param name="iAltMethod">Aletrnate Method of the given Part number</param>
+            <param name="iTargetAsm">Target assembly to be exploded (usually asm 0)</param>
+            <param name="quoteNum">Quote number to be exploded</param>
+            <param name="quoteLine">Quote line which will be the Kit Parent</param>
+            <param name="iUseMethodForParts">-</param>
+            <param name="regenerateKit">If TRUE then it will delete all components before getting them again</param>
+            <param name="errorMsg">Input-Output parameter that will hold the error messages in case something went wrong</param>
+            <param name="ds">Quote DataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetListCustom(System.String,System.String,System.Int32,System.Int32,System.String,System.Boolean@)">
+            <summary>
+            This overload of GetList adds Quotes which ShipTo's fall within authorized territories.
+            </summary>
+            <param name="whereClause">The search criteria</param>
+            <param name="whereClauseDtl">The search criteria</param>
+            <param name="pageSize">Size of a page</param>
+            <param name="absolutePage">The absolute page</param>
+            <param name="customClause">Custom WhereClause</param>
+            <param name="morePages">Indicating if there are more pages after this batch</param>
+            <returns type="Epicor.Mfg.BO.QuoteHedListDataSet">Returns the list of Quotes</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetListFromSelectedKeys(Epicor.Mfg.BO.QuoteHedListDataSet,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This methods will return all of the Quote records which will be a subset
+            of the QuoteHEd records that meet the selection criteria. This method will try
+            to mirror the functionality of the base GetRows method.
+            </summary>
+            <param name="ds">The dataset with pupolated key values</param>
+            <param name="pageSize">The page size, used only for UI adaptor </param>
+            <param name="absolutePage">The absolute page, used only for the UI adaptor </param>
+            <param name="morePages">More pages?, used only for the UI adaptor </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetMaterialMarkup(System.Int32,System.Int32,System.Int32,System.Decimal@,System.Decimal@)">
+            <summary>
+            This procedure is used to be called from EQR10.p to get the MaterialMarkupP
+            and MaterialMarkupM fields since these two fields are external and they're needed
+            to be displayed on the report.
+            </summary>
+            <param name="quoteNum">Quote Num</param>
+            <param name="quoteLine">Quote Line</param>
+            <param name="qtyNum"> Quote Qty Number </param>
+            <param name="mtlMarkupP"> The MarkupP</param>
+            <param name="mtlMarkupM"> The MarkupM</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetMiscChrgDefaults(Epicor.Mfg.BO.QuoteDataSet,System.String)">
+            <summary>
+            This method returns default information for the MiscChrg. Method must use
+            parameters instead of the dataset due to the problem with changing the primary key field
+            as well as QuoteMsc and QtQtyMsc can the same code
+            </summary>
+            <param name="ds">Returns the updated dataset </param>
+            <param name="tableName">name of table being passed in</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetMktgInfo(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method updates the description fields for the Marketing Campaign and Event fields
+            </summary>
+            <param name="ds">Returns the updated dataset </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewContractQuoteDtl(Epicor.Mfg.BO.QuoteDataSet,System.Int32)">
+            <summary>
+            Method to call when adding a new QuoteDtl record for a Service Contract or a Renewal
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteDataSet">The Quote data set</param>
+            <param name="ipQuoteNum">The quote number to add the line to</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetNewSalesKit(System.Int32,System.Int32,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Created a new QuoteDtl and sets it as a kit component for the given QuoteLine
+            </summary>
+            <param name="quoteNum">Quote number where the Kit Parent resides</param>
+            <param name="quoteLine">Quote line that has the SalesKit and to which the kit component will be added</param>
+            <param name="ds">Quote Dataset with the new QuoteDtl record as a Sales Kit</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetPartXRefInfo(System.String@,System.String,System.String,System.String@,System.String@,System.String@,System.Boolean@)">
+            <summary>
+            This method defaults PartAdvisor fields when the PartNum field changes
+            </summary>
+            <param name="partNum"> Proposed PartNumber change</param>
+            <param name="sysRowID"> RowID of the selected record. Skips find part logic if this has a value. </param>
+            <param name="rowType"> RowType of the selected record. Only used with sysRowID. </param>
+            <param name="uomCode"> UOM Code (only used for Product Codes)</param>
+            <param name="serialWarning">Warning message if the InvTransfer line contains serial numbers</param>
+            <param name="questionString">If the part is being changed to something different than what was on the order, ask if the user wants to continue </param>
+            <param name="multipleMatch"> Multiple matches were found by FindPart </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetPerConInfo(System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            This method returns default information for the QuoteCnt From Persons contact.
+            </summary>
+            <param name="quoteNum">QuoteNum of the QuoteCom record</param>
+            <param name="custNum">Customr Number of the QuoteCom record</param>
+            <param name="shipToNum">ShipTo Number of the QuoteCom record</param>
+            <param name="conNum">Contact Number of the QuoteCom record</param>
+            <param name="perConID">the Contact PerConID </param>
+            <param name="perConName">Returns the Contact Name</param>
+            <param name="name">Returns the Contact Name</param>
+            <param name="func">Returns the Contact fucntion</param>
+            <param name="phoneNum">Returns the Contact Phone#</param>
+            <param name="fax">Returns the Contact Fax#</param>
+            <param name="emailAddress">Returns the Contact Email Address</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetPhantomComponents(System.String,System.Int32,System.Int32,System.String@,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary> This procedure will explode the BOM of a part set as Phantom </summary>
+            <param name="phPartNum">The phantom part number</param>
+            <param name="quoteNum">Quote number where the lines will be saved</param>
+            <param name="quoteLine">Quote line of the parent line</param>
+            <param name="errMessage">Returns any error messages found during the process</param>
+            <param name="ds">Quote DataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetPriceListInfo(Epicor.Mfg.BO.QuoteDataSet,System.Boolean)">
+            <summary>
+            Finds the default pricelist if override field is blank
+            updates the QuoteDtl record with the new pricebreak information
+            called when OverridePriceList, BreakListCode or ProdCode fields change
+            </summary>
+            <param name="refreshQty">Indicate if the app needs to refresh the Quantity Breaks</param>
+            <param name="ds">Returns the updated dataset </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetProjectRoles">
+            <summary>
+            Returns list of Project Roles
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetQtyPriceInfo(Epicor.Mfg.BO.QuoteDataSet,System.Boolean@)">
+            <summary>
+            This method updates the unitprice information when the QuoteQty SellingQty has changed
+            </summary>
+            <param name="ds">Returns the updated dataset </param>
+            <param name="hasPriceBreak">Indicates if there is a price break </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetQtyPriceInfoCfgPart(Epicor.Mfg.BO.QuoteDataSet,System.Boolean@)">
+            <summary>
+            This method updates the unitprice information when the QuoteQty SellingQty has changed
+            </summary>
+            <param name="ds">Returns the updated dataset </param>
+            <param name="hasPriceBreak">Indicates if there is a price break </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetQtyToOrdPrice(System.Int32,System.Int32,System.Decimal,System.String,System.Decimal@,System.Decimal@)">
+            <summary>
+            This method takes the QuantityToOrder field and returns the base and doc unit price
+            </summary>
+            <param name="quoteNum">Quote Number </param>
+            <param name="quoteLine">Quote Line </param>
+            <param name="quantityToOrder">Quantity used to create order</param>
+            <param name="sellingUM">Selling UM </param>
+            <param name="orderUnitPrice">Base Expected Unit Price</param>
+            <param name="docOrderUnitPrice">Document Expected Unit Price </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetQuotedInfo(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Updates the DateQuoted,ExpirationDate and FollowUpDate fields based on the Quoted field
+            </summary>
+            <param name="ds">Returns the updated dataset </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetReasonInfo(System.String,System.Int32,System.Boolean,System.String@)">
+            <summary>
+            This method returns default reason code for the specified ReasonType. Run when
+            the reasonType field has changed.
+            </summary>
+            <param name="vReasonType">ReasonType of the Quote (Win, Task)</param>
+            <param name="vQuoteNum">Unique key of the Quote</param>
+            <param name="vOrdered">Flag indicating if an order has been created from the quote</param>
+            <param name="vReasonCode">Default ReasonCode for the Quote Task/ReasonType</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetRowsCustomerTracker(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Calls the normal GetRows method and then constructs a custom data set combining Hed/Dtl fields for the customer tracker.
+            </summary>
+            <param name="whereClauseQuoteHed">Whereclause for QuoteHed table.</param>
+            <param name="whereClauseQuoteHedAttch">Whereclause for QuoteHedAttch table.</param>
+            <param name="whereClauseQSalesRP">Whereclause for QSalesRP table.</param>
+            <param name="whereClauseQuoteCnt">Whereclause for QuoteCnt table.</param>
+            <param name="whereClauseQuoteCom">Whereclause for QuoteCom table.</param>
+            <param name="whereClauseQuoteDtl">Whereclause for QuoteDtl table.</param>
+            <param name="whereClauseQuoteDtlAttch">Whereclause for QuoteDtlAt table.</param>
+            <param name="whereClauseQuoteMsc">Whereclause for QuoteMsc table.</param>
+            <param name="whereClauseQuoteHedMsc">Whereclause for QuoteHedMsc table.</param>
+            <param name="whereClauseQuoteQty">Whereclause for QuoteQty table.</param>
+            <param name="whereClauseQtmmkup">Whereclause for Qtmmkup table.</param>
+            <param name="whereClauseQtQtyMsc">Whereclause for QtQtyMsc table.</param>
+            <returns>Epicor.Mfg.BO.QuoteCustTrkDataSet</returns>
+            <param name="pageSize">Page size.</param>
+            <param name="absolutePage">Absolute page.</param>
+            <param name="morePages">More pages.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetRowsFromSelectedKeys(Epicor.Mfg.BO.QuoteDataSet,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This methods will return all of the Quote records which will be a subset
+            of the QuoteHEd records that meet the selection criteria. This method will try
+            to mirror the functionality of the base GetRows method.
+            </summary>
+            <param name="ds">The dataset with pupolated key values</param>
+            <param name="pageSize">The page size, used only for UI adaptor </param>
+            <param name="absolutePage">The absolute page, used only for the UI adaptor </param>
+            <param name="morePages">More pages?, used only for the UI adaptor </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetSalesRepInfo(System.Boolean,System.Int32,System.String,System.String@,System.String@,System.Decimal@,System.Int32@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            This method returns default commision information when the SalesRepCode or RoleCode
+            field(s) change. Method must use parameters instead of the dataset due to the problem
+            changing the primary key field
+            </summary>
+            <param name="defaultRoleCode">Indicates whether to default the RoleCode from the SalesRep</param>
+            <param name="quoteNum">QuoteNum of the QSalesRP record</param>
+            <param name="salesRepCode">Salesperson of the QSalesRP record</param>
+            <param name="roleCode">RoleCode of the QSalesRP record, if defaultRoleCode is checked, then
+            a different value may be returned </param>
+            <param name="name">Returns the SalesRep Name</param>
+            <param name="repRate">Returns the Commission Rate</param>
+            <param name="repSplit">Returns the Commission Split flag</param>
+            <param name="officePhone">Returns the SalesRep Office#</param>
+            <param name="homePhone">Returns the SalesRep Home#</param>
+            <param name="reportsTo">Returns the SalesRep Manager</param>
+            <param name="emailAddress">Returns the SalesREp Email Address</param>
+            <param name="fax">Returns the SalesRep Fax#</param>
+            <param name="mobilePhone">Returns the SalesRep Cell#</param>
+            <param name="salesRepTitle">Returns the SalesRep Title</param>
+            <param name="roleCodeRoleDescription">Returns the Role Code Description</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetSearchRows(System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This method is to be used in searches only. It returns only partial information on the
+            QuoteHed, QuoteDtl, and QSalesRP tables.
+            </summary>
+            <param name="whereClauseQuoteHed">Whereclause for QuoteHed table.</param>
+            <param name="whereClauseQSalesRP">Whereclause for QSalesRP table.</param>
+            <param name="whereClauseQuoteDtl">Whereclause for QuoteDtl table.</param>
+            <returns>The dataset with pupolated key values</returns>
+            <param name="pageSize">The page size, used only for UI adaptor </param>
+            <param name="absolutePage">The absolute page, used only for the UI adaptor </param>
+            <param name="morePages">More pages?, used only for the UI adaptor </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetShipToInfo(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method updates the ShipTo information when the ShipToNum field changes
+            </summary>
+            <param name="ds">Quote DataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetSmartString(System.Int32,System.Int32,System.String,System.String,System.String@,System.Boolean@,System.Boolean@,System.Boolean@,System.String@,System.Boolean@,System.Boolean@,System.String@,System.Boolean@)">
+            <summary>
+            </summary>
+            <param name="quoteNum">Kit component quote number</param>
+            <param name="quoteLine">Kit component quote line</param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="smartString">The generated smartstring of the configuration</param>
+            <param name="createPart">True if a new part should be created</param>
+            <param name="promptForPartNum">True if the user should be prompted for the part number</param>
+            <param name="notifyOfExistingPart">If true the user should be warned if the new part number already exists</param>
+            <param name="newPartNum">The generated portion of the new part number</param>
+            <param name="createCustPart">If true the user should be asked if they want the Customer Part Number assigned</param>
+            <param name="promptForCustPartNum">If true the user should be prompted to update the new Customer Part Number</param>
+            <param name="newCustPartNum">The generated customer part number</param>
+            <param name="promptForAutoCreatePart">True if the user should be prompted to create part</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetTaskSetInfo(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method updates the QuoteHed.Stage field when the TaskSetId is changed
+            </summary>
+            <param name="ds">The updated dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetTerrInfo(System.Int32,System.String,System.String,System.String@)">
+            <summary>
+            This method returns the TaskSetId when the territory ID changes
+            </summary>
+            <param name="vQuoteNum">The current QuoteHed.QuoteNum field </param>
+            <param name="vTerritoryID">The QuoteHed.TerritoryID </param>
+            <param name="vActiveTaskID">The QuoteHed.ActiveTaskID </param>
+            <param name="vTaskSetId">Returns the correct TaskSet for the Territory </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.GetWSUnitPrice(Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method updates the Base and Doc Unit Prices when the Quoted Unit Price
+            or Price Per Code changes on the Quote Worksheet form
+            </summary>
+            <param name="ds">The updated dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.KitCompPartCreate(System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean@)">
+            <summary>
+            Configured kit component part creation
+            </summary>
+            <param name="quoteNum">Kit component quote number</param>
+            <param name="quoteLine">Kit component quote line</param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="smartString">The generated smartstring of the configuration</param>
+            <param name="newPartNum">The Part Number to be used for a new part creation. If blank, a part will not be created.</param>
+            <param name="newCustPartNum">The Customer Part Number to stored on the quote line.</param>
+            <param name="responseAutoCrtPart">Answer to the question presented to user about auto creating a part.</param>
+            <param name="newPartAlreadyExists">Returns true a new part was not created because it already exists.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.OnChangeMktgCamp(System.String,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Call this method when the value of MktgCamp changes.
+            </summary>
+            <param name="mktgCampID">The CampID</param>
+            <param name="ds">The updated dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.OnChangeMktgEvnt(System.Int32,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Call this method when the value of MktgCamp changes.
+            </summary>
+            <param name="mktgEvntSeq">The EvntSeq</param>
+            <param name="ds">The updated dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.OnChangeofBTCustID(System.String,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method returns the Bill To customer info.
+            </summary>
+            <param name="newBillToCustID">Proposed bill to custid</param>
+            <param name="ds">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.OnChangeofEngineered(System.Boolean,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            This method Check the number of reference designators are equal to
+            the Required Ref Designators defined on JobMtl
+            </summary>
+            <param name="newReadyToQuote">Proposed ReadyToQuote</param>
+            <param name="ds">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.OpenCloseQuote(System.Int32,System.Boolean)">
+            <summary>
+            This method either opens or closes a Quote and returns the updated object
+            </summary>
+            <param name="quoteNum">QuoteNum to be opened or closed </param>
+            <param name="closeQuote">Yes to close Quote, no to open Quote </param>
+            <returns>Returns the newly opened/closed Quote </returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.PreOpenCloseQuote(System.Int32,System.Boolean,System.String@)">
+            <summary>
+            This method is to be run befor the OpenCloseQuote method so that any questions
+            that need to be asked before the OpenCloseQuote method can run can be asked
+            </summary>
+            <param name="quoteNum">The current QuoteHed.QuoteNum field </param>
+            <param name="closeQuote">Yes to close Quote, no to open Quote</param>
+            <param name="vMessage">Returns a string containing the question to be asked </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.PreRefreshQty(System.String@)">
+            <summary>
+            Procedure to find if the app needs to ask the user to refresh the Quantity Breaks.
+            </summary>
+            <param name="strquestion">Returns the Question string</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.PreSOCreate(System.Int32,System.String@)">
+            <summary>
+            Executes validations before Sales Oreder is created:
+            Process all lines if Job Type is PRJ and Invoicing method is CS or MB then ask user
+            </summary>
+            <param name="ipQuoteNum">Quote number</param>
+            <param name="ouAskMess">Message to ask user to continue</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.RecalcKitPriceAfterConfig(System.Int32,System.Int32)">
+            <summary>
+            When configuring a part, the QuoteDtl unit price may change during the configuration
+            process. This method is to be called after running product configurator to recalculate
+            the kit pricing.
+            </summary>
+            <param name="iQuoteNum">Quote Number for configured part</param>
+            <param name="iQuoteLine">Quote Line for configured part</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.recalcKitPricing(System.String,System.Int32,System.Int32)">
+            <summary>
+            This procedure is used to recalculate the unit price of the kit parent and the parent Quote Qty record
+            if the KitPricing field is set to 'C' then the procedure will add the unit price of each component and the
+            total value will be the unit price of the kit parent line.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.RecalcWorksheet(System.Int32,System.Int32,System.Int32,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Each part class can have its own material markup percentage
+            This method calculates the Material Markup from the Qtmmkup table
+            </summary>
+            <param name="quoteNum">Quote Num</param>
+            <param name="quoteLine">Quote Line</param>
+            <param name="qtyNum"> Quote Qty Number </param>
+            <param name="ds">The Quote dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.RemoveKitComponents(System.String,System.Int32,System.Int32,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            To delete the QuoteDtl records created as components for a Parent Sales Kit.
+            </summary>
+            <param name="iPartNum">Parent Sales Kit number</param>
+            <param name="quoteNum">Quote number of the QuoteDtl record (0 if an Order is being processed)</param>
+            <param name="quoteLine">Quote Line of the QuoteDtl record (0 if an Order is being processed</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteDataSet">Quote DataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.SetOrderDefaults(System.Int32,System.Boolean,System.Boolean,System.Nullable{System.DateTime})">
+            <summary>
+            This method updates Order Defaults.
+            </summary>
+            <param name="quoteNum">The current QuoteHed.QuoteNum field </param>
+            <param name="setReqShipDt">Yes to set the QuoteDtl.ReqShipDate to the specified date</param>
+            <param name="setOrdQty">Yes to set the Order Qty equal to the Expected Qty</param>
+            <param name="reqShipDate">Requested Ship Date</param>
+            <returns>Updated Quote </returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.UpdateCosts(System.Int32,Epicor.Mfg.BO.QuoteDataSet)">
+            <summary>
+            Updates Worksheet fields.
+            </summary>
+            <param name="ipQuoteNum">The current QuoteQty.QuoteNum field </param>
+            <param name="ds">Returns the updated dataset </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ValidateTaskSet(System.String,System.String)">
+            <summary>
+            Validates the task Set Id.
+            </summary>
+            <param name="ipTaskSetId">Task Set Id to validate</param>
+            <param name="ipActiveTaskID">Active Task Id</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.ValReqRefDes(System.Int32,System.Int32)">
+            <summary>
+            Public method to call ValidateReqRefDes method and check the number of
+            reference designators are equal to the Required Ref Designators defined on QuoteMtl.
+            </summary>
+            <param name="ipQuoteNum">Quote Number to validate</param>
+            <param name="ipQuoteLine">Quote Line of the Quote Number to validate</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.WhatIfGetDate(System.Nullable{System.DateTime}@)">
+            <summary>
+            Set a default date for scheduling starting from Today
+            </summary>
+            <param name="schedDate">The calculated start date for scheduling</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuote.WhatIfScheduling(System.Int32,System.Int32,System.Decimal,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Nullable{System.DateTime}@,System.Boolean@)">
+            <summary>
+            This method runs the whatif Scheduling code.
+            </summary>
+            <param name="quoteNum">The current QuoteHed.QuoteNum field </param>
+            <param name="quoteLine">The QuoteLine to schedule</param>
+            <param name="prodQty">Production Qty to schedule</param>
+            <param name="schedDate">Schedule Start date</param>
+            <param name="schedFinite">Schedule Finitely flag</param>
+            <param name="considerLeadTime">Consider Material Lead Times flag</param>
+            <param name="completionDate">Returns the schedule completion date </param>
+            <param name="isProdQtyAvailable">Returns Flag if Qty available </param>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteHedListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteHedListDataSet.QuoteHedListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteHedListDataSet.QuoteHedListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteHedListDataSet.QuoteHedListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteCustTrkDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteCustTrkDataSet.QuoteCustTrkDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteCustTrkDataSet.QuoteCustTrkRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteCustTrkDataSet.QuoteCustTrkRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SaveQuoteOTSParamsDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SaveQuoteOTSParamsDataSet.SaveOTSParamsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SaveQuoteOTSParamsDataSet.SaveOTSParamsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SaveQuoteOTSParamsDataSet.SaveOTSParamsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteHedDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteHedAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QSalesRPDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteCntDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteComDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteDtlDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteDtlAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteCoPartDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteMscDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteQtyDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QtmmkupDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QtQtyMscDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteHedMscDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.HedTaxSumDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.PartSubsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.TaxConnectStatusDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteHedRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteHedAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QSalesRPRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteCntRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteComRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteDtlRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteDtlAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteCoPartRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteMscRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteQtyRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QtmmkupRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QtQtyMscRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteHedMscRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.HedTaxSumRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.PartSubsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.TaxConnectStatusRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteHedRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteHedAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QSalesRPRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteCntRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteComRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteDtlRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteDtlAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteCoPartRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteMscRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteQtyRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QtmmkupRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QtQtyMscRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.QuoteHedMscRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.HedTaxSumRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.PartSubsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteDataSet.TaxConnectStatusRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>

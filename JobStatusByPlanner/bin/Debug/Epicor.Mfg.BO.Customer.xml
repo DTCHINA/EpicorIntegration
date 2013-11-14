@@ -1,0 +1,932 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.BO.Customer</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.Customer">
+            <summary>
+            Client side business object for Customer.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.Proxy.CustomerImpl">
+            <summary>
+            Customer Business Object
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Proxy constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustomer(Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustomerAttch(Epicor.Mfg.BO.CustomerDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustBillTo(Epicor.Mfg.BO.CustomerDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustBank(Epicor.Mfg.BO.CustomerDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustChild(Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustDfltDocType(Epicor.Mfg.BO.CustomerDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustIC(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustomerDocs(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustRestriction(Epicor.Mfg.BO.CustomerDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustUPSEmail(Epicor.Mfg.BO.CustomerDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustomerDiscPriceLst(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustomerFSPriceList(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewGlbCustCred(Epicor.Mfg.BO.CustomerDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewShipTo(Epicor.Mfg.BO.CustomerDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewShipToAttch(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewShipToRestriction(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustomerDocsSH(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewShipToDiscPriceLst(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewShipToMFBill(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewShipToPriceLst(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewShipToUPSEml(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustMFBill(Epicor.Mfg.BO.CustomerDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewMangCust(Epicor.Mfg.BO.CustomerDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewCustomerPriceLst(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewEntityGLC(Epicor.Mfg.BO.CustomerDataSet,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewTaxExempt(Epicor.Mfg.BO.CustomerDataSet,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.DeleteByID(System.Int32)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetByID(System.Int32)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetRows(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.Update(Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.UpdateExt(Epicor.Mfg.BO.UpdExtCustomerDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetCodeDescList(System.String,System.String)">
+            <summary>
+            To return the CodeDescriptionList values of a given table.field.
+            </summary>
+            <param name="tableName"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetCustomerGlobalFields(System.Int32,System.Boolean)">
+            <summary>
+            To return the list of fields that are maintained by the "Master/Owner" of global record.
+            The client can use this list to disable these fields on the UI.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetShipToGlobalFields(System.Int32,System.String)">
+            <summary>
+            To return the list of fields that are maintained by the "Master/Owner" of global record.
+            The client can use this list to disable these fields on the UI.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetCustBillToGlobalFields(System.Int32,System.Int32)">
+            <summary>
+            To return the list of fields that are maintained by the "Master/Owner" of global record.
+            The client can use this list to disable these fields on the UI.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.getGlbNACreditPools(System.Int32)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.getGlbNACreditsAvail(System.Int32)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.isNAGlobalCustomer(System.Int32)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.AllowCustomerDetailUpdate">
+            <summary>
+            This method exists soley for the purpose of allowing security for
+            updating customer detail information to be defined
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ChangeCustDfltInvoiceType(System.String,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            Set TranDocType when Invice Type was changed
+            </summary>
+            <param name="ipInvoiceType">Invoice Type value</param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ChangeCustomerChargeCode(System.String,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            Validates ChargeCode value
+            </summary>
+            <param name="ipChargeCode">ChargeCode value</param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ChangeCustomerFinCharges(System.Boolean,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            Validates FinCharges value
+            </summary>
+            <param name="ipFinCharges">FinCharges value</param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ChangeCustomerReminderGroup(System.String,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            Validates ReminderGroup value
+            </summary>
+            <param name="ipReminderCode">ReminderCode value</param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ChangeDeferredRev(System.Boolean,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            Performs required logic when Customer.DeferredRev is modified.
+            </summary>
+            <param name="ipDeferredRev">Proposed input value of Deferred Rev</param>
+            <param name="ds"> Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ChangeListCode(System.String,System.String,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            This method validates and populates the ListCode in either CustomerPriceLst
+            or ShipToPriceLst
+            </summary>
+            <param name="listCode"> Proposed Price List Code </param>
+            <param name="tableName"> Table to look in, either Customer or ShipTo or FieldService </param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ChangeRACode(System.String,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            Performs required logic when Customer.RACode is modified.
+            </summary>
+            <param name="ipRACode">Proposed input value of RA Code</param>
+            <param name="ds"> Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.CheckCreditHold(Epicor.Mfg.BO.CustomerDataSet,System.String@)">
+            <summary>
+            This method checks if customer will go on credit hold. Then asks if the user
+            wants all orders to go on credit hold. To be right befor updated. If the user
+            answers yes to putting orders on hold, then the ApplyHoldToOrder field needs to be populated
+            </summary>
+            <param name="ds">Customer data set</param>
+            <param name="vMessage">If customer going on credit hold, returns question UI needs to ask User before update</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.CheckDupCustomer(System.String,System.String,System.String,System.String)">
+            <summary>
+            This method checks the Name,Address1 and ZipCode fields to see if there are
+            any duplicate customers. A ListDataSet will be returned to the user of any duplicates asking
+            if the user wants to continue. Needs to be run before Update on a NEW record only
+            </summary>
+            <param name="vName">This parameter takes a value for something</param>
+            <param name="vRowid">RowIdent field of the Customer</param>
+            <param name="vAddress1">Customer Address field </param>
+            <param name="vZip">Customer Postal Code </param>
+            <returns type="Epicor.Mfg.BO.CustomerListDataSet">Epicor.Mfg.BO.CustomerListDataSet</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.CheckEFFieldLength(System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String@)">
+            <summary>
+            This method checks if the field length of the Name and address fields will fit
+            within the External Financials integration rules. If not, a list of problem fields will be sent
+            back to the user to either change, or accept that they will be truncated when the
+            customer is sent over to SoftCell.
+            </summary>
+            <param name="vCustNum">Customer.CustNum</param>
+            <param name="vCustType">Customer.CustType</param>
+            <param name="vName">Customer.Name</param>
+            <param name="vAddress1">Customer.Address1</param>
+            <param name="vAddress2">Customer.Address2</param>
+            <param name="vAddress3">Customer.Address3</param>
+            <param name="vCity">Customer.City</param>
+            <param name="vState">Customer.State</param>
+            <param name="vBTName">Customer.BTName</param>
+            <param name="vBTAddress1">Customer.BTAddress1</param>
+            <param name="vBTAddress2">Customer.BTAddress2</param>
+            <param name="vBTAddress3">Customer.BTAddress3</param>
+            <param name="vBTCity">Customer.BTCity</param>
+            <param name="vBTState">Customer.BTState</param>
+            <param name="vMessage">Returns a list of problem fields for the user to accept or change</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.CheckRUC(System.String@,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            CSF Peru - This method test the validity of the Tax ID (RUC)
+            </summary>
+            <param name="opMessage">Message to display to user if not null</param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.CheckVATFormat(System.String,System.String@,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            This method test the validity of the VAT format
+            </summary>
+            <param name="tableName">Indicates which table is being updated, Customer or ShipTo</param>
+            <param name="opMessage">Message to display to user if not null</param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ChgBTCountry(Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            This method clears the BillTo address format string if the country has changed
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ChgCountry(Epicor.Mfg.BO.CustomerDataSet,System.String)">
+            <summary>
+            This method sets the ShipVia, Language and FormatStr fields when the Country has changed.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="tableName">Indicates which table is being updated, Customer or ShipTo</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ChgGlobalCust(System.Boolean,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            Method to call when changing the global customer flag on a customer.
+            Assigns the GlbFlag base on the new value.
+            </summary>
+            <param name="proposedGlobalCust">The proposed global customer value </param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ChgICTrader(System.Boolean,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            Method to call when changing the ICTrader flag on a customer.
+            Assigns the EnableGlobalCust based on the new value.
+            </summary>
+            <param name="proposedICTrader">The proposed IC Trader value </param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.DeleteBTAddress(Epicor.Mfg.BO.CustomerDataSet,System.Int32)">
+            <summary>
+            This method clears out the Billto Address fields. To be run if the user no longer
+            wants a separate Bill To Address
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="custNum">Customer.CustNum</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ETCAfterAddrVal(Epicor.Mfg.BO.CustomerDataSet,Epicor.Mfg.BO.ETCAddrValidationDataSet,System.Int32)">
+            <summary>
+            After the tax integration has been called, update the customer address if it
+            was changed.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="ds1" type="Epicor.Mfg.BO.ETCAddrValidationDataSet">The ETCAddrValidation data set </param>
+            <param name="custNum">Customer.CustNum</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ETCValidateAddress(System.Int32,System.Boolean@,System.Boolean@,System.String@)">
+            <summary>
+            Call tax integration and loads temp tables from the results.
+            </summary>
+            <returns type="Epicor.Mfg.BO.ETCAddrValidationDataSet">The ETCAddrValidation data set </returns>
+            <param name="custNum">Customer.CustNum</param>
+            <param name="statusFlag">Set to true if the integration is up, false if down.</param>
+            <param name="errorFlag">If true, an error occured.</param>
+            <param name="errorMsg">If Error Flag is true, this is the associated message.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetAddrElementList(System.String@)">
+            <summary>
+            This method returns the available address elements in a delimited list
+            </summary>
+            <param name="addrElementList">Delimited list of Address Elements available</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetAllShipTo(System.Int32,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            This returns the ShipTo record in the Customer dataset with ShipTo child
+            records returned.
+            </summary>
+            <param name="custNum"> CustNum of the customer for the Ship To </param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetAltShipTo(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            This returns the alternate ShipTo record in the Customer dataset. ShipTo child
+            records are not returned.
+            </summary>
+            <param name="custID">CustID of the customer for the Ship To </param>
+            <param name="shipToNum">ShipToNum of the ShipTo to return </param>
+            <param name="masterCustNum">Alternate CustNum of the customer for the Ship To </param>
+            <param name="masterShipToNum">Alternate ShipToNum of the ShipTo to return </param>
+            <returns type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetBillDayList(System.String,System.String@)">
+            <summary>
+            This method returns the list of Bill Days to select from based on the billing Frequency
+            </summary>
+            <param name="billFreq">The Customer Billing Frequency "W"eekly or "M"onthly</param>
+            <param name="billDayList">The list of available days to choose from a selection list</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetBillToRefs(System.String)">
+            <summary>
+            This method returns all the 'sold to' customers for this alt bill to.
+            </summary>
+            <param name="custID">Current CustID</param>
+            <returns type="Epicor.Mfg.BO.BillToRefsDataSet">The ttBillToRefs data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetByCustID(System.String,System.Boolean)">
+            <summary>
+            This method finds the customer record by CustId instead of CustNum
+            </summary>
+            <param name="custID">The customer character ID</param>
+            <param name="withShipTo">Indicates if shipTo should be retrieved or not</param>
+            <returns type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetCustBillToForLink(System.String)">
+            <summary>
+            This returns the CustBillTo record in the Customer dataset for linking.
+            </summary>
+            <param name="custID">CustID field on the GlbCustomer record </param>
+            <returns type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetCustomer(System.String)">
+            <summary>
+            This returns the Customer dataset with only the Customer datatable populated.
+            Customer child records are not returned.
+            </summary>
+            <param name="custID">CustID of the customer to return </param>
+            <returns type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetCustomerForLink(System.String)">
+            <summary>
+            This returns the Customer dataset for linking.
+            OBSOLETE METHOD: Use method GetCustomer instead.
+            </summary>
+            <param name="custID">LinkCustID field on the GlbCustomer record to link </param>
+            <returns type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetCustomerTerritory(Epicor.Mfg.BO.CustomerDataSet,System.Int32)">
+            <summary>
+            This method sets the Customer's Territory ID according to system rules
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="custNum">Customer.CustNum</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetDisabledFields(System.String@)">
+            <summary>
+            This method returns a list of fields the user has access to
+            when the user does not have rights to update detail information.
+            </summary>
+            <param name="fieldList"> The list if fields to disable </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetGlbCustomerList(System.String)">
+            <summary>
+            This method returns the GlbCustomer dataset based on a delimited list of
+            GlbCustNum values passed in.
+            </summary>
+            <param name="glbCustNumList">Delimited list of GlbCustNum values </param>
+            <returns type="Epicor.Mfg.BO.GlbCustomerDataSet">The GlbCustomer data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetListCustom(System.String,System.Int32,System.Int32,System.String,System.Boolean@)">
+            <summary>
+            This overload of GetList adds Customers which ShipTo's fall within authorized territories.
+            </summary>
+            <param name="whereClause">The search criteria</param>
+            <param name="pageSize">Size of a page</param>
+            <param name="absolutePage">The absolute page</param>
+            <param name="customClause">Custom WhereClause</param>
+            <param name="morePages">Indicating if there are more pages after this batch</param>
+            <returns type="Epicor.Mfg.BO.CustomerListDataSet">Returns the list of Customers</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetListFromSelectedKeys(Epicor.Mfg.BO.CustomerListDataSet,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This methods will return all of the Customers records that meet the selection criteria.
+            This method will try to mirror the functionality of the base GetList method but
+            since we are populating a temp table we need our own public method.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerListDataSet">The dataset with pupolated key values</param>
+            <param name="pageSize">The page size, used only for UI adaptor </param>
+            <param name="absolutePage">The absolute page, used only for the UI adaptor </param>
+            <param name="morePages">More pages?, used only for the UI adaptor </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetNewAltShipTo(System.String,System.String)">
+            <summary>
+            This returns the alternate ShipTo record in the Customer dataset using the
+            default ShipTo as a base.
+            </summary>
+            <param name="custID">CustID of the customer for the Ship To </param>
+            <param name="shipToNum">ShipToNum of the ShipTo to return </param>
+            <returns type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetParentCustInfo(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            This method sets the parent Customer information
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="custNum">The Customer Number</param>
+            <param name="parentCustID">Parent Customer ID </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetShipTo(System.String,System.String)">
+            <summary>
+            This returns the ShipTo record in the Customer dataset. ShipTo child
+            records are not returned.
+            </summary>
+            <param name="custID">CustID of the customer for the Ship To </param>
+            <param name="shipToNum">ShipToNum of the ShipTo to return </param>
+            <returns type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetShipToForLink(System.String,System.String)">
+            <summary>
+            This returns the ShipTo record in the Customer dataset for linking.
+            OBSOLETE METHOD: Use method GetShipTo instead.
+            </summary>
+            <param name="custID">CustID field on the GlbCustomer record </param>
+            <param name="shipToNum">LinkShipToNum field on the GlbShipTo record </param>
+            <returns type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GetShipToTerritory(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            This method defaults the ShipTo Territory according to system rules
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="custNum">Customer.CustNum</param>
+            <param name="shipToNum">ShipTo.ShipToNum</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.GlbCustomersExist(System.Boolean@)">
+            <summary>
+            This method checks if GlbCustomer records exists or not. Can be used
+            to determine if the option to link/unlink customers is available.
+            </summary>
+            <param name="glbCustomersExist">Yes - they do exist; No - they do not exist</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.IsLocal(System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            (CSF Norway) This method check the Customer is local.
+            </summary>
+            <param name="ipCountryNum">Customer Country Number</param>
+            <param name="ipBTCountryNum">Customer BT Country Number</param>
+            <param name="opResult">"True" - is local</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.LinkGlbCustBillTo(System.String,System.Int32,Epicor.Mfg.BO.GlbCustomerDataSet,Epicor.Mfg.BO.CustomerDataSet,System.String@)">
+            <summary>
+            This method performs the actual logic to link CustBillTo records for a linked customer.
+            It will only allow CustBillTo's of linked customers to be processed, otherwise an exception
+            will be raised. The ability to link CustBillTo's for a linked Customer should be offered
+            immediately after performing the update method on a Linked Customer but it does not have
+            to be limited to that time only.
+            It is run after the PreLinkGlbCustBillTo method which determines the CustBillToNum to link to.
+            If the CustBillToNum is for a CustBillTo that already exists, the GlbCustBillTo information is
+            translated and then copied to the CustomerDataSet as an update.
+            If the CustBillToNum is for a new CustBillTo, the GlbCustBillTo information is translated and then
+            copied to the CustomerDataSet as an Add. Until the update method is run on the CustBillTo
+            record the Link process is not completed.
+            Once the CustBillTo record has been linked, the GlbCustCnt records need to be offered up
+            to be linked as well.
+            </summary>
+            <param name="glbCompany">Global Company field on the GlbCustBillTo record to link </param>
+            <param name="glbCustNum">Global CustNum field on the GlbCustBillTo record to link </param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbCustomerDataSet">The Global Customer data set </param>
+            <param name="ds1" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="warnMsg">Warnings regarding Customer Bill To information that was not accepted during the linking</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.LinkGlbCustomer(System.String,System.Int32,Epicor.Mfg.BO.GlbCustomerDataSet,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            This method performs the actual logic behind linking a customer. It is run after
+            the PreLinkGlbCustomer method which determines the Customer ID to link to.
+            If the Customer Id is for a Customer that already exists, the GlbCustomer information is
+            translated and then copied to the CustomerDataSet as an update.
+            If the Customer ID is for a new Customer, the GlbCustomer information is translated and then
+            copied to the CustomerDataSet as an Add. Until the update method is run on Customer record
+            the Link process is not completed.
+            Once the Customer record has been linked, the GlbShipto and GlbCustCnt records needs to
+            be offered up to be linked as well.
+            </summary>
+            <param name="glbCompany">Global Company field on the GlbCustomer record to link </param>
+            <param name="glbCustNum">Global CustNum field on the GlbCustomer record to link </param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbCustomerDataSet">The Global Customer data set </param>
+            <param name="ds1" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.LinkGlbShipTo(System.String,System.Int32,System.String,Epicor.Mfg.BO.GlbCustomerDataSet,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            This method performs the actual logic to link shipto records for a linked customer.
+            It will only allow shipto's of linked customers to be processed, otherwise an exception
+            will be raised. The ability to link ShipTo's for a linked Customer should be offered
+            immediately after performing the update method on a Linked Customer but it does not have
+            to be limited to that time only.
+            It is run after the PreLinkGlbShipto method which determines the ShiptoNum to link to.
+            If the ShipToNum is for a Shipto that already exists, the GlbShipTo information is
+            translated and then copied to the CustomerDataSet as an update.
+            If the ShipToNum is for a new ShipTo, the GlbShipTo information is translated and then
+            copied to the CustomerDataSet as an Add. Until the update method is run on the ShipTo
+            record the Link process is not completed.
+            Once the ShipTo record has been linked, the GlbCustCnt records need to be offered up
+            to be linked as well.
+            </summary>
+            <param name="glbCompany">Global Company field on the GlbShipTo record to link </param>
+            <param name="glbCustNum">Global CustNum field on the GlbShipTo record to link </param>
+            <param name="glbShipToNum">Global ShipToNum field on the GlbShipTo record to linke </param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbCustomerDataSet">The Global Customer data set </param>
+            <param name="ds1" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.mangCustAfterUpdate">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.mangCustBeforeUpdate">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.MoveOnePosition(System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            This method moves the Customer/ShipTo PriceLst Up/Down one position in the
+            grid and returns the whole updated datatable.
+            </summary>
+            <param name="custNum">Customer Number </param>
+            <param name="shipToNum">Ship To Number </param>
+            <param name="seqNum"> Current Sequence number of price list to move </param>
+            <param name="moveDir">Direction to move task, "Up" or "Down"</param>
+            <returns type="Epicor.Mfg.BO.CustomerDataSet">Customer Dataset </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.MoveOnePositionDisc(System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            This method moves the Customer/ShipTo Disc PriceLst Up/Down one position in the
+            grid and returns the whole updated datatable.
+            </summary>
+            <param name="custNum">Customer Number </param>
+            <param name="shipToNum">Ship To Number </param>
+            <param name="seqNum"> Current Sequence number of price list to move </param>
+            <param name="moveDir">Direction to move task, "Up" or "Down"</param>
+            <returns type="Epicor.Mfg.BO.CustomerDataSet">Customer Dataset </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.OnChangeAltShipTo(System.String,System.String,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            This sets the ShipTo table based on the MasterCustNum and MasterShipToNum fields.
+            To be used when the alternate fields change
+            </summary>
+            <param name="iProposedMasterCustID">The proposed CustID value </param>
+            <param name="iProposedMasterShipToNum">The proposed ShipToNum value </param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.OnChangeCreditCardOrder(System.Boolean,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            This method validates field CreditCardOrder
+            </summary>
+            <param name="ipCreditCardOrder">Proposed CreditCardOrder value</param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.OnChangeCustBankPayMethod(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            This method populates Pay Method type.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="iProposedBankID">The proposed BankID value </param>
+            <param name="iProposedPMUID">The proposed PMUID value </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.OnChangeCustICPrimary(Epicor.Mfg.BO.CustomerDataSet,System.Boolean,System.String)">
+            <summary>
+            This method validates the Primary checkbox for customer Industry Class.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="iProposedPrimary">The logic flag to set Primary Industry Class </param>
+            <param name="iProposedICCode">The code of current record</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.OnChangeCustomerTaxRegion(Epicor.Mfg.BO.CustomerDataSet,System.String)">
+            <summary>
+            This method validates TaxRegionCode and populates description for customer.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="iProposedTaxRgnCode">The proposed TaxCode value </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.OnChangeofAltBT(System.String,Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            This method retrieves the CustBillTo record using the CustID passed. The AllowAsBillTo
+            flag must be set on the bill to customer record.
+            </summary>
+            <param name="custID">CustBillTo CustID</param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.OnChangeofCustomerAddr(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String,System.String)">
+            <summary>
+            Set the AddressVal flag to false which will indicate the address needs validation.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="custNum">Customer.CustNum</param>
+            <param name="proposedVal">Proposed value of change.</param>
+            <param name="addrField">Address1, 2, 3, City, State, Zip and CountryNum.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.OnChangeofShipToAddr(Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Set the AddressVal flag to false which will indicate the address needs validation.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="custNum">ShipTo.CustNum</param>
+            <param name="shipToNum">ShipTo.ShipToNum</param>
+            <param name="proposedVal">Proposed value of change.</param>
+            <param name="addrField">Address1, 2, 3, City, State, Zip and CountryNum.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.OnChangeShipToTaxRegion(Epicor.Mfg.BO.CustomerDataSet,System.String,System.Int32,System.String)">
+            <summary>
+            This method validates TaxRegionCode and populates description for shipto.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The customer data set </param>
+            <param name="iProposedTaxRgnCode">The proposed TaxCode value </param>
+            <param name="iCustNum">Customer num </param>
+            <param name="iShipToNum">ShipTo num </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.OnChangeVendorID(Epicor.Mfg.BO.CustomerDataSet,System.String)">
+            <summary>
+            This method validates VendorID and populates vendor name.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="iProposedVendorID">The proposed VendorID value </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.PreLinkGlbCustBillTo(System.String,System.Int32,Epicor.Mfg.BO.GlbCustomerDataSet,System.String@)">
+            <summary>
+            Linking a GlbCustBillTo record ties a global record to a new or existing CustBillTo record so
+            that any changes made to the GlbCustBillTo record in another company are automatically copied
+            to any linked CustBillTo's.
+            This method performs the pre link logic to check of okay to link or get the new BTCustNum
+            to create/link to. Will be run before LinkGlbCustBillTo which actually creates/updates a
+            CustBillTo record and will send the modified record back for update. When the Link "button" is
+            originally selected, the LinkBTCustNum will be defaulted to the GlbBTCustNum field.
+            It will then check to see if this ID is available for use. If available for use the system
+            will return a question asking the user if they want to use this number. If the answer is no,
+            then the user either needs to select an existing BTCustNum for the current customer to link
+            to or enter a brand new BTCustNum for the customer. You will run this method until the
+            user's answer is yes. Then the LinkGlbCustBillTo method is called.
+            </summary>
+            <param name="glbCompany"> Global Company field on the GlbCustBillTo record to link </param>
+            <param name="glbCustNum"> Global CustNum field on the GlbCustBillTo record to link </param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbCustomerDataSet">The Global Customer data set </param>
+            <param name="vMessage"> Returns a message the user needs to respond yes or no to. If the
+            user answers no, then they need to update the LinkBTCustNum field and then run this
+            method again to test the new BTCustNum they want to link to </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.PreLinkGlbCustomer(System.String,System.Int32,Epicor.Mfg.BO.GlbCustomerDataSet,System.String@)">
+            <summary>
+            Linking a Glbcustomer record ties a global record to a new or existing Customer record so
+            that any changes made to the GlbCustomer record in another company are automatically copied
+            to any linked customers.
+            This method performs the pre link logic to check of okay to link or get the new custid
+            to create/link to. Will be run before LinkGlbCustomer which actually creates/updates a
+            customer record and will send the modified record back for update. When the Link "button" is
+            originally selected, the LinkCustID will be defaulted to the GlbCustId field. It will then
+            check to see if this ID is available for Use. If available for use the system will return a
+            question asking the user if they want to use this number. If the answer is no, then the user
+            either needs to select an existing customer's ID to link to or enter a brand new ID. You will
+            run this method until the user answer is yes. Then the LinkGlbCustomer method is called.
+            </summary>
+            <param name="glbCompany"> Global Company field on the GlbCustomer record to link </param>
+            <param name="glbCustNum"> Global CustNum field on the GlbCustomer record to link </param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbCustomerDataSet">The Global Customer data set </param>
+            <param name="vMessage"> Returns a message the user needs to respond yes or no to. If the
+            user answers no, then they need to update the LinkCustId field and then run this method again
+            to test the new CustId they want to link to </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.PreLinkGlbShipTo(System.String,System.Int32,System.String,Epicor.Mfg.BO.GlbCustomerDataSet,System.String@)">
+            <summary>
+            Linking a GlbShipTo record ties a global record to a new or existing ShipTo record so
+            that any changes made to the GlbShipTo record in another company are automatically copied
+            to any linked shipto's.
+            This method performs the pre link logic to check of okay to link or get the new shiptonum
+            to create/link to. Will be run before LinkGlbShipTo which actually creates/updates a
+            shipto record and will send the modified record back for update. When the Link "button" is
+            originally selected, the LinkShipToNum will be defaulted to the GlbShipToNum field.
+            It will then check to see if this ID is available for use. If available for use the system
+            will return a question asking the user if they want to use this number. If the answer is no,
+            then the user either needs to select an existing ShipToNum for the current customer to link
+            to or enter a brand new ShipToNum for the customer. You will run this method until the
+            user's answer is yes. Then the LinkGlbShipTo method is called.
+            </summary>
+            <param name="glbCompany"> Global Company field on the GlbShipto record to link </param>
+            <param name="glbCustNum"> Global CustNum field on the GlbShipTo record to link </param>
+            <param name="glbShipToNum"> Global ShipToNum field on the GlbShipto record to link </param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbCustomerDataSet">The Global Customer data set </param>
+            <param name="vMessage"> Returns a message the user needs to respond yes or no to. If the
+            user answers no, then they need to update the LinkShipToNum field and then run this
+            method again to test the new ShipToNum they want to link to </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ResetShipToIntl(Epicor.Mfg.BO.CustomerDataSet)">
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.SetUPSQVEnable(System.Boolean,System.Boolean,System.Boolean,Epicor.Mfg.BO.CustomerDataSet)">
+            <param name="ipQVEnable">logical indicating if the quantum view is to enabled/disabled</param>
+            <param name="ipUpdCustUPS">Yes, if the CustUPSEmail table is to be updated</param>
+            <param name="ipUPDShipToUPS">Yes, if the ShipToUPSPPEml talbe is to be updated</param>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ShipToETCAfterAddrVal(Epicor.Mfg.BO.ETCAddrValidationDataSet,Epicor.Mfg.BO.CustomerDataSet,System.Int32,System.String)">
+            <summary>
+            After the tax integration has been called, update the customer address if it
+            was changed.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.ETCAddrValidationDataSet">The ETCAddrValidation data set </param>
+            <param name="ds1" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+            <param name="ipCustNum">ShipTo.CustNum</param>
+            <param name="ipShipToNum">ShipTo.ShipToNum</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ShipToETCValAddr(System.Int32,System.String,System.Boolean@,System.Boolean@,System.String@)">
+            <summary>
+            Call tax integration and loads temp tables from the results.
+            </summary>
+            <param name="custNum">ShipTo.CustNum</param>
+            <param name="shipToNum">ShipTo.ShipToNum</param>
+            <param name="statusFlag">Set to true if the service is up, false if down.</param>
+            <param name="errorFlag"></param>
+            <param name="errorMsg"></param>
+            <returns type="Epicor.Mfg.BO.ETCAddrValidationDataSet">The ETCAddrValidation data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ShipToTerrSelectChange(Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            This sets the ShipTo TerritoryID field based on the TerritorySelect flag.
+            To be used when the Territory Select field changes
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.SkipGlbCustomer(System.String,System.Int32,Epicor.Mfg.BO.GlbCustomerDataSet)">
+            <summary>
+            This method performs the logic behind the skip option for GlbCustomer
+            Skip - sets the Skipped flag to true.
+            If the CustNum field is not 0 will error out
+            </summary>
+            <param name="glbCompany"> Global Company field on the GlbCustomer record to skip </param>
+            <param name="glbCustNum"> Global CustNum field on the GlbCustomer record to skip </param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbCustomerDataSet">The Global Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.UnlinkGlbCustomer(System.String,System.Int32,Epicor.Mfg.BO.GlbCustomerDataSet)">
+            <summary>
+            This method performs the logic behind the unlink option for GlbCustomer
+            Unlink - clears the CustNum and CustId field in GlbCustomer. Returns the Customer DataSet
+            </summary>
+            <param name="glbCompany"> Global Company field on the GlbCustomer record to unlink </param>
+            <param name="glbCustNum"> Global CustNum field on the GlbCustomer record to unlink </param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbCustomerDataSet">The Global Customer data set </param>
+            <returns type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.UpdateCreditTotals(Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            This method updates the TotOpenCredit and TotGlobalCredit fields. To be called when
+            the include credit flags are changed.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.UpdateGlobalLimits(Epicor.Mfg.BO.CustomerDataSet)">
+            <summary>
+            This method converts the global credit limit from the global currency value to
+            the local currency value. To be used when the global currency code changes or
+            when the global credit limits are changed.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CustomerDataSet">The Customer data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ValidateCountry(System.Int32)">
+            <param name="ipProposedCountry">country number to validate</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CustomerImpl.ValidatePayBTFlag(System.String,System.Boolean,System.Boolean,System.Int32,System.String)">
+            <param name="ipPayBTFlag">requested pay bt flag to edit</param>
+            <param name="ipValCust"> logical indicating if the pay flag on the CustMFBill is to be checked</param>
+            <param name="ipValShipTo">logical indicating if the pay flag on the ShipToMFBill is to be checked</param>
+            <param name="ipCustNum">customer Number</param>
+            <param name="ipShipTo">Ship To</param>
+        </member>
+        <member name="P:Epicor.Mfg.Proxy.CustomerImpl.CallContext">
+            <summary>
+            Call context dataset
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.BO.Customer.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+    </members>
+</doc>

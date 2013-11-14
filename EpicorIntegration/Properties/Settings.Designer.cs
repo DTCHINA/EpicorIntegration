@@ -37,7 +37,7 @@ namespace EpicorIntegration.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("hgddmccl")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Fortheswarm1")]
         public string passw {
             get {
                 return ((string)(this["passw"]));
@@ -141,7 +141,7 @@ namespace EpicorIntegration.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("BKH")]
+        [global::System.Configuration.DefaultSettingValueAttribute("POC")]
         public string ecogroup {
             get {
                 return ((string)(this["ecogroup"]));

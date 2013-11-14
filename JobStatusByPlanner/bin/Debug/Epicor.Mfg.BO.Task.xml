@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.BO.Task</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.Task">
+            <summary>
+            Client side business object for Task.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.Proxy.TaskImpl">
+            <summary>
+            The Task main object.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Proxy constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetNewTask(Epicor.Mfg.BO.TaskDataSet,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetNewTaskCnt(Epicor.Mfg.BO.TaskDataSet,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.DeleteByID(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetByID(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetRows(System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.Update(Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.UpdateExt(Epicor.Mfg.BO.UpdExtTaskDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetCodeDescList(System.String,System.String)">
+            <summary>
+            To return the CodeDescriptionList values of a given table.field.
+            </summary>
+            <param name="tableName"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.AssignDefaultsFromQuote(System.Int32,Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Assigns defaults for the task when is created from a Quote.
+            </summary>
+            <param name="quoteNum">Num of quote to assign values</param>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeComplete(Epicor.Mfg.BO.TaskDataSet,System.Boolean,System.String@)">
+            <summary>
+            Assigns defaults for the task when the complete field is checked.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+            <param name="lProposedComplete">The proposed value for the complete flag</param>
+            <param name="cMessage">The message to display if not blank</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeConclusion(Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Assigns defaults for the task when the conclusion is changed.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeConName(System.String,Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Update TaskCnt information when the contact Name is changed.
+            </summary>
+            <param name="pName">Proposed Name</param>
+            <param name="ds">The Task data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeConPerConLnkRowID(System.String,Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Update TaskCnt information when the contact PerConLnkRowID is changed.
+            </summary>
+            <param name="pPerConLnkRowID">Proposed PerConLnkRowID</param>
+            <param name="ds">The Task data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeCustomer(Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Assigns defaults for the task when the customer changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeCustomerContact(Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Assigns defaults for the task when the customer contact changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeCustomerShipTo(Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Assigns defaults for the task when the customer ship to changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeNextTaskSeq(Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Get the Next Task Description when the NextTaskSeq changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeSalesRep(Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Assigns defaults for the task when the salesRep changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeTaskID(Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Assigns defaults for the task when the task id changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeTaskTimeDisp(Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Assigns the format for the task Start and End Time fields when their value changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeTEApprovalAction(Epicor.Mfg.BO.TaskDataSet,System.String)">
+            <summary>
+            Assigns defaults for the task when the time or expense approval action changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+            <param name="lProposedTEApprovalAction">The proposed value for approval action</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeVendor(Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Assigns defaults for the task when the vendor changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeVendorContact(Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Assigns defaults for the task when the vendor contact changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.ChangeVendorPP(Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            Assigns defaults for the task when the vendor purchase point changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetCreditHoldMessageText(System.String,System.String@)">
+            <summary>
+            Retrieve the customer on credit hold message text.
+            </summary>
+            <param name="icCustID">The customer id</param>
+            <param name="ocMessageText">The text of the message returned</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetDefaultEndDate(System.Nullable{System.DateTime}@)">
+            <summary>
+            This procedure will return a date set to the last day of next month.
+            </summary>
+            <param name="endDate">The last day from next month.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetListApprovers(System.String,System.String,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This method returns a list of Tasks to be viewed in the Task List screen based
+            a Sales Representative, Date Range, and sort options. This method builds the where
+            clause instead of having the UI build the where clause on their end. Although either
+            method could be used to build the Tree.
+            </summary>
+            <param name="ipSalesRepCode">IPsalesRepCode</param>
+            <param name="ipApprovalStatus">Stauts of Tasks</param>
+            <param name="ipTime">Include Time Transactions</param>
+            <param name="ipExpense">Include Expense transactions </param>
+            <param name="ipSortby">Sort the data - currently not used</param>
+            <param name="ipStartDate">Starting date of the results set, blank will return all dates</param>
+            <param name="ipEndDate">Starting date of the results set, blank will return all dates</param>
+            <param name="ipEmployeeNum">Search for time or expenses for a employee, blank for all</param>
+            <param name="ipProject">Search for time or expenses for a project, blank for al</param>
+            <param name="pageSize">The page size</param>
+            <param name="absolutePage">the absolute page</param>
+            <param name="morePages">The more pages</param>
+            <returns type="Epicor.Mfg.BO.TaskListDataSet">The Task dataSet</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetQuoteLinesWOQtyMessageText(System.String@)">
+            <summary>
+            This method returns the message text for the case where there aren't any quote
+            lines with an order quantity.
+            </summary>
+            <param name="ocMessageText">Contains the message text to display</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetRemainUncompletedTasks(System.String,System.String,System.Boolean@)">
+            <summary>
+            Retrieve yes/no regarding if there are ramain uncompleted milestone tasks in HDCase.
+            </summary>
+            <param name="hdCaseNum">HDCase id</param>
+            <param name="taskSetId">TaskSetId</param>
+            <param name="remainUncompletedTasks">True if there are remain uncompleted tasks</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetRowsContactTracker(System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Called from Contact tracker instead of GetRows for better performance
+            </summary>
+            <param name="whereClauseTask">Whereclause for Task table.</param>
+            <param name="contactName">The contact to return data for.</param>
+            <param name="pageSize">Page size.</param>
+            <param name="absolutePage">Absolute page.</param>
+            <param name="morePages">More pages.</param>
+            <returns type="Epicor.Mfg.BO.TaskDataSet">Epicor.Mfg.BO.TaskDataSet</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetRowsCustomerTracker(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Called from Customer tracker instead of GetRows for better performance
+            </summary>
+            <param name="whereClauseTask">Whereclause for Task table.</param>
+            <param name="pageSize">Page size.</param>
+            <param name="absolutePage">Absolute page.</param>
+            <param name="morePages">More pages.</param>
+            <returns type="Epicor.Mfg.BO.TaskDataSet">Epicor.Mfg.BO.TaskDataSet</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetTaskCnt(System.String,System.String,System.String,System.String,System.Int32,Epicor.Mfg.BO.TaskDataSet)">
+            <summary>
+            This method returns a list of Tasks to be viewed in the Task List screen based
+            a Sales Representative, Date Range, and sort options. This method builds the where
+            clause instead of having the UI build the where clause on their end. Although either
+            method could be used to build the Tree.
+            </summary>
+            <param name="relatedToFile">Current RelatedToFile value</param>
+            <param name="key1">Current Key1 value</param>
+            <param name="key2">Current Key2 value</param>
+            <param name="key3">Current Key3 value</param>
+            <param name="taskSeqNum">Current taskSeqNum value</param>
+            <param name="ds" type="Epicor.Mfg.BO.TaskDataSet">The Task data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.TaskImpl.GetTaskList(System.String,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This method returns a list of Tasks to be viewed in the Task List screen based
+            a Sales Representative, Date Range, and sort options. This method builds the where
+            clause instead of having the UI build the where clause on their end. Although either
+            method could be used to build the Tree.
+            </summary>
+            <param name="salesRepCode">Current SalesRep, blank to use default or code of SalesRep selected by user</param>
+            <param name="includeComplete">Include Complete Tasks or not</param>
+            <param name="dateType">Options are startDate or dueDate</param>
+            <param name="startDate">Starting date of the results set, blank will return everything upto the ending date</param>
+            <param name="endDate">Ending date of the results set, blank will become the last day of the next month</param>
+            <param name="filterStatus">A Specific Task Status to look for, blank for all</param>
+            <param name="filterType">A specific Task Type to look for, blank for all</param>
+            <param name="pageSize">The page size</param>
+            <param name="absolutePage">the absolute page</param>
+            <param name="morePages">The more pages</param>
+            <returns type="Epicor.Mfg.BO.TaskDataSet">The Task dataSet</returns>
+        </member>
+        <member name="P:Epicor.Mfg.Proxy.TaskImpl.CallContext">
+            <summary>
+            Call context dataset
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.BO.Task.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+    </members>
+</doc>

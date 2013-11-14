@@ -1,0 +1,261 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.BO.CRMCall</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.CRMCall">
+            <summary>
+            Client side business object for CRMCall.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.Proxy.CRMCallImpl">
+            <summary> CRMCall Business Object
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Proxy constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.GetNewCRMCall(Epicor.Mfg.BO.CRMCallDataSet,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.GetNewCRMCallAttch(Epicor.Mfg.BO.CRMCallDataSet,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.GetNewCRMCallCnt(Epicor.Mfg.BO.CRMCallDataSet,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.GetNewCRMCallHistory(Epicor.Mfg.BO.CRMCallDataSet,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.DeleteByID(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.GetByID(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.GetRows(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.Update(Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.UpdateExt(Epicor.Mfg.BO.UpdExtCRMCallDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.beforeUpdate">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangeConName(System.String,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCallCnt information when the contact Name is changed.
+            </summary>
+            <param name="pName">Proposed Name</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangeConPerConLnkRowID(System.String,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCallCnt information when the contact PerConLnkRowID is changed.
+            </summary>
+            <param name="pPerConLnkRowID">Proposed PerConLnkRowID</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangeCustomerID(System.String,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the CustomerId is changed.
+            </summary>
+            <param name="pCustomerId">Proposed Customer ID</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangeFSCallNum(System.Int32,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the FSCall Number is changed.
+            </summary>
+            <param name="pFSCallNum">Proposed FSCall Number</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangeHDCaseNum(System.Int32,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the Case Number is changed.
+            </summary>
+            <param name="pHDCaseNum">Proposed Case Number</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangeInvoiceNum(System.Int32,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the AR Invoice Number is changed.
+            </summary>
+            <param name="pInvoiceNum">Proposed Invoice Number</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangeOrderNum(System.Int32,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the Order Number is changed.
+            </summary>
+            <param name="pOrderNum">Proposed Order Number</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangePurPoint(System.Int32,System.String,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the Purchase Point is changed.
+            </summary>
+            <param name="pVendorNum">Proposed Supplier number.</param>
+            <param name="pPurPoint">Proposed purchase point..</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangeQuoteNum(System.Int32,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the Quote Number is changed.
+            </summary>
+            <param name="pQuoteNum">Proposed Quote Number</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangeRMANum(System.Int32,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the RMA Number is changed.
+            </summary>
+            <param name="pRMANum">Proposed RMA Number</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangeShipToNum(System.Int32,System.String,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the ShipToNum is changed.
+            </summary>
+            <param name="pCustNum">Proposed Customer number.</param>
+            <param name="pShipToNum">Proposed Ship To number.</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangeTaskID(System.String,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the Task ID is changed.
+            </summary>
+            <param name="pTaskID">Proposed Task ID</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.ChangeVendorID(System.String,Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the VendorID (Supplier ID) is changed.
+            </summary>
+            <param name="pVendorID">Proposed Supplier ID</param>
+            <param name="ds">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.DefaultContactFields(Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the contact is changed.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CRMCallDataSet">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.DefaultSupplierCntFields(Epicor.Mfg.BO.CRMCallDataSet)">
+            <summary>
+            Update CRMCall information when the supplier contact is changed.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.CRMCallDataSet">The CRMCall data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.GetCRMCallsToShow(System.Int32@)">
+            <summary>Gets the number of CRM Calls to show at startup according to the
+            Company settings.</summary>
+            <param name="crmCallsToShow">Number of CRM Calls to show.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.GetRowsContactTracker(System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Called from Contact tracker for better performance.
+            </summary>
+            <param name="whereClauseCRMCall">Whereclause for CRMCall table.</param>
+            <param name="whereClauseCRMCallHistory">Whereclause for CRMCallHistory table.</param>
+            <param name="contactName">The contact to return data for.</param>
+            <param name="pageSize">Page size.</param>
+            <param name="absolutePage">Absolute page.</param>
+            <param name="morePages">More pages.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.GetRowsCustomerTracker(System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Called from Customer tracker for better performance.
+            </summary>
+            <param name="whereClauseCRMCall">Whereclause for CRMCall table.</param>
+            <param name="whereClauseCRMCallHistory">Whereclause for CRMCallHistory table.</param>
+            <param name="pageSize">Page size.</param>
+            <param name="absolutePage">Absolute page.</param>
+            <param name="morePages">More pages.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.GetRowsForPerson(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Gets the list of calls where the DcdUserID is an authorized user for the Workforce specified in the call.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="startingAt">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="hDCaseNum">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The rows DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.SortByData(System.String,System.Int32,System.Int32,System.Int32,System.String@)">
+            <summary>
+            Return a list of the sort by options based on the data passed in.
+            </summary>
+            <param name="cTableName">The table name to base the sort by on. Valid values are:
+            Customer, QuoteHed, Task </param>
+            <param name="iCustNum">The Customer ID if available. Can be blank. </param>
+            <param name="iQuoteNum">The Quote Number if available. Can be zero. </param>
+            <param name="iVendorNum">The Vendor ID if available. Can be blank. </param>
+            <param name="cSortByList">The Sort By List. </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.CRMCallImpl.UserIsAuthorized(System.String)">
+            <summary> Checks if user is authorized
+            </summary>
+            <param name="cSalesRepCode">The SalesRep code</param>
+        </member>
+        <member name="P:Epicor.Mfg.Proxy.CRMCallImpl.CallContext">
+            <summary>
+            Call context dataset
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.BO.CRMCall.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+    </members>
+</doc>

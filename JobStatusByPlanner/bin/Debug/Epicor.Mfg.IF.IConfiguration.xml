@@ -1,0 +1,1349 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.IF.IConfiguration</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.ConfigurationSequenceDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationSequenceDataSet.ConfigurationSequenceDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationSequenceDataSet.ConfigurationSequenceRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationSequenceDataSet.ConfigurationSequenceRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationSummaryDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationSummaryDataSet.ConfigurationSummaryDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationSummaryDataSet.ConfigurationSummaryRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationSummaryDataSet.ConfigurationSummaryRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationValueDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationValueDataSet.ConfigurationValueDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationValueDataSet.GlbConfigurationValueDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationValueDataSet.ConfigurationValueRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationValueDataSet.GlbConfigurationValueRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationValueDataSet.ConfigurationValueRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationValueDataSet.GlbConfigurationValueRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationDataSet.PcInValueDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationDataSet.PcInValueRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ConfigurationDataSet.PcInValueRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcDocRulesDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcDocRulesExprDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcDynLstDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcDynLstCriteriaDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcInPriceDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcInputsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcInputsExprDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcPageDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcPageExprDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcPartRevDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcPriceHedDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcRulesDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcRulesExprDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStatusDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStrCompDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStructDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStructRulesDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStructRulesExprDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcDocRulesRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcDocRulesExprRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcDynLstRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcDynLstCriteriaRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcInPriceRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcInputsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcInputsExprRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcPageRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcPageExprRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcPartRevRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcPriceHedRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcRulesRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcRulesExprRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStatusRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStrCompRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStructRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStructRulesRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStructRulesExprRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcDocRulesRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcDocRulesExprRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcDynLstRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcDynLstCriteriaRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcInPriceRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcInputsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcInputsExprRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcPageRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcPageExprRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcPartRevRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcPriceHedRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcRulesRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcRulesExprRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStatusRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStrCompRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStructRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStructRulesRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GeneratedConfigurationDataSet.cfgPcStructRulesExprRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.ApplyLeave(System.String,System.String,System.String,System.Int32,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Int32,System.String,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <example>
+            <code>
+            Add how this object is used (or syntax)
+            </code>
+            </example>
+            <remarks>
+            </remarks>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="pageNum">The page of the configuration on which the event has taken place</param>
+            <param name="inputName">The name of the input for which the LEAVE triggers should be applied</param>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.DeleteTestRulePrograms(System.String,Epicor.Mfg.BO.GeneratedConfigurationDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">Current test mode </param>
+            <param name="ds" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.ApplyOrderPricing(System.String,System.String,System.String,System.String,System.Int32,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Decimal@,System.Decimal@,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <example>
+            <code>
+            Add how this object is used (or syntax)
+            </code>
+            </example>
+            <remarks>
+            </remarks>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="totalPrice">The total price (in the base currency) of the configuration pricing</param>
+            <param name="basePrice">The base price (in the base currency) of the configuration that not associated with an input</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.ApplyPurchasePricing(System.String,System.String,System.String,System.String,System.Int32,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Decimal@,System.Decimal@,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <example>
+            <code>
+            Add how this object is used (or syntax)
+            </code>
+            </example>
+            <remarks>
+            </remarks>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="totalPrice">The total price (in the base currency) of the configuration pricing</param>
+            <param name="basePrice">The base price (in the base currency) of the configuration that not associated with an input</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.ApplyQuotePricing(System.String,System.String,System.String,System.String,System.Int32,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Decimal@,System.Decimal@,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <example>
+            <code>
+            Add how this object is used (or syntax)
+            </code>
+            </example>
+            <remarks>
+            </remarks>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="totalPrice">The total price (in the base currency) of the configuration pricing</param>
+            <param name="basePrice">The base price (in the base currency) of the configuration that not associated with an input</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.ProcessKeepWhen(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Boolean@,Epicor.Mfg.BO.GeneratedConfigurationDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="parentPartNum">parent part number </param>
+            <param name="parentRevisionNum">parent revision number</param>
+            <param name="parentRuleTag">parent rule tag</param>
+            <param name="subPartNum">sub part number </param>
+            <param name="subRevisionNum">sub revision number</param>
+            <param name="mtlSeq">Material Sequence to check</param>
+            <param name="ruleTag">Rule tag to check</param>
+            <param name="relatedToFile">Related to source file</param>
+            <param name="relatedType">Related Type</param>
+            <param name="sourceKey1">Source Link Key1</param>
+            <param name="sourceKey2">Source Link Key1</param>
+            <param name="sourceKey3">Source Link Key1</param>
+            <param name="sourceKey4">Source Link Key1</param>
+            <param name="sourceKey5">Source Link Key1</param>
+            <param name="targetAssembly">Target Assembly</param>
+            <param name="configMode">Configuration Mode</param>
+            <param name="pcStructRowID">Rowid of PcStruct Record</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="keepIt">Keep the material</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+            <param name="ds2" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetNextPartSeq(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Int32,Epicor.Mfg.BO.GeneratedConfigurationDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="parentPartNum">parent part number </param>
+            <param name="parentRevisionNum">parent revision number</param>
+            <param name="parentRuleTag">parent rule tag</param>
+            <param name="subPartNum">sub part number </param>
+            <param name="subRevisionNum">sub revision number</param>
+            <param name="mtlSeq">Material Sequence to check</param>
+            <param name="ruleTag">Rule tag to check</param>
+            <param name="relatedToFile">Related to source file</param>
+            <param name="relatedType">Related Type</param>
+            <param name="sourceKey1">Source Link Key1</param>
+            <param name="sourceKey2">Source Link Key1</param>
+            <param name="sourceKey3">Source Link Key1</param>
+            <param name="sourceKey4">Source Link Key1</param>
+            <param name="sourceKey5">Source Link Key1</param>
+            <param name="targetAssembly">Target Assembly</param>
+            <param name="configMode">Configuration Mode</param>
+            <param name="pcStructRowID">Rowid of PcStruct Record</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="curPartCfgSeq">Current Part Configuration Sequence</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+            <param name="ds2" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.DeleteOrderConfiguration(System.String,System.Int32,System.Int32)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="orderNum">The order for which the configuration should be deleted.</param>
+            <param name="orderLine">The order line for which the configuration should be deleted.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.DeleteQuoteConfiguration(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="inRelatedToFile">Related To File.</param>
+            <param name="inKey1">The job on which the configuration should be saved.</param>
+            <param name="inKey2">The assembly sequence of the configured part.</param>
+            <param name="inKey3">The material sequence of the configured part.</param>
+            <param name="inKey4">The material sequence of the configured part..</param>
+            <param name="inKey5">The material sequence of the configured part..</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.EnterPage(System.String,System.String,System.String,System.Int32,System.String,System.Int32,System.Int32,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Boolean@,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="pageNum">The current page of the configuration</param>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="previousPage">The previous page of the configuration</param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="skipOPL">Skipping OnLeave expressions when page loads</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetConfigurationSequence(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String@)">
+            <summary>
+            </summary>
+            <param name="configMode">Configuration Mode</param>
+            <param name="partNum">The main part being configured</param>
+            <param name="revisionNum">The main revision being configured</param>
+            <param name="relatedToFile">Related To File</param>
+            <param name="relatedType">Related Type</param>
+            <param name="linkKey1">Source Key1 value</param>
+            <param name="linkKey2">Source Key1 value</param>
+            <param name="linkKey3">Source Key1 value</param>
+            <param name="linkKey4">Source Key1 value</param>
+            <param name="linkKey5">Source Key1 value</param>
+            <returns type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></returns>
+            <param name="nonApprvMessage">Message with non approved part revisions</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetConfigurationSummary(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="relatedToFile">Related to source file</param>
+            <param name="relatedType">Related Type</param>
+            <param name="sourceKey1">Source Link Key1</param>
+            <param name="sourceKey2">Source Link Key1</param>
+            <param name="sourceKey3">Source Link Key1</param>
+            <param name="sourceKey4">Source Link Key1</param>
+            <param name="sourceKey5">Source Link Key1</param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="targetAssembly">The assembly sequence of the configured part.</param>
+            <returns type="Epicor.Mfg.BO.ConfigurationSummaryDataSet"></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetPcInValueList(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            </summary>
+            <param name="linkMode">QuoteDtl, OrderDtl, or JobAsmbl</param>
+            <param name="key1">Key1 on which the configuration was saved.</param>
+            <param name="key2">Key2 on which the configuration was saved.</param>
+            <param name="key3">Key3 on which the configuration was saved.</param>
+            <param name="key4">Key4 on which the configuration was saved.</param>
+            <param name="key5">Key5 on which the configuration was saved.</param>
+            <param name="targetAssembly">The assembly sequence of the configured part.</param>
+            <returns type="Epicor.Mfg.BO.PcInValueListDataSet"></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetDispConfSummary(System.String,System.String,System.String,System.Boolean@)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="partNum">Configured Part Number</param>
+            <param name="revisionNum">Configured Part Revision Number</param>
+            <param name="displaySummary">Returns true if the summary grid should be displayed.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetGeneratedConfiguration(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="specID">Spec ID</param>
+            <param name="specRev">Spec Revision</param>
+            <returns type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetInputs(System.String,System.String,System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="specID">If a test plan then specification ID to test</param>
+            <param name="specRev">If a test plan then specification revision to test</param>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <returns type="Epicor.Mfg.BO.PcInputsDataSet"></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetJobValues(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Int32,System.String,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="inRelatedToFile">Related To File </param>
+            <param name="inKey1">The job on which the configuration should be saved.</param>
+            <param name="inKey2">The assembly sequence of the configured part.</param>
+            <param name="inKey3">The material sequence of the configured part.</param>
+            <param name="inKey4">The material sequence of the configured part..</param>
+            <param name="inKey5">The material sequence of the configured part..</param>
+            <param name="targetAssembly">The assembly sequence of the configured part.</param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>\
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetOrderValues(System.String,System.String,System.Int32,System.Int32,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Int32,System.String,System.String,System.Int32,System.String,System.Int32,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="orderNum">The order on which the configuration should be saved.</param>
+            <param name="orderLine">The order line on which the configuration should be saved.</param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="kitFlag">Kit Flag</param>
+            <param name="kitCompOrigSeq">Kit component original sequence</param>
+            <param name="kitCompParentPart">Kit component parent part number</param>
+            <param name="kitCompParentSeq">Kit component parent sequence</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetPOValues(System.String,System.String,System.Int32,System.Int32,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Int32,System.String,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="poNum">The purchase order on which the configuration should be saved.</param>
+            <param name="poLine">The purchase order line on which the configuration should be saved.</param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetDemandValues(System.String,System.String,System.Int32,System.Int32,System.Int32,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Int32,System.String,System.String,System.Int32,System.String,System.Int32,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="demandContractNum">The demand contract number on which the configuration should be saved.</param>
+            <param name="demandHeadSeq">The demand head sequence on which the configuration should be saved.</param>
+            <param name="demandDtlSeq">The demand detail sequence on which the configuration should be saved.</param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="kitFlag">Kit Flag</param>
+            <param name="kitCompOrigSeq">Kit component original sequence</param>
+            <param name="kitCompParentPart">Kit component parent part number</param>
+            <param name="kitCompParentSeq">Kit component parent sequence</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetECOValues(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Int32,System.String,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="iKey1">The job on which the configuration should be saved.</param>
+            <param name="iKey2">The assembly sequence of the configured part.</param>
+            <param name="iKey3">The material sequence of the configured part.</param>
+            <param name="iKey4">The material sequence of the configured part..</param>
+            <param name="iKey5">The material sequence of the configured part..</param>
+            <param name="basePartNum">The part being configured</param>
+            <param name="baseRevisionNum">The revision being configured</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetTestPlanValues(System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="relatedRowID">The rowID of the current InspResults record</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.LoadValuesFromSmartString(System.String,System.String,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.String,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="ipSmartString">Smart String value</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.ValidateSmartString(System.String,System.String,System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="ipSmartString">Smart String value</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.DisplaySmartString(System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.Boolean@)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="relatedToFile">configuration related to file</param>
+            <param name="targetAssembly">Target assembly sequence</param>
+            <param name="key1">key1 of related to file</param>
+            <param name="key2">key2 of related to file</param>
+            <param name="key3">key3 of related to file</param>
+            <param name="key4">key4 of related to file</param>
+            <param name="key5">key5 of related to file</param>
+            <param name="displaySmartString">Display smart string form</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.EDIDemandConfiguration(System.String,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            </summary>
+            <param name="parentMfgCompID">Parent Manufacturing Company ID</param>
+            <param name="iDemandContractNum">Demand Contract Number</param>
+            <param name="iDemandHeadSeq">Demand Head Sequence that contains the configurable line</param>
+            <param name="iDemandDtlSeq">Demand Detail Sequence that contains the configurable part</param>
+            <param name="iSmartString">Smart String value</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetQuoteValues(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Int32,System.String,System.String,System.Int32,System.String,System.Int32,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="inRelatedToFile">Related To File.</param>
+            <param name="inKey1">The job on which the configuration should be saved.</param>
+            <param name="inKey2">The assembly sequence of the configured part.</param>
+            <param name="inKey3">The material sequence of the configured part.</param>
+            <param name="inKey4">The material sequence of the configured part..</param>
+            <param name="inKey5">The material sequence of the configured part..</param>
+            <param name="targetAssembly">The quote assembly on which the configuration should be saved.</param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="kitFlag">Kit Flag</param>
+            <param name="kitCompOrigSeq">Kit component original sequence</param>
+            <param name="kitCompParentPart">Kit component parent part number</param>
+            <param name="kitCompParentSeq">Kit component parent sequence</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetSmartString(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.GeneratedConfigurationDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="relatedToFile">Related to source file</param>
+            <param name="relatedType">Related Type</param>
+            <param name="sourceKey1">Source Link Key1</param>
+            <param name="sourceKey2">Source Link Key1</param>
+            <param name="sourceKey3">Source Link Key1</param>
+            <param name="sourceKey4">Source Link Key1</param>
+            <param name="sourceKey5">Source Link Key1</param>
+            <param name="targetAssembly">Target Assembly Sequence</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+            <param name="ds2" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.UpdateGlobalValues(System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet)">
+             <summary>
+            
+              When paging paging forward to a lower level subassembly configured part,
+              the GetxxxValues methods are called and the global variables defined in the
+              ttConfigurationValue are updated from the ttGlbConfigurationValue table.
+              This doesn't happen when paging backward from a subassembly configured part
+              to a parent configured part.  This procedure will update the GIVs in the
+              current configurations ttConfigurationValue table from the ttGlbConfigurationValue.
+            
+             </summary>
+             <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+             <param name="partNum">The parent configured part</param>
+             <param name="revisionNum">The revision number of the parent part</param>
+             <param name="newPageNum">The new page number we are moving to</param>
+             <param name="mtlSeq">Material Sequence of the parent part</param>
+             <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+             <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+             <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetValues(System.String,System.String,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Int32,System.String,System.String,System.String,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="specID">If a test plan then specification ID to test</param>
+            <param name="specRev">If a test plan then specification revision to test</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetNextPage(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32@,System.String,System.String@,System.Boolean@,Epicor.Mfg.BO.GeneratedConfigurationDataSet,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet)">
+            <summary>
+            </summary>
+            <param name="configMode">Configuration mode</param>
+            <param name="iRelatedToFile">Related to file (Quote, Order, Job, etc)</param>
+            <param name="iRelatedType">Related Type</param>
+            <param name="iKey1">Key 1 of related to file</param>
+            <param name="iKey2">Key 2 of related to file</param>
+            <param name="iKey3">Key 3 of related to file</param>
+            <param name="iKey4">Key 4 of related to file</param>
+            <param name="iKey5">Key 5 of related to file</param>
+            <param name="targetAssembly">Target Assembly</param>
+            <param name="currentPageNum">Current page number</param>
+            <param name="curPartCfgSeq">Current configuration sequence</param>
+            <param name="newPageNum">New page to be displayed</param>
+            <param name="iconfigsmartstring">New page to be displayed</param>
+            <param name="errText">Error message returned by this operation</param>
+            <param name="configSaved">Returns true if the configuration was saved</param>
+            <param name="ds" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="ds2" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetPartDetails(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,Epicor.Mfg.BO.ConfigurationSequenceDataSet,Epicor.Mfg.BO.ConfigurationValueDataSet)">
+            <summary>
+            </summary>
+            <param name="configMode">The configuration mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="iRelatedToFile">Related To File</param>
+            <param name="iKey1">Source Link Key 1</param>
+            <param name="iKey2">Source Link Key 2</param>
+            <param name="iKey3">Source Link Key 3</param>
+            <param name="iKey4">Source Link Key 4</param>
+            <param name="iKey5">Source Link Key 5</param>
+            <param name="iSpecID">Specification ID</param>
+            <param name="iSpecRev">Specification Revision</param>
+            <param name="iRelatedRowID">Inspection results related row id</param>
+            <param name="iTargetAssembly">Target assembly</param>
+            <param name="iNextConfigSeq">The next configuration sequence to be loaded</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <returns type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetPreviousPage(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32@,Epicor.Mfg.BO.GeneratedConfigurationDataSet,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet)">
+            <summary>
+            </summary>
+            <param name="configMode">Configuration mode</param>
+            <param name="iRelatedToFile">Related to file (Quote, Order, Job, etc)</param>
+            <param name="iRelatedType">Related Type</param>
+            <param name="iKey1">Key 1 of related to file</param>
+            <param name="iKey2">Key 2 of related to file</param>
+            <param name="iKey3">Key 3 of related to file</param>
+            <param name="iKey4">Key 4 of related to file</param>
+            <param name="iKey5">Key 5 of related to file</param>
+            <param name="targetAssembly">Target Assembly</param>
+            <param name="currentPageNum">Current page number</param>
+            <param name="curPartCfgSeq">Current configuration sequence</param>
+            <param name="newPageNum">New page to be displayed</param>
+            <param name="ds" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="ds2" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.RestoreConfiguration(System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.String,System.Int32,Epicor.Mfg.BO.ConfigurationValueDataSet)">
+            <summary>
+            </summary>
+            <param name="iConfigMode">The Configuration Mode </param>
+            <param name="iParentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="iPartNum">The part being configured</param>
+            <param name="iRevisionNum">The revision being configured</param>
+            <param name="iMtlSeq">Material Sequence of the revision being configured</param>
+            <param name="iRuleTag">Generated Rule Tag of the part being configured</param>
+            <param name="iSpecID">Specification ID</param>
+            <param name="iSpecRev">Specification Revision</param>
+            <param name="iNewPageNum">New page number</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <returns type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.NextPage(System.String,System.String,System.String,System.Int32,System.String,System.Int32,System.String,System.Int32@,System.String@,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Boolean@,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="currentPageNum">The current page of the configuration</param>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="newPageNum">The next page number.  If 0 the current page is the last page.</param>
+            <param name="errText">Text of error message.</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="skipOPL">Skipping OnLeave expressions when page loads</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.GetInspResultsValues(System.String,System.String,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="inTgtRowID">RowID of the InspResults record</param>
+            <param name="startKey1">Key1 value from InspResults record</param>
+            <param name="startKey2">Key2 value from InspResults record</param>
+            <param name="startKey3">Key3 value from InspResults record</param>
+            <param name="startKey4">Key4 value from InspResults record</param>
+            <param name="startKey5">Key5 value from InspResults record</param>
+            <param name="startInspDate">Inspection Date from InspResults record</param>
+            <param name="startInspTime">Inspection Date from InspResults record</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.ProcessPassFail(System.String,System.String,System.String,System.Boolean@,System.String@,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="basePartNum">The base part number used of the configuration.</param>
+            <param name="baseRevisionNum">The base revision number used of the configuration.</param>
+            <param name="testPassed">Inspection plan passed</param>
+            <param name="failText">Fail text to be displayed</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.PartExists(System.String,System.String,System.String,System.String,System.Int32,System.String,System.Boolean@,System.Boolean@,System.Boolean@)">
+            <summary>
+            Part exists.
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="basePartNum">Base Part Number</param>
+            <param name="baseRevisionNum">Base Revision Number</param>
+            <param name="newPartNum">The part being configured</param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="partExists">Part Exists</param>
+            <param name="promptForSIValues">Prompt to overwrite SI values</param>
+            <param name="sIValues">Saving input values for this configuration</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.PreviousPage(System.String,System.String,System.String,System.Int32,System.String,System.Int32,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,System.Int32@,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="currentPageNum">The current page of the configuration</param>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="ruleTag">Generated Rule Tag of the part being configured</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="newPageNum">The previous page number. If 0 the current page is the first page.</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.SaveJobConfiguration(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="inRelatedToFile">Related To File.</param>
+            <param name="inKey1">The job on which the configuration should be saved.</param>
+            <param name="inKey2">The assembly sequence of the configured part.</param>
+            <param name="inKey3">The material sequence of the configured part.</param>
+            <param name="inKey4">The material sequence of the configured part..</param>
+            <param name="inKey5">The material sequence of the configured part..</param>
+            <param name="targetAssembly">The assembly sequence of the configured part.</param>
+            <param name="configSmartString">Config Smart String Value</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+            <param name="ds2" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.SaveOrderConfiguration(System.String,System.Int32,System.Int32,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="orderNum">The order on which the configuration should be saved.</param>
+            <param name="orderLine">The order line on which the configuration should be saved.</param>
+            <param name="configSmartString">Config Smart String Value</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+            <param name="ds2" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.SavePOConfiguration(System.String,System.Int32,System.Int32,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="poNum">The purchase order on which the configuration should be saved.</param>
+            <param name="poLine">The purchase order line on which the configuration should be saved.</param>
+            <param name="configSmartString">Config Smart String Value</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+            <param name="ds2" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.SaveDemandConfiguration(System.String,System.Int32,System.Int32,System.Int32,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="demandContractNum">The demand contract number on which the configuration should be saved.</param>
+            <param name="demandHeadSeq">The demand head sequence on which the configuration should be saved.</param>
+            <param name="demandDtlSeq">The demand detail sequence on which the configuration should be saved.</param>
+            <param name="configSmartString">Config Smart String Value</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+            <param name="ds2" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.SaveECOConfiguration(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="inRelatedToFile">Related To File.</param>
+            <param name="iKey1">The job on which the configuration should be saved.</param>
+            <param name="iKey2">The assembly sequence of the configured part.</param>
+            <param name="iKey3">The material sequence of the configured part.</param>
+            <param name="iKey4">The material sequence of the configured part..</param>
+            <param name="iKey5">The material sequence of the configured part..</param>
+            <param name="configSmartString">Config Smart String Value</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+            <param name="ds2" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.SaveQuoteConfiguration(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="inRelatedToFile">Related To File </param>
+            <param name="inKey1">The job on which the configuration should be saved.</param>
+            <param name="inKey2">The assembly sequence of the configured part.</param>
+            <param name="inKey3">The material sequence of the configured part.</param>
+            <param name="inKey4">The material sequence of the configured part..</param>
+            <param name="inKey5">The material sequence of the configured part..</param>
+            <param name="targetAssembly">The quote assembly on which the configuration should be saved.</param>
+            <param name="configSmartString">Config Smart String Value</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+            <param name="ds2" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.SaveTestPlan(System.String,System.String,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.GeneratedConfigurationDataSet)">
+            <summary>
+            </summary>
+            <param name="testMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="relatedRowID">The RowID of the related InspResults record</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet"></param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.StartConfiguration(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String@,System.Boolean@,Epicor.Mfg.BO.ConfigurationValueDataSet,Epicor.Mfg.BO.GeneratedConfigurationDataSet,Epicor.Mfg.BO.ConfigurationSequenceDataSet)">
+            <summary>
+            text
+            </summary>
+            <param name="configMode">The configuration test mode ("INPUTS" - Test Inputs Only, "RULES" Test Inputs and Rules, otherwise production mode)</param>
+            <param name="relatedToFile"></param>
+            <param name="relatedType"></param>
+            <param name="vPartNum"></param>
+            <param name="vRevisionNum"></param>
+            <param name="relatedRowID"></param>
+            <param name="iSpecID"></param>
+            <param name="iSpecRev"></param>
+            <param name="targetAssembly"></param>
+            <param name="smartStringValues"></param>
+            <param name="nonApprvMsg"></param>
+            <param name="skipOPL"></param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet">Configuration Value data set</param>
+            <param name="ds1" type="Epicor.Mfg.BO.GeneratedConfigurationDataSet">Generated Configuration data set</param>
+            <param name="ds2" type="Epicor.Mfg.BO.ConfigurationSequenceDataSet">Configuration Sequence data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IConfiguration.TestRules(System.String,System.String,System.String,System.String,System.Int32,System.String@,Epicor.Mfg.BO.ConfigurationValueDataSet)">
+            <summary>
+            </summary>
+            <param name="parentMfgCompID">The manufacturing company of the parent of the part being configured </param>
+            <param name="partNum">The part being configured</param>
+            <param name="revisionNum">The revision being configured</param>
+            <param name="workStationID">The name of the workstation requesting the test</param>
+            <param name="mtlSeq">Material Sequence of the revision being configured</param>
+            <param name="cFile">XML file path to load ttConfigurationValue in report logic code.</param>
+            <param name="ds" type="Epicor.Mfg.BO.ConfigurationValueDataSet"></param>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsCharDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsCharAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsCheckBoxDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsCheckBoxAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsDateDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsDateAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsNumDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsNumAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsShortCharDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsShortCharAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsCharRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsCharAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsCheckBoxRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsCheckBoxAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsDateRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsDateAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsNumRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsNumAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsShortCharRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsShortCharAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsCharRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsCharAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsCheckBoxRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsCheckBoxAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsDateRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsDateAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsNumRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsNumAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsShortCharRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.InspResultsDataSet.InspResultsShortCharAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PcInValueListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PcInValueListDataSet.PcInValueListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PcInValueListDataSet.PcInValueListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PcInValueListDataSet.PcInValueListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PcInputsDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PcInputsDataSet.PcInputsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PcInputsDataSet.PcInputsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PcInputsDataSet.PcInputsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtConfigurationDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtConfigurationDataSet.PcInValueDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtConfigurationDataSet.PcInValueRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtConfigurationDataSet.PcInValueRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>

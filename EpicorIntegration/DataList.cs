@@ -3,6 +3,7 @@ using Epicor.Mfg.Core;
 using Epicor.Mfg.Lib;
 using System;
 using System.Data;
+using System.Collections.Generic;
 
 namespace EpicorIntegration
 {
@@ -542,6 +543,123 @@ namespace EpicorIntegration
 
             return _results;
         }
+
+        #region Safe Lists
+
+        public static List<RawMaterial> GetCoils()
+        {
+            Part Part = new Part(DataList.EpicConn);
+
+            PartListDataSet PartList = new PartListDataSet();
+
+            string WhereClause = "ClassID = 'PC05'";
+
+            bool morePages;
+
+            PartList = Part.GetList(WhereClause, 0, 0, out morePages);
+
+            DataList.EpicClose();
+
+            List<RawMaterial> CoilNumbers = new List<RawMaterial>();
+
+            foreach (DataRow DR in PartList.Tables[0].Rows)
+            {
+                RawMaterial val = new RawMaterial();
+
+                val.part_number = DR["PartNum"].ToString();
+
+                val.description = DR["PartDescription"].ToString();
+
+                CoilNumbers.Add(val);
+            }
+
+            return CoilNumbers;
+        }
+
+        public static List<RawMaterial> GetEcoat()
+        {
+            Part Part = new Part(DataList.EpicConn);
+
+            PartListDataSet PartList = new PartListDataSet();
+
+            string WhereClause = "ClassID = 'PCNC'";
+
+            bool morePages;
+
+            PartList = Part.GetList(WhereClause, 0, 0, out morePages);
+
+            DataList.EpicClose();
+
+            List<RawMaterial> EcoatNumber = new List<RawMaterial>();
+
+            foreach (DataRow DR in PartList.Tables[0].Rows)
+            {
+                RawMaterial val = new RawMaterial();
+
+                val.part_number = DR["PartNum"].ToString();
+
+                val.description = DR["PartDescription"].ToString();
+
+                EcoatNumber.Add(val);
+            }
+
+            return EcoatNumber;
+        }
+
+        public static List<RawMaterial> GetSheets()
+        {
+            Part Part = new Part(DataList.EpicConn);
+
+            PartListDataSet PartList = new PartListDataSet();
+
+            string WhereClause = "ClassID = 'PC04'";
+
+            bool morePages;
+
+            PartList = Part.GetList(WhereClause, 0, 0, out morePages);
+
+            DataList.EpicClose();
+
+            List<RawMaterial> SheetNumbers = new List<RawMaterial>();
+
+            foreach (DataRow DR in PartList.Tables[0].Rows)
+            {
+                RawMaterial val = new RawMaterial();
+
+                val.part_number = DR["PartNum"].ToString();
+
+                val.description = DR["PartDescription"].ToString();
+
+                SheetNumbers.Add(val);
+            }
+
+            return SheetNumbers;
+        }
+
+        public static DateTime? EffectiveDate(string PartNumber)
+        {
+            DateTime? retval = new DateTime?();
+
+            try
+            {
+                Part Part = new Part(EpicConn);
+
+                PartDataSet PartData = new PartDataSet();
+
+                PartData = Part.GetByID(PartNumber);
+
+                int LastRowIndex = PartData.Tables["Part"].Rows.Count - 1;
+
+                string PartDesc = PartData.Tables["Part"].Rows[LastRowIndex]["EffectiveDate"].ToString();
+
+                EpicClose();
+            }
+            catch { retval = null; }
+
+            return retval;
+        }
+
+        #endregion
     }
 
     public class ECOGroup
@@ -814,6 +932,27 @@ namespace EpicorIntegration
         public bool UseRevision;
 
         public bool TrackSerial;
+    }
+
+    public class RawMaterial : IComparable<RawMaterial>
+    {
+        public string part_number { get; set; }
+        public string description { get; set; }
+
+        public int CompareTo(RawMaterial other)
+        {
+            if (this.description == other.description)
+            {
+                return this.part_number.CompareTo(other.part_number);
+            }
+
+            return other.description.CompareTo(this.description);
+        }
+
+        public override string ToString()
+        {
+            return this.part_number.ToString() + " - " + this.description.ToString();
+        }
     }
 
 

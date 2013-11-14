@@ -1,0 +1,1365 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.IF.IQuoteAsm</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteAsmDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteAsmAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteAsmInspDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteMtlDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteMtlAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteMtlInspDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteMtlRefDesDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteOprDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteOprAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteOprInspDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteOpDtlDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteAsmRefDesDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteAsmRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteAsmAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteAsmInspRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteMtlRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteMtlAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteMtlInspRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteMtlRefDesRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteOprRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteOprAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteOprInspRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteOpDtlRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteAsmRefDesRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteAsmRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteAsmAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteAsmInspRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteMtlRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteMtlAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteMtlInspRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteMtlRefDesRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteOprRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteOprAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteOprInspRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteOpDtlRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmDataSet.QuoteAsmRefDesRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.IF.IQuoteAsm">
+            <summary>
+            Quote Assembly /Mfg Details Object
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewQuoteAsm(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewQuoteAsmAttch(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewQuoteAsmInsp(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewQuoteMtl(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewQuoteMtlAttch(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewQuoteMtlInsp(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewQuoteMtlRefDes(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewQuoteOpr(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewQuoteOprAttch(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewQuoteOprInsp(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewQuoteOpDtl(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewQuoteAsmRefDes(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.DeleteByID(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetByID(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetRows(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.Update(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.UpdateExt(Epicor.Mfg.BO.UpdExtQuoteAsmDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetCodeDescList(System.String,System.String)">
+            <summary>
+            To return the CodeDescriptionList values of a given table.field.
+            </summary>
+            <param name="tableName"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.validateResourcePlant(System.String,System.String,System.String)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.AddRefDesRange(System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.String,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Creates new QuoteMtlRefDes records based on the QuoteMtl dataset fields.
+            </summary>
+            <param name="ipQuoteNum">The Quote Number</param>
+            <param name="ipQuoteLine">The Quote Line Number</param>
+            <param name="ipAsmSeq">The Quote Assembly</param>
+            <param name="ipMtlSeq">The Quote Material Seq</param>
+            <param name="ipPrefix">The Prefix to be used to delete Reference Designators</param>
+            <param name="ipStartNum">The Starting Number to delete Reference Designators</param>
+            <param name="ipEndNum">The Ending Number to delete Reference Designators</param>
+            <param name="ipSuffix">The Suffix to be used to delete Reference Designators</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The Quote Asm data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.AppendDetails(Epicor.Mfg.BO.QtAppendDataSet,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.Boolean,System.String@)">
+            <summary>
+            This method takes the records built in BuildAppendDetails that are marked as append
+            and writes them to the database. It will return the updated dataset.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QtAppendDataSet"></param>
+            <param name="targetQuote"> Target Quote </param>
+            <param name="targetLine"> Target QuoteLine </param>
+            <param name="targetAsm"> Target Quote AssemblySeq </param>
+            <param name="sourceFile"> Indicates where the details are being appended from. Either Quote,
+            Job or Method</param>
+            <param name="keyOne">Unique key field one for Job or Method source </param>
+            <param name="keyTwo">Unique key field two for Method source </param>
+            <param name="keyThree">Unique key field two for Method source </param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <param name="errorList">Returns a message listing any parts in error</param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Results of the append detail</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.BuildAppendDetails(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            This method returns the information that can be appended for approval
+            </summary>
+            <param name="sourceFile">Source of the append details, Quote, Job or Method </param>
+            <param name="keyOne">First key field of source </param>
+            <param name="keyTwo">Second key field of source </param>
+            <param name="keyThree">Third key field of source </param>
+            <param name="targetQuote"> Target Quote Num </param>
+            <param name="targetLine"> Target Line Number </param>
+            <param name="targetAsm">Target Assembly </param>
+            <returns type="Epicor.Mfg.BO.QtAppendDataSet"></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeOpDtlCapability(System.String,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Method to call when changing the Capability ID. This method will update QuoteOpDtl
+            to see if the labor and burden rates need to be reset. Blank is a valid entry for
+            Capability ID.
+            </summary>
+            <param name="proposedCapID">The proposed Capability ID </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeOperAutoReceive(System.Boolean,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Verification when changing the AutoReceive field
+            </summary>
+            <param name="iAutoReceive">Proposed value for AutoReceive field </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeOperLaborEntryMethod(System.String,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Verification when changing the LaborEntryMethod field
+            </summary>
+            <param name="iLaborEntryMethod">Proposed value for LaborEntryMethod field </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeOpDtlOverrideRates(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Method to call when changing the Override Rates Flag. This method will update
+            QuoteOpDtl with the default labor and burden rates from the appropriate resource
+            or resource group if the QuoteOpDtl.OverrideRates is set to false.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeOpDtlResourceGrpID(System.String,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Method to call when changing the Resource Group ID. This method will update QuoteOpDtl
+            with the default labor and burden rates from the new resource group. Blank is a valid
+            entry for Resource Group ID.
+            </summary>
+            <param name="proposedResGrpID">The proposed Resource Group ID </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeOpDtlResourceID(System.String,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Method to call when changing the Resource ID. This method will update QuoteOpDtl
+            with the default labor and burden rates from the new resource. Blank is a valid
+            entry for Resource ID.
+            </summary>
+            <param name="proposedResourceID">The proposed Resource ID </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeOperPrimaryProdOpDtl(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method defaults/resets the production standards when selecting Primary
+            Production Operation Detail.
+            This method should run when the QuoteOpr.PrimaryProdOpDtl field changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeOperPrimarySetupOpDtl(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method defaults/resets the setup values when selecting Primary
+            Setup Operation Detail.
+            This method should run when the QuoteOpr.PrimarySetupOpDtl field changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeOperPurPoint(System.String,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method updates the vendor related information when the Vendor/Purchase Point
+            field changes. It updates the vendor price breaks as well. This method should run when
+            the field ttQuoteOpr.PurPoint changes.
+            </summary>
+            <param name="proposedPurPoint">The proposed Purchase Point </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeOperVendorID(System.String,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method updates the vendor related information when the Vendor/Purchase Point
+            field changes. It updates the vendor price breaks as well. This method should run when
+            the field ttQuoteOpr.VendorNumVendorID changes.
+            </summary>
+            <param name="proposedVendorID">The proposed Vendor ID </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeOpMtlReqQty(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Method to call when changing the OpMtlReqQty.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteAsmblQtyPer(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This methods updates the QuoteAsmbl Required Quantity.
+            This method should run when the QuoteAsmbl.QtyPer field changes.
+            </summary>
+            <param name="ds">The Quote Asm data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteAsmblValRefDes(System.Boolean,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Verify that there are no other QuoteMtlRefDes records in the assembly having
+            the same RefDes value if the QuoteAsmbl.ValRefDes = true. This method should
+            run before changing the QuoteAsmbl.ValRefDes.
+            </summary>
+            <param name="ipProposedValResDes">The new proposed QuoteAsmbl.ValRefDes value</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The Quote Asm data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteAsmReqRefDes(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This methods assigns QuoteAsm.RDEndNum field when QuoteAsm.ReqRefDes changes.
+            This method should run when the QuoteAsm.ReqRefDes changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteMtlEstUnitCost(System.Decimal,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This methods recalculates the Est Mtl Burden Unit Cost when the
+            Est Unit Cost value changes.
+            This method should run when the QuoteMtl.EstUnitCost changes.
+            </summary>
+            <param name="ipProposedEstUnitCost">The new proposed QuoteMtl.MtlBurRate value </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">QuoteAsmDataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteMtlMtlBurRate(System.Decimal,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This methods recalculates the Est Mtl Burden Unit Cost when the
+            Mtl Burden Rate value changes.
+            This method should run when the QuoteMtl.MtlBurRate changes.
+            </summary>
+            <param name="ipProposedMtlBurRate">The new proposed QuoteMtl.MtlBurRate value </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">QuoteAsmDataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteMtlReqRefDes(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This methods assigns QuoteMtl.RDEndNum field when QuoteMtl.ReqRefDes changes.
+            This method should run when the QuoteMtl.ReqRefDes changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteMtlSalvageMtlBurUnitRate(System.Decimal,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This methods recalculates the Salvage Mtl Burden Unit Cost when the
+            Salvage Mtl Burden Rate value changes.
+            This method should run when the ECOMtl.SalvageMtlBurRate changes.
+            </summary>
+            <param name="ipProposedSalvageMtlBurRate">The new proposed ECOMtl.SalvageMtlBurRate value </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">QuoteAsmDataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteMtlSalvagePartNum(System.String,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This methods assigns associated fields when ECOMtl.SalvagePartNum changes.
+            This method should run when the ECOMtl.SalvagePartNum changes.
+            </summary>
+            <param name="ipProposedSalvagePartNum">The new proposed ECOMtl.SalvagePartNum value </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteMtlSalvageUnitCredit(System.Decimal,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This methods recalculates the Salvage Mtl Burden Unit Cost when the
+            Salvage Unit Credit value changes.
+            This method should run when the ECOMtl.SalvageUnitCredit changes.
+            </summary>
+            <param name="ipProposedSalvageUnitCredit">The new proposed ECOMtl.SalvageUnitCredit value </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">QuoteAsmDataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteOprOprSeq(System.Int32,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method will update all of the associated records to the QuoteOpr if the
+            OprSeq field is changing.
+            This method should run before changing the QuoteOpr.OprSeq and not when a new record.
+            </summary>
+            <param name="ipProposedOprSeq">The new proposed QuoteOpr.OprSeq value </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.CheckConfiguration(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Boolean,System.Boolean@,System.Boolean@,System.String@,System.String@)">
+            <summary>
+            This method checks if a part must be configured prior to a GetDetails.
+            </summary>
+            <param name="inRelatedToFile">Related To File </param>
+            <param name="inKey1">The job on which the configuration should be saved.</param>
+            <param name="inKey2">The assembly sequence of the configured part.</param>
+            <param name="inKey3">The material sequence of the configured part.</param>
+            <param name="inKey4">The material sequence of the configured part..</param>
+            <param name="inKey5">The material sequence of the configured part..</param>
+            <param name="sourcePart">Part Num to get details from (populated when sourceFile = "Method")</param>
+            <param name="sourceRev">Revision number to get details from (populated when sourceFile = "Method")</param>
+            <param name="targetAssembly">Target Assembly</param>
+            <param name="findRevision">If true the revision number will be looked up rather than using the sourceRev</param>
+            <param name="canGetDetails">If false, GetDetails will fail for a configuration reason that can't be resolve by reconfiguring now</param>
+            <param name="needsConfiguration">If true the configurator should be run on the Job for the Part/Rev</param>
+            <param name="configureRevision">The revision that should be configured (if configuration is needed) </param>
+            <param name="reasonMessage">The reason or for the failure or need for configuration. This should be displayed to the user.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.CheckExistingConfiguration(System.Int32,System.Int32,System.String,System.String,System.Int32,System.Boolean,System.Boolean@,System.String@,System.String@)">
+            <summary>
+            This method will check to see if an existing configuration exists for a configured
+            part. This method should be called prior to calling the CheckConfiguration method.
+            If the configurationExists is set to "true", then the reasonMessage should be displayed
+            to the user.
+            </summary>
+            <param name="quoteNum">Quote Number of the target Assembly</param>
+            <param name="quoteLine">Quote Line of the target Assembly</param>
+            <param name="sourcePart">Part Num to get details from (populated when sourceFile = "Method")</param>
+            <param name="sourceRev">Revision number to get details from (populated when sourceFile = "Method")</param>
+            <param name="targetAssembly">Target Assembly</param>
+            <param name="findRevision">If true the revision number will be looked up rather than using the sourceRev</param>
+            <param name="configurationExists">If true the configurator should be run on the Job for the Part/Rev</param>
+            <param name="configureRevision">The revision that should be configured (if configuration is needed) </param>
+            <param name="reasonMessage">The reason or for the failure or need for configuration. This should be displayed to the user.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.CheckOperPrimaryProdOpDtl(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32)">
+            <summary>
+            This method validated the value of Primary Production Operation Detail.
+            This method should run when the QuoteOpr.PrimaryProdOpDtl is changing.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+            <param name="ipPrimaryProdOpDtl">The new PrimaryProdOpDtl value to change to</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.CheckOperPrimarySetupOpDtl(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32)">
+            <summary>
+            This method validated the value of Primary Setup Operation Detail.
+            This method should run when the QuoteOpr.PrimarySetupOpDtl is changing.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+            <param name="ipPrimarySetupOpDtl">The new PrimarySetupOpDtl value to change to</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.CheckPartErrors(System.Int32,System.Int32,System.String@)">
+            <summary>
+            This method runs through a quote's BOM and returns a list of assembly and/or
+            materials that are on hold or inactive. Quote cannot be engineered or Quoted
+            until these errors are taken care of
+            </summary>
+            <param name="quoteNum">Quote Number</param>
+            <param name="quoteLine">QuoteLine, 0 for all lines, otherwise only looks a specific line</param>
+            <param name="runOutWarnings">
+            Warning Message about RunOut Parts on Job. Client to display this as a warning only
+            </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.CheckPrePartInfo(System.String@,System.String@,System.Boolean@,System.String@)">
+            <summary>
+            The method is to be run on leave of the PartNum, Revision fields before the
+            GetPartInfo or Update methods are run. This returns all the questions that
+            need to be asked before a part can be changed.
+            </summary>
+            <param name="partNum">The new PartNum if a substitute part is found, partNum will be the substitute part </param>
+            <param name="vMessage">Asks if the user wants to use a substitute part </param>
+            <param name="vSubAvail">Indicates other substitute parts besides the default exist</param>
+            <param name="vMsgType">Type of message returned.
+            Values can be; "Question" (asking if they want to use the substitute part)
+            "Warning" (Warns them that a part is onhold or runout).
+            "Error" (Part in Inactive, or Onhold/Runout parts are not accepted in this case) .
+            "Question" is asking if they want to use the substitute part. </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.DeleteAllAssembly(System.Int32,System.Int32)">
+            <summary>
+            The method deletes all assemblys and their subassemblys, materials and operations
+            while leaving the base assembly sequence alone.
+            </summary>
+            <param name="quoteNum">Quote Number of the assemblys</param>
+            <param name="quoteLine">Quote Assembly Line Number</param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet"></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.DeleteRefDesRange(System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.String,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Deletes QuoteMtlRefDes records based on the QuoteMtl dataset fields.
+            </summary>
+            <param name="ipQuoteNum">The Quote Number</param>
+            <param name="ipQuoteLine">The Quote Line Number</param>
+            <param name="ipAsmSeq">The Quote Assembly</param>
+            <param name="ipMtlSeq">The Quote Material Seq</param>
+            <param name="ipPrefix">The Prefix to be used to delete Reference Designators</param>
+            <param name="ipStartNum">The Starting Number to delete Reference Designators</param>
+            <param name="ipEndNum">The Ending Number to delete Reference Designators</param>
+            <param name="ipSuffix">The Suffix to be used to delete Reference Designators</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The Quote Asm data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.EnableSupplierPriceList(System.Boolean@)">
+            <summary>
+            This method returns whether or not the supplier price list option
+            is enabled. This is based on security rights for the user.
+            </summary>
+            <param name="lEnableSupplierPriceList"></param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetAsmOprInfo(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32)">
+            <summary>
+            This method updates the related operation description when the RelatedOperation field
+            changes. To be run before update.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+            <param name="relatedOperation">Value of the RelatedOperation that is being tested </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetAsmPartInfo(Epicor.Mfg.BO.QuoteAsmDataSet,System.Boolean)">
+            <summary>
+            This method updates the dataset with Part Defaults when the PartNum or Revision field
+            changes. To be run before update. CheckPrePartInfo should be run first
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+            <param name="defaultRev">Indicates if the system should try and find the correct RevisionNum
+            (yes) or use the value in the dataset (no) </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetBasePartForConfig(System.Int32,System.Int32,System.Int32,System.String,System.String,System.String@,System.String@,System.String@,System.String@,System.Boolean@)">
+            <summary>
+            This method will retrieve the base configured part number to be passed
+            to configuration entry
+            </summary>
+            <param name="quoteNum">Quote Number of the target Assembly</param>
+            <param name="quoteLine">Quote Line of the target Assembly</param>
+            <param name="targetAssembly">target Assembly</param>
+            <param name="sourcePartNum">Indicates the source part number to get details from </param>
+            <param name="sourceRevisionNum">Indicates the source revision number to get details from </param>
+            <param name="basePartNum"> Returns the Base Part Number to use for configuration </param>
+            <param name="baseRevisionNum"> Returns the Base Revision Number to use for configuration </param>
+            <param name="curPartNum"> Returns the Current Part Number to use for configuration </param>
+            <param name="curRevNum"> Returns the Current Revision Number to use for configuration </param>
+            <param name="siValues"> Returns whether the configuration is set to save input values</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.FindAsm(System.Int32,System.Int32,System.Int32,System.String,System.Int32@,System.String@)">
+            <summary>
+            Search the server BOM for a specific subAssembly Part if found returns
+            the entire branch.
+            </summary>
+            <param name="ipQuoteNum">The Quote Number to return data for. </param>
+            <param name="ipQuoteLine">The Quote Line Number to return data for.</param>
+            <param name="ipStartAssemblySeq">The starting assembly sequence to search from.</param>
+            <param name="ipPartNum">Part Number to return data for. </param>
+            <param name="opAssemblySeq">The assembly sequence that was located by the search.</param>
+            <param name="opRowid">The character representation of rowid of the JobAsmbl record located.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetDatasetForTree(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            This methods will return the dataset for QuoteAsm. The method will return the
+            records related to the assembly provided and the first child level assemblies related to
+            the input inputted assembly.
+            </summary>
+            <param name="ipQuoteNum">The Quote Number to return data for. </param>
+            <param name="ipQuoteLine">The Quote Line Number to return data for.</param>
+            <param name="ipStartAssemblySeq">The Assembly Sequence to return data for. </param>
+            <param name="ipCurrentAssemblySeq">The Assembly Sequence to return data for. </param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this job number? </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetDetails(System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.String,System.Int32,System.String,System.String,System.String,System.Boolean,System.Boolean,System.String@)">
+            <summary>
+            This method retrieves the manufacturing details from a source file. The source file
+            will either be a Quote, a Job, or a Method (Part). The assembly records will
+            be created regardless if the part is in error or not. If there are errors, the
+            quote cannot be "quoted" unless all parts are fixed. To find the parts in error
+            run CheckPartErrors
+            </summary>
+            <param name="quoteNum">Quote Number of the target Assembly</param>
+            <param name="quoteLine">Quote Line of the target Assembly</param>
+            <param name="targetAsm">Sequence of the target Assembly</param>
+            <param name="sourceFile">Source (Quote, Job, or Method) of the details to copy </param>
+            <param name="sourceQuote">Quote Number to get details from (populated when sourceFile = "Quote")</param>
+            <param name="sourceLine">Quote Line to get details from (populated when sourceFile = "Quote")</param>
+            <param name="sourceJob">Job Number to get details from (populated when sourceFile = "Job")</param>
+            <param name="sourceAsm">Quote Assembly to get details from (populated when sourceFile = "Quote" or "Job")</param>
+            <param name="sourcePart">Part Num to get details from (populated when sourceFile = "Method")</param>
+            <param name="sourceRev">Revision number to get details from (populated when sourceFile = "Method")</param>
+            <param name="sourceAltMethod">Alternate Method to get details from (populated when sourceFile = "Method")</param>
+            <param name="useMethodForParts">If true use the method passed in for all parts in assemblies, if false
+            use the assembly part's default method.</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <param name="partErrors">Message of any bad parts that were copied</param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Results of the get details</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetMtlBuyItInfo(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method updates Vendor and LeadTime when BuyIt is checked
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetMtlDirectInfo(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method updates Vendor and LeadTime when BuyIt is checked
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetMtlOprInfo(System.Int32,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method defaults the EstScrap fields when the QuoteMtl.RelatedOperation changes
+            </summary>
+            <param name="relatedOperation">Value of the RelatedOperation that is being tested </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.CheckQuoteMtlPartNum(Epicor.Mfg.BO.QuoteAsmDataSet,System.String)">
+            <summary>
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+            <param name="ipProposedPartNum">Identifies the PartNum to validate</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetMtlPartInfo(Epicor.Mfg.BO.QuoteAsmDataSet,System.String)">
+            <summary>
+            This method updates the dataset with Part Defaults when the PartNum field changes.
+            To be run after partNum changes but before update. CheckPrePartInfo should be run first
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+            <param name="partName">Identifies the PartNum field to validate either PartNum or SalvagePartNum</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetMtlVendorInfo(Epicor.Mfg.BO.QuoteAsmDataSet,System.String)">
+            <summary>
+            This method defaults the Vendor fields when the VendorNumVendorID field is changed
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+            <param name="vendorID">Proposed Vendor ID </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewAssembly(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            This method creates a new Assembly after prompting for the AsemblySeq and BOMLevel
+            as well as the QuoteLine and QuoteNum fields. This is to replace the standard GetNewQuoteAsm
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+            <param name="quoteNum">Assembly's parent Quote</param>
+            <param name="quoteLine">Assmebly's parent Quote detail Line</param>
+            <param name="assemblySeq">Assembly's parent assembly Seq</param>
+            <param name="bomLevel">Assembly's parent BOMLevel</param>
+            <param name="priorAssemblySeq">If adding a sub-assembly record, this value is 0. If
+            insterting after a specific assembly then use that record's assembly seq (must be different
+            from the parent assembly seq) </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetNewOperation(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            This method creates a new Operation after prompting for the SubConType as well as the
+            AssemblySeq, QuoteLine and QuoteNum fields. This is to replace the standard GetNewQuoteOpr
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+            <param name="quoteNum">Operations's parent Quote</param>
+            <param name="quoteLine">Operations's parent Quote detail Line</param>
+            <param name="assemblySeq">Operations's parent assembly Seq</param>
+            <param name="subContract">Operations's sub contract type</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetOprOpCodeInfo(System.String,System.String@,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method defaults the OpStd information when the OpCode field changes.
+            Updates the burden rates as well.
+            </summary>
+            <param name="proposedOpCode">The proposed Operation Code </param>
+            <param name="refreshMessage">The refresh message text </param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The Quote Assembly data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetOprOpStdInfo(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method defaults Operation Standard information when OpStdId changes
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetOprPartInfo(Epicor.Mfg.BO.QuoteAsmDataSet,System.String)">
+            <summary>
+            This method updates the dataset with Part Defaults when the PartNum field changes.
+            To be run after partNum changes but before update. CheckPrePartInfo should be run first
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+            <param name="partName">Identifies the PartNum field to validate either PartNum or SalvagePartNum</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetOprStdFormatInfo(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method updates the dataset after the StdFormat field changes. Can be run on the ColumnChanged event
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.InsertBOMAsm(System.String,System.String,System.Int32,System.String,System.Boolean,System.Boolean)">
+             <summary>
+             This methods allows for the insertion of an engineering assembly for drag/drop functionality,
+             </summary>
+             <param name="ipParentQuoteAsmRowid">The rowid of the parent quoteasm to add to</param>
+             <param name="ipSourceRowid">The rowid of source record could be jobasmbl or quoteasm
+             to be added to the parent quoteasm</param>
+             <param name="ipOperSeq">The related operation seq (or 0 if unrelated)</param>
+             <param name="ipDroppedAs">The character value to determine where to drop and to drop as what.
+             valid values: JobAsmbl, JobAsmbl-AsMtl, QuoteAsm, QuoteAsm-AsMtl
+            </param>
+             <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+             <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+             <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.InsertBOMMtl(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            This methods allows for the insertion of an engineering material for drag/drop functionality,
+            </summary>
+            <param name="ipParentQuoteAsmRowid">The rowid of the quoteasm record to add the material to</param>
+            <param name="ipSourceRowid">The rowid of source record could be partmtl, jobmtl, or
+            quotemtl to be added to the parent quoteasm</param>
+            <param name="ipOperSeq">The related operation seq (or 0 if unrelated)</param>
+            <param name="ipMtlSeq">The material seq to use</param>
+            <param name="ipBeforeMtlRowid">The material rowid to insert material before</param>
+            <param name="ipDroppedAs">The character value to determine where to drop and to drop as what.
+            valid values: PartMtl, PartMtl-AsAsm, JobMtl-AsAsm, JobMtl, QuoteMtl-AsAsm, QuoteMtl
+            </param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.InsertBOMOper(System.String,System.String,System.Int32,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            This methods allows for the insertion of an engineering operation for drag/drop functionality,
+            </summary>
+            <param name="ipParentQuoteAsmRowid">The rowid of the parent jobasmbl to add to</param>
+            <param name="ipSourceRowid">The rowid of source record could be joboper, partopr, or
+            quoteopr to be added to the parent jobasmbl</param>
+            <param name="ipNewOperSeq">The new operation seq</param>
+            <param name="ipBeforeOperRowid">The operation rowid to insert operation before</param>
+            <param name="ipDroppedAs">The character value to determine where to drop and to drop as what.
+            valid values: PartOpr, JobOper, QuoteOpr
+            </param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.InsertMaterial(System.String,System.String,System.Int32,System.Int32,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            This methods allows for the insertion on a material for drag/drop functionality,
+            validates a QuoteAsm record exists and the part is valid.
+            </summary>
+            <param name="ipQuoteAsmRowID">The rowid of the QuoteAsm record to add the material to</param>
+            <param name="ipPartNum">The part number being added</param>
+            <param name="ipOperSeq">The related operation seq (or 0 if unrelated)</param>
+            <param name="ipMtlSeq">The material seq to use</param>
+            <param name="ipBeforeMtlRowid">The material rowid to insert material before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.InsertOpDtlCapability(System.String,System.String,System.Int32,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            This method allows for the insertion of Capability on an operation to create
+            operation detail for drag/drop functionality.
+            </summary>
+            <param name="ipQuoteOprRowID">The rowid of the QuoteOpr record to add the operation detail to</param>
+            <param name="ipCapabilityID">The Capability ID being added</param>
+            <param name="ipNewOpDtlSeq">The new operation detail seq</param>
+            <param name="ipBeforeOpDtlRowid">The operation detail rowid to insert operation detail before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.InsertOpDtlResource(System.String,System.String,System.Int32,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            This method allows for the insertion of Resource on an operation to create
+            operation detail for drag/drop functionality.
+            </summary>
+            <param name="ipQuoteOprRowID">The rowid of the QuoteOpr record to add the operation detail to</param>
+            <param name="ipResourceID">The Resource ID being added</param>
+            <param name="ipNewOpDtlSeq">The new operation detail seq</param>
+            <param name="ipBeforeOpDtlRowid">The operation detail rowid to insert operation detail before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.InsertOpDtlResourceGrp(System.String,System.String,System.Int32,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            This method allows for the insertion of Resource Group on an operation to create
+            operation detail for drag/drop functionality.
+            </summary>
+            <param name="ipQuoteOprRowID">The rowid of the QuoteOpr record to add the operation detail to</param>
+            <param name="ipResourceGrpID">The Resource Group ID being added</param>
+            <param name="ipNewOpDtlSeq">The new operation detail seq</param>
+            <param name="ipBeforeOpDtlRowid">The operation detail rowid to insert operation detail before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.InsertOperationOP(System.String,System.String,System.Int32,System.String,System.Boolean,System.Boolean,System.String@)">
+            <summary>
+            This methods allows for the insertion of an operation for drag/drop functionality
+            using operation code as input. This would eventually replace the original InsertOperation
+            method where work center code is the input.
+            </summary>
+            <param name="ipQuoteAsmRowID">The rowid of the QuoteAsm record to add the operation to</param>
+            <param name="ipOpCode">The operation code being added</param>
+            <param name="ipNewOprSeq">The new operation seq</param>
+            <param name="ipBeforeOperRowid">The operation rowid to insert operation before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <param name="opMessage">Warning message to let the user know that a subcontract operation
+            will be created with no vendor information. </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.InsertOperCapability(System.String,System.String,System.Int32,System.String,System.Boolean,System.Boolean,System.String@)">
+            <summary>
+            This method allows for the insertion of Capability on an assembly to create
+            QuoteOpr/QuoteOpDtl for drag/drop functionality.
+            </summary>
+            <param name="ipQuoteAsmRowID">The rowid of the QuoteAsm record to add the operation detail to</param>
+            <param name="ipCapabilityID">The Capability ID being added</param>
+            <param name="ipNewOprSeq">The new operation seq</param>
+            <param name="ipBeforeOprRowid">The operation rowid to insert operation before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <param name="opMessage">Warning message to let the user know that a subcontract operation
+            will be created with no vendor information. </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.InsertOperResGroup(System.String,System.String,System.Int32,System.String,System.Boolean,System.Boolean,System.String@)">
+            <summary>
+            This method allows for the insertion of ResourceGroup on an assembly to create
+            QuoteOpr/QuoteOpDtl for drag/drop functionality.
+            </summary>
+            <param name="ipQuoteAsmRowID">The rowid of the QuoteAsm record to add the operation detail to</param>
+            <param name="ipResourceGrpID">The Resource Group ID being added</param>
+            <param name="ipNewOprSeq">The new operation seq</param>
+            <param name="ipBeforeOprRowid">The operation rowid to insert operation before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <param name="opMessage">Warning message to let the user know that a subcontract operation
+            will be created with no vendor information. </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.InsertOperResource(System.String,System.String,System.Int32,System.String,System.Boolean,System.Boolean,System.String@)">
+            <summary>
+            This method allows for the insertion of Resource on an assembly to create
+            QuoteOpr/QuoteOpDtl for drag/drop functionality.
+            </summary>
+            <param name="ipQuoteAsmRowID">The rowid of the QuoteAsm record to add the operation detail to</param>
+            <param name="ipResourceID">The Resource ID being added</param>
+            <param name="ipNewOprSeq">The new operation seq</param>
+            <param name="ipBeforeOprRowid">The operation rowid to insert operation before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <param name="opMessage">Warning message to let the user know that a subcontract operation
+            will be created with no vendor information. </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.InsertSubAssembly(System.String,System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            This methods allows for the insertion of a subassembly for drag/drop functionality,
+            validates a QuoteAsm record exists and the part is valid.
+            </summary>
+            <param name="ipQuoteAsmRowID">The rowid of the QuoteAsm record to add the material to</param>
+            <param name="ipPartNum">The part number being added</param>
+            <param name="ipOperSeq">The related operation seq (or 0 if unrelated)</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.CheckChangeJobAsmblParent(System.Int32,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method validates validates the new Parent field
+            </summary>
+            <param name="ipNewParent">New Parent value to check against</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">Job Entry data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeJobAsmblParent(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method validates the new Parent field and populates defaults assoicated witht the Parent.
+            This method should run when the JobAsmbl.Parent field changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">Job Entry data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.QuoteOprInitSNReqSubCon(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Method required to set the initial value of QuoteOpr.SNRequiredSubConShip
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The Quote data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ValidateSNReqValues(System.Int32,System.Int32,System.Int32,System.String,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            This method updates the columns SNRequiredOpr and SNRequiredSubConShip when the main Part
+            changes. If the new part number is not serial tracked and those fields were set as true previuosly, they must be set to false.
+            </summary>
+            <param name="ipQuoteNum"> Quote Number</param>
+            <param name="ipQuoteLine"> Quote Line </param>
+            <param name="ipQuoteAsmSeq"> Assembly Seq</param>
+            <param name="ipPartNum"> Part Number</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ValidateInspection(System.String,System.String,System.String,System.Boolean,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Method to validate the Inspection control fields. (EQM)
+            </summary>
+            <param name="ipProposedInspPlan">The new proposed InspPlanPartNum value</param>
+            <param name="ipProposedSpecId">The new proposed SpecID value</param>
+            <param name="iptable">table name</param>
+            <param name="setRev">if set default revision</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm entry Dataset.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.RefreshMtlPriceBreak(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Nullable{System.DateTime})">
+            <summary>
+            This method refreshes the QuoteMtl PBrkQty and PBrkCost fields after
+            VendPart and VendPBrk tables have been udpated. It will also update the
+            LeadTime and Unit Cost fields as well.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+            <param name="quoteNum"> Material Quote </param>
+            <param name="quoteLine"> Material Quote Line </param>
+            <param name="assemblySeq"> Material Assembly </param>
+            <param name="mtlSeq"> Material Sequence </param>
+            <param name="vendorNum"> Vendor Number from vendor price break </param>
+            <param name="pum"> Purchasing Unit of measure for the Part </param>
+            <param name="effectiveDate"> Effective date from vendor price break </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.RefreshOprPriceBreak(Epicor.Mfg.BO.QuoteAsmDataSet,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.DateTime})">
+            <summary>
+            This method refreshes the QuoteOpr PBrkQty and PBrkCost fields after
+            VendPart and VendPBrk tables have been udpated. It will also update the
+            LeadTime and Unit Cost fields as well.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+            <param name="quoteNum"> Operation Quote </param>
+            <param name="quoteLine"> Operation Quote Line </param>
+            <param name="assemblySeq"> Operation Assembly </param>
+            <param name="oprSeq"> Operation Sequence </param>
+            <param name="vendorNum"> Vendor Number from vendor price break </param>
+            <param name="effectiveDate"> Effective date from vendor price break </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ResequenceMaterial(System.Int32,System.Int32,System.Int32,System.String,System.Boolean)">
+            <summary>
+            This method resequences Material for an assembly by sequence, part or bubble
+            </summary>
+            <param name="quoteNum">Quote Number </param>
+            <param name="quoteLine">Quote Line</param>
+            <param name="assemblySeq"> Assembly Sequences </param>
+            <param name="reseqOption"> "M" for Material, "P" for Part, or "B" for Bubble </param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ResequenceOperations(System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            This method resequences the operations of an assembly by 10's
+            </summary>
+            <param name="quoteNum">Quote Number</param>
+            <param name="quoteLine">Quote Line </param>
+            <param name="assemblySeq">Assembly Sequence </param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this QuoteAsm? </param>
+            <returns type="Epicor.Mfg.BO.QuoteAsmDataSet">Quote Asm Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteOprIUM(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            procedure for changing QuoteOpr.IUM field
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteOprQtyPer(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            procedure for changing QuoteOpr.QtyPer field
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteMtlIUM(Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            procedure for changing QuoteMtl.IUM field
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeQuoteOprSNRequiredOpr(System.Boolean,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Validates SNRequiredOpr flag to avoid to set it false if the prior operation has the flag set to true
+            The flag cannot be set to true if the part is not serial tracked also.
+            </summary>
+            <param name="ipProposedSNRequired">The new proposed QuoteAsm.SNRequiredOpr value</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.ChangeSubcontractPartNum(System.String,Epicor.Mfg.BO.QuoteAsmDataSet)">
+            <summary>
+            Check if SNRequiredOpr column is enabled/disabled on Subcontract Detail panel on UI
+            </summary>
+            <param name="ipProposedPartNum">The new proposed QuoteOpr.PartNum value</param>
+            <param name="ds" type="Epicor.Mfg.BO.QuoteAsmDataSet">The QuoteAsm data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.jobPartbeforeGetNew">
+            <summary>
+            Validates if JobHead.PartNum is serial tracked, additionals JobParts cannot be added.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IQuoteAsm.GetProjectRoles">
+            <summary>
+            Returns list of Project Roles
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmListDataSet.QuoteAsmListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmListDataSet.QuoteAsmListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QuoteAsmListDataSet.QuoteAsmListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QtAppendDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QtAppendDataSet.QtMtlAppDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QtAppendDataSet.QtOprAppDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QtAppendDataSet.QtMtlAppRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QtAppendDataSet.QtOprAppRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QtAppendDataSet.QtMtlAppRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.QtAppendDataSet.QtOprAppRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteAsmDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteAsmAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteAsmInspDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteMtlDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteMtlAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteMtlInspDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteMtlRefDesDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteOprDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteOprAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteOprInspDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteOpDtlDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteAsmRefDesDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteAsmRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteAsmAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteAsmInspRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteMtlRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteMtlAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteMtlInspRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteMtlRefDesRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteOprRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteOprAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteOprInspRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteOpDtlRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteAsmRefDesRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteAsmRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteAsmAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteAsmInspRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteMtlRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteMtlAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteMtlInspRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteMtlRefDesRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteOprRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteOprAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteOprInspRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteOpDtlRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtQuoteAsmDataSet.QuoteAsmRefDesRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,369 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.IF.IVendPart</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.VendPartDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendPartDataSet.VendPartDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendPartDataSet.VendPBrkDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendPartDataSet.VendPartRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendPartDataSet.VendPBrkRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendPartDataSet.VendPartRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendPartDataSet.VendPBrkRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.IF.IVendPart">
+             <summary>Vendor Part Price Break Business Logic
+            (aka Supplier Price List)
+             </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetNewVendPart(Epicor.Mfg.BO.VendPartDataSet,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetNewVendPBrk(Epicor.Mfg.BO.VendPartDataSet,System.String,System.String,System.String,System.Int32,System.Nullable{System.DateTime})">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.DeleteByID(System.String,System.String,System.String,System.Int32,System.Nullable{System.DateTime})">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetByID(System.String,System.String,System.String,System.Int32,System.Nullable{System.DateTime})">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetRows(System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.Update(Epicor.Mfg.BO.VendPartDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.UpdateExt(Epicor.Mfg.BO.UpdExtVendPartDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.FindPartAndGetRowID(System.String,System.String@,System.String@,System.String@,System.String@)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.FindFirstPart(System.String,System.Int32,System.String@,System.String@,System.String@,System.String@)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetPartFromRowID(System.String,System.String,System.String@,System.String@)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetCustNumFromRowID(System.String,System.String,System.String@,System.Int32@)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetMfgPartFromRowID(System.String,System.String,System.String@,System.Int32@,System.String@)">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.ChangeAprvSupplier(Epicor.Mfg.BO.VendPartDataSet,System.Boolean,System.Boolean@)">
+            <summary>
+            .
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.VendPartDataSet">Vendor Part Data Set</param>
+            <param name="ipAprvSupplier">Proposed part number</param>
+            <param name="opExistApprovedSupplier">Proposed part number</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.ChangeConvOverride(System.Boolean,Epicor.Mfg.BO.VendPartDataSet)">
+            <summary>
+            This should be called on change of VendPart.ConvOverride
+            when false it will refresh the Conversion fields to UOM Master values.
+            </summary>
+            <param name="pConvOverride">Proposed value for ConvOverride</param>
+            <param name="ds">Vendor Part Data Set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.ChangeEffectiveDays(Epicor.Mfg.BO.VendPartDataSet,System.String)">
+            <summary>
+            Method to call when changing the EffectiveDays, EffectiveDate, or ExpirationDate changes.
+            This method will recalculate the ExpirationDate if the EffectiveDate or EffectiveDays
+            change; it will recaculate the EffectiveDays if the ExpirationDate changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.VendPartDataSet">The VendPart data set </param>
+            <param name="cFieldModified">cFieldModified indicates which field was updated. Possible values are:
+            blank - indicates we are just getting a value for days
+            "days" - indicates the number of days changed; recalculate expiration date
+            "eff" - indicates effective date changed; recalculate expiration date
+            "exp" - indicates expiration date changed; recalculate effective date </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.ChangeImportExportVendorID(System.String,Epicor.Mfg.BO.SupListImpExpParamsDataSet)">
+            <summary>
+            This assignes the vendor name in the SupListImpExpParams datatable.
+            </summary>
+            <param name="cProposedSupplierID"></param>
+            <param name="ds" type="Epicor.Mfg.BO.SupListImpExpParamsDataSet">Supplier List Dataset of candidates for import</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.ChangePart(System.String@,System.String,System.String,System.String@,System.String@,System.String@,System.Boolean@,Epicor.Mfg.BO.VendPartDataSet)">
+            <summary>
+            Run this method when Part Number on the detail screen changes (copied from SO)
+            </summary>
+            <param name="partNum"> Proposed PartNumber change</param>
+            <param name="sysRowID"> RowID of the selected record. Skips find part logic if this has a value. </param>
+            <param name="rowType"> RowType of the selected record. Only used with sysRowID. </param>
+            <param name="uomCode"> UOM Code (only used for Product Codes)</param>
+            <param name="serialWarning">Warning message if the InvTransfer line contains serial numbers</param>
+            <param name="questionString">If the part is being changed to something different than what was on the order, ask if the user wants to continue </param>
+            <param name="multipleMatch"> Multiple matches were found by FindPart </param>
+            <param name="ds" type="Epicor.Mfg.BO.VendPartDataSet">Vendor Part Data Set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.ChangePriceModifier(Epicor.Mfg.BO.VendPartDataSet)">
+            <summary>
+            Method to call when changing the price modifier on the vendor part break record.
+            Recaculates the effective price based on the new price modifier.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.VendPartDataSet">The VendPart data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.ChangeVendPartPUM(Epicor.Mfg.BO.VendPartDataSet,System.String)">
+            <summary>
+            This method creates a new ttVendPart record and deletes the existing one when
+            changing this component of the primary unique index and update the VendPart.PUM.
+            This method should run before changing the VendPart.PUM.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.VendPartDataSet">Vendor Part Data Set</param>
+            <param name="inPUM">Proposed PUM</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.DefaultRFQInfo(System.String)">
+            <summary>
+            This method is called when the Supplier Price List object is called from
+            Supplier Response. After a new VendPart record has been created, this method
+            needs to be called to default the specific RFQ information
+            </summary>
+            <param name="rfqRowIDent"> Supplier Response RowIDent </param>
+            <returns type="Epicor.Mfg.BO.VendPartDataSet">The Vendor Part data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.ExportSupplierList(Epicor.Mfg.BO.SupplierListImportExportDataSet,System.Nullable{System.DateTime},System.String)">
+            <summary>
+            This method conditionally adds/overwrites supplier part records from an import file.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.SupplierListImportExportDataSet">Supplier List Dataset of candidates for import</param>
+            <param name="dtEffectiveDate">Effective Date</param>
+            <param name="cSupplierID">Supplier Code</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetLastEffectiveVendPart(System.Int32,System.String,System.String,System.String,System.Nullable{System.DateTime})">
+            <summary>
+            Method to get the last effective VendPart record.
+            </summary>
+            <param name="iVendorNum">The Vendor Number to retrieve the dataset for </param>
+            <param name="cPartNum">The Part Number to retrieve the dataset for </param>
+            <param name="cOpCode">The OpCode to retrieve the dataset for </param>
+            <param name="cPUM">The UOM to retrieve the dataset for </param>
+            <param name="dtEffDate">The Date to retrieve the dataset for </param>
+            <returns type="Epicor.Mfg.BO.VendPartDataSet">The VendPart data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetNewSupListImpExpParams(System.String)">
+            <summary>
+            This method creates a record in SupListImpExpParams. This record is used
+            to store the import/export parameters.
+            </summary>
+            <param name="cSupplierID"></param>
+            <returns type="Epicor.Mfg.BO.SupListImpExpParamsDataSet">Supplier List Dataset of candidates for import</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetVendorNum(System.String,System.Int32@)">
+            <summary>
+            Method to call get a VendorNum given a VendorID.
+            </summary>
+            <param name="cVendorID">The Vendor ID </param>
+            <param name="iVendorNum">The Vendor Number </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetVendPartByPart(System.String)">
+            <summary>
+            Method to call to get the dataset based on a specific part.
+            </summary>
+            <param name="cPartNum">The Part Number to retrieve the dataset for </param>
+            <returns type="Epicor.Mfg.BO.VendPartDataSet">The VendPart data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.GetVendPartByVendNumPart(System.Int32,System.String)">
+            <summary>
+            Method to call to get the dataset based on a specific vendor and part.
+            </summary>
+            <param name="iVendorNum">The Vendor Number to retrieve the dataset for </param>
+            <param name="cPartNum">The Part Number to retrieve the dataset for </param>
+            <returns type="Epicor.Mfg.BO.VendPartDataSet">The VendPart data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendPart.ImportSupplierList(Epicor.Mfg.BO.SupplierListImportExportDataSet,System.Nullable{System.DateTime},System.String,System.Int32@)">
+            <summary>
+            This method conditionally adds/overwrites supplier part records from an import file.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.SupplierListImportExportDataSet">Supplier List Dataset of candidates for import</param>
+            <param name="dtEffectiveDate">Effective Date</param>
+            <param name="cSupplierID">Supplier Code</param>
+            <param name="numRecsImported">Output number of records from import</param>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendPartListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendPartListDataSet.VendPartListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendPartListDataSet.VendPartListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendPartListDataSet.VendPartListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SupListImpExpParamsDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SupListImpExpParamsDataSet.SupListImpExpParamsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SupListImpExpParamsDataSet.SupListImpExpParamsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SupListImpExpParamsDataSet.SupListImpExpParamsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SupplierListImportExportDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SupplierListImportExportDataSet.SupplierListImportExportDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SupplierListImportExportDataSet.SupplierListImportExportRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SupplierListImportExportDataSet.SupplierListImportExportRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendPartDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendPartDataSet.VendPartDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendPartDataSet.VendPBrkDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendPartDataSet.VendPartRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendPartDataSet.VendPBrkRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendPartDataSet.VendPartRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendPartDataSet.VendPBrkRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>

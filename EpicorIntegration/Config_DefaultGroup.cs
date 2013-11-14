@@ -36,6 +36,8 @@ namespace EpicorIntegration
             Properties.Settings.Default.ecogroup = gid_cbo.Text;
 
             Properties.Settings.Default.Save();
+
+            this.Close();
         }
 
         private void gid_cbo_SelectedIndexChanged(object sender, EventArgs e)

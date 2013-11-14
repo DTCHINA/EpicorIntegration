@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4FAC74F1-9D71-4215-9B15-DAA866146414}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JobStatusByPlanner</RootNamespace>
+    <AssemblyName>JobStatusByPlanner</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetZen.CodeDom">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\DotNetZen.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.BomSearch">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.BomSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.DashBoard">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.DashBoard.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.DynamicQuery">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.DynamicQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.EngWorkBench">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.EngWorkBench.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.EpiSearch">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.EpiSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.GenXData">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.GenXData.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.JobStatus">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.JobStatus.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.Menu">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Menu.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.OpMaster">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.OpMaster.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.Part">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Part.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.Plant">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Plant.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.ReportMonitor">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.ReportMonitor.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.SysMonitor">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.SysMonitor.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.Core.BLConnectionPool">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.BLConnectionPool.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.Core.Session">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.Session.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IBomSearch">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IBomSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IDashBoard">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IDashBoard.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IDynamicQuery">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IDynamicQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IEngWorkBench">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IEngWorkBench.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IEpiSearch">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IEpiSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IGenXData">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IGenXData.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IJobStatus">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IJobStatus.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IOpMaster">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IOpMaster.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IPart">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IPart.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.Lib.BOReader">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.BOReader.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.Lib.IBOReader">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.IBOReader.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.Lib.ISessionMod">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.ISessionMod.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.Lib.SessionMod">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.SessionMod.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.UI.EngWorkBenchEntry">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.UI.EngWorkBenchEntry.dll</HintPath>
+    </Reference>
+    <Reference Include="Progress.o4glrt">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Progress.o4glrt.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataList.cs" />
+    <Compile Include="main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="main.Designer.cs">
+      <DependentUpon>main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="main.resx">
+      <DependentUpon>main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

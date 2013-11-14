@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.BO.QuoteDtlSearch</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.QuoteDtlSearch">
+            <summary>
+            Client side business object for QuoteDtlSearch.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.Proxy.QuoteDtlSearchImpl">
+            <summary> Quote Detail Search Business Object
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.QuoteDtlSearchImpl.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Proxy constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.QuoteDtlSearchImpl.GetNewQuoteDtl(Epicor.Mfg.BO.QuoteDtlSearchDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.QuoteDtlSearchImpl.DeleteByID(System.Int32,System.Int32)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.QuoteDtlSearchImpl.GetByID(System.Int32,System.Int32)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.QuoteDtlSearchImpl.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.QuoteDtlSearchImpl.GetRows(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.QuoteDtlSearchImpl.Update(Epicor.Mfg.BO.QuoteDtlSearchDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.QuoteDtlSearchImpl.UpdateExt(Epicor.Mfg.BO.UpdExtQuoteDtlSearchDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.QuoteDtlSearchImpl.GetListFromSelectedKeys(Epicor.Mfg.BO.QuoteDtlListDataSet,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This methods will return all of the QuoteDtlSearch records which will be a subset
+            of the QuoteHed records that meet the selection criteria. This method will try
+            to mirror the functionality of the base GetRows method but since we are populating
+            a temp table we need our own public method.
+            </summary>
+            <param name="ds">The dataset with pupolated key values</param>
+            <param name="pageSize">The page size, used only for UI adaptor </param>
+            <param name="absolutePage">The absolute page, used only for the UI adaptor </param>
+            <param name="morePages">More pages?, used only for the UI adaptor </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.QuoteDtlSearchImpl.GetRowsFromSelectedKeys(Epicor.Mfg.BO.QuoteDtlSearchDataSet,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This methods will return all of the QuoteDtlSearch records which will be a subset
+            of the QuoteHed records that meet the selection criteria. This method will try
+            to mirror the functionality of the base GetRows method but since we are populating
+            a temp table we need our own public method.
+            </summary>
+            <param name="ds">The dataset with pupolated key values</param>
+            <param name="pageSize">The page size, used only for UI adaptor </param>
+            <param name="absolutePage">The absolute page, used only for the UI adaptor </param>
+            <param name="morePages">More pages?, used only for the UI adaptor </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.QuoteDtlSearchImpl.GetListCustom(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This methods will return all of the QuoteDtlSearch records which will be a subset
+            of the QuoteDtl records that meet the selection criteria. This method will try
+            to mirror the functionality of the base GetRows method but since we are populating
+            a temp table (QuoteDtlList) we need our own public method.
+            </summary>
+            <param name="whereClauseQuoteDtl">The where clause to restrict data for QuoteDtl </param>
+            <param name="whereClauseQuoteHed">The where clause to restrict data for QuoteHed </param>
+            <param name="whereClauseCustomer">The where clause to restrict data for Customer </param>
+            <param name="sortBy">sortBy Selected </param>
+            <returns type="Epicor.Mfg.BO.QuoteDtlListDataSet">The QuoteDtlSearchDataSet </returns>
+            <param name="pageSize">The page size, used only for UI adaptor </param>
+            <param name="absolutePage">The absolute page, used only for the UI adaptor </param>
+            <param name="morePages">More pages?, used only for the UI adaptor </param>
+            <returns type="Epicor.Mfg.BO.UserDefinedDataSet">The UserDefinedDataSet </returns>
+            <returns type="Epicor.Mfg.BO.CallContextDataSet">The CallContextDataSet </returns>
+        </member>
+        <member name="P:Epicor.Mfg.Proxy.QuoteDtlSearchImpl.CallContext">
+            <summary>
+            Call context dataset
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.BO.QuoteDtlSearch.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+    </members>
+</doc>
