@@ -18,8 +18,7 @@ namespace EpicorIntegration
 
         private void RawListing_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'eNGDataDataSet.rawlisting' table. You can move, or remove it, as needed.
-            this.rawlistingTableAdapter.Fill(this.eNGDataDataSet.rawlisting);
+
 
         }
     }

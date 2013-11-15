@@ -186,19 +186,11 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
             }
         }
 
-        public bool HaveUpToDateItemRef(IEdmFile5 Part, IEdmVault7 vault)
+        public bool HaveUpToDateItemRef(EdmCmdData file,IEdmFile5 Part, IEdmVault7 vault)
         {
             bool retval = false;
 
-            IEdmSearch5 search = vault.CreateSearch();
-
-            search.FileName = Part.Name;
-
-            IEdmSearchResult5 result = search.GetFirstResult();
-
-            string LocalPath = Part.GetLocalPath(result.ParentFolderID);
-
-            long Local = Part.GetLocalVersionNo(LocalPath);
+            long Local = Part.GetLocalVersionNo(file.mlObjectID3);
 
             int Server = Part.CurrentVersion;
 
@@ -262,11 +254,11 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
         /// <param name="Part"></param>
         /// <param name="vault"></param>
         /// <returns></returns>
-        public bool UpdateItemRef(IEdmFile5 Part, IEdmVault7 vault)
+        public bool UpdateItemRef(EdmCmdData file,IEdmFile5 Part, IEdmVault7 vault)
         {
             bool retval = false;
 
-            if (!HaveUpToDateItemRef(Part, vault))
+            if (!HaveUpToDateItemRef(file,Part, vault))
             {
                 DialogResult dr = MessageBox.Show("This requires that you get the latest version of this file. Continue?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -455,7 +447,7 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
 
                         IEdmFile7 Part = FindPartinVault(vault, file, BillNumbers[i], out Config);
 
-                        DialogResult Dr = GetItemInfo(vault, Part);
+                        DialogResult Dr = GetItemInfo(file,vault, Part);
 
                         if (Dr == DialogResult.Cancel)
                             BillNumbers.RemoveAt(i);
@@ -502,7 +494,7 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
 
                     if (Part != null)
                     {
-                        GetItemInfo(vault, Part);
+                        GetItemInfo(file,vault,Part);
                     }
                     else
                     {
@@ -531,7 +523,7 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
             IEdmFile7 part = (IEdmFile7)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
 
             //Get the lastest version to continue
-            if (UpdateItemRef(part, vault))
+            if (UpdateItemRef(file,part, vault))
             {
                 var = part.GetEnumeratorVariable();
 
@@ -626,7 +618,7 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
             return DialogResult.Cancel;
         }
 
-        public DialogResult GetItemInfo(IEdmVault7 vault, IEdmFile7 Part)
+        public DialogResult GetItemInfo(EdmCmdData file, IEdmVault7 vault, IEdmFile7 Part)
         {
             IEdmEnumeratorVariable5 var;
 
@@ -644,7 +636,7 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
 
             object type_val;
 
-            if (UpdateItemRef(Part, vault))
+            if (UpdateItemRef(file,Part, vault))
             {
                 var = Part.GetEnumeratorVariable();
 
@@ -713,7 +705,7 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
                          
             part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
 
-            if (UpdateItemRef(part, vault))
+            if (UpdateItemRef(file,part, vault))
             {
                 var = part.GetEnumeratorVariable();
 
@@ -748,6 +740,9 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
 
                 if (product_val == null)
                     product_val = "";
+
+                if (desc_val == null)
+                    desc_val = "";
 
                 if (partnum_val != null)
                 {

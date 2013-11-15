@@ -60,7 +60,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.engDataDataSet = new EpicorIntegration.ENGDataDataSet();
             this.BS_EngDataDataSet = new System.Windows.Forms.BindingSource(this.components);
-            this.itemTemplateTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.ItemTemplateTableAdapter();
+            //this.itemTemplateTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.ItemTemplateTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NetVolume)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -384,7 +384,7 @@
             // 
             // itemTemplateTableAdapter
             // 
-            this.itemTemplateTableAdapter.ClearBeforeFill = true;
+            //this.itemTemplateTableAdapter.ClearBeforeFill = true;
             // 
             // Item_Template
             // 
@@ -446,7 +446,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private ENGDataDataSet engDataDataSet;
         private System.Windows.Forms.BindingSource BS_EngDataDataSet;
-        private ENGDataDataSetTableAdapters.ItemTemplateTableAdapter itemTemplateTableAdapter;
     }
 }
 

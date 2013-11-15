@@ -44,7 +44,7 @@
             this.cancel_btn = new System.Windows.Forms.Button();
             this.eNGDataDataSet = new EpicorIntegration.ENGDataDataSet();
             this.BS_EngDataDataSet = new System.Windows.Forms.BindingSource(this.components);
-            this.itemTemplateTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.ItemTemplateTableAdapter();
+            //this.itemTemplateTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.ItemTemplateTableAdapter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eNGDataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_EngDataDataSet)).BeginInit();
@@ -174,7 +174,7 @@
             // 
             // itemTemplateTableAdapter
             // 
-            this.itemTemplateTableAdapter.ClearBeforeFill = true;
+            //this.itemTemplateTableAdapter.ClearBeforeFill = true;
             // 
             // Item_CopyFrom
             // 
@@ -220,6 +220,5 @@
         private System.Windows.Forms.Button cancel_btn;
         private ENGDataDataSet eNGDataDataSet;
         private System.Windows.Forms.BindingSource BS_EngDataDataSet;
-        private ENGDataDataSetTableAdapters.ItemTemplateTableAdapter itemTemplateTableAdapter;
     }
 }

@@ -309,7 +309,7 @@ namespace EpicorIntegration
                     DataList.EpicClose();*/
                 #endregion
 
-                itemTemplateTableAdapter.Insert(Partnumber_txt.Text, Description_txt.Text, type_cbo.Text, uomclass_cbo.Text, (double)NetWeight.Value, uomweight_cbo.Text, (double)NetVolume.Value, uomvol_cbo.Text, uom_cbo.Text, group_cbo.SelectedValue.ToString(), class_cbo.Text, plant_cbo.Text, whse_cbo.Text);
+                //itemTemplateTableAdapter.Insert(Partnumber_txt.Text, Description_txt.Text, type_cbo.Text, uomclass_cbo.Text, (double)NetWeight.Value, uomweight_cbo.Text, (double)NetVolume.Value, uomvol_cbo.Text, uom_cbo.Text, group_cbo.SelectedValue.ToString(), class_cbo.Text, plant_cbo.Text, whse_cbo.Text);
             }
             catch (System.Exception ex)
             {

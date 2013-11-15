@@ -35,7 +35,7 @@
             this.RawListGrid = new System.Windows.Forms.DataGridView();
             this.eNGDataDataSet = new EpicorIntegration.ENGDataDataSet();
             this.rawlistingBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.rawlistingTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.rawlistingTableAdapter();
+            //this.rawlistingTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.rawlistingTableAdapter();
             this.matnumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MajorHoriz.Panel1.SuspendLayout();
@@ -106,7 +106,7 @@
             // 
             // rawlistingTableAdapter
             // 
-            this.rawlistingTableAdapter.ClearBeforeFill = true;
+            //this.rawlistingTableAdapter.ClearBeforeFill = true;
             // 
             // matnumDataGridViewTextBoxColumn
             // 
@@ -151,7 +151,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private ENGDataDataSet eNGDataDataSet;
         private System.Windows.Forms.BindingSource rawlistingBindingSource;
-        private ENGDataDataSetTableAdapters.rawlistingTableAdapter rawlistingTableAdapter;
         private System.Windows.Forms.DataGridView RawListGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn matnumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;

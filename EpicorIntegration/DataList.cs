@@ -529,6 +529,102 @@ namespace EpicorIntegration
             catch { return ""; }
         }
 
+        public static string GetType(string PartNumber)
+        {
+            try
+            {
+                Part Part = new Part(DataList.EpicConn);
+
+                PartDataSet PartData = new PartDataSet();
+
+                PartData = Part.GetByID(PartNumber);
+
+                int LastRowIndex = PartData.Tables["Part"].Rows.Count - 1;
+
+                string PartInfo = PartData.Tables["Part"].Rows[LastRowIndex]["TypeCode"].ToString();
+
+                if (PartInfo == "M")
+                    PartInfo = "Manufactured";
+
+                if (PartInfo == "P")
+                    PartInfo = "Purchased";
+
+                if (PartInfo == "K")
+                    PartInfo = "Sales Kit";
+
+                EpicClose();
+
+                return PartInfo;
+            }
+            catch { return ""; }
+        }
+
+        public static string GetGroup(string PartNumber)
+        {
+            try
+            {
+                Part Part = new Part(DataList.EpicConn);
+
+                PartDataSet PartData = new PartDataSet();
+
+                PartData = Part.GetByID(PartNumber);
+
+                int LastRowIndex = PartData.Tables["Part"].Rows.Count - 1;
+
+                string PartInfo = PartData.Tables["Part"].Rows[LastRowIndex]["ProdCode"].ToString();
+
+                DataTable DT = DataList.ProdGrupDataSet().Tables[0];
+
+                for (int i = 0; i < DT.Rows.Count; i++)
+                {
+                    if (DT.Rows[i]["ProdCode"].ToString() == PartInfo)
+                    {
+                        PartInfo = DT.Rows[i]["Description"].ToString();
+
+                        break;
+                    }
+                }
+
+                EpicClose();
+
+                return PartInfo;
+            }
+            catch { return ""; }
+        }
+
+        public static string GetClass(string PartNumber)
+        {
+            try
+            {
+                Part Part = new Part(DataList.EpicConn);
+
+                PartDataSet PartData = new PartDataSet();
+
+                PartData = Part.GetByID(PartNumber);
+
+                int LastRowIndex = PartData.Tables["Part"].Rows.Count - 1;
+
+                string PartInfo = PartData.Tables["Part"].Rows[LastRowIndex]["ClassID"].ToString();
+
+                DataTable DT = DataList.PartClassDataSet().Tables[0];
+
+                for (int i = 0; i < DT.Rows.Count; i++)
+                {
+                    if (DT.Rows[i]["ClassID"].ToString() == PartInfo)
+                    {
+                        PartInfo = DT.Rows[i]["Description"].ToString();
+
+                        break;
+                    }
+                }
+
+                EpicClose();
+
+                return PartInfo;
+            }
+            catch { return ""; }
+        }
+        
         public static DataTable PartUOM(string PartNumber)
         {
             try
@@ -989,6 +1085,64 @@ namespace EpicorIntegration
         public override string ToString()
         {
             return this.part_number.ToString() + " - " + this.description.ToString();
+        }
+    }
+
+    public static class Templates
+    {
+        public static DataTable GetBomTemplates()
+        {
+            ENGDataDataSetTableAdapters.TemplatesTableAdapter TableAdapter = new ENGDataDataSetTableAdapters.TemplatesTableAdapter();
+
+            ENGDataDataSet.TemplatesDataTable RetVal = new ENGDataDataSet.TemplatesDataTable();
+
+            TableAdapter.FillByType(RetVal, "BOM");
+
+            return (DataTable)RetVal;
+        }
+
+        public static DataTable GetOomTemplates()
+        {
+            ENGDataDataSetTableAdapters.TemplatesTableAdapter TableAdapter = new ENGDataDataSetTableAdapters.TemplatesTableAdapter();
+
+            ENGDataDataSet.TemplatesDataTable RetVal = new ENGDataDataSet.TemplatesDataTable();
+
+            TableAdapter.FillByType(RetVal, "OOM");
+
+            return (DataTable)RetVal;
+        }
+
+        public static DataTable GetResTemplates()
+        {
+            ENGDataDataSetTableAdapters.TemplatesTableAdapter TableAdapter = new ENGDataDataSetTableAdapters.TemplatesTableAdapter();
+
+            ENGDataDataSet.TemplatesDataTable RetVal = new ENGDataDataSet.TemplatesDataTable();
+
+            TableAdapter.FillByType(RetVal, "RES");
+
+            return (DataTable)RetVal;
+        }
+
+        public static DataTable GetItemTemplates()
+        {
+            ENGDataDataSetTableAdapters.TemplatesTableAdapter TableAdapter = new ENGDataDataSetTableAdapters.TemplatesTableAdapter();
+
+            ENGDataDataSet.TemplatesDataTable RetVal = new ENGDataDataSet.TemplatesDataTable();
+
+            TableAdapter.FillByType(RetVal, "ITEM");
+
+            return (DataTable)RetVal;
+        }
+
+        public static DataTable GetFullTemplate(string Name, string Type)
+        {
+            ENGDataDataSetTableAdapters.TemplatesTableAdapter TableAdapter = new ENGDataDataSetTableAdapters.TemplatesTableAdapter();
+
+            ENGDataDataSet.TemplatesDataTable RetVal = new ENGDataDataSet.TemplatesDataTable();
+
+            TableAdapter.FillByNameType(RetVal, Type, Name);
+
+            return (DataTable)RetVal;
         }
     }
 

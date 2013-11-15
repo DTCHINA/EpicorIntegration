@@ -24,9 +24,7 @@ namespace EpicorIntegration {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class ENGDataDataSet : global::System.Data.DataSet {
         
-        private ItemTemplateDataTable tableItemTemplate;
-        
-        private rawlistingDataTable tablerawlisting;
+        private TemplatesDataTable tableTemplates;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -56,11 +54,8 @@ namespace EpicorIntegration {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["ItemTemplate"] != null)) {
-                    base.Tables.Add(new ItemTemplateDataTable(ds.Tables["ItemTemplate"]));
-                }
-                if ((ds.Tables["rawlisting"] != null)) {
-                    base.Tables.Add(new rawlistingDataTable(ds.Tables["rawlisting"]));
+                if ((ds.Tables["Templates"] != null)) {
+                    base.Tables.Add(new TemplatesDataTable(ds.Tables["Templates"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -84,19 +79,9 @@ namespace EpicorIntegration {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ItemTemplateDataTable ItemTemplate {
+        public TemplatesDataTable Templates {
             get {
-                return this.tableItemTemplate;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public rawlistingDataTable rawlisting {
-            get {
-                return this.tablerawlisting;
+                return this.tableTemplates;
             }
         }
         
@@ -167,11 +152,8 @@ namespace EpicorIntegration {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["ItemTemplate"] != null)) {
-                    base.Tables.Add(new ItemTemplateDataTable(ds.Tables["ItemTemplate"]));
-                }
-                if ((ds.Tables["rawlisting"] != null)) {
-                    base.Tables.Add(new rawlistingDataTable(ds.Tables["rawlisting"]));
+                if ((ds.Tables["Templates"] != null)) {
+                    base.Tables.Add(new TemplatesDataTable(ds.Tables["Templates"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -206,16 +188,10 @@ namespace EpicorIntegration {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableItemTemplate = ((ItemTemplateDataTable)(base.Tables["ItemTemplate"]));
+            this.tableTemplates = ((TemplatesDataTable)(base.Tables["Templates"]));
             if ((initTable == true)) {
-                if ((this.tableItemTemplate != null)) {
-                    this.tableItemTemplate.InitVars();
-                }
-            }
-            this.tablerawlisting = ((rawlistingDataTable)(base.Tables["rawlisting"]));
-            if ((initTable == true)) {
-                if ((this.tablerawlisting != null)) {
-                    this.tablerawlisting.InitVars();
+                if ((this.tableTemplates != null)) {
+                    this.tableTemplates.InitVars();
                 }
             }
         }
@@ -228,21 +204,13 @@ namespace EpicorIntegration {
             this.Namespace = "http://tempuri.org/ENGDataDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableItemTemplate = new ItemTemplateDataTable();
-            base.Tables.Add(this.tableItemTemplate);
-            this.tablerawlisting = new rawlistingDataTable();
-            base.Tables.Add(this.tablerawlisting);
+            this.tableTemplates = new TemplatesDataTable();
+            base.Tables.Add(this.tableTemplates);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeItemTemplate() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializerawlisting() {
+        private bool ShouldSerializeTemplates() {
             return false;
         }
         
@@ -302,48 +270,31 @@ namespace EpicorIntegration {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ItemTemplateRowChangeEventHandler(object sender, ItemTemplateRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void rawlistingRowChangeEventHandler(object sender, rawlistingRowChangeEvent e);
+        public delegate void TemplatesRowChangeEventHandler(object sender, TemplatesRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ItemTemplateDataTable : global::System.Data.TypedTableBase<ItemTemplateRow> {
+        public partial class TemplatesDataTable : global::System.Data.TypedTableBase<TemplatesRow> {
             
-            private global::System.Data.DataColumn columnTitle;
-            
-            private global::System.Data.DataColumn columnDesc;
+            private global::System.Data.DataColumn columnName;
             
             private global::System.Data.DataColumn columnType;
             
-            private global::System.Data.DataColumn columnUOMClass;
+            private global::System.Data.DataColumn columnPropertyType;
             
-            private global::System.Data.DataColumn columnNetWeight;
+            private global::System.Data.DataColumn columnPropertyValue;
             
-            private global::System.Data.DataColumn columnUOMWeight;
+            private global::System.Data.DataColumn columnPropertyQty;
             
-            private global::System.Data.DataColumn columnNetVol;
-            
-            private global::System.Data.DataColumn columnUOMVol;
-            
-            private global::System.Data.DataColumn columnUOM;
-            
-            private global::System.Data.DataColumn columnGroup;
-            
-            private global::System.Data.DataColumn columnClass;
-            
-            private global::System.Data.DataColumn columnPlant;
-            
-            private global::System.Data.DataColumn columnWhse;
+            private global::System.Data.DataColumn columnPropertyUOM;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemTemplateDataTable() {
-                this.TableName = "ItemTemplate";
+            public TemplatesDataTable() {
+                this.TableName = "Templates";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -351,7 +302,7 @@ namespace EpicorIntegration {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ItemTemplateDataTable(global::System.Data.DataTable table) {
+            internal TemplatesDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -368,24 +319,16 @@ namespace EpicorIntegration {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ItemTemplateDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected TemplatesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TitleColumn {
+            public global::System.Data.DataColumn NameColumn {
                 get {
-                    return this.columnTitle;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DescColumn {
-                get {
-                    return this.columnDesc;
+                    return this.columnName;
                 }
             }
             
@@ -399,81 +342,33 @@ namespace EpicorIntegration {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UOMClassColumn {
+            public global::System.Data.DataColumn PropertyTypeColumn {
                 get {
-                    return this.columnUOMClass;
+                    return this.columnPropertyType;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NetWeightColumn {
+            public global::System.Data.DataColumn PropertyValueColumn {
                 get {
-                    return this.columnNetWeight;
+                    return this.columnPropertyValue;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UOMWeightColumn {
+            public global::System.Data.DataColumn PropertyQtyColumn {
                 get {
-                    return this.columnUOMWeight;
+                    return this.columnPropertyQty;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NetVolColumn {
+            public global::System.Data.DataColumn PropertyUOMColumn {
                 get {
-                    return this.columnNetVol;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UOMVolColumn {
-                get {
-                    return this.columnUOMVol;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UOMColumn {
-                get {
-                    return this.columnUOM;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GroupColumn {
-                get {
-                    return this.columnGroup;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ClassColumn {
-                get {
-                    return this.columnClass;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PlantColumn {
-                get {
-                    return this.columnPlant;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn WhseColumn {
-                get {
-                    return this.columnWhse;
+                    return this.columnPropertyUOM;
                 }
             }
             
@@ -488,57 +383,50 @@ namespace EpicorIntegration {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemTemplateRow this[int index] {
+            public TemplatesRow this[int index] {
                 get {
-                    return ((ItemTemplateRow)(this.Rows[index]));
+                    return ((TemplatesRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ItemTemplateRowChangeEventHandler ItemTemplateRowChanging;
+            public event TemplatesRowChangeEventHandler TemplatesRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ItemTemplateRowChangeEventHandler ItemTemplateRowChanged;
+            public event TemplatesRowChangeEventHandler TemplatesRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ItemTemplateRowChangeEventHandler ItemTemplateRowDeleting;
+            public event TemplatesRowChangeEventHandler TemplatesRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ItemTemplateRowChangeEventHandler ItemTemplateRowDeleted;
+            public event TemplatesRowChangeEventHandler TemplatesRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddItemTemplateRow(ItemTemplateRow row) {
+            public void AddTemplatesRow(TemplatesRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemTemplateRow AddItemTemplateRow(string Title, string Desc, string Type, string UOMClass, double NetWeight, string UOMWeight, double NetVol, string UOMVol, string UOM, string Group, string Class, string Plant, string Whse) {
-                ItemTemplateRow rowItemTemplateRow = ((ItemTemplateRow)(this.NewRow()));
+            public TemplatesRow AddTemplatesRow(string Name, string Type, string PropertyType, string PropertyValue, string PropertyQty, string PropertyUOM) {
+                TemplatesRow rowTemplatesRow = ((TemplatesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Title,
-                        Desc,
+                        Name,
                         Type,
-                        UOMClass,
-                        NetWeight,
-                        UOMWeight,
-                        NetVol,
-                        UOMVol,
-                        UOM,
-                        Group,
-                        Class,
-                        Plant,
-                        Whse};
-                rowItemTemplateRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowItemTemplateRow);
-                return rowItemTemplateRow;
+                        PropertyType,
+                        PropertyValue,
+                        PropertyQty,
+                        PropertyUOM};
+                rowTemplatesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTemplatesRow);
+                return rowTemplatesRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ItemTemplateDataTable cln = ((ItemTemplateDataTable)(base.Clone()));
+                TemplatesDataTable cln = ((TemplatesDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -546,94 +434,68 @@ namespace EpicorIntegration {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ItemTemplateDataTable();
+                return new TemplatesDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnTitle = base.Columns["Title"];
-                this.columnDesc = base.Columns["Desc"];
+                this.columnName = base.Columns["Name"];
                 this.columnType = base.Columns["Type"];
-                this.columnUOMClass = base.Columns["UOMClass"];
-                this.columnNetWeight = base.Columns["NetWeight"];
-                this.columnUOMWeight = base.Columns["UOMWeight"];
-                this.columnNetVol = base.Columns["NetVol"];
-                this.columnUOMVol = base.Columns["UOMVol"];
-                this.columnUOM = base.Columns["UOM"];
-                this.columnGroup = base.Columns["Group"];
-                this.columnClass = base.Columns["Class"];
-                this.columnPlant = base.Columns["Plant"];
-                this.columnWhse = base.Columns["Whse"];
+                this.columnPropertyType = base.Columns["PropertyType"];
+                this.columnPropertyValue = base.Columns["PropertyValue"];
+                this.columnPropertyQty = base.Columns["PropertyQty"];
+                this.columnPropertyUOM = base.Columns["PropertyUOM"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTitle);
-                this.columnDesc = new global::System.Data.DataColumn("Desc", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDesc);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
                 this.columnType = new global::System.Data.DataColumn("Type", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnType);
-                this.columnUOMClass = new global::System.Data.DataColumn("UOMClass", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUOMClass);
-                this.columnNetWeight = new global::System.Data.DataColumn("NetWeight", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNetWeight);
-                this.columnUOMWeight = new global::System.Data.DataColumn("UOMWeight", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUOMWeight);
-                this.columnNetVol = new global::System.Data.DataColumn("NetVol", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNetVol);
-                this.columnUOMVol = new global::System.Data.DataColumn("UOMVol", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUOMVol);
-                this.columnUOM = new global::System.Data.DataColumn("UOM", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUOM);
-                this.columnGroup = new global::System.Data.DataColumn("Group", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGroup);
-                this.columnClass = new global::System.Data.DataColumn("Class", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnClass);
-                this.columnPlant = new global::System.Data.DataColumn("Plant", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPlant);
-                this.columnWhse = new global::System.Data.DataColumn("Whse", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnWhse);
-                this.columnTitle.AllowDBNull = false;
-                this.columnTitle.MaxLength = 1073741823;
-                this.columnDesc.MaxLength = 1073741823;
+                this.columnPropertyType = new global::System.Data.DataColumn("PropertyType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPropertyType);
+                this.columnPropertyValue = new global::System.Data.DataColumn("PropertyValue", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPropertyValue);
+                this.columnPropertyQty = new global::System.Data.DataColumn("PropertyQty", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPropertyQty);
+                this.columnPropertyUOM = new global::System.Data.DataColumn("PropertyUOM", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPropertyUOM);
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 1073741823;
                 this.columnType.MaxLength = 1073741823;
-                this.columnUOMClass.MaxLength = 1073741823;
-                this.columnUOMWeight.MaxLength = 1073741823;
-                this.columnUOMVol.MaxLength = 1073741823;
-                this.columnUOM.MaxLength = 1073741823;
-                this.columnGroup.MaxLength = 1073741823;
-                this.columnClass.MaxLength = 1073741823;
-                this.columnPlant.MaxLength = 1073741823;
-                this.columnWhse.MaxLength = 1073741823;
+                this.columnPropertyType.MaxLength = 1073741823;
+                this.columnPropertyValue.MaxLength = 1073741823;
+                this.columnPropertyQty.MaxLength = 1073741823;
+                this.columnPropertyUOM.MaxLength = 1073741823;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemTemplateRow NewItemTemplateRow() {
-                return ((ItemTemplateRow)(this.NewRow()));
+            public TemplatesRow NewTemplatesRow() {
+                return ((TemplatesRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ItemTemplateRow(builder);
+                return new TemplatesRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ItemTemplateRow);
+                return typeof(TemplatesRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ItemTemplateRowChanged != null)) {
-                    this.ItemTemplateRowChanged(this, new ItemTemplateRowChangeEvent(((ItemTemplateRow)(e.Row)), e.Action));
+                if ((this.TemplatesRowChanged != null)) {
+                    this.TemplatesRowChanged(this, new TemplatesRowChangeEvent(((TemplatesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -641,8 +503,8 @@ namespace EpicorIntegration {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ItemTemplateRowChanging != null)) {
-                    this.ItemTemplateRowChanging(this, new ItemTemplateRowChangeEvent(((ItemTemplateRow)(e.Row)), e.Action));
+                if ((this.TemplatesRowChanging != null)) {
+                    this.TemplatesRowChanging(this, new TemplatesRowChangeEvent(((TemplatesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -650,8 +512,8 @@ namespace EpicorIntegration {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ItemTemplateRowDeleted != null)) {
-                    this.ItemTemplateRowDeleted(this, new ItemTemplateRowChangeEvent(((ItemTemplateRow)(e.Row)), e.Action));
+                if ((this.TemplatesRowDeleted != null)) {
+                    this.TemplatesRowDeleted(this, new TemplatesRowChangeEvent(((TemplatesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -659,14 +521,14 @@ namespace EpicorIntegration {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ItemTemplateRowDeleting != null)) {
-                    this.ItemTemplateRowDeleting(this, new ItemTemplateRowChangeEvent(((ItemTemplateRow)(e.Row)), e.Action));
+                if ((this.TemplatesRowDeleting != null)) {
+                    this.TemplatesRowDeleting(this, new TemplatesRowChangeEvent(((TemplatesRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveItemTemplateRow(ItemTemplateRow row) {
+            public void RemoveTemplatesRow(TemplatesRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -693,272 +555,7 @@ namespace EpicorIntegration {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ItemTemplateDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class rawlistingDataTable : global::System.Data.TypedTableBase<rawlistingRow> {
-            
-            private global::System.Data.DataColumn columnmatnum;
-            
-            private global::System.Data.DataColumn columntype;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public rawlistingDataTable() {
-                this.TableName = "rawlisting";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal rawlistingDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected rawlistingDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn matnumColumn {
-                get {
-                    return this.columnmatnum;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn typeColumn {
-                get {
-                    return this.columntype;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public rawlistingRow this[int index] {
-                get {
-                    return ((rawlistingRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event rawlistingRowChangeEventHandler rawlistingRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event rawlistingRowChangeEventHandler rawlistingRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event rawlistingRowChangeEventHandler rawlistingRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event rawlistingRowChangeEventHandler rawlistingRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddrawlistingRow(rawlistingRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public rawlistingRow AddrawlistingRow(string matnum, string type) {
-                rawlistingRow rowrawlistingRow = ((rawlistingRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        matnum,
-                        type};
-                rowrawlistingRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowrawlistingRow);
-                return rowrawlistingRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                rawlistingDataTable cln = ((rawlistingDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new rawlistingDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnmatnum = base.Columns["matnum"];
-                this.columntype = base.Columns["type"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnmatnum = new global::System.Data.DataColumn("matnum", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmatnum);
-                this.columntype = new global::System.Data.DataColumn("type", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntype);
-                this.columnmatnum.AllowDBNull = false;
-                this.columnmatnum.MaxLength = 1073741823;
-                this.columntype.AllowDBNull = false;
-                this.columntype.MaxLength = 1073741823;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public rawlistingRow NewrawlistingRow() {
-                return ((rawlistingRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new rawlistingRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(rawlistingRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.rawlistingRowChanged != null)) {
-                    this.rawlistingRowChanged(this, new rawlistingRowChangeEvent(((rawlistingRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.rawlistingRowChanging != null)) {
-                    this.rawlistingRowChanging(this, new rawlistingRowChangeEvent(((rawlistingRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.rawlistingRowDeleted != null)) {
-                    this.rawlistingRowDeleted(this, new rawlistingRowChangeEvent(((rawlistingRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.rawlistingRowDeleting != null)) {
-                    this.rawlistingRowDeleting(this, new rawlistingRowChangeEvent(((rawlistingRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoverawlistingRow(rawlistingRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ENGDataDataSet ds = new ENGDataDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "rawlistingDataTable";
+                attribute2.FixedValue = "TemplatesDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1002,41 +599,25 @@ namespace EpicorIntegration {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ItemTemplateRow : global::System.Data.DataRow {
+        public partial class TemplatesRow : global::System.Data.DataRow {
             
-            private ItemTemplateDataTable tableItemTemplate;
+            private TemplatesDataTable tableTemplates;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ItemTemplateRow(global::System.Data.DataRowBuilder rb) : 
+            internal TemplatesRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableItemTemplate = ((ItemTemplateDataTable)(this.Table));
+                this.tableTemplates = ((TemplatesDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Title {
+            public string Name {
                 get {
-                    return ((string)(this[this.tableItemTemplate.TitleColumn]));
+                    return ((string)(this[this.tableTemplates.NameColumn]));
                 }
                 set {
-                    this[this.tableItemTemplate.TitleColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Desc {
-                get {
-                    try {
-                        return ((string)(this[this.tableItemTemplate.DescColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Desc\' in table \'ItemTemplate\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItemTemplate.DescColumn] = value;
+                    this[this.tableTemplates.NameColumn] = value;
                 }
             }
             
@@ -1045,356 +626,139 @@ namespace EpicorIntegration {
             public string Type {
                 get {
                     try {
-                        return ((string)(this[this.tableItemTemplate.TypeColumn]));
+                        return ((string)(this[this.tableTemplates.TypeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Type\' in table \'ItemTemplate\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Type\' in table \'Templates\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItemTemplate.TypeColumn] = value;
+                    this[this.tableTemplates.TypeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UOMClass {
+            public string PropertyType {
                 get {
                     try {
-                        return ((string)(this[this.tableItemTemplate.UOMClassColumn]));
+                        return ((string)(this[this.tableTemplates.PropertyTypeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'UOMClass\' in table \'ItemTemplate\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PropertyType\' in table \'Templates\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItemTemplate.UOMClassColumn] = value;
+                    this[this.tableTemplates.PropertyTypeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double NetWeight {
+            public string PropertyValue {
                 get {
                     try {
-                        return ((double)(this[this.tableItemTemplate.NetWeightColumn]));
+                        return ((string)(this[this.tableTemplates.PropertyValueColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NetWeight\' in table \'ItemTemplate\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PropertyValue\' in table \'Templates\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItemTemplate.NetWeightColumn] = value;
+                    this[this.tableTemplates.PropertyValueColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UOMWeight {
+            public string PropertyQty {
                 get {
                     try {
-                        return ((string)(this[this.tableItemTemplate.UOMWeightColumn]));
+                        return ((string)(this[this.tableTemplates.PropertyQtyColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'UOMWeight\' in table \'ItemTemplate\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PropertyQty\' in table \'Templates\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItemTemplate.UOMWeightColumn] = value;
+                    this[this.tableTemplates.PropertyQtyColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double NetVol {
+            public string PropertyUOM {
                 get {
                     try {
-                        return ((double)(this[this.tableItemTemplate.NetVolColumn]));
+                        return ((string)(this[this.tableTemplates.PropertyUOMColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NetVol\' in table \'ItemTemplate\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PropertyUOM\' in table \'Templates\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItemTemplate.NetVolColumn] = value;
+                    this[this.tableTemplates.PropertyUOMColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UOMVol {
-                get {
-                    try {
-                        return ((string)(this[this.tableItemTemplate.UOMVolColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'UOMVol\' in table \'ItemTemplate\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItemTemplate.UOMVolColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UOM {
-                get {
-                    try {
-                        return ((string)(this[this.tableItemTemplate.UOMColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'UOM\' in table \'ItemTemplate\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItemTemplate.UOMColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Group {
-                get {
-                    try {
-                        return ((string)(this[this.tableItemTemplate.GroupColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Group\' in table \'ItemTemplate\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItemTemplate.GroupColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Class {
-                get {
-                    try {
-                        return ((string)(this[this.tableItemTemplate.ClassColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Class\' in table \'ItemTemplate\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItemTemplate.ClassColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Plant {
-                get {
-                    try {
-                        return ((string)(this[this.tableItemTemplate.PlantColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Plant\' in table \'ItemTemplate\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItemTemplate.PlantColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Whse {
-                get {
-                    try {
-                        return ((string)(this[this.tableItemTemplate.WhseColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Whse\' in table \'ItemTemplate\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItemTemplate.WhseColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDescNull() {
-                return this.IsNull(this.tableItemTemplate.DescColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDescNull() {
-                this[this.tableItemTemplate.DescColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTypeNull() {
-                return this.IsNull(this.tableItemTemplate.TypeColumn);
+                return this.IsNull(this.tableTemplates.TypeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTypeNull() {
-                this[this.tableItemTemplate.TypeColumn] = global::System.Convert.DBNull;
+                this[this.tableTemplates.TypeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsUOMClassNull() {
-                return this.IsNull(this.tableItemTemplate.UOMClassColumn);
+            public bool IsPropertyTypeNull() {
+                return this.IsNull(this.tableTemplates.PropertyTypeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetUOMClassNull() {
-                this[this.tableItemTemplate.UOMClassColumn] = global::System.Convert.DBNull;
+            public void SetPropertyTypeNull() {
+                this[this.tableTemplates.PropertyTypeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNetWeightNull() {
-                return this.IsNull(this.tableItemTemplate.NetWeightColumn);
+            public bool IsPropertyValueNull() {
+                return this.IsNull(this.tableTemplates.PropertyValueColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNetWeightNull() {
-                this[this.tableItemTemplate.NetWeightColumn] = global::System.Convert.DBNull;
+            public void SetPropertyValueNull() {
+                this[this.tableTemplates.PropertyValueColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsUOMWeightNull() {
-                return this.IsNull(this.tableItemTemplate.UOMWeightColumn);
+            public bool IsPropertyQtyNull() {
+                return this.IsNull(this.tableTemplates.PropertyQtyColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetUOMWeightNull() {
-                this[this.tableItemTemplate.UOMWeightColumn] = global::System.Convert.DBNull;
+            public void SetPropertyQtyNull() {
+                this[this.tableTemplates.PropertyQtyColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNetVolNull() {
-                return this.IsNull(this.tableItemTemplate.NetVolColumn);
+            public bool IsPropertyUOMNull() {
+                return this.IsNull(this.tableTemplates.PropertyUOMColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNetVolNull() {
-                this[this.tableItemTemplate.NetVolColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsUOMVolNull() {
-                return this.IsNull(this.tableItemTemplate.UOMVolColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetUOMVolNull() {
-                this[this.tableItemTemplate.UOMVolColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsUOMNull() {
-                return this.IsNull(this.tableItemTemplate.UOMColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetUOMNull() {
-                this[this.tableItemTemplate.UOMColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGroupNull() {
-                return this.IsNull(this.tableItemTemplate.GroupColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGroupNull() {
-                this[this.tableItemTemplate.GroupColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsClassNull() {
-                return this.IsNull(this.tableItemTemplate.ClassColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetClassNull() {
-                this[this.tableItemTemplate.ClassColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPlantNull() {
-                return this.IsNull(this.tableItemTemplate.PlantColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPlantNull() {
-                this[this.tableItemTemplate.PlantColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsWhseNull() {
-                return this.IsNull(this.tableItemTemplate.WhseColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetWhseNull() {
-                this[this.tableItemTemplate.WhseColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class rawlistingRow : global::System.Data.DataRow {
-            
-            private rawlistingDataTable tablerawlisting;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal rawlistingRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tablerawlisting = ((rawlistingDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string matnum {
-                get {
-                    return ((string)(this[this.tablerawlisting.matnumColumn]));
-                }
-                set {
-                    this[this.tablerawlisting.matnumColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string type {
-                get {
-                    return ((string)(this[this.tablerawlisting.typeColumn]));
-                }
-                set {
-                    this[this.tablerawlisting.typeColumn] = value;
-                }
+            public void SetPropertyUOMNull() {
+                this[this.tableTemplates.PropertyUOMColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1402,56 +766,22 @@ namespace EpicorIntegration {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ItemTemplateRowChangeEvent : global::System.EventArgs {
+        public class TemplatesRowChangeEvent : global::System.EventArgs {
             
-            private ItemTemplateRow eventRow;
+            private TemplatesRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemTemplateRowChangeEvent(ItemTemplateRow row, global::System.Data.DataRowAction action) {
+            public TemplatesRowChangeEvent(TemplatesRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemTemplateRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class rawlistingRowChangeEvent : global::System.EventArgs {
-            
-            private rawlistingRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public rawlistingRowChangeEvent(rawlistingRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public rawlistingRow Row {
+            public TemplatesRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1479,7 +809,7 @@ namespace EpicorIntegration.ENGDataDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ItemTemplateTableAdapter : global::System.ComponentModel.Component {
+    public partial class TemplatesTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1493,7 +823,7 @@ namespace EpicorIntegration.ENGDataDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ItemTemplateTableAdapter() {
+        public TemplatesTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1590,38 +920,26 @@ namespace EpicorIntegration.ENGDataDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ItemTemplate";
-            tableMapping.ColumnMappings.Add("Title", "Title");
-            tableMapping.ColumnMappings.Add("Desc", "Desc");
+            tableMapping.DataSetTable = "Templates";
+            tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("Type", "Type");
-            tableMapping.ColumnMappings.Add("UOMClass", "UOMClass");
-            tableMapping.ColumnMappings.Add("NetWeight", "NetWeight");
-            tableMapping.ColumnMappings.Add("UOMWeight", "UOMWeight");
-            tableMapping.ColumnMappings.Add("NetVol", "NetVol");
-            tableMapping.ColumnMappings.Add("UOMVol", "UOMVol");
-            tableMapping.ColumnMappings.Add("UOM", "UOM");
-            tableMapping.ColumnMappings.Add("Group", "Group");
-            tableMapping.ColumnMappings.Add("Class", "Class");
-            tableMapping.ColumnMappings.Add("Plant", "Plant");
-            tableMapping.ColumnMappings.Add("Whse", "Whse");
+            tableMapping.ColumnMappings.Add("PropertyType", "PropertyType");
+            tableMapping.ColumnMappings.Add("PropertyValue", "PropertyValue");
+            tableMapping.ColumnMappings.Add("PropertyQty", "PropertyQty");
+            tableMapping.ColumnMappings.Add("PropertyUOM", "PropertyUOM");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ItemTemplate] ([Title], [Desc], [Type], [UOMClass], [NetWeight], [UOMWeight], [NetVol], [UOMVol], [UOM], [Group], [Class], [Plant], [Whse]) VALUES (@Title, @Desc, @Type, @UOMClass, @NetWeight, @UOMWeight, @NetVol, @UOMVol, @UOM, @Group, @Class, @Plant, @Whse)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Templates] ([Name], [Type], [PropertyType], [PropertyValue], [Proper" +
+                "tyQty], [PropertyUOM]) VALUES (@Name, @Type, @PropertyType, @PropertyValue, @Pro" +
+                "pertyQty, @PropertyUOM)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Desc", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UOMClass", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UOMClass", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NetWeight", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NetWeight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UOMWeight", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UOMWeight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NetVol", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NetVol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UOMVol", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UOMVol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UOM", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UOM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Group", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Group", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Class", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Class", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Plant", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Plant", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Whse", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Whse", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyType", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyValue", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyValue", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyQty", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyQty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyUOM", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyUOM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1634,38 +952,31 @@ namespace EpicorIntegration.ENGDataDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Title, [Desc], Type, UOMClass, NetWeight, UOMWeight, NetVol, UOMVol, UOM, " +
-                "[Group], Class, Plant, Whse FROM dbo.ItemTemplate";
+            this._commandCollection[0].CommandText = "SELECT        Name, Type, PropertyType, PropertyValue, PropertyQty, PropertyUOM\r\n" +
+                "FROM            Templates";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"INSERT INTO ItemTemplate
-                         (Title, [Desc], Type, UOMClass, NetWeight, UOMWeight, NetVol, UOMVol, UOM, [Group], Class, Plant, Whse)
-VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVol,@UOM,@Group,@Class,@Plant,@Whse)";
+            this._commandCollection[1].CommandText = "SELECT        Name, Type, PropertyType, PropertyValue, PropertyQty, PropertyUOM\r\n" +
+                "FROM            Templates\r\nWHERE        (Type LIKE @Type) AND (Name LIKE @Name)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.NText, 1073741823, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Desc", global::System.Data.SqlDbType.NText, 1073741823, global::System.Data.ParameterDirection.Input, 0, 0, "Desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NText, 1073741823, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UOMClass", global::System.Data.SqlDbType.NText, 1073741823, global::System.Data.ParameterDirection.Input, 0, 0, "UOMClass", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NetWeight", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "NetWeight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UOMWeight", global::System.Data.SqlDbType.NText, 1073741823, global::System.Data.ParameterDirection.Input, 0, 0, "UOMWeight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NetVol", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "NetVol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UOMVol", global::System.Data.SqlDbType.NText, 1073741823, global::System.Data.ParameterDirection.Input, 0, 0, "UOMVol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UOM", global::System.Data.SqlDbType.NText, 1073741823, global::System.Data.ParameterDirection.Input, 0, 0, "UOM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Group", global::System.Data.SqlDbType.NText, 1073741823, global::System.Data.ParameterDirection.Input, 0, 0, "Group", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Class", global::System.Data.SqlDbType.NText, 1073741823, global::System.Data.ParameterDirection.Input, 0, 0, "Class", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Plant", global::System.Data.SqlDbType.NText, 1073741823, global::System.Data.ParameterDirection.Input, 0, 0, "Plant", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Whse", global::System.Data.SqlDbType.NText, 1073741823, global::System.Data.ParameterDirection.Input, 0, 0, "Whse", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT DISTINCT Name\r\nFROM            Templates\r\nWHERE        (Type LIKE @Type)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ENGDataDataSet.ItemTemplateDataTable dataTable) {
+        public virtual int Fill(ENGDataDataSet.TemplatesDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1678,9 +989,9 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ENGDataDataSet.ItemTemplateDataTable GetData() {
+        public virtual ENGDataDataSet.TemplatesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ENGDataDataSet.ItemTemplateDataTable dataTable = new ENGDataDataSet.ItemTemplateDataTable();
+            ENGDataDataSet.TemplatesDataTable dataTable = new ENGDataDataSet.TemplatesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1688,7 +999,91 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ENGDataDataSet.ItemTemplateDataTable dataTable) {
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByNameType(ENGDataDataSet.TemplatesDataTable dataTable, string Type, string Name) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Type == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Type));
+            }
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Name));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ENGDataDataSet.TemplatesDataTable GetDataByNameType(string Type, string Name) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Type == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Type));
+            }
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Name));
+            }
+            ENGDataDataSet.TemplatesDataTable dataTable = new ENGDataDataSet.TemplatesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByType(ENGDataDataSet.TemplatesDataTable dataTable, string Type) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((Type == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Type));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ENGDataDataSet.TemplatesDataTable GetDataByType(string Type) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((Type == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Type));
+            }
+            ENGDataDataSet.TemplatesDataTable dataTable = new ENGDataDataSet.TemplatesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ENGDataDataSet.TemplatesDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -1696,7 +1091,7 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(ENGDataDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "ItemTemplate");
+            return this.Adapter.Update(dataSet, "Templates");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1718,421 +1113,42 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Title, string Desc, string Type, string UOMClass, global::System.Nullable<double> NetWeight, string UOMWeight, global::System.Nullable<double> NetVol, string UOMVol, string UOM, string Group, string Class, string Plant, string Whse) {
-            if ((Title == null)) {
-                throw new global::System.ArgumentNullException("Title");
+        public virtual int Insert(string Name, string Type, string PropertyType, string PropertyValue, string PropertyQty, string PropertyUOM) {
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Title));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
             }
-            if ((Desc == null)) {
+            if ((Type == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Desc));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Type));
             }
-            if ((Type == null)) {
+            if ((PropertyType == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Type));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(PropertyType));
             }
-            if ((UOMClass == null)) {
+            if ((PropertyValue == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(UOMClass));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(PropertyValue));
             }
-            if ((NetWeight.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((double)(NetWeight.Value));
-            }
-            else {
+            if ((PropertyQty == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((UOMWeight == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(PropertyQty));
+            }
+            if ((PropertyUOM == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(UOMWeight));
-            }
-            if ((NetVol.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((double)(NetVol.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((UOMVol == null)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(UOMVol));
-            }
-            if ((UOM == null)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(UOM));
-            }
-            if ((Group == null)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Group));
-            }
-            if ((Class == null)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Class));
-            }
-            if ((Plant == null)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(Plant));
-            }
-            if ((Whse == null)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(Whse));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int Insert1(string Title, string Desc, string Type, string UOMClass, global::System.Nullable<double> NetWeight, string UOMWeight, global::System.Nullable<double> NetVol, string UOMVol, string UOM, string Group, string Class, string Plant, string Whse) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
-            if ((Title == null)) {
-                throw new global::System.ArgumentNullException("Title");
-            }
-            else {
-                command.Parameters[0].Value = ((string)(Title));
-            }
-            if ((Desc == null)) {
-                command.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[1].Value = ((string)(Desc));
-            }
-            if ((Type == null)) {
-                command.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[2].Value = ((string)(Type));
-            }
-            if ((UOMClass == null)) {
-                command.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[3].Value = ((string)(UOMClass));
-            }
-            if ((NetWeight.HasValue == true)) {
-                command.Parameters[4].Value = ((double)(NetWeight.Value));
-            }
-            else {
-                command.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((UOMWeight == null)) {
-                command.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[5].Value = ((string)(UOMWeight));
-            }
-            if ((NetVol.HasValue == true)) {
-                command.Parameters[6].Value = ((double)(NetVol.Value));
-            }
-            else {
-                command.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((UOMVol == null)) {
-                command.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[7].Value = ((string)(UOMVol));
-            }
-            if ((UOM == null)) {
-                command.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[8].Value = ((string)(UOM));
-            }
-            if ((Group == null)) {
-                command.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[9].Value = ((string)(Group));
-            }
-            if ((Class == null)) {
-                command.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[10].Value = ((string)(Class));
-            }
-            if ((Plant == null)) {
-                command.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[11].Value = ((string)(Plant));
-            }
-            if ((Whse == null)) {
-                command.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[12].Value = ((string)(Whse));
-            }
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class rawlistingTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public rawlistingTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "rawlisting";
-            tableMapping.ColumnMappings.Add("matnum", "matnum");
-            tableMapping.ColumnMappings.Add("type", "type");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [rawlisting] ([matnum], [type]) VALUES (@matnum, @type)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@matnum", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "matnum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@type", global::System.Data.SqlDbType.NText, 0, global::System.Data.ParameterDirection.Input, 0, 0, "type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EpicorIntegration.Properties.Settings.Default.ENGDataConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        matnum, type\r\nFROM            rawlisting";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ENGDataDataSet.rawlistingDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ENGDataDataSet.rawlistingDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            ENGDataDataSet.rawlistingDataTable dataTable = new ENGDataDataSet.rawlistingDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ENGDataDataSet.rawlistingDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ENGDataDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "rawlisting");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string matnum, string type) {
-            if ((matnum == null)) {
-                throw new global::System.ArgumentNullException("matnum");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(matnum));
-            }
-            if ((type == null)) {
-                throw new global::System.ArgumentNullException("type");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(type));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(PropertyUOM));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2163,9 +1179,7 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
         
         private UpdateOrderOption _updateOrder;
         
-        private ItemTemplateTableAdapter _itemTemplateTableAdapter;
-        
-        private rawlistingTableAdapter _rawlistingTableAdapter;
+        private TemplatesTableAdapter _templatesTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -2187,26 +1201,12 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public ItemTemplateTableAdapter ItemTemplateTableAdapter {
+        public TemplatesTableAdapter TemplatesTableAdapter {
             get {
-                return this._itemTemplateTableAdapter;
+                return this._templatesTableAdapter;
             }
             set {
-                this._itemTemplateTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public rawlistingTableAdapter rawlistingTableAdapter {
-            get {
-                return this._rawlistingTableAdapter;
-            }
-            set {
-                this._rawlistingTableAdapter = value;
+                this._templatesTableAdapter = value;
             }
         }
         
@@ -2229,13 +1229,9 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._itemTemplateTableAdapter != null) 
-                            && (this._itemTemplateTableAdapter.Connection != null))) {
-                    return this._itemTemplateTableAdapter.Connection;
-                }
-                if (((this._rawlistingTableAdapter != null) 
-                            && (this._rawlistingTableAdapter.Connection != null))) {
-                    return this._rawlistingTableAdapter.Connection;
+                if (((this._templatesTableAdapter != null) 
+                            && (this._templatesTableAdapter.Connection != null))) {
+                    return this._templatesTableAdapter.Connection;
                 }
                 return null;
             }
@@ -2250,10 +1246,7 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._itemTemplateTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._rawlistingTableAdapter != null)) {
+                if ((this._templatesTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -2267,21 +1260,12 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(ENGDataDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._itemTemplateTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ItemTemplate.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._templatesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Templates.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._itemTemplateTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._rawlistingTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.rawlisting.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._rawlistingTableAdapter.Update(updatedRows));
+                    result = (result + this._templatesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -2295,19 +1279,11 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(ENGDataDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._itemTemplateTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ItemTemplate.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._templatesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Templates.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._itemTemplateTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._rawlistingTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.rawlisting.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._rawlistingTableAdapter.Update(addedRows));
+                    result = (result + this._templatesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -2321,19 +1297,11 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(ENGDataDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._rawlistingTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.rawlisting.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._templatesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Templates.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._rawlistingTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._itemTemplateTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ItemTemplate.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._itemTemplateTableAdapter.Update(deletedRows));
+                    result = (result + this._templatesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -2376,13 +1344,8 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._itemTemplateTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._itemTemplateTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._rawlistingTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._rawlistingTableAdapter.Connection) == false))) {
+            if (((this._templatesTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._templatesTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -2418,22 +1381,13 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._itemTemplateTableAdapter != null)) {
-                    revertConnections.Add(this._itemTemplateTableAdapter, this._itemTemplateTableAdapter.Connection);
-                    this._itemTemplateTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._itemTemplateTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._itemTemplateTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._itemTemplateTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._itemTemplateTableAdapter.Adapter);
-                    }
-                }
-                if ((this._rawlistingTableAdapter != null)) {
-                    revertConnections.Add(this._rawlistingTableAdapter, this._rawlistingTableAdapter.Connection);
-                    this._rawlistingTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._rawlistingTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._rawlistingTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._rawlistingTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._rawlistingTableAdapter.Adapter);
+                if ((this._templatesTableAdapter != null)) {
+                    revertConnections.Add(this._templatesTableAdapter, this._templatesTableAdapter.Connection);
+                    this._templatesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._templatesTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._templatesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._templatesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._templatesTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -2494,13 +1448,9 @@ VALUES        (@Title,@Desc,@Type,@UOMClass,@NetWeight,@UOMWeight,@NetVol,@UOMVo
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._itemTemplateTableAdapter != null)) {
-                    this._itemTemplateTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._itemTemplateTableAdapter]));
-                    this._itemTemplateTableAdapter.Transaction = null;
-                }
-                if ((this._rawlistingTableAdapter != null)) {
-                    this._rawlistingTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._rawlistingTableAdapter]));
-                    this._rawlistingTableAdapter.Transaction = null;
+                if ((this._templatesTableAdapter != null)) {
+                    this._templatesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._templatesTableAdapter]));
+                    this._templatesTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

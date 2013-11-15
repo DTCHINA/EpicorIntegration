@@ -124,6 +124,7 @@
             // 
             // Config_List
             // 
+            this.Config_List.CheckOnClick = true;
             this.Config_List.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Config_List.FormattingEnabled = true;
             this.Config_List.Location = new System.Drawing.Point(3, 16);

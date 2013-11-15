@@ -213,7 +213,7 @@ namespace EPDMAddin_EpicorIntegration
                 }
             }
 
-            if (j > 0)
+            if (j > 1)
                 return false;
             else
                 return true;

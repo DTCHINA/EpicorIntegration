@@ -106,7 +106,7 @@
             this.ProdStandard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stdformat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrimaryResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemTemplateTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.ItemTemplateTableAdapter();
+            //this.itemTemplateTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.ItemTemplateTableAdapter();
             this.tabControl.SuspendLayout();
             this.ItemTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemSplit)).BeginInit();
@@ -960,7 +960,7 @@
             // 
             // itemTemplateTableAdapter
             // 
-            this.itemTemplateTableAdapter.ClearBeforeFill = true;
+            //this.itemTemplateTableAdapter.ClearBeforeFill = true;
             // 
             // Template_Master
             // 
@@ -1060,7 +1060,6 @@
         private System.Windows.Forms.Button close_item_btn;
         private ENGDataDataSet engDataDataSet;
         private System.Windows.Forms.BindingSource BS_engDataDataSet;
-        private ENGDataDataSetTableAdapters.ItemTemplateTableAdapter itemTemplateTableAdapter;
         private System.Windows.Forms.SplitContainer OprPreviewContainer;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox prodstd_cbo;

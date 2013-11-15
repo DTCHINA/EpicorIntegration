@@ -158,7 +158,7 @@ namespace EpicorIntegration
 
             tabControl.SelectedIndexChanged += tabControl_SelectedIndexChanged;
 
-            this.itemTemplateTableAdapter.Fill(this.engDataDataSet.ItemTemplate);
+            //this.itemTemplateTableAdapter.Fill(this.engDataDataSet.ItemTemplate);
 
             ItemTemplateList.ClearSelection();
 

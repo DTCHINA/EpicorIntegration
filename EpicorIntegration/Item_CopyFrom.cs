@@ -119,7 +119,7 @@ namespace EpicorIntegration
 
         private void Item_CopyFrom_Load(object sender, EventArgs e)
         {
-            this.itemTemplateTableAdapter.Fill(this.eNGDataDataSet.ItemTemplate);
+            //this.itemTemplateTableAdapter.Fill(this.eNGDataDataSet.ItemTemplate);
 
             eNGDataDataSet.Tables[0].Rows.Add("Other");
 
@@ -137,7 +137,7 @@ namespace EpicorIntegration
 
             frm.ShowDialog();
 
-            this.itemTemplateTableAdapter.Fill(this.eNGDataDataSet.ItemTemplate);
+            //this.itemTemplateTableAdapter.Fill(this.eNGDataDataSet.ItemTemplate);
 
             eNGDataDataSet.Tables[0].Rows.Add("Other");
 

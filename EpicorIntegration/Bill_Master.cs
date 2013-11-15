@@ -100,7 +100,11 @@ namespace EpicorIntegration
         {
             BillDataGrid.ClearSelection();
 
-            BillDataGrid.CurrentCell = BillDataGrid.Rows[0].Cells[0];
+            try
+            {
+                BillDataGrid.CurrentCell = BillDataGrid.Rows[0].Cells[0];
+            }
+            catch { }
 
             BillDataGrid.SelectionChanged += BillDataGrid_SelectionChanged;
 
@@ -129,6 +133,16 @@ namespace EpicorIntegration
             #endregion
 
             FillRawMenu();
+
+            BillDataGrid.Sorted += BillDataGrid_Sorted;
+
+            if (BillDataGrid.Rows.Count == 0)
+                button1.Enabled = false;
+        }
+
+        void BillDataGrid_Sorted(object sender, EventArgs e)
+        {
+            int i = 0;
         }
 
         /// <summary>
@@ -873,6 +887,7 @@ namespace EpicorIntegration
 
         private void newbtn_Click(object sender, EventArgs e)
         {
+            button1.Enabled = true;
 
             Form_Update_Enabled = false;
 

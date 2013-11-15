@@ -397,5 +397,70 @@ namespace EpicorIntegration
         {
 
         }
+
+        private void copy_btn_Click(object sender, EventArgs e)
+        {
+            TemplateMenu.Items.Clear();
+
+            DataTable DT = Templates.GetOomTemplates();
+
+            foreach (DataRow dr in DT.Rows)
+            {
+                ToolStripMenuItem TS = new ToolStripMenuItem();
+
+                TS.Name = dr["Name"].ToString();
+
+                TS.Text = dr["Name"].ToString();
+
+                TS.Click += TS_Click;
+
+                TemplateMenu.Items.Add(TS);
+            }
+
+            TemplateMenu.Show(copy_btn, new Point(0, copy_btn.Height));
+        }
+
+        void TS_Click(object sender, EventArgs e)
+        {
+            for (int i = EngWBDS.Tables["ECOOpr"].Rows.Count - 1; i > -1; i--)
+            {
+                EngWBDS.Tables["ECOOpr"].Rows[i].Delete();
+            }
+
+            ToolStripMenuItem TS = (ToolStripMenuItem)sender;
+
+            //retrieve and update form per template
+            DataTable DT = Templates.GetFullTemplate(TS.Name, "OOM");
+
+            //Add all required operations
+            foreach (DataRow Dr in DT.Rows)
+            {
+                EngWB.GetNewECOOpr(EngWBDS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "");
+
+                opmast_cbo.Text = Dr["PropertyValue"].ToString();
+
+                decimal dec = decimal.Parse(Dr["PropertyQty"].ToString());
+
+                prodhrs_num.Value = dec;
+
+                EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["OpCode"] = opmast_cbo.SelectedValue.ToString();
+
+                EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["OpDesc"] = opmast_cbo.Text;
+
+                EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["ProdStandard"] = prodhrs_num.Value;
+
+                EngWB.Update(EngWBDS);
+            }
+
+            //save
+
+            EngWB.Update(EngWBDS);
+
+            DT = Templates.GetFullTemplate(TS.Name, "RES");
+
+            //Add all required resources
+
+            //save
+        }
     }
 }

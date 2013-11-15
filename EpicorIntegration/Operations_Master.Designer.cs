@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Operations_Master));
             this.MajorContainer = new System.Windows.Forms.SplitContainer();
@@ -39,7 +40,6 @@
             this.partnumber_txt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.bom_btn = new System.Windows.Forms.Button();
             this.prodstd_cbo = new System.Windows.Forms.ComboBox();
             this.resource_show = new System.Windows.Forms.Button();
             this.refresh_btn = new System.Windows.Forms.Button();
@@ -60,6 +60,7 @@
             this.ProdStandard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stdformat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrimaryResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MajorContainer.Panel1.SuspendLayout();
             this.MajorContainer.Panel2.SuspendLayout();
             this.MajorContainer.SuspendLayout();
@@ -99,13 +100,13 @@
             // 
             // copy_btn
             // 
-            this.copy_btn.Enabled = false;
             this.copy_btn.Location = new System.Drawing.Point(397, 22);
             this.copy_btn.Name = "copy_btn";
             this.copy_btn.Size = new System.Drawing.Size(75, 23);
             this.copy_btn.TabIndex = 14;
             this.copy_btn.Text = "&Copy From...";
             this.copy_btn.UseVisualStyleBackColor = true;
+            this.copy_btn.Click += new System.EventHandler(this.copy_btn_Click);
             // 
             // gid_txt
             // 
@@ -163,7 +164,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.bom_btn);
             this.groupBox2.Controls.Add(this.prodstd_cbo);
             this.groupBox2.Controls.Add(this.resource_show);
             this.groupBox2.Controls.Add(this.refresh_btn);
@@ -176,17 +176,6 @@
             this.groupBox2.Size = new System.Drawing.Size(466, 110);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
-            // 
-            // bom_btn
-            // 
-            this.bom_btn.Enabled = false;
-            this.bom_btn.Location = new System.Drawing.Point(385, 48);
-            this.bom_btn.Name = "bom_btn";
-            this.bom_btn.Size = new System.Drawing.Size(75, 23);
-            this.bom_btn.TabIndex = 10;
-            this.bom_btn.Text = "Add &BOM";
-            this.bom_btn.UseVisualStyleBackColor = true;
-            this.bom_btn.Click += new System.EventHandler(this.bom_btn_Click);
             // 
             // prodstd_cbo
             // 
@@ -210,7 +199,7 @@
             // 
             // refresh_btn
             // 
-            this.refresh_btn.Location = new System.Drawing.Point(385, 79);
+            this.refresh_btn.Location = new System.Drawing.Point(385, 50);
             this.refresh_btn.Name = "refresh_btn";
             this.refresh_btn.Size = new System.Drawing.Size(75, 23);
             this.refresh_btn.TabIndex = 1;
@@ -405,6 +394,11 @@
             this.PrimaryResourceGrpDesc.ReadOnly = true;
             this.PrimaryResourceGrpDesc.Width = 134;
             // 
+            // TemplateMenu
+            // 
+            this.TemplateMenu.Name = "TemplateMenu";
+            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
+            // 
             // Operations_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,7 +456,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stdformat;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrimaryResourceGrpDesc;
         private System.Windows.Forms.Button copy_btn;
-        private System.Windows.Forms.Button bom_btn;
         private System.Windows.Forms.Button saveclose_btn;
+        private System.Windows.Forms.ContextMenuStrip TemplateMenu;
     }
 }
