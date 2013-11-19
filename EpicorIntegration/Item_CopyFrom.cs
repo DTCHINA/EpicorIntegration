@@ -111,7 +111,7 @@ namespace EpicorIntegration
 
                 _Pdata.PartPlant = dr["Plant"].ToString();
 
-                _Pdata.PlantWhse = dr["Whse"].ToString();
+                //_Pdata.PlantWhse = dr["Whse"].ToString();
             }
 
             this.Close();

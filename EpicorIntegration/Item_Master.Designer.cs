@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Item_Master));
             this.label1 = new System.Windows.Forms.Label();
             this.Partnumber_txt = new System.Windows.Forms.TextBox();
@@ -61,6 +62,7 @@
             this.planner_cbo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.copy_btn = new System.Windows.Forms.Button();
+            this.TemplatesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -387,7 +389,6 @@
             // 
             // copy_btn
             // 
-            this.copy_btn.Enabled = false;
             this.copy_btn.Location = new System.Drawing.Point(20, 507);
             this.copy_btn.Name = "copy_btn";
             this.copy_btn.Size = new System.Drawing.Size(75, 23);
@@ -395,6 +396,11 @@
             this.copy_btn.Text = "Copy From...";
             this.copy_btn.UseVisualStyleBackColor = true;
             this.copy_btn.Click += new System.EventHandler(this.copy_btn_Click);
+            // 
+            // TemplatesMenu
+            // 
+            this.TemplatesMenu.Name = "TemplatesMenu";
+            this.TemplatesMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // Item_Master
             // 
@@ -456,6 +462,7 @@
         private System.Windows.Forms.ComboBox planner_cbo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button addwhse_btn;
+        private System.Windows.Forms.ContextMenuStrip TemplatesMenu;
     }
 }
 

@@ -73,6 +73,7 @@
             this.PartTimer = new System.Windows.Forms.Timer(this.components);
             this.EnableNew = new System.Windows.Forms.Timer(this.components);
             this.RawMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -149,7 +150,6 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.saveandclose_btn);
-            this.groupBox2.Controls.Add(this.copy_btn);
             this.groupBox2.Controls.Add(this.newbtn);
             this.groupBox2.Controls.Add(this.removebtn);
             this.groupBox2.Controls.Add(this.cancelbtn);
@@ -173,11 +173,11 @@
             // 
             // copy_btn
             // 
-            this.copy_btn.Location = new System.Drawing.Point(6, 74);
+            this.copy_btn.Location = new System.Drawing.Point(355, 45);
             this.copy_btn.Name = "copy_btn";
             this.copy_btn.Size = new System.Drawing.Size(75, 23);
             this.copy_btn.TabIndex = 14;
-            this.copy_btn.Text = "&Copy From...";
+            this.copy_btn.Text = "&Add From...";
             this.copy_btn.UseVisualStyleBackColor = true;
             this.copy_btn.Click += new System.EventHandler(this.copy_btn_Click);
             // 
@@ -214,7 +214,7 @@
             // 
             // savebtn
             // 
-            this.savebtn.Location = new System.Drawing.Point(6, 103);
+            this.savebtn.Location = new System.Drawing.Point(6, 74);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 3;
@@ -261,6 +261,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.copy_btn);
             this.groupBox1.Controls.Add(this.ViewAsAsm_chk);
             this.groupBox1.Controls.Add(this.uom_cbo);
             this.groupBox1.Controls.Add(this.qty_num);
@@ -518,7 +519,12 @@
             // RawMenu
             // 
             this.RawMenu.Name = "RawMenu";
-            this.RawMenu.Size = new System.Drawing.Size(153, 26);
+            this.RawMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // TemplateMenu
+            // 
+            this.TemplateMenu.Name = "TemplateMenu";
+            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // Bill_Master
             // 
@@ -590,6 +596,7 @@
         private System.Windows.Forms.Timer EnableNew;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ContextMenuStrip RawMenu;
+        private System.Windows.Forms.ContextMenuStrip TemplateMenu;
 
     }
 }

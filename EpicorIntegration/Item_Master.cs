@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace EpicorIntegration
 {
@@ -510,24 +511,100 @@ namespace EpicorIntegration
 
         private void copy_btn_Click(object sender, EventArgs e)
         {
-            Item_CopyFrom frm = new Item_CopyFrom();
+            TemplatesMenu.Items.Clear();
 
-            PartData pdata = new PartData();
+            DataTable DT = Templates.GetItemTemplates();
 
-            frm.ShowDialog();
-
-            if (frm.DialogResult == DialogResult.Ignore)
+            foreach (DataRow Dr in DT.Rows)
             {
-                MessageBox.Show("Item was duplicated successfully.", "Item Duplicated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ToolStripMenuItem TS = new ToolStripMenuItem();
 
-                this.Close();
+                TS.Name = Dr["Name"].ToString();
+
+                TS.Text = Dr["Name"].ToString();
+
+                TS.Click += TS_Click;
+
+                TemplatesMenu.Items.Add(TS);
             }
-            else
+
+            TemplatesMenu.Show(copy_btn, new Point(0, copy_btn.Height));
+        }
+
+        void TS_Click(object sender, EventArgs e)
+        {
+            trackserial.CheckedChanged -= trackserial_CheckedChanged;
+
+            ToolStripMenuItem TS = (ToolStripMenuItem)sender;
+
+            PartData Pdata = Templates.ParseItemTemplate(TS.Name);
+
+            type_cbo.SelectedValue = Pdata.PMT;
+
+            uom_cbo.SelectedValue = Pdata.UOM_Class;
+
+            qtybearing.Checked = Pdata.QtyBearing;
+
+            userevision.Checked = Pdata.UseRevision;
+
+            group_cbo.Text = Pdata.PartGroup;
+
+            class_cbo.Text = Pdata.PartClass;
+
+            plant_cbo.Text = Pdata.PartPlant;
+
+            planner_cbo.Text = Pdata.Planner;
+
+            DataTable DT = (DataTable)whse_cbo.DataSource;
+
+            for (int i = 0; i < Pdata.PlantWhse.Count ; i++)
             {
-                pdata = frm._Pdata;
+                bool toAdd = true;
 
-                //LoadData(pdata);
+                string Wh = Pdata.PlantWhse[i];
+
+                string WhC = Pdata.PlantWhse_Code[i];
+
+                foreach (DataRow Dr in DT.Rows)
+                {
+                    if (Dr["WarehouseDescription"].ToString() == Wh)
+                    {
+                        toAdd = false;
+
+                        break;
+                    }
+                }
+
+                if (toAdd)
+                {
+                    DataRow DR = DT.NewRow();
+
+                    DR["WarehouseCode"] = WhC;
+
+                    DR["WarehouseDescription"] = Wh;
+
+                    DR["Company"] = "NORCO";
+
+                    DR["PartNum"] = Partnumber_txt.Text;
+
+                    DR["Plant"] = Pdata.PartPlant;
+
+                    DT.Rows.Add(DR);
+                }
+
+                whse_cbo.DataSource = DT;
             }
+
+            if (Pdata.TrackSerial)
+            {
+                trackserial.Checked = Pdata.TrackSerial;
+
+                SerialMask_Master SM = new SerialMask_Master(Pdata.TrackSerial_Mask);
+
+                SM.ShowDialog();
+            }
+
+            trackserial.CheckedChanged += trackserial_CheckedChanged;
         }
 
         private void type_cbo_SelectedIndexChanged(object sender, EventArgs e)

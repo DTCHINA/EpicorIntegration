@@ -274,6 +274,8 @@ namespace EpicorIntegration
             EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
             OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+
+            removebtn.Enabled = true;
         }
 
         private void removebtn_Click(object sender, EventArgs e)
@@ -281,6 +283,15 @@ namespace EpicorIntegration
             int RowIndex = OPDataGrid.CurrentCell.RowIndex;
 
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex].Delete();
+
+            EngWB.Update(EngWBDS);
+
+            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+
+            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+
+            if (EngWBDS.Tables["ECOOpr"].Rows.Count == 0)
+                removebtn.Enabled = false;
 
             //EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
@@ -328,9 +339,11 @@ namespace EpicorIntegration
             for (int i = 0; i < OPDataGrid.Rows.Count; i++)
             {
                 if (EngWBDS.Tables["ECOOpr"].Rows[i]["ProdStandard"].ToString() == "0")
-                    retval = false;
+                {
+                    //retval = false;
 
-                message += EngWBDS.Tables["ECOOpr"].Rows[i]["OprSeq"].ToString() + "\n";
+                    message += EngWBDS.Tables["ECOOpr"].Rows[i]["OprSeq"].ToString() + "\n";
+                }
 
             }
 
@@ -422,6 +435,10 @@ namespace EpicorIntegration
 
         void TS_Click(object sender, EventArgs e)
         {
+            opmast_cbo.SelectedIndexChanged -= opmast_cbo_SelectedIndexChanged;
+
+            prodhrs_num.ValueChanged -= prodhrs_num_ValueChanged;
+
             for (int i = EngWBDS.Tables["ECOOpr"].Rows.Count - 1; i > -1; i--)
             {
                 EngWBDS.Tables["ECOOpr"].Rows[i].Delete();
@@ -452,6 +469,12 @@ namespace EpicorIntegration
                 EngWB.Update(EngWBDS);
             }
 
+            EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Now, false, false, false, false);
+
+            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+
+            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+
             //save
 
             EngWB.Update(EngWBDS);
@@ -459,8 +482,43 @@ namespace EpicorIntegration
             DT = Templates.GetFullTemplate(TS.Name, "RES");
 
             //Add all required resources
+            foreach (DataRow Dr in DT.Rows)
+            {
+                //EngWB.GetNewECOOpDtl(EngWBDS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", int.Parse(Dr["PropertyType"].ToString()));
+
+                int row = 0;
+
+                for (int i = 0; i < EngWBDS.Tables["ECOOpDtl"].Rows.Count; i++)
+                {
+                    int PropQty = (int.Parse(Dr["PropertyQty"].ToString()) + 1) * 10;
+
+                    if ((Dr["PropertyType"].ToString() == EngWBDS.Tables["ECOOpDtl"].Rows[i]["OprSeq"].ToString()) && (PropQty.ToString() == EngWBDS.Tables["ECOOpDtl"].Rows[i]["OpDtlSeq"].ToString()))
+                    {
+                        row = i;
+                        break;
+                    }
+                }
+
+                EngWBDS.Tables["ECOOpDtl"].Rows[row]["ResourceID"] = Dr["PropertyUOM"].ToString();
+
+                EngWBDS.Tables["ECOOpDtl"].Rows[row]["ResourceGrpID"] = Dr["PropertyValue"].ToString();
+
+                try
+                {
+                    EngWB.Update(EngWBDS);
+                }
+                catch { }
+            }
 
             //save
+            EngWB.Update(EngWBDS);
+
+            if (OPDataGrid.Rows.Count > 0)
+                removebtn.Enabled = true;
+
+            opmast_cbo.SelectedIndexChanged += opmast_cbo_SelectedIndexChanged;
+
+            prodhrs_num.ValueChanged += prodhrs_num_ValueChanged;
         }
     }
 }

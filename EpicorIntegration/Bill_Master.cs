@@ -913,6 +913,7 @@ namespace EpicorIntegration
 
                 ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
 
+                //Add new line item
                 EngWB.GetNewECOMtl(EngWBDS, gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "");
 
                 int rowindex = BillDataGrid.Rows.Count - 1;
@@ -999,7 +1000,60 @@ namespace EpicorIntegration
 
         private void copy_btn_Click(object sender, EventArgs e)
         {
+            TemplateMenu.Items.Clear();
 
+            DataTable DT = Templates.GetBomTemplates();
+
+            foreach (DataRow Dr in DT.Rows)
+            {
+                ToolStripMenuItem TS = new ToolStripMenuItem();
+
+                TS.Name = Dr["Name"].ToString();
+
+                TS.Text = Dr["Name"].ToString();
+
+                TS.Click += TS_Click;
+
+                TemplateMenu.Items.Add(TS);
+            }
+
+            TemplateMenu.Show(copy_btn, new Point(0, copy_btn.Height));
+        }
+
+        void TS_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem TS = (ToolStripMenuItem)sender;
+
+            //retrieve template data
+            DataTable DT = new DataTable();
+
+            DT = Templates.GetFullTemplate(TS.Name, "BOM");
+
+            try
+            {
+                //line for each row
+                foreach (DataRow Dr in DT.Rows)
+                {
+                    EngWB.GetNewECOMtl(EngWBDS, gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "");
+
+                    int row = EngWBDS.Tables["ECOMtl"].Rows.Count - 1;
+
+                    EngWBDS.Tables["ECOMtl"].Rows[row]["MtlPartNum"] = Dr["PropertyValue"].ToString();
+
+                    EngWBDS.Tables["ECOMtl"].Rows[row]["RelatedOperation"] = Dr["PropertyType"].ToString();
+
+                    EngWBDS.Tables["ECOMtl"].Rows[row]["MtlPartNumPartDescription"] = DataList.GetCurrentDesc(Dr["PropertyValue"].ToString());
+
+                    EngWBDS.Tables["ECOMtl"].Rows[row]["UOMCode"] = Dr["PropertyUOM"].ToString();
+
+                    EngWBDS.Tables["ECOMtl"].Rows[row]["QtyPer"] = Dr["PropertyQty"].ToString();
+
+                    EngWBDS.Tables["ECOMtl"].Rows[row]["ViewAsAsm"] = Dr["PropertyOptions"].ToString();
+
+                    EngWB.Update(EngWBDS);
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void findpart_btn_Click(object sender, EventArgs e)

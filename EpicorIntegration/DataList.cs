@@ -2,8 +2,8 @@
 using Epicor.Mfg.Core;
 using Epicor.Mfg.Lib;
 using System;
-using System.Data;
 using System.Collections.Generic;
+using System.Data;
 
 namespace EpicorIntegration
 {
@@ -795,133 +795,6 @@ namespace EpicorIntegration
         #endregion
     }
 
-    public class ECOGroup
-    {
-        public string Company;
-        public string GroupID;
-        public string Description;
-        public bool GroupClosed;
-        public string Character01;
-        public string Character02;
-        public string Character03;
-        public string Character04;
-        public string Character05;
-        public string Character06;
-        public string Character07;
-        public string Character08;
-        public string Character09;
-        public string Character10;
-        public int Number01;
-        public int Number02;
-        public int Number03;
-        public int Number04;
-        public int Number05;
-        public int Number06;
-        public int Number07;
-        public int Number08;
-        public int Number09;
-        public int Number10;
-        public bool CheckBox01;
-        public bool CheckBox02;
-        public bool CheckBox03;
-        public bool CheckBox04;
-        public bool Checkbox05;
-        public string CommentText;
-        public DateTime DueDate;
-        public DateTime CreatedDate;
-        public string CreatedBy;
-        public int CreatedTime;
-        public string ClosedBy;
-        public int ClosedTime;
-        public string ECO;
-        public string TaskSetID;
-        public string CurrentWFStageID;
-        public string ActiveTaskID;
-        public string LastTaskID;
-        public bool CheckInAllowed;
-        public string PrimeSalesRepCode;
-        public string WFGroupID;
-        public bool CheckOutAllowed;
-        public bool WFComplete;
-        public bool SingleUser;
-        public bool GrpLocked;
-        public string GrpLockedBy;
-        public int Number11;
-        public int Number12;
-        public int Number13;
-        public int Number14;
-        public int Number15;
-        public int Number16;
-        public int Number17;
-        public int Number18;
-        public int Number19;
-        public int Number20;
-        public bool CheckBox06;
-        public bool CheckBox07;
-        public bool CheckBox08;
-        public bool CheckBox09;
-        public bool CheckBox10;
-        public bool CheckBox11;
-        public bool CheckBox12;
-        public bool CheckBox13;
-        public bool CheckBox14;
-        public bool CheckBox15;
-        public bool CheckBox16;
-        public bool CheckBox17;
-        public bool CheckBox18;
-        public bool CheckBox19;
-        public bool CheckBox20;
-        public string ShortChar01;
-        public string ShortChar02;
-        public string ShortChar03;
-        public string ShortChar04;
-        public string ShortChar05;
-        public string ShortChar06;
-        public string ShortChar07;
-        public string ShortChar08;
-        public string ShortChar09;
-        public string ShortChar10;
-        public Guid SysRowID;
-        public string SysRevID;
-        public byte BitFlag;
-        public bool MassAssignDesc;
-        public bool MassAssignECO;
-        public bool MassAssignEffectiveDate;
-        public bool CanApproveAll;
-        public bool MultiBOMAllowed;
-        public bool CanCheckInAll;
-        public bool WFGroupIDDesc;
-        public bool UseMethodForPartsInTree;
-        public string CurrentWFStageDesc;
-        public bool EnableCheckInAll;
-        public string TaskSetIDTastSetDescription;
-        public string TaskSetIDWorkflowType;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    class BOMData
-    {
-
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    class BOOData
-    {
-
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    class Operation
-    {
-
-    }
-
     /// <summary>
     /// 
     /// </summary>
@@ -1058,13 +931,31 @@ namespace EpicorIntegration
 
         public string PartPlant;
 
-        public string PlantWhse;
+        private List<string> _PlantWhse = new List<string>();
+
+        private List<string> _PlantWhse_Code = new List<string>();
+
+        public List<string> PlantWhse
+        {
+            get { return _PlantWhse; }
+            set { _PlantWhse = value; }
+        }
+
+        public List<string> PlantWhse_Code
+        {
+            get { return _PlantWhse_Code; }
+            set { _PlantWhse_Code = value; }
+        }
 
         public bool QtyBearing;
 
         public bool UseRevision;
 
         public bool TrackSerial;
+
+        public string TrackSerial_Mask;
+
+        public string Planner;
     }
 
     public class RawMaterial : IComparable<RawMaterial>
@@ -1144,7 +1035,57 @@ namespace EpicorIntegration
 
             return (DataTable)RetVal;
         }
+
+        public static PartData ParseItemTemplate(string TemplateName)
+        {
+            PartData Pdata = new PartData();
+
+            DataTable DT = new DataTable();
+
+            DT = GetFullTemplate(TemplateName, "ITEM");
+
+            foreach (DataRow Dr in DT.Rows)
+            {
+                if (Dr["PropertyType"].ToString() == "TYPE")
+                    Pdata.PMT = Dr["PropertyValue"].ToString();
+
+                if (Dr["PropertyType"].ToString() == "UOM")
+                    Pdata.UOM_Class = Dr["PropertyValue"].ToString();
+
+                if (Dr["PropertyType"].ToString() == "GROUP")
+                    Pdata.PartGroup = Dr["PropertyValue"].ToString();
+
+                if (Dr["PropertyType"].ToString() == "QTYBEARING")
+                    Pdata.QtyBearing = bool.Parse(Dr["PropertyValue"].ToString());
+
+                if (Dr["PropertyType"].ToString() == "CLASS")
+                    Pdata.PartClass = Dr["PropertyValue"].ToString();
+
+                if (Dr["PropertyType"].ToString() == "USEREV")
+                    Pdata.UseRevision = bool.Parse(Dr["PropertyValue"].ToString());
+
+                if (Dr["PropertyType"].ToString() == "TRACKSERIAL")
+                {
+                    Pdata.TrackSerial = bool.Parse(Dr["PropertyValue"].ToString());
+
+                    Pdata.TrackSerial_Mask = Dr["PropertyOptions"].ToString();
+                }
+
+                if (Dr["PropertyType"].ToString() == "PLANT")
+                    Pdata.PartPlant = Dr["PropertyValue"].ToString();
+
+                if (Dr["PropertyType"].ToString() == "WAREHOUSE")
+                {
+                    Pdata.PlantWhse.Add(Dr["PropertyValue"].ToString());
+
+                    Pdata.PlantWhse_Code.Add(Dr["PropertyQty"].ToString());
+                }
+
+                if (Dr["PropertyType"].ToString() == "PLANNER")
+                    Pdata.Planner = Dr["PropertyValue"].ToString();
+            }
+
+            return Pdata;
+        }
     }
-
-
 }

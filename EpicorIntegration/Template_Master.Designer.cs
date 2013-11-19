@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Template_Master));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.ItemTab = new System.Windows.Forms.TabPage();
@@ -42,8 +44,6 @@
             this.edit_item_btn = new System.Windows.Forms.Button();
             this.add_item_btn = new System.Windows.Forms.Button();
             this.ItemTemplateList = new System.Windows.Forms.DataGridView();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BS_engDataDataSet = new System.Windows.Forms.BindingSource(this.components);
             this.engDataDataSet = new EpicorIntegration.ENGDataDataSet();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
@@ -76,8 +76,7 @@
             this.OprTab = new System.Windows.Forms.TabPage();
             this.OprSplit = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.OpsDataGrid = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OpsTemplateList = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
@@ -90,7 +89,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.addop_btn = new System.Windows.Forms.Button();
             this.remop_btn = new System.Windows.Forms.Button();
-            this.saveop_btn = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -106,19 +104,60 @@
             this.ProdStandard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stdformat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrimaryResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.itemTemplateTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.ItemTemplateTableAdapter();
+            this.BillTab = new System.Windows.Forms.TabPage();
+            this.BillContainer = new System.Windows.Forms.SplitContainer();
+            this.BillTemplateList = new System.Windows.Forms.DataGridView();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.close_bill_btn = new System.Windows.Forms.Button();
+            this.del_bill_btn = new System.Windows.Forms.Button();
+            this.edit_bill_btn = new System.Windows.Forms.Button();
+            this.add_bill_btn = new System.Windows.Forms.Button();
+            this.BillPreviewContainer = new System.Windows.Forms.SplitContainer();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.RawMenu = new System.Windows.Forms.Button();
+            this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.qty_num = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
+            this.desc_txt = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.partnum_txt = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.findpart_btn = new System.Windows.Forms.Button();
+            this.mtlseq_txt = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.BillDataGrid = new System.Windows.Forms.DataGridView();
+            this.MtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MtlPartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MtlPartNumPartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RelatedOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UOMCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RawMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.save_bill_btn = new System.Windows.Forms.Button();
+            this.saveop_btn = new System.Windows.Forms.Button();
+            this.save_item_btn = new System.Windows.Forms.Button();
+            this.PartTimer = new System.Windows.Forms.Timer(this.components);
+            this.planner_cbo = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.operation_txt = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.ItemTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemSplit)).BeginInit();
             this.ItemSplit.Panel1.SuspendLayout();
             this.ItemSplit.Panel2.SuspendLayout();
             this.ItemSplit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemLeftGrid)).BeginInit();
             this.ItemLeftGrid.Panel1.SuspendLayout();
             this.ItemLeftGrid.Panel2.SuspendLayout();
             this.ItemLeftGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemTemplateList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BS_engDataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).BeginInit();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -126,15 +165,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NetVolume)).BeginInit();
             this.OprTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OprSplit)).BeginInit();
             this.OprSplit.Panel1.SuspendLayout();
             this.OprSplit.Panel2.SuspendLayout();
             this.OprSplit.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OpsDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OpsTemplateList)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OprPreviewContainer)).BeginInit();
             this.OprPreviewContainer.Panel1.SuspendLayout();
             this.OprPreviewContainer.Panel2.SuspendLayout();
             this.OprPreviewContainer.SuspendLayout();
@@ -142,18 +179,33 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).BeginInit();
+            this.BillTab.SuspendLayout();
+            this.BillContainer.Panel1.SuspendLayout();
+            this.BillContainer.Panel2.SuspendLayout();
+            this.BillContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BillTemplateList)).BeginInit();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.BillPreviewContainer.Panel1.SuspendLayout();
+            this.BillPreviewContainer.Panel2.SuspendLayout();
+            this.BillPreviewContainer.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.qty_num)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BillDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
             // 
             this.tabControl.Controls.Add(this.ItemTab);
             this.tabControl.Controls.Add(this.OprTab);
+            this.tabControl.Controls.Add(this.BillTab);
             this.tabControl.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(715, 504);
+            this.tabControl.Size = new System.Drawing.Size(715, 542);
             this.tabControl.TabIndex = 0;
             // 
             // ItemTab
@@ -163,7 +215,7 @@
             this.ItemTab.Location = new System.Drawing.Point(4, 22);
             this.ItemTab.Name = "ItemTab";
             this.ItemTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ItemTab.Size = new System.Drawing.Size(487, 478);
+            this.ItemTab.Size = new System.Drawing.Size(707, 516);
             this.ItemTab.TabIndex = 0;
             this.ItemTab.Text = "Item Templates";
             // 
@@ -182,7 +234,7 @@
             // 
             this.ItemSplit.Panel2.Controls.Add(this.groupBox2);
             this.ItemSplit.Panel2.Controls.Add(this.groupBox1);
-            this.ItemSplit.Size = new System.Drawing.Size(481, 472);
+            this.ItemSplit.Size = new System.Drawing.Size(701, 510);
             this.ItemSplit.SplitterDistance = 115;
             this.ItemSplit.TabIndex = 0;
             // 
@@ -195,6 +247,7 @@
             // 
             // ItemLeftGrid.Panel1
             // 
+            this.ItemLeftGrid.Panel1.Controls.Add(this.save_item_btn);
             this.ItemLeftGrid.Panel1.Controls.Add(this.close_item_btn);
             this.ItemLeftGrid.Panel1.Controls.Add(this.del_item_btn);
             this.ItemLeftGrid.Panel1.Controls.Add(this.edit_item_btn);
@@ -204,14 +257,14 @@
             // 
             this.ItemLeftGrid.Panel2.Controls.Add(this.ItemTemplateList);
             this.ItemLeftGrid.Panel2.Controls.Add(this.panel4);
-            this.ItemLeftGrid.Size = new System.Drawing.Size(115, 472);
-            this.ItemLeftGrid.SplitterDistance = 148;
+            this.ItemLeftGrid.Size = new System.Drawing.Size(115, 510);
+            this.ItemLeftGrid.SplitterDistance = 199;
             this.ItemLeftGrid.TabIndex = 0;
             // 
             // close_item_btn
             // 
             this.close_item_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.close_item_btn.Location = new System.Drawing.Point(20, 106);
+            this.close_item_btn.Location = new System.Drawing.Point(20, 135);
             this.close_item_btn.Name = "close_item_btn";
             this.close_item_btn.Size = new System.Drawing.Size(75, 23);
             this.close_item_btn.TabIndex = 4;
@@ -252,12 +305,8 @@
             this.ItemTemplateList.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ItemTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ItemTemplateList.AutoGenerateColumns = false;
             this.ItemTemplateList.BackgroundColor = System.Drawing.Color.White;
             this.ItemTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ItemTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.titleDataGridViewTextBoxColumn});
-            this.ItemTemplateList.DataSource = this.BS_engDataDataSet;
             this.ItemTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemTemplateList.Location = new System.Drawing.Point(0, 20);
             this.ItemTemplateList.Name = "ItemTemplateList";
@@ -269,21 +318,8 @@
             this.ItemTemplateList.ShowCellToolTips = false;
             this.ItemTemplateList.ShowEditingIcon = false;
             this.ItemTemplateList.ShowRowErrors = false;
-            this.ItemTemplateList.Size = new System.Drawing.Size(115, 300);
+            this.ItemTemplateList.Size = new System.Drawing.Size(115, 287);
             this.ItemTemplateList.TabIndex = 4;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // BS_engDataDataSet
-            // 
-            this.BS_engDataDataSet.DataMember = "ItemTemplate";
-            this.BS_engDataDataSet.DataSource = this.engDataDataSet;
             // 
             // engDataDataSet
             // 
@@ -310,13 +346,15 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.planner_cbo);
             this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.whse_cbo);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.plant_cbo);
             this.groupBox2.Location = new System.Drawing.Point(3, 353);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(353, 108);
+            this.groupBox2.Size = new System.Drawing.Size(353, 140);
             this.groupBox2.TabIndex = 36;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Plants";
@@ -428,6 +466,7 @@
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Description:";
+            this.label3.Visible = false;
             // 
             // Description_txt
             // 
@@ -435,6 +474,7 @@
             this.Description_txt.Name = "Description_txt";
             this.Description_txt.Size = new System.Drawing.Size(333, 20);
             this.Description_txt.TabIndex = 5;
+            this.Description_txt.Visible = false;
             // 
             // label5
             // 
@@ -453,6 +493,7 @@
             this.type_cbo.Name = "type_cbo";
             this.type_cbo.Size = new System.Drawing.Size(157, 21);
             this.type_cbo.TabIndex = 10;
+            this.type_cbo.SelectedIndexChanged += new System.EventHandler(this.type_cbo_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -597,7 +638,7 @@
             this.OprTab.Location = new System.Drawing.Point(4, 22);
             this.OprTab.Name = "OprTab";
             this.OprTab.Padding = new System.Windows.Forms.Padding(3);
-            this.OprTab.Size = new System.Drawing.Size(707, 478);
+            this.OprTab.Size = new System.Drawing.Size(707, 516);
             this.OprTab.TabIndex = 1;
             this.OprTab.Text = "Operation Templates";
             // 
@@ -617,53 +658,41 @@
             // OprSplit.Panel2
             // 
             this.OprSplit.Panel2.Controls.Add(this.OprPreviewContainer);
-            this.OprSplit.Size = new System.Drawing.Size(701, 472);
+            this.OprSplit.Size = new System.Drawing.Size(701, 510);
             this.OprSplit.SplitterDistance = 115;
             this.OprSplit.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.OpsDataGrid);
+            this.panel2.Controls.Add(this.OpsTemplateList);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 152);
+            this.panel2.Location = new System.Drawing.Point(0, 189);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(115, 320);
+            this.panel2.Size = new System.Drawing.Size(115, 321);
             this.panel2.TabIndex = 2;
             // 
-            // OpsDataGrid
+            // OpsTemplateList
             // 
-            this.OpsDataGrid.AllowUserToAddRows = false;
-            this.OpsDataGrid.AllowUserToDeleteRows = false;
+            this.OpsTemplateList.AllowUserToAddRows = false;
+            this.OpsTemplateList.AllowUserToDeleteRows = false;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.OpsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.OpsDataGrid.AutoGenerateColumns = false;
-            this.OpsDataGrid.BackgroundColor = System.Drawing.Color.White;
-            this.OpsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.OpsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1});
-            this.OpsDataGrid.DataSource = this.BS_engDataDataSet;
-            this.OpsDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OpsDataGrid.Location = new System.Drawing.Point(0, 20);
-            this.OpsDataGrid.Name = "OpsDataGrid";
-            this.OpsDataGrid.ReadOnly = true;
-            this.OpsDataGrid.RowHeadersVisible = false;
-            this.OpsDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.OpsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.OpsDataGrid.ShowCellErrors = false;
-            this.OpsDataGrid.ShowCellToolTips = false;
-            this.OpsDataGrid.ShowEditingIcon = false;
-            this.OpsDataGrid.ShowRowErrors = false;
-            this.OpsDataGrid.Size = new System.Drawing.Size(115, 300);
-            this.OpsDataGrid.TabIndex = 3;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Title";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Title";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.OpsTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.OpsTemplateList.BackgroundColor = System.Drawing.Color.White;
+            this.OpsTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OpsTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OpsTemplateList.Location = new System.Drawing.Point(0, 20);
+            this.OpsTemplateList.Name = "OpsTemplateList";
+            this.OpsTemplateList.ReadOnly = true;
+            this.OpsTemplateList.RowHeadersVisible = false;
+            this.OpsTemplateList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.OpsTemplateList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.OpsTemplateList.ShowCellErrors = false;
+            this.OpsTemplateList.ShowCellToolTips = false;
+            this.OpsTemplateList.ShowEditingIcon = false;
+            this.OpsTemplateList.ShowRowErrors = false;
+            this.OpsTemplateList.Size = new System.Drawing.Size(115, 301);
+            this.OpsTemplateList.TabIndex = 3;
             // 
             // panel3
             // 
@@ -687,7 +716,7 @@
             // 
             this.splitter1.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(0, 148);
+            this.splitter1.Location = new System.Drawing.Point(0, 185);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(115, 4);
             this.splitter1.TabIndex = 1;
@@ -695,6 +724,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.saveop_btn);
             this.panel1.Controls.Add(this.close_op_btn);
             this.panel1.Controls.Add(this.del_op_btn);
             this.panel1.Controls.Add(this.edit_op_btn);
@@ -702,12 +732,12 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(115, 148);
+            this.panel1.Size = new System.Drawing.Size(115, 185);
             this.panel1.TabIndex = 0;
             // 
             // close_op_btn
             // 
-            this.close_op_btn.Location = new System.Drawing.Point(20, 106);
+            this.close_op_btn.Location = new System.Drawing.Point(20, 135);
             this.close_op_btn.Name = "close_op_btn";
             this.close_op_btn.Size = new System.Drawing.Size(75, 23);
             this.close_op_btn.TabIndex = 8;
@@ -758,15 +788,14 @@
             // OprPreviewContainer.Panel2
             // 
             this.OprPreviewContainer.Panel2.Controls.Add(this.OPDataGrid);
-            this.OprPreviewContainer.Size = new System.Drawing.Size(582, 472);
-            this.OprPreviewContainer.SplitterDistance = 175;
+            this.OprPreviewContainer.Size = new System.Drawing.Size(582, 510);
+            this.OprPreviewContainer.SplitterDistance = 189;
             this.OprPreviewContainer.TabIndex = 10;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.addop_btn);
             this.groupBox4.Controls.Add(this.remop_btn);
-            this.groupBox4.Controls.Add(this.saveop_btn);
             this.groupBox4.Location = new System.Drawing.Point(308, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(89, 159);
@@ -775,7 +804,7 @@
             // 
             // addop_btn
             // 
-            this.addop_btn.Location = new System.Drawing.Point(6, 21);
+            this.addop_btn.Location = new System.Drawing.Point(8, 16);
             this.addop_btn.Name = "addop_btn";
             this.addop_btn.Size = new System.Drawing.Size(75, 23);
             this.addop_btn.TabIndex = 12;
@@ -784,21 +813,12 @@
             // 
             // remop_btn
             // 
-            this.remop_btn.Location = new System.Drawing.Point(6, 50);
+            this.remop_btn.Location = new System.Drawing.Point(8, 45);
             this.remop_btn.Name = "remop_btn";
             this.remop_btn.Size = new System.Drawing.Size(75, 23);
             this.remop_btn.TabIndex = 13;
             this.remop_btn.Text = "Rem. Opr";
             this.remop_btn.UseVisualStyleBackColor = true;
-            // 
-            // saveop_btn
-            // 
-            this.saveop_btn.Location = new System.Drawing.Point(6, 127);
-            this.saveop_btn.Name = "saveop_btn";
-            this.saveop_btn.Size = new System.Drawing.Size(75, 23);
-            this.saveop_btn.TabIndex = 14;
-            this.saveop_btn.Text = "Save";
-            this.saveop_btn.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
@@ -901,7 +921,7 @@
             this.OPDataGrid.ShowCellToolTips = false;
             this.OPDataGrid.ShowEditingIcon = false;
             this.OPDataGrid.ShowRowErrors = false;
-            this.OPDataGrid.Size = new System.Drawing.Size(582, 293);
+            this.OPDataGrid.Size = new System.Drawing.Size(582, 317);
             this.OPDataGrid.TabIndex = 8;
             // 
             // OprSeq
@@ -958,35 +978,505 @@
             this.PrimaryResourceGrpDesc.ReadOnly = true;
             this.PrimaryResourceGrpDesc.Width = 134;
             // 
-            // itemTemplateTableAdapter
+            // BillTab
             // 
-            //this.itemTemplateTableAdapter.ClearBeforeFill = true;
+            this.BillTab.Controls.Add(this.BillContainer);
+            this.BillTab.Location = new System.Drawing.Point(4, 22);
+            this.BillTab.Name = "BillTab";
+            this.BillTab.Padding = new System.Windows.Forms.Padding(3);
+            this.BillTab.Size = new System.Drawing.Size(707, 516);
+            this.BillTab.TabIndex = 2;
+            this.BillTab.Text = "Bill Template";
+            this.BillTab.UseVisualStyleBackColor = true;
+            // 
+            // BillContainer
+            // 
+            this.BillContainer.BackColor = System.Drawing.SystemColors.Control;
+            this.BillContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BillContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.BillContainer.Location = new System.Drawing.Point(3, 3);
+            this.BillContainer.Name = "BillContainer";
+            // 
+            // BillContainer.Panel1
+            // 
+            this.BillContainer.Panel1.Controls.Add(this.BillTemplateList);
+            this.BillContainer.Panel1.Controls.Add(this.panel5);
+            this.BillContainer.Panel1.Controls.Add(this.splitter2);
+            this.BillContainer.Panel1.Controls.Add(this.panel6);
+            // 
+            // BillContainer.Panel2
+            // 
+            this.BillContainer.Panel2.Controls.Add(this.BillPreviewContainer);
+            this.BillContainer.Size = new System.Drawing.Size(701, 510);
+            this.BillContainer.SplitterDistance = 115;
+            this.BillContainer.TabIndex = 0;
+            // 
+            // BillTemplateList
+            // 
+            this.BillTemplateList.AllowUserToAddRows = false;
+            this.BillTemplateList.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BillTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.BillTemplateList.BackgroundColor = System.Drawing.Color.White;
+            this.BillTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BillTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BillTemplateList.Location = new System.Drawing.Point(0, 209);
+            this.BillTemplateList.Name = "BillTemplateList";
+            this.BillTemplateList.ReadOnly = true;
+            this.BillTemplateList.RowHeadersVisible = false;
+            this.BillTemplateList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.BillTemplateList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.BillTemplateList.ShowCellErrors = false;
+            this.BillTemplateList.ShowCellToolTips = false;
+            this.BillTemplateList.ShowEditingIcon = false;
+            this.BillTemplateList.ShowRowErrors = false;
+            this.BillTemplateList.Size = new System.Drawing.Size(115, 301);
+            this.BillTemplateList.TabIndex = 7;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label17);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 189);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(115, 20);
+            this.panel5.TabIndex = 6;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(5, 3);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 13);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Template List:";
+            // 
+            // splitter2
+            // 
+            this.splitter2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.splitter2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitter2.Location = new System.Drawing.Point(0, 185);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(115, 4);
+            this.splitter2.TabIndex = 5;
+            this.splitter2.TabStop = false;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.save_bill_btn);
+            this.panel6.Controls.Add(this.close_bill_btn);
+            this.panel6.Controls.Add(this.del_bill_btn);
+            this.panel6.Controls.Add(this.edit_bill_btn);
+            this.panel6.Controls.Add(this.add_bill_btn);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(115, 185);
+            this.panel6.TabIndex = 4;
+            // 
+            // close_bill_btn
+            // 
+            this.close_bill_btn.Location = new System.Drawing.Point(20, 135);
+            this.close_bill_btn.Name = "close_bill_btn";
+            this.close_bill_btn.Size = new System.Drawing.Size(75, 23);
+            this.close_bill_btn.TabIndex = 8;
+            this.close_bill_btn.Text = "&Close";
+            this.close_bill_btn.UseVisualStyleBackColor = true;
+            this.close_bill_btn.Click += new System.EventHandler(this.close_bill_btn_Click);
+            // 
+            // del_bill_btn
+            // 
+            this.del_bill_btn.Location = new System.Drawing.Point(20, 77);
+            this.del_bill_btn.Name = "del_bill_btn";
+            this.del_bill_btn.Size = new System.Drawing.Size(75, 23);
+            this.del_bill_btn.TabIndex = 7;
+            this.del_bill_btn.Text = "&Delete";
+            this.del_bill_btn.UseVisualStyleBackColor = true;
+            // 
+            // edit_bill_btn
+            // 
+            this.edit_bill_btn.Location = new System.Drawing.Point(20, 48);
+            this.edit_bill_btn.Name = "edit_bill_btn";
+            this.edit_bill_btn.Size = new System.Drawing.Size(75, 23);
+            this.edit_bill_btn.TabIndex = 6;
+            this.edit_bill_btn.Text = "&Edit";
+            this.edit_bill_btn.UseVisualStyleBackColor = true;
+            // 
+            // add_bill_btn
+            // 
+            this.add_bill_btn.Location = new System.Drawing.Point(20, 19);
+            this.add_bill_btn.Name = "add_bill_btn";
+            this.add_bill_btn.Size = new System.Drawing.Size(75, 23);
+            this.add_bill_btn.TabIndex = 5;
+            this.add_bill_btn.Text = "&Add";
+            this.add_bill_btn.UseVisualStyleBackColor = true;
+            // 
+            // BillPreviewContainer
+            // 
+            this.BillPreviewContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BillPreviewContainer.Location = new System.Drawing.Point(0, 0);
+            this.BillPreviewContainer.Name = "BillPreviewContainer";
+            this.BillPreviewContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // BillPreviewContainer.Panel1
+            // 
+            this.BillPreviewContainer.Panel1.Controls.Add(this.groupBox6);
+            this.BillPreviewContainer.Panel1.Controls.Add(this.groupBox5);
+            // 
+            // BillPreviewContainer.Panel2
+            // 
+            this.BillPreviewContainer.Panel2.Controls.Add(this.BillDataGrid);
+            this.BillPreviewContainer.Size = new System.Drawing.Size(582, 510);
+            this.BillPreviewContainer.SplitterDistance = 189;
+            this.BillPreviewContainer.TabIndex = 0;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.button2);
+            this.groupBox6.Controls.Add(this.button3);
+            this.groupBox6.Location = new System.Drawing.Point(445, 3);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(89, 165);
+            this.groupBox6.TabIndex = 17;
+            this.groupBox6.TabStop = false;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(6, 19);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Add Bill Item";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 48);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "Del Bill Item";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.operation_txt);
+            this.groupBox5.Controls.Add(this.RawMenu);
+            this.groupBox5.Controls.Add(this.ViewAsAsm_chk);
+            this.groupBox5.Controls.Add(this.comboBox1);
+            this.groupBox5.Controls.Add(this.qty_num);
+            this.groupBox5.Controls.Add(this.label18);
+            this.groupBox5.Controls.Add(this.desc_txt);
+            this.groupBox5.Controls.Add(this.label19);
+            this.groupBox5.Controls.Add(this.partnum_txt);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.Controls.Add(this.findpart_btn);
+            this.groupBox5.Controls.Add(this.mtlseq_txt);
+            this.groupBox5.Controls.Add(this.label21);
+            this.groupBox5.Location = new System.Drawing.Point(3, 3);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(436, 165);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            // 
+            // RawMenu
+            // 
+            this.RawMenu.Location = new System.Drawing.Point(355, 19);
+            this.RawMenu.Name = "RawMenu";
+            this.RawMenu.Size = new System.Drawing.Size(75, 23);
+            this.RawMenu.TabIndex = 11;
+            this.RawMenu.Text = "Add &Raw";
+            this.RawMenu.UseVisualStyleBackColor = true;
+            this.RawMenu.Click += new System.EventHandler(this.RawMenu_Click);
+            // 
+            // ViewAsAsm_chk
+            // 
+            this.ViewAsAsm_chk.AutoSize = true;
+            this.ViewAsAsm_chk.Location = new System.Drawing.Point(175, 21);
+            this.ViewAsAsm_chk.Name = "ViewAsAsm_chk";
+            this.ViewAsAsm_chk.Size = new System.Drawing.Size(111, 17);
+            this.ViewAsAsm_chk.TabIndex = 10;
+            this.ViewAsAsm_chk.Text = "View As Assembly";
+            this.ViewAsAsm_chk.UseVisualStyleBackColor = true;
+            this.ViewAsAsm_chk.CheckedChanged += new System.EventHandler(this.ViewAsAsm_chk_CheckedChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(143, 123);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(74, 21);
+            this.comboBox1.TabIndex = 2;
+            // 
+            // qty_num
+            // 
+            this.qty_num.DecimalPlaces = 2;
+            this.qty_num.Location = new System.Drawing.Point(75, 124);
+            this.qty_num.Name = "qty_num";
+            this.qty_num.Size = new System.Drawing.Size(62, 20);
+            this.qty_num.TabIndex = 9;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(43, 126);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(26, 13);
+            this.label18.TabIndex = 8;
+            this.label18.Text = "Qty.";
+            // 
+            // desc_txt
+            // 
+            this.desc_txt.BackColor = System.Drawing.Color.White;
+            this.desc_txt.Location = new System.Drawing.Point(75, 71);
+            this.desc_txt.Name = "desc_txt";
+            this.desc_txt.ReadOnly = true;
+            this.desc_txt.Size = new System.Drawing.Size(211, 20);
+            this.desc_txt.TabIndex = 7;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 74);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(63, 13);
+            this.label19.TabIndex = 6;
+            this.label19.Text = "Description:";
+            // 
+            // partnum_txt
+            // 
+            this.partnum_txt.Location = new System.Drawing.Point(75, 45);
+            this.partnum_txt.Name = "partnum_txt";
+            this.partnum_txt.Size = new System.Drawing.Size(211, 20);
+            this.partnum_txt.TabIndex = 5;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(13, 100);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(56, 13);
+            this.label20.TabIndex = 3;
+            this.label20.Text = "Operation:";
+            // 
+            // findpart_btn
+            // 
+            this.findpart_btn.Location = new System.Drawing.Point(7, 43);
+            this.findpart_btn.Name = "findpart_btn";
+            this.findpart_btn.Size = new System.Drawing.Size(62, 23);
+            this.findpart_btn.TabIndex = 2;
+            this.findpart_btn.Text = "Part";
+            this.findpart_btn.UseVisualStyleBackColor = true;
+            this.findpart_btn.Click += new System.EventHandler(this.findpart_btn_Click);
+            // 
+            // mtlseq_txt
+            // 
+            this.mtlseq_txt.Location = new System.Drawing.Point(75, 19);
+            this.mtlseq_txt.Name = "mtlseq_txt";
+            this.mtlseq_txt.ReadOnly = true;
+            this.mtlseq_txt.Size = new System.Drawing.Size(62, 20);
+            this.mtlseq_txt.TabIndex = 1;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(23, 22);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(46, 13);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Mtl Seq:";
+            // 
+            // BillDataGrid
+            // 
+            this.BillDataGrid.AllowUserToAddRows = false;
+            this.BillDataGrid.AllowUserToDeleteRows = false;
+            this.BillDataGrid.AllowUserToResizeRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.BillDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.BillDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BillDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MtlSeq,
+            this.QtyPer,
+            this.MtlPartNum,
+            this.MtlPartNumPartDescription,
+            this.RelatedOperation,
+            this.UOMCode,
+            this.ViewAsAsm,
+            this.dataGridViewTextBoxColumn3});
+            this.BillDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BillDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.BillDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.BillDataGrid.MultiSelect = false;
+            this.BillDataGrid.Name = "BillDataGrid";
+            this.BillDataGrid.ReadOnly = true;
+            this.BillDataGrid.RowHeadersVisible = false;
+            this.BillDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.BillDataGrid.ShowCellErrors = false;
+            this.BillDataGrid.ShowCellToolTips = false;
+            this.BillDataGrid.ShowEditingIcon = false;
+            this.BillDataGrid.ShowRowErrors = false;
+            this.BillDataGrid.Size = new System.Drawing.Size(582, 317);
+            this.BillDataGrid.TabIndex = 2;
+            // 
+            // MtlSeq
+            // 
+            this.MtlSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MtlSeq.DataPropertyName = "MtlSeq";
+            this.MtlSeq.HeaderText = "Seq.";
+            this.MtlSeq.Name = "MtlSeq";
+            this.MtlSeq.ReadOnly = true;
+            this.MtlSeq.Width = 54;
+            // 
+            // QtyPer
+            // 
+            this.QtyPer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.QtyPer.DataPropertyName = "QtyPer";
+            this.QtyPer.HeaderText = "Qty";
+            this.QtyPer.Name = "QtyPer";
+            this.QtyPer.ReadOnly = true;
+            this.QtyPer.Width = 48;
+            // 
+            // MtlPartNum
+            // 
+            this.MtlPartNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MtlPartNum.DataPropertyName = "MtlPartNum";
+            this.MtlPartNum.HeaderText = "Part Number";
+            this.MtlPartNum.Name = "MtlPartNum";
+            this.MtlPartNum.ReadOnly = true;
+            this.MtlPartNum.Width = 84;
+            // 
+            // MtlPartNumPartDescription
+            // 
+            this.MtlPartNumPartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MtlPartNumPartDescription.DataPropertyName = "MtlPartNumPartDescription";
+            this.MtlPartNumPartDescription.HeaderText = "Description";
+            this.MtlPartNumPartDescription.Name = "MtlPartNumPartDescription";
+            this.MtlPartNumPartDescription.ReadOnly = true;
+            // 
+            // RelatedOperation
+            // 
+            this.RelatedOperation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.RelatedOperation.DataPropertyName = "RelatedOperation";
+            this.RelatedOperation.HeaderText = "Opr.";
+            this.RelatedOperation.Name = "RelatedOperation";
+            this.RelatedOperation.ReadOnly = true;
+            this.RelatedOperation.Width = 52;
+            // 
+            // UOMCode
+            // 
+            this.UOMCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UOMCode.DataPropertyName = "UOMCode";
+            this.UOMCode.HeaderText = "UOM Code";
+            this.UOMCode.Name = "UOMCode";
+            this.UOMCode.ReadOnly = true;
+            this.UOMCode.Width = 78;
+            // 
+            // ViewAsAsm
+            // 
+            this.ViewAsAsm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ViewAsAsm.DataPropertyName = "ViewAsAsm";
+            this.ViewAsAsm.HeaderText = "View As Assembly";
+            this.ViewAsAsm.Name = "ViewAsAsm";
+            this.ViewAsAsm.ReadOnly = true;
+            this.ViewAsAsm.Width = 88;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "OpDesc";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Operation";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 78;
+            // 
+            // RawMenuStrip
+            // 
+            this.RawMenuStrip.Name = "contextMenuStrip1";
+            this.RawMenuStrip.Size = new System.Drawing.Size(61, 4);
+            // 
+            // save_bill_btn
+            // 
+            this.save_bill_btn.Location = new System.Drawing.Point(20, 106);
+            this.save_bill_btn.Name = "save_bill_btn";
+            this.save_bill_btn.Size = new System.Drawing.Size(75, 23);
+            this.save_bill_btn.TabIndex = 15;
+            this.save_bill_btn.Text = "Save";
+            this.save_bill_btn.UseVisualStyleBackColor = true;
+            // 
+            // saveop_btn
+            // 
+            this.saveop_btn.Location = new System.Drawing.Point(20, 106);
+            this.saveop_btn.Name = "saveop_btn";
+            this.saveop_btn.Size = new System.Drawing.Size(75, 23);
+            this.saveop_btn.TabIndex = 15;
+            this.saveop_btn.Text = "Save";
+            this.saveop_btn.UseVisualStyleBackColor = true;
+            // 
+            // save_item_btn
+            // 
+            this.save_item_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.save_item_btn.Location = new System.Drawing.Point(20, 106);
+            this.save_item_btn.Name = "save_item_btn";
+            this.save_item_btn.Size = new System.Drawing.Size(75, 23);
+            this.save_item_btn.TabIndex = 5;
+            this.save_item_btn.Text = "&Save";
+            this.save_item_btn.UseVisualStyleBackColor = true;
+            // 
+            // PartTimer
+            // 
+            this.PartTimer.Interval = 500;
+            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
+            // 
+            // planner_cbo
+            // 
+            this.planner_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.planner_cbo.FormattingEnabled = true;
+            this.planner_cbo.Location = new System.Drawing.Point(9, 116);
+            this.planner_cbo.Name = "planner_cbo";
+            this.planner_cbo.Size = new System.Drawing.Size(321, 21);
+            this.planner_cbo.TabIndex = 38;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 96);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(46, 13);
+            this.label22.TabIndex = 37;
+            this.label22.Text = "Planner:";
+            // 
+            // operation_txt
+            // 
+            this.operation_txt.Location = new System.Drawing.Point(75, 97);
+            this.operation_txt.Name = "operation_txt";
+            this.operation_txt.Size = new System.Drawing.Size(62, 20);
+            this.operation_txt.TabIndex = 12;
+            this.operation_txt.Text = "10";
             // 
             // Template_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.close_item_btn;
-            this.ClientSize = new System.Drawing.Size(715, 504);
+            this.ClientSize = new System.Drawing.Size(715, 542);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Template_Master";
-            this.Text = "Template_Master";
+            this.Text = "Template Master";
             this.Load += new System.EventHandler(this.Template_Master_Load);
             this.tabControl.ResumeLayout(false);
             this.ItemTab.ResumeLayout(false);
             this.ItemSplit.Panel1.ResumeLayout(false);
             this.ItemSplit.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ItemSplit)).EndInit();
             this.ItemSplit.ResumeLayout(false);
             this.ItemLeftGrid.Panel1.ResumeLayout(false);
             this.ItemLeftGrid.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ItemLeftGrid)).EndInit();
             this.ItemLeftGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ItemTemplateList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BS_engDataDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -999,23 +1489,37 @@
             this.OprTab.ResumeLayout(false);
             this.OprSplit.Panel1.ResumeLayout(false);
             this.OprSplit.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.OprSplit)).EndInit();
             this.OprSplit.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.OpsDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OpsTemplateList)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.OprPreviewContainer.Panel1.ResumeLayout(false);
             this.OprPreviewContainer.Panel1.PerformLayout();
             this.OprPreviewContainer.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.OprPreviewContainer)).EndInit();
             this.OprPreviewContainer.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).EndInit();
+            this.BillTab.ResumeLayout(false);
+            this.BillContainer.Panel1.ResumeLayout(false);
+            this.BillContainer.Panel2.ResumeLayout(false);
+            this.BillContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BillTemplateList)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.BillPreviewContainer.Panel1.ResumeLayout(false);
+            this.BillPreviewContainer.Panel2.ResumeLayout(false);
+            this.BillPreviewContainer.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.qty_num)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BillDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1059,7 +1563,6 @@
         private System.Windows.Forms.ComboBox class_cbo;
         private System.Windows.Forms.Button close_item_btn;
         private ENGDataDataSet engDataDataSet;
-        private System.Windows.Forms.BindingSource BS_engDataDataSet;
         private System.Windows.Forms.SplitContainer OprPreviewContainer;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox prodstd_cbo;
@@ -1084,16 +1587,58 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button addop_btn;
         private System.Windows.Forms.Button remop_btn;
-        private System.Windows.Forms.Button saveop_btn;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView ItemTemplateList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DataGridView OpsDataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridView OpsTemplateList;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TabPage BillTab;
+        private System.Windows.Forms.SplitContainer BillContainer;
+        private System.Windows.Forms.DataGridView BillTemplateList;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Splitter splitter2;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button close_bill_btn;
+        private System.Windows.Forms.Button del_bill_btn;
+        private System.Windows.Forms.Button edit_bill_btn;
+        private System.Windows.Forms.Button add_bill_btn;
+        private System.Windows.Forms.SplitContainer BillPreviewContainer;
+        private System.Windows.Forms.DataGridView BillDataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MtlSeq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtyPer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNumPartDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RelatedOperation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UOMCode;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ViewAsAsm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button RawMenu;
+        private System.Windows.Forms.CheckBox ViewAsAsm_chk;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.NumericUpDown qty_num;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox desc_txt;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox partnum_txt;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button findpart_btn;
+        private System.Windows.Forms.TextBox mtlseq_txt;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ContextMenuStrip RawMenuStrip;
+        private System.Windows.Forms.Button save_item_btn;
+        private System.Windows.Forms.Button saveop_btn;
+        private System.Windows.Forms.Button save_bill_btn;
+        private System.Windows.Forms.Timer PartTimer;
+        private System.Windows.Forms.ComboBox planner_cbo;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox operation_txt;
     }
 }

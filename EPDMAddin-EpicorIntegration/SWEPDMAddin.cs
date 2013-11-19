@@ -12,8 +12,6 @@ namespace EPDMAddin_EpicorIntegration
     [Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
     public class SWEPDMAddin : IEdmAddIn5
     {
-
-
         void EdmLib.IEdmAddIn5.GetAddInInfo(ref EdmAddInInfo poInfo, IEdmVault5 poVault, IEdmCmdMgr5 poCmdMgr)
         {
             //Fill in the AddIn's description
@@ -43,7 +41,9 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
             
             poCmdMgr.AddCmd(-1, "Epicor Integration\\Add-in Configuration", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to configure Epicor Integration Add-in", 0, 0);
 
-            poCmdMgr.AddCmd(-10, "Epicor Integration\\Update Properties from Epicor", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to update file properties from current Epicor values", 0, 0);
+            poCmdMgr.AddCmd(-10, "Epicor Integration\\Update Properties from Epicor", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to update file properties from current Epicor values", 0, 0);
+
+            poCmdMgr.AddCmd(-100, "Epicor Integration\\Item/OOM/BOM Templates", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to Add/Edit/Update Templates", 0, 0);
 
             poCmdMgr.AddHook(EdmCmdType.EdmCmd_Menu, null);
         }
@@ -157,7 +157,9 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
                                 break;
                             case -1:
                                 Config conf = new Config();
+
                                 conf.ShowDialog();
+
                                 break;
                             case -10:
                                 foreach (EdmCmdData file in Temp)
@@ -169,6 +171,12 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
                                         Update.ShowDialog();
                                     }
                                 }
+                                break;
+                            case -100:
+                                Template_Master TM = new Template_Master();
+
+                                TM.ShowDialog();
+
                                 break;
                             default:
                                 break;
@@ -865,7 +873,5 @@ poCmdMgr.AddCmd(1, "Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmM
             else
                 return true;
         }
-
-
     }
 }
