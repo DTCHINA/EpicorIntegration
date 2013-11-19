@@ -133,9 +133,9 @@ namespace EpicorIntegration
 
         private void newtemplate_btn_Click(object sender, EventArgs e)
         {
-            Item_Template frm = new Item_Template();
+            //Item_Template frm = new Item_Template();
 
-            frm.ShowDialog();
+            //frm.ShowDialog();
 
             //this.itemTemplateTableAdapter.Fill(this.eNGDataDataSet.ItemTemplate);
 

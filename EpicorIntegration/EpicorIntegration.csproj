@@ -234,12 +234,6 @@
     <Compile Include="Operations_CopyFrom.Designer.cs">
       <DependentUpon>Operations_CopyFrom.cs</DependentUpon>
     </Compile>
-    <Compile Include="Item_Template.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Item_Template.Designer.cs">
-      <DependentUpon>Item_Template.cs</DependentUpon>
-    </Compile>
     <Compile Include="DataList.cs" />
     <Compile Include="Config.cs">
       <SubType>Form</SubType>
@@ -359,9 +353,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations_CopyFrom.resx">
       <DependentUpon>Operations_CopyFrom.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Item_Template.resx">
-      <DependentUpon>Item_Template.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EpicLogin.resx">
       <DependentUpon>EpicLogin.cs</DependentUpon>

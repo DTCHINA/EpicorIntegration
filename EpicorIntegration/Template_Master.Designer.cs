@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Template_Master));
@@ -39,16 +41,19 @@
             this.ItemTab = new System.Windows.Forms.TabPage();
             this.ItemSplit = new System.Windows.Forms.SplitContainer();
             this.ItemLeftGrid = new System.Windows.Forms.SplitContainer();
+            this.save_item_btn = new System.Windows.Forms.Button();
             this.close_item_btn = new System.Windows.Forms.Button();
             this.del_item_btn = new System.Windows.Forms.Button();
             this.edit_item_btn = new System.Windows.Forms.Button();
             this.add_item_btn = new System.Windows.Forms.Button();
             this.ItemTemplateList = new System.Windows.Forms.DataGridView();
-            this.engDataDataSet = new EpicorIntegration.ENGDataDataSet();
+            this.Name_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.planner_cbo = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.whse_cbo = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.plant_cbo = new System.Windows.Forms.ComboBox();
@@ -77,10 +82,12 @@
             this.OprSplit = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.OpsTemplateList = new System.Windows.Forms.DataGridView();
+            this.Name_Ops = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.saveop_btn = new System.Windows.Forms.Button();
             this.close_op_btn = new System.Windows.Forms.Button();
             this.del_op_btn = new System.Windows.Forms.Button();
             this.edit_op_btn = new System.Windows.Forms.Button();
@@ -103,26 +110,28 @@
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdStandard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stdformat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrimaryResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BillTab = new System.Windows.Forms.TabPage();
             this.BillContainer = new System.Windows.Forms.SplitContainer();
             this.BillTemplateList = new System.Windows.Forms.DataGridView();
+            this.Name_bill = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.save_bill_btn = new System.Windows.Forms.Button();
             this.close_bill_btn = new System.Windows.Forms.Button();
             this.del_bill_btn = new System.Windows.Forms.Button();
             this.edit_bill_btn = new System.Windows.Forms.Button();
             this.add_bill_btn = new System.Windows.Forms.Button();
             this.BillPreviewContainer = new System.Windows.Forms.SplitContainer();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.AddBill = new System.Windows.Forms.Button();
+            this.DelBill = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.operation_txt = new System.Windows.Forms.TextBox();
             this.RawMenu = new System.Windows.Forms.Button();
             this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.bill_uom_cbo = new System.Windows.Forms.ComboBox();
             this.qty_num = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
             this.desc_txt = new System.Windows.Forms.TextBox();
@@ -133,22 +142,51 @@
             this.mtlseq_txt = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.BillDataGrid = new System.Windows.Forms.DataGridView();
-            this.MtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MtlPartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MtlPartNumPartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RelatedOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UOMCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.engDataDataSet = new EpicorIntegration.ENGDataDataSet();
             this.RawMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.save_bill_btn = new System.Windows.Forms.Button();
-            this.saveop_btn = new System.Windows.Forms.Button();
-            this.save_item_btn = new System.Windows.Forms.Button();
             this.PartTimer = new System.Windows.Forms.Timer(this.components);
-            this.planner_cbo = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.operation_txt = new System.Windows.Forms.TextBox();
+            this.seq_txt = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.ResTab = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.ResTemplateList = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.splitter3 = new System.Windows.Forms.Splitter();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.ResDataGrid = new System.Windows.Forms.DataGridView();
+            this.ResPropertyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResPropertyQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResPropertyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResPropertyUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PropertyQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PropertyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PropertyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PropertyUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PropertyOptions = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl.SuspendLayout();
             this.ItemTab.SuspendLayout();
             this.ItemSplit.Panel1.SuspendLayout();
@@ -158,7 +196,6 @@
             this.ItemLeftGrid.Panel2.SuspendLayout();
             this.ItemLeftGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemTemplateList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).BeginInit();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -193,12 +230,29 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qty_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BillDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).BeginInit();
+            this.ResTab.SuspendLayout();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ResTemplateList)).BeginInit();
+            this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
             // 
             this.tabControl.Controls.Add(this.ItemTab);
             this.tabControl.Controls.Add(this.OprTab);
+            this.tabControl.Controls.Add(this.ResTab);
             this.tabControl.Controls.Add(this.BillTab);
             this.tabControl.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -258,8 +312,18 @@
             this.ItemLeftGrid.Panel2.Controls.Add(this.ItemTemplateList);
             this.ItemLeftGrid.Panel2.Controls.Add(this.panel4);
             this.ItemLeftGrid.Size = new System.Drawing.Size(115, 510);
-            this.ItemLeftGrid.SplitterDistance = 199;
+            this.ItemLeftGrid.SplitterDistance = 185;
             this.ItemLeftGrid.TabIndex = 0;
+            // 
+            // save_item_btn
+            // 
+            this.save_item_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.save_item_btn.Location = new System.Drawing.Point(20, 106);
+            this.save_item_btn.Name = "save_item_btn";
+            this.save_item_btn.Size = new System.Drawing.Size(75, 23);
+            this.save_item_btn.TabIndex = 5;
+            this.save_item_btn.Text = "&Save";
+            this.save_item_btn.UseVisualStyleBackColor = true;
             // 
             // close_item_btn
             // 
@@ -305,8 +369,11 @@
             this.ItemTemplateList.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ItemTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.ItemTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
             this.ItemTemplateList.BackgroundColor = System.Drawing.Color.White;
             this.ItemTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ItemTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name_item});
             this.ItemTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemTemplateList.Location = new System.Drawing.Point(0, 20);
             this.ItemTemplateList.Name = "ItemTemplateList";
@@ -318,13 +385,16 @@
             this.ItemTemplateList.ShowCellToolTips = false;
             this.ItemTemplateList.ShowEditingIcon = false;
             this.ItemTemplateList.ShowRowErrors = false;
-            this.ItemTemplateList.Size = new System.Drawing.Size(115, 287);
+            this.ItemTemplateList.Size = new System.Drawing.Size(115, 301);
             this.ItemTemplateList.TabIndex = 4;
             // 
-            // engDataDataSet
+            // Name_item
             // 
-            this.engDataDataSet.DataSetName = "ENGDataDataSet";
-            this.engDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.Name_item.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Name_item.DataPropertyName = "Name";
+            this.Name_item.HeaderText = "Name";
+            this.Name_item.Name = "Name_item";
+            this.Name_item.ReadOnly = true;
             // 
             // panel4
             // 
@@ -359,6 +429,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Plants";
             // 
+            // planner_cbo
+            // 
+            this.planner_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.planner_cbo.FormattingEnabled = true;
+            this.planner_cbo.Location = new System.Drawing.Point(9, 116);
+            this.planner_cbo.Name = "planner_cbo";
+            this.planner_cbo.Size = new System.Drawing.Size(321, 21);
+            this.planner_cbo.TabIndex = 38;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -367,6 +446,15 @@
             this.label11.Size = new System.Drawing.Size(34, 13);
             this.label11.TabIndex = 28;
             this.label11.Text = "Plant:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 96);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(46, 13);
+            this.label22.TabIndex = 37;
+            this.label22.Text = "Planner:";
             // 
             // whse_cbo
             // 
@@ -678,8 +766,12 @@
             this.OpsTemplateList.AllowUserToDeleteRows = false;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.OpsTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.OpsTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
             this.OpsTemplateList.BackgroundColor = System.Drawing.Color.White;
             this.OpsTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OpsTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name_Ops});
+            this.OpsTemplateList.DataBindings.Add(new System.Windows.Forms.Binding("AutoGenerateColumns", global::EpicorIntegration.Properties.Settings.Default, "allresults", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.OpsTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OpsTemplateList.Location = new System.Drawing.Point(0, 20);
             this.OpsTemplateList.Name = "OpsTemplateList";
@@ -693,6 +785,14 @@
             this.OpsTemplateList.ShowRowErrors = false;
             this.OpsTemplateList.Size = new System.Drawing.Size(115, 301);
             this.OpsTemplateList.TabIndex = 3;
+            // 
+            // Name_Ops
+            // 
+            this.Name_Ops.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Name_Ops.DataPropertyName = "Name";
+            this.Name_Ops.HeaderText = "Name";
+            this.Name_Ops.Name = "Name_Ops";
+            this.Name_Ops.ReadOnly = true;
             // 
             // panel3
             // 
@@ -734,6 +834,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(115, 185);
             this.panel1.TabIndex = 0;
+            // 
+            // saveop_btn
+            // 
+            this.saveop_btn.Location = new System.Drawing.Point(20, 106);
+            this.saveop_btn.Name = "saveop_btn";
+            this.saveop_btn.Size = new System.Drawing.Size(75, 23);
+            this.saveop_btn.TabIndex = 15;
+            this.saveop_btn.Text = "Save";
+            this.saveop_btn.UseVisualStyleBackColor = true;
             // 
             // close_op_btn
             // 
@@ -798,7 +907,7 @@
             this.groupBox4.Controls.Add(this.remop_btn);
             this.groupBox4.Location = new System.Drawing.Point(308, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(89, 159);
+            this.groupBox4.Size = new System.Drawing.Size(89, 182);
             this.groupBox4.TabIndex = 16;
             this.groupBox4.TabStop = false;
             // 
@@ -838,6 +947,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label23);
+            this.groupBox3.Controls.Add(this.seq_txt);
             this.groupBox3.Controls.Add(this.prodstd_cbo);
             this.groupBox3.Controls.Add(this.prodhrs_num);
             this.groupBox3.Controls.Add(this.label12);
@@ -845,7 +956,7 @@
             this.groupBox3.Controls.Add(this.opmast_cbo);
             this.groupBox3.Location = new System.Drawing.Point(12, 52);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(290, 110);
+            this.groupBox3.Size = new System.Drawing.Size(290, 133);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             // 
@@ -853,7 +964,7 @@
             // 
             this.prodstd_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.prodstd_cbo.FormattingEnabled = true;
-            this.prodstd_cbo.Location = new System.Drawing.Point(80, 77);
+            this.prodstd_cbo.Location = new System.Drawing.Point(80, 96);
             this.prodstd_cbo.Name = "prodstd_cbo";
             this.prodstd_cbo.Size = new System.Drawing.Size(191, 21);
             this.prodstd_cbo.TabIndex = 9;
@@ -861,7 +972,7 @@
             // prodhrs_num
             // 
             this.prodhrs_num.DecimalPlaces = 2;
-            this.prodhrs_num.Location = new System.Drawing.Point(9, 78);
+            this.prodhrs_num.Location = new System.Drawing.Point(9, 97);
             this.prodhrs_num.Name = "prodhrs_num";
             this.prodhrs_num.Size = new System.Drawing.Size(65, 20);
             this.prodhrs_num.TabIndex = 8;
@@ -870,7 +981,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 62);
+            this.label12.Location = new System.Drawing.Point(6, 81);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(54, 13);
             this.label12.TabIndex = 7;
@@ -879,7 +990,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 16);
+            this.label13.Location = new System.Drawing.Point(6, 35);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 13);
             this.label13.TabIndex = 5;
@@ -889,7 +1000,7 @@
             // 
             this.opmast_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.opmast_cbo.FormattingEnabled = true;
-            this.opmast_cbo.Location = new System.Drawing.Point(9, 32);
+            this.opmast_cbo.Location = new System.Drawing.Point(9, 51);
             this.opmast_cbo.Name = "opmast_cbo";
             this.opmast_cbo.Size = new System.Drawing.Size(262, 21);
             this.opmast_cbo.TabIndex = 4;
@@ -900,6 +1011,7 @@
             this.OPDataGrid.AllowUserToDeleteRows = false;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.OPDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.OPDataGrid.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
             this.OPDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.OPDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OPDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -907,8 +1019,7 @@
             this.OpCode,
             this.OpDesc,
             this.ProdStandard,
-            this.stdformat,
-            this.PrimaryResourceGrpDesc});
+            this.stdformat});
             this.OPDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OPDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.OPDataGrid.Location = new System.Drawing.Point(0, 0);
@@ -927,7 +1038,7 @@
             // OprSeq
             // 
             this.OprSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.OprSeq.DataPropertyName = "OprSeq";
+            this.OprSeq.DataPropertyName = "PropertyType";
             this.OprSeq.HeaderText = "Sequence";
             this.OprSeq.Name = "OprSeq";
             this.OprSeq.ReadOnly = true;
@@ -936,7 +1047,7 @@
             // OpCode
             // 
             this.OpCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OpCode.DataPropertyName = "OpCode";
+            this.OpCode.DataPropertyName = "PropertyValue";
             this.OpCode.HeaderText = "Code";
             this.OpCode.Name = "OpCode";
             this.OpCode.ReadOnly = true;
@@ -944,17 +1055,16 @@
             // 
             // OpDesc
             // 
-            this.OpDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OpDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.OpDesc.DataPropertyName = "OpDesc";
             this.OpDesc.HeaderText = "Operation Description";
             this.OpDesc.Name = "OpDesc";
             this.OpDesc.ReadOnly = true;
-            this.OpDesc.Width = 123;
             // 
             // ProdStandard
             // 
             this.ProdStandard.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ProdStandard.DataPropertyName = "ProdStandard";
+            this.ProdStandard.DataPropertyName = "PropertyQty";
             this.ProdStandard.HeaderText = "Production Hours";
             this.ProdStandard.Name = "ProdStandard";
             this.ProdStandard.ReadOnly = true;
@@ -963,20 +1073,11 @@
             // stdformat
             // 
             this.stdformat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.stdformat.DataPropertyName = "stdformat";
+            this.stdformat.DataPropertyName = "PropertyUOM";
             this.stdformat.HeaderText = "Std. Format";
             this.stdformat.Name = "stdformat";
             this.stdformat.ReadOnly = true;
             this.stdformat.Width = 79;
-            // 
-            // PrimaryResourceGrpDesc
-            // 
-            this.PrimaryResourceGrpDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.PrimaryResourceGrpDesc.DataPropertyName = "PrimaryResourceGrpDesc";
-            this.PrimaryResourceGrpDesc.HeaderText = "Primary Resource Group";
-            this.PrimaryResourceGrpDesc.Name = "PrimaryResourceGrpDesc";
-            this.PrimaryResourceGrpDesc.ReadOnly = true;
-            this.PrimaryResourceGrpDesc.Width = 134;
             // 
             // BillTab
             // 
@@ -1015,10 +1116,13 @@
             // 
             this.BillTemplateList.AllowUserToAddRows = false;
             this.BillTemplateList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.BillTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BillTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.BillTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
             this.BillTemplateList.BackgroundColor = System.Drawing.Color.White;
             this.BillTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BillTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name_bill});
             this.BillTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BillTemplateList.Location = new System.Drawing.Point(0, 209);
             this.BillTemplateList.Name = "BillTemplateList";
@@ -1032,6 +1136,14 @@
             this.BillTemplateList.ShowRowErrors = false;
             this.BillTemplateList.Size = new System.Drawing.Size(115, 301);
             this.BillTemplateList.TabIndex = 7;
+            // 
+            // Name_bill
+            // 
+            this.Name_bill.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Name_bill.DataPropertyName = "Name";
+            this.Name_bill.HeaderText = "Name";
+            this.Name_bill.Name = "Name_bill";
+            this.Name_bill.ReadOnly = true;
             // 
             // panel5
             // 
@@ -1073,6 +1185,16 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(115, 185);
             this.panel6.TabIndex = 4;
+            // 
+            // save_bill_btn
+            // 
+            this.save_bill_btn.Location = new System.Drawing.Point(20, 106);
+            this.save_bill_btn.Name = "save_bill_btn";
+            this.save_bill_btn.Size = new System.Drawing.Size(75, 23);
+            this.save_bill_btn.TabIndex = 15;
+            this.save_bill_btn.Text = "Save";
+            this.save_bill_btn.UseVisualStyleBackColor = true;
+            this.save_bill_btn.Click += new System.EventHandler(this.save_bill_btn_Click);
             // 
             // close_bill_btn
             // 
@@ -1132,38 +1254,40 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.button2);
-            this.groupBox6.Controls.Add(this.button3);
+            this.groupBox6.Controls.Add(this.AddBill);
+            this.groupBox6.Controls.Add(this.DelBill);
             this.groupBox6.Location = new System.Drawing.Point(445, 3);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(89, 165);
             this.groupBox6.TabIndex = 17;
             this.groupBox6.TabStop = false;
             // 
-            // button2
+            // AddBill
             // 
-            this.button2.Location = new System.Drawing.Point(6, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Add Bill Item";
-            this.button2.UseVisualStyleBackColor = true;
+            this.AddBill.Location = new System.Drawing.Point(6, 19);
+            this.AddBill.Name = "AddBill";
+            this.AddBill.Size = new System.Drawing.Size(75, 23);
+            this.AddBill.TabIndex = 12;
+            this.AddBill.Text = "Add Bill Item";
+            this.AddBill.UseVisualStyleBackColor = true;
+            this.AddBill.Click += new System.EventHandler(this.AddBill_Click);
             // 
-            // button3
+            // DelBill
             // 
-            this.button3.Location = new System.Drawing.Point(6, 48);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Del Bill Item";
-            this.button3.UseVisualStyleBackColor = true;
+            this.DelBill.Location = new System.Drawing.Point(6, 48);
+            this.DelBill.Name = "DelBill";
+            this.DelBill.Size = new System.Drawing.Size(75, 23);
+            this.DelBill.TabIndex = 13;
+            this.DelBill.Text = "Del Bill Item";
+            this.DelBill.UseVisualStyleBackColor = true;
+            this.DelBill.Click += new System.EventHandler(this.DelBill_Click);
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.operation_txt);
             this.groupBox5.Controls.Add(this.RawMenu);
             this.groupBox5.Controls.Add(this.ViewAsAsm_chk);
-            this.groupBox5.Controls.Add(this.comboBox1);
+            this.groupBox5.Controls.Add(this.bill_uom_cbo);
             this.groupBox5.Controls.Add(this.qty_num);
             this.groupBox5.Controls.Add(this.label18);
             this.groupBox5.Controls.Add(this.desc_txt);
@@ -1178,6 +1302,15 @@
             this.groupBox5.Size = new System.Drawing.Size(436, 165);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
+            // 
+            // operation_txt
+            // 
+            this.operation_txt.Location = new System.Drawing.Point(75, 97);
+            this.operation_txt.Name = "operation_txt";
+            this.operation_txt.Size = new System.Drawing.Size(62, 20);
+            this.operation_txt.TabIndex = 12;
+            this.operation_txt.Text = "10";
+            this.operation_txt.TextChanged += new System.EventHandler(this.operation_txt_TextChanged);
             // 
             // RawMenu
             // 
@@ -1200,14 +1333,15 @@
             this.ViewAsAsm_chk.UseVisualStyleBackColor = true;
             this.ViewAsAsm_chk.CheckedChanged += new System.EventHandler(this.ViewAsAsm_chk_CheckedChanged);
             // 
-            // comboBox1
+            // bill_uom_cbo
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(143, 123);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(74, 21);
-            this.comboBox1.TabIndex = 2;
+            this.bill_uom_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bill_uom_cbo.FormattingEnabled = true;
+            this.bill_uom_cbo.Location = new System.Drawing.Point(143, 123);
+            this.bill_uom_cbo.Name = "bill_uom_cbo";
+            this.bill_uom_cbo.Size = new System.Drawing.Size(74, 21);
+            this.bill_uom_cbo.TabIndex = 2;
+            this.bill_uom_cbo.SelectedIndexChanged += new System.EventHandler(this.bill_uom_cbo_SelectedIndexChanged);
             // 
             // qty_num
             // 
@@ -1216,6 +1350,7 @@
             this.qty_num.Name = "qty_num";
             this.qty_num.Size = new System.Drawing.Size(62, 20);
             this.qty_num.TabIndex = 9;
+            this.qty_num.ValueChanged += new System.EventHandler(this.qty_num_ValueChanged);
             // 
             // label18
             // 
@@ -1234,6 +1369,8 @@
             this.desc_txt.ReadOnly = true;
             this.desc_txt.Size = new System.Drawing.Size(211, 20);
             this.desc_txt.TabIndex = 7;
+            this.desc_txt.Visible = false;
+            this.desc_txt.TextChanged += new System.EventHandler(this.desc_txt_TextChanged);
             // 
             // label19
             // 
@@ -1243,6 +1380,7 @@
             this.label19.Size = new System.Drawing.Size(63, 13);
             this.label19.TabIndex = 6;
             this.label19.Text = "Description:";
+            this.label19.Visible = false;
             // 
             // partnum_txt
             // 
@@ -1250,6 +1388,7 @@
             this.partnum_txt.Name = "partnum_txt";
             this.partnum_txt.Size = new System.Drawing.Size(211, 20);
             this.partnum_txt.TabIndex = 5;
+            this.partnum_txt.TextChanged += new System.EventHandler(this.partnum_txt_TextChanged);
             // 
             // label20
             // 
@@ -1292,19 +1431,18 @@
             this.BillDataGrid.AllowUserToAddRows = false;
             this.BillDataGrid.AllowUserToDeleteRows = false;
             this.BillDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.BillDataGrid.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
             this.BillDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.BillDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BillDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MtlSeq,
-            this.QtyPer,
-            this.MtlPartNum,
-            this.MtlPartNumPartDescription,
-            this.RelatedOperation,
-            this.UOMCode,
-            this.ViewAsAsm,
-            this.dataGridViewTextBoxColumn3});
+            this.PropertyQty,
+            this.PropertyValue,
+            this.PartDescription,
+            this.PropertyType,
+            this.PropertyUOM,
+            this.PropertyOptions});
             this.BillDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BillDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.BillDataGrid.Location = new System.Drawing.Point(0, 0);
@@ -1320,140 +1458,465 @@
             this.BillDataGrid.Size = new System.Drawing.Size(582, 317);
             this.BillDataGrid.TabIndex = 2;
             // 
-            // MtlSeq
+            // engDataDataSet
             // 
-            this.MtlSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.MtlSeq.DataPropertyName = "MtlSeq";
-            this.MtlSeq.HeaderText = "Seq.";
-            this.MtlSeq.Name = "MtlSeq";
-            this.MtlSeq.ReadOnly = true;
-            this.MtlSeq.Width = 54;
-            // 
-            // QtyPer
-            // 
-            this.QtyPer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.QtyPer.DataPropertyName = "QtyPer";
-            this.QtyPer.HeaderText = "Qty";
-            this.QtyPer.Name = "QtyPer";
-            this.QtyPer.ReadOnly = true;
-            this.QtyPer.Width = 48;
-            // 
-            // MtlPartNum
-            // 
-            this.MtlPartNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MtlPartNum.DataPropertyName = "MtlPartNum";
-            this.MtlPartNum.HeaderText = "Part Number";
-            this.MtlPartNum.Name = "MtlPartNum";
-            this.MtlPartNum.ReadOnly = true;
-            this.MtlPartNum.Width = 84;
-            // 
-            // MtlPartNumPartDescription
-            // 
-            this.MtlPartNumPartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MtlPartNumPartDescription.DataPropertyName = "MtlPartNumPartDescription";
-            this.MtlPartNumPartDescription.HeaderText = "Description";
-            this.MtlPartNumPartDescription.Name = "MtlPartNumPartDescription";
-            this.MtlPartNumPartDescription.ReadOnly = true;
-            // 
-            // RelatedOperation
-            // 
-            this.RelatedOperation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.RelatedOperation.DataPropertyName = "RelatedOperation";
-            this.RelatedOperation.HeaderText = "Opr.";
-            this.RelatedOperation.Name = "RelatedOperation";
-            this.RelatedOperation.ReadOnly = true;
-            this.RelatedOperation.Width = 52;
-            // 
-            // UOMCode
-            // 
-            this.UOMCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.UOMCode.DataPropertyName = "UOMCode";
-            this.UOMCode.HeaderText = "UOM Code";
-            this.UOMCode.Name = "UOMCode";
-            this.UOMCode.ReadOnly = true;
-            this.UOMCode.Width = 78;
-            // 
-            // ViewAsAsm
-            // 
-            this.ViewAsAsm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ViewAsAsm.DataPropertyName = "ViewAsAsm";
-            this.ViewAsAsm.HeaderText = "View As Assembly";
-            this.ViewAsAsm.Name = "ViewAsAsm";
-            this.ViewAsAsm.ReadOnly = true;
-            this.ViewAsAsm.Width = 88;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "OpDesc";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Operation";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 78;
+            this.engDataDataSet.DataSetName = "ENGDataDataSet";
+            this.engDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // RawMenuStrip
             // 
             this.RawMenuStrip.Name = "contextMenuStrip1";
             this.RawMenuStrip.Size = new System.Drawing.Size(61, 4);
             // 
-            // save_bill_btn
-            // 
-            this.save_bill_btn.Location = new System.Drawing.Point(20, 106);
-            this.save_bill_btn.Name = "save_bill_btn";
-            this.save_bill_btn.Size = new System.Drawing.Size(75, 23);
-            this.save_bill_btn.TabIndex = 15;
-            this.save_bill_btn.Text = "Save";
-            this.save_bill_btn.UseVisualStyleBackColor = true;
-            // 
-            // saveop_btn
-            // 
-            this.saveop_btn.Location = new System.Drawing.Point(20, 106);
-            this.saveop_btn.Name = "saveop_btn";
-            this.saveop_btn.Size = new System.Drawing.Size(75, 23);
-            this.saveop_btn.TabIndex = 15;
-            this.saveop_btn.Text = "Save";
-            this.saveop_btn.UseVisualStyleBackColor = true;
-            // 
-            // save_item_btn
-            // 
-            this.save_item_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.save_item_btn.Location = new System.Drawing.Point(20, 106);
-            this.save_item_btn.Name = "save_item_btn";
-            this.save_item_btn.Size = new System.Drawing.Size(75, 23);
-            this.save_item_btn.TabIndex = 5;
-            this.save_item_btn.Text = "&Save";
-            this.save_item_btn.UseVisualStyleBackColor = true;
-            // 
             // PartTimer
             // 
             this.PartTimer.Interval = 500;
             this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
             // 
-            // planner_cbo
+            // seq_txt
             // 
-            this.planner_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.planner_cbo.FormattingEnabled = true;
-            this.planner_cbo.Location = new System.Drawing.Point(9, 116);
-            this.planner_cbo.Name = "planner_cbo";
-            this.planner_cbo.Size = new System.Drawing.Size(321, 21);
-            this.planner_cbo.TabIndex = 38;
+            this.seq_txt.Location = new System.Drawing.Point(71, 13);
+            this.seq_txt.Name = "seq_txt";
+            this.seq_txt.Size = new System.Drawing.Size(100, 20);
+            this.seq_txt.TabIndex = 10;
             // 
-            // label22
+            // label23
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 96);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(46, 13);
-            this.label22.TabIndex = 37;
-            this.label22.Text = "Planner:";
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 16);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(59, 13);
+            this.label23.TabIndex = 11;
+            this.label23.Text = "Sequence:";
             // 
-            // operation_txt
+            // ResTab
             // 
-            this.operation_txt.Location = new System.Drawing.Point(75, 97);
-            this.operation_txt.Name = "operation_txt";
-            this.operation_txt.Size = new System.Drawing.Size(62, 20);
-            this.operation_txt.TabIndex = 12;
-            this.operation_txt.Text = "10";
+            this.ResTab.BackColor = System.Drawing.SystemColors.Control;
+            this.ResTab.Controls.Add(this.splitContainer1);
+            this.ResTab.Location = new System.Drawing.Point(4, 22);
+            this.ResTab.Name = "ResTab";
+            this.ResTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ResTab.Size = new System.Drawing.Size(707, 516);
+            this.ResTab.TabIndex = 3;
+            this.ResTab.Text = "Resource Template for OOM Template";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.panel7);
+            this.splitContainer1.Panel1.Controls.Add(this.splitter3);
+            this.splitContainer1.Panel1.Controls.Add(this.panel9);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(701, 510);
+            this.splitContainer1.SplitterDistance = 115;
+            this.splitContainer1.TabIndex = 1;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.ResTemplateList);
+            this.panel7.Controls.Add(this.panel8);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 189);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(115, 321);
+            this.panel7.TabIndex = 2;
+            // 
+            // ResTemplateList
+            // 
+            this.ResTemplateList.AllowUserToAddRows = false;
+            this.ResTemplateList.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ResTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.ResTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
+            this.ResTemplateList.BackgroundColor = System.Drawing.Color.White;
+            this.ResTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ResTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1});
+            this.ResTemplateList.DataBindings.Add(new System.Windows.Forms.Binding("AutoGenerateColumns", global::EpicorIntegration.Properties.Settings.Default, "allresults", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ResTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ResTemplateList.Location = new System.Drawing.Point(0, 20);
+            this.ResTemplateList.Name = "ResTemplateList";
+            this.ResTemplateList.ReadOnly = true;
+            this.ResTemplateList.RowHeadersVisible = false;
+            this.ResTemplateList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ResTemplateList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ResTemplateList.ShowCellErrors = false;
+            this.ResTemplateList.ShowCellToolTips = false;
+            this.ResTemplateList.ShowEditingIcon = false;
+            this.ResTemplateList.ShowRowErrors = false;
+            this.ResTemplateList.Size = new System.Drawing.Size(115, 301);
+            this.ResTemplateList.TabIndex = 3;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.label24);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(115, 20);
+            this.panel8.TabIndex = 2;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(5, 3);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(73, 13);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "Template List:";
+            // 
+            // splitter3
+            // 
+            this.splitter3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.splitter3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitter3.Location = new System.Drawing.Point(0, 185);
+            this.splitter3.Name = "splitter3";
+            this.splitter3.Size = new System.Drawing.Size(115, 4);
+            this.splitter3.TabIndex = 1;
+            this.splitter3.TabStop = false;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.button1);
+            this.panel9.Controls.Add(this.button2);
+            this.panel9.Controls.Add(this.button3);
+            this.panel9.Controls.Add(this.button4);
+            this.panel9.Controls.Add(this.button5);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(115, 185);
+            this.panel9.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(20, 106);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(20, 135);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "&Close";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(20, 77);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "&Delete";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(20, 48);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "&Edit";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(20, 19);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "&Add";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox7);
+            this.splitContainer2.Panel1.Controls.Add(this.label25);
+            this.splitContainer2.Panel1.Controls.Add(this.textBox2);
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox8);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.ResDataGrid);
+            this.splitContainer2.Size = new System.Drawing.Size(582, 510);
+            this.splitContainer2.SplitterDistance = 189;
+            this.splitContainer2.TabIndex = 10;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.button6);
+            this.groupBox7.Controls.Add(this.button7);
+            this.groupBox7.Location = new System.Drawing.Point(308, 3);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(89, 182);
+            this.groupBox7.TabIndex = 16;
+            this.groupBox7.TabStop = false;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(8, 16);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 12;
+            this.button6.Text = "Add Opr";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(8, 45);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 13;
+            this.button7.Text = "Rem. Opr";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(9, 10);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(85, 13);
+            this.label25.TabIndex = 10;
+            this.label25.Text = "Template Name:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(12, 26);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(290, 20);
+            this.textBox2.TabIndex = 11;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label26);
+            this.groupBox8.Controls.Add(this.textBox3);
+            this.groupBox8.Controls.Add(this.comboBox2);
+            this.groupBox8.Controls.Add(this.numericUpDown1);
+            this.groupBox8.Controls.Add(this.label27);
+            this.groupBox8.Controls.Add(this.label28);
+            this.groupBox8.Controls.Add(this.comboBox3);
+            this.groupBox8.Location = new System.Drawing.Point(12, 52);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(290, 133);
+            this.groupBox8.TabIndex = 9;
+            this.groupBox8.TabStop = false;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 16);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(59, 13);
+            this.label26.TabIndex = 11;
+            this.label26.Text = "Sequence:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(71, 13);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 10;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(80, 96);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(191, 21);
+            this.comboBox2.TabIndex = 9;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.DecimalPlaces = 2;
+            this.numericUpDown1.Location = new System.Drawing.Point(9, 97);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(65, 20);
+            this.numericUpDown1.TabIndex = 8;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(6, 81);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(54, 13);
+            this.label27.TabIndex = 7;
+            this.label27.Text = "Prod. Std:";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(6, 35);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(56, 13);
+            this.label28.TabIndex = 5;
+            this.label28.Text = "Operation:";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(9, 51);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(262, 21);
+            this.comboBox3.TabIndex = 4;
+            // 
+            // ResDataGrid
+            // 
+            this.ResDataGrid.AllowUserToAddRows = false;
+            this.ResDataGrid.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ResDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.ResDataGrid.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
+            this.ResDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.ResDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ResDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ResPropertyType,
+            this.ResPropertyQty,
+            this.ResPropertyValue,
+            this.ResPropertyUOM,
+            this.ResDesc});
+            this.ResDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ResDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.ResDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.ResDataGrid.MultiSelect = false;
+            this.ResDataGrid.Name = "ResDataGrid";
+            this.ResDataGrid.ReadOnly = true;
+            this.ResDataGrid.RowHeadersVisible = false;
+            this.ResDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ResDataGrid.ShowCellErrors = false;
+            this.ResDataGrid.ShowCellToolTips = false;
+            this.ResDataGrid.ShowEditingIcon = false;
+            this.ResDataGrid.ShowRowErrors = false;
+            this.ResDataGrid.Size = new System.Drawing.Size(582, 317);
+            this.ResDataGrid.TabIndex = 8;
+            // 
+            // ResPropertyType
+            // 
+            this.ResPropertyType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ResPropertyType.DataPropertyName = "PropertyType";
+            this.ResPropertyType.HeaderText = "Opr Attached to";
+            this.ResPropertyType.Name = "ResPropertyType";
+            this.ResPropertyType.ReadOnly = true;
+            this.ResPropertyType.Width = 90;
+            // 
+            // ResPropertyQty
+            // 
+            this.ResPropertyQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ResPropertyQty.DataPropertyName = "PropertyQty";
+            this.ResPropertyQty.HeaderText = "Rank";
+            this.ResPropertyQty.Name = "ResPropertyQty";
+            this.ResPropertyQty.ReadOnly = true;
+            this.ResPropertyQty.ToolTipText = "Zero Based Rank (2 Maximum per Operation)";
+            this.ResPropertyQty.Width = 58;
+            // 
+            // ResPropertyValue
+            // 
+            this.ResPropertyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ResPropertyValue.DataPropertyName = "PropertyValue";
+            this.ResPropertyValue.HeaderText = "Resource Group";
+            this.ResPropertyValue.Name = "ResPropertyValue";
+            this.ResPropertyValue.ReadOnly = true;
+            this.ResPropertyValue.Width = 101;
+            // 
+            // ResPropertyUOM
+            // 
+            this.ResPropertyUOM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ResPropertyUOM.DataPropertyName = "PropertyUOM";
+            this.ResPropertyUOM.HeaderText = "Resource";
+            this.ResPropertyUOM.Name = "ResPropertyUOM";
+            this.ResPropertyUOM.ReadOnly = true;
+            this.ResPropertyUOM.Width = 78;
+            // 
+            // ResDesc
+            // 
+            this.ResDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ResDesc.HeaderText = "Resource Description";
+            this.ResDesc.Name = "ResDesc";
+            this.ResDesc.ReadOnly = true;
+            // 
+            // PropertyQty
+            // 
+            this.PropertyQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PropertyQty.DataPropertyName = "PropertyQty";
+            this.PropertyQty.HeaderText = "Qty";
+            this.PropertyQty.Name = "PropertyQty";
+            this.PropertyQty.ReadOnly = true;
+            this.PropertyQty.Width = 48;
+            // 
+            // PropertyValue
+            // 
+            this.PropertyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.PropertyValue.DataPropertyName = "PropertyValue";
+            this.PropertyValue.HeaderText = "Part Number";
+            this.PropertyValue.Name = "PropertyValue";
+            this.PropertyValue.ReadOnly = true;
+            // 
+            // PartDescription
+            // 
+            this.PartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.PartDescription.DataPropertyName = "PartDescription";
+            this.PartDescription.HeaderText = "Description";
+            this.PartDescription.Name = "PartDescription";
+            this.PartDescription.ReadOnly = true;
+            this.PartDescription.Visible = false;
+            // 
+            // PropertyType
+            // 
+            this.PropertyType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PropertyType.DataPropertyName = "PropertyType";
+            this.PropertyType.HeaderText = "Opr.";
+            this.PropertyType.Name = "PropertyType";
+            this.PropertyType.ReadOnly = true;
+            this.PropertyType.Width = 52;
+            // 
+            // PropertyUOM
+            // 
+            this.PropertyUOM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PropertyUOM.DataPropertyName = "PropertyUOM";
+            this.PropertyUOM.HeaderText = "UOM Code";
+            this.PropertyUOM.Name = "PropertyUOM";
+            this.PropertyUOM.ReadOnly = true;
+            this.PropertyUOM.Width = 85;
+            // 
+            // PropertyOptions
+            // 
+            this.PropertyOptions.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PropertyOptions.DataPropertyName = "PropertyOptions";
+            this.PropertyOptions.HeaderText = "View As Assembly";
+            this.PropertyOptions.Name = "PropertyOptions";
+            this.PropertyOptions.ReadOnly = true;
+            this.PropertyOptions.Width = 88;
             // 
             // Template_Master
             // 
@@ -1477,7 +1940,6 @@
             this.ItemLeftGrid.Panel2.ResumeLayout(false);
             this.ItemLeftGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ItemTemplateList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1520,6 +1982,25 @@
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qty_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BillDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).EndInit();
+            this.ResTab.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ResTemplateList)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1571,12 +2052,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox opmast_cbo;
         private System.Windows.Forms.DataGridView OPDataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OprSeq;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OpCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProdStandard;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stdformat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrimaryResourceGrpDesc;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Panel panel1;
@@ -1608,18 +2083,10 @@
         private System.Windows.Forms.Button add_bill_btn;
         private System.Windows.Forms.SplitContainer BillPreviewContainer;
         private System.Windows.Forms.DataGridView BillDataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MtlSeq;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QtyPer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNumPartDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RelatedOperation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UOMCode;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ViewAsAsm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button RawMenu;
         private System.Windows.Forms.CheckBox ViewAsAsm_chk;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox bill_uom_cbo;
         private System.Windows.Forms.NumericUpDown qty_num;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox desc_txt;
@@ -1630,8 +2097,8 @@
         private System.Windows.Forms.TextBox mtlseq_txt;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button AddBill;
+        private System.Windows.Forms.Button DelBill;
         private System.Windows.Forms.ContextMenuStrip RawMenuStrip;
         private System.Windows.Forms.Button save_item_btn;
         private System.Windows.Forms.Button saveop_btn;
@@ -1640,5 +2107,55 @@
         private System.Windows.Forms.ComboBox planner_cbo;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox operation_txt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Ops;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_bill;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprSeq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OpCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProdStandard;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stdformat;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox seq_txt;
+        private System.Windows.Forms.TabPage ResTab;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.DataGridView ResTemplateList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Splitter splitter3;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.DataGridView ResDataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyUOM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PropertyQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PropertyValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PartDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PropertyType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PropertyUOM;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PropertyOptions;
     }
 }

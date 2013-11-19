@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 //using System.Threading.Tasks;
 using System.Windows.Forms;
+using Epicor.Mfg.BO;
 
 namespace EpicorIntegration
 {
@@ -145,6 +146,56 @@ namespace EpicorIntegration
             uomweight_cbo.ValueMember = "UOMCode";
 
             #endregion
+
+            BillDataGrid.SelectionChanged += BillDataGrid_SelectionChanged;
+
+            OPDataGrid.SelectionChanged += OPDataGrid_SelectionChanged;
+        }
+
+        void OPDataGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        void BillDataGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            qty_num.ValueChanged -= qty_num_ValueChanged;
+
+            partnum_txt.TextChanged -= partnum_txt_TextChanged;
+
+            operation_txt.TextChanged -= operation_txt_TextChanged;
+
+            ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
+
+            bill_uom_cbo.SelectedIndexChanged -= bill_uom_cbo_SelectedIndexChanged;
+
+            qty_num.Value = decimal.Parse(BillDataGrid.CurrentRow.Cells["PropertyQty"].Value.ToString());
+
+            partnum_txt.Text = BillDataGrid.CurrentRow.Cells["PropertyValue"].Value.ToString();
+
+            operation_txt.Text = BillDataGrid.CurrentRow.Cells["PropertyType"].Value.ToString();
+
+            ViewAsAsm_chk.Checked = bool.Parse(BillDataGrid.CurrentRow.Cells["PropertyOptions"].Value.ToString());
+
+            DataTable ds = DataList.PartUOM(partnum_txt.Text);
+
+            bill_uom_cbo.DataSource = ds;
+
+            bill_uom_cbo.DisplayMember = "UOMCode";
+
+            bill_uom_cbo.ValueMember = "UOMCode";
+
+            bill_uom_cbo.SelectedValue = BillDataGrid.CurrentRow.Cells["PropertyUOM"].Value.ToString();
+
+            qty_num.ValueChanged += qty_num_ValueChanged;
+
+            partnum_txt.TextChanged += partnum_txt_TextChanged;
+
+            operation_txt.TextChanged += operation_txt_TextChanged;
+
+            ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
+
+            bill_uom_cbo.SelectedIndexChanged += bill_uom_cbo_SelectedIndexChanged;
         }
 
         private void close_btn_Click(object sender, EventArgs e)
@@ -227,23 +278,62 @@ namespace EpicorIntegration
             ItemTemplateList.ClearSelection();
 
             ItemTemplateList.CurrentCellChanged += ItemTemplateList_CurrentCellChanged;
-        }
 
-        void tabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
             ItemTemplateList.DataSource = Templates.GetItemTemplates();
 
             OpsTemplateList.DataSource = Templates.GetOomTemplates();
 
             BillTemplateList.DataSource = Templates.GetBomTemplates();
 
+            ResTemplateList.DataSource = Templates.GetResTemplates();
+
+            FillItemLists();
+
+            ItemTemplateList.SelectionChanged += ItemTemplateList_SelectionChanged;
+
+            BillTemplateList.SelectionChanged += BillTemplateList_SelectionChanged;
+
+            OpsTemplateList.SelectionChanged += OpsTemplateList_SelectionChanged;
+
+            ResTemplateList.SelectionChanged += ResTemplateList_SelectionChanged;
+        }
+
+        void ResTemplateList_SelectionChanged(object sender, EventArgs e)
+        {
+            ResDataGrid.DataSource = Templates.GetFullTemplate(ResTemplateList.CurrentCell.Value.ToString(), "RES");
+        }
+
+        void OpsTemplateList_SelectionChanged(object sender, EventArgs e)
+        {
+            OPDataGrid.DataSource = Templates.GetFullTemplate(OpsTemplateList.CurrentCell.Value.ToString(), "OOM");
+
+            /*for (int i = 0; i < OPDataGrid.Rows.Count; i++)
+            {
+                try
+                {
+                    
+                }
+                catch { }
+            }*/
+        }
+
+        void BillTemplateList_SelectionChanged(object sender, EventArgs e)
+        {
+            BillDataGrid.DataSource = Templates.GetFullTemplate(BillTemplateList.CurrentCell.Value.ToString(), "BOM");
+        }
+
+        void ItemTemplateList_SelectionChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
             if (tabControl.SelectedTab == tabControl.TabPages["ItemTab"])
             {
                 this.Size = new Size(511, 580);
 
                 this.CancelButton = close_item_btn;
-
-                FillItemLists();
             }
             else
             {
@@ -255,45 +345,8 @@ namespace EpicorIntegration
 
         public PartData pdata = new PartData();
 
-        private void SaveVals()
-        {
-            DataRow dr = engDataDataSet.Tables[0].Rows[ItemTemplateList.CurrentCellAddress.Y];
-
-                pdata.Description = dr["Desc"].ToString();
-
-                pdata.PMT = dr["Type"].ToString();
-
-                pdata.UOM_Class = dr["UOMClass"].ToString();
-
-                decimal fail = 0;
-
-                decimal.TryParse(dr["NetWeight"].ToString(), out fail);
-
-                pdata.Net_Weight = fail;
-
-                pdata.Net_Weight_UM = dr["UOMWeight"].ToString();
-
-                decimal.TryParse(dr["NetVol"].ToString(),out fail);
-
-                pdata.Net_Vol = fail;
-
-                pdata.Net_Vol_UM = dr["UOMVol"].ToString();
-
-                pdata.Primary_UOM = dr["UOM"].ToString();
-
-                pdata.PartGroup = dr["Group"].ToString();
-
-                pdata.PartClass = dr["Class"].ToString();
-
-                pdata.PartPlant = dr["Plant"].ToString();
-
-                //pdata.PlantWhse = dr["Whse"].ToString();
-        }
-
         void ItemTemplateList_CurrentCellChanged(object sender, EventArgs e)
         {
-            //SaveVals();
-
             try
             {                    
                 Description_txt.Text = pdata.Description;
@@ -340,46 +393,7 @@ namespace EpicorIntegration
 
             Searchfrm = null;
         }
-
-        private void ViewAsAsm_chk_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        /*void TS_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem TS = (ToolStripMenuItem)sender;
-
-            //retrieve template data
-            DataTable DT = new DataTable();
-
-            DT = Templates.GetFullTemplate(TS.Name, "BOM");
-
-            try
-            {
-                //line for each row
-                foreach (DataRow Dr in DT.Rows)
-                {
-                    int row = EngWBDS.Tables["ECOMtl"].Rows.Count - 1;
-
-                    EngWBDS.Tables["ECOMtl"].Rows[row]["MtlPartNum"] = Dr["PropertyValue"].ToString();
-
-                    EngWBDS.Tables["ECOMtl"].Rows[row]["RelatedOperation"] = Dr["PropertyType"].ToString();
-
-                    EngWBDS.Tables["ECOMtl"].Rows[row]["MtlPartNumPartDescription"] = DataList.GetCurrentDesc(Dr["PropertyValue"].ToString());
-
-                    EngWBDS.Tables["ECOMtl"].Rows[row]["UOMCode"] = Dr["PropertyUOM"].ToString();
-
-                    EngWBDS.Tables["ECOMtl"].Rows[row]["QtyPer"] = Dr["PropertyQty"].ToString();
-
-                    EngWBDS.Tables["ECOMtl"].Rows[row]["ViewAsAsm"] = Dr["PropertyOptions"].ToString();
-
-                    EngWB.Update(EngWBDS);
-                }
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }*/
-
+        
         private void RawMenu_Click(object sender, EventArgs e)
         {
             RawMenuStrip.Show(RawMenu, new Point(0, RawMenu.Height));
@@ -494,10 +508,102 @@ namespace EpicorIntegration
 
         private void PartTimer_Tick(object sender, EventArgs e)
         {
-
+            UpdateDescField();
         }
 
         private void type_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddBill_Click(object sender, EventArgs e)
+        {
+            BillDataGrid.Rows.Add();
+
+            BillDataGrid.ClearSelection();
+
+            BillDataGrid.CurrentCell = BillDataGrid.Rows[BillDataGrid.Rows.Count - 1].Cells[0];
+        }
+
+        private void DelBill_Click(object sender, EventArgs e)
+        {
+            BillDataGrid.Rows.RemoveAt(BillDataGrid.CurrentCellAddress.Y);
+
+            BillDataGrid.ClearSelection();
+
+            BillDataGrid.CurrentCell = BillDataGrid.Rows[0].Cells[0];
+        }
+
+        private void partnum_txt_TextChanged(object sender, EventArgs e)
+        {
+            //desc_txt.Text = DataList.GetCurrentDesc(partnum_txt.Text);
+
+            DataTable ds = DataList.PartUOM(partnum_txt.Text);
+
+            uom_cbo.DataSource = ds;
+
+            uom_cbo.DisplayMember = "UOMCode";
+
+            uom_cbo.ValueMember = "UOMCode";
+
+            BillDataGrid.CurrentRow.Cells["PropertyValue"].Value = partnum_txt.Text;
+        }
+
+        private void UpdateDescField()
+        {
+            try
+            {
+                Part Part = new Part(DataList.EpicConn);
+
+                PartListDataSet PartList = new PartListDataSet();
+
+                string WhereClause = "PartNum = '" + partnum_txt.Text + "'";
+
+                int pagesize = 1;
+
+                bool morePages;
+
+                PartList = Part.GetList(WhereClause, pagesize, 0, out morePages);
+
+                DataList.EpicClose();
+
+                desc_txt.Text = PartList.Tables[0].Rows[0]["PartDescription"].ToString();
+
+                Part = null;
+
+                PartList.Dispose();
+
+                PartList = null;
+            }
+            catch { desc_txt.Text = ""; }
+        }
+
+        private void save_bill_btn_Click(object sender, EventArgs e)
+        {
+            //for each row, add if new, update if mod, remove if del
+        }
+
+        private void qty_num_ValueChanged(object sender, EventArgs e)
+        {
+            BillDataGrid.CurrentRow.Cells["PropertyQty"].Value = qty_num.Value.ToString();
+        }
+
+        private void bill_uom_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BillDataGrid.CurrentRow.Cells["PropertyUOM"].Value = bill_uom_cbo.SelectedValue;
+        }
+
+        private void desc_txt_TextChanged(object sender, EventArgs e)
+        {
+            BillDataGrid.CurrentRow.Cells["PartDescription"].Value = desc_txt.Text;
+        }
+
+        private void ViewAsAsm_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            BillDataGrid.CurrentRow.Cells["PropertyOptions"].Value = ViewAsAsm_chk.Checked.ToString();
+        }
+
+        private void operation_txt_TextChanged(object sender, EventArgs e)
         {
 
         }

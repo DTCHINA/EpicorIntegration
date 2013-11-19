@@ -150,5 +150,14 @@ namespace EpicorIntegration.Properties {
                 this["ecogroup"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoGenCol {
+            get {
+                return ((bool)(this["AutoGenCol"]));
+            }
+        }
     }
 }

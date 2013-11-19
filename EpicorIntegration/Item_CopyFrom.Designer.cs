@@ -197,8 +197,6 @@
             this.Load += new System.EventHandler(this.Item_CopyFrom_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.eNGDataDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BS_EngDataDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
