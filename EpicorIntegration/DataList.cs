@@ -4,6 +4,8 @@ using Epicor.Mfg.Lib;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
+using TableAdapterHelper;
 
 namespace EpicorIntegration
 {
@@ -1030,6 +1032,22 @@ namespace EpicorIntegration
             ENGDataDataSetTableAdapters.TemplatesTableAdapter TableAdapter = new ENGDataDataSetTableAdapters.TemplatesTableAdapter();
 
             ENGDataDataSet.TemplatesDataTable RetVal = new ENGDataDataSet.TemplatesDataTable();
+
+            TableAdapter.FillByNameType(RetVal, Type, Name);
+
+            return (DataTable)RetVal;
+        }
+
+        public static DataTable GetFullTemplate(SqlTransaction Trans, string Name, string Type)
+        {
+            ENGDataDataSetTableAdapters.TemplatesTableAdapter TableAdapter = new ENGDataDataSetTableAdapters.TemplatesTableAdapter();
+
+            ENGDataDataSet.TemplatesDataTable RetVal = new ENGDataDataSet.TemplatesDataTable();
+            /*
+            if (Trans == null)
+                TableHelper.BeginTransaction(TableAdapter);
+            else
+                TableHelper.SetTransaction(TableAdapter, Trans);*/
 
             TableAdapter.FillByNameType(RetVal, Type, Name);
 

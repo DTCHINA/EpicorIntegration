@@ -32,10 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Template_Master));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.ItemTab = new System.Windows.Forms.TabPage();
@@ -99,6 +99,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.seq_txt = new System.Windows.Forms.TextBox();
             this.prodstd_cbo = new System.Windows.Forms.ComboBox();
             this.prodhrs_num = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
@@ -110,43 +112,6 @@
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdStandard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stdformat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTab = new System.Windows.Forms.TabPage();
-            this.BillContainer = new System.Windows.Forms.SplitContainer();
-            this.BillTemplateList = new System.Windows.Forms.DataGridView();
-            this.Name_bill = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.splitter2 = new System.Windows.Forms.Splitter();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.save_bill_btn = new System.Windows.Forms.Button();
-            this.close_bill_btn = new System.Windows.Forms.Button();
-            this.del_bill_btn = new System.Windows.Forms.Button();
-            this.edit_bill_btn = new System.Windows.Forms.Button();
-            this.add_bill_btn = new System.Windows.Forms.Button();
-            this.BillPreviewContainer = new System.Windows.Forms.SplitContainer();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.AddBill = new System.Windows.Forms.Button();
-            this.DelBill = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.operation_txt = new System.Windows.Forms.TextBox();
-            this.RawMenu = new System.Windows.Forms.Button();
-            this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
-            this.bill_uom_cbo = new System.Windows.Forms.ComboBox();
-            this.qty_num = new System.Windows.Forms.NumericUpDown();
-            this.label18 = new System.Windows.Forms.Label();
-            this.desc_txt = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.partnum_txt = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.findpart_btn = new System.Windows.Forms.Button();
-            this.mtlseq_txt = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.BillDataGrid = new System.Windows.Forms.DataGridView();
-            this.engDataDataSet = new EpicorIntegration.ENGDataDataSet();
-            this.RawMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.PartTimer = new System.Windows.Forms.Timer(this.components);
-            this.seq_txt = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
             this.ResTab = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -181,12 +146,49 @@
             this.ResPropertyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResPropertyUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTab = new System.Windows.Forms.TabPage();
+            this.BillContainer = new System.Windows.Forms.SplitContainer();
+            this.BillTemplateList = new System.Windows.Forms.DataGridView();
+            this.Name_bill = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.save_bill_btn = new System.Windows.Forms.Button();
+            this.close_bill_btn = new System.Windows.Forms.Button();
+            this.del_bill_btn = new System.Windows.Forms.Button();
+            this.edit_bill_btn = new System.Windows.Forms.Button();
+            this.add_bill_btn = new System.Windows.Forms.Button();
+            this.BillPreviewContainer = new System.Windows.Forms.SplitContainer();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.AddBill = new System.Windows.Forms.Button();
+            this.DelBill = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.operation_txt = new System.Windows.Forms.TextBox();
+            this.RawMenu = new System.Windows.Forms.Button();
+            this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
+            this.bill_uom_cbo = new System.Windows.Forms.ComboBox();
+            this.qty_num = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
+            this.desc_txt = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.partnum_txt = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.findpart_btn = new System.Windows.Forms.Button();
+            this.mtlseq_txt = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.BillDataGrid = new System.Windows.Forms.DataGridView();
             this.PropertyQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyOptions = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.engDataDataSet = new EpicorIntegration.ENGDataDataSet();
+            this.RawMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.PartTimer = new System.Windows.Forms.Timer(this.components);
+            this.label29 = new System.Windows.Forms.Label();
+            this.billtemplatename_txt = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.ItemTab.SuspendLayout();
             this.ItemSplit.Panel1.SuspendLayout();
@@ -216,21 +218,6 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).BeginInit();
-            this.BillTab.SuspendLayout();
-            this.BillContainer.Panel1.SuspendLayout();
-            this.BillContainer.Panel2.SuspendLayout();
-            this.BillContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BillTemplateList)).BeginInit();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.BillPreviewContainer.Panel1.SuspendLayout();
-            this.BillPreviewContainer.Panel2.SuspendLayout();
-            this.BillPreviewContainer.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.qty_num)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BillDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).BeginInit();
             this.ResTab.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -246,6 +233,21 @@
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResDataGrid)).BeginInit();
+            this.BillTab.SuspendLayout();
+            this.BillContainer.Panel1.SuspendLayout();
+            this.BillContainer.Panel2.SuspendLayout();
+            this.BillContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BillTemplateList)).BeginInit();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.BillPreviewContainer.Panel1.SuspendLayout();
+            this.BillPreviewContainer.Panel2.SuspendLayout();
+            this.BillPreviewContainer.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.qty_num)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BillDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -960,6 +962,22 @@
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 16);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(59, 13);
+            this.label23.TabIndex = 11;
+            this.label23.Text = "Sequence:";
+            // 
+            // seq_txt
+            // 
+            this.seq_txt.Location = new System.Drawing.Point(71, 13);
+            this.seq_txt.Name = "seq_txt";
+            this.seq_txt.Size = new System.Drawing.Size(100, 20);
+            this.seq_txt.TabIndex = 10;
+            // 
             // prodstd_cbo
             // 
             this.prodstd_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1078,416 +1096,6 @@
             this.stdformat.Name = "stdformat";
             this.stdformat.ReadOnly = true;
             this.stdformat.Width = 79;
-            // 
-            // BillTab
-            // 
-            this.BillTab.Controls.Add(this.BillContainer);
-            this.BillTab.Location = new System.Drawing.Point(4, 22);
-            this.BillTab.Name = "BillTab";
-            this.BillTab.Padding = new System.Windows.Forms.Padding(3);
-            this.BillTab.Size = new System.Drawing.Size(707, 516);
-            this.BillTab.TabIndex = 2;
-            this.BillTab.Text = "Bill Template";
-            this.BillTab.UseVisualStyleBackColor = true;
-            // 
-            // BillContainer
-            // 
-            this.BillContainer.BackColor = System.Drawing.SystemColors.Control;
-            this.BillContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BillContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.BillContainer.Location = new System.Drawing.Point(3, 3);
-            this.BillContainer.Name = "BillContainer";
-            // 
-            // BillContainer.Panel1
-            // 
-            this.BillContainer.Panel1.Controls.Add(this.BillTemplateList);
-            this.BillContainer.Panel1.Controls.Add(this.panel5);
-            this.BillContainer.Panel1.Controls.Add(this.splitter2);
-            this.BillContainer.Panel1.Controls.Add(this.panel6);
-            // 
-            // BillContainer.Panel2
-            // 
-            this.BillContainer.Panel2.Controls.Add(this.BillPreviewContainer);
-            this.BillContainer.Size = new System.Drawing.Size(701, 510);
-            this.BillContainer.SplitterDistance = 115;
-            this.BillContainer.TabIndex = 0;
-            // 
-            // BillTemplateList
-            // 
-            this.BillTemplateList.AllowUserToAddRows = false;
-            this.BillTemplateList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.BillTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.BillTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
-            this.BillTemplateList.BackgroundColor = System.Drawing.Color.White;
-            this.BillTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.BillTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name_bill});
-            this.BillTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BillTemplateList.Location = new System.Drawing.Point(0, 209);
-            this.BillTemplateList.Name = "BillTemplateList";
-            this.BillTemplateList.ReadOnly = true;
-            this.BillTemplateList.RowHeadersVisible = false;
-            this.BillTemplateList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.BillTemplateList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.BillTemplateList.ShowCellErrors = false;
-            this.BillTemplateList.ShowCellToolTips = false;
-            this.BillTemplateList.ShowEditingIcon = false;
-            this.BillTemplateList.ShowRowErrors = false;
-            this.BillTemplateList.Size = new System.Drawing.Size(115, 301);
-            this.BillTemplateList.TabIndex = 7;
-            // 
-            // Name_bill
-            // 
-            this.Name_bill.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Name_bill.DataPropertyName = "Name";
-            this.Name_bill.HeaderText = "Name";
-            this.Name_bill.Name = "Name_bill";
-            this.Name_bill.ReadOnly = true;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label17);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 189);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(115, 20);
-            this.panel5.TabIndex = 6;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(5, 3);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(73, 13);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Template List:";
-            // 
-            // splitter2
-            // 
-            this.splitter2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.splitter2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter2.Location = new System.Drawing.Point(0, 185);
-            this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(115, 4);
-            this.splitter2.TabIndex = 5;
-            this.splitter2.TabStop = false;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.save_bill_btn);
-            this.panel6.Controls.Add(this.close_bill_btn);
-            this.panel6.Controls.Add(this.del_bill_btn);
-            this.panel6.Controls.Add(this.edit_bill_btn);
-            this.panel6.Controls.Add(this.add_bill_btn);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(115, 185);
-            this.panel6.TabIndex = 4;
-            // 
-            // save_bill_btn
-            // 
-            this.save_bill_btn.Location = new System.Drawing.Point(20, 106);
-            this.save_bill_btn.Name = "save_bill_btn";
-            this.save_bill_btn.Size = new System.Drawing.Size(75, 23);
-            this.save_bill_btn.TabIndex = 15;
-            this.save_bill_btn.Text = "Save";
-            this.save_bill_btn.UseVisualStyleBackColor = true;
-            this.save_bill_btn.Click += new System.EventHandler(this.save_bill_btn_Click);
-            // 
-            // close_bill_btn
-            // 
-            this.close_bill_btn.Location = new System.Drawing.Point(20, 135);
-            this.close_bill_btn.Name = "close_bill_btn";
-            this.close_bill_btn.Size = new System.Drawing.Size(75, 23);
-            this.close_bill_btn.TabIndex = 8;
-            this.close_bill_btn.Text = "&Close";
-            this.close_bill_btn.UseVisualStyleBackColor = true;
-            this.close_bill_btn.Click += new System.EventHandler(this.close_bill_btn_Click);
-            // 
-            // del_bill_btn
-            // 
-            this.del_bill_btn.Location = new System.Drawing.Point(20, 77);
-            this.del_bill_btn.Name = "del_bill_btn";
-            this.del_bill_btn.Size = new System.Drawing.Size(75, 23);
-            this.del_bill_btn.TabIndex = 7;
-            this.del_bill_btn.Text = "&Delete";
-            this.del_bill_btn.UseVisualStyleBackColor = true;
-            // 
-            // edit_bill_btn
-            // 
-            this.edit_bill_btn.Location = new System.Drawing.Point(20, 48);
-            this.edit_bill_btn.Name = "edit_bill_btn";
-            this.edit_bill_btn.Size = new System.Drawing.Size(75, 23);
-            this.edit_bill_btn.TabIndex = 6;
-            this.edit_bill_btn.Text = "&Edit";
-            this.edit_bill_btn.UseVisualStyleBackColor = true;
-            // 
-            // add_bill_btn
-            // 
-            this.add_bill_btn.Location = new System.Drawing.Point(20, 19);
-            this.add_bill_btn.Name = "add_bill_btn";
-            this.add_bill_btn.Size = new System.Drawing.Size(75, 23);
-            this.add_bill_btn.TabIndex = 5;
-            this.add_bill_btn.Text = "&Add";
-            this.add_bill_btn.UseVisualStyleBackColor = true;
-            // 
-            // BillPreviewContainer
-            // 
-            this.BillPreviewContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BillPreviewContainer.Location = new System.Drawing.Point(0, 0);
-            this.BillPreviewContainer.Name = "BillPreviewContainer";
-            this.BillPreviewContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // BillPreviewContainer.Panel1
-            // 
-            this.BillPreviewContainer.Panel1.Controls.Add(this.groupBox6);
-            this.BillPreviewContainer.Panel1.Controls.Add(this.groupBox5);
-            // 
-            // BillPreviewContainer.Panel2
-            // 
-            this.BillPreviewContainer.Panel2.Controls.Add(this.BillDataGrid);
-            this.BillPreviewContainer.Size = new System.Drawing.Size(582, 510);
-            this.BillPreviewContainer.SplitterDistance = 189;
-            this.BillPreviewContainer.TabIndex = 0;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.AddBill);
-            this.groupBox6.Controls.Add(this.DelBill);
-            this.groupBox6.Location = new System.Drawing.Point(445, 3);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(89, 165);
-            this.groupBox6.TabIndex = 17;
-            this.groupBox6.TabStop = false;
-            // 
-            // AddBill
-            // 
-            this.AddBill.Location = new System.Drawing.Point(6, 19);
-            this.AddBill.Name = "AddBill";
-            this.AddBill.Size = new System.Drawing.Size(75, 23);
-            this.AddBill.TabIndex = 12;
-            this.AddBill.Text = "Add Bill Item";
-            this.AddBill.UseVisualStyleBackColor = true;
-            this.AddBill.Click += new System.EventHandler(this.AddBill_Click);
-            // 
-            // DelBill
-            // 
-            this.DelBill.Location = new System.Drawing.Point(6, 48);
-            this.DelBill.Name = "DelBill";
-            this.DelBill.Size = new System.Drawing.Size(75, 23);
-            this.DelBill.TabIndex = 13;
-            this.DelBill.Text = "Del Bill Item";
-            this.DelBill.UseVisualStyleBackColor = true;
-            this.DelBill.Click += new System.EventHandler(this.DelBill_Click);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.operation_txt);
-            this.groupBox5.Controls.Add(this.RawMenu);
-            this.groupBox5.Controls.Add(this.ViewAsAsm_chk);
-            this.groupBox5.Controls.Add(this.bill_uom_cbo);
-            this.groupBox5.Controls.Add(this.qty_num);
-            this.groupBox5.Controls.Add(this.label18);
-            this.groupBox5.Controls.Add(this.desc_txt);
-            this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Controls.Add(this.partnum_txt);
-            this.groupBox5.Controls.Add(this.label20);
-            this.groupBox5.Controls.Add(this.findpart_btn);
-            this.groupBox5.Controls.Add(this.mtlseq_txt);
-            this.groupBox5.Controls.Add(this.label21);
-            this.groupBox5.Location = new System.Drawing.Point(3, 3);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(436, 165);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            // 
-            // operation_txt
-            // 
-            this.operation_txt.Location = new System.Drawing.Point(75, 97);
-            this.operation_txt.Name = "operation_txt";
-            this.operation_txt.Size = new System.Drawing.Size(62, 20);
-            this.operation_txt.TabIndex = 12;
-            this.operation_txt.Text = "10";
-            this.operation_txt.TextChanged += new System.EventHandler(this.operation_txt_TextChanged);
-            // 
-            // RawMenu
-            // 
-            this.RawMenu.Location = new System.Drawing.Point(355, 19);
-            this.RawMenu.Name = "RawMenu";
-            this.RawMenu.Size = new System.Drawing.Size(75, 23);
-            this.RawMenu.TabIndex = 11;
-            this.RawMenu.Text = "Add &Raw";
-            this.RawMenu.UseVisualStyleBackColor = true;
-            this.RawMenu.Click += new System.EventHandler(this.RawMenu_Click);
-            // 
-            // ViewAsAsm_chk
-            // 
-            this.ViewAsAsm_chk.AutoSize = true;
-            this.ViewAsAsm_chk.Location = new System.Drawing.Point(175, 21);
-            this.ViewAsAsm_chk.Name = "ViewAsAsm_chk";
-            this.ViewAsAsm_chk.Size = new System.Drawing.Size(111, 17);
-            this.ViewAsAsm_chk.TabIndex = 10;
-            this.ViewAsAsm_chk.Text = "View As Assembly";
-            this.ViewAsAsm_chk.UseVisualStyleBackColor = true;
-            this.ViewAsAsm_chk.CheckedChanged += new System.EventHandler(this.ViewAsAsm_chk_CheckedChanged);
-            // 
-            // bill_uom_cbo
-            // 
-            this.bill_uom_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.bill_uom_cbo.FormattingEnabled = true;
-            this.bill_uom_cbo.Location = new System.Drawing.Point(143, 123);
-            this.bill_uom_cbo.Name = "bill_uom_cbo";
-            this.bill_uom_cbo.Size = new System.Drawing.Size(74, 21);
-            this.bill_uom_cbo.TabIndex = 2;
-            this.bill_uom_cbo.SelectedIndexChanged += new System.EventHandler(this.bill_uom_cbo_SelectedIndexChanged);
-            // 
-            // qty_num
-            // 
-            this.qty_num.DecimalPlaces = 2;
-            this.qty_num.Location = new System.Drawing.Point(75, 124);
-            this.qty_num.Name = "qty_num";
-            this.qty_num.Size = new System.Drawing.Size(62, 20);
-            this.qty_num.TabIndex = 9;
-            this.qty_num.ValueChanged += new System.EventHandler(this.qty_num_ValueChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(43, 126);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(26, 13);
-            this.label18.TabIndex = 8;
-            this.label18.Text = "Qty.";
-            // 
-            // desc_txt
-            // 
-            this.desc_txt.BackColor = System.Drawing.Color.White;
-            this.desc_txt.Location = new System.Drawing.Point(75, 71);
-            this.desc_txt.Name = "desc_txt";
-            this.desc_txt.ReadOnly = true;
-            this.desc_txt.Size = new System.Drawing.Size(211, 20);
-            this.desc_txt.TabIndex = 7;
-            this.desc_txt.Visible = false;
-            this.desc_txt.TextChanged += new System.EventHandler(this.desc_txt_TextChanged);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 74);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(63, 13);
-            this.label19.TabIndex = 6;
-            this.label19.Text = "Description:";
-            this.label19.Visible = false;
-            // 
-            // partnum_txt
-            // 
-            this.partnum_txt.Location = new System.Drawing.Point(75, 45);
-            this.partnum_txt.Name = "partnum_txt";
-            this.partnum_txt.Size = new System.Drawing.Size(211, 20);
-            this.partnum_txt.TabIndex = 5;
-            this.partnum_txt.TextChanged += new System.EventHandler(this.partnum_txt_TextChanged);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(13, 100);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(56, 13);
-            this.label20.TabIndex = 3;
-            this.label20.Text = "Operation:";
-            // 
-            // findpart_btn
-            // 
-            this.findpart_btn.Location = new System.Drawing.Point(7, 43);
-            this.findpart_btn.Name = "findpart_btn";
-            this.findpart_btn.Size = new System.Drawing.Size(62, 23);
-            this.findpart_btn.TabIndex = 2;
-            this.findpart_btn.Text = "Part";
-            this.findpart_btn.UseVisualStyleBackColor = true;
-            this.findpart_btn.Click += new System.EventHandler(this.findpart_btn_Click);
-            // 
-            // mtlseq_txt
-            // 
-            this.mtlseq_txt.Location = new System.Drawing.Point(75, 19);
-            this.mtlseq_txt.Name = "mtlseq_txt";
-            this.mtlseq_txt.ReadOnly = true;
-            this.mtlseq_txt.Size = new System.Drawing.Size(62, 20);
-            this.mtlseq_txt.TabIndex = 1;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(23, 22);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(46, 13);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Mtl Seq:";
-            // 
-            // BillDataGrid
-            // 
-            this.BillDataGrid.AllowUserToAddRows = false;
-            this.BillDataGrid.AllowUserToDeleteRows = false;
-            this.BillDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.BillDataGrid.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
-            this.BillDataGrid.BackgroundColor = System.Drawing.Color.White;
-            this.BillDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.BillDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PropertyQty,
-            this.PropertyValue,
-            this.PartDescription,
-            this.PropertyType,
-            this.PropertyUOM,
-            this.PropertyOptions});
-            this.BillDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BillDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.BillDataGrid.Location = new System.Drawing.Point(0, 0);
-            this.BillDataGrid.MultiSelect = false;
-            this.BillDataGrid.Name = "BillDataGrid";
-            this.BillDataGrid.ReadOnly = true;
-            this.BillDataGrid.RowHeadersVisible = false;
-            this.BillDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.BillDataGrid.ShowCellErrors = false;
-            this.BillDataGrid.ShowCellToolTips = false;
-            this.BillDataGrid.ShowEditingIcon = false;
-            this.BillDataGrid.ShowRowErrors = false;
-            this.BillDataGrid.Size = new System.Drawing.Size(582, 317);
-            this.BillDataGrid.TabIndex = 2;
-            // 
-            // engDataDataSet
-            // 
-            this.engDataDataSet.DataSetName = "ENGDataDataSet";
-            this.engDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // RawMenuStrip
-            // 
-            this.RawMenuStrip.Name = "contextMenuStrip1";
-            this.RawMenuStrip.Size = new System.Drawing.Size(61, 4);
-            // 
-            // PartTimer
-            // 
-            this.PartTimer.Interval = 500;
-            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
-            // 
-            // seq_txt
-            // 
-            this.seq_txt.Location = new System.Drawing.Point(71, 13);
-            this.seq_txt.Name = "seq_txt";
-            this.seq_txt.Size = new System.Drawing.Size(100, 20);
-            this.seq_txt.TabIndex = 10;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 16);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(59, 13);
-            this.label23.TabIndex = 11;
-            this.label23.Text = "Sequence:";
             // 
             // ResTab
             // 
@@ -1865,6 +1473,387 @@
             this.ResDesc.Name = "ResDesc";
             this.ResDesc.ReadOnly = true;
             // 
+            // BillTab
+            // 
+            this.BillTab.Controls.Add(this.BillContainer);
+            this.BillTab.Location = new System.Drawing.Point(4, 22);
+            this.BillTab.Name = "BillTab";
+            this.BillTab.Padding = new System.Windows.Forms.Padding(3);
+            this.BillTab.Size = new System.Drawing.Size(707, 516);
+            this.BillTab.TabIndex = 2;
+            this.BillTab.Text = "Bill Template";
+            this.BillTab.UseVisualStyleBackColor = true;
+            // 
+            // BillContainer
+            // 
+            this.BillContainer.BackColor = System.Drawing.SystemColors.Control;
+            this.BillContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BillContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.BillContainer.Location = new System.Drawing.Point(3, 3);
+            this.BillContainer.Name = "BillContainer";
+            // 
+            // BillContainer.Panel1
+            // 
+            this.BillContainer.Panel1.Controls.Add(this.BillTemplateList);
+            this.BillContainer.Panel1.Controls.Add(this.panel5);
+            this.BillContainer.Panel1.Controls.Add(this.splitter2);
+            this.BillContainer.Panel1.Controls.Add(this.panel6);
+            // 
+            // BillContainer.Panel2
+            // 
+            this.BillContainer.Panel2.Controls.Add(this.BillPreviewContainer);
+            this.BillContainer.Size = new System.Drawing.Size(701, 510);
+            this.BillContainer.SplitterDistance = 115;
+            this.BillContainer.TabIndex = 0;
+            // 
+            // BillTemplateList
+            // 
+            this.BillTemplateList.AllowUserToAddRows = false;
+            this.BillTemplateList.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BillTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.BillTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
+            this.BillTemplateList.BackgroundColor = System.Drawing.Color.White;
+            this.BillTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BillTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name_bill});
+            this.BillTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BillTemplateList.Location = new System.Drawing.Point(0, 209);
+            this.BillTemplateList.Name = "BillTemplateList";
+            this.BillTemplateList.ReadOnly = true;
+            this.BillTemplateList.RowHeadersVisible = false;
+            this.BillTemplateList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.BillTemplateList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.BillTemplateList.ShowCellErrors = false;
+            this.BillTemplateList.ShowCellToolTips = false;
+            this.BillTemplateList.ShowEditingIcon = false;
+            this.BillTemplateList.ShowRowErrors = false;
+            this.BillTemplateList.Size = new System.Drawing.Size(115, 301);
+            this.BillTemplateList.TabIndex = 7;
+            // 
+            // Name_bill
+            // 
+            this.Name_bill.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Name_bill.DataPropertyName = "Name";
+            this.Name_bill.HeaderText = "Name";
+            this.Name_bill.Name = "Name_bill";
+            this.Name_bill.ReadOnly = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label17);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 189);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(115, 20);
+            this.panel5.TabIndex = 6;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(5, 3);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 13);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Template List:";
+            // 
+            // splitter2
+            // 
+            this.splitter2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.splitter2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitter2.Location = new System.Drawing.Point(0, 185);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(115, 4);
+            this.splitter2.TabIndex = 5;
+            this.splitter2.TabStop = false;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.save_bill_btn);
+            this.panel6.Controls.Add(this.close_bill_btn);
+            this.panel6.Controls.Add(this.del_bill_btn);
+            this.panel6.Controls.Add(this.edit_bill_btn);
+            this.panel6.Controls.Add(this.add_bill_btn);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(115, 185);
+            this.panel6.TabIndex = 4;
+            // 
+            // save_bill_btn
+            // 
+            this.save_bill_btn.Location = new System.Drawing.Point(20, 106);
+            this.save_bill_btn.Name = "save_bill_btn";
+            this.save_bill_btn.Size = new System.Drawing.Size(75, 23);
+            this.save_bill_btn.TabIndex = 15;
+            this.save_bill_btn.Text = "Save";
+            this.save_bill_btn.UseVisualStyleBackColor = true;
+            this.save_bill_btn.Click += new System.EventHandler(this.save_bill_btn_Click);
+            // 
+            // close_bill_btn
+            // 
+            this.close_bill_btn.Location = new System.Drawing.Point(20, 135);
+            this.close_bill_btn.Name = "close_bill_btn";
+            this.close_bill_btn.Size = new System.Drawing.Size(75, 23);
+            this.close_bill_btn.TabIndex = 8;
+            this.close_bill_btn.Text = "&Close";
+            this.close_bill_btn.UseVisualStyleBackColor = true;
+            this.close_bill_btn.Click += new System.EventHandler(this.close_bill_btn_Click);
+            // 
+            // del_bill_btn
+            // 
+            this.del_bill_btn.Location = new System.Drawing.Point(20, 77);
+            this.del_bill_btn.Name = "del_bill_btn";
+            this.del_bill_btn.Size = new System.Drawing.Size(75, 23);
+            this.del_bill_btn.TabIndex = 7;
+            this.del_bill_btn.Text = "&Delete";
+            this.del_bill_btn.UseVisualStyleBackColor = true;
+            // 
+            // edit_bill_btn
+            // 
+            this.edit_bill_btn.Location = new System.Drawing.Point(20, 48);
+            this.edit_bill_btn.Name = "edit_bill_btn";
+            this.edit_bill_btn.Size = new System.Drawing.Size(75, 23);
+            this.edit_bill_btn.TabIndex = 6;
+            this.edit_bill_btn.Text = "&Edit";
+            this.edit_bill_btn.UseVisualStyleBackColor = true;
+            // 
+            // add_bill_btn
+            // 
+            this.add_bill_btn.Location = new System.Drawing.Point(20, 19);
+            this.add_bill_btn.Name = "add_bill_btn";
+            this.add_bill_btn.Size = new System.Drawing.Size(75, 23);
+            this.add_bill_btn.TabIndex = 5;
+            this.add_bill_btn.Text = "&Add";
+            this.add_bill_btn.UseVisualStyleBackColor = true;
+            // 
+            // BillPreviewContainer
+            // 
+            this.BillPreviewContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BillPreviewContainer.Location = new System.Drawing.Point(0, 0);
+            this.BillPreviewContainer.Name = "BillPreviewContainer";
+            this.BillPreviewContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // BillPreviewContainer.Panel1
+            // 
+            this.BillPreviewContainer.Panel1.Controls.Add(this.groupBox6);
+            this.BillPreviewContainer.Panel1.Controls.Add(this.groupBox5);
+            // 
+            // BillPreviewContainer.Panel2
+            // 
+            this.BillPreviewContainer.Panel2.Controls.Add(this.BillDataGrid);
+            this.BillPreviewContainer.Size = new System.Drawing.Size(582, 510);
+            this.BillPreviewContainer.SplitterDistance = 189;
+            this.BillPreviewContainer.TabIndex = 0;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.AddBill);
+            this.groupBox6.Controls.Add(this.DelBill);
+            this.groupBox6.Location = new System.Drawing.Point(445, 3);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(89, 165);
+            this.groupBox6.TabIndex = 17;
+            this.groupBox6.TabStop = false;
+            // 
+            // AddBill
+            // 
+            this.AddBill.Location = new System.Drawing.Point(6, 19);
+            this.AddBill.Name = "AddBill";
+            this.AddBill.Size = new System.Drawing.Size(75, 23);
+            this.AddBill.TabIndex = 12;
+            this.AddBill.Text = "Add Bill Item";
+            this.AddBill.UseVisualStyleBackColor = true;
+            this.AddBill.Click += new System.EventHandler(this.AddBill_Click);
+            // 
+            // DelBill
+            // 
+            this.DelBill.Location = new System.Drawing.Point(6, 48);
+            this.DelBill.Name = "DelBill";
+            this.DelBill.Size = new System.Drawing.Size(75, 23);
+            this.DelBill.TabIndex = 13;
+            this.DelBill.Text = "Del Bill Item";
+            this.DelBill.UseVisualStyleBackColor = true;
+            this.DelBill.Click += new System.EventHandler(this.DelBill_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label29);
+            this.groupBox5.Controls.Add(this.billtemplatename_txt);
+            this.groupBox5.Controls.Add(this.operation_txt);
+            this.groupBox5.Controls.Add(this.RawMenu);
+            this.groupBox5.Controls.Add(this.ViewAsAsm_chk);
+            this.groupBox5.Controls.Add(this.bill_uom_cbo);
+            this.groupBox5.Controls.Add(this.qty_num);
+            this.groupBox5.Controls.Add(this.label18);
+            this.groupBox5.Controls.Add(this.desc_txt);
+            this.groupBox5.Controls.Add(this.label19);
+            this.groupBox5.Controls.Add(this.partnum_txt);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.Controls.Add(this.findpart_btn);
+            this.groupBox5.Controls.Add(this.mtlseq_txt);
+            this.groupBox5.Controls.Add(this.label21);
+            this.groupBox5.Location = new System.Drawing.Point(3, 3);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(436, 165);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            // 
+            // operation_txt
+            // 
+            this.operation_txt.Location = new System.Drawing.Point(77, 133);
+            this.operation_txt.Name = "operation_txt";
+            this.operation_txt.Size = new System.Drawing.Size(62, 20);
+            this.operation_txt.TabIndex = 12;
+            this.operation_txt.Text = "10";
+            this.operation_txt.TextChanged += new System.EventHandler(this.operation_txt_TextChanged);
+            // 
+            // RawMenu
+            // 
+            this.RawMenu.Location = new System.Drawing.Point(355, 19);
+            this.RawMenu.Name = "RawMenu";
+            this.RawMenu.Size = new System.Drawing.Size(75, 23);
+            this.RawMenu.TabIndex = 11;
+            this.RawMenu.Text = "Add &Raw";
+            this.RawMenu.UseVisualStyleBackColor = true;
+            this.RawMenu.Click += new System.EventHandler(this.RawMenu_Click);
+            // 
+            // ViewAsAsm_chk
+            // 
+            this.ViewAsAsm_chk.AutoSize = true;
+            this.ViewAsAsm_chk.Location = new System.Drawing.Point(177, 57);
+            this.ViewAsAsm_chk.Name = "ViewAsAsm_chk";
+            this.ViewAsAsm_chk.Size = new System.Drawing.Size(111, 17);
+            this.ViewAsAsm_chk.TabIndex = 10;
+            this.ViewAsAsm_chk.Text = "View As Assembly";
+            this.ViewAsAsm_chk.UseVisualStyleBackColor = true;
+            this.ViewAsAsm_chk.CheckedChanged += new System.EventHandler(this.ViewAsAsm_chk_CheckedChanged);
+            // 
+            // bill_uom_cbo
+            // 
+            this.bill_uom_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bill_uom_cbo.FormattingEnabled = true;
+            this.bill_uom_cbo.Location = new System.Drawing.Point(245, 133);
+            this.bill_uom_cbo.Name = "bill_uom_cbo";
+            this.bill_uom_cbo.Size = new System.Drawing.Size(74, 21);
+            this.bill_uom_cbo.TabIndex = 2;
+            this.bill_uom_cbo.SelectedIndexChanged += new System.EventHandler(this.bill_uom_cbo_SelectedIndexChanged);
+            // 
+            // qty_num
+            // 
+            this.qty_num.DecimalPlaces = 2;
+            this.qty_num.Location = new System.Drawing.Point(177, 134);
+            this.qty_num.Name = "qty_num";
+            this.qty_num.Size = new System.Drawing.Size(62, 20);
+            this.qty_num.TabIndex = 9;
+            this.qty_num.ValueChanged += new System.EventHandler(this.qty_num_ValueChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(145, 136);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(26, 13);
+            this.label18.TabIndex = 8;
+            this.label18.Text = "Qty.";
+            // 
+            // desc_txt
+            // 
+            this.desc_txt.BackColor = System.Drawing.Color.White;
+            this.desc_txt.Location = new System.Drawing.Point(77, 107);
+            this.desc_txt.Name = "desc_txt";
+            this.desc_txt.ReadOnly = true;
+            this.desc_txt.Size = new System.Drawing.Size(211, 20);
+            this.desc_txt.TabIndex = 7;
+            this.desc_txt.Visible = false;
+            this.desc_txt.TextChanged += new System.EventHandler(this.desc_txt_TextChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(8, 110);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(63, 13);
+            this.label19.TabIndex = 6;
+            this.label19.Text = "Description:";
+            this.label19.Visible = false;
+            // 
+            // partnum_txt
+            // 
+            this.partnum_txt.Location = new System.Drawing.Point(77, 81);
+            this.partnum_txt.Name = "partnum_txt";
+            this.partnum_txt.Size = new System.Drawing.Size(211, 20);
+            this.partnum_txt.TabIndex = 5;
+            this.partnum_txt.TextChanged += new System.EventHandler(this.partnum_txt_TextChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(15, 136);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(56, 13);
+            this.label20.TabIndex = 3;
+            this.label20.Text = "Operation:";
+            // 
+            // findpart_btn
+            // 
+            this.findpart_btn.Location = new System.Drawing.Point(9, 79);
+            this.findpart_btn.Name = "findpart_btn";
+            this.findpart_btn.Size = new System.Drawing.Size(62, 23);
+            this.findpart_btn.TabIndex = 2;
+            this.findpart_btn.Text = "Part";
+            this.findpart_btn.UseVisualStyleBackColor = true;
+            this.findpart_btn.Click += new System.EventHandler(this.findpart_btn_Click);
+            // 
+            // mtlseq_txt
+            // 
+            this.mtlseq_txt.Location = new System.Drawing.Point(77, 55);
+            this.mtlseq_txt.Name = "mtlseq_txt";
+            this.mtlseq_txt.ReadOnly = true;
+            this.mtlseq_txt.Size = new System.Drawing.Size(62, 20);
+            this.mtlseq_txt.TabIndex = 1;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(25, 58);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(46, 13);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Mtl Seq:";
+            // 
+            // BillDataGrid
+            // 
+            this.BillDataGrid.AllowUserToAddRows = false;
+            this.BillDataGrid.AllowUserToDeleteRows = false;
+            this.BillDataGrid.AllowUserToResizeRows = false;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.BillDataGrid.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
+            this.BillDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.BillDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BillDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PropertyQty,
+            this.PropertyValue,
+            this.PartDescription,
+            this.PropertyType,
+            this.PropertyUOM,
+            this.PropertyOptions});
+            this.BillDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BillDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.BillDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.BillDataGrid.MultiSelect = false;
+            this.BillDataGrid.Name = "BillDataGrid";
+            this.BillDataGrid.ReadOnly = true;
+            this.BillDataGrid.RowHeadersVisible = false;
+            this.BillDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.BillDataGrid.ShowCellErrors = false;
+            this.BillDataGrid.ShowCellToolTips = false;
+            this.BillDataGrid.ShowEditingIcon = false;
+            this.BillDataGrid.ShowRowErrors = false;
+            this.BillDataGrid.Size = new System.Drawing.Size(582, 317);
+            this.BillDataGrid.TabIndex = 2;
+            // 
             // PropertyQty
             // 
             this.PropertyQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -1916,7 +1905,38 @@
             this.PropertyOptions.HeaderText = "View As Assembly";
             this.PropertyOptions.Name = "PropertyOptions";
             this.PropertyOptions.ReadOnly = true;
-            this.PropertyOptions.Width = 88;
+            this.PropertyOptions.Width = 98;
+            // 
+            // engDataDataSet
+            // 
+            this.engDataDataSet.DataSetName = "ENGDataDataSet";
+            this.engDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // RawMenuStrip
+            // 
+            this.RawMenuStrip.Name = "contextMenuStrip1";
+            this.RawMenuStrip.Size = new System.Drawing.Size(61, 4);
+            // 
+            // PartTimer
+            // 
+            this.PartTimer.Interval = 500;
+            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(7, 16);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(85, 13);
+            this.label29.TabIndex = 13;
+            this.label29.Text = "Template Name:";
+            // 
+            // billtemplatename_txt
+            // 
+            this.billtemplatename_txt.Location = new System.Drawing.Point(10, 32);
+            this.billtemplatename_txt.Name = "billtemplatename_txt";
+            this.billtemplatename_txt.Size = new System.Drawing.Size(290, 20);
+            this.billtemplatename_txt.TabIndex = 14;
             // 
             // Template_Master
             // 
@@ -1966,23 +1986,6 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).EndInit();
-            this.BillTab.ResumeLayout(false);
-            this.BillContainer.Panel1.ResumeLayout(false);
-            this.BillContainer.Panel2.ResumeLayout(false);
-            this.BillContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.BillTemplateList)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.BillPreviewContainer.Panel1.ResumeLayout(false);
-            this.BillPreviewContainer.Panel2.ResumeLayout(false);
-            this.BillPreviewContainer.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.qty_num)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BillDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).EndInit();
             this.ResTab.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -2001,6 +2004,23 @@
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResDataGrid)).EndInit();
+            this.BillTab.ResumeLayout(false);
+            this.BillContainer.Panel1.ResumeLayout(false);
+            this.BillContainer.Panel2.ResumeLayout(false);
+            this.BillContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BillTemplateList)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.BillPreviewContainer.Panel1.ResumeLayout(false);
+            this.BillPreviewContainer.Panel2.ResumeLayout(false);
+            this.BillPreviewContainer.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.qty_num)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BillDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2157,5 +2177,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PropertyType;
         private System.Windows.Forms.DataGridViewTextBoxColumn PropertyUOM;
         private System.Windows.Forms.DataGridViewCheckBoxColumn PropertyOptions;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox billtemplatename_txt;
     }
 }

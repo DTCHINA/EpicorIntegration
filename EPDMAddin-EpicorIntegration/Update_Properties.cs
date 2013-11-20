@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using EdmLib;
 using EpicorIntegration;
 
-namespace EPDMAddin_EpicorIntegration
+namespace EpicorIntegration
 {
     public partial class Update_Properties : Form
     {

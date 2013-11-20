@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EPDMAddin_EpicorIntegration")]
+[assembly: AssemblyTitle("EPDM-EpicorIntegration")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Solidworks Corporation")]
-[assembly: AssemblyProduct("EPDMAddin_EpicorIntegration")]
+[assembly: AssemblyProduct("EPDM-EpicorIntegration")]
 [assembly: AssemblyCopyright("Copyright © Solidworks Corporation 2007")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

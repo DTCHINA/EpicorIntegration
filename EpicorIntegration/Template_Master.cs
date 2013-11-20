@@ -8,11 +8,17 @@ using System.Text;
 //using System.Threading.Tasks;
 using System.Windows.Forms;
 using Epicor.Mfg.BO;
+using TableAdapterHelper;
+using System.Data.SqlClient;
 
 namespace EpicorIntegration
 {
     public partial class Template_Master : Form
     {
+        SqlTransaction Transaction { get; set; }
+
+        ENGDataDataSetTableAdapters.TemplatesTableAdapter TemplateAdapter = new ENGDataDataSetTableAdapters.TemplatesTableAdapter();
+
         public Template_Master()
         {
             InitializeComponent();
@@ -169,23 +175,27 @@ namespace EpicorIntegration
 
             bill_uom_cbo.SelectedIndexChanged -= bill_uom_cbo_SelectedIndexChanged;
 
-            qty_num.Value = decimal.Parse(BillDataGrid.CurrentRow.Cells["PropertyQty"].Value.ToString());
+            try
+            {
+                qty_num.Value = decimal.Parse(BillDataGrid.CurrentRow.Cells["PropertyQty"].Value.ToString());
 
-            partnum_txt.Text = BillDataGrid.CurrentRow.Cells["PropertyValue"].Value.ToString();
+                partnum_txt.Text = BillDataGrid.CurrentRow.Cells["PropertyValue"].Value.ToString();
 
-            operation_txt.Text = BillDataGrid.CurrentRow.Cells["PropertyType"].Value.ToString();
+                operation_txt.Text = BillDataGrid.CurrentRow.Cells["PropertyType"].Value.ToString();
 
-            ViewAsAsm_chk.Checked = bool.Parse(BillDataGrid.CurrentRow.Cells["PropertyOptions"].Value.ToString());
+                ViewAsAsm_chk.Checked = bool.Parse(BillDataGrid.CurrentRow.Cells["PropertyOptions"].Value.ToString());
 
-            DataTable ds = DataList.PartUOM(partnum_txt.Text);
+                DataTable ds = DataList.PartUOM(partnum_txt.Text);
 
-            bill_uom_cbo.DataSource = ds;
+                bill_uom_cbo.DataSource = ds;
 
-            bill_uom_cbo.DisplayMember = "UOMCode";
+                bill_uom_cbo.DisplayMember = "UOMCode";
 
-            bill_uom_cbo.ValueMember = "UOMCode";
+                bill_uom_cbo.ValueMember = "UOMCode";
 
-            bill_uom_cbo.SelectedValue = BillDataGrid.CurrentRow.Cells["PropertyUOM"].Value.ToString();
+                bill_uom_cbo.SelectedValue = BillDataGrid.CurrentRow.Cells["PropertyUOM"].Value.ToString();
+            }
+            catch { }
 
             qty_num.ValueChanged += qty_num_ValueChanged;
 
@@ -296,6 +306,8 @@ namespace EpicorIntegration
             OpsTemplateList.SelectionChanged += OpsTemplateList_SelectionChanged;
 
             ResTemplateList.SelectionChanged += ResTemplateList_SelectionChanged;
+
+            Transaction = TableHelper.BeginTransaction(TemplateAdapter);
         }
 
         void ResTemplateList_SelectionChanged(object sender, EventArgs e)
@@ -319,7 +331,13 @@ namespace EpicorIntegration
 
         void BillTemplateList_SelectionChanged(object sender, EventArgs e)
         {
-            BillDataGrid.DataSource = Templates.GetFullTemplate(BillTemplateList.CurrentCell.Value.ToString(), "BOM");
+            billtemplatename_txt.Text = BillTemplateList.CurrentCell.Value.ToString();
+
+            //BillDataGrid.DataSource = Templates.GetFullTemplate(billtemplatename_txt.Text, "BOM");
+
+            TemplateAdapter.FillByNameType(engDataDataSet.Templates, "BOM", billtemplatename_txt.Text);
+
+            BillDataGrid.DataSource = engDataDataSet.Templates;
         }
 
         void ItemTemplateList_SelectionChanged(object sender, EventArgs e)
@@ -518,20 +536,36 @@ namespace EpicorIntegration
 
         private void AddBill_Click(object sender, EventArgs e)
         {
-            BillDataGrid.Rows.Add();
+            if (Transaction == null)
+                Transaction = TableHelper.BeginTransaction(TemplateAdapter);
+
+            TemplateAdapter.InsertNewLine(billtemplatename_txt.Text, "BOM");
+
+            TemplateAdapter.FillByNameType(engDataDataSet.Templates, "BOM", billtemplatename_txt.Text);
+
+            BillDataGrid.DataSource = engDataDataSet.Templates;
 
             BillDataGrid.ClearSelection();
 
             BillDataGrid.CurrentCell = BillDataGrid.Rows[BillDataGrid.Rows.Count - 1].Cells[0];
+
+            BillDataGrid.CurrentRow.Cells["PropertyType"].Value = operation_txt.Text;
+
+            partnum_txt.Text = "";
+
+            qty_num.Value = 0;
+
+            bill_uom_cbo.SelectedIndex = 0;
         }
 
         private void DelBill_Click(object sender, EventArgs e)
         {
-            BillDataGrid.Rows.RemoveAt(BillDataGrid.CurrentCellAddress.Y);
+            if (Transaction == null)
+                Transaction = TableHelper.BeginTransaction(TemplateAdapter);
 
-            BillDataGrid.ClearSelection();
+            int rowindex = BillDataGrid.CurrentCellAddress.Y;
 
-            BillDataGrid.CurrentCell = BillDataGrid.Rows[0].Cells[0];
+            TemplateAdapter.DeleteLine(billtemplatename_txt.Text, "BOM", BillDataGrid["PropertyType", rowindex].Value.ToString(), BillDataGrid["PropertyValue", rowindex].Value.ToString(), BillDataGrid["PropertyQty", rowindex].Value.ToString(), BillDataGrid["PropertyUOM", rowindex].Value.ToString(), BillDataGrid["PropertyOptions", rowindex].Value.ToString());
         }
 
         private void partnum_txt_TextChanged(object sender, EventArgs e)
@@ -580,7 +614,21 @@ namespace EpicorIntegration
 
         private void save_bill_btn_Click(object sender, EventArgs e)
         {
-            //for each row, add if new, update if mod, remove if del
+            foreach (DataRow dr in engDataDataSet.Templates)
+            {
+                if (dr.RowState == DataRowState.Modified)
+                {
+                    MessageBox.Show("Mod");
+                }
+                if (dr.RowState == DataRowState.Added)
+                    MessageBox.Show("Added");
+            }
+
+            try
+            {
+                Transaction.Commit();
+            }
+            catch { Transaction.Rollback(); }
         }
 
         private void qty_num_ValueChanged(object sender, EventArgs e)
@@ -605,7 +653,7 @@ namespace EpicorIntegration
 
         private void operation_txt_TextChanged(object sender, EventArgs e)
         {
-
+            BillDataGrid.CurrentRow.Cells["PropertyType"].Value = operation_txt.Text;
         }
     }
 }

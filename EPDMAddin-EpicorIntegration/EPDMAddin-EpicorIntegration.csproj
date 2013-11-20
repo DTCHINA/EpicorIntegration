@@ -8,8 +8,8 @@
     <ProjectGuid>{5725485A-A021-48B8-AD5A-08DFF45F65A2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EPDMAddin_EpicorIntegration</RootNamespace>
-    <AssemblyName>EPDMAddin-EpicorIntegration</AssemblyName>
+    <RootNamespace>EPDMEpicorIntegration</RootNamespace>
+    <AssemblyName>EPDM-EpicorIntegration</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -42,6 +42,7 @@
     <WarningLevel>4</WarningLevel>
     <RegisterForComInterop>true</RegisterForComInterop>
     <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>

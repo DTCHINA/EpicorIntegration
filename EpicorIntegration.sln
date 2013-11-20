@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPDMAddin-EpicorIntegration
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobStatusByPlanner", "JobStatusByPlanner\JobStatusByPlanner.csproj", "{4FAC74F1-9D71-4215-9B15-DAA866146414}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableAdapterHelper", "..\TableAdapterHelper\TableAdapterHelper\TableAdapterHelper\TableAdapterHelper.csproj", "{53BAC01A-B21D-4B85-8746-99F84ADF29B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -82,6 +84,16 @@ Global
 		{4FAC74F1-9D71-4215-9B15-DAA866146414}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4FAC74F1-9D71-4215-9B15-DAA866146414}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{4FAC74F1-9D71-4215-9B15-DAA866146414}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{53BAC01A-B21D-4B85-8746-99F84ADF29B6}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{53BAC01A-B21D-4B85-8746-99F84ADF29B6}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{53BAC01A-B21D-4B85-8746-99F84ADF29B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53BAC01A-B21D-4B85-8746-99F84ADF29B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53BAC01A-B21D-4B85-8746-99F84ADF29B6}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{53BAC01A-B21D-4B85-8746-99F84ADF29B6}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{53BAC01A-B21D-4B85-8746-99F84ADF29B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53BAC01A-B21D-4B85-8746-99F84ADF29B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53BAC01A-B21D-4B85-8746-99F84ADF29B6}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{53BAC01A-B21D-4B85-8746-99F84ADF29B6}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

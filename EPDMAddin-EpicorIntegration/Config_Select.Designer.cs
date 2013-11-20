@@ -1,4 +1,4 @@
-﻿namespace EPDMAddin_EpicorIntegration
+﻿namespace EpicorIntegration
 {
     partial class Config_Select
     {
