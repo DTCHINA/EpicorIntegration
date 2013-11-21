@@ -994,6 +994,17 @@ namespace EpicorIntegration
             return (DataTable)RetVal;
         }
 
+        public static DataTable GetBomTemplates(SqlTransaction Trans)
+        {
+            ENGDataDataSetTableAdapters.TemplatesTableAdapter TableAdapter = new ENGDataDataSetTableAdapters.TemplatesTableAdapter();
+
+            ENGDataDataSet.TemplatesDataTable RetVal = new ENGDataDataSet.TemplatesDataTable();
+
+            TableAdapter.FillByType(RetVal, "BOM");
+
+            return (DataTable)RetVal;
+        }
+
         public static DataTable GetOomTemplates()
         {
             ENGDataDataSetTableAdapters.TemplatesTableAdapter TableAdapter = new ENGDataDataSetTableAdapters.TemplatesTableAdapter();

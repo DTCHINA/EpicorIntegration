@@ -286,6 +286,12 @@
     <Compile Include="SerialMask_Master.Designer.cs">
       <DependentUpon>SerialMask_Master.cs</DependentUpon>
     </Compile>
+    <Compile Include="Template_Title.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Template_Title.Designer.cs">
+      <DependentUpon>Template_Title.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse_Master.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -391,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SerialMask_Master.resx">
       <DependentUpon>SerialMask_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template_Title.resx">
+      <DependentUpon>Template_Title.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse_Master.resx">
       <DependentUpon>Warehouse_Master.cs</DependentUpon>

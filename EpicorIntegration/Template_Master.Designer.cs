@@ -164,6 +164,8 @@
             this.AddBill = new System.Windows.Forms.Button();
             this.DelBill = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.billtemplatename_txt = new System.Windows.Forms.TextBox();
             this.operation_txt = new System.Windows.Forms.TextBox();
             this.RawMenu = new System.Windows.Forms.Button();
             this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
@@ -178,17 +180,16 @@
             this.mtlseq_txt = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.BillDataGrid = new System.Windows.Forms.DataGridView();
+            this.row_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyOptions = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.engDataDataSet = new EpicorIntegration.ENGDataDataSet();
             this.RawMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.PartTimer = new System.Windows.Forms.Timer(this.components);
-            this.label29 = new System.Windows.Forms.Label();
-            this.billtemplatename_txt = new System.Windows.Forms.TextBox();
+            this.engDataDataSet = new EpicorIntegration.ENGDataDataSet();
             this.tabControl.SuspendLayout();
             this.ItemTab.SuspendLayout();
             this.ItemSplit.Panel1.SuspendLayout();
@@ -346,6 +347,7 @@
             this.del_item_btn.TabIndex = 2;
             this.del_item_btn.Text = "&Delete";
             this.del_item_btn.UseVisualStyleBackColor = true;
+            this.del_item_btn.Click += new System.EventHandler(this.del_item_btn_Click);
             // 
             // edit_item_btn
             // 
@@ -1626,6 +1628,7 @@
             this.add_bill_btn.TabIndex = 5;
             this.add_bill_btn.Text = "&Add";
             this.add_bill_btn.UseVisualStyleBackColor = true;
+            this.add_bill_btn.Click += new System.EventHandler(this.add_bill_btn_Click);
             // 
             // BillPreviewContainer
             // 
@@ -1698,6 +1701,22 @@
             this.groupBox5.Size = new System.Drawing.Size(436, 165);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(7, 16);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(85, 13);
+            this.label29.TabIndex = 13;
+            this.label29.Text = "Template Name:";
+            // 
+            // billtemplatename_txt
+            // 
+            this.billtemplatename_txt.Location = new System.Drawing.Point(10, 32);
+            this.billtemplatename_txt.Name = "billtemplatename_txt";
+            this.billtemplatename_txt.Size = new System.Drawing.Size(290, 20);
+            this.billtemplatename_txt.TabIndex = 14;
             // 
             // operation_txt
             // 
@@ -1833,6 +1852,7 @@
             this.BillDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.BillDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BillDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.row_id,
             this.PropertyQty,
             this.PropertyValue,
             this.PartDescription,
@@ -1853,6 +1873,14 @@
             this.BillDataGrid.ShowRowErrors = false;
             this.BillDataGrid.Size = new System.Drawing.Size(582, 317);
             this.BillDataGrid.TabIndex = 2;
+            // 
+            // row_id
+            // 
+            this.row_id.DataPropertyName = "row_id";
+            this.row_id.HeaderText = "row_id";
+            this.row_id.Name = "row_id";
+            this.row_id.ReadOnly = true;
+            this.row_id.Visible = false;
             // 
             // PropertyQty
             // 
@@ -1907,11 +1935,6 @@
             this.PropertyOptions.ReadOnly = true;
             this.PropertyOptions.Width = 98;
             // 
-            // engDataDataSet
-            // 
-            this.engDataDataSet.DataSetName = "ENGDataDataSet";
-            this.engDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // RawMenuStrip
             // 
             this.RawMenuStrip.Name = "contextMenuStrip1";
@@ -1922,21 +1945,10 @@
             this.PartTimer.Interval = 500;
             this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
             // 
-            // label29
+            // engDataDataSet
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(7, 16);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(85, 13);
-            this.label29.TabIndex = 13;
-            this.label29.Text = "Template Name:";
-            // 
-            // billtemplatename_txt
-            // 
-            this.billtemplatename_txt.Location = new System.Drawing.Point(10, 32);
-            this.billtemplatename_txt.Name = "billtemplatename_txt";
-            this.billtemplatename_txt.Size = new System.Drawing.Size(290, 20);
-            this.billtemplatename_txt.TabIndex = 14;
+            this.engDataDataSet.DataSetName = "ENGDataDataSet";
+            this.engDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Template_Master
             // 
@@ -2171,13 +2183,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyUOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResDesc;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox billtemplatename_txt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn row_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn PropertyQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn PropertyValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn PartDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn PropertyType;
         private System.Windows.Forms.DataGridViewTextBoxColumn PropertyUOM;
         private System.Windows.Forms.DataGridViewCheckBoxColumn PropertyOptions;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox billtemplatename_txt;
     }
 }

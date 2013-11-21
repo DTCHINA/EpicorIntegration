@@ -329,17 +329,6 @@ namespace EpicorIntegration
             }*/
         }
 
-        void BillTemplateList_SelectionChanged(object sender, EventArgs e)
-        {
-            billtemplatename_txt.Text = BillTemplateList.CurrentCell.Value.ToString();
-
-            //BillDataGrid.DataSource = Templates.GetFullTemplate(billtemplatename_txt.Text, "BOM");
-
-            TemplateAdapter.FillByNameType(engDataDataSet.Templates, "BOM", billtemplatename_txt.Text);
-
-            BillDataGrid.DataSource = engDataDataSet.Templates;
-        }
-
         void ItemTemplateList_SelectionChanged(object sender, EventArgs e)
         {
             
@@ -394,6 +383,57 @@ namespace EpicorIntegration
             catch { }
         }
 
+        private void type_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateDescField()
+        {
+            try
+            {
+                Part Part = new Part(DataList.EpicConn);
+
+                PartListDataSet PartList = new PartListDataSet();
+
+                string WhereClause = "PartNum = '" + partnum_txt.Text + "'";
+
+                int pagesize = 1;
+
+                bool morePages;
+
+                PartList = Part.GetList(WhereClause, pagesize, 0, out morePages);
+
+                DataList.EpicClose();
+
+                desc_txt.Text = PartList.Tables[0].Rows[0]["PartDescription"].ToString();
+
+                Part = null;
+
+                PartList.Dispose();
+
+                PartList = null;
+            }
+            catch { desc_txt.Text = ""; }
+        }
+
+        #region Bill Functions
+
+        void BillTemplateList_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                billtemplatename_txt.Text = BillTemplateList.CurrentCell.Value.ToString();
+
+                //BillDataGrid.DataSource = Templates.GetFullTemplate(billtemplatename_txt.Text, "BOM");
+
+                TemplateAdapter.FillByNameType(engDataDataSet.Templates, "BOM", billtemplatename_txt.Text);
+
+                BillDataGrid.DataSource = engDataDataSet.Templates;
+            }
+            catch { }
+        }
+
         private void findpart_btn_Click(object sender, EventArgs e)
         {
             SearchPart Searchfrm = new SearchPart("");
@@ -411,7 +451,7 @@ namespace EpicorIntegration
 
             Searchfrm = null;
         }
-        
+
         private void RawMenu_Click(object sender, EventArgs e)
         {
             RawMenuStrip.Show(RawMenu, new Point(0, RawMenu.Height));
@@ -524,16 +564,6 @@ namespace EpicorIntegration
             PartTimer.Enabled = true;
         }
 
-        private void PartTimer_Tick(object sender, EventArgs e)
-        {
-            UpdateDescField();
-        }
-
-        private void type_cbo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddBill_Click(object sender, EventArgs e)
         {
             if (Transaction == null)
@@ -547,13 +577,15 @@ namespace EpicorIntegration
 
             BillDataGrid.ClearSelection();
 
-            BillDataGrid.CurrentCell = BillDataGrid.Rows[BillDataGrid.Rows.Count - 1].Cells[0];
+            BillDataGrid.CurrentCell = BillDataGrid.Rows[BillDataGrid.Rows.Count - 1].Cells[1];
 
             BillDataGrid.CurrentRow.Cells["PropertyType"].Value = operation_txt.Text;
 
             partnum_txt.Text = "";
 
             qty_num.Value = 0;
+
+            ViewAsAsm_chk.Checked = false;
 
             bill_uom_cbo.SelectedIndex = 0;
         }
@@ -565,7 +597,9 @@ namespace EpicorIntegration
 
             int rowindex = BillDataGrid.CurrentCellAddress.Y;
 
-            TemplateAdapter.DeleteLine(billtemplatename_txt.Text, "BOM", BillDataGrid["PropertyType", rowindex].Value.ToString(), BillDataGrid["PropertyValue", rowindex].Value.ToString(), BillDataGrid["PropertyQty", rowindex].Value.ToString(), BillDataGrid["PropertyUOM", rowindex].Value.ToString(), BillDataGrid["PropertyOptions", rowindex].Value.ToString());
+            TemplateAdapter.DeleteLine(int.Parse(BillDataGrid.CurrentRow.Cells["row_id"].Value.ToString()));
+
+            BillDataGrid.Rows.RemoveAt(rowindex);
         }
 
         private void partnum_txt_TextChanged(object sender, EventArgs e)
@@ -583,50 +617,18 @@ namespace EpicorIntegration
             BillDataGrid.CurrentRow.Cells["PropertyValue"].Value = partnum_txt.Text;
         }
 
-        private void UpdateDescField()
+        private void PartTimer_Tick(object sender, EventArgs e)
         {
-            try
-            {
-                Part Part = new Part(DataList.EpicConn);
-
-                PartListDataSet PartList = new PartListDataSet();
-
-                string WhereClause = "PartNum = '" + partnum_txt.Text + "'";
-
-                int pagesize = 1;
-
-                bool morePages;
-
-                PartList = Part.GetList(WhereClause, pagesize, 0, out morePages);
-
-                DataList.EpicClose();
-
-                desc_txt.Text = PartList.Tables[0].Rows[0]["PartDescription"].ToString();
-
-                Part = null;
-
-                PartList.Dispose();
-
-                PartList = null;
-            }
-            catch { desc_txt.Text = ""; }
+            UpdateDescField();
         }
 
         private void save_bill_btn_Click(object sender, EventArgs e)
         {
-            foreach (DataRow dr in engDataDataSet.Templates)
-            {
-                if (dr.RowState == DataRowState.Modified)
-                {
-                    MessageBox.Show("Mod");
-                }
-                if (dr.RowState == DataRowState.Added)
-                    MessageBox.Show("Added");
-            }
-
             try
             {
                 Transaction.Commit();
+
+                Transaction = null;
             }
             catch { Transaction.Rollback(); }
         }
@@ -634,26 +636,74 @@ namespace EpicorIntegration
         private void qty_num_ValueChanged(object sender, EventArgs e)
         {
             BillDataGrid.CurrentRow.Cells["PropertyQty"].Value = qty_num.Value.ToString();
+
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text);
         }
 
         private void bill_uom_cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
             BillDataGrid.CurrentRow.Cells["PropertyUOM"].Value = bill_uom_cbo.SelectedValue;
+
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text);
         }
 
         private void desc_txt_TextChanged(object sender, EventArgs e)
         {
             BillDataGrid.CurrentRow.Cells["PartDescription"].Value = desc_txt.Text;
+
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text);
         }
 
         private void ViewAsAsm_chk_CheckedChanged(object sender, EventArgs e)
         {
             BillDataGrid.CurrentRow.Cells["PropertyOptions"].Value = ViewAsAsm_chk.Checked.ToString();
+
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text);
         }
 
         private void operation_txt_TextChanged(object sender, EventArgs e)
         {
             BillDataGrid.CurrentRow.Cells["PropertyType"].Value = operation_txt.Text;
+
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text);
+        }
+
+        private void add_bill_btn_Click(object sender, EventArgs e)
+        {
+            Template_Title TT = new Template_Title();
+
+            DialogResult Dr = TT.ShowDialog();
+
+            if (TT.DialogResult == DialogResult.OK)
+            {
+                string TemplateName = TT.RetVal;
+
+                TT.Dispose();
+                
+                TemplateAdapter.InsertNewLine(TemplateName, "BOM");
+
+                TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)BillTemplateList.DataSource, "BOM");
+
+                //BillTemplateList.CurrentCell = BillTemplateList.Rows[BillTemplateList.Rows.Count - 1].Cells[1];
+            }
+        }
+
+        #endregion
+
+        private void UpdateLine(DataGridView DGV,string TemplateName)
+        {
+            int rowindex = DGV.CurrentCellAddress.Y;
+
+            int row_id = int.Parse(DGV["row_id", rowindex].Value.ToString());
+
+            TemplateAdapter.UpdateQuery(TemplateName, DGV["PropertyType", rowindex].Value.ToString(), DGV["PropertyValue", rowindex].Value.ToString(), DGV["PropertyQty", rowindex].Value.ToString(), DGV["PropertyUOM", rowindex].Value.ToString(), DGV["PropertyOptions", rowindex].Value.ToString(), row_id);
+        }
+
+        private void del_item_btn_Click(object sender, EventArgs e)
+        {
+            TemplateAdapter.DeleteTemplate(billtemplatename_txt.Text, "BOM");
+
+            TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)BillTemplateList.DataSource, "BOM");
         }
     }
 }
