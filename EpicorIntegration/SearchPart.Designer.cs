@@ -55,12 +55,6 @@
             this.qtybearing_chk = new System.Windows.Forms.CheckBox();
             this.nonstock_chk = new System.Windows.Forms.CheckBox();
             this.SearchResultGrid = new System.Windows.Forms.DataGridView();
-            this.HorizMajorContainer = new System.Windows.Forms.SplitContainer();
-            this.VerticalTopContainer = new System.Windows.Forms.SplitContainer();
-            this.OptionsBtn = new System.Windows.Forms.Button();
-            this.Clearbtn = new System.Windows.Forms.Button();
-            this.CancelBtn = new System.Windows.Forms.Button();
-            this.SearchBtn = new System.Windows.Forms.Button();
             this.PartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,21 +65,24 @@
             this.PhantomBOM = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TrackSerialNum = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QtyBearing = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.HorizMajorContainer = new System.Windows.Forms.SplitContainer();
+            this.VerticalTopContainer = new System.Windows.Forms.SplitContainer();
+            this.OptionsBtn = new System.Windows.Forms.Button();
+            this.Clearbtn = new System.Windows.Forms.Button();
+            this.CancelBtn = new System.Windows.Forms.Button();
+            this.SearchBtn = new System.Windows.Forms.Button();
             this.tabs.SuspendLayout();
             this.Basic.SuspendLayout();
             this.basicgroup.SuspendLayout();
             this.Advanced.SuspendLayout();
-            //((System.ComponentModel.ISupportInitialize)(this.advSplit)).BeginInit();
             this.advSplit.Panel1.SuspendLayout();
             this.advSplit.Panel2.SuspendLayout();
             this.advSplit.SuspendLayout();
             this.advgroup.SuspendLayout();
-            //((System.ComponentModel.ISupportInitialize)(this.SearchResultGrid)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.HorizMajorContainer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchResultGrid)).BeginInit();
             this.HorizMajorContainer.Panel1.SuspendLayout();
             this.HorizMajorContainer.Panel2.SuspendLayout();
             this.HorizMajorContainer.SuspendLayout();
-            //((System.ComponentModel.ISupportInitialize)(this.VerticalTopContainer)).BeginInit();
             this.VerticalTopContainer.Panel1.SuspendLayout();
             this.VerticalTopContainer.Panel2.SuspendLayout();
             this.VerticalTopContainer.SuspendLayout();
@@ -384,6 +381,7 @@
             this.SearchResultGrid.Name = "SearchResultGrid";
             this.SearchResultGrid.ReadOnly = true;
             this.SearchResultGrid.RowHeadersVisible = false;
+            this.SearchResultGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.SearchResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SearchResultGrid.ShowCellErrors = false;
             this.SearchResultGrid.ShowCellToolTips = false;
@@ -391,6 +389,80 @@
             this.SearchResultGrid.ShowRowErrors = false;
             this.SearchResultGrid.Size = new System.Drawing.Size(684, 196);
             this.SearchResultGrid.TabIndex = 0;
+            // 
+            // PartNum
+            // 
+            this.PartNum.DataPropertyName = "PartNum";
+            this.PartNum.HeaderText = "Part Number";
+            this.PartNum.Name = "PartNum";
+            this.PartNum.ReadOnly = true;
+            // 
+            // PartDescription
+            // 
+            this.PartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PartDescription.DataPropertyName = "PartDescription";
+            this.PartDescription.HeaderText = "Description";
+            this.PartDescription.Name = "PartDescription";
+            this.PartDescription.ReadOnly = true;
+            this.PartDescription.Width = 85;
+            // 
+            // TypeCode
+            // 
+            this.TypeCode.DataPropertyName = "TypeCode";
+            this.TypeCode.HeaderText = "Type Code";
+            this.TypeCode.Name = "TypeCode";
+            this.TypeCode.ReadOnly = true;
+            // 
+            // ProdCode
+            // 
+            this.ProdCode.DataPropertyName = "ProdCode";
+            this.ProdCode.HeaderText = "Product Code";
+            this.ProdCode.Name = "ProdCode";
+            this.ProdCode.ReadOnly = true;
+            // 
+            // SearchWord
+            // 
+            this.SearchWord.DataPropertyName = "SearchWord";
+            this.SearchWord.HeaderText = "Search Word";
+            this.SearchWord.Name = "SearchWord";
+            this.SearchWord.ReadOnly = true;
+            // 
+            // ClassID
+            // 
+            this.ClassID.DataPropertyName = "ClassID";
+            this.ClassID.HeaderText = "Product Class";
+            this.ClassID.Name = "ClassID";
+            this.ClassID.ReadOnly = true;
+            // 
+            // Inactive
+            // 
+            this.Inactive.DataPropertyName = "Inactive";
+            this.Inactive.HeaderText = "Inactive";
+            this.Inactive.Name = "Inactive";
+            this.Inactive.ReadOnly = true;
+            // 
+            // PhantomBOM
+            // 
+            this.PhantomBOM.DataPropertyName = "PhantomBOM";
+            this.PhantomBOM.HeaderText = "Phantom BOM";
+            this.PhantomBOM.Name = "PhantomBOM";
+            this.PhantomBOM.ReadOnly = true;
+            // 
+            // TrackSerialNum
+            // 
+            this.TrackSerialNum.DataPropertyName = "TrackSerialNum";
+            this.TrackSerialNum.HeaderText = "Serial Number Tracking";
+            this.TrackSerialNum.Name = "TrackSerialNum";
+            this.TrackSerialNum.ReadOnly = true;
+            this.TrackSerialNum.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TrackSerialNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // QtyBearing
+            // 
+            this.QtyBearing.DataPropertyName = "QtyBearing";
+            this.QtyBearing.HeaderText = "QtyBearing";
+            this.QtyBearing.Name = "QtyBearing";
+            this.QtyBearing.ReadOnly = true;
             // 
             // HorizMajorContainer
             // 
@@ -477,80 +549,6 @@
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
-            // PartNum
-            // 
-            this.PartNum.DataPropertyName = "PartNum";
-            this.PartNum.HeaderText = "Part Number";
-            this.PartNum.Name = "PartNum";
-            this.PartNum.ReadOnly = true;
-            // 
-            // PartDescription
-            // 
-            this.PartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PartDescription.DataPropertyName = "PartDescription";
-            this.PartDescription.HeaderText = "Description";
-            this.PartDescription.Name = "PartDescription";
-            this.PartDescription.ReadOnly = true;
-            this.PartDescription.Width = 85;
-            // 
-            // TypeCode
-            // 
-            this.TypeCode.DataPropertyName = "TypeCode";
-            this.TypeCode.HeaderText = "Type Code";
-            this.TypeCode.Name = "TypeCode";
-            this.TypeCode.ReadOnly = true;
-            // 
-            // ProdCode
-            // 
-            this.ProdCode.DataPropertyName = "ProdCode";
-            this.ProdCode.HeaderText = "Product Code";
-            this.ProdCode.Name = "ProdCode";
-            this.ProdCode.ReadOnly = true;
-            // 
-            // SearchWord
-            // 
-            this.SearchWord.DataPropertyName = "SearchWord";
-            this.SearchWord.HeaderText = "Search Word";
-            this.SearchWord.Name = "SearchWord";
-            this.SearchWord.ReadOnly = true;
-            // 
-            // ClassID
-            // 
-            this.ClassID.DataPropertyName = "ClassID";
-            this.ClassID.HeaderText = "Product Class";
-            this.ClassID.Name = "ClassID";
-            this.ClassID.ReadOnly = true;
-            // 
-            // Inactive
-            // 
-            this.Inactive.DataPropertyName = "Inactive";
-            this.Inactive.HeaderText = "Inactive";
-            this.Inactive.Name = "Inactive";
-            this.Inactive.ReadOnly = true;
-            // 
-            // PhantomBOM
-            // 
-            this.PhantomBOM.DataPropertyName = "PhantomBOM";
-            this.PhantomBOM.HeaderText = "Phantom BOM";
-            this.PhantomBOM.Name = "PhantomBOM";
-            this.PhantomBOM.ReadOnly = true;
-            // 
-            // TrackSerialNum
-            // 
-            this.TrackSerialNum.DataPropertyName = "TrackSerialNum";
-            this.TrackSerialNum.HeaderText = "Serial Number Tracking";
-            this.TrackSerialNum.Name = "TrackSerialNum";
-            this.TrackSerialNum.ReadOnly = true;
-            this.TrackSerialNum.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TrackSerialNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // QtyBearing
-            // 
-            this.QtyBearing.DataPropertyName = "QtyBearing";
-            this.QtyBearing.HeaderText = "QtyBearing";
-            this.QtyBearing.Name = "QtyBearing";
-            this.QtyBearing.ReadOnly = true;
-            // 
             // SearchPart
             // 
             this.AcceptButton = this.SearchBtn;
@@ -573,18 +571,15 @@
             this.advSplit.Panel1.ResumeLayout(false);
             this.advSplit.Panel1.PerformLayout();
             this.advSplit.Panel2.ResumeLayout(false);
-            //((System.ComponentModel.ISupportInitialize)(this.advSplit)).EndInit();
             this.advSplit.ResumeLayout(false);
             this.advgroup.ResumeLayout(false);
             this.advgroup.PerformLayout();
-            //((System.ComponentModel.ISupportInitialize)(this.SearchResultGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchResultGrid)).EndInit();
             this.HorizMajorContainer.Panel1.ResumeLayout(false);
             this.HorizMajorContainer.Panel2.ResumeLayout(false);
-            //((System.ComponentModel.ISupportInitialize)(this.HorizMajorContainer)).EndInit();
             this.HorizMajorContainer.ResumeLayout(false);
             this.VerticalTopContainer.Panel1.ResumeLayout(false);
             this.VerticalTopContainer.Panel2.ResumeLayout(false);
-            //((System.ComponentModel.ISupportInitialize)(this.VerticalTopContainer)).EndInit();
             this.VerticalTopContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 

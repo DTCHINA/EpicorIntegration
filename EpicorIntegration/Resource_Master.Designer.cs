@@ -289,6 +289,7 @@
             this.ResourceGrid.Name = "ResourceGrid";
             this.ResourceGrid.ReadOnly = true;
             this.ResourceGrid.RowHeadersVisible = false;
+            this.ResourceGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ResourceGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ResourceGrid.ShowCellErrors = false;
             this.ResourceGrid.ShowCellToolTips = false;

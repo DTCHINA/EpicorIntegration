@@ -44,23 +44,26 @@
             this.save_item_btn = new System.Windows.Forms.Button();
             this.close_item_btn = new System.Windows.Forms.Button();
             this.del_item_btn = new System.Windows.Forms.Button();
-            this.edit_item_btn = new System.Windows.Forms.Button();
             this.add_item_btn = new System.Windows.Forms.Button();
             this.ItemTemplateList = new System.Windows.Forms.DataGridView();
             this.Name_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.addwhse_btn = new System.Windows.Forms.Button();
             this.planner_cbo = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.whse_cbo = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.plant_cbo = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.uomvol_cbo = new System.Windows.Forms.ComboBox();
-            this.Partnumber_txt = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.qtybearing = new System.Windows.Forms.CheckBox();
+            this.userevision = new System.Windows.Forms.CheckBox();
+            this.trackserial = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.itemtemplatename_txt = new System.Windows.Forms.TextBox();
             this.uomweight_cbo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Description_txt = new System.Windows.Forms.TextBox();
@@ -68,9 +71,7 @@
             this.type_cbo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.NetWeight = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.NetVolume = new System.Windows.Forms.NumericUpDown();
             this.uom_cbo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.uomclass_cbo = new System.Windows.Forms.ComboBox();
@@ -78,6 +79,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.class_cbo = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.NetVolume = new System.Windows.Forms.NumericUpDown();
             this.OprTab = new System.Windows.Forms.TabPage();
             this.OprSplit = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -90,14 +93,13 @@
             this.saveop_btn = new System.Windows.Forms.Button();
             this.close_op_btn = new System.Windows.Forms.Button();
             this.del_op_btn = new System.Windows.Forms.Button();
-            this.edit_op_btn = new System.Windows.Forms.Button();
             this.add_op_btn = new System.Windows.Forms.Button();
             this.OprPreviewContainer = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.addop_btn = new System.Windows.Forms.Button();
             this.remop_btn = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.oomtemplatename_txt = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
             this.seq_txt = new System.Windows.Forms.TextBox();
@@ -107,11 +109,13 @@
             this.label13 = new System.Windows.Forms.Label();
             this.opmast_cbo = new System.Windows.Forms.ComboBox();
             this.OPDataGrid = new System.Windows.Forms.DataGridView();
-            this.OprSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OpCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdStandard = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stdformat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Oprrow_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOptions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResTab = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -121,31 +125,31 @@
             this.label24 = new System.Windows.Forms.Label();
             this.splitter3 = new System.Windows.Forms.Splitter();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.save_res_btn = new System.Windows.Forms.Button();
+            this.close_res_btn = new System.Windows.Forms.Button();
+            this.del_res_btn = new System.Windows.Forms.Button();
+            this.add_res_btn = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.restemplatename_txt = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.opr_txt = new System.Windows.Forms.TextBox();
+            this.resource_cbo = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.resourcegrp_cbo = new System.Windows.Forms.ComboBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.addres_btn = new System.Windows.Forms.Button();
+            this.delres_btn = new System.Windows.Forms.Button();
             this.ResDataGrid = new System.Windows.Forms.DataGridView();
+            this.Resrow_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResPropertyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResPropertyQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResPropertyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResPropertyUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResPropertyOptions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BillTab = new System.Windows.Forms.TabPage();
             this.BillContainer = new System.Windows.Forms.SplitContainer();
             this.BillTemplateList = new System.Windows.Forms.DataGridView();
@@ -157,7 +161,6 @@
             this.save_bill_btn = new System.Windows.Forms.Button();
             this.close_bill_btn = new System.Windows.Forms.Button();
             this.del_bill_btn = new System.Windows.Forms.Button();
-            this.edit_bill_btn = new System.Windows.Forms.Button();
             this.add_bill_btn = new System.Windows.Forms.Button();
             this.BillPreviewContainer = new System.Windows.Forms.SplitContainer();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -230,9 +233,8 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResDataGrid)).BeginInit();
             this.BillTab.SuspendLayout();
             this.BillContainer.Panel1.SuspendLayout();
@@ -262,7 +264,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(715, 542);
+            this.tabControl.Size = new System.Drawing.Size(715, 492);
             this.tabControl.TabIndex = 0;
             // 
             // ItemTab
@@ -272,7 +274,7 @@
             this.ItemTab.Location = new System.Drawing.Point(4, 22);
             this.ItemTab.Name = "ItemTab";
             this.ItemTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ItemTab.Size = new System.Drawing.Size(707, 516);
+            this.ItemTab.Size = new System.Drawing.Size(707, 466);
             this.ItemTab.TabIndex = 0;
             this.ItemTab.Text = "Item Templates";
             // 
@@ -290,8 +292,11 @@
             // ItemSplit.Panel2
             // 
             this.ItemSplit.Panel2.Controls.Add(this.groupBox2);
+            this.ItemSplit.Panel2.Controls.Add(this.uomvol_cbo);
             this.ItemSplit.Panel2.Controls.Add(this.groupBox1);
-            this.ItemSplit.Size = new System.Drawing.Size(701, 510);
+            this.ItemSplit.Panel2.Controls.Add(this.label6);
+            this.ItemSplit.Panel2.Controls.Add(this.NetVolume);
+            this.ItemSplit.Size = new System.Drawing.Size(701, 460);
             this.ItemSplit.SplitterDistance = 115;
             this.ItemSplit.TabIndex = 0;
             // 
@@ -307,31 +312,30 @@
             this.ItemLeftGrid.Panel1.Controls.Add(this.save_item_btn);
             this.ItemLeftGrid.Panel1.Controls.Add(this.close_item_btn);
             this.ItemLeftGrid.Panel1.Controls.Add(this.del_item_btn);
-            this.ItemLeftGrid.Panel1.Controls.Add(this.edit_item_btn);
             this.ItemLeftGrid.Panel1.Controls.Add(this.add_item_btn);
             // 
             // ItemLeftGrid.Panel2
             // 
             this.ItemLeftGrid.Panel2.Controls.Add(this.ItemTemplateList);
             this.ItemLeftGrid.Panel2.Controls.Add(this.panel4);
-            this.ItemLeftGrid.Size = new System.Drawing.Size(115, 510);
-            this.ItemLeftGrid.SplitterDistance = 185;
+            this.ItemLeftGrid.Size = new System.Drawing.Size(115, 460);
+            this.ItemLeftGrid.SplitterDistance = 135;
             this.ItemLeftGrid.TabIndex = 0;
             // 
             // save_item_btn
             // 
-            this.save_item_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.save_item_btn.Location = new System.Drawing.Point(20, 106);
+            this.save_item_btn.Location = new System.Drawing.Point(20, 77);
             this.save_item_btn.Name = "save_item_btn";
             this.save_item_btn.Size = new System.Drawing.Size(75, 23);
             this.save_item_btn.TabIndex = 5;
             this.save_item_btn.Text = "&Save";
             this.save_item_btn.UseVisualStyleBackColor = true;
+            this.save_item_btn.Click += new System.EventHandler(this.save_item_btn_Click);
             // 
             // close_item_btn
             // 
             this.close_item_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.close_item_btn.Location = new System.Drawing.Point(20, 135);
+            this.close_item_btn.Location = new System.Drawing.Point(20, 106);
             this.close_item_btn.Name = "close_item_btn";
             this.close_item_btn.Size = new System.Drawing.Size(75, 23);
             this.close_item_btn.TabIndex = 4;
@@ -341,22 +345,13 @@
             // 
             // del_item_btn
             // 
-            this.del_item_btn.Location = new System.Drawing.Point(20, 77);
+            this.del_item_btn.Location = new System.Drawing.Point(20, 48);
             this.del_item_btn.Name = "del_item_btn";
             this.del_item_btn.Size = new System.Drawing.Size(75, 23);
             this.del_item_btn.TabIndex = 2;
             this.del_item_btn.Text = "&Delete";
             this.del_item_btn.UseVisualStyleBackColor = true;
             this.del_item_btn.Click += new System.EventHandler(this.del_item_btn_Click);
-            // 
-            // edit_item_btn
-            // 
-            this.edit_item_btn.Location = new System.Drawing.Point(20, 48);
-            this.edit_item_btn.Name = "edit_item_btn";
-            this.edit_item_btn.Size = new System.Drawing.Size(75, 23);
-            this.edit_item_btn.TabIndex = 1;
-            this.edit_item_btn.Text = "&Edit";
-            this.edit_item_btn.UseVisualStyleBackColor = true;
             // 
             // add_item_btn
             // 
@@ -366,11 +361,13 @@
             this.add_item_btn.TabIndex = 0;
             this.add_item_btn.Text = "&Add";
             this.add_item_btn.UseVisualStyleBackColor = true;
+            this.add_item_btn.Click += new System.EventHandler(this.add_item_btn_Click);
             // 
             // ItemTemplateList
             // 
             this.ItemTemplateList.AllowUserToAddRows = false;
             this.ItemTemplateList.AllowUserToDeleteRows = false;
+            this.ItemTemplateList.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ItemTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ItemTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
@@ -383,6 +380,7 @@
             this.ItemTemplateList.Name = "ItemTemplateList";
             this.ItemTemplateList.ReadOnly = true;
             this.ItemTemplateList.RowHeadersVisible = false;
+            this.ItemTemplateList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ItemTemplateList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ItemTemplateList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ItemTemplateList.ShowCellErrors = false;
@@ -420,18 +418,29 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.addwhse_btn);
             this.groupBox2.Controls.Add(this.planner_cbo);
+            this.groupBox2.Controls.Add(this.whse_cbo);
+            this.groupBox2.Controls.Add(this.plant_cbo);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label22);
-            this.groupBox2.Controls.Add(this.whse_cbo);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.plant_cbo);
-            this.groupBox2.Location = new System.Drawing.Point(3, 353);
+            this.groupBox2.Location = new System.Drawing.Point(3, 314);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(353, 140);
             this.groupBox2.TabIndex = 36;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Plants";
+            // 
+            // addwhse_btn
+            // 
+            this.addwhse_btn.Location = new System.Drawing.Point(254, 70);
+            this.addwhse_btn.Name = "addwhse_btn";
+            this.addwhse_btn.Size = new System.Drawing.Size(75, 23);
+            this.addwhse_btn.TabIndex = 39;
+            this.addwhse_btn.Text = "&Add";
+            this.addwhse_btn.UseVisualStyleBackColor = true;
+            this.addwhse_btn.Click += new System.EventHandler(this.addwhse_btn_Click);
             // 
             // planner_cbo
             // 
@@ -441,6 +450,7 @@
             this.planner_cbo.Name = "planner_cbo";
             this.planner_cbo.Size = new System.Drawing.Size(321, 21);
             this.planner_cbo.TabIndex = 38;
+            this.planner_cbo.SelectedIndexChanged += new System.EventHandler(this.planner_cbo_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -466,7 +476,7 @@
             this.whse_cbo.FormattingEnabled = true;
             this.whse_cbo.Location = new System.Drawing.Point(8, 72);
             this.whse_cbo.Name = "whse_cbo";
-            this.whse_cbo.Size = new System.Drawing.Size(321, 21);
+            this.whse_cbo.Size = new System.Drawing.Size(240, 21);
             this.whse_cbo.TabIndex = 25;
             // 
             // label10
@@ -486,35 +496,77 @@
             this.plant_cbo.Name = "plant_cbo";
             this.plant_cbo.Size = new System.Drawing.Size(321, 21);
             this.plant_cbo.TabIndex = 27;
+            this.plant_cbo.SelectedIndexChanged += new System.EventHandler(this.plant_cbo_SelectedIndexChanged);
+            // 
+            // uomvol_cbo
+            // 
+            this.uomvol_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.uomvol_cbo.FormattingEnabled = true;
+            this.uomvol_cbo.Location = new System.Drawing.Point(473, 73);
+            this.uomvol_cbo.Name = "uomvol_cbo";
+            this.uomvol_cbo.Size = new System.Drawing.Size(72, 21);
+            this.uomvol_cbo.TabIndex = 32;
+            this.uomvol_cbo.Visible = false;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.uomvol_cbo);
-            this.groupBox1.Controls.Add(this.Partnumber_txt);
+            this.groupBox1.Controls.Add(this.qtybearing);
+            this.groupBox1.Controls.Add(this.userevision);
+            this.groupBox1.Controls.Add(this.trackserial);
+            this.groupBox1.Controls.Add(this.itemtemplatename_txt);
             this.groupBox1.Controls.Add(this.uomweight_cbo);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.Description_txt);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.type_cbo);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.NetWeight);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.NetVolume);
             this.groupBox1.Controls.Add(this.uom_cbo);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.uomclass_cbo);
             this.groupBox1.Controls.Add(this.group_cbo);
+            this.groupBox1.Controls.Add(this.class_cbo);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.class_cbo);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(353, 344);
+            this.groupBox1.Size = new System.Drawing.Size(353, 305);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detail";
+            // 
+            // qtybearing
+            // 
+            this.qtybearing.AutoSize = true;
+            this.qtybearing.Location = new System.Drawing.Point(219, 147);
+            this.qtybearing.Name = "qtybearing";
+            this.qtybearing.Size = new System.Drawing.Size(81, 17);
+            this.qtybearing.TabIndex = 37;
+            this.qtybearing.Text = "Qty Bearing";
+            this.qtybearing.UseVisualStyleBackColor = true;
+            // 
+            // userevision
+            // 
+            this.userevision.AutoSize = true;
+            this.userevision.Location = new System.Drawing.Point(219, 170);
+            this.userevision.Name = "userevision";
+            this.userevision.Size = new System.Drawing.Size(89, 17);
+            this.userevision.TabIndex = 36;
+            this.userevision.Text = "Use Revision";
+            this.userevision.UseVisualStyleBackColor = true;
+            // 
+            // trackserial
+            // 
+            this.trackserial.AutoSize = true;
+            this.trackserial.Location = new System.Drawing.Point(219, 193);
+            this.trackserial.Name = "trackserial";
+            this.trackserial.Size = new System.Drawing.Size(123, 17);
+            this.trackserial.TabIndex = 35;
+            this.trackserial.Text = "Track Serial Number";
+            this.trackserial.UseVisualStyleBackColor = true;
+            this.trackserial.CheckedChanged += new System.EventHandler(this.trackserial_CheckedChanged);
             // 
             // label1
             // 
@@ -525,21 +577,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Template Name:";
             // 
-            // uomvol_cbo
+            // itemtemplatename_txt
             // 
-            this.uomvol_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.uomvol_cbo.FormattingEnabled = true;
-            this.uomvol_cbo.Location = new System.Drawing.Point(117, 188);
-            this.uomvol_cbo.Name = "uomvol_cbo";
-            this.uomvol_cbo.Size = new System.Drawing.Size(72, 21);
-            this.uomvol_cbo.TabIndex = 32;
-            // 
-            // Partnumber_txt
-            // 
-            this.Partnumber_txt.Location = new System.Drawing.Point(9, 32);
-            this.Partnumber_txt.Name = "Partnumber_txt";
-            this.Partnumber_txt.Size = new System.Drawing.Size(333, 20);
-            this.Partnumber_txt.TabIndex = 1;
+            this.itemtemplatename_txt.Location = new System.Drawing.Point(9, 32);
+            this.itemtemplatename_txt.Name = "itemtemplatename_txt";
+            this.itemtemplatename_txt.ReadOnly = true;
+            this.itemtemplatename_txt.Size = new System.Drawing.Size(333, 20);
+            this.itemtemplatename_txt.TabIndex = 1;
             // 
             // uomweight_cbo
             // 
@@ -549,6 +593,7 @@
             this.uomweight_cbo.Name = "uomweight_cbo";
             this.uomweight_cbo.Size = new System.Drawing.Size(72, 21);
             this.uomweight_cbo.TabIndex = 31;
+            this.uomweight_cbo.SelectedIndexChanged += new System.EventHandler(this.uomweight_cbo_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -599,6 +644,7 @@
             // NetWeight
             // 
             this.NetWeight.DecimalPlaces = 2;
+            this.NetWeight.Enabled = false;
             this.NetWeight.Location = new System.Drawing.Point(9, 150);
             this.NetWeight.Maximum = new decimal(new int[] {
             1410065407,
@@ -610,37 +656,14 @@
             this.NetWeight.TabIndex = 13;
             this.NetWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 173);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Unit Net Volume";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 212);
+            this.label9.Location = new System.Drawing.Point(6, 173);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 13);
             this.label9.TabIndex = 24;
             this.label9.Text = "Inventory UOM:";
-            // 
-            // NetVolume
-            // 
-            this.NetVolume.DecimalPlaces = 2;
-            this.NetVolume.Location = new System.Drawing.Point(9, 189);
-            this.NetVolume.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            131072});
-            this.NetVolume.Name = "NetVolume";
-            this.NetVolume.Size = new System.Drawing.Size(102, 20);
-            this.NetVolume.TabIndex = 15;
-            this.NetVolume.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // uom_cbo
             // 
@@ -650,15 +673,16 @@
             "Purchased",
             "Manufacturer",
             "Sales Kit"});
-            this.uom_cbo.Location = new System.Drawing.Point(9, 228);
+            this.uom_cbo.Location = new System.Drawing.Point(9, 189);
             this.uom_cbo.Name = "uom_cbo";
             this.uom_cbo.Size = new System.Drawing.Size(180, 21);
             this.uom_cbo.TabIndex = 23;
+            this.uom_cbo.SelectedIndexChanged += new System.EventHandler(this.uom_cbo_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 252);
+            this.label2.Location = new System.Drawing.Point(6, 213);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 16;
@@ -686,10 +710,11 @@
             "Purchased",
             "Manufacturer",
             "Sales Kit"});
-            this.group_cbo.Location = new System.Drawing.Point(9, 268);
+            this.group_cbo.Location = new System.Drawing.Point(9, 229);
             this.group_cbo.Name = "group_cbo";
             this.group_cbo.Size = new System.Drawing.Size(210, 21);
             this.group_cbo.TabIndex = 17;
+            this.group_cbo.SelectedIndexChanged += new System.EventHandler(this.group_cbo_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -704,7 +729,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 292);
+            this.label7.Location = new System.Drawing.Point(6, 253);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 18;
@@ -718,10 +743,36 @@
             "Purchased",
             "Manufacturer",
             "Sales Kit"});
-            this.class_cbo.Location = new System.Drawing.Point(9, 308);
+            this.class_cbo.Location = new System.Drawing.Point(9, 269);
             this.class_cbo.Name = "class_cbo";
             this.class_cbo.Size = new System.Drawing.Size(210, 21);
             this.class_cbo.TabIndex = 19;
+            this.class_cbo.SelectedIndexChanged += new System.EventHandler(this.class_cbo_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(362, 58);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Unit Net Volume";
+            this.label6.Visible = false;
+            // 
+            // NetVolume
+            // 
+            this.NetVolume.DecimalPlaces = 2;
+            this.NetVolume.Location = new System.Drawing.Point(365, 74);
+            this.NetVolume.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            131072});
+            this.NetVolume.Name = "NetVolume";
+            this.NetVolume.Size = new System.Drawing.Size(102, 20);
+            this.NetVolume.TabIndex = 15;
+            this.NetVolume.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.NetVolume.Visible = false;
             // 
             // OprTab
             // 
@@ -730,7 +781,7 @@
             this.OprTab.Location = new System.Drawing.Point(4, 22);
             this.OprTab.Name = "OprTab";
             this.OprTab.Padding = new System.Windows.Forms.Padding(3);
-            this.OprTab.Size = new System.Drawing.Size(707, 516);
+            this.OprTab.Size = new System.Drawing.Size(707, 466);
             this.OprTab.TabIndex = 1;
             this.OprTab.Text = "Operation Templates";
             // 
@@ -750,7 +801,7 @@
             // OprSplit.Panel2
             // 
             this.OprSplit.Panel2.Controls.Add(this.OprPreviewContainer);
-            this.OprSplit.Size = new System.Drawing.Size(701, 510);
+            this.OprSplit.Size = new System.Drawing.Size(701, 460);
             this.OprSplit.SplitterDistance = 115;
             this.OprSplit.TabIndex = 0;
             // 
@@ -759,15 +810,16 @@
             this.panel2.Controls.Add(this.OpsTemplateList);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 189);
+            this.panel2.Location = new System.Drawing.Point(0, 154);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(115, 321);
+            this.panel2.Size = new System.Drawing.Size(115, 306);
             this.panel2.TabIndex = 2;
             // 
             // OpsTemplateList
             // 
             this.OpsTemplateList.AllowUserToAddRows = false;
             this.OpsTemplateList.AllowUserToDeleteRows = false;
+            this.OpsTemplateList.AllowUserToResizeRows = false;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.OpsTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.OpsTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
@@ -781,13 +833,14 @@
             this.OpsTemplateList.Name = "OpsTemplateList";
             this.OpsTemplateList.ReadOnly = true;
             this.OpsTemplateList.RowHeadersVisible = false;
+            this.OpsTemplateList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.OpsTemplateList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.OpsTemplateList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.OpsTemplateList.ShowCellErrors = false;
             this.OpsTemplateList.ShowCellToolTips = false;
             this.OpsTemplateList.ShowEditingIcon = false;
             this.OpsTemplateList.ShowRowErrors = false;
-            this.OpsTemplateList.Size = new System.Drawing.Size(115, 301);
+            this.OpsTemplateList.Size = new System.Drawing.Size(115, 286);
             this.OpsTemplateList.TabIndex = 3;
             // 
             // Name_Ops
@@ -820,7 +873,7 @@
             // 
             this.splitter1.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(0, 185);
+            this.splitter1.Location = new System.Drawing.Point(0, 150);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(115, 4);
             this.splitter1.TabIndex = 1;
@@ -831,49 +884,42 @@
             this.panel1.Controls.Add(this.saveop_btn);
             this.panel1.Controls.Add(this.close_op_btn);
             this.panel1.Controls.Add(this.del_op_btn);
-            this.panel1.Controls.Add(this.edit_op_btn);
             this.panel1.Controls.Add(this.add_op_btn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(115, 185);
+            this.panel1.Size = new System.Drawing.Size(115, 150);
             this.panel1.TabIndex = 0;
             // 
             // saveop_btn
             // 
-            this.saveop_btn.Location = new System.Drawing.Point(20, 106);
+            this.saveop_btn.Location = new System.Drawing.Point(20, 77);
             this.saveop_btn.Name = "saveop_btn";
             this.saveop_btn.Size = new System.Drawing.Size(75, 23);
             this.saveop_btn.TabIndex = 15;
             this.saveop_btn.Text = "Save";
             this.saveop_btn.UseVisualStyleBackColor = true;
+            this.saveop_btn.Click += new System.EventHandler(this.saveop_btn_Click);
             // 
             // close_op_btn
             // 
-            this.close_op_btn.Location = new System.Drawing.Point(20, 135);
+            this.close_op_btn.Location = new System.Drawing.Point(20, 106);
             this.close_op_btn.Name = "close_op_btn";
             this.close_op_btn.Size = new System.Drawing.Size(75, 23);
             this.close_op_btn.TabIndex = 8;
             this.close_op_btn.Text = "&Close";
             this.close_op_btn.UseVisualStyleBackColor = true;
+            this.close_op_btn.Click += new System.EventHandler(this.close_op_btn_Click);
             // 
             // del_op_btn
             // 
-            this.del_op_btn.Location = new System.Drawing.Point(20, 77);
+            this.del_op_btn.Location = new System.Drawing.Point(20, 48);
             this.del_op_btn.Name = "del_op_btn";
             this.del_op_btn.Size = new System.Drawing.Size(75, 23);
             this.del_op_btn.TabIndex = 7;
             this.del_op_btn.Text = "&Delete";
             this.del_op_btn.UseVisualStyleBackColor = true;
-            // 
-            // edit_op_btn
-            // 
-            this.edit_op_btn.Location = new System.Drawing.Point(20, 48);
-            this.edit_op_btn.Name = "edit_op_btn";
-            this.edit_op_btn.Size = new System.Drawing.Size(75, 23);
-            this.edit_op_btn.TabIndex = 6;
-            this.edit_op_btn.Text = "&Edit";
-            this.edit_op_btn.UseVisualStyleBackColor = true;
+            this.del_op_btn.Click += new System.EventHandler(this.del_op_btn_Click);
             // 
             // add_op_btn
             // 
@@ -883,6 +929,7 @@
             this.add_op_btn.TabIndex = 5;
             this.add_op_btn.Text = "&Add";
             this.add_op_btn.UseVisualStyleBackColor = true;
+            this.add_op_btn.Click += new System.EventHandler(this.add_op_btn_Click);
             // 
             // OprPreviewContainer
             // 
@@ -894,15 +941,15 @@
             // OprPreviewContainer.Panel1
             // 
             this.OprPreviewContainer.Panel1.Controls.Add(this.groupBox4);
-            this.OprPreviewContainer.Panel1.Controls.Add(this.label14);
-            this.OprPreviewContainer.Panel1.Controls.Add(this.textBox1);
+            this.OprPreviewContainer.Panel1.Controls.Add(this.oomtemplatename_txt);
             this.OprPreviewContainer.Panel1.Controls.Add(this.groupBox3);
+            this.OprPreviewContainer.Panel1.Controls.Add(this.label14);
             // 
             // OprPreviewContainer.Panel2
             // 
             this.OprPreviewContainer.Panel2.Controls.Add(this.OPDataGrid);
-            this.OprPreviewContainer.Size = new System.Drawing.Size(582, 510);
-            this.OprPreviewContainer.SplitterDistance = 189;
+            this.OprPreviewContainer.Size = new System.Drawing.Size(582, 460);
+            this.OprPreviewContainer.SplitterDistance = 195;
             this.OprPreviewContainer.TabIndex = 10;
             // 
             // groupBox4
@@ -923,6 +970,7 @@
             this.addop_btn.TabIndex = 12;
             this.addop_btn.Text = "Add Opr";
             this.addop_btn.UseVisualStyleBackColor = true;
+            this.addop_btn.Click += new System.EventHandler(this.addop_btn_Click);
             // 
             // remop_btn
             // 
@@ -932,6 +980,7 @@
             this.remop_btn.TabIndex = 13;
             this.remop_btn.Text = "Rem. Opr";
             this.remop_btn.UseVisualStyleBackColor = true;
+            this.remop_btn.Click += new System.EventHandler(this.remop_btn_Click);
             // 
             // label14
             // 
@@ -942,22 +991,23 @@
             this.label14.TabIndex = 10;
             this.label14.Text = "Template Name:";
             // 
-            // textBox1
+            // oomtemplatename_txt
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(290, 20);
-            this.textBox1.TabIndex = 11;
+            this.oomtemplatename_txt.Location = new System.Drawing.Point(12, 26);
+            this.oomtemplatename_txt.Name = "oomtemplatename_txt";
+            this.oomtemplatename_txt.ReadOnly = true;
+            this.oomtemplatename_txt.Size = new System.Drawing.Size(290, 20);
+            this.oomtemplatename_txt.TabIndex = 11;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label23);
             this.groupBox3.Controls.Add(this.seq_txt);
             this.groupBox3.Controls.Add(this.prodstd_cbo);
             this.groupBox3.Controls.Add(this.prodhrs_num);
+            this.groupBox3.Controls.Add(this.opmast_cbo);
+            this.groupBox3.Controls.Add(this.label23);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.opmast_cbo);
             this.groupBox3.Location = new System.Drawing.Point(12, 52);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(290, 133);
@@ -988,15 +1038,17 @@
             this.prodstd_cbo.Name = "prodstd_cbo";
             this.prodstd_cbo.Size = new System.Drawing.Size(191, 21);
             this.prodstd_cbo.TabIndex = 9;
+            this.prodstd_cbo.SelectedIndexChanged += new System.EventHandler(this.prodstd_cbo_SelectedIndexChanged);
             // 
             // prodhrs_num
             // 
-            this.prodhrs_num.DecimalPlaces = 2;
+            this.prodhrs_num.DecimalPlaces = 5;
             this.prodhrs_num.Location = new System.Drawing.Point(9, 97);
             this.prodhrs_num.Name = "prodhrs_num";
             this.prodhrs_num.Size = new System.Drawing.Size(65, 20);
             this.prodhrs_num.TabIndex = 8;
             this.prodhrs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.prodhrs_num.ValueChanged += new System.EventHandler(this.prodhrs_num_ValueChanged);
             // 
             // label12
             // 
@@ -1024,22 +1076,26 @@
             this.opmast_cbo.Name = "opmast_cbo";
             this.opmast_cbo.Size = new System.Drawing.Size(262, 21);
             this.opmast_cbo.TabIndex = 4;
+            this.opmast_cbo.SelectedIndexChanged += new System.EventHandler(this.opmast_cbo_SelectedIndexChanged);
             // 
             // OPDataGrid
             // 
             this.OPDataGrid.AllowUserToAddRows = false;
             this.OPDataGrid.AllowUserToDeleteRows = false;
+            this.OPDataGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.OPDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.OPDataGrid.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
             this.OPDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.OPDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OPDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.OprSeq,
-            this.OpCode,
-            this.OpDesc,
-            this.ProdStandard,
-            this.stdformat});
+            this.Oprrow_id,
+            this.OprPropertyType,
+            this.OprPropertyValue,
+            this.OprDesc,
+            this.OprPropertyQty,
+            this.OprPropertyUOM,
+            this.OprPropertyOptions});
             this.OPDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OPDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.OPDataGrid.Location = new System.Drawing.Point(0, 0);
@@ -1047,57 +1103,74 @@
             this.OPDataGrid.Name = "OPDataGrid";
             this.OPDataGrid.ReadOnly = true;
             this.OPDataGrid.RowHeadersVisible = false;
+            this.OPDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.OPDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.OPDataGrid.ShowCellErrors = false;
             this.OPDataGrid.ShowCellToolTips = false;
             this.OPDataGrid.ShowEditingIcon = false;
             this.OPDataGrid.ShowRowErrors = false;
-            this.OPDataGrid.Size = new System.Drawing.Size(582, 317);
+            this.OPDataGrid.Size = new System.Drawing.Size(582, 261);
             this.OPDataGrid.TabIndex = 8;
             // 
-            // OprSeq
+            // Oprrow_id
             // 
-            this.OprSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.OprSeq.DataPropertyName = "PropertyType";
-            this.OprSeq.HeaderText = "Sequence";
-            this.OprSeq.Name = "OprSeq";
-            this.OprSeq.ReadOnly = true;
-            this.OprSeq.Width = 81;
+            this.Oprrow_id.DataPropertyName = "row_id";
+            this.Oprrow_id.HeaderText = "row_id";
+            this.Oprrow_id.Name = "Oprrow_id";
+            this.Oprrow_id.ReadOnly = true;
+            this.Oprrow_id.Visible = false;
             // 
-            // OpCode
+            // OprPropertyType
             // 
-            this.OpCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OpCode.DataPropertyName = "PropertyValue";
-            this.OpCode.HeaderText = "Code";
-            this.OpCode.Name = "OpCode";
-            this.OpCode.ReadOnly = true;
-            this.OpCode.Width = 57;
+            this.OprPropertyType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.OprPropertyType.DataPropertyName = "PropertyType";
+            this.OprPropertyType.HeaderText = "Sequence";
+            this.OprPropertyType.Name = "OprPropertyType";
+            this.OprPropertyType.ReadOnly = true;
+            this.OprPropertyType.Width = 81;
             // 
-            // OpDesc
+            // OprPropertyValue
             // 
-            this.OpDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.OpDesc.DataPropertyName = "OpDesc";
-            this.OpDesc.HeaderText = "Operation Description";
-            this.OpDesc.Name = "OpDesc";
-            this.OpDesc.ReadOnly = true;
+            this.OprPropertyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OprPropertyValue.DataPropertyName = "PropertyValue";
+            this.OprPropertyValue.HeaderText = "Code";
+            this.OprPropertyValue.Name = "OprPropertyValue";
+            this.OprPropertyValue.ReadOnly = true;
+            this.OprPropertyValue.Width = 57;
             // 
-            // ProdStandard
+            // OprDesc
             // 
-            this.ProdStandard.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ProdStandard.DataPropertyName = "PropertyQty";
-            this.ProdStandard.HeaderText = "Production Hours";
-            this.ProdStandard.Name = "ProdStandard";
-            this.ProdStandard.ReadOnly = true;
-            this.ProdStandard.Width = 105;
+            this.OprDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.OprDesc.DataPropertyName = "OpDesc";
+            this.OprDesc.HeaderText = "Operation Description";
+            this.OprDesc.Name = "OprDesc";
+            this.OprDesc.ReadOnly = true;
             // 
-            // stdformat
+            // OprPropertyQty
             // 
-            this.stdformat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.stdformat.DataPropertyName = "PropertyUOM";
-            this.stdformat.HeaderText = "Std. Format";
-            this.stdformat.Name = "stdformat";
-            this.stdformat.ReadOnly = true;
-            this.stdformat.Width = 79;
+            this.OprPropertyQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.OprPropertyQty.DataPropertyName = "PropertyQty";
+            this.OprPropertyQty.HeaderText = "Production Hours";
+            this.OprPropertyQty.Name = "OprPropertyQty";
+            this.OprPropertyQty.ReadOnly = true;
+            this.OprPropertyQty.Width = 105;
+            // 
+            // OprPropertyUOM
+            // 
+            this.OprPropertyUOM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OprPropertyUOM.DataPropertyName = "PropertyUOM";
+            this.OprPropertyUOM.HeaderText = "Std. Format";
+            this.OprPropertyUOM.Name = "OprPropertyUOM";
+            this.OprPropertyUOM.ReadOnly = true;
+            this.OprPropertyUOM.Width = 79;
+            // 
+            // OprPropertyOptions
+            // 
+            this.OprPropertyOptions.DataPropertyName = "PropertyOptions";
+            this.OprPropertyOptions.HeaderText = "OprPropertyOptions";
+            this.OprPropertyOptions.Name = "OprPropertyOptions";
+            this.OprPropertyOptions.ReadOnly = true;
+            this.OprPropertyOptions.Visible = false;
             // 
             // ResTab
             // 
@@ -1106,7 +1179,7 @@
             this.ResTab.Location = new System.Drawing.Point(4, 22);
             this.ResTab.Name = "ResTab";
             this.ResTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ResTab.Size = new System.Drawing.Size(707, 516);
+            this.ResTab.Size = new System.Drawing.Size(707, 466);
             this.ResTab.TabIndex = 3;
             this.ResTab.Text = "Resource Template for OOM Template";
             // 
@@ -1126,7 +1199,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(701, 510);
+            this.splitContainer1.Size = new System.Drawing.Size(701, 460);
             this.splitContainer1.SplitterDistance = 115;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -1135,15 +1208,16 @@
             this.panel7.Controls.Add(this.ResTemplateList);
             this.panel7.Controls.Add(this.panel8);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 189);
+            this.panel7.Location = new System.Drawing.Point(0, 154);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(115, 321);
+            this.panel7.Size = new System.Drawing.Size(115, 306);
             this.panel7.TabIndex = 2;
             // 
             // ResTemplateList
             // 
             this.ResTemplateList.AllowUserToAddRows = false;
             this.ResTemplateList.AllowUserToDeleteRows = false;
+            this.ResTemplateList.AllowUserToResizeRows = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ResTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.ResTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
@@ -1157,13 +1231,14 @@
             this.ResTemplateList.Name = "ResTemplateList";
             this.ResTemplateList.ReadOnly = true;
             this.ResTemplateList.RowHeadersVisible = false;
+            this.ResTemplateList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ResTemplateList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ResTemplateList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ResTemplateList.ShowCellErrors = false;
             this.ResTemplateList.ShowCellToolTips = false;
             this.ResTemplateList.ShowEditingIcon = false;
             this.ResTemplateList.ShowRowErrors = false;
-            this.ResTemplateList.Size = new System.Drawing.Size(115, 301);
+            this.ResTemplateList.Size = new System.Drawing.Size(115, 286);
             this.ResTemplateList.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn1
@@ -1196,7 +1271,7 @@
             // 
             this.splitter3.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitter3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter3.Location = new System.Drawing.Point(0, 185);
+            this.splitter3.Location = new System.Drawing.Point(0, 150);
             this.splitter3.Name = "splitter3";
             this.splitter3.Size = new System.Drawing.Size(115, 4);
             this.splitter3.TabIndex = 1;
@@ -1204,61 +1279,55 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.button1);
-            this.panel9.Controls.Add(this.button2);
-            this.panel9.Controls.Add(this.button3);
-            this.panel9.Controls.Add(this.button4);
-            this.panel9.Controls.Add(this.button5);
+            this.panel9.Controls.Add(this.save_res_btn);
+            this.panel9.Controls.Add(this.close_res_btn);
+            this.panel9.Controls.Add(this.del_res_btn);
+            this.panel9.Controls.Add(this.add_res_btn);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(115, 185);
+            this.panel9.Size = new System.Drawing.Size(115, 150);
             this.panel9.TabIndex = 0;
             // 
-            // button1
+            // save_res_btn
             // 
-            this.button1.Location = new System.Drawing.Point(20, 106);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.save_res_btn.Location = new System.Drawing.Point(20, 77);
+            this.save_res_btn.Name = "save_res_btn";
+            this.save_res_btn.Size = new System.Drawing.Size(75, 23);
+            this.save_res_btn.TabIndex = 15;
+            this.save_res_btn.Text = "Save";
+            this.save_res_btn.UseVisualStyleBackColor = true;
+            this.save_res_btn.Click += new System.EventHandler(this.save_res_btn_Click);
             // 
-            // button2
+            // close_res_btn
             // 
-            this.button2.Location = new System.Drawing.Point(20, 135);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "&Close";
-            this.button2.UseVisualStyleBackColor = true;
+            this.close_res_btn.Location = new System.Drawing.Point(20, 106);
+            this.close_res_btn.Name = "close_res_btn";
+            this.close_res_btn.Size = new System.Drawing.Size(75, 23);
+            this.close_res_btn.TabIndex = 8;
+            this.close_res_btn.Text = "&Close";
+            this.close_res_btn.UseVisualStyleBackColor = true;
+            this.close_res_btn.Click += new System.EventHandler(this.close_res_btn_Click);
             // 
-            // button3
+            // del_res_btn
             // 
-            this.button3.Location = new System.Drawing.Point(20, 77);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "&Delete";
-            this.button3.UseVisualStyleBackColor = true;
+            this.del_res_btn.Location = new System.Drawing.Point(20, 48);
+            this.del_res_btn.Name = "del_res_btn";
+            this.del_res_btn.Size = new System.Drawing.Size(75, 23);
+            this.del_res_btn.TabIndex = 7;
+            this.del_res_btn.Text = "&Delete";
+            this.del_res_btn.UseVisualStyleBackColor = true;
+            this.del_res_btn.Click += new System.EventHandler(this.del_res_btn_Click);
             // 
-            // button4
+            // add_res_btn
             // 
-            this.button4.Location = new System.Drawing.Point(20, 48);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "&Edit";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(20, 19);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "&Add";
-            this.button5.UseVisualStyleBackColor = true;
+            this.add_res_btn.Location = new System.Drawing.Point(20, 19);
+            this.add_res_btn.Name = "add_res_btn";
+            this.add_res_btn.Size = new System.Drawing.Size(75, 23);
+            this.add_res_btn.TabIndex = 5;
+            this.add_res_btn.Text = "&Add";
+            this.add_res_btn.UseVisualStyleBackColor = true;
+            this.add_res_btn.Click += new System.EventHandler(this.add_res_btn_Click);
             // 
             // splitContainer2
             // 
@@ -1269,45 +1338,17 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.restemplatename_txt);
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox8);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox7);
             this.splitContainer2.Panel1.Controls.Add(this.label25);
-            this.splitContainer2.Panel1.Controls.Add(this.textBox2);
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox8);
             // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.ResDataGrid);
-            this.splitContainer2.Size = new System.Drawing.Size(582, 510);
-            this.splitContainer2.SplitterDistance = 189;
+            this.splitContainer2.Size = new System.Drawing.Size(582, 460);
+            this.splitContainer2.SplitterDistance = 195;
             this.splitContainer2.TabIndex = 10;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.button6);
-            this.groupBox7.Controls.Add(this.button7);
-            this.groupBox7.Location = new System.Drawing.Point(308, 3);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(89, 182);
-            this.groupBox7.TabIndex = 16;
-            this.groupBox7.TabStop = false;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(8, 16);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 12;
-            this.button6.Text = "Add Opr";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(8, 45);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 13;
-            this.button7.Text = "Rem. Opr";
-            this.button7.UseVisualStyleBackColor = true;
             // 
             // label25
             // 
@@ -1318,22 +1359,22 @@
             this.label25.TabIndex = 10;
             this.label25.Text = "Template Name:";
             // 
-            // textBox2
+            // restemplatename_txt
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 26);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(290, 20);
-            this.textBox2.TabIndex = 11;
+            this.restemplatename_txt.Location = new System.Drawing.Point(12, 26);
+            this.restemplatename_txt.Name = "restemplatename_txt";
+            this.restemplatename_txt.ReadOnly = true;
+            this.restemplatename_txt.Size = new System.Drawing.Size(290, 20);
+            this.restemplatename_txt.TabIndex = 11;
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.opr_txt);
+            this.groupBox8.Controls.Add(this.resource_cbo);
+            this.groupBox8.Controls.Add(this.resourcegrp_cbo);
             this.groupBox8.Controls.Add(this.label26);
-            this.groupBox8.Controls.Add(this.textBox3);
-            this.groupBox8.Controls.Add(this.comboBox2);
-            this.groupBox8.Controls.Add(this.numericUpDown1);
             this.groupBox8.Controls.Add(this.label27);
             this.groupBox8.Controls.Add(this.label28);
-            this.groupBox8.Controls.Add(this.comboBox3);
             this.groupBox8.Location = new System.Drawing.Point(12, 52);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(290, 133);
@@ -1345,77 +1386,103 @@
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(6, 16);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(59, 13);
+            this.label26.Size = new System.Drawing.Size(114, 13);
             this.label26.TabIndex = 11;
-            this.label26.Text = "Sequence:";
+            this.label26.Text = "Operation to Attach to:";
             // 
-            // textBox3
+            // opr_txt
             // 
-            this.textBox3.Location = new System.Drawing.Point(71, 13);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 10;
+            this.opr_txt.Location = new System.Drawing.Point(126, 13);
+            this.opr_txt.Name = "opr_txt";
+            this.opr_txt.Size = new System.Drawing.Size(44, 20);
+            this.opr_txt.TabIndex = 10;
             // 
-            // comboBox2
+            // resource_cbo
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(80, 96);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(191, 21);
-            this.comboBox2.TabIndex = 9;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Location = new System.Drawing.Point(9, 97);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(65, 20);
-            this.numericUpDown1.TabIndex = 8;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.resource_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resource_cbo.FormattingEnabled = true;
+            this.resource_cbo.Location = new System.Drawing.Point(9, 96);
+            this.resource_cbo.Name = "resource_cbo";
+            this.resource_cbo.Size = new System.Drawing.Size(262, 21);
+            this.resource_cbo.TabIndex = 9;
+            this.resource_cbo.SelectedIndexChanged += new System.EventHandler(this.resource_cbo_SelectedIndexChanged);
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(6, 81);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(54, 13);
+            this.label27.Size = new System.Drawing.Size(56, 13);
             this.label27.TabIndex = 7;
-            this.label27.Text = "Prod. Std:";
+            this.label27.Text = "Resource:";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(6, 35);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(56, 13);
+            this.label28.Size = new System.Drawing.Size(88, 13);
             this.label28.TabIndex = 5;
-            this.label28.Text = "Operation:";
+            this.label28.Text = "Resource Group:";
             // 
-            // comboBox3
+            // resourcegrp_cbo
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(9, 51);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(262, 21);
-            this.comboBox3.TabIndex = 4;
+            this.resourcegrp_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resourcegrp_cbo.FormattingEnabled = true;
+            this.resourcegrp_cbo.Location = new System.Drawing.Point(9, 51);
+            this.resourcegrp_cbo.Name = "resourcegrp_cbo";
+            this.resourcegrp_cbo.Size = new System.Drawing.Size(262, 21);
+            this.resourcegrp_cbo.TabIndex = 4;
+            this.resourcegrp_cbo.SelectedIndexChanged += new System.EventHandler(this.resourcegrp_cbo_SelectedIndexChanged);
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.addres_btn);
+            this.groupBox7.Controls.Add(this.delres_btn);
+            this.groupBox7.Location = new System.Drawing.Point(308, 3);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(89, 182);
+            this.groupBox7.TabIndex = 16;
+            this.groupBox7.TabStop = false;
+            // 
+            // addres_btn
+            // 
+            this.addres_btn.Location = new System.Drawing.Point(8, 16);
+            this.addres_btn.Name = "addres_btn";
+            this.addres_btn.Size = new System.Drawing.Size(75, 23);
+            this.addres_btn.TabIndex = 12;
+            this.addres_btn.Text = "Add Opr";
+            this.addres_btn.UseVisualStyleBackColor = true;
+            this.addres_btn.Click += new System.EventHandler(this.addres_btn_Click);
+            // 
+            // delres_btn
+            // 
+            this.delres_btn.Location = new System.Drawing.Point(8, 45);
+            this.delres_btn.Name = "delres_btn";
+            this.delres_btn.Size = new System.Drawing.Size(75, 23);
+            this.delres_btn.TabIndex = 13;
+            this.delres_btn.Text = "Rem. Opr";
+            this.delres_btn.UseVisualStyleBackColor = true;
+            this.delres_btn.Click += new System.EventHandler(this.delres_btn_Click);
             // 
             // ResDataGrid
             // 
             this.ResDataGrid.AllowUserToAddRows = false;
             this.ResDataGrid.AllowUserToDeleteRows = false;
+            this.ResDataGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ResDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.ResDataGrid.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
             this.ResDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.ResDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ResDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Resrow_id,
             this.ResPropertyType,
             this.ResPropertyQty,
             this.ResPropertyValue,
             this.ResPropertyUOM,
-            this.ResDesc});
+            this.ResDesc,
+            this.ResPropertyOptions});
             this.ResDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ResDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ResDataGrid.Location = new System.Drawing.Point(0, 0);
@@ -1423,13 +1490,22 @@
             this.ResDataGrid.Name = "ResDataGrid";
             this.ResDataGrid.ReadOnly = true;
             this.ResDataGrid.RowHeadersVisible = false;
+            this.ResDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ResDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ResDataGrid.ShowCellErrors = false;
             this.ResDataGrid.ShowCellToolTips = false;
             this.ResDataGrid.ShowEditingIcon = false;
             this.ResDataGrid.ShowRowErrors = false;
-            this.ResDataGrid.Size = new System.Drawing.Size(582, 317);
+            this.ResDataGrid.Size = new System.Drawing.Size(582, 261);
             this.ResDataGrid.TabIndex = 8;
+            // 
+            // Resrow_id
+            // 
+            this.Resrow_id.DataPropertyName = "row_id";
+            this.Resrow_id.HeaderText = "row_id";
+            this.Resrow_id.Name = "Resrow_id";
+            this.Resrow_id.ReadOnly = true;
+            this.Resrow_id.Visible = false;
             // 
             // ResPropertyType
             // 
@@ -1475,13 +1551,20 @@
             this.ResDesc.Name = "ResDesc";
             this.ResDesc.ReadOnly = true;
             // 
+            // ResPropertyOptions
+            // 
+            this.ResPropertyOptions.HeaderText = "PropertyOptions";
+            this.ResPropertyOptions.Name = "ResPropertyOptions";
+            this.ResPropertyOptions.ReadOnly = true;
+            this.ResPropertyOptions.Visible = false;
+            // 
             // BillTab
             // 
             this.BillTab.Controls.Add(this.BillContainer);
             this.BillTab.Location = new System.Drawing.Point(4, 22);
             this.BillTab.Name = "BillTab";
             this.BillTab.Padding = new System.Windows.Forms.Padding(3);
-            this.BillTab.Size = new System.Drawing.Size(707, 516);
+            this.BillTab.Size = new System.Drawing.Size(707, 466);
             this.BillTab.TabIndex = 2;
             this.BillTab.Text = "Bill Template";
             this.BillTab.UseVisualStyleBackColor = true;
@@ -1504,7 +1587,7 @@
             // BillContainer.Panel2
             // 
             this.BillContainer.Panel2.Controls.Add(this.BillPreviewContainer);
-            this.BillContainer.Size = new System.Drawing.Size(701, 510);
+            this.BillContainer.Size = new System.Drawing.Size(701, 460);
             this.BillContainer.SplitterDistance = 115;
             this.BillContainer.TabIndex = 0;
             // 
@@ -1512,6 +1595,7 @@
             // 
             this.BillTemplateList.AllowUserToAddRows = false;
             this.BillTemplateList.AllowUserToDeleteRows = false;
+            this.BillTemplateList.AllowUserToResizeRows = false;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.BillTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.BillTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
@@ -1520,17 +1604,18 @@
             this.BillTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Name_bill});
             this.BillTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BillTemplateList.Location = new System.Drawing.Point(0, 209);
+            this.BillTemplateList.Location = new System.Drawing.Point(0, 174);
             this.BillTemplateList.Name = "BillTemplateList";
             this.BillTemplateList.ReadOnly = true;
             this.BillTemplateList.RowHeadersVisible = false;
+            this.BillTemplateList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.BillTemplateList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.BillTemplateList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BillTemplateList.ShowCellErrors = false;
             this.BillTemplateList.ShowCellToolTips = false;
             this.BillTemplateList.ShowEditingIcon = false;
             this.BillTemplateList.ShowRowErrors = false;
-            this.BillTemplateList.Size = new System.Drawing.Size(115, 301);
+            this.BillTemplateList.Size = new System.Drawing.Size(115, 286);
             this.BillTemplateList.TabIndex = 7;
             // 
             // Name_bill
@@ -1545,7 +1630,7 @@
             // 
             this.panel5.Controls.Add(this.label17);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 189);
+            this.panel5.Location = new System.Drawing.Point(0, 154);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(115, 20);
             this.panel5.TabIndex = 6;
@@ -1563,7 +1648,7 @@
             // 
             this.splitter2.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter2.Location = new System.Drawing.Point(0, 185);
+            this.splitter2.Location = new System.Drawing.Point(0, 150);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(115, 4);
             this.splitter2.TabIndex = 5;
@@ -1574,17 +1659,16 @@
             this.panel6.Controls.Add(this.save_bill_btn);
             this.panel6.Controls.Add(this.close_bill_btn);
             this.panel6.Controls.Add(this.del_bill_btn);
-            this.panel6.Controls.Add(this.edit_bill_btn);
             this.panel6.Controls.Add(this.add_bill_btn);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(115, 185);
+            this.panel6.Size = new System.Drawing.Size(115, 150);
             this.panel6.TabIndex = 4;
             // 
             // save_bill_btn
             // 
-            this.save_bill_btn.Location = new System.Drawing.Point(20, 106);
+            this.save_bill_btn.Location = new System.Drawing.Point(20, 77);
             this.save_bill_btn.Name = "save_bill_btn";
             this.save_bill_btn.Size = new System.Drawing.Size(75, 23);
             this.save_bill_btn.TabIndex = 15;
@@ -1594,7 +1678,7 @@
             // 
             // close_bill_btn
             // 
-            this.close_bill_btn.Location = new System.Drawing.Point(20, 135);
+            this.close_bill_btn.Location = new System.Drawing.Point(20, 106);
             this.close_bill_btn.Name = "close_bill_btn";
             this.close_bill_btn.Size = new System.Drawing.Size(75, 23);
             this.close_bill_btn.TabIndex = 8;
@@ -1604,21 +1688,13 @@
             // 
             // del_bill_btn
             // 
-            this.del_bill_btn.Location = new System.Drawing.Point(20, 77);
+            this.del_bill_btn.Location = new System.Drawing.Point(20, 48);
             this.del_bill_btn.Name = "del_bill_btn";
             this.del_bill_btn.Size = new System.Drawing.Size(75, 23);
             this.del_bill_btn.TabIndex = 7;
             this.del_bill_btn.Text = "&Delete";
             this.del_bill_btn.UseVisualStyleBackColor = true;
-            // 
-            // edit_bill_btn
-            // 
-            this.edit_bill_btn.Location = new System.Drawing.Point(20, 48);
-            this.edit_bill_btn.Name = "edit_bill_btn";
-            this.edit_bill_btn.Size = new System.Drawing.Size(75, 23);
-            this.edit_bill_btn.TabIndex = 6;
-            this.edit_bill_btn.Text = "&Edit";
-            this.edit_bill_btn.UseVisualStyleBackColor = true;
+            this.del_bill_btn.Click += new System.EventHandler(this.del_bill_btn_Click);
             // 
             // add_bill_btn
             // 
@@ -1645,8 +1721,8 @@
             // BillPreviewContainer.Panel2
             // 
             this.BillPreviewContainer.Panel2.Controls.Add(this.BillDataGrid);
-            this.BillPreviewContainer.Size = new System.Drawing.Size(582, 510);
-            this.BillPreviewContainer.SplitterDistance = 189;
+            this.BillPreviewContainer.Size = new System.Drawing.Size(582, 460);
+            this.BillPreviewContainer.SplitterDistance = 170;
             this.BillPreviewContainer.TabIndex = 0;
             // 
             // groupBox6
@@ -1681,20 +1757,20 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.label29);
             this.groupBox5.Controls.Add(this.billtemplatename_txt);
             this.groupBox5.Controls.Add(this.operation_txt);
             this.groupBox5.Controls.Add(this.RawMenu);
             this.groupBox5.Controls.Add(this.ViewAsAsm_chk);
             this.groupBox5.Controls.Add(this.bill_uom_cbo);
             this.groupBox5.Controls.Add(this.qty_num);
-            this.groupBox5.Controls.Add(this.label18);
             this.groupBox5.Controls.Add(this.desc_txt);
-            this.groupBox5.Controls.Add(this.label19);
             this.groupBox5.Controls.Add(this.partnum_txt);
-            this.groupBox5.Controls.Add(this.label20);
             this.groupBox5.Controls.Add(this.findpart_btn);
             this.groupBox5.Controls.Add(this.mtlseq_txt);
+            this.groupBox5.Controls.Add(this.label29);
+            this.groupBox5.Controls.Add(this.label18);
+            this.groupBox5.Controls.Add(this.label19);
+            this.groupBox5.Controls.Add(this.label20);
             this.groupBox5.Controls.Add(this.label21);
             this.groupBox5.Location = new System.Drawing.Point(3, 3);
             this.groupBox5.Name = "groupBox5";
@@ -1715,6 +1791,7 @@
             // 
             this.billtemplatename_txt.Location = new System.Drawing.Point(10, 32);
             this.billtemplatename_txt.Name = "billtemplatename_txt";
+            this.billtemplatename_txt.ReadOnly = true;
             this.billtemplatename_txt.Size = new System.Drawing.Size(290, 20);
             this.billtemplatename_txt.TabIndex = 14;
             // 
@@ -1740,7 +1817,7 @@
             // ViewAsAsm_chk
             // 
             this.ViewAsAsm_chk.AutoSize = true;
-            this.ViewAsAsm_chk.Location = new System.Drawing.Point(177, 57);
+            this.ViewAsAsm_chk.Location = new System.Drawing.Point(177, 58);
             this.ViewAsAsm_chk.Name = "ViewAsAsm_chk";
             this.ViewAsAsm_chk.Size = new System.Drawing.Size(111, 17);
             this.ViewAsAsm_chk.TabIndex = 10;
@@ -1760,7 +1837,7 @@
             // 
             // qty_num
             // 
-            this.qty_num.DecimalPlaces = 2;
+            this.qty_num.DecimalPlaces = 3;
             this.qty_num.Location = new System.Drawing.Point(177, 134);
             this.qty_num.Name = "qty_num";
             this.qty_num.Size = new System.Drawing.Size(62, 20);
@@ -1808,7 +1885,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(15, 136);
+            this.label20.Location = new System.Drawing.Point(8, 136);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(56, 13);
             this.label20.TabIndex = 3;
@@ -1831,6 +1908,7 @@
             this.mtlseq_txt.ReadOnly = true;
             this.mtlseq_txt.Size = new System.Drawing.Size(62, 20);
             this.mtlseq_txt.TabIndex = 1;
+            this.mtlseq_txt.Visible = false;
             // 
             // label21
             // 
@@ -1840,6 +1918,7 @@
             this.label21.Size = new System.Drawing.Size(46, 13);
             this.label21.TabIndex = 0;
             this.label21.Text = "Mtl Seq:";
+            this.label21.Visible = false;
             // 
             // BillDataGrid
             // 
@@ -1866,12 +1945,13 @@
             this.BillDataGrid.Name = "BillDataGrid";
             this.BillDataGrid.ReadOnly = true;
             this.BillDataGrid.RowHeadersVisible = false;
+            this.BillDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.BillDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BillDataGrid.ShowCellErrors = false;
             this.BillDataGrid.ShowCellToolTips = false;
             this.BillDataGrid.ShowEditingIcon = false;
             this.BillDataGrid.ShowRowErrors = false;
-            this.BillDataGrid.Size = new System.Drawing.Size(582, 317);
+            this.BillDataGrid.Size = new System.Drawing.Size(582, 286);
             this.BillDataGrid.TabIndex = 2;
             // 
             // row_id
@@ -1955,7 +2035,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.close_item_btn;
-            this.ClientSize = new System.Drawing.Size(715, 542);
+            this.ClientSize = new System.Drawing.Size(715, 492);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1967,6 +2047,7 @@
             this.ItemTab.ResumeLayout(false);
             this.ItemSplit.Panel1.ResumeLayout(false);
             this.ItemSplit.Panel2.ResumeLayout(false);
+            this.ItemSplit.Panel2.PerformLayout();
             this.ItemSplit.ResumeLayout(false);
             this.ItemLeftGrid.Panel1.ResumeLayout(false);
             this.ItemLeftGrid.Panel2.ResumeLayout(false);
@@ -2011,10 +2092,9 @@
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.groupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ResDataGrid)).EndInit();
             this.BillTab.ResumeLayout(false);
             this.BillContainer.Panel1.ResumeLayout(false);
@@ -2046,7 +2126,6 @@
         private System.Windows.Forms.SplitContainer OprSplit;
         private System.Windows.Forms.SplitContainer ItemLeftGrid;
         private System.Windows.Forms.Button del_item_btn;
-        private System.Windows.Forms.Button edit_item_btn;
         private System.Windows.Forms.Button add_item_btn;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label11;
@@ -2056,7 +2135,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox uomvol_cbo;
-        private System.Windows.Forms.TextBox Partnumber_txt;
+        private System.Windows.Forms.TextBox itemtemplatename_txt;
         private System.Windows.Forms.ComboBox uomweight_cbo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox Description_txt;
@@ -2089,13 +2168,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button close_op_btn;
         private System.Windows.Forms.Button del_op_btn;
-        private System.Windows.Forms.Button edit_op_btn;
         private System.Windows.Forms.Button add_op_btn;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button addop_btn;
         private System.Windows.Forms.Button remop_btn;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox oomtemplatename_txt;
         private System.Windows.Forms.DataGridView ItemTemplateList;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label16;
@@ -2111,7 +2189,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button close_bill_btn;
         private System.Windows.Forms.Button del_bill_btn;
-        private System.Windows.Forms.Button edit_bill_btn;
         private System.Windows.Forms.Button add_bill_btn;
         private System.Windows.Forms.SplitContainer BillPreviewContainer;
         private System.Windows.Forms.DataGridView BillDataGrid;
@@ -2142,11 +2219,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_Ops;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_bill;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OprSeq;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OpCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProdStandard;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stdformat;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox seq_txt;
         private System.Windows.Forms.TabPage ResTab;
@@ -2158,31 +2230,23 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Splitter splitter3;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button save_res_btn;
+        private System.Windows.Forms.Button close_res_btn;
+        private System.Windows.Forms.Button del_res_btn;
+        private System.Windows.Forms.Button add_res_btn;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button addres_btn;
+        private System.Windows.Forms.Button delres_btn;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox restemplatename_txt;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox opr_txt;
+        private System.Windows.Forms.ComboBox resource_cbo;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox resourcegrp_cbo;
         private System.Windows.Forms.DataGridView ResDataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyUOM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResDesc;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox billtemplatename_txt;
         private System.Windows.Forms.DataGridViewTextBoxColumn row_id;
@@ -2192,5 +2256,24 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PropertyType;
         private System.Windows.Forms.DataGridViewTextBoxColumn PropertyUOM;
         private System.Windows.Forms.DataGridViewCheckBoxColumn PropertyOptions;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button addwhse_btn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Resrow_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyUOM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyOptions;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Oprrow_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyUOM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOptions;
+        private System.Windows.Forms.CheckBox qtybearing;
+        private System.Windows.Forms.CheckBox userevision;
+        private System.Windows.Forms.CheckBox trackserial;
     }
 }

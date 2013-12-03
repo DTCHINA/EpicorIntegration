@@ -31,6 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Warehouse_Master));
             this.WhseDataGrid = new System.Windows.Forms.DataGridView();
+            this.WarehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WarehouseCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.done_btn = new System.Windows.Forms.Button();
             this.rem_btn = new System.Windows.Forms.Button();
@@ -42,10 +44,7 @@
             this.plant_txt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.whse_cbo = new System.Windows.Forms.ComboBox();
-            this.WarehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WarehouseCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //((System.ComponentModel.ISupportInitialize)(this.WhseDataGrid)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WhseDataGrid)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -56,6 +55,7 @@
             // 
             this.WhseDataGrid.AllowUserToAddRows = false;
             this.WhseDataGrid.AllowUserToDeleteRows = false;
+            this.WhseDataGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.PaleTurquoise;
             this.WhseDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.WhseDataGrid.BackgroundColor = System.Drawing.Color.White;
@@ -76,6 +76,22 @@
             this.WhseDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WhseDataGrid.Size = new System.Drawing.Size(277, 154);
             this.WhseDataGrid.TabIndex = 37;
+            // 
+            // WarehouseName
+            // 
+            this.WarehouseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.WarehouseName.DataPropertyName = "WarehouseName";
+            this.WarehouseName.HeaderText = "Warehouse Name";
+            this.WarehouseName.Name = "WarehouseName";
+            this.WarehouseName.ReadOnly = true;
+            // 
+            // WarehouseCode
+            // 
+            this.WarehouseCode.DataPropertyName = "WarehouseCode";
+            this.WarehouseCode.HeaderText = "WarehouseCode";
+            this.WarehouseCode.Name = "WarehouseCode";
+            this.WarehouseCode.ReadOnly = true;
+            this.WarehouseCode.Visible = false;
             // 
             // splitContainer1
             // 
@@ -197,22 +213,6 @@
             this.whse_cbo.Size = new System.Drawing.Size(240, 21);
             this.whse_cbo.TabIndex = 37;
             // 
-            // WarehouseName
-            // 
-            this.WarehouseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.WarehouseName.DataPropertyName = "WarehouseName";
-            this.WarehouseName.HeaderText = "Warehouse Name";
-            this.WarehouseName.Name = "WarehouseName";
-            this.WarehouseName.ReadOnly = true;
-            // 
-            // WarehouseCode
-            // 
-            this.WarehouseCode.DataPropertyName = "WarehouseCode";
-            this.WarehouseCode.HeaderText = "WarehouseCode";
-            this.WarehouseCode.Name = "WarehouseCode";
-            this.WarehouseCode.ReadOnly = true;
-            this.WarehouseCode.Visible = false;
-            // 
             // Warehouse_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,7 +228,6 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

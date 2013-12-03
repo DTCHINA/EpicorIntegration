@@ -332,6 +332,7 @@
             this.OPDataGrid.Name = "OPDataGrid";
             this.OPDataGrid.ReadOnly = true;
             this.OPDataGrid.RowHeadersVisible = false;
+            this.OPDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.OPDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.OPDataGrid.ShowCellErrors = false;
             this.OPDataGrid.ShowCellToolTips = false;

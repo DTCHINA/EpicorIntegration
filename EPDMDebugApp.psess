@@ -36,7 +36,7 @@
   </PostinstrumentEvent>
   <Binaries>
     <ProjBinary>
-      <Path>EPDMAddin-EpicorIntegration\obj\Debug\EPDMAddin-EpicorIntegration.dll</Path>
+      <Path>EPDMAddin-EpicorIntegration\obj\Debug\EPDM-EpicorIntegration.dll</Path>
       <ArgumentTimestamp>01/01/0001 00:00:00</ArgumentTimestamp>
       <Instrument>true</Instrument>
       <Sample>true</Sample>
@@ -73,6 +73,9 @@
     </Report>
     <Report>
       <Path>EPDMDebugApp131114.vsp</Path>
+    </Report>
+    <Report>
+      <Path>EPDMDebugApp131202.vsp</Path>
     </Report>
   </Reports>
   <Launches>

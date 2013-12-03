@@ -10,10 +10,10 @@ using System.Windows.Forms;
 namespace EPDMEpicorIntegration
 {
     //Release GUID
-    //[Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
+    [Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
 
     //Test GUID
-    [Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
+    //[Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
     public class SWEPDMAddin : IEdmAddIn5
     {
         void EdmLib.IEdmAddIn5.GetAddInInfo(ref EdmAddInInfo poInfo, IEdmVault5 poVault, IEdmCmdMgr5 poCmdMgr)
@@ -28,27 +28,27 @@ namespace EPDMEpicorIntegration
             poInfo.mlRequiredVersionMajor = 6;
             poInfo.mlRequiredVersionMinor = 4;
 
-            //Epicor Integration\\
+            // Epicor Integration\\
 
-            poCmdMgr.AddCmd(2, "Test\\Add Item,OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to add an Item, a revision, an OOM and BOM in Epicor", 0, 0);
+            poCmdMgr.AddCmd(2, "Test Epicor Integration\\Add Item,OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to add an Item, a revision, an OOM and BOM in Epicor", 0, 0);
 
-            poCmdMgr.AddCmd(1, "Test\\Add/Update Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update Item in Epicor", 0, 0); ;
+            poCmdMgr.AddCmd(1, "Test Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update Item in Epicor", 0, 0); ;
 
-            poCmdMgr.AddCmd(4, "Test\\Add Revision", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to add revision to Item in Epicor", 0, 0);
+            poCmdMgr.AddCmd(4, "Test Epicor Integration\\Add Revision", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to add revision to Item in Epicor", 0, 0);
 
-            poCmdMgr.AddCmd(5, "Test\\Add/Update OOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update OOM in Epicor", 0, 0);
+            poCmdMgr.AddCmd(5, "Test Epicor Integration\\Add/Update OOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update OOM in Epicor", 0, 0);
 
-            poCmdMgr.AddCmd(6, "Test\\Add/Update BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update BOM in Epicor", 0, 0);
+            poCmdMgr.AddCmd(6, "Test Epicor Integration\\Add/Update BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update BOM in Epicor", 0, 0);
 
-            poCmdMgr.AddCmd(7, "Test\\Check In/Approve Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to Approve and Check In Item to Epicor", 0, 0);
+            poCmdMgr.AddCmd(7, "Test Epicor Integration\\Check In/Approve Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to Approve and Check In Item to Epicor", 0, 0);
 
-            poCmdMgr.AddCmd(3, "Test\\Check Out Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Checks out Item in Epicor (Not Enterprise PDM)", 0, 0);
+            poCmdMgr.AddCmd(3, "Test Epicor Integration\\Check Out Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Checks out Item in Epicor (Not Enterprise PDM)", 0, 0);
 
-            poCmdMgr.AddCmd(-1, "Test\\Add-in Configuration", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to configure Epicor Integration Add-in", 0, 0);
+            poCmdMgr.AddCmd(-1, "Test Epicor Integration\\Add-in Configuration", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to configure Epicor Integration Add-in", 0, 0);
 
-            poCmdMgr.AddCmd(-10, "Test\\Update Properties from Epicor", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to update file properties from current Epicor values", 0, 0);
+            poCmdMgr.AddCmd(-10, "Test Epicor Integration\\Update Properties from Epicor", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to update file properties from current Epicor values", 0, 0);
 
-            poCmdMgr.AddCmd(-100, "Test\\Item/OOM/BOM Templates", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to Add/Edit/Update Templates", 0, 0);
+            poCmdMgr.AddCmd(-100, "Test Epicor Integration\\Item/OOM/BOM Templates", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to Add/Edit/Update Templates", 0, 0);
 
             poCmdMgr.AddHook(EdmCmdType.EdmCmd_Menu, null);
         }

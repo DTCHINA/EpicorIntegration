@@ -38,7 +38,6 @@
             this.gid_txt = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.saveandclose_btn = new System.Windows.Forms.Button();
-            this.copy_btn = new System.Windows.Forms.Button();
             this.newbtn = new System.Windows.Forms.Button();
             this.removebtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
@@ -49,6 +48,7 @@
             this.parent_txt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.copy_btn = new System.Windows.Forms.Button();
             this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
             this.uom_cbo = new System.Windows.Forms.ComboBox();
             this.qty_num = new System.Windows.Forms.NumericUpDown();
@@ -171,16 +171,6 @@
             this.saveandclose_btn.UseVisualStyleBackColor = true;
             this.saveandclose_btn.Click += new System.EventHandler(this.saveandclose_btn_Click);
             // 
-            // copy_btn
-            // 
-            this.copy_btn.Location = new System.Drawing.Point(355, 45);
-            this.copy_btn.Name = "copy_btn";
-            this.copy_btn.Size = new System.Drawing.Size(75, 23);
-            this.copy_btn.TabIndex = 14;
-            this.copy_btn.Text = "&Add From...";
-            this.copy_btn.UseVisualStyleBackColor = true;
-            this.copy_btn.Click += new System.EventHandler(this.copy_btn_Click);
-            // 
             // newbtn
             // 
             this.newbtn.Location = new System.Drawing.Point(6, 16);
@@ -289,6 +279,16 @@
             this.button1.Text = "Add &Raw";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // copy_btn
+            // 
+            this.copy_btn.Location = new System.Drawing.Point(355, 45);
+            this.copy_btn.Name = "copy_btn";
+            this.copy_btn.Size = new System.Drawing.Size(75, 23);
+            this.copy_btn.TabIndex = 14;
+            this.copy_btn.Text = "&Add From...";
+            this.copy_btn.UseVisualStyleBackColor = true;
+            this.copy_btn.Click += new System.EventHandler(this.copy_btn_Click);
             // 
             // ViewAsAsm_chk
             // 
@@ -426,6 +426,7 @@
             this.BillDataGrid.Name = "BillDataGrid";
             this.BillDataGrid.ReadOnly = true;
             this.BillDataGrid.RowHeadersVisible = false;
+            this.BillDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.BillDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BillDataGrid.ShowCellErrors = false;
             this.BillDataGrid.ShowCellToolTips = false;

@@ -1069,9 +1069,11 @@ namespace EpicorIntegration
         {
             PartData Pdata = new PartData();
 
-            DataTable DT = new DataTable();
+            ENGDataDataSetTableAdapters.TemplatesTableAdapter TableAdapter = new ENGDataDataSetTableAdapters.TemplatesTableAdapter();
 
-            DT = GetFullTemplate(TemplateName, "ITEM");
+            ENGDataDataSet.TemplatesDataTable DT = new ENGDataDataSet.TemplatesDataTable();
+
+            TableAdapter.FillByNameType(DT, "ITEM", TemplateName);
 
             foreach (DataRow Dr in DT.Rows)
             {
@@ -1079,7 +1081,7 @@ namespace EpicorIntegration
                     Pdata.PMT = Dr["PropertyValue"].ToString();
 
                 if (Dr["PropertyType"].ToString() == "UOM")
-                    Pdata.UOM_Class = Dr["PropertyValue"].ToString();
+                    Pdata.Primary_UOM = Dr["PropertyValue"].ToString();
 
                 if (Dr["PropertyType"].ToString() == "GROUP")
                     Pdata.PartGroup = Dr["PropertyValue"].ToString();
@@ -1112,6 +1114,9 @@ namespace EpicorIntegration
 
                 if (Dr["PropertyType"].ToString() == "PLANNER")
                     Pdata.Planner = Dr["PropertyValue"].ToString();
+
+                if (Dr["PropertyType"].ToString() == "WEIGHT_UOM")
+                    Pdata.Net_Weight_UM = Dr["PropertyValue"].ToString();
             }
 
             return Pdata;

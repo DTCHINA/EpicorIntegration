@@ -79,10 +79,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancel_btn;
             this.ClientSize = new System.Drawing.Size(317, 82);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.template_name_txt);
             this.Controls.Add(this.cancel_btn);
             this.Controls.Add(this.ok_btn);
+            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Template_Title";
