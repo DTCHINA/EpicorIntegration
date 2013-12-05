@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace EpicorIntegration
+namespace Epicor_Integration
 {
     public partial class Config_DefaultGroup : Form
     {

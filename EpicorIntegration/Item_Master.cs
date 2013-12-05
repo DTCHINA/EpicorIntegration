@@ -4,7 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace EpicorIntegration
+namespace Epicor_Integration
 {
     public partial class Item_Master : Form
     {
@@ -45,6 +45,8 @@ namespace EpicorIntegration
                 userevision.Checked = Part.UseRevision;
 
                 qtybearing.Checked = Part.QtyBearing;
+
+                phantom_chk.Checked = Part.Phantom;
 
                 trackserial.Checked = Part.TrackSerial;
 
@@ -304,6 +306,8 @@ namespace EpicorIntegration
 
             qtybearing.Checked = bool.Parse(Pdata.Tables[0].Rows[0]["QtyBearing"].ToString());
 
+            phantom_chk.Checked = bool.Parse(Pdata.Tables[0].Rows[0]["PhantomBOM"].ToString());
+
             userevision.Checked = bool.Parse(Pdata.Tables[0].Rows[0]["UsePartRev"].ToString());
 
             whse_cbo.DataSource = Pdata.Tables["PartWhse"];
@@ -349,6 +353,8 @@ namespace EpicorIntegration
             DataList.AddDatum(Pdata, "Part", 0, "QtyBearing", qtybearing.Checked.ToString(), RowState);
 
             DataList.AddDatum(Pdata, "Part", 0, "UsePartRev", userevision.Checked.ToString(), RowState);
+
+            DataList.AddDatum(Pdata, "Part", 0, "PhantomBOM", phantom_chk.Checked.ToString(), RowState);
 
             string Type_Code = type_cbo.SelectedItem.ToString();
 
@@ -485,6 +491,8 @@ namespace EpicorIntegration
 
             qtybearing.Checked = bool.Parse(pdata.Tables[0].Rows[0]["QtyBearing"].ToString());
 
+            phantom_chk.Checked = bool.Parse(pdata.Tables[0].Rows[0]["PhantomBOM"].ToString());
+
             userevision.Checked = bool.Parse(pdata.Tables[0].Rows[0]["UsePartRev"].ToString());
             
             /*if (pdata.Net_Vol != 0)
@@ -544,6 +552,8 @@ namespace EpicorIntegration
             uom_cbo.SelectedValue = Pdata.UOM_Class;
 
             qtybearing.Checked = Pdata.QtyBearing;
+
+            phantom_chk.Checked = Pdata.Phantom;
 
             userevision.Checked = Pdata.UseRevision;
 

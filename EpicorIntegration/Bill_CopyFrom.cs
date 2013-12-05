@@ -9,7 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using Epicor.Mfg.BO;
 
-namespace EpicorIntegration
+namespace Epicor_Integration
 {
     public partial class Bill_CopyFrom : Form
     {

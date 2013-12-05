@@ -3,7 +3,7 @@ using Epicor.Mfg.Core;
 using System;
 using System.Windows.Forms;
 
-namespace EpicorIntegration
+namespace Epicor_Integration
 {
     public partial class EpicLogin : Form
     {

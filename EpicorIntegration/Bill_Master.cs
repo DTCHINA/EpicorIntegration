@@ -5,7 +5,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace EpicorIntegration
+namespace Epicor_Integration
 {
     public partial class Bill_Master : Form
     {
@@ -579,6 +579,8 @@ namespace EpicorIntegration
 
                     EngWBDS.Tables["ECOMtl"].Rows[rowindex]["QtyPer"] = qty_num.Value;
 
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["PullAsAsm"] = PullAsAsm_chk.Checked;
+
                     linechanged = false;
                 }
             }
@@ -624,6 +626,8 @@ namespace EpicorIntegration
                     uom_cbo.Text = EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"].ToString();
 
                     ViewAsAsm_chk.Checked = Boolean.Parse(EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"].ToString());
+
+                    PullAsAsm_chk.Checked = Boolean.Parse(EngWBDS.Tables["ECOMtl"].Rows[rowindex]["PullAsAsm"].ToString());
 
                     linechanged = true;
                 }
@@ -1236,6 +1240,14 @@ namespace EpicorIntegration
         private void button1_Click_1(object sender, EventArgs e)
         {
             RawMenu.Show(button1, new Point(0, button1.Height));
+        }
+
+        private void PullAsAsm_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            linechanged = true;
+
+            if (DB_Update_Enabled)
+                UpdateDataSet();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace EpicorIntegration
+﻿namespace Epicor_Integration
 {
     partial class Bill_Master
     {
@@ -47,6 +47,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.parent_txt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.PullAsAsm_chk = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.copy_btn = new System.Windows.Forms.Button();
             this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
@@ -62,6 +63,10 @@
             this.mtlseq_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.BillDataGrid = new System.Windows.Forms.DataGridView();
+            this.PartTimer = new System.Windows.Forms.Timer(this.components);
+            this.EnableNew = new System.Windows.Forms.Timer(this.components);
+            this.RawMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MtlPartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,11 +74,8 @@
             this.RelatedOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UOMCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PullAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PartTimer = new System.Windows.Forms.Timer(this.components);
-            this.EnableNew = new System.Windows.Forms.Timer(this.components);
-            this.RawMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -107,7 +109,7 @@
             // MajorHorizSplit.Panel2
             // 
             this.MajorHorizSplit.Panel2.Controls.Add(this.BillDataGrid);
-            this.MajorHorizSplit.Size = new System.Drawing.Size(554, 466);
+            this.MajorHorizSplit.Size = new System.Drawing.Size(684, 466);
             this.MajorHorizSplit.SplitterDistance = 262;
             this.MajorHorizSplit.TabIndex = 1;
             // 
@@ -154,7 +156,7 @@
             this.groupBox2.Controls.Add(this.removebtn);
             this.groupBox2.Controls.Add(this.cancelbtn);
             this.groupBox2.Controls.Add(this.savebtn);
-            this.groupBox2.Location = new System.Drawing.Point(454, 12);
+            this.groupBox2.Location = new System.Drawing.Point(584, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(88, 239);
             this.groupBox2.TabIndex = 7;
@@ -250,6 +252,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.PullAsAsm_chk);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.copy_btn);
             this.groupBox1.Controls.Add(this.ViewAsAsm_chk);
@@ -266,13 +269,24 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(12, 90);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(436, 161);
+            this.groupBox1.Size = new System.Drawing.Size(566, 161);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // PullAsAsm_chk
+            // 
+            this.PullAsAsm_chk.AutoSize = true;
+            this.PullAsAsm_chk.Location = new System.Drawing.Point(292, 125);
+            this.PullAsAsm_chk.Name = "PullAsAsm_chk";
+            this.PullAsAsm_chk.Size = new System.Drawing.Size(105, 17);
+            this.PullAsAsm_chk.TabIndex = 15;
+            this.PullAsAsm_chk.Text = "Pull As Assembly";
+            this.PullAsAsm_chk.UseVisualStyleBackColor = true;
+            this.PullAsAsm_chk.CheckedChanged += new System.EventHandler(this.PullAsAsm_chk_CheckedChanged);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(355, 19);
+            this.button1.Location = new System.Drawing.Point(485, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 11;
@@ -282,7 +296,7 @@
             // 
             // copy_btn
             // 
-            this.copy_btn.Location = new System.Drawing.Point(355, 45);
+            this.copy_btn.Location = new System.Drawing.Point(485, 42);
             this.copy_btn.Name = "copy_btn";
             this.copy_btn.Size = new System.Drawing.Size(75, 23);
             this.copy_btn.TabIndex = 14;
@@ -293,7 +307,7 @@
             // ViewAsAsm_chk
             // 
             this.ViewAsAsm_chk.AutoSize = true;
-            this.ViewAsAsm_chk.Location = new System.Drawing.Point(175, 21);
+            this.ViewAsAsm_chk.Location = new System.Drawing.Point(292, 99);
             this.ViewAsAsm_chk.Name = "ViewAsAsm_chk";
             this.ViewAsAsm_chk.Size = new System.Drawing.Size(111, 17);
             this.ViewAsAsm_chk.TabIndex = 10;
@@ -418,6 +432,7 @@
             this.RelatedOperation,
             this.UOMCode,
             this.ViewAsAsm,
+            this.PullAsAsm,
             this.OpDesc});
             this.BillDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BillDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
@@ -432,8 +447,28 @@
             this.BillDataGrid.ShowCellToolTips = false;
             this.BillDataGrid.ShowEditingIcon = false;
             this.BillDataGrid.ShowRowErrors = false;
-            this.BillDataGrid.Size = new System.Drawing.Size(554, 200);
+            this.BillDataGrid.Size = new System.Drawing.Size(684, 200);
             this.BillDataGrid.TabIndex = 1;
+            // 
+            // PartTimer
+            // 
+            this.PartTimer.Interval = 500;
+            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
+            // 
+            // EnableNew
+            // 
+            this.EnableNew.Enabled = true;
+            this.EnableNew.Tick += new System.EventHandler(this.EnableNew_Tick);
+            // 
+            // RawMenu
+            // 
+            this.RawMenu.Name = "RawMenu";
+            this.RawMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // TemplateMenu
+            // 
+            this.TemplateMenu.Name = "TemplateMenu";
+            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // MtlSeq
             // 
@@ -460,7 +495,7 @@
             this.MtlPartNum.HeaderText = "Part Number";
             this.MtlPartNum.Name = "MtlPartNum";
             this.MtlPartNum.ReadOnly = true;
-            this.MtlPartNum.Width = 84;
+            this.MtlPartNum.Width = 91;
             // 
             // MtlPartNumPartDescription
             // 
@@ -487,7 +522,7 @@
             this.UOMCode.HeaderText = "UOM Code";
             this.UOMCode.Name = "UOMCode";
             this.UOMCode.ReadOnly = true;
-            this.UOMCode.Width = 78;
+            this.UOMCode.Width = 85;
             // 
             // ViewAsAsm
             // 
@@ -498,6 +533,13 @@
             this.ViewAsAsm.ReadOnly = true;
             this.ViewAsAsm.Width = 88;
             // 
+            // PullAsAsm
+            // 
+            this.PullAsAsm.DataPropertyName = "PullAsAsm";
+            this.PullAsAsm.HeaderText = "Pull As Assembly";
+            this.PullAsAsm.Name = "PullAsAsm";
+            this.PullAsAsm.ReadOnly = true;
+            // 
             // OpDesc
             // 
             this.OpDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -507,32 +549,12 @@
             this.OpDesc.ReadOnly = true;
             this.OpDesc.Width = 78;
             // 
-            // PartTimer
-            // 
-            this.PartTimer.Interval = 500;
-            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
-            // 
-            // EnableNew
-            // 
-            this.EnableNew.Enabled = true;
-            this.EnableNew.Tick += new System.EventHandler(this.EnableNew_Tick);
-            // 
-            // RawMenu
-            // 
-            this.RawMenu.Name = "RawMenu";
-            this.RawMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // TemplateMenu
-            // 
-            this.TemplateMenu.Name = "TemplateMenu";
-            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
-            // 
             // Bill_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelbtn;
-            this.ClientSize = new System.Drawing.Size(554, 466);
+            this.ClientSize = new System.Drawing.Size(684, 466);
             this.Controls.Add(this.MajorHorizSplit);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
@@ -586,6 +608,11 @@
         private System.Windows.Forms.CheckBox ViewAsAsm_chk;
         private System.Windows.Forms.Timer PartTimer;
         private System.Windows.Forms.Button saveandclose_btn;
+        private System.Windows.Forms.Timer EnableNew;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ContextMenuStrip RawMenu;
+        private System.Windows.Forms.ContextMenuStrip TemplateMenu;
+        private System.Windows.Forms.CheckBox PullAsAsm_chk;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyPer;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNum;
@@ -593,11 +620,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RelatedOperation;
         private System.Windows.Forms.DataGridViewTextBoxColumn UOMCode;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ViewAsAsm;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PullAsAsm;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
-        private System.Windows.Forms.Timer EnableNew;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ContextMenuStrip RawMenu;
-        private System.Windows.Forms.ContextMenuStrip TemplateMenu;
 
     }
 }

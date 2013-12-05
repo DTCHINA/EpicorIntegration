@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using TableAdapterHelper;
 
-namespace EpicorIntegration
+namespace Epicor_Integration
 {
     public class DataList
     {
@@ -531,6 +531,27 @@ namespace EpicorIntegration
             catch { return ""; }
         }
 
+        public static bool GetSerialized(string PartNumber)
+        {
+            try
+            {
+                Part Part = new Part(EpicConn);
+
+                PartDataSet PartData = new PartDataSet();
+
+                PartData = Part.GetByID(PartNumber);
+
+                int LastRowIndex = PartData.Tables["Part"].Rows.Count - 1;
+
+                bool PartDesc = bool.Parse(PartData.Tables["Part"].Rows[LastRowIndex]["TrackSerialNum"].ToString());
+
+                EpicClose();
+
+                return PartDesc;
+            }
+            catch { return false; }
+        }
+
         public static string GetType(string PartNumber)
         {
             try
@@ -932,6 +953,8 @@ namespace EpicorIntegration
         public string PartClass;
 
         public string PartPlant;
+
+        public bool Phantom;
 
         private List<string> _PlantWhse = new List<string>();
 

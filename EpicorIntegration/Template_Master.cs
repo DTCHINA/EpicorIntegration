@@ -11,7 +11,7 @@ using Epicor.Mfg.BO;
 using TableAdapterHelper;
 using System.Data.SqlClient;
 
-namespace EpicorIntegration
+namespace Epicor_Integration
 {
     public partial class Template_Master : Form
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{E20EDB1A-3F4D-4F23-AC1A-F67D8CA4CCAA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EpicorIntegration</RootNamespace>
-    <AssemblyName>EpicorIntegration</AssemblyName>
+    <RootNamespace>Epicor_Integration</RootNamespace>
+    <AssemblyName>Epicor-Integration</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -113,6 +113,9 @@
     <Reference Include="Epicor.Mfg.BO.SysMonitor">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.SysMonitor.dll</HintPath>
     </Reference>
+    <Reference Include="Epicor.Mfg.BO.VendorPPSearch">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.VendorPPSearch.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.Core.BLConnectionPool">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.BLConnectionPool.dll</HintPath>
     </Reference>
@@ -153,6 +156,9 @@
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IQuickSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IQuickSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IVendorPPSearch">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IVendorPPSearch.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.Lib.BOReader">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.BOReader.dll</HintPath>
@@ -273,6 +279,12 @@
     <Compile Include="Operations_Master.Designer.cs">
       <DependentUpon>Operations_Master.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations_SupplierSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operations_SupplierSearch.Designer.cs">
+      <DependentUpon>Operations_SupplierSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerialMask_Master.cs">
@@ -376,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations_Master.resx">
       <DependentUpon>Operations_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operations_SupplierSearch.resx">
+      <DependentUpon>Operations_SupplierSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,4 +1,4 @@
-﻿namespace EpicorIntegration
+﻿namespace Epicor_Integration
 {
     partial class CheckOut_Master
     {

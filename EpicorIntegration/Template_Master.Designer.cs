@@ -1,4 +1,4 @@
-﻿namespace EpicorIntegration
+﻿namespace Epicor_Integration
 {
     partial class Template_Master
     {
@@ -192,7 +192,7 @@
             this.PropertyOptions = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.RawMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.PartTimer = new System.Windows.Forms.Timer(this.components);
-            this.engDataDataSet = new EpicorIntegration.ENGDataDataSet();
+            this.engDataDataSet = new Epicor_Integration.ENGDataDataSet();
             this.tabControl.SuspendLayout();
             this.ItemTab.SuspendLayout();
             this.ItemSplit.Panel1.SuspendLayout();
@@ -370,7 +370,7 @@
             this.ItemTemplateList.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ItemTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ItemTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
+            this.ItemTemplateList.AutoGenerateColumns = global::Epicor_Integration.Properties.Settings.Default.AutoGenCol;
             this.ItemTemplateList.BackgroundColor = System.Drawing.Color.White;
             this.ItemTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -822,12 +822,12 @@
             this.OpsTemplateList.AllowUserToResizeRows = false;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.OpsTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.OpsTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
+            this.OpsTemplateList.AutoGenerateColumns = global::Epicor_Integration.Properties.Settings.Default.AutoGenCol;
             this.OpsTemplateList.BackgroundColor = System.Drawing.Color.White;
             this.OpsTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OpsTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Name_Ops});
-            this.OpsTemplateList.DataBindings.Add(new System.Windows.Forms.Binding("AutoGenerateColumns", global::EpicorIntegration.Properties.Settings.Default, "allresults", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.OpsTemplateList.DataBindings.Add(new System.Windows.Forms.Binding("AutoGenerateColumns", global::Epicor_Integration.Properties.Settings.Default, "allresults", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.OpsTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OpsTemplateList.Location = new System.Drawing.Point(0, 20);
             this.OpsTemplateList.Name = "OpsTemplateList";
@@ -1085,7 +1085,7 @@
             this.OPDataGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.OPDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.OPDataGrid.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
+            this.OPDataGrid.AutoGenerateColumns = global::Epicor_Integration.Properties.Settings.Default.AutoGenCol;
             this.OPDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.OPDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OPDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1220,12 +1220,12 @@
             this.ResTemplateList.AllowUserToResizeRows = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ResTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.ResTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
+            this.ResTemplateList.AutoGenerateColumns = global::Epicor_Integration.Properties.Settings.Default.AutoGenCol;
             this.ResTemplateList.BackgroundColor = System.Drawing.Color.White;
             this.ResTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ResTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
-            this.ResTemplateList.DataBindings.Add(new System.Windows.Forms.Binding("AutoGenerateColumns", global::EpicorIntegration.Properties.Settings.Default, "allresults", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ResTemplateList.DataBindings.Add(new System.Windows.Forms.Binding("AutoGenerateColumns", global::Epicor_Integration.Properties.Settings.Default, "allresults", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ResTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ResTemplateList.Location = new System.Drawing.Point(0, 20);
             this.ResTemplateList.Name = "ResTemplateList";
@@ -1472,7 +1472,7 @@
             this.ResDataGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ResDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.ResDataGrid.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
+            this.ResDataGrid.AutoGenerateColumns = global::Epicor_Integration.Properties.Settings.Default.AutoGenCol;
             this.ResDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.ResDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ResDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1598,7 +1598,7 @@
             this.BillTemplateList.AllowUserToResizeRows = false;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.BillTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.BillTemplateList.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
+            this.BillTemplateList.AutoGenerateColumns = global::Epicor_Integration.Properties.Settings.Default.AutoGenCol;
             this.BillTemplateList.BackgroundColor = System.Drawing.Color.White;
             this.BillTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BillTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1927,7 +1927,7 @@
             this.BillDataGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.BillDataGrid.AutoGenerateColumns = global::EpicorIntegration.Properties.Settings.Default.AutoGenCol;
+            this.BillDataGrid.AutoGenerateColumns = global::Epicor_Integration.Properties.Settings.Default.AutoGenCol;
             this.BillDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.BillDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BillDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

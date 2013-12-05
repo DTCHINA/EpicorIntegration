@@ -11,7 +11,7 @@ using Epicor.Mfg.BO;
 using Epicor.Mfg.Core;
 using Epicor.Mfg.Lib;
 
-namespace EpicorIntegration
+namespace Epicor_Integration
 {
     public partial class Operations_Master : Form
     {
@@ -78,9 +78,21 @@ namespace EpicorIntegration
 
             opmast_cbo.DataSource = ds.Tables["OPMaster"];
 
-            opmast_cbo.ValueMember = "OPCode";//ds.Tables["OPMaster"].Columns["OPCode"].ToString();
+            subcon_opsmast_cbo.DataSource = ds.Tables["OPMaster"];
 
-            opmast_cbo.DisplayMember = "OPDesc";// ds.Tables["OPMaster"].Columns["OPDesc"].ToString();
+            opmast_cbo.ValueMember = "OPCode";
+
+            opmast_cbo.DisplayMember = "OPDesc";
+
+            subcon_opsmast_cbo.ValueMember = "OPCode";
+
+            subcon_opsmast_cbo.DisplayMember = "OPDesc";
+
+            uom_cbo.DataSource = DataList.PartUOM(partnumber_txt.Text);
+
+            uom_cbo.DisplayMember = "UOMCode";
+
+            uom_cbo.ValueMember = "UOMCode";
 
             try
             {
@@ -96,6 +108,8 @@ namespace EpicorIntegration
             OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
             
             DataList.EpicClose();
+
+            FillLaborEntry();
         }
 
         public Operations_Master()
@@ -116,6 +130,8 @@ namespace EpicorIntegration
 
             opmast_cbo.DisplayMember = ds.Tables["OPMaster"].Columns["OPDesc"].ToString();
 
+            FillLaborEntry();
+
             DataList.EpicClose();
         }
 
@@ -125,8 +141,12 @@ namespace EpicorIntegration
 
             this.FormClosing += Operations_Master_FormClosing;
 
+            FillLaborEntryGrid();
+
             FillProdStd();
 
+            EnableSNChk();
+            
             string Message;
 
             if (!DataList.PartCheckOutStatus(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, out Message))
@@ -149,6 +169,10 @@ namespace EpicorIntegration
                     this.Close();
                 }
             }
+
+            OPDataGrid.ClearSelection();
+
+            SetSubConField();
         }
 
         void Operations_Master_FormClosing(object sender, FormClosingEventArgs e)
@@ -181,36 +205,98 @@ namespace EpicorIntegration
 
                     OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
                 }
-                else
-                    e.Cancel = true;
+                else ;
+                    //e.Cancel = true;
+            }
+        }
+
+        void SetSubConField()
+        {
+            for (int i = 0; i < OPDataGrid.Rows.Count; i++)
+            {
+                string val = EngWBDS.Tables["ECOOpr"].Rows[i]["VendorNumVendorID"].ToString();
+
+                if (val != null && val != "")
+                {
+                    OPDataGrid["subcon", i].Value = true;
+                }
             }
         }
 
         void OPDataGrid_SelectionChanged(object sender, EventArgs e)
         {
-            try
-            {
-                string CurrentOp = OPDataGrid["OpDesc", OPDataGrid.CurrentCellAddress.Y].Value.ToString();
+            int rowindex = OPDataGrid.CurrentCellAddress.Y;
 
-                string CurrentStd = (OPDataGrid["Stdformat", OPDataGrid.CurrentCellAddress.Y].Value.ToString());
+            object val = OPDataGrid["subcon", rowindex].Value;
 
-                decimal CurrentProd = (decimal)double.Parse(OPDataGrid["ProdStandard", OPDataGrid.CurrentCellAddress.Y].Value.ToString());
-               
-                if (CurrentOp != null)
-                    opmast_cbo.SelectedIndex = opmast_cbo.FindStringExact(CurrentOp);
-                else
-                    opmast_cbo.SelectedIndex = 1;
-
-                if (CurrentStd != null)
+            if (!Convert.ToBoolean(val))
+                try
                 {
-                    prodstd_cbo.SelectedValue = CurrentStd;
-                }
-                else
-                    prodstd_cbo.SelectedIndex = 1;
+                    ops_grp.Visible = true;
 
-                prodhrs_num.Value = CurrentProd;
+                    subcon_grp.Visible = false;
+
+                    AutoRecieve_chk.Enabled = (rowindex == OPDataGrid.Rows.Count - 1);
+
+                    AutoRecieve_chk.Checked = bool.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowindex]["AutoReceive"].ToString());
+
+                    SNRequiredOpr_chk.Checked = bool.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowindex]["SNRequiredOpr"].ToString());
+
+                    string LaborVal = EngWBDS.Tables["ECOOpr"].Rows[rowindex]["LaborEntryMethod"].ToString();
+
+                    LaborEntryMethod_cbo.SelectedValue = LaborVal;
+
+                    string CurrentOp = OPDataGrid["OpDesc", rowindex].Value.ToString();
+
+                    string CurrentStd = (OPDataGrid["Stdformat", rowindex].Value.ToString());
+
+                    decimal CurrentProd = (decimal)double.Parse(OPDataGrid["ProdStandard", rowindex].Value.ToString());
+
+                    if (CurrentOp != null)
+                        opmast_cbo.SelectedIndex = opmast_cbo.FindStringExact(CurrentOp);
+                    else
+                        opmast_cbo.SelectedIndex = 1;
+
+                    if (CurrentStd != null)
+                    {
+                        prodstd_cbo.SelectedValue = CurrentStd;
+                    }
+                    else
+                        prodstd_cbo.SelectedIndex = 1;
+
+                    prodhrs_num.Value = CurrentProd;
+                }
+                catch { }
+            else
+            {
+                subcon_grp.Visible = true;
+
+                ops_grp.Visible = false;
+
+                string CurrentOp = OPDataGrid["OpDesc", rowindex].Value.ToString();
+
+                string IUM_val = OPDataGrid["IUM", rowindex].Value.ToString();
+
+                if (CurrentOp != null)
+                    subcon_opsmast_cbo.SelectedIndex = subcon_opsmast_cbo.FindStringExact(CurrentOp);
+                else
+                    subcon_opsmast_cbo.SelectedIndex = 1;
+
+                refneeded_chk.Checked = Convert.ToBoolean(OPDataGrid["RFQNeeded", rowindex].Value);
+
+                quotesreq_num.Value = int.Parse(OPDataGrid["RFQVendQuotes", rowindex].Value.ToString());
+
+                if (IUM_val != null)
+                    uom_cbo.SelectedIndex = uom_cbo.FindStringExact(IUM_val);
+                else
+                    uom_cbo.SelectedIndex = 1;
+
+                qtyper_num.Value = decimal.Parse(OPDataGrid["QtyPer", rowindex].Value.ToString());
+
+                unitcost_num.Value = decimal.Parse(OPDataGrid["EstUnitCost", rowindex].Value.ToString());
+
+                daysout_num.Value = decimal.Parse(OPDataGrid["DaysOut", rowindex].Value.ToString());
             }
-            catch { }
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -316,6 +402,13 @@ namespace EpicorIntegration
                 EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpDesc"] = opmast_cbo.Text;
 
                 EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
+
+                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["AutoReceive"] = AutoRecieve_chk.Checked;
+
+                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
+
+                if (opmast_cbo.Text == "TURRET" || opmast_cbo.Text == "SHEAR")
+                    LaborEntryMethod_cbo.Text = "Backflush";
             }
             catch { }
         }
@@ -519,6 +612,238 @@ namespace EpicorIntegration
             opmast_cbo.SelectedIndexChanged += opmast_cbo_SelectedIndexChanged;
 
             prodhrs_num.ValueChanged += prodhrs_num_ValueChanged;
+        }
+
+        private void SNRequiredOpr_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+
+            EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
+        }
+
+        private void AutoRecieve_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+
+            EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["AutoReceive"] = AutoRecieve_chk.Checked;
+
+            EnableSNChk();
+        }
+
+        private void EnableSNChk()
+        {
+            SNRequiredOpr_chk.Enabled = DataList.GetSerialized(partnumber_txt.Text);
+
+            if (AutoRecieve_chk.Checked)
+                SNRequiredOpr_chk.Enabled = false;
+        }
+
+        private void FillLaborEntry()
+        {
+            DataTable Dt = new DataTable();
+
+            Dt.Columns.Add("Description");
+
+            Dt.Columns.Add("Code");
+
+            DataRow Dr = Dt.NewRow();
+
+            Dr["Description"] = "Backflush";
+
+            Dr["Code"] = "B";
+
+            Dt.Rows.Add(Dr);
+
+            Dr = Dt.NewRow();
+
+            Dr["Description"] = "Quantity Only";
+
+            Dr["Code"] = "Q";
+
+            Dt.Rows.Add(Dr);
+
+            Dr = Dt.NewRow();
+
+            Dr["Description"] = "Time and Quantity";
+
+            Dr["Code"] = "T";
+
+            Dt.Rows.Add(Dr);
+
+            LaborEntryMethod_cbo.DataSource = Dt;
+
+            //LaborEntryMethod_cbo.Items.Add(new PartTypeCode("Backflush", "B"));
+
+            //LaborEntryMethod_cbo.Items.Add(new PartTypeCode("Quantity Only", "Q"));
+
+            //LaborEntryMethod_cbo.Items.Add(new PartTypeCode("Time and Quantity", "T"));
+
+            LaborEntryMethod_cbo.DisplayMember = "Description";
+
+            LaborEntryMethod_cbo.ValueMember = "Code";
+
+            LaborEntryMethod_cbo.SelectedIndex = 1;
+        }
+
+        private void FillLaborEntryGrid()
+        {
+            for (int i = 0; i < OPDataGrid.Rows.Count; i++)
+            {
+                switch (OPDataGrid["LaborEntry",i].Value.ToString())
+                {
+                    case "T":
+                        OPDataGrid["LaborEntryDesc", i].Value = "Time and Quantity";
+                        break;
+                    case "Q":
+                        OPDataGrid["LaborEntryDesc", i].Value = "Quantity Only";
+                        break;
+                    case "B":
+                        OPDataGrid["LaborEntryDesc", i].Value = "Backflush";
+                        break;
+                }
+            }
+        }
+
+        private void LaborEntryMethod_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["LaborEntryMethod"] = LaborEntryMethod_cbo.SelectedValue;
+
+                switch (OPDataGrid["LaborEntry", OPDataGrid.CurrentCellAddress.Y].Value.ToString())
+                {
+                    case "T":
+                        OPDataGrid["LaborEntryDesc", OPDataGrid.CurrentCellAddress.Y].Value = "Time and Quantity";
+                        break;
+                    case "Q":
+                        OPDataGrid["LaborEntryDesc", OPDataGrid.CurrentCellAddress.Y].Value = "Quantity Only";
+                        break;
+                    case "B":
+                        OPDataGrid["LaborEntryDesc", OPDataGrid.CurrentCellAddress.Y].Value = "Backflush";
+                        break;
+                }
+            }
+            catch { }
+        }
+
+        private void Subcontract_btn_Click(object sender, EventArgs e)
+        {
+            EngWB.GetNewECOOpr(EngWBDS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "");
+
+            EngWB.EcoOprInitSNReqSubConShip(EngWBDS);
+
+            OPDataGrid["subcon", OPDataGrid.Rows.Count - 1].Value = true;
+
+            //Operations_SubCon Ops_SubCon = new Operations_SubCon();
+
+            //Ops_SubCon.ShowDialog();
+        }
+
+        private void refneeded_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+
+            if (Convert.ToBoolean(val))
+            {
+                quotesreq_num.Enabled = refneeded_chk.Checked;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["RFQNeeded"] = refneeded_chk.Checked;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["RFQVendQuotes"] = quotesreq_num.Value.ToString();
+            }
+        }
+
+        private void supplierid_btn_Click(object sender, EventArgs e)
+        {
+            Operations_SupplierSearch OpsSupSearch = new Operations_SupplierSearch();
+
+            OpsSupSearch.ShowDialog();
+
+            supplierid_txt.Text = OpsSupSearch.ReturnID;
+
+            supplieradd_txt.Text = OpsSupSearch.ReturnAddress;
+        }
+
+        private void subcon_opsmast_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+
+                if (Convert.ToBoolean(val))
+                {
+                    EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["OpCode"] = subcon_opsmast_cbo.SelectedValue.ToString();
+
+                    EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["OpDesc"] = subcon_opsmast_cbo.Text.ToString();
+                }
+            }
+            catch { }
+        }
+
+        private void quotesreq_num_ValueChanged(object sender, EventArgs e)
+        {
+            object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+
+            if (Convert.ToBoolean(val))
+            {
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["RFQVendQuotes"] = quotesreq_num.Value.ToString();
+            }
+        }
+
+        private void uom_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+
+                if (Convert.ToBoolean(val))
+                {
+                    EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["IUM"] = uom_cbo.Text;
+                }
+            }
+            catch { }
+        }
+
+        private void qtyper_num_ValueChanged(object sender, EventArgs e)
+        {
+            object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+
+            if (Convert.ToBoolean(val))
+            {
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["QtyPer"] = qtyper_num.Value.ToString();
+            }
+        }
+
+        private void unitcost_num_ValueChanged(object sender, EventArgs e)
+        {
+            object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+
+            if (Convert.ToBoolean(val))
+            {
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["EstUnitCost"] = unitcost_num.Value.ToString();
+            }
+        }
+
+        private void daysout_num_ValueChanged(object sender, EventArgs e)
+        {
+            object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+
+            if (Convert.ToBoolean(val))
+            {
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["DaysOut"] = daysout_num.Value.ToString();
+            }
+        }
+
+        private void supplierid_txt_TextChanged(object sender, EventArgs e)
+        {
+            object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+
+            if (Convert.ToBoolean(val))
+            {
+
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNumVendorID"] = supplierid_txt.Text;
+            }
         }
     }
 }

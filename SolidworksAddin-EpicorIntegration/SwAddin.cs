@@ -1,4 +1,4 @@
-using EpicorIntegration;
+using Epicor_Integration;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using SolidWorks.Interop.swpublished;

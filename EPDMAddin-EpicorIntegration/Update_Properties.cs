@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using EdmLib;
-using EpicorIntegration;
+using Epicor_Integration;
 
-namespace EpicorIntegration
+namespace Epicor_Integration
 {
     public partial class Update_Properties : Form
     {

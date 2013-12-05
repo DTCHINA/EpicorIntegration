@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace EpicorIntegration {
+namespace Epicor_Integration {
     
     
     /// <summary>
@@ -870,7 +870,7 @@ namespace EpicorIntegration {
         }
     }
 }
-namespace EpicorIntegration.ENGDataDataSetTableAdapters {
+namespace Epicor_Integration.ENGDataDataSetTableAdapters {
     
     
     /// <summary>
@@ -1022,7 +1022,7 @@ namespace EpicorIntegration.ENGDataDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EpicorIntegration.Properties.Settings.Default.ENGDataConnectionString;
+            this._connection.ConnectionString = global::Epicor_Integration.Properties.Settings.Default.ENGDataConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

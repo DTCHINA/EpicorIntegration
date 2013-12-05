@@ -1,4 +1,4 @@
-﻿namespace EpicorIntegration
+﻿namespace Epicor_Integration
 {
     partial class Item_Master
     {
@@ -63,6 +63,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.copy_btn = new System.Windows.Forms.Button();
             this.TemplatesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.phantom_chk = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -285,6 +286,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.phantom_chk);
             this.groupBox1.Controls.Add(this.qtybearing);
             this.groupBox1.Controls.Add(this.userevision);
             this.groupBox1.Controls.Add(this.trackserial);
@@ -315,7 +317,7 @@
             // qtybearing
             // 
             this.qtybearing.AutoSize = true;
-            this.qtybearing.Location = new System.Drawing.Point(224, 145);
+            this.qtybearing.Location = new System.Drawing.Point(228, 137);
             this.qtybearing.Name = "qtybearing";
             this.qtybearing.Size = new System.Drawing.Size(81, 17);
             this.qtybearing.TabIndex = 34;
@@ -325,7 +327,7 @@
             // userevision
             // 
             this.userevision.AutoSize = true;
-            this.userevision.Location = new System.Drawing.Point(224, 168);
+            this.userevision.Location = new System.Drawing.Point(228, 160);
             this.userevision.Name = "userevision";
             this.userevision.Size = new System.Drawing.Size(89, 17);
             this.userevision.TabIndex = 33;
@@ -335,7 +337,7 @@
             // trackserial
             // 
             this.trackserial.AutoSize = true;
-            this.trackserial.Location = new System.Drawing.Point(224, 191);
+            this.trackserial.Location = new System.Drawing.Point(228, 183);
             this.trackserial.Name = "trackserial";
             this.trackserial.Size = new System.Drawing.Size(123, 17);
             this.trackserial.TabIndex = 32;
@@ -402,6 +404,16 @@
             this.TemplatesMenu.Name = "TemplatesMenu";
             this.TemplatesMenu.Size = new System.Drawing.Size(61, 4);
             // 
+            // phantom_chk
+            // 
+            this.phantom_chk.AutoSize = true;
+            this.phantom_chk.Location = new System.Drawing.Point(228, 206);
+            this.phantom_chk.Name = "phantom_chk";
+            this.phantom_chk.Size = new System.Drawing.Size(95, 17);
+            this.phantom_chk.TabIndex = 35;
+            this.phantom_chk.Text = "Phantom BOM";
+            this.phantom_chk.UseVisualStyleBackColor = true;
+            // 
             // Item_Master
             // 
             this.AcceptButton = this.savebtn;
@@ -463,6 +475,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button addwhse_btn;
         private System.Windows.Forms.ContextMenuStrip TemplatesMenu;
+        private System.Windows.Forms.CheckBox phantom_chk;
     }
 }
 

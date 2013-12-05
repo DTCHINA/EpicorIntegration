@@ -131,9 +131,9 @@
     <EmbeddedResource Include="MainIconSmall.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EpicorIntegration\EpicorIntegration.csproj">
+    <ProjectReference Include="..\EpicorIntegration\Epicor-Integration.csproj">
       <Project>{e20edb1a-3f4d-4f23-ac1a-f67d8ca4ccaa}</Project>
-      <Name>EpicorIntegration</Name>
+      <Name>Epicor-Integration</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

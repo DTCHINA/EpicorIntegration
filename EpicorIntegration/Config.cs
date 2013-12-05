@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace EpicorIntegration
+namespace Epicor_Integration
 {
     public partial class Config : Form
     {

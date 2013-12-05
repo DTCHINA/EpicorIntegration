@@ -1,4 +1,4 @@
-﻿namespace EpicorIntegration
+﻿namespace Epicor_Integration
 {
     partial class EpicLogin
     {
@@ -55,7 +55,7 @@
             // 
             // EpicorLogo
             // 
-            this.EpicorLogo.Image = global::EpicorIntegration.Properties.Resources.p1;
+            this.EpicorLogo.Image = global::Epicor_Integration.Properties.Resources.p1;
             this.EpicorLogo.Location = new System.Drawing.Point(65, 33);
             this.EpicorLogo.Name = "EpicorLogo";
             this.EpicorLogo.Size = new System.Drawing.Size(254, 44);

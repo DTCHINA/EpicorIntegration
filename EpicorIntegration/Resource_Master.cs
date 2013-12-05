@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
-namespace EpicorIntegration
+namespace Epicor_Integration
 {
     public partial class Resource_Master : Form
     {

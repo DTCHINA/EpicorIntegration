@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using EdmLib;
 
-namespace EpicorIntegration
+namespace Epicor_Integration
 {
     public class DataHelper
     {

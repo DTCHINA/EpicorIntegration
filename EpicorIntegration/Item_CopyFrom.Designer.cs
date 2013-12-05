@@ -1,4 +1,4 @@
-﻿namespace EpicorIntegration
+﻿namespace Epicor_Integration
 {
     partial class Item_CopyFrom
     {
@@ -42,7 +42,7 @@
             this.newtemplate_btn = new System.Windows.Forms.Button();
             this.useselected_btn = new System.Windows.Forms.Button();
             this.cancel_btn = new System.Windows.Forms.Button();
-            this.eNGDataDataSet = new EpicorIntegration.ENGDataDataSet();
+            this.eNGDataDataSet = new Epicor_Integration.ENGDataDataSet();
             this.BS_EngDataDataSet = new System.Windows.Forms.BindingSource(this.components);
             //this.itemTemplateTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.ItemTemplateTableAdapter();
             this.groupBox1.SuspendLayout();

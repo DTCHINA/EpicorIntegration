@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpicorIntegration", "EpicorIntegration\EpicorIntegration.csproj", "{E20EDB1A-3F4D-4F23-AC1A-F67D8CA4CCAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epicor-Integration", "EpicorIntegration\Epicor-Integration.csproj", "{E20EDB1A-3F4D-4F23-AC1A-F67D8CA4CCAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPDMDebugApp", "EPDMDebugApp\EPDMDebugApp.csproj", "{779F7804-3B9A-4E4B-865E-8B8C67735D7C}"
 EndProject
