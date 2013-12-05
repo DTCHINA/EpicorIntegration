@@ -244,6 +244,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Epicor.Mfg.BO.Vendor.dll" size="126304">
+      <assemblyIdentity name="Epicor.Mfg.BO.Vendor" version="9.5.702.0" publicKeyToken="5D3FA3C7105D7992" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>KLmAuJ/cYu/XSLgCFffuJE/UpCM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Epicor.Mfg.BO.VendorPPSearch.dll" size="33632">
       <assemblyIdentity name="Epicor.Mfg.BO.VendorPPSearch" version="9.5.702.0" publicKeyToken="5D3FA3C7105D7992" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -520,6 +532,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Epicor.Mfg.IF.IVendor.dll" size="2118496">
+      <assemblyIdentity name="Epicor.Mfg.IF.IVendor" version="9.5.702.0" publicKeyToken="5D3FA3C7105D7992" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>lPjNcoAM0E3u7CDZdBN/XxENdm4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Epicor.Mfg.IF.IVendorPPSearch.dll" size="343904">
       <assemblyIdentity name="Epicor.Mfg.IF.IVendorPPSearch" version="9.5.702.0" publicKeyToken="5D3FA3C7105D7992" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -628,14 +652,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Epicor-Integration.exe" size="1615872">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Epicor-Integration.exe" size="1623040">
       <assemblyIdentity name="Epicor-Integration" version="1.1.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>wKVc8uuzO4CGtNUU4//5V69SR9k=</dsig:DigestValue>
+        <dsig:DigestValue>P2m9BuqPYuaa/ShqoeInierqxmo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

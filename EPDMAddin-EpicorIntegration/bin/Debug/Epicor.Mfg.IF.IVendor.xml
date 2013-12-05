@@ -1,0 +1,1011 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.IF.IVendor</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendorDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendorAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.EntityGLCDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.TaxExemptDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendRestrictionDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendBankDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendBankAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendCntMainDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VenMFBillDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendorPPDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VenPPMFBillDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VenPPUPSEmailDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendPPRestrictionDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendCntDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendCntAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VenUPSEmailDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendorRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendorAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.EntityGLCRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.TaxExemptRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendRestrictionRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendBankRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendBankAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendCntMainRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VenMFBillRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendorPPRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VenPPMFBillRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VenPPUPSEmailRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendPPRestrictionRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendCntRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendCntAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VenUPSEmailRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendorRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendorAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.EntityGLCRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.TaxExemptRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendRestrictionRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendBankRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendBankAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendCntMainRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VenMFBillRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendorPPRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VenPPMFBillRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VenPPUPSEmailRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendPPRestrictionRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendCntRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VendCntAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorDataSet.VenUPSEmailRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GlbVendorDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GlbVendorDataSet.GlbVendorDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GlbVendorDataSet.GlbVendCntDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GlbVendorDataSet.GlbVendorPPDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GlbVendorDataSet.GlbVendorRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GlbVendorDataSet.GlbVendCntRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GlbVendorDataSet.GlbVendorPPRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GlbVendorDataSet.GlbVendorRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GlbVendorDataSet.GlbVendCntRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.GlbVendorDataSet.GlbVendorPPRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.IF.IVendor">
+            <summary>Vendor BO
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVendor(Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVendorAttch(Epicor.Mfg.BO.VendorDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewEntityGLC(Epicor.Mfg.BO.VendorDataSet,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewTaxExempt(Epicor.Mfg.BO.VendorDataSet,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVendRestriction(Epicor.Mfg.BO.VendorDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVendBank(Epicor.Mfg.BO.VendorDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVendBankAttch(Epicor.Mfg.BO.VendorDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVendCntMain(Epicor.Mfg.BO.VendorDataSet,System.Int32,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVenMFBill(Epicor.Mfg.BO.VendorDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVendorPP(Epicor.Mfg.BO.VendorDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVenPPMFBill(Epicor.Mfg.BO.VendorDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVenPPUPSEmail(Epicor.Mfg.BO.VendorDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVendPPRestriction(Epicor.Mfg.BO.VendorDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVendCnt(Epicor.Mfg.BO.VendorDataSet,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVendCntAttch(Epicor.Mfg.BO.VendorDataSet,System.Int32,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetNewVenUPSEmail(Epicor.Mfg.BO.VendorDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.DeleteByID(System.Int32)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetByID(System.Int32)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetRows(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.Update(Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.UpdateExt(Epicor.Mfg.BO.UpdExtVendorDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetCodeDescList(System.String,System.String)">
+            <summary>
+            To return the CodeDescriptionList values of a given table.field.
+            </summary>
+            <param name="tableName"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetvendorGlobalFields(System.Int32,System.Boolean)">
+            <summary>
+            To return the list of fields that are maintained by the "Master/Owner" of global record.
+            The client can use this list to disable these fields on the UI.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetvendorPPGlobalFields(System.Int32,System.String)">
+            <summary>
+            To return the list of fields that are maintained by the "Master/Owner" of global record.
+            The client can use this list to disable these fields on the UI.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetvendCntGlobalFields(System.Int32,System.String,System.Int32)">
+            <summary>
+            To return the list of fields that are maintained by the "Master/Owner" of global record.
+            The client can use this list to disable these fields on the UI.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.ChangeBankBranchCode(System.String,Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            Check if the Bank Branch code changed.
+            </summary>
+            <param name="proposedBankBranchCode">The proposed Bank Branch code</param>
+            <param name="ds" type="Epicor.Mfg.BO.VendorDataSet">Vendor data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.ChangeCalendar(System.String,Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            Change Calendar for new and updated vendors
+            </summary>
+            <param name="ic_CalendarID">Calendar Code</param>
+            <param name="ds" type="Epicor.Mfg.BO.VendorDataSet">Vendor Data Set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.ChangeTaxRegion(System.String,Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            This method validates TaxRegionCode and populates description for supplier.
+            </summary>
+            <param name="iProposedTaxRgnCode">The proposed TaxCode value </param>
+            <param name="ds" type="Epicor.Mfg.BO.VendorDataSet">The Vendor data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.ChangeVendCountry(System.Int32,Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            Method to change related fields to the county. Run when the country changes.
+            </summary>
+            <param name="i_CountryNum">Country Number</param>
+            <param name="ds" type="Epicor.Mfg.BO.VendorDataSet">Vendor Data Set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.ChangeVendGlobalVendor(System.Boolean,Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            Method to call when changing the global vendor flag on a vendor.
+            Assigns the GlbFlag base on the new value.
+            </summary>
+            <param name="proposedGlobalVendor">The proposed global vendor value</param>
+            <param name="ds" type="Epicor.Mfg.BO.VendorDataSet">The Vendor data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.ChangeVendICTrader(System.Boolean,Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            Method to call when changing the ICTrader flag on a vendor.
+            Assigns the EnableGlobalVendor based on the new value.
+            </summary>
+            <param name="proposedICTrader">The proposed ICTrader value</param>
+            <param name="ds" type="Epicor.Mfg.BO.VendorDataSet">The Vendor data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.ChangeVendPPCountry(System.Int32,Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            Method to change related fields to the county. Run when the country changes.
+            </summary>
+            <param name="i_CountryNum">Country Number</param>
+            <param name="ds" type="Epicor.Mfg.BO.VendorDataSet">The Vendor data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.CheckRUC(System.String@,Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            CSF Peru - This method test the validity of the Tax ID (RUC)
+            </summary>
+            <param name="opMessage">Message to display to user if not null</param>
+            <param name="ds" type="Epicor.Mfg.BO.VendorDataSet">The Vendor data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.CheckVATFormat(System.String@,Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            This method test the validity of the VAT format
+            </summary>
+            <param name="opMessage">Message to display to user if not null</param>
+            <param name="ds" type="Epicor.Mfg.BO.VendorDataSet">The Vendor data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.DefaultName(System.String,Epicor.Mfg.BO.VendorDataSet)">
+             <summary>
+             If the Vendor Contact name is updated this method will parse the name into
+             firstname middlename and lastname fields.
+             If one of the name components is updated the components will be assembled into
+             the Vendor Contact name field
+            
+             The contact must exist in the database before this method can be run. This means
+             that the update method must be run first.
+            
+             The rowmod column must be set to 'U' in order for the method to process the record.
+            
+             This procedure passes a dataset in and out,
+             </summary>
+             <param name="targetField">Indicates which fields to populate either "Detail" or "Name"</param>
+             <param name="ds" type="Epicor.Mfg.BO.VendorDataSet">The Vendor data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.EnablePriceList(System.Boolean@)">
+            <summary>
+            This method checks to see if the price list option should be enabled or not
+            based on security rights.
+            </summary>
+            <param name="lEnablePriceList">Enable price list option </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetAddrElementList(System.String@)">
+            <summary>
+            This method calculates Address Element List
+            </summary>
+            <param name="addrElementList">Address Element List</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetByVendID(System.String)">
+            <summary>
+            Get vendor by ID
+            </summary>
+            <param name="vendorID">Vendor ID</param>
+            <returns type="Epicor.Mfg.BO.VendorDataSet">The Vendor data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetGlbVendorList(System.String)">
+            <summary>
+            This method returns the GlbVendor dataset based on a delimited list of
+            GlbVendorNum values passed in.
+            If GlbVendor.VendorNum = -1 that means the record has been skipped and should be shown
+            at the bottom of the browser. (GlbVendor only)
+            </summary>
+            <param name="glbVendorNumList">Delimited list of GlbVendorNum values</param>
+            <returns type="Epicor.Mfg.BO.GlbVendorDataSet">Global Vendor Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetPerConData(System.String,System.Int32,Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            Gets the person contact information.
+            </summary>
+            <param name="targetTable">The table to fill with the PerCon data.
+            Use empty string to fill all contact tables.</param>
+            <param name="perConID">Person Contact ID</param>
+            <param name="ds">Supplier DataSet</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetVendorForLink(System.String)">
+            <summary>
+            This returns the Vendor dataset for linking.
+            </summary>
+            <param name="vendorID">LinkVendorID field on the GlbVendor record to link</param>
+            <returns type="Epicor.Mfg.BO.VendorDataSet">Global Vendor Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GetVendorPPForLink(System.String,System.String)">
+            <summary>
+            This returns the VendorPP record in the Vendor dataset for linking.
+            </summary>
+            <param name="vendorID">vendorID field on the GlbVendor record</param>
+            <param name="purPoint">LinkPurPoint field on the GlbVendorPP record</param>
+            <returns type="Epicor.Mfg.BO.VendorDataSet">Global Vendor Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.GlbVendorsExist(System.Boolean@)">
+            <summary>
+            This method checks if GlbVendor records exists or not. Can be used
+            to determine if the option to link/unlink vendors is available.
+            </summary>
+            <param name="glbVendorsExist">Yes - they do exist; No - they do not exist</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.LinkGlbVendCnt(System.String,System.Int32,System.String,System.Int32,Epicor.Mfg.BO.GlbVendorDataSet)">
+            <summary>
+            This method performs the actual logic to link VendCnt records for a linked vendor.
+            It will only allow VendCnt's of linked vendors to be processed, otherwise an exception
+            will be raised. The ability to link VendCnt's for a linked Vendor should be offered
+            immediately after performing the update method on a Linked Vendor or a Linked Purchase Point
+            but it does not have to be limited to that time only.
+            If the Contact is for a VendCnt that already exists, the GlbVendCnt information is
+            translated and then copied to the VendorDataSet as an update.
+            If the Contact is for a new Vendor or Purchase Point, the GlbVendCnt information is translated
+            and then copied to the VendorDataSet as an Add. Until the update method is run on the Contact
+            record the Link process is not completed.
+            If this link is for a contact on the Vendor, the contact data in the VendorDataSet
+            will be returned in the VendCntMain datatable. If it is for a purchase point, the data will
+            returned in the VendCnt datatable. This is determined by the value of glbPurPoint. If it is
+            blank, it is processed as a contact for the vendor; otherwise it is process as a contact for
+            the purchase point.
+            </summary>
+            <param name="glbCompany">Global Company field on the GlbVendorPP record to link </param>
+            <param name="glbVendorNum">Global VendorNum field on the GlbVendCnt record to link </param>
+            <param name="glbPurPoint">Global PurPoint field on the GlbVendCnt record to link </param>
+            <param name="glbConNum">Global Contact Number field on the GlbVendCnt record to link </param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbVendorDataSet">Global Vendor Data Set</param>
+            <returns type="Epicor.Mfg.BO.VendorDataSet">The Vendor data set </returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.LinkGlbVendor(System.String,System.Int32,Epicor.Mfg.BO.GlbVendorDataSet,Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            This method performs the actual logic behind linking a Vendor. It is run after
+            the PreLinkGlbVendor method which determines the Vendor ID to link to.
+            If the Vendor Id is for a Vendor that already exists, the GlbVendor information is
+            translated and then copied to the VendorDataSet as an update.
+            If the Vendor ID is for a new Vendor, the GlbVendor information is translated and then
+            copied to the VendorDataSet as an Add. Until the update method is run on Vendor record
+            the Link process is not completed.
+            Once the Vendor record has been linked, the GlbVendorPP and GlbVendCnt records needs to
+            be offered up to be linked as well.
+            </summary>
+            <param name="glbCompany">Global Company field on the GlbVendor record to link</param>
+            <param name="glbVendorNum">Global VendorNum field on the GlbVendor record to link</param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbVendorDataSet">Global Vendor Data Set</param>
+            <param name="ds1" type="Epicor.Mfg.BO.VendorDataSet">Vendor Data Set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.LinkGlbVendorPP(System.String,System.Int32,System.String,Epicor.Mfg.BO.GlbVendorDataSet,Epicor.Mfg.BO.VendorDataSet)">
+            <summary>
+            This method performs the actual logic to link VendorPP records for a linked vendor.
+            It will only allow VendorPP's of linked vendors to be processed, otherwise an exception
+            will be raised. The ability to link VendorPP's for a linked Vendor should be offered
+            immediately after performing the update method on a Linked Vendor but it does not have
+            to be limited to that time only.
+            It is run after the PreLinkGlbVendorPP method which determines the PurPoint to link to.
+            If the PurPoint is for a VendorPP that already exists, the GlbVendorPP information is
+            translated and then copied to the VendorDataSet as an update.
+            If the PurPoint is for a new VendorPP, the GlbVendorPP information is translated and then
+            copied to the VendorDataSet as an Add. Until the update method is run on the VendorPP
+            record the Link process is not completed.
+            Once the VendorPP record has been linked, the GlbVendCnt records need to be offered up
+            to be linked as well.
+            </summary>
+            <param name="glbCompany">Global Company field on the GlbVendorPP record to link</param>
+            <param name="glbVendorNum">Global VendorNum field on the GlbVendorPP record to link</param>
+            <param name="glbPurPoint">Global PurPoint field on the GlbVendorPP record to link</param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbVendorDataSet">Global Vendor Data Set</param>
+            <param name="ds1" type="Epicor.Mfg.BO.VendorDataSet">Vendor Data Set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.PreLinkGlbVendor(System.String,System.Int32,Epicor.Mfg.BO.GlbVendorDataSet,System.String@)">
+            <summary>
+            Linking a GlbVendor record ties a global record to a new or existing Vendor record so
+            that any changes made to the GlbVendor record in another company are automatically copied
+            to any linked Vendors.
+            This method performs the pre link logic to check of okay to link or get the new vendid
+            to create/link to. Will be run before LinkGlbVendor which actually creates/updates a
+            Vendor record and will send the modified record back for update. When the Link "button" is
+            originally selected, the LinkVendID will be defaulted to the GlbVendorId field. It will then
+            check to see if this ID is available for Use. If available for use the system will return a
+            question asking the user if they want to use this number. If the answer is no, then the user
+            either needs to select an existing Vendor's ID to link to or enter a brand new ID. You will
+            run this method until the user answer is yes. Then the LinkGlbVendor method is called.
+            </summary>
+            <param name="glbCompany"> Global Company field on the GlbVendor record to link</param>
+            <param name="glbVendorNum"> Global VendorNum field on the GlbVendor record to link</param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbVendorDataSet">Global Vendor Data Set</param>
+            <param name="vMessage"> Returns a message the user needs to respond yes or no to. If the
+            user answers no, then they need to update the LinkVendorId field and then run this method again
+            to test the new VendorId they want to link to </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.PreLinkGlbVendorPP(System.String,System.Int32,System.String,Epicor.Mfg.BO.GlbVendorDataSet,System.String@)">
+            <summary>
+            Linking a GlbVendorPP record ties a global record to a new or existing Purchase Point record so
+            that any changes made to the GlbVendorPP record in another company are automatically copied
+            to any linked purchase points.
+            This method performs the pre link logic to check of okay to link or get the new PurPoint
+            to create/link to. Will be run before LinkGlbVendorPP which actually creates/updates a
+            purchase point record and will send the modified record back for update. When the Link "button" is
+            originally selected, the LinkPurPoint will be defaulted to the glbPurPoint field.
+            It will then check to see if this ID is available for use. If available for use the system
+            will return a question asking the user if they want to use this number. If the answer is no,
+            then the user either needs to select an existing PurPoint for the current customer to link
+            to or enter a brand new PurPoint for the vendor. You will run this method until the
+            user's answer is yes. Then the LinkGlbVendorPP method is called.
+            </summary>
+            <param name="glbCompany"> Global Company field on the GlbVendorPP record to link</param>
+            <param name="glbVendorNum"> Global VendorNum field on the GlbVendorPP record to link</param>
+            <param name="glbPurPoint"> Global PurPoint field on the GlbVendorPP record to link</param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbVendorDataSet">Global Vendor Data Set</param>
+            <param name="vMessage"> Returns a message the user needs to respond yes or no to. If the
+            user answers no, then they need to update the LinkPurPoint field and then run this
+            method again to test the new PurPoint they want to link to </param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.ResetPPIntl(Epicor.Mfg.BO.VendorDataSet)">
+            <param name="ds" type="Epicor.Mfg.BO.VendorDataSet">The customer data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.SetUPSQVEnable(System.Boolean,System.Boolean,System.Boolean,Epicor.Mfg.BO.VendorDataSet)">
+            <param name="ipQVEnable">logical indicating if the quantum view is to enabled/disabled</param>
+            <param name="ipUpdVenUPS">Yes, if the VenUPSEmail table is to be updated</param>
+            <param name="ipUPDVenPPUPS">Yes, if the VenUPSPPEmail talbe is to be updated</param>
+            <param name="ds" type="Epicor.Mfg.BO.VendorDataSet">The Vendor data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.SkipGlbVendor(System.String,System.Int32,Epicor.Mfg.BO.GlbVendorDataSet)">
+            <summary>
+            This method performs the logic behind the skip option for GlbVendor
+            Skip - marks the VendorNum field with a -1 to move the record to the bottom of the list
+            if the VendorNum field is not 0 will error out
+            </summary>
+            <param name="glbCompany"> Global Company field on the GlbVendor record to skip</param>
+            <param name="glbVendorNum"> Global VendorNum field on the GlbVendor record to skip</param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbVendorDataSet">Global Vendor Data Set</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.UnlinkGlbVendor(System.String,System.Int32,Epicor.Mfg.BO.GlbVendorDataSet)">
+            <summary>
+            This method performs the logic behind the unlink option for GlbVendor
+            Unlink - clears the VendorNum and VendorID field in GlbVendor. Returns the Vendor DataSet
+            </summary>
+            <param name="glbCompany"> Global Company field on the GlbVendor record to unlink</param>
+            <param name="glbVendorNum"> Global VendorNum field on the GlbVendor record to unlink</param>
+            <param name="ds" type="Epicor.Mfg.BO.GlbVendorDataSet">Global Vendor Data Set</param>
+            <returns type="Epicor.Mfg.BO.VendorDataSet">Vendor Data Set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.ValidatePayBTFlag(System.String,System.Boolean,System.Boolean,System.Int32,System.String)">
+            <param name="ipPayBTFlag">requested pay bt flag to edit</param>
+            <param name="ipValVen"> logical indicating if the pay flag on the venMFBill is to be checked</param>
+            <param name="ipValVenPP">logical indicating if the pay flag on the venPPMFBill is to be checked</param>
+            <param name="ipVendorNum">Vendor Number</param>
+            <param name="ipPurPoint">Purchase Point</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IVendor.VendorBankExists(System.Int32,System.Boolean@)">
+            <summary>
+            This method checks vendor bank existence.
+            </summary>
+            <param name="vendorNum">Vendor Number </param>
+            <param name="vendBankExists">True if vendor bank existence </param>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorListDataSet.VendorListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorListDataSet.VendorListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.VendorListDataSet.VendorListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendorDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendorAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.EntityGLCDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.TaxExemptDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendRestrictionDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendBankDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendBankAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendCntMainDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VenMFBillDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendorPPDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VenPPMFBillDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VenPPUPSEmailDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendPPRestrictionDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendCntDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendCntAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VenUPSEmailDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendorRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendorAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.EntityGLCRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.TaxExemptRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendRestrictionRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendBankRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendBankAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendCntMainRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VenMFBillRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendorPPRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VenPPMFBillRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VenPPUPSEmailRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendPPRestrictionRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendCntRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendCntAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VenUPSEmailRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendorRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendorAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.EntityGLCRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.TaxExemptRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendRestrictionRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendBankRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendBankAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendCntMainRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VenMFBillRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendorPPRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VenPPMFBillRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VenPPUPSEmailRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendPPRestrictionRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendCntRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VendCntAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtVendorDataSet.VenUPSEmailRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>

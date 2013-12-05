@@ -113,6 +113,9 @@
     <Reference Include="Epicor.Mfg.BO.SysMonitor">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.SysMonitor.dll</HintPath>
     </Reference>
+    <Reference Include="Epicor.Mfg.BO.Vendor">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Vendor.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.BO.VendorPPSearch">
       <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.VendorPPSearch.dll</HintPath>
     </Reference>
@@ -156,6 +159,9 @@
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IQuickSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IQuickSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IVendor">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IVendor.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IVendorPPSearch">
       <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IVendorPPSearch.dll</HintPath>

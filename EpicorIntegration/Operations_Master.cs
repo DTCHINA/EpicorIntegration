@@ -273,6 +273,8 @@ namespace Epicor_Integration
 
                 ops_grp.Visible = false;
 
+                subcon_grp.Location = new Point(12, 61);
+
                 string CurrentOp = OPDataGrid["OpDesc", rowindex].Value.ToString();
 
                 string IUM_val = OPDataGrid["IUM", rowindex].Value.ToString();
@@ -284,7 +286,7 @@ namespace Epicor_Integration
 
                 refneeded_chk.Checked = Convert.ToBoolean(OPDataGrid["RFQNeeded", rowindex].Value);
 
-                quotesreq_num.Value = int.Parse(OPDataGrid["RFQVendQuotes", rowindex].Value.ToString());
+                quotesreq_num.Value = decimal.Parse(OPDataGrid["RFQVendQuotes", rowindex].Value.ToString());
 
                 if (IUM_val != null)
                     uom_cbo.SelectedIndex = uom_cbo.FindStringExact(IUM_val);
@@ -296,6 +298,10 @@ namespace Epicor_Integration
                 unitcost_num.Value = decimal.Parse(OPDataGrid["EstUnitCost", rowindex].Value.ToString());
 
                 daysout_num.Value = decimal.Parse(OPDataGrid["DaysOut", rowindex].Value.ToString());
+
+                supplierid_txt.Text = OPDataGrid["VendorNumVendorID", rowindex].Value.ToString();
+
+                supplieradd_txt.Text = OPDataGrid["DspBillAddr", rowindex].Value.ToString();
             }
         }
 
@@ -312,13 +318,17 @@ namespace Epicor_Integration
             {
                 EngWB.Update(EngWBDS);
 
-                EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+                //EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
                 resource_show.Enabled = true;
 
                 EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
                 OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+
+                SetSubConField();
+
+                FillLaborEntryGrid();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error!"); }
         }
@@ -396,19 +406,21 @@ namespace Epicor_Integration
             try
             {
                 int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+                if (ops_grp.Visible)
+                {
+                    EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpCode"] = opmast_cbo.SelectedValue.ToString();
 
-                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpCode"] = opmast_cbo.SelectedValue.ToString();
+                    EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpDesc"] = opmast_cbo.Text;
 
-                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpDesc"] = opmast_cbo.Text;
+                    EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
 
-                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
+                    EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["AutoReceive"] = AutoRecieve_chk.Checked;
 
-                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["AutoReceive"] = AutoRecieve_chk.Checked;
+                    EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
 
-                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
-
-                if (opmast_cbo.Text == "TURRET" || opmast_cbo.Text == "SHEAR")
-                    LaborEntryMethod_cbo.Text = "Backflush";
+                    if (opmast_cbo.Text == "TURRET" || opmast_cbo.Text == "SHEAR")
+                        LaborEntryMethod_cbo.Text = "Backflush";
+                }
             }
             catch { }
         }
@@ -759,9 +771,24 @@ namespace Epicor_Integration
 
             OpsSupSearch.ShowDialog();
 
-            supplierid_txt.Text = OpsSupSearch.ReturnID;
+            if (OpsSupSearch.DialogResult == DialogResult.OK)
+            {
+                supplierid_txt.Text = OpsSupSearch.ReturnID;
 
-            supplieradd_txt.Text = OpsSupSearch.ReturnAddress;
+                supplieradd_txt.Text = OpsSupSearch.ReturnDdsBillAddr;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNumCity"] = OpsSupSearch.ReturnCity;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNumZIP"] = OpsSupSearch.ReturnZip;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNumState"] = OpsSupSearch.ReturnState;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNumName"] = OpsSupSearch.ReturnName;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["DspBillAddr"] = OpsSupSearch.ReturnDdsBillAddr;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNum"] = OpsSupSearch.ReturnVendID;
+            }
         }
 
         private void subcon_opsmast_cbo_SelectedIndexChanged(object sender, EventArgs e)
@@ -840,7 +867,25 @@ namespace Epicor_Integration
 
             if (Convert.ToBoolean(val))
             {
+                Operations_SupplierSearch OpsSupSearch = new Operations_SupplierSearch(supplierid_txt.Text);
 
+                //OpsSupSearch.ShowDialog();
+
+                supplierid_txt.Text = OpsSupSearch.ReturnID;
+
+                supplieradd_txt.Text = OpsSupSearch.ReturnDdsBillAddr;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNumCity"] = OpsSupSearch.ReturnCity;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNumZIP"] = OpsSupSearch.ReturnZip;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNumState"] = OpsSupSearch.ReturnState;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNumName"] = OpsSupSearch.ReturnName;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["DspBillAddr"] = OpsSupSearch.ReturnDdsBillAddr;
+
+                EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNum"] = OpsSupSearch.ReturnVendID;
 
                 EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNumVendorID"] = supplierid_txt.Text;
             }

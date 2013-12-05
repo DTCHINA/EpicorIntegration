@@ -18,9 +18,71 @@ namespace Epicor_Integration
 
         public string ReturnAddress { get; set; }
 
+        public string ReturnCity { get; set; }
+
+        public string ReturnZip { get; set; }
+
+        public string ReturnState { get; set; }
+
+        public string ReturnDdsBillAddr { get; set; }
+
+        public string ReturnName { get; set; }
+
+        public string ReturnCountry { get; set; }
+
+        public string ReturnVendID { get; set; }
+
+        public string VendorID { get; set; }
+
         public Operations_SupplierSearch()
         {
             InitializeComponent();
+        }
+
+        public Operations_SupplierSearch(string VendID)
+        {
+            InitializeComponent();
+
+            bool morePages;
+
+            int absolutePage = 0;
+
+            idnum_txt.Text = VendID;
+
+            int lines = Properties.Settings.Default.linelimit;
+
+            string whereClause = Construct_whereClause();
+
+            VendorPPSearch VendPP = new VendorPPSearch(DataList.EpicConn);
+            try
+            {
+                VendorPPListDataSet VPPDS = VendPP.GetList(whereClause, lines, absolutePage, out morePages);
+
+                SupplyGrid.DataSource = VPPDS.Tables[0];
+            }
+            catch { }
+
+            ReturnID = SupplyGrid["VendorNumVendorID", 0].Value.ToString();
+
+            ReturnAddress = SupplyGrid["Address1", 0].Value.ToString() + SupplyGrid["Address2", 0].Value.ToString() + SupplyGrid["Address3", 0].Value.ToString();
+
+            ReturnCity = SupplyGrid["City", 0].Value.ToString();
+
+            ReturnState = SupplyGrid["State", 0].Value.ToString();
+
+            ReturnZip = SupplyGrid["ZIP", 0].Value.ToString();
+
+            ReturnName = SupplyGrid["VName", 0].Value.ToString();
+
+            ReturnCountry = SupplyGrid["Country", 0].Value.ToString();
+
+            ReturnVendID = SupplyGrid["VendorNum", 0].Value.ToString();
+
+            ReturnDdsBillAddr = ReturnName + " " + ReturnAddress + " " + ReturnCity + " " + ReturnState + " " + ReturnZip + " " + ReturnCountry;
+
+            this.DialogResult = DialogResult.OK;
+
+            this.Close();
         }
 
         private void search_btn_Click(object sender, EventArgs e)
@@ -29,13 +91,11 @@ namespace Epicor_Integration
 
             string whereClause = Construct_whereClause();
 
-            int pageSize = 100;
-
             int absolutePage = 0;
 
             bool morePages;
 
-            VendorPPListDataSet VPPDS = VendPP.GetList(whereClause, pageSize, absolutePage, out morePages);
+            VendorPPListDataSet VPPDS = VendPP.GetList(whereClause, Properties.Settings.Default.linelimit, absolutePage, out morePages);
 
             SupplyGrid.DataSource = VPPDS.Tables[0];
         }
@@ -49,9 +109,23 @@ namespace Epicor_Integration
 
         private void select_btn_Click(object sender, EventArgs e)
         {
-            ReturnID = SupplyGrid["VendorNum", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+            ReturnID = SupplyGrid["VendorNumVendorID", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
 
-            ReturnAddress = SupplyGrid["Address1", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+            ReturnAddress = SupplyGrid["Address1", SupplyGrid.CurrentCellAddress.Y].Value.ToString() + SupplyGrid["Address2", SupplyGrid.CurrentCellAddress.Y].Value.ToString() + SupplyGrid["Address3", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnCity = SupplyGrid["City", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnState = SupplyGrid["State", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnZip = SupplyGrid["ZIP", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnName = SupplyGrid["VName", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnCountry = SupplyGrid["Country", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnVendID = SupplyGrid["VendorNum", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnDdsBillAddr = ReturnName + " " + ReturnAddress + " " + ReturnCity + " " + ReturnState + " " + ReturnZip + " " + ReturnCountry;
 
             this.DialogResult = DialogResult.OK;
 
@@ -68,13 +142,36 @@ namespace Epicor_Integration
         private void Operations_SupplierSearch_Load(object sender, EventArgs e)
         {
             SupplyGrid.CellDoubleClick += SupplyGrid_CellDoubleClick;
+
+            this.SizeChanged += Operations_SupplierSearch_SizeChanged;
+        }
+
+        void Operations_SupplierSearch_SizeChanged(object sender, EventArgs e)
+        {
+            select_btn.Location = new Point(this.Width - 419, select_btn.Location.Y);
+
+            cancel_btn.Location = new Point(this.Width - 419, cancel_btn.Location.Y);
         }
 
         void SupplyGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ReturnID = SupplyGrid["VendorNum", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+            ReturnID = SupplyGrid["VendorNumVendorID", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
 
-            ReturnAddress = SupplyGrid["Address1", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+            ReturnAddress = SupplyGrid["Address1", SupplyGrid.CurrentCellAddress.Y].Value.ToString() + SupplyGrid["Address2", SupplyGrid.CurrentCellAddress.Y].Value.ToString() + SupplyGrid["Address3", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnCity = SupplyGrid["City", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnState = SupplyGrid["State", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnZip = SupplyGrid["ZIP", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnName = SupplyGrid["VName", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnCountry = SupplyGrid["Country", SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnVendID = SupplyGrid ["VendorNum",SupplyGrid.CurrentCellAddress.Y].Value.ToString();
+
+            ReturnDdsBillAddr = ReturnName + " " + ReturnAddress + " " + ReturnCity + " " + ReturnState + " " + ReturnZip + " " + ReturnCountry;
 
             this.DialogResult = DialogResult.OK;
 
@@ -85,15 +182,31 @@ namespace Epicor_Integration
         {
             string retval = null;
 
-            if (idnum_txt.Text !=null && idnum_txt.Text != "")
-                retval += "VendorID = '" + idnum_txt.Text + "'";
+            try
+            {
+                Vendor Vend = new Vendor(DataList.EpicConn);
 
-            if (name_txt.Text != null && name_txt.Text != "")
-                retval += " Name >= '" + name_txt.Text + "'";
+                bool morePages;
 
-            retval += " BY NAME";
+                VendorListDataSet VendList = Vend.GetList("VendorID = '" + idnum_txt.Text + "'", 100, 0, out morePages);
 
+                VendorID = VendList.Tables[0].Rows[0]["VendorNum"].ToString();
+
+                if (idnum_txt.Text != null && idnum_txt.Text != "")
+                    retval += "VendorNum = '" + VendorID + "'";
+
+                if (name_txt.Text != null && name_txt.Text != "")
+                    retval += " Name >= '" + name_txt.Text + "'";
+
+                retval += " BY NAME";
+            }
+            catch { }
             return retval;
+        }
+
+        private void idnum_txt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

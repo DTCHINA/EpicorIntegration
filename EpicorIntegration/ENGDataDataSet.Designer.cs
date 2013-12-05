@@ -295,6 +295,8 @@ namespace Epicor_Integration {
             
             private global::System.Data.DataColumn columnrow_id;
             
+            private global::System.Data.DataColumn columnPropertyOptions1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TemplatesDataTable() {
@@ -394,6 +396,14 @@ namespace Epicor_Integration {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PropertyOptions1Column {
+                get {
+                    return this.columnPropertyOptions1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -429,7 +439,7 @@ namespace Epicor_Integration {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TemplatesRow AddTemplatesRow(string Name, string Type, string PropertyType, string PropertyValue, string PropertyQty, string PropertyUOM, string PropertyOptions) {
+            public TemplatesRow AddTemplatesRow(string Name, string Type, string PropertyType, string PropertyValue, string PropertyQty, string PropertyUOM, string PropertyOptions, string PropertyOptions1) {
                 TemplatesRow rowTemplatesRow = ((TemplatesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name,
@@ -439,7 +449,8 @@ namespace Epicor_Integration {
                         PropertyQty,
                         PropertyUOM,
                         PropertyOptions,
-                        null};
+                        null,
+                        PropertyOptions1};
                 rowTemplatesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTemplatesRow);
                 return rowTemplatesRow;
@@ -470,6 +481,7 @@ namespace Epicor_Integration {
                 this.columnPropertyUOM = base.Columns["PropertyUOM"];
                 this.columnPropertyOptions = base.Columns["PropertyOptions"];
                 this.columnrow_id = base.Columns["row_id"];
+                this.columnPropertyOptions1 = base.Columns["PropertyOptions1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -491,6 +503,8 @@ namespace Epicor_Integration {
                 base.Columns.Add(this.columnPropertyOptions);
                 this.columnrow_id = new global::System.Data.DataColumn("row_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnrow_id);
+                this.columnPropertyOptions1 = new global::System.Data.DataColumn("PropertyOptions1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPropertyOptions1);
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 1073741823;
                 this.columnType.MaxLength = 1073741823;
@@ -504,6 +518,7 @@ namespace Epicor_Integration {
                 this.columnrow_id.AutoIncrementStep = -1;
                 this.columnrow_id.AllowDBNull = false;
                 this.columnrow_id.ReadOnly = true;
+                this.columnPropertyOptions1.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -764,6 +779,22 @@ namespace Epicor_Integration {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PropertyOptions1 {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplates.PropertyOptions1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PropertyOptions1\' in table \'Templates\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplates.PropertyOptions1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTypeNull() {
                 return this.IsNull(this.tableTemplates.TypeColumn);
             }
@@ -832,6 +863,18 @@ namespace Epicor_Integration {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPropertyOptionsNull() {
                 this[this.tableTemplates.PropertyOptionsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPropertyOptions1Null() {
+                return this.IsNull(this.tableTemplates.PropertyOptions1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPropertyOptions1Null() {
+                this[this.tableTemplates.PropertyOptions1Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -1002,12 +1045,11 @@ namespace Epicor_Integration.ENGDataDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("PropertyUOM", "PropertyUOM");
             tableMapping.ColumnMappings.Add("PropertyOptions", "PropertyOptions");
             tableMapping.ColumnMappings.Add("row_id", "row_id");
+            tableMapping.ColumnMappings.Add("PropertyOptions1", "PropertyOptions1");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [Templates] ([Name], [Type], [PropertyType], [PropertyValue], [Proper" +
-                "tyQty], [PropertyUOM], [PropertyOptions]) VALUES (@Name, @Type, @PropertyType, @" +
-                "PropertyValue, @PropertyQty, @PropertyUOM, @PropertyOptions)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Templates] ([Name], [Type], [PropertyType], [PropertyValue], [PropertyQty], [PropertyUOM], [PropertyOptions], [PropertyOptions1]) VALUES (@Name, @Type, @PropertyType, @PropertyValue, @PropertyQty, @PropertyUOM, @PropertyOptions, @PropertyOptions1)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1016,6 +1058,7 @@ namespace Epicor_Integration.ENGDataDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyQty", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyQty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyUOM", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyUOM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1031,8 +1074,8 @@ namespace Epicor_Integration.ENGDataDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[12];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        row_id,Name, Type, PropertyType, PropertyValue, PropertyQty, Proper" +
-                "tyUOM, PropertyOptions\r\nFROM            Templates";
+            this._commandCollection[0].CommandText = "SELECT        row_id, Name, Type, PropertyType, PropertyValue, PropertyQty, Prope" +
+                "rtyUOM, PropertyOptions, PropertyOptions1\r\nFROM            Templates";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -1053,8 +1096,9 @@ namespace Epicor_Integration.ENGDataDataSetTableAdapters {
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT Name, PropertyOptions, PropertyQty, PropertyType, PropertyUOM, PropertyVal" +
-                "ue, Type, row_id FROM Templates WHERE (Type LIKE @Type) AND (Name LIKE @Name)";
+            this._commandCollection[4].CommandText = "SELECT Name, PropertyOptions, PropertyOptions1, PropertyQty, PropertyType, Proper" +
+                "tyUOM, PropertyValue, Type, row_id FROM Templates WHERE (Type LIKE @Type) AND (N" +
+                "ame LIKE @Name)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1277,7 +1321,7 @@ WHERE        (row_id = @row_id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name, string Type, string PropertyType, string PropertyValue, string PropertyQty, string PropertyUOM, string PropertyOptions) {
+        public virtual int Insert(string Name, string Type, string PropertyType, string PropertyValue, string PropertyQty, string PropertyUOM, string PropertyOptions, string PropertyOptions1) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
@@ -1319,6 +1363,12 @@ WHERE        (row_id = @row_id)";
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((string)(PropertyOptions));
+            }
+            if ((PropertyOptions1 == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(PropertyOptions1));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 

@@ -74,7 +74,6 @@
             this.supplierid_txt = new System.Windows.Forms.TextBox();
             this.supplierid_btn = new System.Windows.Forms.Button();
             this.OPDataGrid = new System.Windows.Forms.DataGridView();
-            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.OprSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,6 +101,7 @@
             this.VendorNumTermsCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VendorNumCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subcon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MajorContainer.Panel1.SuspendLayout();
             this.MajorContainer.Panel2.SuspendLayout();
             this.MajorContainer.SuspendLayout();
@@ -138,7 +138,6 @@
             // 
             // MajorContainer.Panel2
             // 
-            this.MajorContainer.Panel2.Controls.Add(this.subcon_grp);
             this.MajorContainer.Panel2.Controls.Add(this.OPDataGrid);
             this.MajorContainer.Size = new System.Drawing.Size(782, 469);
             this.MajorContainer.SplitterDistance = 177;
@@ -200,6 +199,7 @@
             // 
             // ops_grp
             // 
+            this.ops_grp.Controls.Add(this.subcon_grp);
             this.ops_grp.Controls.Add(this.label6);
             this.ops_grp.Controls.Add(this.LaborEntryMethod_cbo);
             this.ops_grp.Controls.Add(this.SNRequiredOpr_chk);
@@ -420,7 +420,7 @@
             this.subcon_grp.Controls.Add(this.supplieradd_txt);
             this.subcon_grp.Controls.Add(this.supplierid_txt);
             this.subcon_grp.Controls.Add(this.supplierid_btn);
-            this.subcon_grp.Location = new System.Drawing.Point(109, 166);
+            this.subcon_grp.Location = new System.Drawing.Point(426, 4);
             this.subcon_grp.Name = "subcon_grp";
             this.subcon_grp.Size = new System.Drawing.Size(578, 110);
             this.subcon_grp.TabIndex = 22;
@@ -617,11 +617,6 @@
             this.OPDataGrid.ShowRowErrors = false;
             this.OPDataGrid.Size = new System.Drawing.Size(782, 288);
             this.OPDataGrid.TabIndex = 0;
-            // 
-            // TemplateMenu
-            // 
-            this.TemplateMenu.Name = "TemplateMenu";
-            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // OprSeq
             // 
@@ -829,6 +824,11 @@
             this.subcon.Name = "subcon";
             this.subcon.ReadOnly = true;
             this.subcon.Visible = false;
+            // 
+            // TemplateMenu
+            // 
+            this.TemplateMenu.Name = "TemplateMenu";
+            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // Operations_Master
             // 

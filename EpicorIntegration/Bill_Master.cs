@@ -152,11 +152,13 @@ namespace Epicor_Integration
         /// <param name="BillQty">Current Epicor Bill of Materials Qty</param>
         /// <param name="Bill_Qty">Bill of Materials Qty for only Safe items</param>
         /// <returns>Bill of Materials for only safe items</returns>
-        public List<string> SafeParts(List<string> BillParts, List<string> BillQty, out List<string> Bill_Qty)
+        public List<string> SafeParts(List<string> BillParts, List<string> BillQty, out List<string> Bill_Qty, out List<string> BillOpts)
         {
             List<string> RetVal = new List<string>();
 
             List<string> RetVal_Qty = new List<string>();
+
+            BillOpts = new List<string>();
 
             List<RawMaterial> ListtoSave = new List<RawMaterial>();
 
@@ -168,6 +170,10 @@ namespace Epicor_Integration
 
             for (int i = 0; i < BillParts.Count; i++)
             {
+                string view = (EngWBDS.Tables["ECOMtl"].Rows[i]["ViewAsAsm"].ToString() == "True" ? "1" : "0");
+
+                string pull = (EngWBDS.Tables["ECOMtl"].Rows[i]["PullAsAsm"].ToString() == "True" ? "1" : "0");
+
                 for (int j = 0; j < ListtoSave.Count; j++)
                 {
                     if (BillParts[i] == ListtoSave[j].part_number)
@@ -175,6 +181,8 @@ namespace Epicor_Integration
                         RetVal.Add(BillParts[i]);
 
                         RetVal_Qty .Add(BillQty[i]);
+
+                        BillOpts.Add(view + pull);
                     }
                 }
             }
@@ -234,6 +242,8 @@ namespace Epicor_Integration
                     EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"] = false;
 
                     EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"] = uom_cbo.Text;
+
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["PullAsAsm"] = false;
                 }
                 catch (Exception Exception) { MessageBox.Show(Exception.Message, "Import Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
@@ -298,6 +308,8 @@ namespace Epicor_Integration
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
 
+            BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+
             qty_num.ValueChanged += qty_num_ValueChanged;
 
             partnum_txt.TextChanged += partnum_txt_TextChanged;
@@ -307,8 +319,6 @@ namespace Epicor_Integration
             uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
 
             ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
-
-            BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
         }
 
         public int GetNextSeq()
@@ -356,11 +366,16 @@ namespace Epicor_Integration
 
             List<string> AddBack_Qty = new List<string>();
 
+            List<string> AddBack_Opts = new List<string>();
+
             #region Locate items
 
+
+            //See if the part exists in the SolidWorks data
             for (int i = 0; i < BillItems.Count; i++)
             {FindItemSldWrks.Add(false);}
 
+            //See if the part exists in the Epicor data
             for (int i = 0; i < EngWBDS.Tables["ECOMtl"].Rows.Count; i++)
             {
                 FindItemEpicor .Add(false);
@@ -369,6 +384,7 @@ namespace Epicor_Integration
 
                 AddBack_Qty.Add(EngWBDS.Tables["ECOMtl"].Rows[i]["QtyPer"].ToString());
             }
+
 
             for (int i = 0; i < BillItems.Count; i++)
             {
@@ -393,7 +409,7 @@ namespace Epicor_Integration
 
             #region Determine what needs to be saved
 
-            AddBack = SafeParts(AddBack, AddBack_Qty, out AddBack_Qty);
+            AddBack = SafeParts(AddBack, AddBack_Qty, out AddBack_Qty, out AddBack_Opts);
 
             #endregion
 
@@ -433,9 +449,7 @@ namespace Epicor_Integration
 
                             EngWBDS.Tables["ECOMtl"].Rows[rowmod]["RelatedOperation"] = ops_cbo.SelectedValue;
 
-                            EngWBDS.Tables["ECOMtl"].Rows[rowmod]["ViewAsAsm"] = false;
-
-                            partnum_txt.Text = BillItems[i];
+                             partnum_txt.Text = BillItems[i];
 
                             DataTable ds = DataList.PartUOM(partnum_txt.Text);
 
@@ -479,8 +493,14 @@ namespace Epicor_Integration
                     EngWBDS.Tables["ECOMtl"].Rows[rowmod]["QtyPer"] = AddBack_Qty[i];
        
                     EngWBDS.Tables["ECOMtl"].Rows[rowmod]["RelatedOperation"] = ops_cbo.SelectedValue;
-       
-                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["ViewAsAsm"] = false;
+
+                    char[] opts = AddBack_Opts[i].ToCharArray();
+
+                    bool view = Convert.ToBoolean(opts[0].ToString());
+
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["ViewAsAsm"] = view;
+
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["PullAsAsm"] = Convert.ToBoolean(opts[1].ToString());
       
                     partnum_txt.Text = AddBack[i];
             
@@ -952,6 +972,8 @@ namespace Epicor_Integration
 
                 EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"] = uom_cbo.Text;
 
+                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["PullAsAsm"] = false;
+
                 EnableItemDetails();
             }
             catch { }
@@ -1054,6 +1076,8 @@ namespace Epicor_Integration
 
                     EngWBDS.Tables["ECOMtl"].Rows[row]["ViewAsAsm"] = Dr["PropertyOptions"].ToString();
 
+                    EngWBDS.Tables["ECOMtl"].Rows[row]["PullAsAsm"] = Dr["PropertyOptions1"].ToString();
+
                     EngWB.Update(EngWBDS);
                 }
             }
@@ -1154,6 +1178,16 @@ namespace Epicor_Integration
                     //EngWB.CheckECOMtlMtlPartNum(partnum_txt.Text, out opMessage, out opMsgType, EngWBDS);
 
                     //EngWB.ChangeECOMtlMtlPartNum(EngWBDS);
+
+                    Part part = new Part(DataList.EpicConn);
+
+                    bool morePages;
+
+                    PartListDataSet Pdata = part.GetList("PartNum >= '" + partnum_txt.Text + "'", 100, 0, out morePages);
+
+                    string Type = Pdata.Tables[0].Rows[0]["TypeCode"].ToString();
+                    
+                    ViewAsAsm_chk.Checked = (Type == "M");
 
                     UpdateDataSet();
                 }
