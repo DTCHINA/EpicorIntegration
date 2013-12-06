@@ -83,7 +83,7 @@ namespace Epicor_Integration
             }
             else
             {
-                bool valid = DataList.CreatePartRevision(Searchtxt.Text, currev_txt.Text, newrev_txt.Text, revdesc_txt.Text);
+                bool valid = DataList.CreatePartRevision(Searchtxt.Text, currev_txt.Text, newrev_txt.Text, revdesc_txt.Text, comments_txt.Text, econum_txt.Text);
 
                 if (checkout_chk.Checked)
                     DataList.CheckOutPart(gid_desc.Text, Searchtxt.Text, newrev_txt.Text);

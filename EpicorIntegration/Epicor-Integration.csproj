@@ -279,6 +279,12 @@
     <Compile Include="Item_Master.Designer.cs">
       <DependentUpon>Item_Master.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations_CopyMethods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operations_CopyMethods.Designer.cs">
+      <DependentUpon>Operations_CopyMethods.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations_Master.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -391,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Item_Master.resx">
       <DependentUpon>Item_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operations_CopyMethods.resx">
+      <DependentUpon>Operations_CopyMethods.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Operations_Master.resx">
       <DependentUpon>Operations_Master.cs</DependentUpon>

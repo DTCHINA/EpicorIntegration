@@ -337,5 +337,10 @@ namespace Epicor_Integration
 
         public string _Description;
 
+        private void SearchResultGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
     }
 }

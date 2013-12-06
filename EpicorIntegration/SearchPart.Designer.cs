@@ -389,6 +389,7 @@
             this.SearchResultGrid.ShowRowErrors = false;
             this.SearchResultGrid.Size = new System.Drawing.Size(684, 196);
             this.SearchResultGrid.TabIndex = 0;
+            this.SearchResultGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchResultGrid_CellContentClick);
             // 
             // PartNum
             // 

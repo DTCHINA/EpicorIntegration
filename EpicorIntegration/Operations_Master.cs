@@ -173,6 +173,23 @@ namespace Epicor_Integration
             OPDataGrid.ClearSelection();
 
             SetSubConField();
+
+            SNRequiredOpr_chk.Click += SNRequiredOpr_chk_Click;
+        }
+
+        void SNRequiredOpr_chk_Click(object sender, EventArgs e)
+        {
+            int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+
+            for (int i = 0; i < RowIndex; i++)
+            {
+                if (EngWBDS.Tables["ECOOpr"].Rows[i]["SNRequiredOpr"].ToString() == "True")
+                {
+                    MessageBox.Show("Cannot set value, prior operations require serialization", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    SNRequiredOpr_chk.Checked = true;
+                }
+            }
         }
 
         void Operations_Master_FormClosing(object sender, FormClosingEventArgs e)
@@ -418,7 +435,7 @@ namespace Epicor_Integration
 
                     EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
 
-                    if (opmast_cbo.Text == "TURRET" || opmast_cbo.Text == "SHEAR")
+                    if (opmast_cbo.Text == "TURRET")// || opmast_cbo.Text == "SHEAR")
                         LaborEntryMethod_cbo.Text = "Backflush";
                 }
             }
@@ -535,7 +552,30 @@ namespace Epicor_Integration
                 TemplateMenu.Items.Add(TS);
             }
 
+            ToolStripMenuItem CopyMethod = new ToolStripMenuItem();
+
+            CopyMethod.Name = "CopyMethod";
+
+            CopyMethod.Text = "Copy Method From...";
+
+            CopyMethod.Click += CopyMethod_Click;
+
+            TemplateMenu.Items.Add(CopyMethod);
+
             TemplateMenu.Show(copy_btn, new Point(0, copy_btn.Height));
+        }
+
+        void CopyMethod_Click(object sender, EventArgs e)
+        {
+            Operations_CopyMethods OpCopy = new Operations_CopyMethods(partnumber_txt.Text);
+
+            OpCopy.ShowDialog();
+
+            DataList.GetDetailsFromMethods(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, OpCopy.retPart, OpCopy.retRev);
+
+            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+
+            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
         }
 
         void TS_Click(object sender, EventArgs e)
@@ -631,6 +671,15 @@ namespace Epicor_Integration
             int RowIndex = OPDataGrid.CurrentCell.RowIndex;
 
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
+
+            for (int i = RowIndex; i < EngWBDS.Tables["ECOOpr"].Rows.Count; i++)
+            {
+                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
+            }
+
+            AutoRecieve_chk.Enabled = !SNRequiredOpr_chk.Checked;
+
+            AutoRecieve_chk.Checked = (SNRequiredOpr_chk.Checked ? false : AutoRecieve_chk.Checked);
         }
 
         private void AutoRecieve_chk_CheckedChanged(object sender, EventArgs e)
@@ -889,6 +938,16 @@ namespace Epicor_Integration
 
                 EngWBDS.Tables["ECOOpr"].Rows[OPDataGrid.CurrentCellAddress.Y]["VendorNumVendorID"] = supplierid_txt.Text;
             }
+        }
+
+        private void moveup_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void movedown_btn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

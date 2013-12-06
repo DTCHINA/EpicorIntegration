@@ -68,9 +68,13 @@ namespace Epicor_Integration
 
             PartDataSet Pdata = new PartDataSet();
 
+            bool retval;
+
             try
             {
-                Pdata = Part.GetByID(partnumber);
+                retval = Part.PartExists(partnumber);
+
+                //Pdata = Part.GetByID(partnumber);
             }
             catch
             {
@@ -81,7 +85,24 @@ namespace Epicor_Integration
 
             EpicClose();
 
-            return true;
+            return retval;
+        }
+
+        public static PartDataSet GetPart(string partnumber)
+        {
+            Part Part = new Part(EpicConn);
+
+            PartDataSet Pdata = new PartDataSet();
+
+            try
+            {
+                Pdata = Part.GetByID(partnumber);
+            }
+            catch { }
+
+            EpicClose();
+
+            return Pdata;
         }
 
         public static string AdvanceRevision(string CurrentRevision)
@@ -665,7 +686,20 @@ namespace Epicor_Integration
             catch { return null; }
         }
 
-        public static bool CreatePartRevision(string PartNumber, string CurrentRev, string NewRev, string RevDesc)
+        public static EngWorkBenchDataSet GetDetailsFromMethods(string GroupID, string ToPnum, string ToPnumRev, string FromPnum, string FromPnumRev)
+        {
+            EngWorkBench EngWB = new EngWorkBench(EpicConn);
+
+            string vMessage;
+
+            EngWB.PreGetDetails(GroupID, ToPnum, ToPnumRev, "", FromPnum, FromPnumRev, "", out vMessage);
+
+            EngWorkBenchDataSet EngWBDS = EngWB.GetDetailsFromMethods(GroupID, ToPnum, ToPnumRev, "", DateTime.Today.Date, false, FromPnum, FromPnumRev, "", true, true, false, false, false);
+
+            return EngWBDS;
+        }
+
+        public static bool CreatePartRevision(string PartNumber, string CurrentRev, string NewRev, string RevDesc, string RevComment, string ECOnum)
         {
             bool _results;
 
@@ -683,9 +717,13 @@ namespace Epicor_Integration
 
                 DataList.UpdateDatum(PartData, "PartRev", Y, "RevShortDesc", RevDesc);
 
+                DataList.UpdateDatum(PartData, "PartRev", Y, "RevDescription", RevComment);
+
                 DataList.UpdateDatum(PartData, "PartRev", Y, "RevisionNum", NewRev);
 
                 DataList.UpdateDatum(PartData, "PartRev", Y, "AltMethod", "");
+
+                DataList.UpdateDatum(PartData, "PartRev", Y, "ECO", ECOnum);
 
                 Part.Update(PartData);
 

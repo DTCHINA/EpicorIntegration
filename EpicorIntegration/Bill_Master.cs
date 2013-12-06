@@ -285,15 +285,15 @@ namespace Epicor_Integration
 
                     EngWB.ChangeECOMtlRelatedOperation(int.Parse(ops), EngWBDS);
 
-                    EngWB.ChangeECOMtlMtlPartNum(EngWBDS);
+                    //EngWB.ChangeECOMtlMtlPartNum(EngWBDS);
 
                     #endregion
                 }
             }
 
             EngWB.Update(EngWBDS);
-            
-            if (!fromNew)
+
+            /*if (!fromNew)
             {
                 try
                 {
@@ -306,7 +306,7 @@ namespace Epicor_Integration
                     EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);                    
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
-            }
+             }*/
 
             BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
 
@@ -496,11 +496,9 @@ namespace Epicor_Integration
 
                     char[] opts = AddBack_Opts[i].ToCharArray();
 
-                    bool view = Convert.ToBoolean(opts[0].ToString());
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["ViewAsAsm"] = (opts[0] == '1' ? true : false);
 
-                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["ViewAsAsm"] = view;
-
-                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["PullAsAsm"] = Convert.ToBoolean(opts[1].ToString());
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["PullAsAsm"] = (opts[1] == '1' ? true : false);
       
                     partnum_txt.Text = AddBack[i];
             
@@ -937,6 +935,8 @@ namespace Epicor_Integration
 
                 ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
 
+                PullAsAsm_chk.CheckedChanged -= PullAsAsm_chk_CheckedChanged;
+
                 //Add new line item
                 EngWB.GetNewECOMtl(EngWBDS, gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "");
 
@@ -954,6 +954,10 @@ namespace Epicor_Integration
 
                 desc_txt.Text = "";
 
+                PullAsAsm_chk.Checked = false;
+
+                ViewAsAsm_chk.Checked = false;
+
                 qty_num.ValueChanged += qty_num_ValueChanged;
 
                 partnum_txt.TextChanged += partnum_txt_TextChanged;
@@ -963,6 +967,8 @@ namespace Epicor_Integration
                 uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
 
                 ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
+
+                PullAsAsm_chk.CheckedChanged += PullAsAsm_chk_CheckedChanged;
 
                 EngWBDS.Tables["ECOMtl"].Rows[rowindex]["RelatedOperation"] = ops_cbo.SelectedValue;
 
@@ -1282,6 +1288,17 @@ namespace Epicor_Integration
 
             if (DB_Update_Enabled)
                 UpdateDataSet();
+        }
+
+        private void reseq_btn_Click(object sender, EventArgs e)
+        {
+            EngWB.Update(EngWBDS);
+
+            EngWB.ResequenceMaterials(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, Properties.Settings.Default.mtlreqtype, false, false, false);
+
+            EngWB.Update(EngWBDS);
+
+            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);                    
         }
     }
 }

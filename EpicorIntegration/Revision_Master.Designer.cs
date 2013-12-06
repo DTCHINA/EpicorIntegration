@@ -39,10 +39,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.newrev_txt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.currev_txt = new System.Windows.Forms.TextBox();
             this.revdesc_txt = new System.Windows.Forms.TextBox();
             this.checkout_chk = new System.Windows.Forms.CheckBox();
+            this.comments_txt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.econum_txt = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +54,7 @@
             // savebtn
             // 
             this.savebtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.savebtn.Location = new System.Drawing.Point(18, 268);
+            this.savebtn.Location = new System.Drawing.Point(263, 262);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 36;
@@ -61,7 +65,7 @@
             // cancelbtn
             // 
             this.cancelbtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelbtn.Location = new System.Drawing.Point(129, 268);
+            this.cancelbtn.Location = new System.Drawing.Point(344, 262);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
             this.cancelbtn.TabIndex = 35;
@@ -74,7 +78,7 @@
             this.groupBox1.Controls.Add(this.gid_desc);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(202, 51);
+            this.groupBox1.Size = new System.Drawing.Size(200, 51);
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ECO Group";
@@ -83,7 +87,7 @@
             // 
             this.gid_desc.Location = new System.Drawing.Point(6, 19);
             this.gid_desc.Name = "gid_desc";
-            this.gid_desc.Size = new System.Drawing.Size(186, 20);
+            this.gid_desc.Size = new System.Drawing.Size(181, 20);
             this.gid_desc.TabIndex = 1;
             // 
             // Searchbtn
@@ -105,6 +109,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.econum_txt);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.comments_txt);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.newrev_txt);
             this.groupBox2.Controls.Add(this.label2);
@@ -115,7 +123,7 @@
             this.groupBox2.Controls.Add(this.Searchtxt);
             this.groupBox2.Location = new System.Drawing.Point(12, 69);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(202, 156);
+            this.groupBox2.Size = new System.Drawing.Size(407, 187);
             this.groupBox2.TabIndex = 40;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part";
@@ -145,15 +153,6 @@
             this.label2.TabIndex = 43;
             this.label2.Text = "Cur Revision:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 105);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 13);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Revision Description:";
-            // 
             // currev_txt
             // 
             this.currev_txt.Location = new System.Drawing.Point(87, 47);
@@ -163,9 +162,9 @@
             // 
             // revdesc_txt
             // 
-            this.revdesc_txt.Location = new System.Drawing.Point(9, 121);
+            this.revdesc_txt.Location = new System.Drawing.Point(9, 151);
             this.revdesc_txt.Name = "revdesc_txt";
-            this.revdesc_txt.Size = new System.Drawing.Size(178, 20);
+            this.revdesc_txt.Size = new System.Drawing.Size(375, 20);
             this.revdesc_txt.TabIndex = 40;
             // 
             // checkout_chk
@@ -173,12 +172,54 @@
             this.checkout_chk.AutoSize = true;
             this.checkout_chk.Checked = true;
             this.checkout_chk.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkout_chk.Location = new System.Drawing.Point(21, 231);
+            this.checkout_chk.Location = new System.Drawing.Point(320, 33);
             this.checkout_chk.Name = "checkout_chk";
             this.checkout_chk.Size = new System.Drawing.Size(99, 17);
             this.checkout_chk.TabIndex = 41;
             this.checkout_chk.Text = "Check Out Part";
             this.checkout_chk.UseVisualStyleBackColor = true;
+            // 
+            // comments_txt
+            // 
+            this.comments_txt.Location = new System.Drawing.Point(206, 40);
+            this.comments_txt.Multiline = true;
+            this.comments_txt.Name = "comments_txt";
+            this.comments_txt.Size = new System.Drawing.Size(178, 101);
+            this.comments_txt.TabIndex = 46;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 135);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 13);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Revision Description:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(203, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.TabIndex = 47;
+            this.label4.Text = "Comments:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 96);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 13);
+            this.label5.TabIndex = 49;
+            this.label5.Text = "ECO Number:";
+            // 
+            // econum_txt
+            // 
+            this.econum_txt.Location = new System.Drawing.Point(9, 112);
+            this.econum_txt.Name = "econum_txt";
+            this.econum_txt.Size = new System.Drawing.Size(178, 20);
+            this.econum_txt.TabIndex = 48;
             // 
             // Revision_Master
             // 
@@ -186,7 +227,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelbtn;
-            this.ClientSize = new System.Drawing.Size(227, 304);
+            this.ClientSize = new System.Drawing.Size(431, 299);
             this.Controls.Add(this.checkout_chk);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -218,11 +259,15 @@
         private System.Windows.Forms.TextBox Searchtxt;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox currev_txt;
         private System.Windows.Forms.TextBox revdesc_txt;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox newrev_txt;
         private System.Windows.Forms.CheckBox checkout_chk;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox comments_txt;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox econum_txt;
     }
 }
