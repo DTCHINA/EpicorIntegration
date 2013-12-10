@@ -40,6 +40,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.mtlreseq_cbo = new System.Windows.Forms.ComboBox();
             this.ecogp_btn = new System.Windows.Forms.Button();
+            this.opsmin_btn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -96,7 +97,7 @@
             // 
             // logininfobtn
             // 
-            this.logininfobtn.Location = new System.Drawing.Point(12, 187);
+            this.logininfobtn.Location = new System.Drawing.Point(177, 12);
             this.logininfobtn.Name = "logininfobtn";
             this.logininfobtn.Size = new System.Drawing.Size(75, 23);
             this.logininfobtn.TabIndex = 3;
@@ -106,7 +107,7 @@
             // 
             // savebtn
             // 
-            this.savebtn.Location = new System.Drawing.Point(12, 216);
+            this.savebtn.Location = new System.Drawing.Point(177, 129);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 4;
@@ -117,7 +118,7 @@
             // cancelbtn
             // 
             this.cancelbtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelbtn.Location = new System.Drawing.Point(93, 216);
+            this.cancelbtn.Location = new System.Drawing.Point(177, 158);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
             this.cancelbtn.TabIndex = 5;
@@ -146,7 +147,7 @@
             // 
             // ecogp_btn
             // 
-            this.ecogp_btn.Location = new System.Drawing.Point(93, 187);
+            this.ecogp_btn.Location = new System.Drawing.Point(177, 41);
             this.ecogp_btn.Name = "ecogp_btn";
             this.ecogp_btn.Size = new System.Drawing.Size(75, 23);
             this.ecogp_btn.TabIndex = 7;
@@ -154,13 +155,24 @@
             this.ecogp_btn.UseVisualStyleBackColor = true;
             this.ecogp_btn.Click += new System.EventHandler(this.ecogp_btn_Click);
             // 
+            // opsmin_btn
+            // 
+            this.opsmin_btn.Location = new System.Drawing.Point(177, 70);
+            this.opsmin_btn.Name = "opsmin_btn";
+            this.opsmin_btn.Size = new System.Drawing.Size(75, 23);
+            this.opsmin_btn.TabIndex = 8;
+            this.opsmin_btn.Text = "Ops Min";
+            this.opsmin_btn.UseVisualStyleBackColor = true;
+            this.opsmin_btn.Click += new System.EventHandler(this.opsmin_btn_Click);
+            // 
             // Config
             // 
             this.AcceptButton = this.savebtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelbtn;
-            this.ClientSize = new System.Drawing.Size(186, 256);
+            this.ClientSize = new System.Drawing.Size(273, 199);
+            this.Controls.Add(this.opsmin_btn);
             this.Controls.Add(this.ecogp_btn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.cancelbtn);
@@ -194,5 +206,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox mtlreseq_cbo;
         private System.Windows.Forms.Button ecogp_btn;
+        private System.Windows.Forms.Button opsmin_btn;
     }
 }

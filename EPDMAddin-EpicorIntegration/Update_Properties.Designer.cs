@@ -30,23 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Update_Properties));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Config_List = new System.Windows.Forms.CheckedListBox();
-            this.Properties_List = new System.Windows.Forms.CheckedListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.filename_txt = new System.Windows.Forms.TextBox();
-            this.update_btn = new System.Windows.Forms.Button();
             this.cancel_btn = new System.Windows.Forms.Button();
+            this.update_btn = new System.Windows.Forms.Button();
+            this.filename_txt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Config_List = new System.Windows.Forms.CheckedListBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.Properties_List = new System.Windows.Forms.CheckedListBox();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +69,58 @@
             this.splitContainer1.SplitterDistance = 80;
             this.splitContainer1.TabIndex = 0;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cancel_btn);
+            this.groupBox1.Controls.Add(this.update_btn);
+            this.groupBox1.Controls.Add(this.filename_txt);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(526, 80);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "File Information";
+            // 
+            // cancel_btn
+            // 
+            this.cancel_btn.Location = new System.Drawing.Point(439, 51);
+            this.cancel_btn.Name = "cancel_btn";
+            this.cancel_btn.Size = new System.Drawing.Size(75, 23);
+            this.cancel_btn.TabIndex = 3;
+            this.cancel_btn.Text = "&Cancel";
+            this.cancel_btn.UseVisualStyleBackColor = true;
+            this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click);
+            // 
+            // update_btn
+            // 
+            this.update_btn.Location = new System.Drawing.Point(439, 12);
+            this.update_btn.Name = "update_btn";
+            this.update_btn.Size = new System.Drawing.Size(75, 23);
+            this.update_btn.TabIndex = 2;
+            this.update_btn.Text = "&Update";
+            this.update_btn.UseVisualStyleBackColor = true;
+            this.update_btn.Click += new System.EventHandler(this.update_btn_Click);
+            // 
+            // filename_txt
+            // 
+            this.filename_txt.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.filename_txt.Location = new System.Drawing.Point(15, 41);
+            this.filename_txt.Name = "filename_txt";
+            this.filename_txt.ReadOnly = true;
+            this.filename_txt.Size = new System.Drawing.Size(268, 20);
+            this.filename_txt.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Name";
+            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -86,20 +138,6 @@
             this.splitContainer2.SplitterDistance = 270;
             this.splitContainer2.TabIndex = 0;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cancel_btn);
-            this.groupBox1.Controls.Add(this.update_btn);
-            this.groupBox1.Controls.Add(this.filename_txt);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(526, 80);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "File Information";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.Config_List);
@@ -111,6 +149,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Configurations to Update";
             // 
+            // Config_List
+            // 
+            this.Config_List.CheckOnClick = true;
+            this.Config_List.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Config_List.FormattingEnabled = true;
+            this.Config_List.Location = new System.Drawing.Point(3, 16);
+            this.Config_List.Name = "Config_List";
+            this.Config_List.Size = new System.Drawing.Size(264, 307);
+            this.Config_List.TabIndex = 0;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.Properties_List);
@@ -121,16 +169,6 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Properties to Copy";
-            // 
-            // Config_List
-            // 
-            this.Config_List.CheckOnClick = true;
-            this.Config_List.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Config_List.FormattingEnabled = true;
-            this.Config_List.Location = new System.Drawing.Point(3, 16);
-            this.Config_List.Name = "Config_List";
-            this.Config_List.Size = new System.Drawing.Size(264, 307);
-            this.Config_List.TabIndex = 0;
             // 
             // Properties_List
             // 
@@ -148,44 +186,6 @@
             this.Properties_List.Size = new System.Drawing.Size(246, 307);
             this.Properties_List.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
-            // 
-            // filename_txt
-            // 
-            this.filename_txt.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.filename_txt.Location = new System.Drawing.Point(15, 41);
-            this.filename_txt.Name = "filename_txt";
-            this.filename_txt.ReadOnly = true;
-            this.filename_txt.Size = new System.Drawing.Size(268, 20);
-            this.filename_txt.TabIndex = 1;
-            // 
-            // update_btn
-            // 
-            this.update_btn.Location = new System.Drawing.Point(439, 12);
-            this.update_btn.Name = "update_btn";
-            this.update_btn.Size = new System.Drawing.Size(75, 23);
-            this.update_btn.TabIndex = 2;
-            this.update_btn.Text = "&Update";
-            this.update_btn.UseVisualStyleBackColor = true;
-            this.update_btn.Click += new System.EventHandler(this.update_btn_Click);
-            // 
-            // cancel_btn
-            // 
-            this.cancel_btn.Location = new System.Drawing.Point(439, 51);
-            this.cancel_btn.Name = "cancel_btn";
-            this.cancel_btn.Size = new System.Drawing.Size(75, 23);
-            this.cancel_btn.TabIndex = 3;
-            this.cancel_btn.Text = "&Cancel";
-            this.cancel_btn.UseVisualStyleBackColor = true;
-            this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click);
-            // 
             // Update_Properties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,11 +201,11 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);

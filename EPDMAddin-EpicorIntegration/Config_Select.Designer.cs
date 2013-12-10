@@ -92,12 +92,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancel_btn;
-            this.ClientSize = new System.Drawing.Size(247, 116);
+            this.ClientSize = new System.Drawing.Size(247, 112);
             this.Controls.Add(this.pnum_txt);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.config_cbo);
             this.Controls.Add(this.cancel_btn);
             this.Controls.Add(this.select_btn);
+            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(500, 150);

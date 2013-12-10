@@ -652,14 +652,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Epicor-Integration.exe" size="1666048">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Epicor-Integration.exe" size="1778688">
       <assemblyIdentity name="Epicor-Integration" version="1.1.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>cHv8P8j6BQu5gDf56VyxSg8cGv4=</dsig:DigestValue>
+        <dsig:DigestValue>LKF9h0kZoc69KW2Wt0rwQTrcfXE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

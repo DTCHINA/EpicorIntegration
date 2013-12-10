@@ -151,14 +151,23 @@ namespace Epicor_Integration
 
             if (!DataList.PartCheckOutStatus(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, out Message))
             {
-                MessageBox.Show("Part must be checked out by selected Group ID to continue.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (rev_txt.Text == DataList.GetCurrentRev(partnumber_txt.Text))
+                {
+                    MessageBox.Show("Revisions of Epicor and SolidWorks do not match.  Please correct this and try again.", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                CheckOut_Master CO_M = new CheckOut_Master(partnumber_txt.Text);
-
-                DialogResult dr = CO_M.ShowDialog();
-
-                if (dr == DialogResult.Cancel)
                     this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Part must be checked out by selected Group ID to continue.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    CheckOut_Master CO_M = new CheckOut_Master(partnumber_txt.Text);
+
+                    DialogResult dr = CO_M.ShowDialog();
+
+                    if (dr == DialogResult.Cancel)
+                        this.Close();
+                }
             }
             else
             {
@@ -942,10 +951,63 @@ namespace Epicor_Integration
 
         private void moveup_btn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int rowid = OPDataGrid.CurrentCellAddress.Y;
 
+                int rowseq = int.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowid]["OprSeq"].ToString());
+
+                EngWBDS.Tables["ECOOpr"].Rows[rowid]["OprSeq"] = (rowseq + 9).ToString();
+
+                EngWBDS.Tables["ECOOpr"].Rows[rowid + 1]["OprSeq"] = rowseq.ToString();
+
+                EngWBDS.Tables["ECOOpr"].Rows[rowid]["OprSeq"] = (rowseq + 10).ToString();
+
+                EngWB.Update(EngWBDS);
+
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+            }
+            catch { }
         }
 
         private void movedown_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int rowid = OPDataGrid.CurrentCellAddress.Y;
+
+                int rowseq = int.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowid]["OprSeq"].ToString());
+
+                EngWBDS.Tables["ECOOpr"].Rows[rowid]["OprSeq"] = (rowseq - 9).ToString();
+
+                EngWBDS.Tables["ECOOpr"].Rows[rowid - 1]["OprSeq"] = (rowseq + 5).ToString();
+
+                if (EngWBDS.Tables["ECOOpr"].Rows[0]["OprSeq"].ToString() != "10".ToString())
+                    EngWBDS.Tables["ECOOpr"].Rows[0]["OprSeq"] = 10;
+
+                EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+
+                EngWB.Update(EngWBDS);
+
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+
+                OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+            }
+            catch { }
+        }
+
+        private void prodstd_btn_Click(object sender, EventArgs e)
+        {
+            Operations_Minutes OpMin = new Operations_Minutes();
+
+            OpMin.ShowDialog();
+            
+            prodhrs_num.Value = OpMin.RetVal;
+
+            OpMin.Dispose();
+        }
+
+        private void MajorContainer_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

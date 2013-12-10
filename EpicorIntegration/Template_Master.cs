@@ -389,6 +389,20 @@ namespace Epicor_Integration
                 opmast_cbo.Click += opmast_cbo_Click;
 
                 prodstd_cbo.Click += prodstd_cbo_Click;
+
+                subcon_opsmast_cbo.Click += subcon_opsmast_cbo_Click;
+
+                unitcost_num.Click += unitcost_num_Click;
+
+                daysout_num.Click += daysout_num_Click;
+
+                supplierid_txt.Click += supplierid_txt_Click;
+
+                qtyper_num.Click += qtyper_num_Click;
+
+                subconuom_cbo.Click += subconuom_cbo_Click;
+
+                quotesreq_num.Click += quotesreq_num_Click;
             }
 
             if (tabControl.SelectedTab == tabControl.TabPages["ResTab"])
@@ -780,6 +794,27 @@ namespace Epicor_Integration
         #endregion
 
         #region Item Functions
+
+        private void phantom_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            int rowid = int.Parse(TemplateAdapter.GetRowID(itemtemplatename_txt.Text, "ITEM", "PHANTOM", "%").ToString());
+
+            TemplateAdapter.UpdatebyRowID(itemtemplatename_txt.Text, "ITEM", "PHANTOM", "TRUE", "", "", "", rowid);
+        }
+
+        private void qtybearing_CheckedChanged(object sender, EventArgs e)
+        {
+            int rowid = int.Parse(TemplateAdapter.GetRowID(itemtemplatename_txt.Text, "ITEM", "QTYBEARING", "%").ToString());
+
+            TemplateAdapter.UpdatebyRowID(itemtemplatename_txt.Text, "ITEM", "QTYBEARING", "TRUE", "", "", "", rowid);
+        }
+
+        private void userevision_CheckedChanged(object sender, EventArgs e)
+        {
+            int rowid = int.Parse(TemplateAdapter.GetRowID(itemtemplatename_txt.Text, "ITEM", "USEREV", "%").ToString());
+
+            TemplateAdapter.UpdatebyRowID(itemtemplatename_txt.Text, "ITEM", "USEREV", "TRUE", "", "", "", rowid);
+        }
 
         void ItemTemplateList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1202,13 +1237,45 @@ namespace Epicor_Integration
 
             seq_txt.TextChanged -= seq_txt_TextChanged;
 
-            prodhrs_num.Value = decimal.Parse(OPDataGrid["OprPropertyQty", OPDataGrid.CurrentRow.Index].Value.ToString());
+            if (OPDataGrid["OprPropertyOption", OPDataGrid.CurrentCellAddress.Y].Value == null)
+            {
+                ops_grp.Visible = false;
 
-            seq_txt.Text = OPDataGrid["OprPropertyType",OPDataGrid.CurrentRow.Index].Value.ToString();
+                subcon_grp.Visible = true;
 
-            opmast_cbo.SelectedValue = OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
+                subcon_grp.Location = new Point(ops_grp.Location.X, ops_grp.Location.Y);
 
-            prodstd_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
+                subcon_opsmast_cbo.SelectedValue = OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
+
+                refneeded_chk.Checked = (OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString() != "0".ToString());
+
+                if (refneeded_chk.Checked)
+                    quotesreq_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString());
+
+                supplierid_txt.Text = OPDataGrid["OprPropertyOption", OPDataGrid.CurrentRow.Index].Value.ToString();
+
+                unitcost_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption2", OPDataGrid.CurrentRow.Index].Value.ToString());
+
+                daysout_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption3", OPDataGrid.CurrentRow.Index].Value.ToString());
+
+                qtyper_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption4", OPDataGrid.CurrentRow.Index].Value.ToString());
+
+                subconuom_cbo.SelectedValue = OPDataGrid["OprPropertyUOM",OPDataGrid.CurrentRow.Index].Value.ToString();
+            }
+            else
+            {
+                ops_grp.Visible = true;
+
+                subcon_grp.Visible = false;
+
+                prodhrs_num.Value = decimal.Parse(OPDataGrid["OprPropertyQty", OPDataGrid.CurrentRow.Index].Value.ToString());
+
+                seq_txt.Text = OPDataGrid["OprPropertyType", OPDataGrid.CurrentRow.Index].Value.ToString();
+
+                opmast_cbo.SelectedValue = OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
+
+                prodstd_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
+            }
 
             prodhrs_num.ValueChanged += prodhrs_num_ValueChanged;
 
@@ -1344,10 +1411,111 @@ namespace Epicor_Integration
             UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
         }
 
-
         private void prodhrs_num_ValueChanged(object sender, EventArgs e)
         {
             OPDataGrid["OprPropertyQty", OPDataGrid.CurrentRow.Index].Value = prodhrs_num.Value;
+        }
+
+        private void subcon_opsmast_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value = subcon_opsmast_cbo.SelectedValue;
+
+                OPDataGrid["OpDesc", OPDataGrid.CurrentRow.Index].Value = subcon_opsmast_cbo.Text;
+            }
+            catch { }
+        }
+
+        private void refneeded_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!refneeded_chk.Checked)
+                quotesreq_num.Value = 0;
+
+            quotesreq_num.Enabled = refneeded_chk.Checked;
+        }
+
+        private void quotesreq_num_ValueChanged(object sender, EventArgs e)
+        {
+            OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value = quotesreq_num.Value;
+        }
+
+        private void subconuom_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value = subconuom_cbo.SelectedValue;
+        }
+
+        private void qtyper_num_ValueChanged(object sender, EventArgs e)
+        {
+            OPDataGrid["OprPropertyQty", OPDataGrid.CurrentRow.Index].Value = qtyper_num.Value;
+        }
+
+        private void supplierid_txt_TextChanged(object sender, EventArgs e)
+        {
+            OPDataGrid["OprPropertyOption", OPDataGrid.CurrentRow.Index].Value = supplierid_txt.Text;
+        }
+
+        private void unitcost_num_ValueChanged(object sender, EventArgs e)
+        {
+            OPDataGrid["OprPropertyOption2", OPDataGrid.CurrentRow.Index].Value = unitcost_num.Value;
+        }
+
+        private void daysout_num_ValueChanged(object sender, EventArgs e)
+        {
+            OPDataGrid["OprPropertyOption3", OPDataGrid.CurrentRow.Index].Value = daysout_num.Value;
+        }
+
+        private void supplierid_btn_Click(object sender, EventArgs e)
+        {
+            supplierid_txt.Leave += supplierid_txt_Leave;
+        }
+
+        void supplierid_txt_Leave(object sender, EventArgs e)
+        {
+            Operations_SupplierSearch OpsSupSearch = new Operations_SupplierSearch(supplierid_txt.Text);
+
+            supplierid_txt.Text = OpsSupSearch.ReturnID;
+
+            supplieradd_txt.Text = OpsSupSearch.ReturnDdsBillAddr;
+
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+
+            OpsSupSearch.Dispose();
+        }
+
+        void quotesreq_num_Click(object sender, EventArgs e)
+        {
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+        }
+
+        void subconuom_cbo_Click(object sender, EventArgs e)
+        {
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+        }
+
+        void qtyper_num_Click(object sender, EventArgs e)
+        {
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+        }
+
+        void supplierid_txt_Click(object sender, EventArgs e)
+        {
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+        }
+
+        void daysout_num_Click(object sender, EventArgs e)
+        {
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+        }
+
+        void unitcost_num_Click(object sender, EventArgs e)
+        {
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+        }
+
+        void subcon_opsmast_cbo_Click(object sender, EventArgs e)
+        {
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
         }
 
         #endregion
@@ -1520,6 +1688,13 @@ namespace Epicor_Integration
 
         #endregion
 
+        private void PullAsAsm_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshTransaction();
 
+            BillDataGrid.CurrentRow.Cells["PropertyOptions2"].Value = PullAsAsm_chk.Checked.ToString();
+
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+        }
     }
 }

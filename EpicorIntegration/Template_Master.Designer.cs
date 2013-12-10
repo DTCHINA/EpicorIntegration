@@ -52,33 +52,34 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.addwhse_btn = new System.Windows.Forms.Button();
             this.planner_cbo = new System.Windows.Forms.ComboBox();
+            this.whse_cbo = new System.Windows.Forms.ComboBox();
+            this.plant_cbo = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.whse_cbo = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.plant_cbo = new System.Windows.Forms.ComboBox();
             this.uomvol_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.phantom_chk = new System.Windows.Forms.CheckBox();
             this.qtybearing = new System.Windows.Forms.CheckBox();
             this.userevision = new System.Windows.Forms.CheckBox();
             this.trackserial = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.itemtemplatename_txt = new System.Windows.Forms.TextBox();
             this.uomweight_cbo = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.Description_txt = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.type_cbo = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.NetWeight = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
             this.uom_cbo = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.uomclass_cbo = new System.Windows.Forms.ComboBox();
             this.group_cbo = new System.Windows.Forms.ComboBox();
+            this.class_cbo = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.class_cbo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.NetVolume = new System.Windows.Forms.NumericUpDown();
             this.OprTab = new System.Windows.Forms.TabPage();
@@ -95,27 +96,38 @@
             this.del_op_btn = new System.Windows.Forms.Button();
             this.add_op_btn = new System.Windows.Forms.Button();
             this.OprPreviewContainer = new System.Windows.Forms.SplitContainer();
+            this.subcon_grp = new System.Windows.Forms.GroupBox();
+            this.quotesreq_num = new System.Windows.Forms.NumericUpDown();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.qtyper_num = new System.Windows.Forms.NumericUpDown();
+            this.label33 = new System.Windows.Forms.Label();
+            this.subconuom_cbo = new System.Windows.Forms.ComboBox();
+            this.refneeded_chk = new System.Windows.Forms.CheckBox();
+            this.daysout_num = new System.Windows.Forms.NumericUpDown();
+            this.unitcost_num = new System.Windows.Forms.NumericUpDown();
+            this.subcon_opsmast_cbo = new System.Windows.Forms.ComboBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.supplieradd_txt = new System.Windows.Forms.TextBox();
+            this.supplierid_txt = new System.Windows.Forms.TextBox();
+            this.supplierid_btn = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.addop_btn = new System.Windows.Forms.Button();
             this.remop_btn = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
             this.oomtemplatename_txt = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label23 = new System.Windows.Forms.Label();
+            this.ops_grp = new System.Windows.Forms.GroupBox();
+            this.SNRequiredOpr_chk = new System.Windows.Forms.CheckBox();
+            this.AutoRecieve_chk = new System.Windows.Forms.CheckBox();
             this.seq_txt = new System.Windows.Forms.TextBox();
             this.prodstd_cbo = new System.Windows.Forms.ComboBox();
             this.prodhrs_num = new System.Windows.Forms.NumericUpDown();
+            this.opmast_cbo = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.opmast_cbo = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.OPDataGrid = new System.Windows.Forms.DataGridView();
-            this.Oprrow_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyOptions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResTab = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -130,18 +142,18 @@
             this.del_res_btn = new System.Windows.Forms.Button();
             this.add_res_btn = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.label25 = new System.Windows.Forms.Label();
             this.restemplatename_txt = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.opr_txt = new System.Windows.Forms.TextBox();
             this.resource_cbo = new System.Windows.Forms.ComboBox();
+            this.resourcegrp_cbo = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.resourcegrp_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.addres_btn = new System.Windows.Forms.Button();
             this.delres_btn = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
             this.ResDataGrid = new System.Windows.Forms.DataGridView();
             this.Resrow_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResPropertyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -167,20 +179,20 @@
             this.AddBill = new System.Windows.Forms.Button();
             this.DelBill = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label29 = new System.Windows.Forms.Label();
             this.billtemplatename_txt = new System.Windows.Forms.TextBox();
             this.operation_txt = new System.Windows.Forms.TextBox();
             this.RawMenu = new System.Windows.Forms.Button();
             this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
             this.bill_uom_cbo = new System.Windows.Forms.ComboBox();
             this.qty_num = new System.Windows.Forms.NumericUpDown();
-            this.label18 = new System.Windows.Forms.Label();
             this.desc_txt = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.partnum_txt = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.findpart_btn = new System.Windows.Forms.Button();
             this.mtlseq_txt = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.BillDataGrid = new System.Windows.Forms.DataGridView();
             this.row_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -193,6 +205,19 @@
             this.RawMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.PartTimer = new System.Windows.Forms.Timer(this.components);
             this.engDataDataSet = new Epicor_Integration.ENGDataDataSet();
+            this.Oprrow_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOptions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOption1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOption3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOption4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOption2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.PullAsAsm_chk = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.ItemTab.SuspendLayout();
             this.ItemSplit.Panel1.SuspendLayout();
@@ -218,8 +243,13 @@
             this.OprPreviewContainer.Panel1.SuspendLayout();
             this.OprPreviewContainer.Panel2.SuspendLayout();
             this.OprPreviewContainer.SuspendLayout();
+            this.subcon_grp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesreq_num)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qtyper_num)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.daysout_num)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitcost_num)).BeginInit();
             this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.ops_grp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).BeginInit();
             this.ResTab.SuspendLayout();
@@ -452,6 +482,25 @@
             this.planner_cbo.TabIndex = 38;
             this.planner_cbo.SelectedIndexChanged += new System.EventHandler(this.planner_cbo_SelectedIndexChanged);
             // 
+            // whse_cbo
+            // 
+            this.whse_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.whse_cbo.FormattingEnabled = true;
+            this.whse_cbo.Location = new System.Drawing.Point(8, 72);
+            this.whse_cbo.Name = "whse_cbo";
+            this.whse_cbo.Size = new System.Drawing.Size(240, 21);
+            this.whse_cbo.TabIndex = 25;
+            // 
+            // plant_cbo
+            // 
+            this.plant_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.plant_cbo.FormattingEnabled = true;
+            this.plant_cbo.Location = new System.Drawing.Point(8, 32);
+            this.plant_cbo.Name = "plant_cbo";
+            this.plant_cbo.Size = new System.Drawing.Size(321, 21);
+            this.plant_cbo.TabIndex = 27;
+            this.plant_cbo.SelectedIndexChanged += new System.EventHandler(this.plant_cbo_SelectedIndexChanged);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -470,15 +519,6 @@
             this.label22.TabIndex = 37;
             this.label22.Text = "Planner:";
             // 
-            // whse_cbo
-            // 
-            this.whse_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.whse_cbo.FormattingEnabled = true;
-            this.whse_cbo.Location = new System.Drawing.Point(8, 72);
-            this.whse_cbo.Name = "whse_cbo";
-            this.whse_cbo.Size = new System.Drawing.Size(240, 21);
-            this.whse_cbo.TabIndex = 25;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -487,16 +527,6 @@
             this.label10.Size = new System.Drawing.Size(65, 13);
             this.label10.TabIndex = 26;
             this.label10.Text = "Warehouse:";
-            // 
-            // plant_cbo
-            // 
-            this.plant_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.plant_cbo.FormattingEnabled = true;
-            this.plant_cbo.Location = new System.Drawing.Point(8, 32);
-            this.plant_cbo.Name = "plant_cbo";
-            this.plant_cbo.Size = new System.Drawing.Size(321, 21);
-            this.plant_cbo.TabIndex = 27;
-            this.plant_cbo.SelectedIndexChanged += new System.EventHandler(this.plant_cbo_SelectedIndexChanged);
             // 
             // uomvol_cbo
             // 
@@ -510,6 +540,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.phantom_chk);
             this.groupBox1.Controls.Add(this.qtybearing);
             this.groupBox1.Controls.Add(this.userevision);
             this.groupBox1.Controls.Add(this.trackserial);
@@ -537,45 +568,49 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detail";
             // 
+            // phantom_chk
+            // 
+            this.phantom_chk.AutoSize = true;
+            this.phantom_chk.Location = new System.Drawing.Point(224, 207);
+            this.phantom_chk.Name = "phantom_chk";
+            this.phantom_chk.Size = new System.Drawing.Size(95, 17);
+            this.phantom_chk.TabIndex = 38;
+            this.phantom_chk.Text = "Phantom BOM";
+            this.phantom_chk.UseVisualStyleBackColor = true;
+            this.phantom_chk.CheckedChanged += new System.EventHandler(this.phantom_chk_CheckedChanged);
+            // 
             // qtybearing
             // 
             this.qtybearing.AutoSize = true;
-            this.qtybearing.Location = new System.Drawing.Point(219, 147);
+            this.qtybearing.Location = new System.Drawing.Point(224, 138);
             this.qtybearing.Name = "qtybearing";
             this.qtybearing.Size = new System.Drawing.Size(81, 17);
             this.qtybearing.TabIndex = 37;
             this.qtybearing.Text = "Qty Bearing";
             this.qtybearing.UseVisualStyleBackColor = true;
+            this.qtybearing.CheckedChanged += new System.EventHandler(this.qtybearing_CheckedChanged);
             // 
             // userevision
             // 
             this.userevision.AutoSize = true;
-            this.userevision.Location = new System.Drawing.Point(219, 170);
+            this.userevision.Location = new System.Drawing.Point(224, 161);
             this.userevision.Name = "userevision";
             this.userevision.Size = new System.Drawing.Size(89, 17);
             this.userevision.TabIndex = 36;
             this.userevision.Text = "Use Revision";
             this.userevision.UseVisualStyleBackColor = true;
+            this.userevision.CheckedChanged += new System.EventHandler(this.userevision_CheckedChanged);
             // 
             // trackserial
             // 
             this.trackserial.AutoSize = true;
-            this.trackserial.Location = new System.Drawing.Point(219, 193);
+            this.trackserial.Location = new System.Drawing.Point(224, 184);
             this.trackserial.Name = "trackserial";
             this.trackserial.Size = new System.Drawing.Size(123, 17);
             this.trackserial.TabIndex = 35;
             this.trackserial.Text = "Track Serial Number";
             this.trackserial.UseVisualStyleBackColor = true;
             this.trackserial.CheckedChanged += new System.EventHandler(this.trackserial_CheckedChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Template Name:";
             // 
             // itemtemplatename_txt
             // 
@@ -595,16 +630,6 @@
             this.uomweight_cbo.TabIndex = 31;
             this.uomweight_cbo.SelectedIndexChanged += new System.EventHandler(this.uomweight_cbo_SelectedIndexChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Description:";
-            this.label3.Visible = false;
-            // 
             // Description_txt
             // 
             this.Description_txt.Location = new System.Drawing.Point(9, 71);
@@ -612,15 +637,6 @@
             this.Description_txt.Size = new System.Drawing.Size(333, 20);
             this.Description_txt.TabIndex = 5;
             this.Description_txt.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 94);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Type:";
             // 
             // type_cbo
             // 
@@ -631,15 +647,6 @@
             this.type_cbo.Size = new System.Drawing.Size(157, 21);
             this.type_cbo.TabIndex = 10;
             this.type_cbo.SelectedIndexChanged += new System.EventHandler(this.type_cbo_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 134);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Unit Net Weight";
             // 
             // NetWeight
             // 
@@ -656,15 +663,6 @@
             this.NetWeight.TabIndex = 13;
             this.NetWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 173);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 13);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "Inventory UOM:";
-            // 
             // uom_cbo
             // 
             this.uom_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -678,15 +676,6 @@
             this.uom_cbo.Size = new System.Drawing.Size(180, 21);
             this.uom_cbo.TabIndex = 23;
             this.uom_cbo.SelectedIndexChanged += new System.EventHandler(this.uom_cbo_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 213);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Group:";
             // 
             // uomclass_cbo
             // 
@@ -716,6 +705,75 @@
             this.group_cbo.TabIndex = 17;
             this.group_cbo.SelectedIndexChanged += new System.EventHandler(this.group_cbo_SelectedIndexChanged);
             // 
+            // class_cbo
+            // 
+            this.class_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.class_cbo.FormattingEnabled = true;
+            this.class_cbo.Items.AddRange(new object[] {
+            "Purchased",
+            "Manufacturer",
+            "Sales Kit"});
+            this.class_cbo.Location = new System.Drawing.Point(9, 269);
+            this.class_cbo.Name = "class_cbo";
+            this.class_cbo.Size = new System.Drawing.Size(210, 21);
+            this.class_cbo.TabIndex = 19;
+            this.class_cbo.SelectedIndexChanged += new System.EventHandler(this.class_cbo_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Template Name:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Description:";
+            this.label3.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 94);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(34, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Type:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 134);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Unit Net Weight";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 173);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(82, 13);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Inventory UOM:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 213);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Group:";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -734,20 +792,6 @@
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 18;
             this.label7.Text = "Class:";
-            // 
-            // class_cbo
-            // 
-            this.class_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.class_cbo.FormattingEnabled = true;
-            this.class_cbo.Items.AddRange(new object[] {
-            "Purchased",
-            "Manufacturer",
-            "Sales Kit"});
-            this.class_cbo.Location = new System.Drawing.Point(9, 269);
-            this.class_cbo.Name = "class_cbo";
-            this.class_cbo.Size = new System.Drawing.Size(210, 21);
-            this.class_cbo.TabIndex = 19;
-            this.class_cbo.SelectedIndexChanged += new System.EventHandler(this.class_cbo_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -940,20 +984,185 @@
             // 
             // OprPreviewContainer.Panel1
             // 
+            this.OprPreviewContainer.Panel1.Controls.Add(this.subcon_grp);
             this.OprPreviewContainer.Panel1.Controls.Add(this.groupBox4);
             this.OprPreviewContainer.Panel1.Controls.Add(this.oomtemplatename_txt);
-            this.OprPreviewContainer.Panel1.Controls.Add(this.groupBox3);
+            this.OprPreviewContainer.Panel1.Controls.Add(this.ops_grp);
             this.OprPreviewContainer.Panel1.Controls.Add(this.label14);
             // 
             // OprPreviewContainer.Panel2
             // 
             this.OprPreviewContainer.Panel2.Controls.Add(this.OPDataGrid);
             this.OprPreviewContainer.Size = new System.Drawing.Size(582, 460);
-            this.OprPreviewContainer.SplitterDistance = 195;
+            this.OprPreviewContainer.SplitterDistance = 262;
             this.OprPreviewContainer.TabIndex = 10;
+            // 
+            // subcon_grp
+            // 
+            this.subcon_grp.Controls.Add(this.quotesreq_num);
+            this.subcon_grp.Controls.Add(this.label30);
+            this.subcon_grp.Controls.Add(this.label31);
+            this.subcon_grp.Controls.Add(this.label32);
+            this.subcon_grp.Controls.Add(this.qtyper_num);
+            this.subcon_grp.Controls.Add(this.label33);
+            this.subcon_grp.Controls.Add(this.subconuom_cbo);
+            this.subcon_grp.Controls.Add(this.refneeded_chk);
+            this.subcon_grp.Controls.Add(this.daysout_num);
+            this.subcon_grp.Controls.Add(this.unitcost_num);
+            this.subcon_grp.Controls.Add(this.subcon_opsmast_cbo);
+            this.subcon_grp.Controls.Add(this.label34);
+            this.subcon_grp.Controls.Add(this.supplieradd_txt);
+            this.subcon_grp.Controls.Add(this.supplierid_txt);
+            this.subcon_grp.Controls.Add(this.supplierid_btn);
+            this.subcon_grp.Location = new System.Drawing.Point(415, 48);
+            this.subcon_grp.Name = "subcon_grp";
+            this.subcon_grp.Size = new System.Drawing.Size(290, 203);
+            this.subcon_grp.TabIndex = 23;
+            this.subcon_grp.TabStop = false;
+            this.subcon_grp.Visible = false;
+            // 
+            // quotesreq_num
+            // 
+            this.quotesreq_num.Enabled = false;
+            this.quotesreq_num.Location = new System.Drawing.Point(203, 67);
+            this.quotesreq_num.Name = "quotesreq_num";
+            this.quotesreq_num.Size = new System.Drawing.Size(66, 20);
+            this.quotesreq_num.TabIndex = 30;
+            this.quotesreq_num.ValueChanged += new System.EventHandler(this.quotesreq_num_ValueChanged);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(181, 152);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(54, 13);
+            this.label30.TabIndex = 29;
+            this.label30.Text = "Days Out:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(6, 92);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(47, 13);
+            this.label31.TabIndex = 24;
+            this.label31.Text = "Qty/Per:";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(130, 69);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(67, 13);
+            this.label32.TabIndex = 21;
+            this.label32.Text = "Quotes Req:";
+            // 
+            // qtyper_num
+            // 
+            this.qtyper_num.DecimalPlaces = 5;
+            this.qtyper_num.Location = new System.Drawing.Point(59, 90);
+            this.qtyper_num.Name = "qtyper_num";
+            this.qtyper_num.Size = new System.Drawing.Size(66, 20);
+            this.qtyper_num.TabIndex = 23;
+            this.qtyper_num.ValueChanged += new System.EventHandler(this.qtyper_num_ValueChanged);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(181, 113);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(53, 13);
+            this.label33.TabIndex = 28;
+            this.label33.Text = "Unit Cost:";
+            // 
+            // subconuom_cbo
+            // 
+            this.subconuom_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.subconuom_cbo.FormattingEnabled = true;
+            this.subconuom_cbo.Location = new System.Drawing.Point(131, 89);
+            this.subconuom_cbo.Name = "subconuom_cbo";
+            this.subconuom_cbo.Size = new System.Drawing.Size(66, 21);
+            this.subconuom_cbo.TabIndex = 25;
+            this.subconuom_cbo.SelectedIndexChanged += new System.EventHandler(this.subconuom_cbo_SelectedIndexChanged);
+            // 
+            // refneeded_chk
+            // 
+            this.refneeded_chk.AutoSize = true;
+            this.refneeded_chk.Location = new System.Drawing.Point(9, 67);
+            this.refneeded_chk.Name = "refneeded_chk";
+            this.refneeded_chk.Size = new System.Drawing.Size(89, 17);
+            this.refneeded_chk.TabIndex = 20;
+            this.refneeded_chk.Text = "RFQ Needed";
+            this.refneeded_chk.UseVisualStyleBackColor = true;
+            this.refneeded_chk.CheckedChanged += new System.EventHandler(this.refneeded_chk_CheckedChanged);
+            // 
+            // daysout_num
+            // 
+            this.daysout_num.DecimalPlaces = 2;
+            this.daysout_num.Location = new System.Drawing.Point(184, 168);
+            this.daysout_num.Name = "daysout_num";
+            this.daysout_num.Size = new System.Drawing.Size(66, 20);
+            this.daysout_num.TabIndex = 27;
+            this.daysout_num.ValueChanged += new System.EventHandler(this.daysout_num_ValueChanged);
+            // 
+            // unitcost_num
+            // 
+            this.unitcost_num.DecimalPlaces = 3;
+            this.unitcost_num.Location = new System.Drawing.Point(184, 129);
+            this.unitcost_num.Name = "unitcost_num";
+            this.unitcost_num.Size = new System.Drawing.Size(66, 20);
+            this.unitcost_num.TabIndex = 26;
+            this.unitcost_num.ValueChanged += new System.EventHandler(this.unitcost_num_ValueChanged);
+            // 
+            // subcon_opsmast_cbo
+            // 
+            this.subcon_opsmast_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.subcon_opsmast_cbo.FormattingEnabled = true;
+            this.subcon_opsmast_cbo.Location = new System.Drawing.Point(9, 40);
+            this.subcon_opsmast_cbo.Name = "subcon_opsmast_cbo";
+            this.subcon_opsmast_cbo.Size = new System.Drawing.Size(255, 21);
+            this.subcon_opsmast_cbo.TabIndex = 6;
+            this.subcon_opsmast_cbo.SelectedIndexChanged += new System.EventHandler(this.subcon_opsmast_cbo_SelectedIndexChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(6, 25);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(56, 13);
+            this.label34.TabIndex = 7;
+            this.label34.Text = "Operation:";
+            // 
+            // supplieradd_txt
+            // 
+            this.supplieradd_txt.Location = new System.Drawing.Point(12, 151);
+            this.supplieradd_txt.Multiline = true;
+            this.supplieradd_txt.Name = "supplieradd_txt";
+            this.supplieradd_txt.ReadOnly = true;
+            this.supplieradd_txt.Size = new System.Drawing.Size(166, 37);
+            this.supplieradd_txt.TabIndex = 22;
+            // 
+            // supplierid_txt
+            // 
+            this.supplierid_txt.Location = new System.Drawing.Point(90, 125);
+            this.supplierid_txt.Name = "supplierid_txt";
+            this.supplierid_txt.Size = new System.Drawing.Size(85, 20);
+            this.supplierid_txt.TabIndex = 21;
+            this.supplierid_txt.TextChanged += new System.EventHandler(this.supplierid_txt_TextChanged);
+            // 
+            // supplierid_btn
+            // 
+            this.supplierid_btn.Location = new System.Drawing.Point(9, 122);
+            this.supplierid_btn.Name = "supplierid_btn";
+            this.supplierid_btn.Size = new System.Drawing.Size(75, 23);
+            this.supplierid_btn.TabIndex = 20;
+            this.supplierid_btn.Text = "Supplier ID";
+            this.supplierid_btn.UseVisualStyleBackColor = true;
+            this.supplierid_btn.Click += new System.EventHandler(this.supplierid_btn_Click);
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.addop_btn);
             this.groupBox4.Controls.Add(this.remop_btn);
             this.groupBox4.Location = new System.Drawing.Point(308, 3);
@@ -974,22 +1183,13 @@
             // 
             // remop_btn
             // 
-            this.remop_btn.Location = new System.Drawing.Point(8, 45);
+            this.remop_btn.Location = new System.Drawing.Point(6, 74);
             this.remop_btn.Name = "remop_btn";
             this.remop_btn.Size = new System.Drawing.Size(75, 23);
             this.remop_btn.TabIndex = 13;
             this.remop_btn.Text = "Rem. Opr";
             this.remop_btn.UseVisualStyleBackColor = true;
             this.remop_btn.Click += new System.EventHandler(this.remop_btn_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 10);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(85, 13);
-            this.label14.TabIndex = 10;
-            this.label14.Text = "Template Name:";
             // 
             // oomtemplatename_txt
             // 
@@ -999,29 +1199,43 @@
             this.oomtemplatename_txt.Size = new System.Drawing.Size(290, 20);
             this.oomtemplatename_txt.TabIndex = 11;
             // 
-            // groupBox3
+            // ops_grp
             // 
-            this.groupBox3.Controls.Add(this.seq_txt);
-            this.groupBox3.Controls.Add(this.prodstd_cbo);
-            this.groupBox3.Controls.Add(this.prodhrs_num);
-            this.groupBox3.Controls.Add(this.opmast_cbo);
-            this.groupBox3.Controls.Add(this.label23);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Location = new System.Drawing.Point(12, 52);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(290, 133);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
+            this.ops_grp.Controls.Add(this.SNRequiredOpr_chk);
+            this.ops_grp.Controls.Add(this.AutoRecieve_chk);
+            this.ops_grp.Controls.Add(this.seq_txt);
+            this.ops_grp.Controls.Add(this.prodstd_cbo);
+            this.ops_grp.Controls.Add(this.prodhrs_num);
+            this.ops_grp.Controls.Add(this.opmast_cbo);
+            this.ops_grp.Controls.Add(this.label23);
+            this.ops_grp.Controls.Add(this.label12);
+            this.ops_grp.Controls.Add(this.label13);
+            this.ops_grp.Location = new System.Drawing.Point(12, 52);
+            this.ops_grp.Name = "ops_grp";
+            this.ops_grp.Size = new System.Drawing.Size(290, 203);
+            this.ops_grp.TabIndex = 9;
+            this.ops_grp.TabStop = false;
             // 
-            // label23
+            // SNRequiredOpr_chk
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 16);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(59, 13);
-            this.label23.TabIndex = 11;
-            this.label23.Text = "Sequence:";
+            this.SNRequiredOpr_chk.AutoSize = true;
+            this.SNRequiredOpr_chk.Location = new System.Drawing.Point(9, 123);
+            this.SNRequiredOpr_chk.Name = "SNRequiredOpr_chk";
+            this.SNRequiredOpr_chk.Size = new System.Drawing.Size(126, 17);
+            this.SNRequiredOpr_chk.TabIndex = 13;
+            this.SNRequiredOpr_chk.Text = "Serial Num. Required";
+            this.SNRequiredOpr_chk.UseVisualStyleBackColor = true;
+            // 
+            // AutoRecieve_chk
+            // 
+            this.AutoRecieve_chk.AutoSize = true;
+            this.AutoRecieve_chk.Enabled = false;
+            this.AutoRecieve_chk.Location = new System.Drawing.Point(9, 146);
+            this.AutoRecieve_chk.Name = "AutoRecieve_chk";
+            this.AutoRecieve_chk.Size = new System.Drawing.Size(158, 17);
+            this.AutoRecieve_chk.TabIndex = 12;
+            this.AutoRecieve_chk.Text = "Auto Recieve into Inventory";
+            this.AutoRecieve_chk.UseVisualStyleBackColor = true;
             // 
             // seq_txt
             // 
@@ -1050,6 +1264,25 @@
             this.prodhrs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.prodhrs_num.ValueChanged += new System.EventHandler(this.prodhrs_num_ValueChanged);
             // 
+            // opmast_cbo
+            // 
+            this.opmast_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.opmast_cbo.FormattingEnabled = true;
+            this.opmast_cbo.Location = new System.Drawing.Point(9, 51);
+            this.opmast_cbo.Name = "opmast_cbo";
+            this.opmast_cbo.Size = new System.Drawing.Size(262, 21);
+            this.opmast_cbo.TabIndex = 4;
+            this.opmast_cbo.SelectedIndexChanged += new System.EventHandler(this.opmast_cbo_SelectedIndexChanged);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 16);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(59, 13);
+            this.label23.TabIndex = 11;
+            this.label23.Text = "Sequence:";
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -1068,15 +1301,14 @@
             this.label13.TabIndex = 5;
             this.label13.Text = "Operation:";
             // 
-            // opmast_cbo
+            // label14
             // 
-            this.opmast_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.opmast_cbo.FormattingEnabled = true;
-            this.opmast_cbo.Location = new System.Drawing.Point(9, 51);
-            this.opmast_cbo.Name = "opmast_cbo";
-            this.opmast_cbo.Size = new System.Drawing.Size(262, 21);
-            this.opmast_cbo.TabIndex = 4;
-            this.opmast_cbo.SelectedIndexChanged += new System.EventHandler(this.opmast_cbo_SelectedIndexChanged);
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(9, 10);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(85, 13);
+            this.label14.TabIndex = 10;
+            this.label14.Text = "Template Name:";
             // 
             // OPDataGrid
             // 
@@ -1095,7 +1327,11 @@
             this.OprDesc,
             this.OprPropertyQty,
             this.OprPropertyUOM,
-            this.OprPropertyOptions});
+            this.OprPropertyOptions,
+            this.OprPropertyOption1,
+            this.OprPropertyOption3,
+            this.OprPropertyOption4,
+            this.OprPropertyOption2});
             this.OPDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OPDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.OPDataGrid.Location = new System.Drawing.Point(0, 0);
@@ -1109,68 +1345,8 @@
             this.OPDataGrid.ShowCellToolTips = false;
             this.OPDataGrid.ShowEditingIcon = false;
             this.OPDataGrid.ShowRowErrors = false;
-            this.OPDataGrid.Size = new System.Drawing.Size(582, 261);
+            this.OPDataGrid.Size = new System.Drawing.Size(582, 194);
             this.OPDataGrid.TabIndex = 8;
-            // 
-            // Oprrow_id
-            // 
-            this.Oprrow_id.DataPropertyName = "row_id";
-            this.Oprrow_id.HeaderText = "row_id";
-            this.Oprrow_id.Name = "Oprrow_id";
-            this.Oprrow_id.ReadOnly = true;
-            this.Oprrow_id.Visible = false;
-            // 
-            // OprPropertyType
-            // 
-            this.OprPropertyType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.OprPropertyType.DataPropertyName = "PropertyType";
-            this.OprPropertyType.HeaderText = "Sequence";
-            this.OprPropertyType.Name = "OprPropertyType";
-            this.OprPropertyType.ReadOnly = true;
-            this.OprPropertyType.Width = 81;
-            // 
-            // OprPropertyValue
-            // 
-            this.OprPropertyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OprPropertyValue.DataPropertyName = "PropertyValue";
-            this.OprPropertyValue.HeaderText = "Code";
-            this.OprPropertyValue.Name = "OprPropertyValue";
-            this.OprPropertyValue.ReadOnly = true;
-            this.OprPropertyValue.Width = 57;
-            // 
-            // OprDesc
-            // 
-            this.OprDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.OprDesc.DataPropertyName = "OpDesc";
-            this.OprDesc.HeaderText = "Operation Description";
-            this.OprDesc.Name = "OprDesc";
-            this.OprDesc.ReadOnly = true;
-            // 
-            // OprPropertyQty
-            // 
-            this.OprPropertyQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.OprPropertyQty.DataPropertyName = "PropertyQty";
-            this.OprPropertyQty.HeaderText = "Production Hours";
-            this.OprPropertyQty.Name = "OprPropertyQty";
-            this.OprPropertyQty.ReadOnly = true;
-            this.OprPropertyQty.Width = 105;
-            // 
-            // OprPropertyUOM
-            // 
-            this.OprPropertyUOM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OprPropertyUOM.DataPropertyName = "PropertyUOM";
-            this.OprPropertyUOM.HeaderText = "Std. Format";
-            this.OprPropertyUOM.Name = "OprPropertyUOM";
-            this.OprPropertyUOM.ReadOnly = true;
-            this.OprPropertyUOM.Width = 79;
-            // 
-            // OprPropertyOptions
-            // 
-            this.OprPropertyOptions.DataPropertyName = "PropertyOptions";
-            this.OprPropertyOptions.HeaderText = "OprPropertyOptions";
-            this.OprPropertyOptions.Name = "OprPropertyOptions";
-            this.OprPropertyOptions.ReadOnly = true;
-            this.OprPropertyOptions.Visible = false;
             // 
             // ResTab
             // 
@@ -1350,15 +1526,6 @@
             this.splitContainer2.SplitterDistance = 195;
             this.splitContainer2.TabIndex = 10;
             // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(9, 10);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(85, 13);
-            this.label25.TabIndex = 10;
-            this.label25.Text = "Template Name:";
-            // 
             // restemplatename_txt
             // 
             this.restemplatename_txt.Location = new System.Drawing.Point(12, 26);
@@ -1381,15 +1548,6 @@
             this.groupBox8.TabIndex = 9;
             this.groupBox8.TabStop = false;
             // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(6, 16);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(114, 13);
-            this.label26.TabIndex = 11;
-            this.label26.Text = "Operation to Attach to:";
-            // 
             // opr_txt
             // 
             this.opr_txt.Location = new System.Drawing.Point(126, 13);
@@ -1406,6 +1564,25 @@
             this.resource_cbo.Size = new System.Drawing.Size(262, 21);
             this.resource_cbo.TabIndex = 9;
             this.resource_cbo.SelectedIndexChanged += new System.EventHandler(this.resource_cbo_SelectedIndexChanged);
+            // 
+            // resourcegrp_cbo
+            // 
+            this.resourcegrp_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resourcegrp_cbo.FormattingEnabled = true;
+            this.resourcegrp_cbo.Location = new System.Drawing.Point(9, 51);
+            this.resourcegrp_cbo.Name = "resourcegrp_cbo";
+            this.resourcegrp_cbo.Size = new System.Drawing.Size(262, 21);
+            this.resourcegrp_cbo.TabIndex = 4;
+            this.resourcegrp_cbo.SelectedIndexChanged += new System.EventHandler(this.resourcegrp_cbo_SelectedIndexChanged);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 16);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(114, 13);
+            this.label26.TabIndex = 11;
+            this.label26.Text = "Operation to Attach to:";
             // 
             // label27
             // 
@@ -1424,16 +1601,6 @@
             this.label28.Size = new System.Drawing.Size(88, 13);
             this.label28.TabIndex = 5;
             this.label28.Text = "Resource Group:";
-            // 
-            // resourcegrp_cbo
-            // 
-            this.resourcegrp_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.resourcegrp_cbo.FormattingEnabled = true;
-            this.resourcegrp_cbo.Location = new System.Drawing.Point(9, 51);
-            this.resourcegrp_cbo.Name = "resourcegrp_cbo";
-            this.resourcegrp_cbo.Size = new System.Drawing.Size(262, 21);
-            this.resourcegrp_cbo.TabIndex = 4;
-            this.resourcegrp_cbo.SelectedIndexChanged += new System.EventHandler(this.resourcegrp_cbo_SelectedIndexChanged);
             // 
             // groupBox7
             // 
@@ -1464,6 +1631,15 @@
             this.delres_btn.Text = "Rem. Opr";
             this.delres_btn.UseVisualStyleBackColor = true;
             this.delres_btn.Click += new System.EventHandler(this.delres_btn_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(9, 10);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(85, 13);
+            this.label25.TabIndex = 10;
+            this.label25.Text = "Template Name:";
             // 
             // ResDataGrid
             // 
@@ -1757,6 +1933,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.PullAsAsm_chk);
             this.groupBox5.Controls.Add(this.billtemplatename_txt);
             this.groupBox5.Controls.Add(this.operation_txt);
             this.groupBox5.Controls.Add(this.RawMenu);
@@ -1777,15 +1954,6 @@
             this.groupBox5.Size = new System.Drawing.Size(436, 165);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(7, 16);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(85, 13);
-            this.label29.TabIndex = 13;
-            this.label29.Text = "Template Name:";
             // 
             // billtemplatename_txt
             // 
@@ -1817,7 +1985,7 @@
             // ViewAsAsm_chk
             // 
             this.ViewAsAsm_chk.AutoSize = true;
-            this.ViewAsAsm_chk.Location = new System.Drawing.Point(177, 58);
+            this.ViewAsAsm_chk.Location = new System.Drawing.Point(319, 83);
             this.ViewAsAsm_chk.Name = "ViewAsAsm_chk";
             this.ViewAsAsm_chk.Size = new System.Drawing.Size(111, 17);
             this.ViewAsAsm_chk.TabIndex = 10;
@@ -1844,15 +2012,6 @@
             this.qty_num.TabIndex = 9;
             this.qty_num.ValueChanged += new System.EventHandler(this.qty_num_ValueChanged);
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(145, 136);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(26, 13);
-            this.label18.TabIndex = 8;
-            this.label18.Text = "Qty.";
-            // 
             // desc_txt
             // 
             this.desc_txt.BackColor = System.Drawing.Color.White;
@@ -1864,16 +2023,6 @@
             this.desc_txt.Visible = false;
             this.desc_txt.TextChanged += new System.EventHandler(this.desc_txt_TextChanged);
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(8, 110);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(63, 13);
-            this.label19.TabIndex = 6;
-            this.label19.Text = "Description:";
-            this.label19.Visible = false;
-            // 
             // partnum_txt
             // 
             this.partnum_txt.Location = new System.Drawing.Point(77, 81);
@@ -1881,15 +2030,6 @@
             this.partnum_txt.Size = new System.Drawing.Size(211, 20);
             this.partnum_txt.TabIndex = 5;
             this.partnum_txt.TextChanged += new System.EventHandler(this.partnum_txt_TextChanged);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(8, 136);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(56, 13);
-            this.label20.TabIndex = 3;
-            this.label20.Text = "Operation:";
             // 
             // findpart_btn
             // 
@@ -1909,6 +2049,43 @@
             this.mtlseq_txt.Size = new System.Drawing.Size(62, 20);
             this.mtlseq_txt.TabIndex = 1;
             this.mtlseq_txt.Visible = false;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(7, 16);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(85, 13);
+            this.label29.TabIndex = 13;
+            this.label29.Text = "Template Name:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(145, 136);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(26, 13);
+            this.label18.TabIndex = 8;
+            this.label18.Text = "Qty.";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(8, 110);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(63, 13);
+            this.label19.TabIndex = 6;
+            this.label19.Text = "Description:";
+            this.label19.Visible = false;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(8, 136);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(56, 13);
+            this.label20.TabIndex = 3;
+            this.label20.Text = "Operation:";
             // 
             // label21
             // 
@@ -2030,6 +2207,113 @@
             this.engDataDataSet.DataSetName = "ENGDataDataSet";
             this.engDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // Oprrow_id
+            // 
+            this.Oprrow_id.DataPropertyName = "row_id";
+            this.Oprrow_id.HeaderText = "row_id";
+            this.Oprrow_id.Name = "Oprrow_id";
+            this.Oprrow_id.ReadOnly = true;
+            this.Oprrow_id.Visible = false;
+            // 
+            // OprPropertyType
+            // 
+            this.OprPropertyType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.OprPropertyType.DataPropertyName = "PropertyType";
+            this.OprPropertyType.HeaderText = "Sequence";
+            this.OprPropertyType.Name = "OprPropertyType";
+            this.OprPropertyType.ReadOnly = true;
+            this.OprPropertyType.Width = 81;
+            // 
+            // OprPropertyValue
+            // 
+            this.OprPropertyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OprPropertyValue.DataPropertyName = "PropertyValue";
+            this.OprPropertyValue.HeaderText = "Code";
+            this.OprPropertyValue.Name = "OprPropertyValue";
+            this.OprPropertyValue.ReadOnly = true;
+            this.OprPropertyValue.Width = 57;
+            // 
+            // OprDesc
+            // 
+            this.OprDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.OprDesc.DataPropertyName = "OpDesc";
+            this.OprDesc.HeaderText = "Operation Description";
+            this.OprDesc.Name = "OprDesc";
+            this.OprDesc.ReadOnly = true;
+            // 
+            // OprPropertyQty
+            // 
+            this.OprPropertyQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.OprPropertyQty.DataPropertyName = "PropertyQty";
+            this.OprPropertyQty.HeaderText = "Production Hours";
+            this.OprPropertyQty.Name = "OprPropertyQty";
+            this.OprPropertyQty.ReadOnly = true;
+            this.OprPropertyQty.Width = 105;
+            // 
+            // OprPropertyUOM
+            // 
+            this.OprPropertyUOM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OprPropertyUOM.DataPropertyName = "PropertyUOM";
+            this.OprPropertyUOM.HeaderText = "Std. Format";
+            this.OprPropertyUOM.Name = "OprPropertyUOM";
+            this.OprPropertyUOM.ReadOnly = true;
+            this.OprPropertyUOM.Width = 79;
+            // 
+            // OprPropertyOptions
+            // 
+            this.OprPropertyOptions.DataPropertyName = "PropertyOption";
+            this.OprPropertyOptions.HeaderText = "Supplier ID";
+            this.OprPropertyOptions.Name = "OprPropertyOptions";
+            this.OprPropertyOptions.ReadOnly = true;
+            // 
+            // OprPropertyOption1
+            // 
+            this.OprPropertyOption1.DataPropertyName = "PropertyOption1";
+            this.OprPropertyOption1.HeaderText = "Quotes Req";
+            this.OprPropertyOption1.Name = "OprPropertyOption1";
+            this.OprPropertyOption1.ReadOnly = true;
+            // 
+            // OprPropertyOption3
+            // 
+            this.OprPropertyOption3.DataPropertyName = "PropertyOption3";
+            this.OprPropertyOption3.HeaderText = "Days Out";
+            this.OprPropertyOption3.Name = "OprPropertyOption3";
+            this.OprPropertyOption3.ReadOnly = true;
+            // 
+            // OprPropertyOption4
+            // 
+            this.OprPropertyOption4.DataPropertyName = "PropertyOption4";
+            this.OprPropertyOption4.HeaderText = "Qty Per";
+            this.OprPropertyOption4.Name = "OprPropertyOption4";
+            this.OprPropertyOption4.ReadOnly = true;
+            // 
+            // OprPropertyOption2
+            // 
+            this.OprPropertyOption2.DataPropertyName = "PropertyOption2";
+            this.OprPropertyOption2.HeaderText = "Cost";
+            this.OprPropertyOption2.Name = "OprPropertyOption2";
+            this.OprPropertyOption2.ReadOnly = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(8, 45);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Add Sub Con";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // PullAsAsm_chk
+            // 
+            this.PullAsAsm_chk.AutoSize = true;
+            this.PullAsAsm_chk.Location = new System.Drawing.Point(319, 106);
+            this.PullAsAsm_chk.Name = "PullAsAsm_chk";
+            this.PullAsAsm_chk.Size = new System.Drawing.Size(105, 17);
+            this.PullAsAsm_chk.TabIndex = 16;
+            this.PullAsAsm_chk.Text = "Pull As Assembly";
+            this.PullAsAsm_chk.UseVisualStyleBackColor = true;
+            this.PullAsAsm_chk.CheckedChanged += new System.EventHandler(this.PullAsAsm_chk_CheckedChanged);
+            // 
             // Template_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2074,9 +2358,15 @@
             this.OprPreviewContainer.Panel1.PerformLayout();
             this.OprPreviewContainer.Panel2.ResumeLayout(false);
             this.OprPreviewContainer.ResumeLayout(false);
+            this.subcon_grp.ResumeLayout(false);
+            this.subcon_grp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesreq_num)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qtyper_num)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.daysout_num)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitcost_num)).EndInit();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.ops_grp.ResumeLayout(false);
+            this.ops_grp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).EndInit();
             this.ResTab.ResumeLayout(false);
@@ -2156,7 +2446,7 @@
         private System.Windows.Forms.Button close_item_btn;
         private ENGDataDataSet engDataDataSet;
         private System.Windows.Forms.SplitContainer OprPreviewContainer;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox ops_grp;
         private System.Windows.Forms.ComboBox prodstd_cbo;
         private System.Windows.Forms.NumericUpDown prodhrs_num;
         private System.Windows.Forms.Label label12;
@@ -2265,6 +2555,28 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyUOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResPropertyOptions;
+        private System.Windows.Forms.CheckBox qtybearing;
+        private System.Windows.Forms.CheckBox userevision;
+        private System.Windows.Forms.CheckBox trackserial;
+        private System.Windows.Forms.CheckBox phantom_chk;
+        private System.Windows.Forms.CheckBox SNRequiredOpr_chk;
+        private System.Windows.Forms.CheckBox AutoRecieve_chk;
+        private System.Windows.Forms.GroupBox subcon_grp;
+        private System.Windows.Forms.NumericUpDown quotesreq_num;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.NumericUpDown qtyper_num;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.ComboBox subconuom_cbo;
+        private System.Windows.Forms.CheckBox refneeded_chk;
+        private System.Windows.Forms.NumericUpDown daysout_num;
+        private System.Windows.Forms.NumericUpDown unitcost_num;
+        private System.Windows.Forms.ComboBox subcon_opsmast_cbo;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox supplieradd_txt;
+        private System.Windows.Forms.TextBox supplierid_txt;
+        private System.Windows.Forms.Button supplierid_btn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Oprrow_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyType;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyValue;
@@ -2272,8 +2584,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyUOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOptions;
-        private System.Windows.Forms.CheckBox qtybearing;
-        private System.Windows.Forms.CheckBox userevision;
-        private System.Windows.Forms.CheckBox trackserial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox PullAsAsm_chk;
     }
 }

@@ -1,0 +1,1448 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.BO.EngWorkBench</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.EngWorkBench">
+            <summary>
+            Client side business object for EngWorkBench.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.Proxy.EngWorkBenchImpl">
+            <summary>
+            Engineering Workbench Business Object
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Proxy constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOGroup(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOGroupAttch(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECORev(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECORevAttch(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOCOPart(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOMtl(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOMtlAttch(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOMtlInsp(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOMtlRefDes(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOMtlRestriction(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOMtlRestrictSubst(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOOpr(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOOprAttch(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOOprInsp(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOOpDtl(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOOprRestriction(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetNewECOOprRestrictSubst(Epicor.Mfg.BO.EngWorkBenchDataSet,System.String,System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.DeleteByID(System.String)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetByID(System.String)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetRows(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.Update(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.UpdateExt(Epicor.Mfg.BO.UpdExtEngWorkBenchDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetCodeDescList(System.String,System.String)">
+            <summary>
+            To return the CodeDescriptionList values of a given table.field.
+            </summary>
+            <param name="tableName"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.AddRefDesRange(System.String,System.String,System.String,System.String,System.Int32,System.String,System.Int32,System.Int32,System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Creates new ECOMtlRefDes records based on the ECOMtl dataset fields.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision</param>
+            <param name="ipPartNum">The Part Number of ECO revision</param>
+            <param name="ipRevisionNum">The ECO Revision Number</param>
+            <param name="ipAltMethod">The ECO Alternate Method</param>
+            <param name="ipMtlSeq">The ECO Material Seq</param>
+            <param name="ipPrefix">The Prefix to be used to create Reference Designators</param>
+            <param name="ipStartNum">The Starting Number to create Reference Designators</param>
+            <param name="ipEndNum">The Ending Number to create Reference Designators</param>
+            <param name="ipSuffix">The Suffix to be used to create Reference Designators</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.AllowApproveMethod">
+            <summary>
+            This method exists soley for the purpose of allowing security for
+            approving a method to be defined
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.AllowUnapproveMethod">
+            <summary>
+            This method exists soley for the purpose of allowing security for
+            unapproving a method to be defined
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ApproveAll(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String@)">
+            <summary>
+            This methods approves all revisions within an ECOGroup and returns a results string
+            and returns an updated dataset if the user chooses to.
+            This method runs the logic behind the Vantage 6.1 Group>Approve All menu option.
+            </summary>
+            <param name="ipGroupID">The ECOGroup.GroupID to approve all for</param>
+            <param name="ipPartNum">Used for GetDatasetForTree, The Part Number to return data for.</param>
+            <param name="ipRevisionNum">Used for GetDatasetForTree, The Revision Number to return data for.</param>
+            <param name="ipAltMethod">Used for GetDatasetForTree, The Alternate Method to return data for.</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="ipValidPassword">Did the user supply a valid password to run this functionality?
+            The value for this parameter should come from running the ValidatePassword method in the
+            UserFile BO.</param>
+            <param name="opResultString">A return list of statements from the Approve All process</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOCoPartPartNum(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method validates the ECOCoPart.CoPartNum and defaults fields associated with the partnum.
+            This method should run when the ECOCoPart.CoPartNum field changes.
+            </summary>
+            <param name="ds">The engineering workbench data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOGroupGroupClosed(System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns fields associated with ECOGroup.GroupClosed changing.
+            If ECOGroup.GroupClosed changes to true, ClosedBy, ClosedDate, and ClosedTime gets populated.
+            This method should run before/at the time ECOGroup.GroupClosed field changes.
+            </summary>
+            <param name="ipProposedGroupClosed">The new proposed ECOGroup.GroupClosed value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOGroupWorkflowGroup(System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns fields associated with ECOGroup.WFGroupID changing.
+            If ECOGroup.WFGroupID changes, verify and check if there is a default TaskSetID
+            associated with the WFGroupID and if so, populate ECOGroup.TaskSetID.
+            This method should run before/at the time ECOGroup.WFGroupID field changes.
+            </summary>
+            <param name="ipProposedWFGroupID">The new proposed ECOGroup.WFGroupID value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlFixedQty(System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns ECOMtl.EstScrap field when ECOMtl.FixedQty changes.
+            This method should run when the ECOMtl.FixedQty changes.
+            </summary>
+            <param name="ipProposedFixedQty">The new proposed ECOMtl.FixedQty value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeEcoMtlInspPlan(System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="ipProposedInspPlan">The new proposed ECOMtl.InspPlanPartNum value</param>
+            <param name="ipProposedSpecId">The new proposed ECOMtl.SpecID value</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlMtlPartNum(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method assigns the associated fields when the ECOMtl.MtlPartNum field changes.
+            This method should run when changing the ECOMtl.MtlPartNum.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlMtlSeq(System.Int32,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method create a new ttECOMtl record and delete the existing one when changing
+            this component of the primary unique index and update the ecomtl.mtlseq.
+            This method should run before changing the ECOMtl.MtlSeq.
+            </summary>
+            <param name="ipProposedMtlSeq">The new proposed ECOMtl.MtlSeq value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlPlanAsAsm(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method assigns the associated fields when the ECOMtl.MtlPartNum field changes.
+            This method should run when changing the ECOMtl.MtlPartNum.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlPullAsAsm(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method assigns the associated fields when the ECOMtl.MtlPartNum field changes.
+            This method should run when changing the ECOMtl.MtlPartNum.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlQtyPer(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns ECOMtl.ReqRefDes and ECOMtl.RDEndNum fields
+            when ECOMtl.QtyPer changes. This method should run when the ECOMtl.QtyPer changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlReassignSNAsm(System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Validates that there is no other material with ReassignSNAsm field to TRUE
+            </summary>
+            <param name="proposedReassignSNAsm">Proposed value for Reassign SN Asm</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlRelatedOperation(System.Int32,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns associated fields when ECOMtl.RelatedOperation changes.
+            This method should run when the ECOMtl.RelatedOperation changes.
+            </summary>
+            <param name="ipProposedRelatedOperation">The new proposed ECOMtl.RFQNeeded value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlRelatedStage(System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns associated fields when ECOMtl.RelatedStage changes.
+            This method should run when the ECOMtl.RelatedStage changes.
+            </summary>
+            <param name="ipProposedRelatedStage">The new proposed ECOMtl.RFQNeeded value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlReqRefDes(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns ECOMtl.RDEndNum field when ECOMtl.ReqRefDes changes.
+            This method should run when the ECOMtl.ReqRefDes changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlRestriction(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns associated fields when ECOMtlRestriction.RestrictionTypeID changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlRFQNeeded(System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns ECOMtl.RFQVendQuotes field when ECOMtl.RFQNeeded changes.
+            This method should run when the ECOMtl.RFQNeeded changes.
+            </summary>
+            <param name="ipProposedRFQNeeded">The new proposed ECOMtl.RFQNeeded value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlSalvageMtlBurRate(System.Decimal,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns ECOMtl.SalvageEstMtlBurUnitCredit field when ECOMtl.SalvageMtlBurRate changes.
+            This method should run when the ECOMtl.SalvageMtlBurRate changes.
+            </summary>
+            <param name="ipProposedSalvageMtlBurRate">The new proposed ECOMtl.SalvageMtlBurRate value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlSalvagePartNum(System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns associated fields when ECOMtl.SalvagePartNum changes.
+            This method should run when the ECOMtl.SalvagePartNum changes.
+            </summary>
+            <param name="ipProposedSalvagePartNum">The new proposed ECOMtl.SalvagePartNum value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlSalvageUnitCredit(System.Decimal,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns ECOMtl.SalvageEstMtlBurUnitCredit field when ECOMtl.SalvageUnitCredit changes.
+            This method should run when the ECOMtl.SalvageMtlBurRate changes.
+            </summary>
+            <param name="ipProposedSalvageUnitCredit">The new proposed ECOMtl.SalvageUnitCredit value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOMtlSubstance(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns associated fields when ECOMtlRestrictSubst.SubstanceID changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOpDtlCapability(System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Method to call when changing the Capability ID. This method will update ECOOpDtl
+            to see if the labor and burden rates need to be reset. Blank is a valid entry for
+            Capability ID.
+            </summary>
+            <param name="proposedCapID">The proposed Capability ID</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOpDtlResourceGrpID(System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Method to call when changing the Resource Group ID. Blank is a valid
+            entry for Resource Group ID.
+            </summary>
+            <param name="proposedResGrpID">The proposed Resource Group ID</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOpDtlResourceID(System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Method to call when changing the Resource ID. Blank is a valid entry for Resource ID.
+            </summary>
+            <param name="proposedResourceID">The proposed Resource ID</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprAutoReceive(System.String@,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method also returns a list of values/descriptions for the LaborEntryMethod dropdown
+            based on the value of the ECOOpr.AutoReceive field. This does not change the actual
+            value of the ECOOpr.LaborEntryMethod field, just returns values for its dropdown list.
+            This method should run before/at the time ECOGroup.GroupClosed field changes.
+            </summary>
+            <param name="opLaborEntryMethodList">The returning value for the LaborEntryMethod</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprLaborEntryMethod(System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Verification when changing the LaborEntryMethod field
+            </summary>
+            <param name="iLaborEntryMethod">Proposed value for LaborEntryMethod field </param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprOpCode(System.String,System.String@,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method defaults/resets specific fields related to the new operation code.
+            This method should run when the ECOOpr.OpCode field changes.
+            </summary>
+            <param name="proposedOpCode">The proposed Operation Code</param>
+            <param name="refreshMessage">The refresh message text</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprOprSeq(System.Int32,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method will update all of the associated records to the ECOOpr if the
+            OprSeq field is changing.
+            This method should run before changing the ECOOpr.OprSeq.
+            </summary>
+            <param name="ipProposedOprSeq">The new proposed ECOOpr.OprSeq value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprOpStdID(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method defaults/resets the production standards when selecting an
+            Operation Standard
+            This method should run when the ECOOpr.OpStdID field changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprPrimaryProdOpDtl(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method defaults/resets the production standards when selecting Primary
+            Production Operation Detail.
+            This method should run when the ECOOpr.PrimaryProdOpDtl field changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprPrimarySetupOpDtl(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method defaults/resets the setup values when selecting Primary
+            Setup Operation Detail.
+            This method should run when the ECOOpr.PrimarySetupOpDtl field changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprRestriction(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns associated fields when ECOOprRestriction.RestrictionTypeID changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprRFQNeeded(System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns ECOOpr.RFQVendQuotes field when ECOOpr.RFQNeeded changes.
+            This method should run when the ECOOpr.RFQNeeded changes.
+            </summary>
+            <param name="ipProposedRFQNeeded">The new proposed ECOGroup.RFQNeeded value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprSNRequiredOpr(System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Validates SNRequiredOpr flag to avoid to set it false if the prior operation has the flag set to true
+            The flag cannot be set to true if the part is not serial tracked also.
+            </summary>
+            <param name="ipProposedSNRequired">The new proposed ECOGroup.SNRequiredOpr value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprStdFormat(System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns ECOOpr.OpsPerPart a default value based on the StdFormat value.
+            </summary>
+            <param name="ipProposedStdFormat">The new proposed ECOOpr.StdFormat value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprSubPartNum(System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns associated fields when ECOOpr.SubPartNum changes.
+            This method should run when the ECOOpr.SubPartNum changes.
+            </summary>
+            <param name="ipProposedSubPartNum">The new proposed ECOGroup.SubPartNum value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprSubstance(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns associated fields when ECOOprRestrictSubst.SubstanceID changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">EngWorkBench dataset</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECOOprVendorNumVendorID(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns associated fields when ECOOpr.VendorNumVendorID changes.
+            This method should run when the ECOOpr.VendorNumVendorID changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangeECORevApproved(System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods assigns fields associated with ECORev.Approved changing.
+            This method should run before ECOGroup.Approved field changes.
+            </summary>
+            <param name="ipProposedApproved">The new proposed ipProposedApproved value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ChangingECOOprAutoReceive(System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Verification when changing the AutoReceive field
+            </summary>
+            <param name="iAutoReceive">Proposed value for AutoReceive field </param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckECOMtlMtlPartNum(System.String,System.String@,System.String@,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods checks the ECOMtl.MtlPartNum when it changes to see if any messages when
+            validating it arise. Messages could be from the analysis code or if the user is trying to
+            use the parent part as a component of itself.
+            This method should run before changing the ECOMtl.MtlPartNum.
+            </summary>
+            <param name="ipProposedMtlPartNum">The new proposed ttECOMtl.PartNum value</param>
+            <param name="opMessage">The returning message.</param>
+            <param name="opMsgType">Type of message returned. Value is Question, with Yes/No as options</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckECOMtlMtlSeqRelatedOperation(System.Int32,System.Int32,System.String,System.String@,System.String@,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods checks to see if the ECOMtl.MtlSeq has changed from the original ECOMtl.MtlSeq or
+            if the ECOMtl.RelatedOperation has changed from the original ECOMtl.RelatedOperation or
+            the ECOMtl.RelatedStage has changed from the original ECOMMtl.RelatedStage
+            and provides a message asking the user if they would like to set the current configuration
+            to unapproved if the MtlSeq, RelatedOperation or RelatedStage did change. This method does not actually validate the
+            ECOMtl.MtlSeq, ECOMtl.RelatedOperation or ECOMtl.RelatedStage.
+            For RelatedOperation and RelatedStage, it is one or the other, i.e. both a RelatedOperation
+            and a RelatedStage should not be passed in. The value to pass in is based on ECORev.UseStaging.
+            If this value is true, RelatedStage is used, otherwise RelatedOperation is used.
+            Actual validation is handle in the beforeupdate logic in a private method.
+            This method should run before changing the ECOMtl.MtlSeq or ECOMtl.RelatedOperation
+            </summary>
+            <param name="ipProposedMtlSeq">The new proposed ECOMtl.MtlSeq value</param>
+            <param name="ipProposedRelatedOperation">The new proposed ECOMtl.RelatedOperation value</param>
+            <param name="ipProposedRelatedStage">The new proposed ECOMtl.RelatedStage value</param>
+            <param name="opMessage">The returning message value</param>
+            <param name="opMsgType">Type of message returned. Value is Warning, with OK as options</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckECOMtlPlanAsAsm(System.Boolean,System.String@,System.String@,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods checks the ECOMtl.PlanAsAsm when it changes to see if any messages when
+            validating it arise. Messages could be from the analysis code
+            This method should run before changing the ECOMtl.PlanAsAsm.
+            </summary>
+            <param name="ipProposedPlanAsAsm">The new proposed ECOMtl.PlanAsAsm value</param>
+            <param name="opMessage">The returning message.</param>
+            <param name="opMsgType">Type of message returned. Value is Question, with Yes/No as options</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckECOMtlPullAsAsm(System.Boolean,System.String@,System.String@,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods checks the ECOMtl.PullAsAsm when it changes to see if any messages when
+            validating it arise. Messages could be from the analysis code
+            This method should run before changing the ECOMtl.PullAsAsm.
+            </summary>
+            <param name="ipProposedPullAsAsm">The new proposed ECOMtl.PullAsAsm value</param>
+            <param name="opMessage">The returning message.</param>
+            <param name="opMsgType">Type of message returned. Value is Question, with Yes/No as options</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckECOMtlViewAsAsm(System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods checks the ECOMtl.ViewAsAsm when it changes to see if any messages when
+            validating it arise. This method should run before changing the ECOMtl.ViewAsAsm.
+            </summary>
+            <param name="ipProposedViewAsAsm">The new proposed ECOMtl.ViewAsAsm value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckECOOprOprSeq(System.Int32,System.String@,System.String@,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods checks to see if the ECOOpr.OprSeq has changed from the original ECOOpr.OprSeq
+            and provides a message asking the user if they would like to set the current configuration
+            to unapproved if the OprSeq did change. This method does not actually validate the ECOOpr.OprSeq.
+            Actual validation is handle in the beforeupdate logic in a private method.
+            This method should run before changing the ECOOpr.OprSeq.
+            </summary>
+            <param name="ipProposedOprSeq">The new proposed ECOOpr.OprSeq value</param>
+            <param name="opMessage">The returning message.</param>
+            <param name="opMsgType">Type of message returned. Value is Warning, with OK as options</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckECOOprPrimaryProdOpDtl(Epicor.Mfg.BO.EngWorkBenchDataSet,System.Int32)">
+            <summary>
+            This method validated the value of Primary Production Operation Detail.
+            This method should run when the ECOOpr.PrimaryProdOpDtl field changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+            <param name="ipPrimaryProdOpDtl">The new PrimaryProdOpDtl value to change to</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckECOOprPrimarySetupOpDtl(Epicor.Mfg.BO.EngWorkBenchDataSet,System.Int32)">
+            <summary>
+            This method validated the value of Primary Setup Operation Detail.
+            This method should run when the ECOOpr.PrimarySetupOpDtl field changes.
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+            <param name="ipPrimarySetupOpDtl">The new PrimarySetupOpDtl value to change to</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckECOOprPurPoint(System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods checks to see if the new ECOOpr.PurPoint has changed from the original
+            ECOOpr.PurPoint and validates the value.
+            This method should run before changing the ECOOpr.PurPoint.
+            </summary>
+            <param name="ipProposedPurPoint">The new proposed ECOOpr.PurPoint value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckECOOprVendorNumVendorID(System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods checks to see if the new ECOOpr.VendorNumVendorID has changed from the original
+            ECOOpr.VendorNumVendorID and validates the value.
+            This method should run before changing the ECOOpr.VendorNumVendorID.
+            </summary>
+            <param name="ipProposedVendorNumVendorID">The new proposed ECOOpr.VendorNumVendorID value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckECORevApproved(System.Boolean,System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This methods checks if the BMSyst.VerifyPassword flag is set, and verifies a password
+            before the user is able to approve this revision.
+            This method should run before the ECORev.Approved field changes (ChangeECORevApproved).
+            </summary>
+            <param name="ipProposedApproved">The new proposed ECOGroup.Approved value</param>
+            <param name="ipValidPassword">Did the user supply a valid password to run this functionality?
+            The value for this parameter should come from running the ValidatePassword method in the
+            UserFile BO.</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckECORevValRefDes(System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Verify that there are no other ECOMtlRefDes records in the revision having
+            the same RefDes value if the ECORev.ValRefDes = true. This method should
+            run before changing the ECORev.ValRefDes.
+            </summary>
+            <param name="ipProposedValResDes">The new proposed ECORev.ValRefDes value</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckIn(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String,System.String@)">
+            <summary>
+            This method checks in a single revision.
+            This method runs the logic behind the old Vantage 6.1 Revision>Check In menu option.
+            </summary>
+            <param name="ipGroupID">The Group ID to return costs for.</param>
+            <param name="ipPartNum">The Part Number to return costs for.</param>
+            <param name="ipRevisionNum">The Revision Number to return costs for.</param>
+            <param name="ipAltMethod">The Alternate Method to return costs for.</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipValidPassword">Did the user supply a valid password to run this functionality?
+            The value for this parameter should come from running the ValidatePassword method in the
+            UserFile BO.</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="ipAuditText">The text to write to the audit record.</param>
+            <param name="opMessage">Outputted message if an 'Unapproved Configuration Exists'</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckInAll(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String,System.String@)">
+            <summary>
+            This methods checks in all revisions within an ECOGroup and returns a results string
+            and returns an updated dataset if the user chooses to.
+            This method runs the logic behind the Vantage 6.1 Group>Check In All menu option.
+            </summary>
+            <param name="ipGroupID">The ECOGroup.GroupID to check in all for</param>
+            <param name="ipPartNum">Used for GetDatasetForTree, The Part Number to return data for.</param>
+            <param name="ipRevisionNum">Used for GetDatasetForTree, The Revision Number to return data for.</param>
+            <param name="ipAltMethod">Used for GetDatasetForTree, The Alternate Method to return data for.</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="ipValidPassword">Did the user supply a valid password to run this functionality?
+            The value for this parameter should come from running the ValidatePassword method in the
+            UserFile BO.</param>
+            <param name="ipAuditText">The text to write to the audit record(s).</param>
+            <param name="opResultString">A return list of statements from the Check In All process</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckOut(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String@,System.String@,System.Boolean@)">
+            <summary>
+            This method checks out a single revision
+            This method runs the logic behind the old Vantage 6.1 Revision>Check Out menu option.
+            </summary>
+            <param name="ipGroupID">The Group ID to check out for.</param>
+            <param name="ipPartNum">The Part Number to check out for.</param>
+            <param name="ipRevisionNum">The Revision Number to check out for.</param>
+            <param name="ipAltMethod">The Alternate Method to check out for.</param>
+            <param name="ipAsOfDate">The As Of Date to check out for.</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipValidPassword">Did the user supply a valid password to run this functionality?
+            The value for this parameter should come from running the ValidatePassword method in the
+            UserFile BO.</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="opCheckedOutRevisionNum">The Revision Number that will be checked out.</param>
+            <param name="altMethodMsg">Message indicating that more than one alt method will be checked out.</param>
+            <param name="altMethodFlg">A logical flag indicating the message should be displayed.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.CheckPreECOCoPartInfo(System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method validates the ECOCoPart.CoPartNum is not serial tracked or a configured part.
+            </summary>
+            <param name="ipProposedPartNum">The new proposed ECOCoPart.CoPartNum value</param>
+            <param name="ds">The engineering workbench data set </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ClearAll(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This method will delete all ECOMtl, ECOOpr and ECOOpDtl associated with the ECORev to clear all for.
+            When the method is finished running, it will run a GetById based on the
+            inputted Group ID. This will cause a refreshing of the dataset to reflect all of the changes.
+            </summary>
+            <param name="ipGroupID">The Group ID to clear all for</param>
+            <param name="ipPartNum">The Part Number to clear all for.</param>
+            <param name="ipRevisionNum">The Revision Number to clear all for.</param>
+            <param name="ipAltMethod">The Alternate Method to clear all for.</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.DeleteRefDesRange(System.String,System.String,System.String,System.String,System.Int32,System.String,System.Int32,System.Int32,System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Deletes ECOMtlRefDes records based on the ECOMtl dataset fields.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision</param>
+            <param name="ipPartNum">The Part Number of ECO revision</param>
+            <param name="ipRevisionNum">The ECO Revision Number</param>
+            <param name="ipAltMethod">The ECO Alternate Method</param>
+            <param name="ipMtlSeq">The ECO Material Seq</param>
+            <param name="ipPrefix">The Prefix to be used to delete Reference Designators</param>
+            <param name="ipStartNum">The Starting Number to delete Reference Designators</param>
+            <param name="ipEndNum">The Ending Number to delete Reference Designators</param>
+            <param name="ipSuffix">The Suffix to be used to delete Reference Designators</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ECOGroupExists(System.String,System.Boolean@)">
+            <summary>
+            This method accepts a ECOGroup.ECOGroupID and determines if the ECOGroupID exists
+            as a valid record in the database.
+            </summary>
+            <param name="ipGroupID">The Group ID to check if it exists in the database.</param>
+            <param name="opECOGroupExists">Does the ECOGroup exist?</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.EcoOprInitSNReqSubConShip(Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Method required to set the initial value of ECOOpr.SNRequiredSubConShip
+            </summary>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ExportToPLM(System.String)">
+            <summary>
+            This method accepts a ECOGroup.ECOGroupID and sends a xml message describing the ECO to PLM
+            </summary>
+            <param name="ipGroupID">The GroupID of the ECOGroup to export.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ExpressPartCheckOut(System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String@,System.String@,System.String@,System.Boolean@)">
+            <summary>
+            This method will generate an ECOGroup for the user to check out the part to if
+            an ECOGroup doesn't already exist for the user. Once the ECOGroup is properly
+            created, the inputted part information will be checked out to the ECOGroup that was
+            created or to the one that already exists for the user.
+            </summary>
+            <param name="ipPartNum">The Part Number to check out for.</param>
+            <param name="ipRevisionNum">The Revision Number to check out for.</param>
+            <param name="ipAltMethod">The Alternate Method to check out for.</param>
+            <param name="ipAsOfDate">The As Of Date to check out for.</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipValidPassword">Did the user supply a valid password to run this functionality?
+            The value for this parameter should come from running the ValidatePassword method in the
+            UserFile BO.</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="opCheckedOutRevisionNum">The Revision Number that will be checked out.</param>
+            <param name="opGroupID">The ECOGroup.GroupID the part was checked out to.</param>
+            <param name="altMethodMsg">Message indicating that more than one alt method will be checked out.</param>
+            <param name="altMethodFlg">A logical flag indicating the message should be displayed.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetAvailTaskSets(System.String@)">
+            <summary>
+            This method gets the available TaskSets for the TaskSet combo in the
+            EngineeringWorkbenchEntry.
+            </summary>
+            <param name="newList">(output) A delimited list of TaskSet IDs and
+            descriptions</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetDatasetForTree(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean)">
+            <summary>
+            This methods will return a dataset that will include PartRev, PartOpr, PartMtl and PartOpDtl if those
+            records exist for a ECOMtl and there is no ECORev, ECOOpr, ECOMtl and ECOOpDtl associated with it.
+            These added "Part" records will be able to be determined by the associated tables "IsPartRev",
+            "IsPartOpr", "IsPartMtl" or "IsPartOpDtl" field. If this field is checked then the record in the dataset
+            was copied from the associated "part" table. These "part" records will not be maintable as they
+            will not be "real" database records, just a picture of the "part" record for display purposes.
+            This method will also allow you to return the whole dataset or allow the user to specify how
+            far down the tree they would like to return possible "part" records for.
+            This method is different from the "GetRows" or "GetById" methods. Those methods only return
+            maintainable "ECO" records.
+            </summary>
+            <param name="ipGroupID">The Group Id to return data for.</param>
+            <param name="ipPartNum">The Part Number to return data for.</param>
+            <param name="ipRevisionNum">The Revision Number to return data for.</param>
+            <param name="ipAltMethod">The Alternate Method to return data for.</param>
+            <param name="ipAsOfDate">The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this group?</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetDetailsFromImport(System.String,System.String,System.String,System.String,System.String,Epicor.Mfg.BO.EngWorkBenchDataSet,System.String@,System.Boolean@)">
+            <summary>
+            This method gets the details from an import file
+            This method runs the logic behind the old Vantage 6.1 Revision>Get Details>Import menu option
+            </summary>
+            <param name="ipGroupID">The Group ID of revision to get details for</param>
+            <param name="ipPartNum">The Part Number of revision to get details for</param>
+            <param name="ipRevisionNum">The Revision Number to get details for</param>
+            <param name="ipAltMethod">The Alternate Method to get details for</param>
+            <param name="ipFileName">The filename to import from. This file should reside on the client side. Used for messages.</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+            <param name="altMethodMsg">Alternate Method Message.</param>
+            <param name="altMethodFlg">Alternate Method Flag.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetDetailsFromJob(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.String,System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This method gets the details from a job assembly.
+            This method runs the logic behind the old Vantage 6.1 Revision>Get Details>
+            Get From Job menu option.
+            </summary>
+            <param name="ipGroupID">The Group ID of revision to get details for</param>
+            <param name="ipPartNum">The Part Number of revision to get details for</param>
+            <param name="ipRevisionNum">The Revision Number to get details for</param>
+            <param name="ipAltMethod">The Alternate Method to get details for</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipJobNum">The job number to get details from</param>
+            <param name="ipAssemblySeq">The assembly sequence to get details from</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetDetailsFromMethods(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This method gets the details from a method.
+            This method runs the logic behind the old Vantage 6.1 Revision>Get Details>
+            Get From Methods menu option.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to get details for</param>
+            <param name="ipPartNum">The Part Number of ECO revision to get details for</param>
+            <param name="ipRevisionNum">The ECO Revision Number to get details for</param>
+            <param name="ipAltMethod">The ECO Alternate Method to get details for</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipPartRevPartNum">The Part Number of part revision to get details from</param>
+            <param name="ipPartRevRevisionNum">The Part Revision Number to get details from</param>
+            <param name="ipPartRevAltMethod">The Part Alternate method to get details from</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="ipCopyConfiguration">Logical to specify to copy the configuration</param>
+            <param name="ipGetFromConfig">Logical to specify to copy the methods from resulting configuration</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetDetailsFromQuotes(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This method gets the details from a quote assembly.
+            This method runs the logic behind the old Vantage 6.1 Revision>Get Details>
+            Get From Quote menu option.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to get details for</param>
+            <param name="ipPartNum">The Part Number of ECO revision to get details for</param>
+            <param name="ipRevisionNum">The ECO Revision Number to get details for</param>
+            <param name="ipAltMethod">The ECO Alternate Method to get details for</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipQuoteNum">The quote number of the QuoteAsm to get details from</param>
+            <param name="ipQuoteLine">The quote line of the QuoteAsm to get details from</param>
+            <param name="ipAssemblySeq">The assemblyseq of the QuoteAsm to get details from</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetDetailsOperations(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This method gets the details from operations for a revision.
+            This method runs the logic behind the old Vantage 6.1 Revision>Get Details>
+            Get Operations Details menu option.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to get details for</param>
+            <param name="ipPartNum">The Part Number of ECO revision to get details for</param>
+            <param name="ipRevisionNum">The ECO Revision Number to get details for</param>
+            <param name="ipAltMethod">The ECO Alternate Method to get details for</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipPartRevPartNum">The Part Number of part revision to get details from</param>
+            <param name="ipPartRevRevisionNum">The Part Revision Number to get details from</param>
+            <param name="ipPartRevAltMethod">The Part Alternate method to get details from</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GetECORevData(System.String,System.Boolean)">
+            <summary>
+            This method returns the ECOGroup record and all associated ECORev records
+            based on the inputted GroupID and ipCheckOutStatus (yes = checked out, no = not checked out).
+            In some UI cases, this method will be used to replace the base GetByID. This method
+            should improve the performance because it will not be bringing back a complete
+            dataset.
+            </summary>
+            <param name="ipGroupID">The Group ID to return data for.</param>
+            <param name="ipCheckOutStatus">Return Checked Out ECORev?</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GroupLock(System.String)">
+            <summary>
+            This method checks if a group doesn't have a lock and locks a group
+            </summary>
+            <param name="ipGroupID">The Group ID of ecogroup to lock</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.GroupUnLock(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method deletes a lock on the group and revisions within a group.
+            </summary>
+            <param name="ipGroupID">The Group ID of ecogroup to lock</param>
+            <param name="ipPartNum">Used for GetDatasetForTree, The Part Number to return data for.</param>
+            <param name="ipRevisionNum">Used for GetDatasetForTree, The Revision Number to return data for.</param>
+            <param name="ipAltMethod">Used for GetDatasetForTree, The Alternate Method to return data for.</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.InsertBOMMtl(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.String,System.Int32,System.Int32,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This methods allows for the insertion of an engineering material for drag/drop functionality,
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to drop materials to</param>
+            <param name="ipPartNum">The Part Number of ECO revision to drop materials to</param>
+            <param name="ipRevisionNum">The ECO Revision Number to drop materials to</param>
+            <param name="ipAltMethod">The ECO Alternate Method to drop materials to</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipSourceRowid">The rowid of source record could be jobasmbl, jobmtl, or
+            quotemtl, partmtl to be added to the parent ECORev</param>
+            <param name="ipOperSeq">The related operation seq (or 0 if unrelated)</param>
+            <param name="ipMtlSeq">The material seq to use</param>
+            <param name="ipBeforeMtlRowid">The material rowid to insert material before</param>
+            <param name="ipDroppedAs">The character value to determine where to drop and to drop as what.
+            valid values: PartMtl, JobMtl, JobAsmbl, QuoteMtl, QuoteAsm
+            </param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.InsertBOMOpr(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.String,System.Int32,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This methods allows for the insertion of an engineering operation for drag/drop functionality,
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to drop operations to</param>
+            <param name="ipPartNum">The Part Number of ECO revision to drop operations to</param>
+            <param name="ipRevisionNum">The ECO Revision Number to drop operations to</param>
+            <param name="ipAltMethod">The ECO Alternate Method to drop operations to</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipSourceRowid">The rowid of source record could be partopr, joboper, or
+            quoteopr to be added to the parent ECORev</param>
+            <param name="ipNewOperSeq">The new operation sequence</param>
+            <param name="ipBeforeOperRowid">The material rowid to insert material before</param>
+            <param name="ipDroppedAs">The character value to determine where to drop and to drop as what.
+            valid values: PartOpr, JobOper, QuoteOpr
+            </param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.InsertMaterial(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.String,System.Int32,System.Int32,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This methods allows for the insertion on a part for drag/drop functionality,
+            validates a ECORev record exists and the part is valid.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to drop part to</param>
+            <param name="ipPartNum">The Part Number of ECO revision to drop part to</param>
+            <param name="ipRevisionNum">The ECO Revision Number to drop part to</param>
+            <param name="ipAltMethod">The ECO Alternate Method to drop part to</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipPartPartNum">The part number being added from the part table</param>
+            <param name="ipOperSeq">The related operation seq (or 0 if unrelated)</param>
+            <param name="ipMtlSeq">The material seq to use</param>
+            <param name="ipBeforeMtlRowid">The material rowid to insert part before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.InsertOpDtlCapability(System.String,System.String,System.String,System.String,System.Int32,System.Nullable{System.DateTime},System.Boolean,System.String,System.Int32,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This method allows for the insertion of Capability on an operation to create
+            ECOOpDtl for drag/drop functionality.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to drop operation detail to</param>
+            <param name="ipPartNum">The Part Number of ECO revision to drop operation detail to</param>
+            <param name="ipRevisionNum">The ECO Revision Number to drop operation detail to</param>
+            <param name="ipAltMethod">The ECO Alternate Method to drop operation detail to</param>
+            <param name="ipOprSeq">The ECO Operation Sequence to drop operation detail to</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipCapabilityID">The Capability ID being added</param>
+            <param name="ipNewOpDtlSeq">The new operation detail seq</param>
+            <param name="ipBeforeOpDtlRowid">The operation detail rowid to insert operation detail before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.InsertOpDtlResGroup(System.String,System.String,System.String,System.String,System.Int32,System.Nullable{System.DateTime},System.Boolean,System.String,System.Int32,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This method allows for the insertion of Resource Group on an operation to create
+            ECOOpDtl for drag/drop functionality.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to drop operation detail to</param>
+            <param name="ipPartNum">The Part Number of ECO revision to drop operation detail to</param>
+            <param name="ipRevisionNum">The ECO Revision Number to drop operation detail to</param>
+            <param name="ipAltMethod">The ECO Alternate Method to drop operation detail to</param>
+            <param name="ipOprSeq">The ECO Operation Sequence to drop operation detail to</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipResourceGrpID">The Resource Group ID being added</param>
+            <param name="ipNewOpDtlSeq">The new operation detail seq</param>
+            <param name="ipBeforeOpDtlRowid">The operation detail rowid to insert operation detail before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.InsertOpDtlResource(System.String,System.String,System.String,System.String,System.Int32,System.Nullable{System.DateTime},System.Boolean,System.String,System.Int32,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This method allows for the insertion of Resource on an operation to create
+            ECOOpDtl for drag/drop functionality.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to drop operation detail to</param>
+            <param name="ipPartNum">The Part Number of ECO revision to drop operation detail to</param>
+            <param name="ipRevisionNum">The ECO Revision Number to drop operation detail to</param>
+            <param name="ipAltMethod">The ECO Alternate Method to drop operation detail to</param>
+            <param name="ipOprSeq">The ECO Operation Sequence to drop operation detail to</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipResourceID">The Resource ID being added</param>
+            <param name="ipNewOpDtlSeq">The new operation detail seq</param>
+            <param name="ipBeforeOpDtlRowid">The operation detail rowid to insert operation detail before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.InsertOperationOP(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.String,System.Int32,System.String,System.Boolean,System.Boolean,System.Boolean,System.String@)">
+            <summary>
+            This methods allows for the insertion on an operation for drag/drop functionality
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to drop operations to</param>
+            <param name="ipPartNum">The Part Number of ECO revision to drop operations to</param>
+            <param name="ipRevisionNum">The ECO Revision Number to drop operations to</param>
+            <param name="ipAltMethod">The ECO Alternate Method to drop operations to</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipOpCode"></param>
+            <param name="ipNewOperSeq">The new operation seq</param>
+            <param name="ipBeforeOperRowid">The operation rowid to insert operation before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="opMessage">Warning message to let the user know that a subcontract operation
+            will be created with no vendor information.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.InsertOprCapability(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.String,System.Int32,System.String,System.Boolean,System.Boolean,System.Boolean,System.String@)">
+            <summary>
+            This method allows for the insertion of Capability on a revision to create
+            ECOOpr/ECOOpDtl for drag/drop functionality.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to drop operations to</param>
+            <param name="ipPartNum">The Part Number of ECO revision to drop operations to</param>
+            <param name="ipRevisionNum">The ECO Revision Number to drop operations to</param>
+            <param name="ipAltMethod">The ECO Alternate Method to drop operations to</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipCapabilityID">The Capability ID being added</param>
+            <param name="ipNewOperSeq">The new operation seq</param>
+            <param name="ipBeforeOperRowid">The operation rowid to insert operation before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="opMessage">Warning message to let the user know that a subcontract operation
+            will be created with no vendor information.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.InsertOprResGroup(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.String,System.Int32,System.String,System.Boolean,System.Boolean,System.Boolean,System.String@)">
+            <summary>
+            This method allows for the insertion of ResourceGroup on a revision to create
+            ECOOpr/ECOOpDtl for drag/drop functionality.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to drop operations to</param>
+            <param name="ipPartNum">The Part Number of ECO revision to drop operations to</param>
+            <param name="ipRevisionNum">The ECO Revision Number to drop operations to</param>
+            <param name="ipAltMethod">The ECO Alternate Method to drop operations to</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipResourceGrpID">The Resource Group ID being added</param>
+            <param name="ipNewOperSeq">The new operation seq</param>
+            <param name="ipBeforeOperRowid">The operation rowid to insert operation before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="opMessage">Warning message to let the user know that a subcontract operation
+            will be created with no vendor information.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.InsertOprResource(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.String,System.Int32,System.String,System.Boolean,System.Boolean,System.Boolean,System.String@)">
+            <summary>
+            This method allows for the insertion of Resource on a revision to create
+            ECOOpr/ECOOpDtl for drag/drop functionality.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to drop operations to</param>
+            <param name="ipPartNum">The Part Number of ECO revision to drop operations to</param>
+            <param name="ipRevisionNum">The ECO Revision Number to drop operations to</param>
+            <param name="ipAltMethod">The ECO Alternate Method to drop operations to</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipResourceID">The Resource ID being added</param>
+            <param name="ipNewOperSeq">The new operation seq</param>
+            <param name="ipBeforeOperRowid">The operation rowid to insert operation before</param>
+            <param name="ipReturn">Logical used to determine if you would like the dataset refreshed and brought back.</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="opMessage">Warning message to let the user know that a subcontract operation
+            will be created with no vendor information.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.LockAll(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String@,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method locks all the revisions in a group.
+            This method runs the logic behind the old Vantage 6.1 Group>Lock All menu option.
+            </summary>
+            <param name="ipGroupID">The Group ID to lock for.</param>
+            <param name="ipPartNum">Used for GetDatasetForTree, The Part Number to return data for.</param>
+            <param name="ipRevisionNum">Used for GetDatasetForTree, The Revision Number to return data for.</param>
+            <param name="ipAltMethod">Used for GetDatasetForTree, The Alternate Method to return data for.</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="opResultString">A return list of statements from the Check In All process</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.MassAssign(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method will mass assign ECOGroup.Description, ECOGroup.ECO, and ECOGRoup.EffectiveDate
+            to associated ECORev records and their ECORev.RevShortDesc, ECORev.ECO, and ECORev.EffectiveDate
+            fields respectively.
+            This method will assign values based on external fields in the ECOGroup dataset.
+            This method should run from the menu/task "Group>Mass Assign as it was in the old
+            Vantage 6.1. When the method is finished running, it will run a GetById based on the
+            inputted Group ID. This will cause a refreshing of the dataset to reflect all of the changes.
+            </summary>
+            <param name="ipGroupID">The Group ID to mass assign for.</param>
+            <param name="ipPartNum">Used for GetDatasetForTree, The Part Number to return data for.</param>
+            <param name="ipRevisionNum">Used for GetDatasetForTree, The Revision Number to return data for.</param>
+            <param name="ipAltMethod">Used for GetDatasetForTree, The Alternate Method to return data for.</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipMassAssignDesc">Do you want to mass assign Description? Value comes from
+            external ECOGroup.MassAssignDesc</param>
+            <param name="ipMassAssignECO">Do you want to mass assign ECO? Value comes from
+            external ECOGroup.MassAssignECO.</param>
+            <param name="ipMassAssignEffectiveDate">Do you want to mass assign Effective Date? Value
+            comes from external ECOGroup.MassAssignEffectiveDate.</param>
+            <param name="ipMADescription">The value of the new description to be mass assigned.</param>
+            <param name="ipMAECO">The value of the new ECO to be mass assigned.</param>
+            <param name="ipMAEffectiveDate">The value fo the new Effective Date to be mass assigned.</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.PreGetDetails(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String@)">
+            <summary>
+            This method should be called right before the GetDetailsFromMethod method. If a configured
+            part is entered, and the Prompt to Get Details from Resulting Configuration is checked
+            in the product configurator designer, a question should be displayed to the user asking
+            if they want to configure the part
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision to get details for</param>
+            <param name="ipPartNum">The Part Number of ECO revision to get details for</param>
+            <param name="ipRevisionNum">The ECO Revision Number to get details for</param>
+            <param name="ipAltMethod">The ECO Alternate Method to get details for</param>
+            <param name="ipPartRevPartNum">The Part Number of part revision to get details from</param>
+            <param name="ipPartRevRevisionNum">The Part Revision Number to get details from</param>
+            <param name="ipPartRevAltMethod">The Part Alternate method to get details from</param>
+            <param name="vMessage"> Returns resequence question </param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.PromptForPassword(System.Boolean@)">
+            <summary>
+            This method checks the BMSyst record to see if a password should prompted for and then
+            validated by the ValidatePassword method in UserFile BO. Run this before ApproveAll,
+            CheckECORevApproved, CheckIn, CheckInAll, and CheckOut.
+            </summary>
+            <param name="opPromptForPassword">Logical value stating whether the UI should prompt to
+            validate for a password.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ResequenceMaterials(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This method will resequence the operations, update theECOMtl records.
+            This method should run from the menu/task "Material>Resequence" as it was in the old
+            Vantage 6.1. When the method is finished running, it will run a GetById based on the
+            inputted Group ID. This will cause a refreshing of the dataset to reflect all of the changes.
+            </summary>
+            <param name="ipGroupID">The Group ID to resequence for.</param>
+            <param name="ipPartNum">The Part Number to resequence for.</param>
+            <param name="ipRevisionNum">The Revision Number to resequence for.</param>
+            <param name="ipAltMethod">The Alternate Method to resequence for.</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipResequenceBy">The way the user wants the material resequenced by.
+            Valid Values: Material, Part, Item
+            </param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ResequenceOperations(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This method will resequence the operations, update the ECORev and ECOMtl records.
+            This method should run from the menu/task "Operation>Resequence" as it was in the old
+            Vantage 6.1. When the method is finished running, it will run a GetById based on the
+            inputted Group ID. This will cause a refreshing of the dataset to reflect all of the changes.
+            </summary>
+            <param name="ipGroupID">The Group ID to resequence for.</param>
+            <param name="ipPartNum">The Part Number to resequence for.</param>
+            <param name="ipRevisionNum">The Revision Number to resequence for.</param>
+            <param name="ipAltMethod">The Alternate Method to resequence for.</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.RevisionLock(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method locks a single revision
+            This method runs the logic behind the old Vantage 6.1 Revision>Lock Revision menu option.
+            </summary>
+            <param name="ipGroupID">The Group ID of revision to lock</param>
+            <param name="ipPartNum">The Part Number of revision to lock</param>
+            <param name="ipRevisionNum">The Revision Number to lock</param>
+            <param name="ipAltMethod">The Alternate Method to lock</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.RevisionUnLock(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method unlocks a single revision
+            This method runs the logic behind the old Vantage 6.1 Revision>Unlock Revision menu option.
+            </summary>
+            <param name="ipGroupID">The Group ID of revision to unlock</param>
+            <param name="ipPartNum">The Part Number of revision to unlock</param>
+            <param name="ipRevisionNum">The Revision Number to unlock</param>
+            <param name="ipAltMethod">The Alternate Method to unlock</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.UndoCheckOut(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method undoes the check out of a revision
+            This method runs the logic behind the old Vantage 6.1 Revision>Undo Check Out menu option.
+            </summary>
+            <param name="ipGroupID">The Group ID to check out for.</param>
+            <param name="ipPartNum">The Part Number to check out for.</param>
+            <param name="ipRevisionNum">The Revision Number to check out for.</param>
+            <param name="ipAltMethod">The Alternate Method to check out for.</param>
+            <param name="ipAsOfDate">The As Of Date to check out for.</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.UnLockAll(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String@,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            This method unlocks all the revisions in a group.
+            This method runs the logic behind the old Vantage 6.1 Group>Lock All menu option.
+            </summary>
+            <param name="ipGroupID">The Group ID to unlock for.</param>
+            <param name="ipPartNum">Used for GetDatasetForTree, The Part Number to return data for.</param>
+            <param name="ipRevisionNum">Used for GetDatasetForTree, The Revision Number to return data for.</param>
+            <param name="ipAltMethod">Used for GetDatasetForTree, The Alternate Method to return data for.</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="opResultString">A return list of statements from the UnLock All process</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ValidateBill(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String@)">
+            <summary>
+            This method validate the bill for the revision.
+            This method runs the logic behind the old Vantage 6.1 Revision>Validate Bill menu option.
+            </summary>
+            <param name="ipGroupID">The Group ID to return costs for.</param>
+            <param name="ipPartNum">The Part Number to return costs for.</param>
+            <param name="ipRevisionNum">The Revision Number to return costs for.</param>
+            <param name="ipAltMethod">The Alternate Method to return costs for.</param>
+            <param name="ipAsOfDate">Used for GetDatasetForTree, The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Used for GetDatasetForTree, Would you like to retun a complete dataset for this group?</param>
+            <param name="ipReturn">Logical to determine if you would like the dataset refreshed and brought back</param>
+            <param name="ipGetDatasetForTree">If ipReturn=True then Logical to determine if you would like the dataset
+            refreshed by GetDatasetForTree? True = call GetDatasetFor, False = call GetByID</param>
+            <param name="ipUseMethodForParts">If true use the method passed in for all parts in the tree, if false
+            use the part's default method.</param>
+            <param name="opMessage">If bill is valid, this will state that, otherwise if invalid, exceptions
+            will be thrown. This is here so the UI can tell something happended.</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchDataSet">The Engineering Workbench data set</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ValidateInspection(System.String,System.String,System.String,Epicor.Mfg.BO.EngWorkBenchDataSet)">
+            <summary>
+            Method to validate the Inspection control fields. (EQM)
+            </summary>
+            <param name="ipProposedInspPlan">The new proposed InspPlanPartNum value</param>
+            <param name="ipProposedSpecId">The new proposed SpecID value</param>
+            <param name="iptable">table name</param>
+            <param name="ds" type="Epicor.Mfg.BO.EngWorkBenchDataSet">The EWB Dataset.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ValidateRefDes(System.String,System.String,System.String,System.String)">
+            <summary>
+            Verify that there are no other ECOMtlRefDes records in the revision having the
+            same RefDes value if the ECORev.ValRefDes = true. Check the number of reference
+            designators are equal to the Required Ref Designators defined on ECOMtl.
+            </summary>
+            <param name="ipGroupID">The Group ID of ECO revision</param>
+            <param name="ipPartNum">The Part Number of ECO revision</param>
+            <param name="ipRevisionNum">The ECO Revision Number</param>
+            <param name="ipAltMethod">The ECO Alternate Method</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.EngWorkBenchImpl.ViewCosts(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Decimal,System.Int32,System.Boolean)">
+            <summary>
+            This method will return the data need to display Part Rev costs.
+            </summary>
+            <param name="ipGroupID">The Group ID to return costs for.</param>
+            <param name="ipPartNum">The Part Number to return costs for.</param>
+            <param name="ipRevisionNum">The Revision Number to return costs for.</param>
+            <param name="ipAltMethod">The Alternate method to return costs for.</param>
+            <param name="ipAsOfDate">The As of Date to return costs for.</param>
+            <param name="ipQuantity">The Quantity to return costs for.</param>
+            <param name="ipMaxLevel">The Max Level to return costs for.</param>
+            <param name="ipAssembliesOnly">Assemblies only?</param>
+            <returns type="Epicor.Mfg.BO.EngWorkBenchCostsDataSet">The Engineering Workbench Costs data set</returns>
+        </member>
+        <member name="P:Epicor.Mfg.Proxy.EngWorkBenchImpl.CallContext">
+            <summary>
+            Call context dataset
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.BO.EngWorkBench.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+    </members>
+</doc>

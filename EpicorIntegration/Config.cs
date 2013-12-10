@@ -127,5 +127,14 @@ namespace Epicor_Integration
             }
         }
 
+        private void opsmin_btn_Click(object sender, EventArgs e)
+        {
+            Config_OpsMins ConfOps = new Config_OpsMins();
+
+            ConfOps.ShowDialog();
+
+            ConfOps.Dispose();
+        }
+
     }
 }

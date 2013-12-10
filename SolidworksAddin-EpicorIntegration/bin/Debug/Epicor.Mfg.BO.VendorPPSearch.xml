@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.BO.VendorPPSearch</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.VendorPPSearch">
+            <summary>
+            Client side business object for VendorPPSearch.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.Proxy.VendorPPSearchImpl">
+            <summary> Vendor Purchase Points Search
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.VendorPPSearchImpl.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Proxy constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.VendorPPSearchImpl.GetNewVendorPP(Epicor.Mfg.BO.VendorPPSearchDataSet,System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.VendorPPSearchImpl.DeleteByID(System.Int32,System.String)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.VendorPPSearchImpl.GetByID(System.Int32,System.String)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.VendorPPSearchImpl.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.VendorPPSearchImpl.GetRows(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.VendorPPSearchImpl.Update(Epicor.Mfg.BO.VendorPPSearchDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.VendorPPSearchImpl.UpdateExt(Epicor.Mfg.BO.UpdExtVendorPPSearchDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.VendorPPSearchImpl.GetListForActiveSuppliers(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Called to retrieve Purchase Points for active vendors
+            </summary>
+            <param name="whereClauseVendorPP">Whereclause for VendorPP table.</param>
+            <returns type="Epicor.Mfg.BO.VendorPPListDataSet">Epicor.Mfg.BO.VendorPPListDataSet</returns>
+            <param name="pageSize">Page size.</param>
+            <param name="absolutePage">Absolute page.</param>
+            <param name="morePages">More pages.</param>
+        </member>
+        <member name="P:Epicor.Mfg.Proxy.VendorPPSearchImpl.CallContext">
+            <summary>
+            Call context dataset
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.BO.VendorPPSearch.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+    </members>
+</doc>
