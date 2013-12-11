@@ -22,17 +22,5 @@ namespace ECO_Helper.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ecogroup {
-            get {
-                return ((string)(this["ecogroup"]));
-            }
-            set {
-                this["ecogroup"] = value;
-            }
-        }
     }
 }

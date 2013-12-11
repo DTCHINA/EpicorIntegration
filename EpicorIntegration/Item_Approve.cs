@@ -100,7 +100,7 @@ namespace Epicor_Integration
 
             DataList.EpicClose();
 
-            DataList.ApprovePart(ds, gid_cbo.Text, partnumber_txt.Text, rev_txt.Text);
+            DataList.ApprovePart(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text);
 
             try { DataList.CheckInPart(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text); }
             catch (Exception ex) { MessageBox.Show("Could not check in part\n\n" + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }

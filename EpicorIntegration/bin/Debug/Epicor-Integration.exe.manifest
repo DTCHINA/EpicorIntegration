@@ -659,7 +659,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>LKF9h0kZoc69KW2Wt0rwQTrcfXE=</dsig:DigestValue>
+        <dsig:DigestValue>v/2A7W1jaVE9taZdobD93hhjzyc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -57,6 +57,8 @@
             this.gid_cbo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.checkedout_chk = new System.Windows.Forms.CheckBox();
+            this.resetFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.RightClickMenu.SuspendLayout();
             this.SuspendLayout();
@@ -156,10 +158,10 @@
             // desc_txt
             // 
             this.desc_txt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.desc_txt.Location = new System.Drawing.Point(6, 110);
+            this.desc_txt.Location = new System.Drawing.Point(9, 110);
             this.desc_txt.MaxLength = 30;
             this.desc_txt.Name = "desc_txt";
-            this.desc_txt.Size = new System.Drawing.Size(200, 20);
+            this.desc_txt.Size = new System.Drawing.Size(197, 20);
             this.desc_txt.TabIndex = 7;
             // 
             // useswrev_chk
@@ -286,14 +288,16 @@
             // RightClickMenu
             // 
             this.RightClickMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.configurationToolStripMenuItem});
+            this.resetFormToolStripMenuItem,
+            this.configurationToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.RightClickMenu.Name = "RightClickMenu";
-            this.RightClickMenu.Size = new System.Drawing.Size(149, 26);
+            this.RightClickMenu.Size = new System.Drawing.Size(153, 92);
             // 
             // configurationToolStripMenuItem
             // 
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.configurationToolStripMenuItem.Text = "Configuration";
             this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
             // 
@@ -324,6 +328,21 @@
             this.checkedout_chk.TabIndex = 15;
             this.checkedout_chk.Text = "Checked Out";
             this.checkedout_chk.UseVisualStyleBackColor = true;
+            this.checkedout_chk.CheckedChanged += new System.EventHandler(this.checkedout_chk_CheckedChanged);
+            // 
+            // resetFormToolStripMenuItem
+            // 
+            this.resetFormToolStripMenuItem.Name = "resetFormToolStripMenuItem";
+            this.resetFormToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.resetFormToolStripMenuItem.Text = "Reset Form";
+            this.resetFormToolStripMenuItem.Click += new System.EventHandler(this.resetFormToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -387,6 +406,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkedout_chk;
         private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetFormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

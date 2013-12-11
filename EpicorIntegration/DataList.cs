@@ -357,11 +357,11 @@ namespace Epicor_Integration
             EngWb.UndoCheckOut(GroupID, PartNumber, Revision,"", DateTime.Today, false, false, false, true, ds);
         }
 
-        public static void ApprovePart(EngWorkBenchDataSet EngDataSet,string GroupID,string PartNumber, string Revision)
+        public static void ApprovePart(string GroupID,string PartNumber, string Revision)
         {
             EngWorkBench EngWb = new EngWorkBench(EpicConn);
 
-            EngDataSet = EngWb.GetDatasetForTree(GroupID, PartNumber, Revision, "", DateTime.Now, false, false);
+            EngWorkBenchDataSet EngDataSet = EngWb.GetDatasetForTree(GroupID, PartNumber, Revision, "", DateTime.Now, false, false);
 
             EngDataSet.Tables["ECORev"].Rows[0]["Approved"] = true;
 
@@ -372,6 +372,29 @@ namespace Epicor_Integration
             EpicClose();
         }
 
+        public static void UnApproveOldRevisions(string GroupID, string PartNumber, string Revision)
+        {
+            try
+            {
+                Part Part = new Part(EpicConn);
+
+                PartDataSet Pdata = Part.GetByID(PartNumber);
+
+                for (int i = 0; i < Pdata.Tables["PartRev"].Rows.Count; i++)
+                {
+                    if (Pdata.Tables["PartRev"].Rows[i]["RevisionNum"].ToString() != Revision)
+                    {
+                        Pdata.Tables["PartRev"].Rows[i]["Approved"] = false;
+                    }
+                }
+
+                Part.Update(Pdata);
+
+                EpicClose();
+            }
+            catch { }
+        }
+        
         public static void CheckInPart(string GroupID, string PartNumber, string Revision)
         {
             EngWorkBench EngWb = new EngWorkBench(EpicConn);

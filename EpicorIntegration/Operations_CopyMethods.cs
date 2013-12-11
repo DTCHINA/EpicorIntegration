@@ -89,7 +89,7 @@ namespace Epicor_Integration
 
         private void ok_btn_Click(object sender, EventArgs e)
         {
-            int row = RevGrid .CurrentCellAddress.Y;
+            int row = RevGrid.CurrentCellAddress.Y;
 
             retRev = RevGrid["RevisionNum", row].Value.ToString();
 

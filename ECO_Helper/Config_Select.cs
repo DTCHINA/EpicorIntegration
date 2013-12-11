@@ -13,8 +13,6 @@ namespace ECO_Helper
 
         IEdmVault7 Vault;
 
-        EdmCmdData File;
-
         IEdmFile5 Part;
 
         public string _SearchTerm = null;
@@ -82,9 +80,9 @@ namespace ECO_Helper
             {
                 IEdmFile5 part;
 
-                if (StartMethod == "file")
-                    part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
-                else
+                //if (StartMethod == "file")
+                    //part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
+                //else
                     part = Part;
 
                 IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
@@ -181,15 +179,7 @@ namespace ECO_Helper
         {
             IEdmFile5 part;
 
-            try
-            {
-                //if (File.mbsStrData1 != "")
-                part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
-            }
-            catch
-            {
-                part = Part;
-            }
+            part = Part;
 
             IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
 
