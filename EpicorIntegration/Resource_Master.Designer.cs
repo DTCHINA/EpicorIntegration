@@ -52,7 +52,7 @@
             this.ResourceGrid = new System.Windows.Forms.DataGridView();
             this.ResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OpDtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OpDtlDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OprSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceGrpID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -271,6 +271,8 @@
             // 
             this.ResourceGrid.AllowUserToAddRows = false;
             this.ResourceGrid.AllowUserToDeleteRows = false;
+            this.ResourceGrid.AllowUserToResizeColumns = false;
+            this.ResourceGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ResourceGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ResourceGrid.BackgroundColor = System.Drawing.Color.White;
@@ -278,7 +280,7 @@
             this.ResourceGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ResourceGrpDesc,
             this.ResourceDesc,
-            this.OpDtlSeq,
+            this.OpDtlDesc,
             this.OprSeq,
             this.ResourceID,
             this.ResourceGrpID});
@@ -305,7 +307,8 @@
             this.ResourceGrpDesc.HeaderText = "Resource Group";
             this.ResourceGrpDesc.Name = "ResourceGrpDesc";
             this.ResourceGrpDesc.ReadOnly = true;
-            this.ResourceGrpDesc.Width = 101;
+            this.ResourceGrpDesc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ResourceGrpDesc.Width = 82;
             // 
             // ResourceDesc
             // 
@@ -314,15 +317,17 @@
             this.ResourceDesc.HeaderText = "Resource";
             this.ResourceDesc.Name = "ResourceDesc";
             this.ResourceDesc.ReadOnly = true;
-            this.ResourceDesc.Width = 78;
+            this.ResourceDesc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ResourceDesc.Width = 59;
             // 
-            // OpDtlSeq
+            // OpDtlDesc
             // 
-            this.OpDtlSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.OpDtlSeq.DataPropertyName = "OpDtlDesc";
-            this.OpDtlSeq.HeaderText = "Description";
-            this.OpDtlSeq.Name = "OpDtlSeq";
-            this.OpDtlSeq.ReadOnly = true;
+            this.OpDtlDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.OpDtlDesc.DataPropertyName = "OpDtlDesc";
+            this.OpDtlDesc.HeaderText = "Description";
+            this.OpDtlDesc.Name = "OpDtlDesc";
+            this.OpDtlDesc.ReadOnly = true;
+            this.OpDtlDesc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // OprSeq
             // 
@@ -330,6 +335,7 @@
             this.OprSeq.HeaderText = "Opr Seq";
             this.OprSeq.Name = "OprSeq";
             this.OprSeq.ReadOnly = true;
+            this.OprSeq.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ResourceID
             // 
@@ -337,6 +343,7 @@
             this.ResourceID.HeaderText = "ResourceID";
             this.ResourceID.Name = "ResourceID";
             this.ResourceID.ReadOnly = true;
+            this.ResourceID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ResourceID.Visible = false;
             // 
             // ResourceGrpID
@@ -345,6 +352,7 @@
             this.ResourceGrpID.HeaderText = "ResourceGrpID";
             this.ResourceGrpID.Name = "ResourceGrpID";
             this.ResourceGrpID.ReadOnly = true;
+            this.ResourceGrpID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ResourceGrpID.Visible = false;
             // 
             // Resource_Master
@@ -397,7 +405,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceGrpDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OpDtlSeq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OpDtlDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceGrpID;

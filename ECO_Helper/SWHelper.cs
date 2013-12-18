@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using EdmLib;
 using Epicor_Integration;
 using System.Windows.Forms;
@@ -109,7 +108,7 @@ namespace ECO_Helper
             return retval;
         }
 
-        public static void GetBill(string partpath, string partnumber)
+        public static void GetBill(string partpath, string partnumber,string rev)
         {
             string selected_config;
 
@@ -199,7 +198,7 @@ namespace ECO_Helper
 
                 ProcessBill(vault, BillNumbers, BillQty, out BillQty, partpath);
 
-                Bill_Master BM = new Bill_Master(BillNumbers, BillQty, ParentNumber);
+                Bill_Master BM = new Bill_Master(BillNumbers, BillQty, ParentNumber, rev);
 
                 BM.ShowDialog();
             }

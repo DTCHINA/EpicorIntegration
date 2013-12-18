@@ -48,7 +48,11 @@ namespace Epicor_Integration
 
                 phantom_chk.Checked = Part.Phantom;
 
+                trackserial.CheckedChanged -= trackserial_CheckedChanged;
+
                 trackserial.Checked = Part.TrackSerial;
+
+                trackserial.CheckedChanged += trackserial_CheckedChanged;
 
                 //NetVolume.Value = Part.Net_Vol;
 
@@ -282,6 +286,8 @@ namespace Epicor_Integration
 
         private void UpdateFormSet(string Pnum)
         {
+            trackserial.CheckedChanged -= trackserial_CheckedChanged;
+
             Part Part = new Part(DataList.EpicConn);
 
             PartDataSet Pdata = new PartDataSet();
@@ -321,6 +327,10 @@ namespace Epicor_Integration
                 if (Pdata.Tables["PartPlant"].Rows[i]["Plant"].ToString() == "MfgSys")
                     planner_cbo.Text = Pdata.Tables["PartPlant"].Rows[i]["PersonID"].ToString();
             }
+
+            SerialPrefix = Pdata.Tables[0].Rows[0]["SNMaskPrefix"].ToString();
+
+            trackserial.CheckedChanged += trackserial_CheckedChanged;
         }
 
         private PartDataSet UpdateDataSet(PartDataSet Pdata, DataViewRowState RowState)
@@ -341,10 +351,6 @@ namespace Epicor_Integration
             DataList.AddDatum(Pdata, "Part", 0, "NetWeight", NetWeight.Text, RowState);
 
             DataList.AddDatum(Pdata, "Part", 0, "NetWeightUOM", uomweight_cbo.SelectedValue.ToString(), RowState);
-
-            //DataList.AddDatum(Pdata, "Part", 0, "NetVolume", NetVolume.Text);
-
-            //DataList.AddDatum(Pdata, "Part", 0, "NetVolumeUOM", uomvol_cbo.SelectedValue.ToString());
 
             DataList.AddDatum(Pdata, "Part", 0, "IUM", uom_cbo.SelectedValue.ToString(), RowState);
 
@@ -429,6 +435,8 @@ namespace Epicor_Integration
 
                     Pdata = UpdateDataSet(Pdata, DRState);
 
+                    Part.ChangePartTrackSerialNum(trackserial.Checked, Pdata);
+
                     //Add data to allow BO to create plant tables
                     Part.Update(Pdata);
 
@@ -437,17 +445,26 @@ namespace Epicor_Integration
 
                     if (whse_cbo.Items.Count > 0)
                     {
+                        Part.Update(Pdata);
+
                         for (int i = 0; i < whse_cbo.Items.Count; i++)
                         {
-
-                            whse_cbo.SelectedIndex = i;
+                            whse_cbo.SelectedIndex = i;                        
 
                             DataList.UpdateDatum(Pdata, "PartPlant", 0, "PrimWhse", whse_cbo.SelectedValue.ToString());
 
                             DataList.UpdateDatum(Pdata, "PartPlant", 0, "PrimWhseDescription", whse_cbo.Text);
 
                             DataList.UpdateDatum(Pdata, "PartPlant", 0, "DBRowIdent", null);
+
+                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "PartTrackSerialNum", trackserial.Checked.ToString());
                         }
+
+                        Part.ChangePartSNBaseDataType("MASK", Pdata);
+
+                        Part.ChangeSNMask("ELK", Pdata);
+
+                        Part.Update(Pdata);
 
                         DataList.UpdateDatum(Pdata, "PartPlant", 0, "PersonID", planner_cbo.Text);
 
@@ -456,15 +473,15 @@ namespace Epicor_Integration
                         //Update with warehouse information
                         Part.Update(Pdata);
                     }
-
-                    DataList.EpicClose();
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 finally
                 {
+                    DataList.EpicClose();
+
                     this.Close();
                 }
             }
@@ -494,27 +511,6 @@ namespace Epicor_Integration
             phantom_chk.Checked = bool.Parse(pdata.Tables[0].Rows[0]["PhantomBOM"].ToString());
 
             userevision.Checked = bool.Parse(pdata.Tables[0].Rows[0]["UsePartRev"].ToString());
-            
-            /*if (pdata.Net_Vol != 0)
-                NetVolume.Value = pdata.Net_Vol;
-
-            if (pdata.Net_Vol_UM != "")
-                uomvol_cbo.SelectedText = pdata.Net_Vol_UM;*/
-            /*
-            if (pdata.Primary_UOM != "")
-                uom_cbo.SelectedText = pdata.Primary_UOM;
-
-            if (pdata.PartGroup != "")
-                group_cbo.SelectedText = pdata.PartGroup;
-
-            if (pdata.PartClass != "")
-                class_cbo.SelectedText = pdata.PartClass;
-
-            if (pdata.PartPlant != "")
-                plant_cbo.SelectedText = pdata.PartPlant;
-
-            if (pdata.PlantWhse != "")
-                whse_cbo.SelectedText = pdata.PlantWhse;*/
         }
 
         private void copy_btn_Click(object sender, EventArgs e)
@@ -549,7 +545,7 @@ namespace Epicor_Integration
 
             type_cbo.SelectedValue = Pdata.PMT;
 
-            uom_cbo.SelectedValue = Pdata.UOM_Class;
+            //uom_cbo.SelectedValue = Pdata.UOM_Class;
 
             qtybearing.Checked = Pdata.QtyBearing;
 
@@ -565,7 +561,18 @@ namespace Epicor_Integration
 
             planner_cbo.Text = Pdata.Planner;
 
-            DataTable DT = (DataTable)whse_cbo.DataSource;
+            DataTable DT = new DataTable();
+
+            if (whse_cbo.DataSource != null)
+            {
+                DT = (DataTable)whse_cbo.DataSource;
+            }
+            else
+            {
+                DT.Columns.Add(new DataColumn("WarehouseCode", typeof(System.String)));
+
+                DT.Columns.Add(new DataColumn("WarehouseName", typeof(System.String)));
+            }
 
             for (int i = 0; i < Pdata.PlantWhse.Count ; i++)
             {
@@ -577,7 +584,7 @@ namespace Epicor_Integration
 
                 foreach (DataRow Dr in DT.Rows)
                 {
-                    if (Dr["WarehouseDescription"].ToString() == Wh)
+                    if (Dr["WarehouseName"].ToString() == Wh)
                     {
                         toAdd = false;
 
@@ -591,18 +598,22 @@ namespace Epicor_Integration
 
                     DR["WarehouseCode"] = WhC;
 
-                    DR["WarehouseDescription"] = Wh;
+                    DR["WarehouseName"] = Wh;
 
-                    DR["Company"] = "NORCO";
+                    //DR["Company"] = "NORCO";
 
-                    DR["PartNum"] = Partnumber_txt.Text;
+                    //DR["PartNum"] = Partnumber_txt.Text;
 
-                    DR["Plant"] = Pdata.PartPlant;
+                    //DR["Plant"] = Pdata.PartPlant;
 
                     DT.Rows.Add(DR);
                 }
 
                 whse_cbo.DataSource = DT;
+
+                whse_cbo.DisplayMember = "WarehouseName";
+
+                whse_cbo.ValueMember = "WarehouseCode";
             }
 
             if (Pdata.TrackSerial)

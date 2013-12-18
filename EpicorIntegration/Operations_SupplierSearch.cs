@@ -200,7 +200,7 @@ namespace Epicor_Integration
 
                 retval += " BY NAME";
             }
-            catch { }
+            catch { retval = " BY NAME"; }
             return retval;
         }
 

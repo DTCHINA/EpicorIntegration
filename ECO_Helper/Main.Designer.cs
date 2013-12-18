@@ -53,12 +53,14 @@
             this.approved_btn = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.RightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.resetFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gid_cbo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.checkedout_chk = new System.Windows.Forms.CheckBox();
-            this.resetFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label7 = new System.Windows.Forms.Label();
+            this.legacy_chk = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.RightClickMenu.SuspendLayout();
             this.SuspendLayout();
@@ -239,7 +241,7 @@
             // 
             // browse_btn
             // 
-            this.browse_btn.Location = new System.Drawing.Point(21, 377);
+            this.browse_btn.Location = new System.Drawing.Point(21, 387);
             this.browse_btn.Name = "browse_btn";
             this.browse_btn.Size = new System.Drawing.Size(75, 23);
             this.browse_btn.TabIndex = 8;
@@ -249,7 +251,7 @@
             // 
             // filedir_txt
             // 
-            this.filedir_txt.Location = new System.Drawing.Point(102, 379);
+            this.filedir_txt.Location = new System.Drawing.Point(102, 390);
             this.filedir_txt.Name = "filedir_txt";
             this.filedir_txt.Size = new System.Drawing.Size(218, 20);
             this.filedir_txt.TabIndex = 9;
@@ -292,14 +294,28 @@
             this.configurationToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.RightClickMenu.Name = "RightClickMenu";
-            this.RightClickMenu.Size = new System.Drawing.Size(153, 92);
+            this.RightClickMenu.Size = new System.Drawing.Size(149, 70);
+            // 
+            // resetFormToolStripMenuItem
+            // 
+            this.resetFormToolStripMenuItem.Name = "resetFormToolStripMenuItem";
+            this.resetFormToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.resetFormToolStripMenuItem.Text = "Reset Form";
+            this.resetFormToolStripMenuItem.Click += new System.EventHandler(this.resetFormToolStripMenuItem_Click);
             // 
             // configurationToolStripMenuItem
             // 
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.configurationToolStripMenuItem.Text = "Configuration";
             this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // gid_cbo
             // 
@@ -330,26 +346,34 @@
             this.checkedout_chk.UseVisualStyleBackColor = true;
             this.checkedout_chk.CheckedChanged += new System.EventHandler(this.checkedout_chk_CheckedChanged);
             // 
-            // resetFormToolStripMenuItem
+            // label7
             // 
-            this.resetFormToolStripMenuItem.Name = "resetFormToolStripMenuItem";
-            this.resetFormToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.resetFormToolStripMenuItem.Text = "Reset Form";
-            this.resetFormToolStripMenuItem.Click += new System.EventHandler(this.resetFormToolStripMenuItem_Click);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(99, 374);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Target Part File";
             // 
-            // exitToolStripMenuItem
+            // legacy_chk
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.legacy_chk.AutoSize = true;
+            this.legacy_chk.Location = new System.Drawing.Point(231, 273);
+            this.legacy_chk.Name = "legacy_chk";
+            this.legacy_chk.Size = new System.Drawing.Size(80, 17);
+            this.legacy_chk.TabIndex = 17;
+            this.legacy_chk.Text = "Legacy File";
+            this.legacy_chk.UseVisualStyleBackColor = true;
+            this.legacy_chk.CheckedChanged += new System.EventHandler(this.legacy_chk_CheckedChanged);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 416);
+            this.ClientSize = new System.Drawing.Size(336, 421);
             this.ContextMenuStrip = this.RightClickMenu;
+            this.Controls.Add(this.legacy_chk);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.checkedout_chk);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.gid_cbo);
@@ -408,6 +432,8 @@
         private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox legacy_chk;
     }
 }
 

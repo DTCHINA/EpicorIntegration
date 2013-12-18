@@ -91,9 +91,16 @@ namespace Epicor_Integration
         {
             int row = RevGrid.CurrentCellAddress.Y;
 
-            retRev = RevGrid["RevisionNum", row].Value.ToString();
+            if (RevGrid["Approved", row].Value.ToString() == "True")
+            {
+                retRev = RevGrid["RevisionNum", row].Value.ToString();
 
-            retPart = pnum_txt.Text;
+                retPart = pnum_txt.Text;
+
+                this.Close();
+            }
+            else
+                MessageBox.Show("Selection must be approved and checked in to work.  Please try again.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
         }
     }
 }

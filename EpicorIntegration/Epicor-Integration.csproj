@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E20EDB1A-3F4D-4F23-AC1A-F67D8CA4CCAA}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Epicor_Integration</RootNamespace>
     <AssemblyName>Epicor-Integration</AssemblyName>
@@ -317,6 +317,7 @@
     <Compile Include="SerialMask_Master.Designer.cs">
       <DependentUpon>SerialMask_Master.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="Template_Title.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -478,7 +479,7 @@
     </None>
     <None Include="EpicorIntegration_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">

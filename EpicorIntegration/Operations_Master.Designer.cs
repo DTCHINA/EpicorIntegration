@@ -32,28 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Operations_Master));
             this.MajorContainer = new System.Windows.Forms.SplitContainer();
-            this.subcon_grp = new System.Windows.Forms.GroupBox();
-            this.quotesreq_num = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.qtyper_num = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.uom_cbo = new System.Windows.Forms.ComboBox();
-            this.refneeded_chk = new System.Windows.Forms.CheckBox();
-            this.daysout_num = new System.Windows.Forms.NumericUpDown();
-            this.unitcost_num = new System.Windows.Forms.NumericUpDown();
-            this.subcon_opsmast_cbo = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.supplieradd_txt = new System.Windows.Forms.TextBox();
-            this.supplierid_txt = new System.Windows.Forms.TextBox();
-            this.supplierid_btn = new System.Windows.Forms.Button();
-            this.gid_txt = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.rev_txt = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.partnumber_txt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.ops_grp = new System.Windows.Forms.GroupBox();
             this.prodstd_btn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -76,7 +54,30 @@
             this.cancelbtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
             this.resource_show = new System.Windows.Forms.Button();
+            this.subcon_grp = new System.Windows.Forms.GroupBox();
+            this.quotesreq_num = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.qtyper_num = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.uom_cbo = new System.Windows.Forms.ComboBox();
+            this.refneeded_chk = new System.Windows.Forms.CheckBox();
+            this.daysout_num = new System.Windows.Forms.NumericUpDown();
+            this.unitcost_num = new System.Windows.Forms.NumericUpDown();
+            this.subcon_opsmast_cbo = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.supplieradd_txt = new System.Windows.Forms.TextBox();
+            this.supplierid_txt = new System.Windows.Forms.TextBox();
+            this.supplierid_btn = new System.Windows.Forms.Button();
+            this.gid_txt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.rev_txt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.partnumber_txt = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.OPDataGrid = new System.Windows.Forms.DataGridView();
+            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.OprSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,7 +86,7 @@
             this.PrimaryResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LaborEntryDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LaborEntry = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EnableSNRequiredOpr = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SNRequiredOpr = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.AutoReceive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -103,19 +104,18 @@
             this.VendorNumAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VendorNumTermsCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VendorNumCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subcon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.SubContract = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MajorContainer.Panel1.SuspendLayout();
             this.MajorContainer.Panel2.SuspendLayout();
             this.MajorContainer.SuspendLayout();
+            this.ops_grp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.subcon_grp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quotesreq_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qtyper_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.daysout_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitcost_num)).BeginInit();
-            this.ops_grp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,13 +132,14 @@
             this.MajorContainer.Panel1.Controls.Add(this.ops_grp);
             this.MajorContainer.Panel1.Controls.Add(this.groupBox1);
             this.MajorContainer.Panel1.Controls.Add(this.subcon_grp);
+            this.MajorContainer.Panel1.Controls.Add(this.AutoRecieve_chk);
+            this.MajorContainer.Panel1.Controls.Add(this.SNRequiredOpr_chk);
             this.MajorContainer.Panel1.Controls.Add(this.gid_txt);
             this.MajorContainer.Panel1.Controls.Add(this.label5);
             this.MajorContainer.Panel1.Controls.Add(this.rev_txt);
             this.MajorContainer.Panel1.Controls.Add(this.label4);
             this.MajorContainer.Panel1.Controls.Add(this.partnumber_txt);
             this.MajorContainer.Panel1.Controls.Add(this.label2);
-            this.MajorContainer.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.MajorContainer_Panel1_Paint);
             this.MajorContainer.Panel1MinSize = 177;
             // 
             // MajorContainer.Panel2
@@ -148,229 +149,11 @@
             this.MajorContainer.SplitterDistance = 177;
             this.MajorContainer.TabIndex = 0;
             // 
-            // subcon_grp
-            // 
-            this.subcon_grp.Controls.Add(this.quotesreq_num);
-            this.subcon_grp.Controls.Add(this.label7);
-            this.subcon_grp.Controls.Add(this.label8);
-            this.subcon_grp.Controls.Add(this.label9);
-            this.subcon_grp.Controls.Add(this.qtyper_num);
-            this.subcon_grp.Controls.Add(this.label10);
-            this.subcon_grp.Controls.Add(this.uom_cbo);
-            this.subcon_grp.Controls.Add(this.refneeded_chk);
-            this.subcon_grp.Controls.Add(this.daysout_num);
-            this.subcon_grp.Controls.Add(this.unitcost_num);
-            this.subcon_grp.Controls.Add(this.subcon_opsmast_cbo);
-            this.subcon_grp.Controls.Add(this.label11);
-            this.subcon_grp.Controls.Add(this.supplieradd_txt);
-            this.subcon_grp.Controls.Add(this.supplierid_txt);
-            this.subcon_grp.Controls.Add(this.supplierid_btn);
-            this.subcon_grp.Location = new System.Drawing.Point(327, 22);
-            this.subcon_grp.Name = "subcon_grp";
-            this.subcon_grp.Size = new System.Drawing.Size(578, 110);
-            this.subcon_grp.TabIndex = 22;
-            this.subcon_grp.TabStop = false;
-            this.subcon_grp.Visible = false;
-            // 
-            // quotesreq_num
-            // 
-            this.quotesreq_num.Enabled = false;
-            this.quotesreq_num.Location = new System.Drawing.Point(222, 60);
-            this.quotesreq_num.Name = "quotesreq_num";
-            this.quotesreq_num.Size = new System.Drawing.Size(66, 20);
-            this.quotesreq_num.TabIndex = 30;
-            this.quotesreq_num.ValueChanged += new System.EventHandler(this.quotesreq_num_ValueChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(486, 61);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 13);
-            this.label7.TabIndex = 29;
-            this.label7.Text = "Days Out:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 86);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 13);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Qty/Per:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(149, 62);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(67, 13);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Quotes Req:";
-            // 
-            // qtyper_num
-            // 
-            this.qtyper_num.DecimalPlaces = 5;
-            this.qtyper_num.Location = new System.Drawing.Point(59, 84);
-            this.qtyper_num.Name = "qtyper_num";
-            this.qtyper_num.Size = new System.Drawing.Size(66, 20);
-            this.qtyper_num.TabIndex = 23;
-            this.qtyper_num.ValueChanged += new System.EventHandler(this.qtyper_num_ValueChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(486, 22);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 13);
-            this.label10.TabIndex = 28;
-            this.label10.Text = "Unit Cost:";
-            // 
-            // uom_cbo
-            // 
-            this.uom_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.uom_cbo.FormattingEnabled = true;
-            this.uom_cbo.Location = new System.Drawing.Point(131, 83);
-            this.uom_cbo.Name = "uom_cbo";
-            this.uom_cbo.Size = new System.Drawing.Size(66, 21);
-            this.uom_cbo.TabIndex = 25;
-            this.uom_cbo.SelectedIndexChanged += new System.EventHandler(this.uom_cbo_SelectedIndexChanged);
-            // 
-            // refneeded_chk
-            // 
-            this.refneeded_chk.AutoSize = true;
-            this.refneeded_chk.Location = new System.Drawing.Point(9, 61);
-            this.refneeded_chk.Name = "refneeded_chk";
-            this.refneeded_chk.Size = new System.Drawing.Size(89, 17);
-            this.refneeded_chk.TabIndex = 20;
-            this.refneeded_chk.Text = "RFQ Needed";
-            this.refneeded_chk.UseVisualStyleBackColor = true;
-            this.refneeded_chk.CheckedChanged += new System.EventHandler(this.refneeded_chk_CheckedChanged);
-            // 
-            // daysout_num
-            // 
-            this.daysout_num.DecimalPlaces = 2;
-            this.daysout_num.Location = new System.Drawing.Point(489, 77);
-            this.daysout_num.Name = "daysout_num";
-            this.daysout_num.Size = new System.Drawing.Size(66, 20);
-            this.daysout_num.TabIndex = 27;
-            this.daysout_num.ValueChanged += new System.EventHandler(this.daysout_num_ValueChanged);
-            // 
-            // unitcost_num
-            // 
-            this.unitcost_num.DecimalPlaces = 3;
-            this.unitcost_num.Location = new System.Drawing.Point(489, 38);
-            this.unitcost_num.Name = "unitcost_num";
-            this.unitcost_num.Size = new System.Drawing.Size(66, 20);
-            this.unitcost_num.TabIndex = 26;
-            this.unitcost_num.ValueChanged += new System.EventHandler(this.unitcost_num_ValueChanged);
-            // 
-            // subcon_opsmast_cbo
-            // 
-            this.subcon_opsmast_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.subcon_opsmast_cbo.FormattingEnabled = true;
-            this.subcon_opsmast_cbo.Location = new System.Drawing.Point(9, 32);
-            this.subcon_opsmast_cbo.Name = "subcon_opsmast_cbo";
-            this.subcon_opsmast_cbo.Size = new System.Drawing.Size(279, 21);
-            this.subcon_opsmast_cbo.TabIndex = 6;
-            this.subcon_opsmast_cbo.SelectedIndexChanged += new System.EventHandler(this.subcon_opsmast_cbo_SelectedIndexChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 16);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 13);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "Operation:";
-            // 
-            // supplieradd_txt
-            // 
-            this.supplieradd_txt.Location = new System.Drawing.Point(314, 48);
-            this.supplieradd_txt.Multiline = true;
-            this.supplieradd_txt.Name = "supplieradd_txt";
-            this.supplieradd_txt.Size = new System.Drawing.Size(166, 53);
-            this.supplieradd_txt.TabIndex = 22;
-            // 
-            // supplierid_txt
-            // 
-            this.supplierid_txt.Location = new System.Drawing.Point(395, 22);
-            this.supplierid_txt.Name = "supplierid_txt";
-            this.supplierid_txt.Size = new System.Drawing.Size(85, 20);
-            this.supplierid_txt.TabIndex = 21;
-            this.supplierid_txt.TextChanged += new System.EventHandler(this.supplierid_txt_TextChanged);
-            // 
-            // supplierid_btn
-            // 
-            this.supplierid_btn.Location = new System.Drawing.Point(314, 19);
-            this.supplierid_btn.Name = "supplierid_btn";
-            this.supplierid_btn.Size = new System.Drawing.Size(75, 23);
-            this.supplierid_btn.TabIndex = 20;
-            this.supplierid_btn.Text = "Supplier ID";
-            this.supplierid_btn.UseVisualStyleBackColor = true;
-            this.supplierid_btn.Click += new System.EventHandler(this.supplierid_btn_Click);
-            // 
-            // gid_txt
-            // 
-            this.gid_txt.BackColor = System.Drawing.Color.White;
-            this.gid_txt.Location = new System.Drawing.Point(87, 35);
-            this.gid_txt.Name = "gid_txt";
-            this.gid_txt.ReadOnly = true;
-            this.gid_txt.Size = new System.Drawing.Size(130, 20);
-            this.gid_txt.TabIndex = 13;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 38);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Group ID:";
-            // 
-            // rev_txt
-            // 
-            this.rev_txt.BackColor = System.Drawing.Color.White;
-            this.rev_txt.Location = new System.Drawing.Point(259, 9);
-            this.rev_txt.Name = "rev_txt";
-            this.rev_txt.ReadOnly = true;
-            this.rev_txt.Size = new System.Drawing.Size(48, 20);
-            this.rev_txt.TabIndex = 11;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(223, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Rev:";
-            // 
-            // partnumber_txt
-            // 
-            this.partnumber_txt.BackColor = System.Drawing.Color.White;
-            this.partnumber_txt.Location = new System.Drawing.Point(87, 9);
-            this.partnumber_txt.Name = "partnumber_txt";
-            this.partnumber_txt.ReadOnly = true;
-            this.partnumber_txt.Size = new System.Drawing.Size(130, 20);
-            this.partnumber_txt.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Part Number:";
-            // 
             // ops_grp
             // 
             this.ops_grp.Controls.Add(this.prodstd_btn);
             this.ops_grp.Controls.Add(this.label6);
             this.ops_grp.Controls.Add(this.LaborEntryMethod_cbo);
-            this.ops_grp.Controls.Add(this.SNRequiredOpr_chk);
-            this.ops_grp.Controls.Add(this.AutoRecieve_chk);
             this.ops_grp.Controls.Add(this.prodstd_cbo);
             this.ops_grp.Controls.Add(this.prodhrs_num);
             this.ops_grp.Controls.Add(this.label3);
@@ -414,7 +197,7 @@
             // SNRequiredOpr_chk
             // 
             this.SNRequiredOpr_chk.AutoSize = true;
-            this.SNRequiredOpr_chk.Location = new System.Drawing.Point(376, 86);
+            this.SNRequiredOpr_chk.Location = new System.Drawing.Point(313, 35);
             this.SNRequiredOpr_chk.Name = "SNRequiredOpr_chk";
             this.SNRequiredOpr_chk.Size = new System.Drawing.Size(126, 17);
             this.SNRequiredOpr_chk.TabIndex = 11;
@@ -426,7 +209,7 @@
             // 
             this.AutoRecieve_chk.AutoSize = true;
             this.AutoRecieve_chk.Enabled = false;
-            this.AutoRecieve_chk.Location = new System.Drawing.Point(376, 65);
+            this.AutoRecieve_chk.Location = new System.Drawing.Point(313, 12);
             this.AutoRecieve_chk.Name = "AutoRecieve_chk";
             this.AutoRecieve_chk.Size = new System.Drawing.Size(158, 17);
             this.AutoRecieve_chk.TabIndex = 10;
@@ -604,6 +387,221 @@
             this.resource_show.UseVisualStyleBackColor = true;
             this.resource_show.Click += new System.EventHandler(this.resource_show_Click);
             // 
+            // subcon_grp
+            // 
+            this.subcon_grp.Controls.Add(this.quotesreq_num);
+            this.subcon_grp.Controls.Add(this.label7);
+            this.subcon_grp.Controls.Add(this.label8);
+            this.subcon_grp.Controls.Add(this.label9);
+            this.subcon_grp.Controls.Add(this.qtyper_num);
+            this.subcon_grp.Controls.Add(this.label10);
+            this.subcon_grp.Controls.Add(this.uom_cbo);
+            this.subcon_grp.Controls.Add(this.refneeded_chk);
+            this.subcon_grp.Controls.Add(this.daysout_num);
+            this.subcon_grp.Controls.Add(this.unitcost_num);
+            this.subcon_grp.Controls.Add(this.subcon_opsmast_cbo);
+            this.subcon_grp.Controls.Add(this.label11);
+            this.subcon_grp.Controls.Add(this.supplieradd_txt);
+            this.subcon_grp.Controls.Add(this.supplierid_txt);
+            this.subcon_grp.Controls.Add(this.supplierid_btn);
+            this.subcon_grp.Location = new System.Drawing.Point(494, 22);
+            this.subcon_grp.Name = "subcon_grp";
+            this.subcon_grp.Size = new System.Drawing.Size(578, 110);
+            this.subcon_grp.TabIndex = 22;
+            this.subcon_grp.TabStop = false;
+            this.subcon_grp.Visible = false;
+            // 
+            // quotesreq_num
+            // 
+            this.quotesreq_num.Enabled = false;
+            this.quotesreq_num.Location = new System.Drawing.Point(222, 60);
+            this.quotesreq_num.Name = "quotesreq_num";
+            this.quotesreq_num.Size = new System.Drawing.Size(66, 20);
+            this.quotesreq_num.TabIndex = 30;
+            this.quotesreq_num.ValueChanged += new System.EventHandler(this.quotesreq_num_ValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(486, 61);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 13);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "Days Out:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 86);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 13);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Qty/Per:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(149, 62);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(67, 13);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Quotes Req:";
+            // 
+            // qtyper_num
+            // 
+            this.qtyper_num.DecimalPlaces = 5;
+            this.qtyper_num.Location = new System.Drawing.Point(59, 84);
+            this.qtyper_num.Name = "qtyper_num";
+            this.qtyper_num.Size = new System.Drawing.Size(66, 20);
+            this.qtyper_num.TabIndex = 23;
+            this.qtyper_num.ValueChanged += new System.EventHandler(this.qtyper_num_ValueChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(486, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 13);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "Unit Cost:";
+            // 
+            // uom_cbo
+            // 
+            this.uom_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.uom_cbo.FormattingEnabled = true;
+            this.uom_cbo.Location = new System.Drawing.Point(131, 83);
+            this.uom_cbo.Name = "uom_cbo";
+            this.uom_cbo.Size = new System.Drawing.Size(66, 21);
+            this.uom_cbo.TabIndex = 25;
+            this.uom_cbo.SelectedIndexChanged += new System.EventHandler(this.uom_cbo_SelectedIndexChanged);
+            // 
+            // refneeded_chk
+            // 
+            this.refneeded_chk.AutoSize = true;
+            this.refneeded_chk.Location = new System.Drawing.Point(9, 61);
+            this.refneeded_chk.Name = "refneeded_chk";
+            this.refneeded_chk.Size = new System.Drawing.Size(89, 17);
+            this.refneeded_chk.TabIndex = 20;
+            this.refneeded_chk.Text = "RFQ Needed";
+            this.refneeded_chk.UseVisualStyleBackColor = true;
+            this.refneeded_chk.CheckedChanged += new System.EventHandler(this.refneeded_chk_CheckedChanged);
+            // 
+            // daysout_num
+            // 
+            this.daysout_num.DecimalPlaces = 2;
+            this.daysout_num.Location = new System.Drawing.Point(489, 77);
+            this.daysout_num.Name = "daysout_num";
+            this.daysout_num.Size = new System.Drawing.Size(66, 20);
+            this.daysout_num.TabIndex = 27;
+            this.daysout_num.ValueChanged += new System.EventHandler(this.daysout_num_ValueChanged);
+            // 
+            // unitcost_num
+            // 
+            this.unitcost_num.DecimalPlaces = 3;
+            this.unitcost_num.Location = new System.Drawing.Point(489, 38);
+            this.unitcost_num.Name = "unitcost_num";
+            this.unitcost_num.Size = new System.Drawing.Size(66, 20);
+            this.unitcost_num.TabIndex = 26;
+            this.unitcost_num.ValueChanged += new System.EventHandler(this.unitcost_num_ValueChanged);
+            // 
+            // subcon_opsmast_cbo
+            // 
+            this.subcon_opsmast_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.subcon_opsmast_cbo.FormattingEnabled = true;
+            this.subcon_opsmast_cbo.Location = new System.Drawing.Point(9, 32);
+            this.subcon_opsmast_cbo.Name = "subcon_opsmast_cbo";
+            this.subcon_opsmast_cbo.Size = new System.Drawing.Size(279, 21);
+            this.subcon_opsmast_cbo.TabIndex = 6;
+            this.subcon_opsmast_cbo.SelectedIndexChanged += new System.EventHandler(this.subcon_opsmast_cbo_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 16);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 13);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Operation:";
+            // 
+            // supplieradd_txt
+            // 
+            this.supplieradd_txt.Location = new System.Drawing.Point(314, 48);
+            this.supplieradd_txt.Multiline = true;
+            this.supplieradd_txt.Name = "supplieradd_txt";
+            this.supplieradd_txt.Size = new System.Drawing.Size(166, 53);
+            this.supplieradd_txt.TabIndex = 22;
+            // 
+            // supplierid_txt
+            // 
+            this.supplierid_txt.Location = new System.Drawing.Point(395, 22);
+            this.supplierid_txt.Name = "supplierid_txt";
+            this.supplierid_txt.Size = new System.Drawing.Size(85, 20);
+            this.supplierid_txt.TabIndex = 21;
+            // 
+            // supplierid_btn
+            // 
+            this.supplierid_btn.Location = new System.Drawing.Point(314, 19);
+            this.supplierid_btn.Name = "supplierid_btn";
+            this.supplierid_btn.Size = new System.Drawing.Size(75, 23);
+            this.supplierid_btn.TabIndex = 20;
+            this.supplierid_btn.Text = "Supplier ID";
+            this.supplierid_btn.UseVisualStyleBackColor = true;
+            this.supplierid_btn.Click += new System.EventHandler(this.supplierid_btn_Click);
+            // 
+            // gid_txt
+            // 
+            this.gid_txt.BackColor = System.Drawing.Color.White;
+            this.gid_txt.Location = new System.Drawing.Point(87, 35);
+            this.gid_txt.Name = "gid_txt";
+            this.gid_txt.ReadOnly = true;
+            this.gid_txt.Size = new System.Drawing.Size(130, 20);
+            this.gid_txt.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 38);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Group ID:";
+            // 
+            // rev_txt
+            // 
+            this.rev_txt.BackColor = System.Drawing.Color.White;
+            this.rev_txt.Location = new System.Drawing.Point(259, 9);
+            this.rev_txt.Name = "rev_txt";
+            this.rev_txt.ReadOnly = true;
+            this.rev_txt.Size = new System.Drawing.Size(48, 20);
+            this.rev_txt.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(223, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Rev:";
+            // 
+            // partnumber_txt
+            // 
+            this.partnumber_txt.BackColor = System.Drawing.Color.White;
+            this.partnumber_txt.Location = new System.Drawing.Point(87, 9);
+            this.partnumber_txt.Name = "partnumber_txt";
+            this.partnumber_txt.ReadOnly = true;
+            this.partnumber_txt.Size = new System.Drawing.Size(130, 20);
+            this.partnumber_txt.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Part Number:";
+            // 
             // OPDataGrid
             // 
             this.OPDataGrid.AllowUserToAddRows = false;
@@ -622,7 +620,7 @@
             this.PrimaryResourceGrpDesc,
             this.LaborEntryDesc,
             this.LaborEntry,
-            this.EnableSNRequiredOpr,
+            this.SNRequiredOpr,
             this.AutoReceive,
             this.QtyPer,
             this.IUM,
@@ -640,7 +638,7 @@
             this.VendorNumAddress1,
             this.VendorNumTermsCode,
             this.VendorNumCity,
-            this.subcon});
+            this.SubContract});
             this.OPDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OPDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.OPDataGrid.Location = new System.Drawing.Point(0, 0);
@@ -656,6 +654,11 @@
             this.OPDataGrid.ShowRowErrors = false;
             this.OPDataGrid.Size = new System.Drawing.Size(782, 288);
             this.OPDataGrid.TabIndex = 0;
+            // 
+            // TemplateMenu
+            // 
+            this.TemplateMenu.Name = "TemplateMenu";
+            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // OprSeq
             // 
@@ -725,14 +728,14 @@
             this.LaborEntry.ReadOnly = true;
             this.LaborEntry.Visible = false;
             // 
-            // EnableSNRequiredOpr
+            // SNRequiredOpr
             // 
-            this.EnableSNRequiredOpr.DataPropertyName = "EnableSNRequiredOpr";
-            this.EnableSNRequiredOpr.HeaderText = "Serial Num. Req";
-            this.EnableSNRequiredOpr.Name = "EnableSNRequiredOpr";
-            this.EnableSNRequiredOpr.ReadOnly = true;
-            this.EnableSNRequiredOpr.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EnableSNRequiredOpr.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SNRequiredOpr.DataPropertyName = "SNRequiredOpr";
+            this.SNRequiredOpr.HeaderText = "Serial Num. Req";
+            this.SNRequiredOpr.Name = "SNRequiredOpr";
+            this.SNRequiredOpr.ReadOnly = true;
+            this.SNRequiredOpr.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SNRequiredOpr.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // AutoReceive
             // 
@@ -857,17 +860,13 @@
             this.VendorNumCity.Name = "VendorNumCity";
             this.VendorNumCity.ReadOnly = true;
             // 
-            // subcon
+            // SubContract
             // 
-            this.subcon.HeaderText = "subcon";
-            this.subcon.Name = "subcon";
-            this.subcon.ReadOnly = true;
-            this.subcon.Visible = false;
-            // 
-            // TemplateMenu
-            // 
-            this.TemplateMenu.Name = "TemplateMenu";
-            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
+            this.SubContract.DataPropertyName = "SubContract";
+            this.SubContract.HeaderText = "SubContract";
+            this.SubContract.Name = "SubContract";
+            this.SubContract.ReadOnly = true;
+            this.SubContract.Visible = false;
             // 
             // Operations_Master
             // 
@@ -887,16 +886,16 @@
             this.MajorContainer.Panel1.PerformLayout();
             this.MajorContainer.Panel2.ResumeLayout(false);
             this.MajorContainer.ResumeLayout(false);
+            this.ops_grp.ResumeLayout(false);
+            this.ops_grp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.subcon_grp.ResumeLayout(false);
             this.subcon_grp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quotesreq_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qtyper_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.daysout_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitcost_num)).EndInit();
-            this.ops_grp.ResumeLayout(false);
-            this.ops_grp.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -948,6 +947,9 @@
         private System.Windows.Forms.TextBox supplieradd_txt;
         private System.Windows.Forms.TextBox supplierid_txt;
         private System.Windows.Forms.Button supplierid_btn;
+        private System.Windows.Forms.Button moveup_btn;
+        private System.Windows.Forms.Button movedown_btn;
+        private System.Windows.Forms.Button prodstd_btn;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
@@ -956,7 +958,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PrimaryResourceGrpDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn LaborEntryDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn LaborEntry;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn EnableSNRequiredOpr;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn SNRequiredOpr;
         private System.Windows.Forms.DataGridViewCheckBoxColumn AutoReceive;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyPer;
         private System.Windows.Forms.DataGridViewTextBoxColumn IUM;
@@ -974,9 +976,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VendorNumAddress1;
         private System.Windows.Forms.DataGridViewTextBoxColumn VendorNumTermsCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn VendorNumCity;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn subcon;
-        private System.Windows.Forms.Button moveup_btn;
-        private System.Windows.Forms.Button movedown_btn;
-        private System.Windows.Forms.Button prodstd_btn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn SubContract;
     }
 }

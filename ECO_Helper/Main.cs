@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Epicor_Integration;
 using EdmLib;
@@ -43,39 +42,48 @@ namespace ECO_Helper
 
                     int lastrow = 0;
 
+                    bool valid = false; 
+
                     for (int i = 0; i < Pdata.Tables["PartRev"].Rows.Count; i++)
                     {
                         if (Pdata.Tables["PartRev"].Rows[i]["RevisionNum"].ToString() == rev_txt.Text)
+                        {
                             lastrow = i;
+
+                            valid =  true;
+                        }
                     }
 
-                    if (Pdata.Tables["PartRev"].Rows[lastrow]["ECOGroup"].ToString() != "" && Pdata.Tables["PartRev"].Rows[lastrow]["ECOGroup"].ToString() != null)
+                    if (valid)
                     {
-                        desc_txt.Text = Pdata.Tables["PartRev"].Rows[lastrow]["RevShortDesc"].ToString();
+                        if (Pdata.Tables["PartRev"].Rows[lastrow]["ECOGroup"].ToString() != "" && Pdata.Tables["PartRev"].Rows[lastrow]["ECOGroup"].ToString() != null)
+                        {
+                            desc_txt.Text = Pdata.Tables["PartRev"].Rows[lastrow]["RevShortDesc"].ToString();
 
-                        revcomments_txt.Text = Pdata.Tables["PartRev"].Rows[lastrow]["RevDescription"].ToString();
+                            revcomments_txt.Text = Pdata.Tables["PartRev"].Rows[lastrow]["RevDescription"].ToString();
 
-                        eco_txt.Text = Pdata.Tables["PartRev"].Rows[lastrow]["ECO"].ToString();
+                            eco_txt.Text = Pdata.Tables["PartRev"].Rows[lastrow]["ECO"].ToString();
 
-                        checkedout_chk.Checked = true;
+                            checkedout_chk.Checked = true;
 
-                        addrev_btn.Enabled = false;
+                            addrev_btn.Enabled = false;
 
-                        useswrev_chk.Enabled = false;
+                            useswrev_chk.Enabled = false;
 
-                        item_btn.Enabled = true;
+                            item_btn.Enabled = true;
 
-                        getdetails_btn.Enabled = true;
+                            getdetails_btn.Enabled = true;
 
-                        ops_btn.Enabled = true;
+                            ops_btn.Enabled = true;
 
-                        bill_btn.Enabled = true;
+                            bill_btn.Enabled = true;
 
-                        approved_btn.Enabled = true;
+                            approved_btn.Enabled = true;
 
-                        rev_txt.ReadOnly = true;
+                            rev_txt.ReadOnly = true;
 
-                        pnum_txt.ReadOnly = true;
+                            pnum_txt.ReadOnly = true;
+                        }
                     }
                 }
                 catch { }
@@ -101,9 +109,8 @@ namespace ECO_Helper
         {
             openFileDialog.FileName = pnum_txt.Text;
 
-            openFileDialog.ShowDialog();
-
-            filedir_txt.Text = openFileDialog.FileName;
+            if (openFileDialog.ShowDialog() != DialogResult.Cancel)
+                filedir_txt.Text = openFileDialog.FileName;
         }
 
         private void approved_btn_Click(object sender, EventArgs e)
@@ -128,37 +135,66 @@ namespace ECO_Helper
 
         private void useswrev_chk_CheckedChanged(object sender, EventArgs e)
         {
-            if ((filedir_txt.Text == "" || filedir_txt.Text == null) && useswrev_chk.Checked)
-                browse_btn_Click(browse_btn, null);
+            try
+            {
+                if ((filedir_txt.Text == "" || filedir_txt.Text == null) && useswrev_chk.Checked)
+                {
+                    browse_btn_Click(browse_btn, null);
+                }
+                else
+                {
+                    rev_txt.ReadOnly = useswrev_chk.Checked;
 
-            rev_txt.ReadOnly = useswrev_chk.Checked;
+                    pnum_txt.ReadOnly = useswrev_chk.Checked;
 
-            rev_txt.Text = SWHelper.GetCurrentRevision(filedir_txt.Text, pnum_txt.Text);
+                    rev_txt.Text = SWHelper.GetCurrentRevision(filedir_txt.Text, pnum_txt.Text);
+                }
+            }
+            catch { MessageBox.Show("Please correct the directory to ensure the correct file is selected", "File Not Found!", MessageBoxButtons.OK, MessageBoxIcon.Hand); }
         }
 
         private void addrev_btn_Click(object sender, EventArgs e)
         {
-            string CurrentRev = DataList.GetCurrentRev(pnum_txt.Text);
+            try
+            {
+                string CurrentRev = DataList.GetCurrentRev(pnum_txt.Text);
 
-            bool valid = DataList.CreatePartRevision(pnum_txt.Text, CurrentRev, rev_txt.Text, desc_txt.Text, revcomments_txt.Text, eco_txt.Text);
+                bool valid = DataList.CreatePartRevision(pnum_txt.Text, CurrentRev, rev_txt.Text, desc_txt.Text, revcomments_txt.Text, eco_txt.Text);
 
-            DataList.CheckOutPart(gid_cbo.Text, pnum_txt.Text, rev_txt.Text);
+                DataList.CheckOutPart(gid_cbo.Text, pnum_txt.Text, rev_txt.Text);
 
-            useswrev_chk.Enabled = !valid;
+                useswrev_chk.Enabled = !valid;
 
-            addrev_btn.Enabled = !valid;
+                addrev_btn.Enabled = !valid;
 
-            item_btn.Enabled = valid;
+                item_btn.Enabled = valid;
 
-            getdetails_btn.Enabled = valid;
+                getdetails_btn.Enabled = valid;
 
-            ops_btn.Enabled = valid;
+                ops_btn.Enabled = valid;
 
-            bill_btn.Enabled = valid;
+                bill_btn.Enabled = valid;
 
-            approved_btn.Enabled = valid;
+                approved_btn.Enabled = valid;
 
-            checkedout_chk.Checked = valid;
+                checkedout_chk.Checked = valid;
+
+                pnum_txt.ReadOnly = valid;
+
+                rev_txt.ReadOnly = valid;
+
+                desc_txt.ReadOnly = valid;
+
+                eco_txt.ReadOnly = valid;
+
+                revcomments_txt.ReadOnly = valid;
+
+                filedir_txt.ReadOnly = valid;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void item_btn_Click(object sender, EventArgs e)
@@ -202,9 +238,8 @@ namespace ECO_Helper
             {
                 Config Confg = new Config();
 
-                Confg.ShowDialog();
-
-                Application.Restart();
+                if (Confg.ShowDialog() != DialogResult.Cancel)
+                    Application.Restart();
             }
         }
 
@@ -226,7 +261,19 @@ namespace ECO_Helper
 
         private void bill_btn_Click(object sender, EventArgs e)
         {
-            SWHelper.GetBill(filedir_txt.Text, pnum_txt.Text);
+            if (!legacy_chk.Checked)
+            {
+                if (filedir_txt.Text != null && filedir_txt.Text != "")
+                    SWHelper.GetBill(filedir_txt.Text, pnum_txt.Text, rev_txt.Text);
+                else
+                    browse_btn_Click(browse_btn, null);
+            }
+            else
+            {
+                Bill_Master BM = new Bill_Master(pnum_txt.Text, rev_txt.Text);
+
+                BM.ShowDialog();
+            }
         }
 
         private void checkin_btn_Click(object sender, EventArgs e)
@@ -292,11 +339,26 @@ namespace ECO_Helper
             approved_btn.Enabled = false;
 
             checkin_btn.Enabled = false;
+
+            filedir_txt.ReadOnly = false;
+
+            eco_txt.ReadOnly = false;
+
+            desc_txt.ReadOnly = false;
+
+            revcomments_txt.ReadOnly = false;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void legacy_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            browse_btn.Enabled = !legacy_chk.Checked;
+
+            filedir_txt.Enabled = !legacy_chk.Checked;
         }
     }
 }

@@ -711,13 +711,24 @@ namespace Epicor_Integration
 
         public static EngWorkBenchDataSet GetDetailsFromMethods(string GroupID, string ToPnum, string ToPnumRev, string FromPnum, string FromPnumRev)
         {
-            EngWorkBench EngWB = new EngWorkBench(EpicConn);
+            EngWorkBenchDataSet EngWBDS = new EngWorkBenchDataSet();
 
-            string vMessage;
+            try
+            {
+                EngWorkBench EngWB = new EngWorkBench(EpicConn);
 
-            EngWB.PreGetDetails(GroupID, ToPnum, ToPnumRev, "", FromPnum, FromPnumRev, "", out vMessage);
+                string vMessage;
 
-            EngWorkBenchDataSet EngWBDS = EngWB.GetDetailsFromMethods(GroupID, ToPnum, ToPnumRev, "", DateTime.Today.Date, false, FromPnum, FromPnumRev, "", true, true, false, false, false);
+                EngWB.PreGetDetails(GroupID, ToPnum, ToPnumRev, "", FromPnum, FromPnumRev, "", out vMessage);
+
+                EngWBDS = EngWB.GetDetailsFromMethods(GroupID, ToPnum, ToPnumRev, "", DateTime.Today.Date, false, FromPnum, FromPnumRev, "", true, true, false, false, false);
+
+                return EngWBDS;
+            }
+            catch (Exception Exception)
+            {
+                System.Windows.Forms.MessageBox.Show(Exception.Message, "Error!", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
 
             return EngWBDS;
         }

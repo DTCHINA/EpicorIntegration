@@ -7,22 +7,22 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace EPDMEpicorIntegration
+namespace EPDM_EpicorIntegration
 {
     //Release GUID
     //[Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
 
     //Secondary Test GUID
-    [Guid("4d20eca4-8a0f-4610-b13f-0d8fa09e67ae"), ComVisible(true)]
+    //[Guid("4d20eca4-8a0f-4610-b13f-0d8fa09e67ae"), ComVisible(true)]
     
     //Test GUID
-    //[Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
+    [Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
     public class SWEPDMAddin : IEdmAddIn5
     {
-        void EdmLib.IEdmAddIn5.GetAddInInfo(ref EdmAddInInfo poInfo, IEdmVault5 poVault, IEdmCmdMgr5 poCmdMgr)
+        void IEdmAddIn5.GetAddInInfo(ref EdmAddInInfo poInfo, IEdmVault5 poVault, IEdmCmdMgr5 poCmdMgr)
         {
             //Fill in the AddIn's description
-            poInfo.mbsAddInName = "Epicor Integration";
+            poInfo.mbsAddInName = "Epicor__Integration";
             poInfo.mbsCompany = "Norco Ind.";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
             poInfo.mlAddInVersion = 1;
@@ -33,30 +33,32 @@ namespace EPDMEpicorIntegration
 
             // Epicor Integration\\
 
-            poCmdMgr.AddCmd(2, "Test Epicor Integration\\Add Item,OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to add an Item, a revision, an OOM and BOM in Epicor", 0, 0);
+            string MenuName = "Debug";
 
-            poCmdMgr.AddCmd(1, "Test Epicor Integration\\Add/Update Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update Item in Epicor", 0, 0); ;
+            poCmdMgr.AddCmd(2, MenuName + "\\Add Item,OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to add an Item, a revision, an OOM and BOM in Epicor", 0, 0);
 
-            poCmdMgr.AddCmd(4, "Test Epicor Integration\\Add Revision", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to add revision to Item in Epicor", 0, 0);
+            poCmdMgr.AddCmd(1, MenuName + "\\Part Master", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to create/update Item in Epicor", 0, 0); ;
 
-            poCmdMgr.AddCmd(5, "Test Epicor Integration\\Add/Update OOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update OOM in Epicor", 0, 0);
+            poCmdMgr.AddCmd(4, MenuName + "\\Add Revision", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to add revision to Item in Epicor", 0, 0);
 
-            poCmdMgr.AddCmd(6, "Test Epicor Integration\\Add/Update BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to create/update BOM in Epicor", 0, 0);
+            poCmdMgr.AddCmd(5, MenuName + "\\Operation Master", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to create/update OOM in Epicor", 0, 0);
 
-            poCmdMgr.AddCmd(7, "Test Epicor Integration\\Check In/Approve Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to Approve and Check In Item to Epicor", 0, 0);
+            poCmdMgr.AddCmd(6, MenuName + "\\Bill Master", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to create/update BOM in Epicor", 0, 0);
 
-            poCmdMgr.AddCmd(3, "Test Epicor Integration\\Check Out Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Checks out Item in Epicor (Not Enterprise PDM)", 0, 0);
+            poCmdMgr.AddCmd(7, MenuName + "\\Check In/Approve Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to Approve and Check In Item to Epicor", 0, 0);
 
-            poCmdMgr.AddCmd(-1, "Test Epicor Integration\\Add-in Configuration", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to configure Epicor Integration Add-in", 0, 0);
+            poCmdMgr.AddCmd(3, MenuName + "\\Check Out Item", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Checks out Item in Epicor (Not Enterprise PDM)", 0, 0);
 
-            poCmdMgr.AddCmd(-10, "Test Epicor Integration\\Update Properties from Epicor", (int)EdmMenuFlags.EdmMenu_OnlyFiles, "", "Launches a dialog to update file properties from current Epicor values", 0, 0);
+            poCmdMgr.AddCmd(-1, MenuName + "\\Add-in Configuration", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to configure Epicor Integration Add-in", 0, 0);
 
-            poCmdMgr.AddCmd(-100, "Test Epicor Integration\\Item/OOM/BOM Templates", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to Add/Edit/Update Templates", 0, 0);
+            poCmdMgr.AddCmd(-10, MenuName + "\\Update Properties from Epicor", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to update file properties from current Epicor values", 0, 0);
+
+            poCmdMgr.AddCmd(-100, MenuName + "\\Templates", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to Add/Edit/Update Templates", 0, 0);
 
             poCmdMgr.AddHook(EdmCmdType.EdmCmd_Menu, null);
         }
 
-        void EdmLib.IEdmAddIn5.OnCmd(ref EdmCmd poCmd, ref System.Array ppoData)
+        void IEdmAddIn5.OnCmd(ref EdmCmd poCmd, ref System.Array ppoData)
         {
             Debug.Print("Command Type: " + poCmd.meCmdType.ToString() + "\n  " + System.DateTime.Now.ToString());
 
@@ -624,7 +626,7 @@ namespace EPDMEpicorIntegration
 
                     ProcessBill(vault, file, BillNumbers, BillQty,out BillQty);
                     
-                    Bill_Master BM = new Bill_Master(BillNumbers, BillQty, ParentNumber);
+                    Bill_Master BM = new Bill_Master(BillNumbers, BillQty, ParentNumber, "");
 
                     BM.ShowDialog();
 

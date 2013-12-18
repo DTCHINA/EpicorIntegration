@@ -60,6 +60,8 @@ namespace Epicor_Integration
         {
             InitializeComponent();
 
+            supplierid_txt.Leave += supplierid_txt_Leave;
+
             string GroupID = Properties.Settings.Default.ecogroup;
 
             OPDataGrid.AutoGenerateColumns = false;
@@ -184,6 +186,8 @@ namespace Epicor_Integration
             SetSubConField();
 
             SNRequiredOpr_chk.Click += SNRequiredOpr_chk_Click;
+
+            OPDataGrid.CurrentCell = OPDataGrid[0, 0];
         }
 
         void SNRequiredOpr_chk_Click(object sender, EventArgs e)
@@ -197,6 +201,8 @@ namespace Epicor_Integration
                     MessageBox.Show("Cannot set value, prior operations require serialization", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     SNRequiredOpr_chk.Checked = true;
+
+                    break;
                 }
             }
         }
@@ -237,7 +243,7 @@ namespace Epicor_Integration
         }
 
         void SetSubConField()
-        {
+        {/*
             for (int i = 0; i < OPDataGrid.Rows.Count; i++)
             {
                 string val = EngWBDS.Tables["ECOOpr"].Rows[i]["VendorNumVendorID"].ToString();
@@ -246,14 +252,14 @@ namespace Epicor_Integration
                 {
                     OPDataGrid["subcon", i].Value = true;
                 }
-            }
+            }*/
         }
 
         void OPDataGrid_SelectionChanged(object sender, EventArgs e)
         {
             int rowindex = OPDataGrid.CurrentCellAddress.Y;
 
-            object val = OPDataGrid["subcon", rowindex].Value;
+            object val = OPDataGrid["SubContract", rowindex].Value;
 
             if (!Convert.ToBoolean(val))
                 try
@@ -261,12 +267,6 @@ namespace Epicor_Integration
                     ops_grp.Visible = true;
 
                     subcon_grp.Visible = false;
-
-                    AutoRecieve_chk.Enabled = (rowindex == OPDataGrid.Rows.Count - 1);
-
-                    AutoRecieve_chk.Checked = bool.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowindex]["AutoReceive"].ToString());
-
-                    SNRequiredOpr_chk.Checked = bool.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowindex]["SNRequiredOpr"].ToString());
 
                     string LaborVal = EngWBDS.Tables["ECOOpr"].Rows[rowindex]["LaborEntryMethod"].ToString();
 
@@ -329,6 +329,14 @@ namespace Epicor_Integration
 
                 supplieradd_txt.Text = OPDataGrid["DspBillAddr", rowindex].Value.ToString();
             }
+
+            bool checkval = bool.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowindex]["SNRequiredOpr"].ToString());
+
+            SNRequiredOpr_chk.Checked = checkval;
+
+            AutoRecieve_chk.Enabled = (rowindex == OPDataGrid.Rows.Count - 1);
+
+            AutoRecieve_chk.Checked = bool.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowindex]["AutoReceive"].ToString());
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -402,22 +410,26 @@ namespace Epicor_Integration
 
         private void removebtn_Click(object sender, EventArgs e)
         {
-            int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+            try
+            {
+                int RowIndex = OPDataGrid.CurrentCell.RowIndex;
 
-            EngWBDS.Tables["ECOOpr"].Rows[RowIndex].Delete();
+                EngWBDS.Tables["ECOOpr"].Rows[RowIndex].Delete();
 
-            EngWB.Update(EngWBDS);
+                EngWB.Update(EngWBDS);
 
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
-            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+                OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
-            if (EngWBDS.Tables["ECOOpr"].Rows.Count == 0)
-                removebtn.Enabled = false;
+                if (EngWBDS.Tables["ECOOpr"].Rows.Count == 0)
+                    removebtn.Enabled = false;
 
-            //EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+                //EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
-            resource_show.Enabled = false;
+                resource_show.Enabled = false;
+            }
+            catch { MessageBox.Show("Error Deleting Row!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void refresh_btn_Click(object sender, EventArgs e)
@@ -462,27 +474,6 @@ namespace Epicor_Integration
             catch { }
         }
 
-        private bool CheckForSave(out string message)
-        {
-            bool retval = true;
-            message = "Errors were found for the following operations:\n";
-
-            for (int i = 0; i < OPDataGrid.Rows.Count; i++)
-            {
-                if (EngWBDS.Tables["ECOOpr"].Rows[i]["ProdStandard"].ToString() == "0")
-                {
-                    //retval = false;
-
-                    message += EngWBDS.Tables["ECOOpr"].Rows[i]["OprSeq"].ToString() + "\n";
-                }
-
-            }
-
-            message += "\n\nProduction Hours cannot be zero.";
-
-            return retval;
-        }
-
         private void resource_show_Click(object sender, EventArgs e)
         {
             try
@@ -517,24 +508,18 @@ namespace Epicor_Integration
 
         private void saveclose_btn_Click(object sender, EventArgs e)
         {
-            string ErrorMsg;
 
-            if (CheckForSave(out ErrorMsg))
-            {
-                EngWB.Update(EngWBDS);
+            EngWB.Update(EngWBDS);
 
-                EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+            EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
-                resource_show.Enabled = true;
+            resource_show.Enabled = true;
 
-                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
-                OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
-                this.Close();
-            }
-            else
-                MessageBox.Show(ErrorMsg, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            this.Close();
         }
 
         private void bom_btn_Click(object sender, EventArgs e)
@@ -608,7 +593,7 @@ namespace Epicor_Integration
             {
                 EngWB.GetNewECOOpr(EngWBDS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "");
 
-                opmast_cbo.Text = Dr["PropertyValue"].ToString();
+                opmast_cbo.SelectedValue = Dr["PropertyValue"].ToString();
 
                 decimal dec = decimal.Parse(Dr["PropertyQty"].ToString());
 
@@ -681,12 +666,20 @@ namespace Epicor_Integration
 
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
 
-            for (int i = RowIndex; i < EngWBDS.Tables["ECOOpr"].Rows.Count; i++)
+            OPDataGrid["SNRequiredOpr", RowIndex].Value = SNRequiredOpr_chk.Checked;
+
+            if (SNRequiredOpr_chk.Checked)
             {
-                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
+                for (int i = RowIndex; i < EngWBDS.Tables["ECOOpr"].Rows.Count; i++)
+                {
+                    EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
+
+                    OPDataGrid["SNRequiredOpr", i].Value = SNRequiredOpr_chk.Checked;
+                }
             }
 
-            AutoRecieve_chk.Enabled = !SNRequiredOpr_chk.Checked;
+            if (OPDataGrid.CurrentCellAddress.Y == OPDataGrid.Rows.Count - 1)
+                AutoRecieve_chk.Enabled = !SNRequiredOpr_chk.Checked;
 
             AutoRecieve_chk.Checked = (SNRequiredOpr_chk.Checked ? false : AutoRecieve_chk.Checked);
         }
@@ -802,16 +795,14 @@ namespace Epicor_Integration
 
             EngWB.EcoOprInitSNReqSubConShip(EngWBDS);
 
-            OPDataGrid["subcon", OPDataGrid.Rows.Count - 1].Value = true;
+            OPDataGrid["SubContract", OPDataGrid.Rows.Count - 1].Value = true;
 
-            //Operations_SubCon Ops_SubCon = new Operations_SubCon();
-
-            //Ops_SubCon.ShowDialog();
+            SetSubConField();
         }
 
         private void refneeded_chk_CheckedChanged(object sender, EventArgs e)
         {
-            object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+            object val = OPDataGrid["SubContract", OPDataGrid.CurrentCellAddress.Y].Value;
 
             if (Convert.ToBoolean(val))
             {
@@ -853,7 +844,7 @@ namespace Epicor_Integration
         {
             try
             {
-                object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+                object val = OPDataGrid["SubContract", OPDataGrid.CurrentCellAddress.Y].Value;
 
                 if (Convert.ToBoolean(val))
                 {
@@ -867,7 +858,7 @@ namespace Epicor_Integration
 
         private void quotesreq_num_ValueChanged(object sender, EventArgs e)
         {
-            object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+            object val = OPDataGrid["SubContract", OPDataGrid.CurrentCellAddress.Y].Value;
 
             if (Convert.ToBoolean(val))
             {
@@ -879,7 +870,7 @@ namespace Epicor_Integration
         {
             try
             {
-                object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+                object val = OPDataGrid["SubContract", OPDataGrid.CurrentCellAddress.Y].Value;
 
                 if (Convert.ToBoolean(val))
                 {
@@ -891,7 +882,7 @@ namespace Epicor_Integration
 
         private void qtyper_num_ValueChanged(object sender, EventArgs e)
         {
-            object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+            object val = OPDataGrid["SubContract", OPDataGrid.CurrentCellAddress.Y].Value;
 
             if (Convert.ToBoolean(val))
             {
@@ -901,7 +892,7 @@ namespace Epicor_Integration
 
         private void unitcost_num_ValueChanged(object sender, EventArgs e)
         {
-            object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+            object val = OPDataGrid["SubContract", OPDataGrid.CurrentCellAddress.Y].Value;
 
             if (Convert.ToBoolean(val))
             {
@@ -911,7 +902,7 @@ namespace Epicor_Integration
 
         private void daysout_num_ValueChanged(object sender, EventArgs e)
         {
-            object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+            object val = OPDataGrid["SubContract", OPDataGrid.CurrentCellAddress.Y].Value;
 
             if (Convert.ToBoolean(val))
             {
@@ -919,15 +910,13 @@ namespace Epicor_Integration
             }
         }
 
-        private void supplierid_txt_TextChanged(object sender, EventArgs e)
+        private void supplierid_txt_Leave(object sender, EventArgs e)
         {
-            object val = OPDataGrid["subcon", OPDataGrid.CurrentCellAddress.Y].Value;
+            object val = OPDataGrid["SubContract", OPDataGrid.CurrentCellAddress.Y].Value;
 
             if (Convert.ToBoolean(val))
             {
                 Operations_SupplierSearch OpsSupSearch = new Operations_SupplierSearch(supplierid_txt.Text);
-
-                //OpsSupSearch.ShowDialog();
 
                 supplierid_txt.Text = OpsSupSearch.ReturnID;
 
@@ -1005,11 +994,6 @@ namespace Epicor_Integration
             prodhrs_num.Value = OpMin.RetVal;
 
             OpMin.Dispose();
-        }
-
-        private void MajorContainer_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

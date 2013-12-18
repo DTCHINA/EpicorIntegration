@@ -168,11 +168,17 @@ namespace Epicor_Integration
 
             try
             {
-                EngWB_DS.Tables["ECOOpDtl"].Rows[GridRow[ResourceGrid.CurrentCellAddress.Y]]["OpDtlDesc"] = resourcegrp_cbo.Text;
+                ResourceGrid["OpDtlDesc", ResourceGrid.CurrentCellAddress.Y].Value = resourcegrp_cbo.Text;
 
-                EngWB_DS.Tables["ECOOpDtl"].Rows[GridRow[ResourceGrid.CurrentCellAddress.Y]]["ResourceGrpID"] = resourcegrp_cbo.SelectedValue.ToString();
+                ResourceGrid["ResourceGrpDesc", ResourceGrid.CurrentCellAddress.Y].Value = resourcegrp_cbo.Text;
 
-                EngWB_DS.Tables["ECOOpDtl"].Rows[GridRow[ResourceGrid.CurrentCellAddress.Y]]["ResourceGrpDesc"] = resourcegrp_cbo.Text;
+                ResourceGrid["ResourceGrpID", ResourceGrid.CurrentCellAddress.Y].Value = resourcegrp_cbo.SelectedValue.ToString();
+
+                //EngWB_DS.Tables["ECOOpDtl"].Rows[GridRow[ResourceGrid.CurrentCellAddress.Y]]["OpDtlDesc"] = resourcegrp_cbo.Text;
+
+                //EngWB_DS.Tables["ECOOpDtl"].Rows[GridRow[ResourceGrid.CurrentCellAddress.Y]]["ResourceGrpID"] = resourcegrp_cbo.SelectedValue.ToString();
+
+                //EngWB_DS.Tables["ECOOpDtl"].Rows[GridRow[ResourceGrid.CurrentCellAddress.Y]]["ResourceGrpDesc"] = resourcegrp_cbo.Text;
             }
             catch { }
         }
@@ -191,9 +197,13 @@ namespace Epicor_Integration
             if (ResourceGrid.CurrentCellAddress.Y != -1)
             try
             {
-                EngWB_DS.Tables["ECOOpDtl"].Rows[GridRow[ResourceGrid.CurrentCellAddress.Y]]["ResourceID"] = resource_cbo.SelectedValue.ToString();
+                ResourceGrid["ResourceID", ResourceGrid.CurrentCellAddress.Y].Value = resource_cbo.SelectedValue.ToString();
 
-                EngWB_DS.Tables["ECOOpDtl"].Rows[GridRow[ResourceGrid.CurrentCellAddress.Y]]["ResourceDesc"] = resource_cbo.Text;
+                ResourceGrid["ResourceDesc", ResourceGrid.CurrentCellAddress.Y].Value = resource_cbo.Text;
+
+                //EngWB_DS.Tables["ECOOpDtl"].Rows[GridRow[ResourceGrid.CurrentCellAddress.Y]]["ResourceID"] = resource_cbo.SelectedValue.ToString();
+
+                //EngWB_DS.Tables["ECOOpDtl"].Rows[GridRow[ResourceGrid.CurrentCellAddress.Y]]["ResourceDesc"] = resource_cbo.Text;
             }
             catch { }
         }
@@ -222,7 +232,7 @@ namespace Epicor_Integration
 
             ResourceGrid.ClearSelection();
 
-            ResourceGrid.CurrentCell = ResourceGrid.Rows[ResourceGrid.Rows.Count].Cells[0];
+            ResourceGrid.CurrentCell = ResourceGrid.Rows[ResourceGrid.Rows.Count - 1].Cells[0];
         }
 
         private void removebtn_Click(object sender, EventArgs e)

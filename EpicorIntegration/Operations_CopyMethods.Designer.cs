@@ -31,13 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Operations_CopyMethods));
             this.RevGrid = new System.Windows.Forms.DataGridView();
-            this.part_txt = new System.Windows.Forms.Button();
-            this.ok_btn = new System.Windows.Forms.Button();
-            this.cancel_btn = new System.Windows.Forms.Button();
-            this.pnum_txt = new System.Windows.Forms.TextBox();
-            this.desc_txt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.RevisionNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Approved = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -46,6 +39,13 @@
             this.ECO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Effective = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RevShortDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.part_txt = new System.Windows.Forms.Button();
+            this.ok_btn = new System.Windows.Forms.Button();
+            this.cancel_btn = new System.Windows.Forms.Button();
+            this.pnum_txt = new System.Windows.Forms.TextBox();
+            this.desc_txt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.RevGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -76,75 +76,6 @@
             this.RevGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.RevGrid.Size = new System.Drawing.Size(373, 108);
             this.RevGrid.TabIndex = 0;
-            // 
-            // part_txt
-            // 
-            this.part_txt.Location = new System.Drawing.Point(6, 19);
-            this.part_txt.Name = "part_txt";
-            this.part_txt.Size = new System.Drawing.Size(63, 23);
-            this.part_txt.TabIndex = 1;
-            this.part_txt.Text = "Part";
-            this.part_txt.UseVisualStyleBackColor = true;
-            this.part_txt.Click += new System.EventHandler(this.part_txt_Click);
-            // 
-            // ok_btn
-            // 
-            this.ok_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ok_btn.Location = new System.Drawing.Point(310, 23);
-            this.ok_btn.Name = "ok_btn";
-            this.ok_btn.Size = new System.Drawing.Size(75, 23);
-            this.ok_btn.TabIndex = 2;
-            this.ok_btn.Text = "Ok";
-            this.ok_btn.UseVisualStyleBackColor = true;
-            this.ok_btn.Click += new System.EventHandler(this.ok_btn_Click);
-            // 
-            // cancel_btn
-            // 
-            this.cancel_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancel_btn.Location = new System.Drawing.Point(310, 57);
-            this.cancel_btn.Name = "cancel_btn";
-            this.cancel_btn.Size = new System.Drawing.Size(75, 23);
-            this.cancel_btn.TabIndex = 3;
-            this.cancel_btn.Text = "Cancel";
-            this.cancel_btn.UseVisualStyleBackColor = true;
-            this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click);
-            // 
-            // pnum_txt
-            // 
-            this.pnum_txt.Location = new System.Drawing.Point(75, 21);
-            this.pnum_txt.Name = "pnum_txt";
-            this.pnum_txt.Size = new System.Drawing.Size(211, 20);
-            this.pnum_txt.TabIndex = 4;
-            // 
-            // desc_txt
-            // 
-            this.desc_txt.Location = new System.Drawing.Point(75, 47);
-            this.desc_txt.Name = "desc_txt";
-            this.desc_txt.ReadOnly = true;
-            this.desc_txt.Size = new System.Drawing.Size(211, 20);
-            this.desc_txt.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Description:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.part_txt);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.pnum_txt);
-            this.groupBox1.Controls.Add(this.desc_txt);
-            this.groupBox1.Location = new System.Drawing.Point(12, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.groupBox1.Size = new System.Drawing.Size(292, 85);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
             // 
             // RevisionNum
             // 
@@ -226,6 +157,74 @@
             this.RevShortDesc.Name = "RevShortDesc";
             this.RevShortDesc.ReadOnly = true;
             this.RevShortDesc.Width = 85;
+            // 
+            // part_txt
+            // 
+            this.part_txt.Location = new System.Drawing.Point(6, 19);
+            this.part_txt.Name = "part_txt";
+            this.part_txt.Size = new System.Drawing.Size(63, 23);
+            this.part_txt.TabIndex = 1;
+            this.part_txt.Text = "Part";
+            this.part_txt.UseVisualStyleBackColor = true;
+            this.part_txt.Click += new System.EventHandler(this.part_txt_Click);
+            // 
+            // ok_btn
+            // 
+            this.ok_btn.Location = new System.Drawing.Point(310, 23);
+            this.ok_btn.Name = "ok_btn";
+            this.ok_btn.Size = new System.Drawing.Size(75, 23);
+            this.ok_btn.TabIndex = 2;
+            this.ok_btn.Text = "Ok";
+            this.ok_btn.UseVisualStyleBackColor = true;
+            this.ok_btn.Click += new System.EventHandler(this.ok_btn_Click);
+            // 
+            // cancel_btn
+            // 
+            this.cancel_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancel_btn.Location = new System.Drawing.Point(310, 57);
+            this.cancel_btn.Name = "cancel_btn";
+            this.cancel_btn.Size = new System.Drawing.Size(75, 23);
+            this.cancel_btn.TabIndex = 3;
+            this.cancel_btn.Text = "Cancel";
+            this.cancel_btn.UseVisualStyleBackColor = true;
+            this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click);
+            // 
+            // pnum_txt
+            // 
+            this.pnum_txt.Location = new System.Drawing.Point(75, 21);
+            this.pnum_txt.Name = "pnum_txt";
+            this.pnum_txt.Size = new System.Drawing.Size(211, 20);
+            this.pnum_txt.TabIndex = 4;
+            // 
+            // desc_txt
+            // 
+            this.desc_txt.Location = new System.Drawing.Point(75, 47);
+            this.desc_txt.Name = "desc_txt";
+            this.desc_txt.ReadOnly = true;
+            this.desc_txt.Size = new System.Drawing.Size(211, 20);
+            this.desc_txt.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Description:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.part_txt);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.pnum_txt);
+            this.groupBox1.Controls.Add(this.desc_txt);
+            this.groupBox1.Location = new System.Drawing.Point(12, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.groupBox1.Size = new System.Drawing.Size(292, 85);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
             // 
             // Operations_CopyMethods
             // 

@@ -29,7 +29,7 @@ namespace Epicor_Integration
 
         #endregion
 
-        public Bill_Master(List<string> BillParts, List<string> BillQty, string ParentNumber)
+        public Bill_Master(string ParentNumber, string Rev)
         {
             InitializeComponent();
 
@@ -37,7 +37,77 @@ namespace Epicor_Integration
 
             gid_txt.Text = Properties.Settings.Default.ecogroup;
 
-            parentrev_txt.Text = DataList.GetCurrentRev(ParentNumber);
+            parentrev_txt.Text = Rev;
+
+            partnum_txt.Leave += partnum_txt_Leave;
+
+            mtlseq_txt.Text = GetNextSeq().ToString();
+
+            parent_txt.Text = ParentNumber;
+
+            try
+            {
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+
+                BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    MessageBox.Show("You must check part out before continuing.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+
+                    CheckOut_Master CO_M = new CheckOut_Master(parent_txt.Text);
+
+                    DialogResult dr = CO_M.ShowDialog();
+
+                    if (dr != DialogResult.Cancel)
+                    {
+                        EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+
+                        BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+                    }
+                    else
+                        this.Close();
+                }
+                catch (Exception ex1) { MessageBox.Show(ex1.Message + "\n\nThis process will now close", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            }
+
+            #region Fill Operations
+
+            EngWBDS.Tables["ECOOpr"].Columns.Add("FullCode", typeof(string), "OprSeq + ' - ' + OpDesc");
+
+            ops_cbo.DataSource = EngWBDS.Tables["ECOOpr"];
+
+            ops_cbo.DisplayMember = "FullCode";
+
+            ops_cbo.ValueMember = "OprSeq";
+
+            ops_cbo.SelectedValue = "10";
+
+            #endregion
+
+            UpdateParentDesc();
+
+            EnableItemDetails();
+
+            this.FormClosing += Bill_Master_FormClosing;
+
+            //Setbill(BillParts, BillQty);
+        }
+
+        public Bill_Master(List<string> BillParts, List<string> BillQty, string ParentNumber, string Rev)
+        {
+            InitializeComponent();
+
+            BillDataGrid.AutoGenerateColumns = false;
+
+            gid_txt.Text = Properties.Settings.Default.ecogroup;
+
+            if (Rev == "")
+                parentrev_txt.Text = DataList.GetCurrentRev(ParentNumber);
+            else
+                parentrev_txt.Text = Rev;
 
             partnum_txt.Leave += partnum_txt_Leave;
 
@@ -138,6 +208,8 @@ namespace Epicor_Integration
 
             if (BillDataGrid.Rows.Count == 0)
                 button1.Enabled = false;
+
+            //BillDataGrid.CurrentCell = BillDataGrid[0, 0];
         }
 
         void BillDataGrid_Sorted(object sender, EventArgs e)

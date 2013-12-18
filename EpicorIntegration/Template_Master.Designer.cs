@@ -113,6 +113,7 @@
             this.supplierid_txt = new System.Windows.Forms.TextBox();
             this.supplierid_btn = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.addop_btn = new System.Windows.Forms.Button();
             this.remop_btn = new System.Windows.Forms.Button();
             this.oomtemplatename_txt = new System.Windows.Forms.TextBox();
@@ -179,6 +180,7 @@
             this.AddBill = new System.Windows.Forms.Button();
             this.DelBill = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.PullAsAsm_chk = new System.Windows.Forms.CheckBox();
             this.billtemplatename_txt = new System.Windows.Forms.TextBox();
             this.operation_txt = new System.Windows.Forms.TextBox();
             this.RawMenu = new System.Windows.Forms.Button();
@@ -211,13 +213,11 @@
             this.OprDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OprPropertyQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OprPropertyUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyOptions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOption = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OprPropertyOption1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OprPropertyOption3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OprPropertyOption4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OprPropertyOption2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.PullAsAsm_chk = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.ItemTab.SuspendLayout();
             this.ItemSplit.Panel1.SuspendLayout();
@@ -1171,6 +1171,15 @@
             this.groupBox4.TabIndex = 16;
             this.groupBox4.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(8, 45);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Add Sub Con";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // addop_btn
             // 
             this.addop_btn.Location = new System.Drawing.Point(8, 16);
@@ -1327,7 +1336,7 @@
             this.OprDesc,
             this.OprPropertyQty,
             this.OprPropertyUOM,
-            this.OprPropertyOptions,
+            this.OprPropertyOption,
             this.OprPropertyOption1,
             this.OprPropertyOption3,
             this.OprPropertyOption4,
@@ -1955,6 +1964,17 @@
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             // 
+            // PullAsAsm_chk
+            // 
+            this.PullAsAsm_chk.AutoSize = true;
+            this.PullAsAsm_chk.Location = new System.Drawing.Point(319, 106);
+            this.PullAsAsm_chk.Name = "PullAsAsm_chk";
+            this.PullAsAsm_chk.Size = new System.Drawing.Size(105, 17);
+            this.PullAsAsm_chk.TabIndex = 16;
+            this.PullAsAsm_chk.Text = "Pull As Assembly";
+            this.PullAsAsm_chk.UseVisualStyleBackColor = true;
+            this.PullAsAsm_chk.CheckedChanged += new System.EventHandler(this.PullAsAsm_chk_CheckedChanged);
+            // 
             // billtemplatename_txt
             // 
             this.billtemplatename_txt.Location = new System.Drawing.Point(10, 32);
@@ -2259,12 +2279,12 @@
             this.OprPropertyUOM.ReadOnly = true;
             this.OprPropertyUOM.Width = 79;
             // 
-            // OprPropertyOptions
+            // OprPropertyOption
             // 
-            this.OprPropertyOptions.DataPropertyName = "PropertyOption";
-            this.OprPropertyOptions.HeaderText = "Supplier ID";
-            this.OprPropertyOptions.Name = "OprPropertyOptions";
-            this.OprPropertyOptions.ReadOnly = true;
+            this.OprPropertyOption.DataPropertyName = "PropertyOption";
+            this.OprPropertyOption.HeaderText = "Supplier ID";
+            this.OprPropertyOption.Name = "OprPropertyOption";
+            this.OprPropertyOption.ReadOnly = true;
             // 
             // OprPropertyOption1
             // 
@@ -2293,26 +2313,6 @@
             this.OprPropertyOption2.HeaderText = "Cost";
             this.OprPropertyOption2.Name = "OprPropertyOption2";
             this.OprPropertyOption2.ReadOnly = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(8, 45);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Add Sub Con";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // PullAsAsm_chk
-            // 
-            this.PullAsAsm_chk.AutoSize = true;
-            this.PullAsAsm_chk.Location = new System.Drawing.Point(319, 106);
-            this.PullAsAsm_chk.Name = "PullAsAsm_chk";
-            this.PullAsAsm_chk.Size = new System.Drawing.Size(105, 17);
-            this.PullAsAsm_chk.TabIndex = 16;
-            this.PullAsAsm_chk.Text = "Pull As Assembly";
-            this.PullAsAsm_chk.UseVisualStyleBackColor = true;
-            this.PullAsAsm_chk.CheckedChanged += new System.EventHandler(this.PullAsAsm_chk_CheckedChanged);
             // 
             // Template_Master
             // 
@@ -2577,18 +2577,18 @@
         private System.Windows.Forms.TextBox supplieradd_txt;
         private System.Windows.Forms.TextBox supplierid_txt;
         private System.Windows.Forms.Button supplierid_btn;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox PullAsAsm_chk;
         private System.Windows.Forms.DataGridViewTextBoxColumn Oprrow_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyType;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyUOM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOptions;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption1;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption3;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption4;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox PullAsAsm_chk;
     }
 }
