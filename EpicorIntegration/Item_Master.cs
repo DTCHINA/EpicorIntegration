@@ -222,6 +222,8 @@ namespace Epicor_Integration
             {
                 UpdateFormSet(Partnumber_txt.Text);
 
+                uom_cbo.Enabled = false;
+
                 if (Description_txt.Text != _Description || NetWeight.Value != _Weight || group_cbo.Text != _Group || class_cbo.Text != _Class || type_cbo.Text != _Type)
                 {
                     DialogResult DR = MessageBox.Show("Override Epicor values with values from the model?\n\n" + _Description + " → " + Description_txt.Text + "\n" + _Weight.ToString() + " → " + NetWeight.Value.ToString() + "\n" + _Group + " → " + group_cbo.Text + "\n" + _Class + " → " + class_cbo.Text + "\n" + _Type + " → " + type_cbo.Text, "Property Override", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -571,7 +573,13 @@ namespace Epicor_Integration
             {
                 DT.Columns.Add(new DataColumn("WarehouseCode", typeof(System.String)));
 
-                DT.Columns.Add(new DataColumn("WarehouseName", typeof(System.String)));
+                DT.Columns.Add(new DataColumn("WarehouseDescription", typeof(System.String)));
+
+                DT.Columns.Add(new DataColumn("Company", typeof(System.String)));
+
+                DT.Columns.Add(new DataColumn("Plant", typeof(System.String)));
+
+                DT.Columns.Add(new DataColumn("PartNum", typeof(System.String)));
             }
 
             for (int i = 0; i < Pdata.PlantWhse.Count ; i++)
@@ -584,7 +592,7 @@ namespace Epicor_Integration
 
                 foreach (DataRow Dr in DT.Rows)
                 {
-                    if (Dr["WarehouseName"].ToString() == Wh)
+                    if (Dr["WarehouseDescription"].ToString() == Wh)
                     {
                         toAdd = false;
 
@@ -598,20 +606,20 @@ namespace Epicor_Integration
 
                     DR["WarehouseCode"] = WhC;
 
-                    DR["WarehouseName"] = Wh;
+                    DR["WarehouseDescription"] = Wh;
 
-                    //DR["Company"] = "NORCO";
+                    DR["Company"] = "NORCO";
 
-                    //DR["PartNum"] = Partnumber_txt.Text;
+                    DR["PartNum"] = Partnumber_txt.Text;
 
-                    //DR["Plant"] = Pdata.PartPlant;
+                    DR["Plant"] = Pdata.PartPlant;
 
                     DT.Rows.Add(DR);
                 }
 
                 whse_cbo.DataSource = DT;
 
-                whse_cbo.DisplayMember = "WarehouseName";
+                whse_cbo.DisplayMember = "WarehouseDescription";
 
                 whse_cbo.ValueMember = "WarehouseCode";
             }
@@ -620,9 +628,11 @@ namespace Epicor_Integration
             {
                 trackserial.Checked = Pdata.TrackSerial;
 
-                SerialMask_Master SM = new SerialMask_Master(Pdata.TrackSerial_Mask);
+                SerialPrefix = Pdata.TrackSerial_Mask;
 
-                SM.ShowDialog();
+                //SerialMask_Master SM = new SerialMask_Master(Pdata.TrackSerial_Mask);
+
+                //SM.ShowDialog();
             }
 
             trackserial.CheckedChanged += trackserial_CheckedChanged;

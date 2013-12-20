@@ -36,8 +36,6 @@
             this.prodstd_btn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.LaborEntryMethod_cbo = new System.Windows.Forms.ComboBox();
-            this.SNRequiredOpr_chk = new System.Windows.Forms.CheckBox();
-            this.AutoRecieve_chk = new System.Windows.Forms.CheckBox();
             this.prodstd_cbo = new System.Windows.Forms.ComboBox();
             this.prodhrs_num = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,6 +68,8 @@
             this.supplieradd_txt = new System.Windows.Forms.TextBox();
             this.supplierid_txt = new System.Windows.Forms.TextBox();
             this.supplierid_btn = new System.Windows.Forms.Button();
+            this.AutoRecieve_chk = new System.Windows.Forms.CheckBox();
+            this.SNRequiredOpr_chk = new System.Windows.Forms.CheckBox();
             this.gid_txt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.rev_txt = new System.Windows.Forms.TextBox();
@@ -77,7 +77,6 @@
             this.partnumber_txt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.OPDataGrid = new System.Windows.Forms.DataGridView();
-            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.OprSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +104,7 @@
             this.VendorNumTermsCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VendorNumCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubContract = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MajorContainer.Panel1.SuspendLayout();
             this.MajorContainer.Panel2.SuspendLayout();
             this.MajorContainer.SuspendLayout();
@@ -152,13 +152,13 @@
             // ops_grp
             // 
             this.ops_grp.Controls.Add(this.prodstd_btn);
-            this.ops_grp.Controls.Add(this.label6);
             this.ops_grp.Controls.Add(this.LaborEntryMethod_cbo);
             this.ops_grp.Controls.Add(this.prodstd_cbo);
             this.ops_grp.Controls.Add(this.prodhrs_num);
             this.ops_grp.Controls.Add(this.label3);
-            this.ops_grp.Controls.Add(this.label1);
             this.ops_grp.Controls.Add(this.opmast_cbo);
+            this.ops_grp.Controls.Add(this.label6);
+            this.ops_grp.Controls.Add(this.label1);
             this.ops_grp.Location = new System.Drawing.Point(12, 61);
             this.ops_grp.Name = "ops_grp";
             this.ops_grp.Size = new System.Drawing.Size(578, 110);
@@ -193,29 +193,6 @@
             this.LaborEntryMethod_cbo.Size = new System.Drawing.Size(150, 21);
             this.LaborEntryMethod_cbo.TabIndex = 12;
             this.LaborEntryMethod_cbo.SelectedIndexChanged += new System.EventHandler(this.LaborEntryMethod_cbo_SelectedIndexChanged);
-            // 
-            // SNRequiredOpr_chk
-            // 
-            this.SNRequiredOpr_chk.AutoSize = true;
-            this.SNRequiredOpr_chk.Location = new System.Drawing.Point(313, 35);
-            this.SNRequiredOpr_chk.Name = "SNRequiredOpr_chk";
-            this.SNRequiredOpr_chk.Size = new System.Drawing.Size(126, 17);
-            this.SNRequiredOpr_chk.TabIndex = 11;
-            this.SNRequiredOpr_chk.Text = "Serial Num. Required";
-            this.SNRequiredOpr_chk.UseVisualStyleBackColor = true;
-            this.SNRequiredOpr_chk.CheckedChanged += new System.EventHandler(this.SNRequiredOpr_chk_CheckedChanged);
-            // 
-            // AutoRecieve_chk
-            // 
-            this.AutoRecieve_chk.AutoSize = true;
-            this.AutoRecieve_chk.Enabled = false;
-            this.AutoRecieve_chk.Location = new System.Drawing.Point(313, 12);
-            this.AutoRecieve_chk.Name = "AutoRecieve_chk";
-            this.AutoRecieve_chk.Size = new System.Drawing.Size(158, 17);
-            this.AutoRecieve_chk.TabIndex = 10;
-            this.AutoRecieve_chk.Text = "Auto Recieve into Inventory";
-            this.AutoRecieve_chk.UseVisualStyleBackColor = true;
-            this.AutoRecieve_chk.CheckedChanged += new System.EventHandler(this.AutoRecieve_chk_CheckedChanged);
             // 
             // prodstd_cbo
             // 
@@ -548,6 +525,29 @@
             this.supplierid_btn.UseVisualStyleBackColor = true;
             this.supplierid_btn.Click += new System.EventHandler(this.supplierid_btn_Click);
             // 
+            // AutoRecieve_chk
+            // 
+            this.AutoRecieve_chk.AutoSize = true;
+            this.AutoRecieve_chk.Enabled = false;
+            this.AutoRecieve_chk.Location = new System.Drawing.Point(313, 12);
+            this.AutoRecieve_chk.Name = "AutoRecieve_chk";
+            this.AutoRecieve_chk.Size = new System.Drawing.Size(158, 17);
+            this.AutoRecieve_chk.TabIndex = 10;
+            this.AutoRecieve_chk.Text = "Auto Recieve into Inventory";
+            this.AutoRecieve_chk.UseVisualStyleBackColor = true;
+            this.AutoRecieve_chk.CheckedChanged += new System.EventHandler(this.AutoRecieve_chk_CheckedChanged);
+            // 
+            // SNRequiredOpr_chk
+            // 
+            this.SNRequiredOpr_chk.AutoSize = true;
+            this.SNRequiredOpr_chk.Location = new System.Drawing.Point(313, 35);
+            this.SNRequiredOpr_chk.Name = "SNRequiredOpr_chk";
+            this.SNRequiredOpr_chk.Size = new System.Drawing.Size(126, 17);
+            this.SNRequiredOpr_chk.TabIndex = 11;
+            this.SNRequiredOpr_chk.Text = "Serial Num. Required";
+            this.SNRequiredOpr_chk.UseVisualStyleBackColor = true;
+            this.SNRequiredOpr_chk.CheckedChanged += new System.EventHandler(this.SNRequiredOpr_chk_CheckedChanged);
+            // 
             // gid_txt
             // 
             this.gid_txt.BackColor = System.Drawing.Color.White;
@@ -654,11 +654,6 @@
             this.OPDataGrid.ShowRowErrors = false;
             this.OPDataGrid.Size = new System.Drawing.Size(782, 288);
             this.OPDataGrid.TabIndex = 0;
-            // 
-            // TemplateMenu
-            // 
-            this.TemplateMenu.Name = "TemplateMenu";
-            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // OprSeq
             // 
@@ -867,6 +862,11 @@
             this.SubContract.Name = "SubContract";
             this.SubContract.ReadOnly = true;
             this.SubContract.Visible = false;
+            // 
+            // TemplateMenu
+            // 
+            this.TemplateMenu.Name = "TemplateMenu";
+            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // Operations_Master
             // 

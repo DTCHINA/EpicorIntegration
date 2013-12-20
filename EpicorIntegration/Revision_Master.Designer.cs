@@ -36,17 +36,17 @@
             this.Searchbtn = new System.Windows.Forms.Button();
             this.Searchtxt = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.econum_txt = new System.Windows.Forms.TextBox();
+            this.comments_txt = new System.Windows.Forms.TextBox();
             this.newrev_txt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.currev_txt = new System.Windows.Forms.TextBox();
             this.revdesc_txt = new System.Windows.Forms.TextBox();
-            this.checkout_chk = new System.Windows.Forms.CheckBox();
-            this.comments_txt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.econum_txt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkout_chk = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +88,7 @@
             this.gid_desc.Location = new System.Drawing.Point(6, 19);
             this.gid_desc.Name = "gid_desc";
             this.gid_desc.Size = new System.Drawing.Size(181, 20);
-            this.gid_desc.TabIndex = 1;
+            this.gid_desc.TabIndex = 0;
             // 
             // Searchbtn
             // 
@@ -105,22 +105,22 @@
             this.Searchtxt.Location = new System.Drawing.Point(87, 21);
             this.Searchtxt.Name = "Searchtxt";
             this.Searchtxt.Size = new System.Drawing.Size(100, 20);
-            this.Searchtxt.TabIndex = 39;
+            this.Searchtxt.TabIndex = 1;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.econum_txt);
-            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.comments_txt);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.newrev_txt);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.currev_txt);
             this.groupBox2.Controls.Add(this.revdesc_txt);
             this.groupBox2.Controls.Add(this.Searchbtn);
             this.groupBox2.Controls.Add(this.Searchtxt);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(12, 69);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(407, 187);
@@ -128,56 +128,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part";
             // 
-            // label3
+            // econum_txt
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 76);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
-            this.label3.TabIndex = 45;
-            this.label3.Text = "New Revision:";
-            // 
-            // newrev_txt
-            // 
-            this.newrev_txt.Location = new System.Drawing.Point(87, 73);
-            this.newrev_txt.Name = "newrev_txt";
-            this.newrev_txt.Size = new System.Drawing.Size(100, 20);
-            this.newrev_txt.TabIndex = 44;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "Cur Revision:";
-            // 
-            // currev_txt
-            // 
-            this.currev_txt.Location = new System.Drawing.Point(87, 47);
-            this.currev_txt.Name = "currev_txt";
-            this.currev_txt.Size = new System.Drawing.Size(100, 20);
-            this.currev_txt.TabIndex = 41;
-            // 
-            // revdesc_txt
-            // 
-            this.revdesc_txt.Location = new System.Drawing.Point(9, 151);
-            this.revdesc_txt.Name = "revdesc_txt";
-            this.revdesc_txt.Size = new System.Drawing.Size(375, 20);
-            this.revdesc_txt.TabIndex = 40;
-            // 
-            // checkout_chk
-            // 
-            this.checkout_chk.AutoSize = true;
-            this.checkout_chk.Checked = true;
-            this.checkout_chk.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkout_chk.Location = new System.Drawing.Point(320, 33);
-            this.checkout_chk.Name = "checkout_chk";
-            this.checkout_chk.Size = new System.Drawing.Size(99, 17);
-            this.checkout_chk.TabIndex = 41;
-            this.checkout_chk.Text = "Check Out Part";
-            this.checkout_chk.UseVisualStyleBackColor = true;
+            this.econum_txt.Location = new System.Drawing.Point(9, 112);
+            this.econum_txt.Name = "econum_txt";
+            this.econum_txt.Size = new System.Drawing.Size(178, 20);
+            this.econum_txt.TabIndex = 4;
             // 
             // comments_txt
             // 
@@ -185,25 +141,28 @@
             this.comments_txt.Multiline = true;
             this.comments_txt.Name = "comments_txt";
             this.comments_txt.Size = new System.Drawing.Size(178, 101);
-            this.comments_txt.TabIndex = 46;
+            this.comments_txt.TabIndex = 6;
             // 
-            // label1
+            // newrev_txt
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 135);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 13);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Revision Description:";
+            this.newrev_txt.Location = new System.Drawing.Point(87, 73);
+            this.newrev_txt.Name = "newrev_txt";
+            this.newrev_txt.Size = new System.Drawing.Size(100, 20);
+            this.newrev_txt.TabIndex = 3;
             // 
-            // label4
+            // currev_txt
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(203, 24);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
-            this.label4.TabIndex = 47;
-            this.label4.Text = "Comments:";
+            this.currev_txt.Location = new System.Drawing.Point(87, 47);
+            this.currev_txt.Name = "currev_txt";
+            this.currev_txt.Size = new System.Drawing.Size(100, 20);
+            this.currev_txt.TabIndex = 2;
+            // 
+            // revdesc_txt
+            // 
+            this.revdesc_txt.Location = new System.Drawing.Point(9, 151);
+            this.revdesc_txt.Name = "revdesc_txt";
+            this.revdesc_txt.Size = new System.Drawing.Size(375, 20);
+            this.revdesc_txt.TabIndex = 5;
             // 
             // label5
             // 
@@ -214,12 +173,53 @@
             this.label5.TabIndex = 49;
             this.label5.Text = "ECO Number:";
             // 
-            // econum_txt
+            // label4
             // 
-            this.econum_txt.Location = new System.Drawing.Point(9, 112);
-            this.econum_txt.Name = "econum_txt";
-            this.econum_txt.Size = new System.Drawing.Size(178, 20);
-            this.econum_txt.TabIndex = 48;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(203, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.TabIndex = 47;
+            this.label4.Text = "Comments:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "New Revision:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Cur Revision:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 135);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 13);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Revision Description:";
+            // 
+            // checkout_chk
+            // 
+            this.checkout_chk.AutoSize = true;
+            this.checkout_chk.Checked = true;
+            this.checkout_chk.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkout_chk.Location = new System.Drawing.Point(320, 33);
+            this.checkout_chk.Name = "checkout_chk";
+            this.checkout_chk.Size = new System.Drawing.Size(99, 17);
+            this.checkout_chk.TabIndex = 100;
+            this.checkout_chk.Text = "Check Out Part";
+            this.checkout_chk.UseVisualStyleBackColor = true;
             // 
             // Revision_Master
             // 

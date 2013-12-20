@@ -76,14 +76,14 @@
             // 
             this.MajorHorizSplit.Panel1.Controls.Add(this.groupBox2);
             this.MajorHorizSplit.Panel1.Controls.Add(this.operation_txt);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.label1);
             this.MajorHorizSplit.Panel1.Controls.Add(this.gid_txt);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.label5);
             this.MajorHorizSplit.Panel1.Controls.Add(this.rev_txt);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.label4);
             this.MajorHorizSplit.Panel1.Controls.Add(this.partnumber_txt);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.label2);
             this.MajorHorizSplit.Panel1.Controls.Add(this.groupBox1);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.label1);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.label5);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.label4);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.label2);
             // 
             // MajorHorizSplit.Panel2
             // 
@@ -94,9 +94,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.resourcegrp_cbo);
             this.groupBox2.Controls.Add(this.resource_cbo);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Location = new System.Drawing.Point(12, 91);
             this.groupBox2.Name = "groupBox2";
@@ -136,7 +136,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(208, 11);
+            this.label7.Location = new System.Drawing.Point(208, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 23;

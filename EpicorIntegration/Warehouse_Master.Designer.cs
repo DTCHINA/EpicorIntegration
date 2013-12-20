@@ -38,12 +38,12 @@
             this.rem_btn = new System.Windows.Forms.Button();
             this.add_btn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.partnum_txt = new System.Windows.Forms.TextBox();
             this.plant_txt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.whse_cbo = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.WhseDataGrid)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -161,6 +161,22 @@
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             // 
+            // partnum_txt
+            // 
+            this.partnum_txt.Location = new System.Drawing.Point(10, 32);
+            this.partnum_txt.Name = "partnum_txt";
+            this.partnum_txt.ReadOnly = true;
+            this.partnum_txt.Size = new System.Drawing.Size(100, 20);
+            this.partnum_txt.TabIndex = 29;
+            // 
+            // plant_txt
+            // 
+            this.plant_txt.Location = new System.Drawing.Point(116, 32);
+            this.plant_txt.Name = "plant_txt";
+            this.plant_txt.ReadOnly = true;
+            this.plant_txt.Size = new System.Drawing.Size(116, 20);
+            this.plant_txt.TabIndex = 31;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -179,21 +195,14 @@
             this.label3.TabIndex = 32;
             this.label3.Text = "Plant:";
             // 
-            // partnum_txt
+            // whse_cbo
             // 
-            this.partnum_txt.Location = new System.Drawing.Point(10, 32);
-            this.partnum_txt.Name = "partnum_txt";
-            this.partnum_txt.ReadOnly = true;
-            this.partnum_txt.Size = new System.Drawing.Size(100, 20);
-            this.partnum_txt.TabIndex = 29;
-            // 
-            // plant_txt
-            // 
-            this.plant_txt.Location = new System.Drawing.Point(116, 32);
-            this.plant_txt.Name = "plant_txt";
-            this.plant_txt.ReadOnly = true;
-            this.plant_txt.Size = new System.Drawing.Size(116, 20);
-            this.plant_txt.TabIndex = 31;
+            this.whse_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.whse_cbo.FormattingEnabled = true;
+            this.whse_cbo.Location = new System.Drawing.Point(18, 104);
+            this.whse_cbo.Name = "whse_cbo";
+            this.whse_cbo.Size = new System.Drawing.Size(240, 21);
+            this.whse_cbo.TabIndex = 37;
             // 
             // label1
             // 
@@ -204,15 +213,6 @@
             this.label1.TabIndex = 38;
             this.label1.Text = "Warehouse:";
             // 
-            // whse_cbo
-            // 
-            this.whse_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.whse_cbo.FormattingEnabled = true;
-            this.whse_cbo.Location = new System.Drawing.Point(18, 104);
-            this.whse_cbo.Name = "whse_cbo";
-            this.whse_cbo.Size = new System.Drawing.Size(240, 21);
-            this.whse_cbo.TabIndex = 37;
-            // 
             // Warehouse_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,6 +221,8 @@
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Warehouse_Master";
             this.Text = "Add Warehouse to Item";
             this.Load += new System.EventHandler(this.Warehouse_Master_Load);

@@ -86,6 +86,15 @@ namespace Epicor_Integration
 
                 this.Close();
             }
+
+            string outMessage;
+
+            if (DataList.PartCheckOutStatus(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text, out outMessage))
+            {
+                MessageBox.Show("Part is already checked out!  This will now close.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                this.Close();
+            }
         }
 
         private void gid_cbo_SelectedIndexChanged(object sender, EventArgs e)

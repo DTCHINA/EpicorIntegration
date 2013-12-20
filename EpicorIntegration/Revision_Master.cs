@@ -72,6 +72,13 @@ namespace Epicor_Integration
         private void Revision_Master_Load(object sender, EventArgs e)
         {
             gid_cbo_SelectedIndexChanged(null, null);
+
+            if (currev_txt.Text == newrev_txt.Text)
+            {
+                MessageBox.Show("Current Revision and New Revision from SolidWorks match!\nCheck this item out using the Check Out tool.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                this.Close();
+            }
         }
 
         private void savebtn_Click(object sender, EventArgs e)
@@ -111,5 +118,6 @@ namespace Epicor_Integration
             Searchfrm.Dispose();
                 
         }
+
     }
 }

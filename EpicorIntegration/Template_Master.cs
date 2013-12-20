@@ -1233,53 +1233,57 @@ namespace Epicor_Integration
 
         void OPDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            prodhrs_num.ValueChanged -= prodhrs_num_ValueChanged;
-
-            seq_txt.TextChanged -= seq_txt_TextChanged;
-
-            if (OPDataGrid["OprPropertyOption", OPDataGrid.CurrentCellAddress.Y].Value == null)
+            try
             {
-                ops_grp.Visible = false;
+                prodhrs_num.ValueChanged -= prodhrs_num_ValueChanged;
 
-                subcon_grp.Visible = true;
+                seq_txt.TextChanged -= seq_txt_TextChanged;
 
-                subcon_grp.Location = new Point(ops_grp.Location.X, ops_grp.Location.Y);
+                if (OPDataGrid["OprPropertyOption", OPDataGrid.CurrentCellAddress.Y].Value == null)
+                {
+                    ops_grp.Visible = false;
 
-                subcon_opsmast_cbo.SelectedValue = OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
+                    subcon_grp.Visible = true;
 
-                refneeded_chk.Checked = (OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString() != "0".ToString());
+                    subcon_grp.Location = new Point(ops_grp.Location.X, ops_grp.Location.Y);
 
-                if (refneeded_chk.Checked)
-                    quotesreq_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString());
+                    subcon_opsmast_cbo.SelectedValue = OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
 
-                supplierid_txt.Text = OPDataGrid["OprPropertyOption", OPDataGrid.CurrentRow.Index].Value.ToString();
+                    refneeded_chk.Checked = (OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString() != "0".ToString());
 
-                unitcost_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption2", OPDataGrid.CurrentRow.Index].Value.ToString());
+                    if (refneeded_chk.Checked)
+                        quotesreq_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString());
 
-                daysout_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption3", OPDataGrid.CurrentRow.Index].Value.ToString());
+                    supplierid_txt.Text = OPDataGrid["OprPropertyOption", OPDataGrid.CurrentRow.Index].Value.ToString();
 
-                qtyper_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption4", OPDataGrid.CurrentRow.Index].Value.ToString());
+                    unitcost_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption2", OPDataGrid.CurrentRow.Index].Value.ToString());
 
-                subconuom_cbo.SelectedValue = OPDataGrid["OprPropertyUOM",OPDataGrid.CurrentRow.Index].Value.ToString();
+                    daysout_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption3", OPDataGrid.CurrentRow.Index].Value.ToString());
+
+                    qtyper_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption4", OPDataGrid.CurrentRow.Index].Value.ToString());
+
+                    subconuom_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
+                }
+                else
+                {
+                    ops_grp.Visible = true;
+
+                    subcon_grp.Visible = false;
+
+                    prodhrs_num.Value = decimal.Parse(OPDataGrid["OprPropertyQty", OPDataGrid.CurrentRow.Index].Value.ToString());
+
+                    seq_txt.Text = OPDataGrid["OprPropertyType", OPDataGrid.CurrentRow.Index].Value.ToString();
+
+                    opmast_cbo.SelectedValue = OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
+
+                    prodstd_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
+                }
+
+                prodhrs_num.ValueChanged += prodhrs_num_ValueChanged;
+
+                seq_txt.TextChanged += seq_txt_TextChanged;
             }
-            else
-            {
-                ops_grp.Visible = true;
-
-                subcon_grp.Visible = false;
-
-                prodhrs_num.Value = decimal.Parse(OPDataGrid["OprPropertyQty", OPDataGrid.CurrentRow.Index].Value.ToString());
-
-                seq_txt.Text = OPDataGrid["OprPropertyType", OPDataGrid.CurrentRow.Index].Value.ToString();
-
-                opmast_cbo.SelectedValue = OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
-
-                prodstd_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
-            }
-
-            prodhrs_num.ValueChanged += prodhrs_num_ValueChanged;
-
-            seq_txt.TextChanged += seq_txt_TextChanged;
+            catch { }
         }
 
         void seq_txt_TextChanged(object sender, EventArgs e)
@@ -1452,7 +1456,11 @@ namespace Epicor_Integration
 
         private void supplierid_txt_TextChanged(object sender, EventArgs e)
         {
-            OPDataGrid["OprPropertyOption", OPDataGrid.CurrentRow.Index].Value = supplierid_txt.Text;
+            try
+            {
+                OPDataGrid["OprPropertyOption", OPDataGrid.CurrentRow.Index].Value = supplierid_txt.Text;
+            }
+            catch { }
         }
 
         private void unitcost_num_ValueChanged(object sender, EventArgs e)

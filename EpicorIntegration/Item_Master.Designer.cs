@@ -54,6 +54,7 @@
             this.savebtn = new System.Windows.Forms.Button();
             this.uomweight_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.phantom_chk = new System.Windows.Forms.CheckBox();
             this.qtybearing = new System.Windows.Forms.CheckBox();
             this.userevision = new System.Windows.Forms.CheckBox();
             this.trackserial = new System.Windows.Forms.CheckBox();
@@ -63,7 +64,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.copy_btn = new System.Windows.Forms.Button();
             this.TemplatesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.phantom_chk = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -131,13 +131,13 @@
             // 
             // NetWeight
             // 
-            this.NetWeight.DecimalPlaces = 2;
+            this.NetWeight.DecimalPlaces = 4;
             this.NetWeight.Location = new System.Drawing.Point(9, 150);
             this.NetWeight.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
+            -727379969,
+            232,
             0,
-            131072});
+            262144});
             this.NetWeight.Name = "NetWeight";
             this.NetWeight.Size = new System.Drawing.Size(102, 20);
             this.NetWeight.TabIndex = 13;
@@ -314,6 +314,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detail";
             // 
+            // phantom_chk
+            // 
+            this.phantom_chk.AutoSize = true;
+            this.phantom_chk.Location = new System.Drawing.Point(228, 206);
+            this.phantom_chk.Name = "phantom_chk";
+            this.phantom_chk.Size = new System.Drawing.Size(95, 17);
+            this.phantom_chk.TabIndex = 35;
+            this.phantom_chk.Text = "Phantom BOM";
+            this.phantom_chk.UseVisualStyleBackColor = true;
+            // 
             // qtybearing
             // 
             this.qtybearing.AutoSize = true;
@@ -403,16 +413,6 @@
             // 
             this.TemplatesMenu.Name = "TemplatesMenu";
             this.TemplatesMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // phantom_chk
-            // 
-            this.phantom_chk.AutoSize = true;
-            this.phantom_chk.Location = new System.Drawing.Point(228, 206);
-            this.phantom_chk.Name = "phantom_chk";
-            this.phantom_chk.Size = new System.Drawing.Size(95, 17);
-            this.phantom_chk.TabIndex = 35;
-            this.phantom_chk.Text = "Phantom BOM";
-            this.phantom_chk.UseVisualStyleBackColor = true;
             // 
             // Item_Master
             // 

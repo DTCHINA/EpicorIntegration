@@ -148,7 +148,7 @@ namespace Epicor_Integration
             FillProdStd();
 
             EnableSNChk();
-            
+
             string Message;
 
             if (!DataList.PartCheckOutStatus(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, out Message))
@@ -187,7 +187,11 @@ namespace Epicor_Integration
 
             SNRequiredOpr_chk.Click += SNRequiredOpr_chk_Click;
 
-            OPDataGrid.CurrentCell = OPDataGrid[0, 0];
+            try
+            {
+                OPDataGrid.CurrentCell = OPDataGrid[0, 0];
+            }
+            catch (Exception ex) { }//MessageBox.Show(ex.Message, ex.TargetSite.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         void SNRequiredOpr_chk_Click(object sender, EventArgs e)

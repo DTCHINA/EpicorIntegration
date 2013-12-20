@@ -145,11 +145,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.currev_chk);
             this.groupBox2.Controls.Add(this.rev_txt);
-            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.partnumber_txt);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(12, 101);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(202, 125);

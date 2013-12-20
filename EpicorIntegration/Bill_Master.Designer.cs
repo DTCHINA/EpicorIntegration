@@ -37,6 +37,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.gid_txt = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.reseq_btn = new System.Windows.Forms.Button();
             this.saveandclose_btn = new System.Windows.Forms.Button();
             this.newbtn = new System.Windows.Forms.Button();
             this.removebtn = new System.Windows.Forms.Button();
@@ -63,6 +64,10 @@
             this.mtlseq_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.BillDataGrid = new System.Windows.Forms.DataGridView();
+            this.PartTimer = new System.Windows.Forms.Timer(this.components);
+            this.EnableNew = new System.Windows.Forms.Timer(this.components);
+            this.RawMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MtlPartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,11 +77,6 @@
             this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PullAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PartTimer = new System.Windows.Forms.Timer(this.components);
-            this.EnableNew = new System.Windows.Forms.Timer(this.components);
-            this.RawMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.reseq_btn = new System.Windows.Forms.Button();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -96,16 +96,16 @@
             // 
             // MajorHorizSplit.Panel1
             // 
-            this.MajorHorizSplit.Panel1.Controls.Add(this.label8);
             this.MajorHorizSplit.Panel1.Controls.Add(this.parentrev_txt);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.label7);
             this.MajorHorizSplit.Panel1.Controls.Add(this.gid_txt);
             this.MajorHorizSplit.Panel1.Controls.Add(this.groupBox2);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.label2);
             this.MajorHorizSplit.Panel1.Controls.Add(this.parentdesc_txt);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.label1);
             this.MajorHorizSplit.Panel1.Controls.Add(this.parent_txt);
             this.MajorHorizSplit.Panel1.Controls.Add(this.groupBox1);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.label8);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.label7);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.label2);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.label1);
             // 
             // MajorHorizSplit.Panel2
             // 
@@ -163,6 +163,16 @@
             this.groupBox2.Size = new System.Drawing.Size(88, 239);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
+            // 
+            // reseq_btn
+            // 
+            this.reseq_btn.Location = new System.Drawing.Point(6, 74);
+            this.reseq_btn.Name = "reseq_btn";
+            this.reseq_btn.Size = new System.Drawing.Size(75, 23);
+            this.reseq_btn.TabIndex = 16;
+            this.reseq_btn.Text = "Re-Seq.";
+            this.reseq_btn.UseVisualStyleBackColor = true;
+            this.reseq_btn.Click += new System.EventHandler(this.reseq_btn_Click);
             // 
             // saveandclose_btn
             // 
@@ -452,6 +462,26 @@
             this.BillDataGrid.Size = new System.Drawing.Size(684, 200);
             this.BillDataGrid.TabIndex = 1;
             // 
+            // PartTimer
+            // 
+            this.PartTimer.Interval = 500;
+            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
+            // 
+            // EnableNew
+            // 
+            this.EnableNew.Enabled = true;
+            this.EnableNew.Tick += new System.EventHandler(this.EnableNew_Tick);
+            // 
+            // RawMenu
+            // 
+            this.RawMenu.Name = "RawMenu";
+            this.RawMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // TemplateMenu
+            // 
+            this.TemplateMenu.Name = "TemplateMenu";
+            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
+            // 
             // MtlSeq
             // 
             this.MtlSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -477,16 +507,16 @@
             this.MtlPartNum.HeaderText = "Part Number";
             this.MtlPartNum.Name = "MtlPartNum";
             this.MtlPartNum.ReadOnly = true;
-            this.MtlPartNum.Width = 84;
+            this.MtlPartNum.Width = 91;
             // 
             // MtlPartNumPartDescription
             // 
-            this.MtlPartNumPartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MtlPartNumPartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.MtlPartNumPartDescription.DataPropertyName = "MtlPartNumPartDescription";
             this.MtlPartNumPartDescription.HeaderText = "Description";
+            this.MtlPartNumPartDescription.MinimumWidth = 85;
             this.MtlPartNumPartDescription.Name = "MtlPartNumPartDescription";
             this.MtlPartNumPartDescription.ReadOnly = true;
-            this.MtlPartNumPartDescription.Width = 85;
             // 
             // RelatedOperation
             // 
@@ -504,7 +534,7 @@
             this.UOMCode.HeaderText = "UOM Code";
             this.UOMCode.Name = "UOMCode";
             this.UOMCode.ReadOnly = true;
-            this.UOMCode.Width = 78;
+            this.UOMCode.Width = 85;
             // 
             // ViewAsAsm
             // 
@@ -530,36 +560,6 @@
             this.OpDesc.Name = "OpDesc";
             this.OpDesc.ReadOnly = true;
             this.OpDesc.Width = 78;
-            // 
-            // PartTimer
-            // 
-            this.PartTimer.Interval = 500;
-            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
-            // 
-            // EnableNew
-            // 
-            this.EnableNew.Enabled = true;
-            this.EnableNew.Tick += new System.EventHandler(this.EnableNew_Tick);
-            // 
-            // RawMenu
-            // 
-            this.RawMenu.Name = "RawMenu";
-            this.RawMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // TemplateMenu
-            // 
-            this.TemplateMenu.Name = "TemplateMenu";
-            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // reseq_btn
-            // 
-            this.reseq_btn.Location = new System.Drawing.Point(6, 74);
-            this.reseq_btn.Name = "reseq_btn";
-            this.reseq_btn.Size = new System.Drawing.Size(75, 23);
-            this.reseq_btn.TabIndex = 16;
-            this.reseq_btn.Text = "Re-Seq.";
-            this.reseq_btn.UseVisualStyleBackColor = true;
-            this.reseq_btn.Click += new System.EventHandler(this.reseq_btn_Click);
             // 
             // Bill_Master
             // 
@@ -625,6 +625,7 @@
         private System.Windows.Forms.ContextMenuStrip RawMenu;
         private System.Windows.Forms.ContextMenuStrip TemplateMenu;
         private System.Windows.Forms.CheckBox PullAsAsm_chk;
+        private System.Windows.Forms.Button reseq_btn;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyPer;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNum;
@@ -634,7 +635,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ViewAsAsm;
         private System.Windows.Forms.DataGridViewCheckBoxColumn PullAsAsm;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
-        private System.Windows.Forms.Button reseq_btn;
 
     }
 }

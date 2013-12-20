@@ -60,8 +60,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.mask_txt);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(118, 68);
@@ -114,9 +114,9 @@
             this.ClientSize = new System.Drawing.Size(241, 140);
             this.Controls.Add(this.ok_btn);
             this.Controls.Add(this.cancel_btn);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.serialprefix_txt);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
