@@ -189,7 +189,8 @@ namespace Epicor_Integration
 
             try
             {
-                OPDataGrid.CurrentCell = OPDataGrid[0, 0];
+                if (OPDataGrid.Rows.Count > 0)
+                    OPDataGrid.CurrentCell = OPDataGrid[0, 0];
             }
             catch (Exception ex) { }//MessageBox.Show(ex.Message, ex.TargetSite.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
@@ -396,6 +397,8 @@ namespace Epicor_Integration
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpDesc"] = opmast_cbo.Text;
 
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
+
+            LaborEntryMethod_cbo.SelectedIndex = 1;
 
             resource_show.Enabled = false;
 

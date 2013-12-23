@@ -230,6 +230,10 @@ namespace Epicor_Integration
 
             GridRow.Add(MaxIndex);
 
+            resource_cbo.SelectedIndex = 0;
+
+            resourcegrp_cbo.SelectedIndex = 0;
+
             ResourceGrid.ClearSelection();
 
             ResourceGrid.CurrentCell = ResourceGrid.Rows[ResourceGrid.Rows.Count - 1].Cells[0];

@@ -308,25 +308,29 @@ namespace Epicor_Integration
 
             bool retval = false;
 
-            EngWorkBench EngWb = new EngWorkBench(EpicConn);
-
-            EngWorkBenchDataSet EngWbDS = new EngWorkBenchDataSet();
-
-            EngWbDS = EngWb.GetDatasetForTree(GroupID, PartNumber, Revision, "", DateTime.Today, true, false);
-
-            if (EngWbDS.Tables["ECORev"].Rows[0]["CheckedOut"].ToString() == "True" && EngWbDS.Tables["ECORev"].Rows[0]["CheckedOutBy"].ToString() != Environment.UserName.ToString())
+            try
             {
-                retval = true;
+                EngWorkBench EngWb = new EngWorkBench(EpicConn);
 
-                Message = "Item was checked out by " + EngWbDS.Tables["ECORev"].Rows[0]["CheckedOutBy"].ToString() + " on " + EngWbDS.Tables["ECORev"].Rows[0]["CheckedOutDate"].ToString();
+                EngWorkBenchDataSet EngWbDS = new EngWorkBenchDataSet();
+
+                EngWbDS = EngWb.GetDatasetForTree(GroupID, PartNumber, Revision, "", DateTime.Today, true, false);
+
+                if (EngWbDS.Tables["ECORev"].Rows[0]["CheckedOut"].ToString() == "True" && EngWbDS.Tables["ECORev"].Rows[0]["CheckedOutBy"].ToString() != Environment.UserName.ToString())
+                {
+                    retval = true;
+
+                    Message = "Item was checked out by " + EngWbDS.Tables["ECORev"].Rows[0]["CheckedOutBy"].ToString() + " on " + EngWbDS.Tables["ECORev"].Rows[0]["CheckOutDate"].ToString();
+                }
+
+                if (EngWbDS.Tables["ECORev"].Rows[0]["CheckedOut"].ToString() == "True" && EngWbDS.Tables["ECORev"].Rows[0]["CheckedOutBy"].ToString() == Environment.UserName.ToString())
+                {
+                    retval = true;
+
+                    Message = "Checked Out by GroupID";
+                }
             }
-
-            if (EngWbDS.Tables["ECORev"].Rows[0]["CheckedOut"].ToString() == "True" && EngWbDS.Tables["ECORev"].Rows[0]["CheckedOutBy"].ToString() == Environment.UserName.ToString())
-            {
-                retval = true;
-
-                Message = "Checked Out by GroupID";
-            }
+            catch { }
 
             return retval;
         }

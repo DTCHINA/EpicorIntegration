@@ -78,23 +78,27 @@ namespace Epicor_Integration
 
         private void CheckOut_Master_Load(object sender, EventArgs e)
         {
-            rev_txt.Text = DataList.GetCurrentRev(partnumber_txt.Text);
-
-            if (rev_txt.Text == "")
+            try
             {
-                MessageBox.Show("Revision cannot be blank/null.  You must make a revision before checking an item out.\n\nThis form will now close.", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                rev_txt.Text = DataList.GetCurrentRev(partnumber_txt.Text);
 
-                this.Close();
+                if (rev_txt.Text == "")
+                {
+                    MessageBox.Show("Revision cannot be blank/null.  You must make a revision before checking an item out.\n\nThis form will now close.", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+                    this.Close();
+                }
+
+                string outMessage;
+
+                if (DataList.PartCheckOutStatus(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text, out outMessage))
+                {
+                    MessageBox.Show("Part is already checked out!  This will now close.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    this.Close();
+                }
             }
-
-            string outMessage;
-
-            if (DataList.PartCheckOutStatus(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text, out outMessage))
-            {
-                MessageBox.Show("Part is already checked out!  This will now close.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                this.Close();
-            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void gid_cbo_SelectedIndexChanged(object sender, EventArgs e)

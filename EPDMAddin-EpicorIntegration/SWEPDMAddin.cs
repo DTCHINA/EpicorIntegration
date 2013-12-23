@@ -10,13 +10,11 @@ using System.Windows.Forms;
 namespace EPDM_EpicorIntegration
 {
     //Release GUID
-    [Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
-
-    //Secondary Test GUID
-    //[Guid("4d20eca4-8a0f-4610-b13f-0d8fa09e67ae"), ComVisible(true)]
-    
+    //[Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
+ 
     //Test GUID
-    //[Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
+    [Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
+
     public class SWEPDMAddin : IEdmAddIn5
     {
         void IEdmAddIn5.GetAddInInfo(ref EdmAddInInfo poInfo, IEdmVault5 poVault, IEdmCmdMgr5 poCmdMgr)
@@ -338,13 +336,16 @@ namespace EPDM_EpicorIntegration
 
             Config_Select config = new Config_Select(vault, Part,SearchTerm);
 
-            pos = list.GetHeadPosition();
+            //pos = list.GetHeadPosition();
 
             for (int i = 0; i < list.Count; i++)
             {
-                if (list.GetNext(pos) != "@")
-                    config.config_cbo.Items.Add(list.GetNext(pos));
+                string name = list.GetNext(pos);
+
+                if (name != "@")
+                    config.config_cbo.Items.Add(name);
             }
+
 
             config.config_cbo.SelectedIndex = 0;
 
@@ -681,6 +682,12 @@ namespace EPDM_EpicorIntegration
 
                 if (weight_val != null)
                     decimal.TryParse(weight_val.ToString(), out weight_fallback);
+
+                if (product_val == null)
+                    product_val = "";
+
+                if (class_val == null)
+                    class_val = "";
 
                 if (partnum_val != null)
                 {

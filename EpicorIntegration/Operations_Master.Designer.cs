@@ -34,13 +34,13 @@
             this.MajorContainer = new System.Windows.Forms.SplitContainer();
             this.ops_grp = new System.Windows.Forms.GroupBox();
             this.prodstd_btn = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.LaborEntryMethod_cbo = new System.Windows.Forms.ComboBox();
             this.prodstd_cbo = new System.Windows.Forms.ComboBox();
             this.prodhrs_num = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.opmast_cbo = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.moveup_btn = new System.Windows.Forms.Button();
             this.movedown_btn = new System.Windows.Forms.Button();
@@ -131,7 +131,6 @@
             // 
             this.MajorContainer.Panel1.Controls.Add(this.ops_grp);
             this.MajorContainer.Panel1.Controls.Add(this.groupBox1);
-            this.MajorContainer.Panel1.Controls.Add(this.subcon_grp);
             this.MajorContainer.Panel1.Controls.Add(this.AutoRecieve_chk);
             this.MajorContainer.Panel1.Controls.Add(this.SNRequiredOpr_chk);
             this.MajorContainer.Panel1.Controls.Add(this.gid_txt);
@@ -140,6 +139,7 @@
             this.MajorContainer.Panel1.Controls.Add(this.label4);
             this.MajorContainer.Panel1.Controls.Add(this.partnumber_txt);
             this.MajorContainer.Panel1.Controls.Add(this.label2);
+            this.MajorContainer.Panel1.Controls.Add(this.subcon_grp);
             this.MajorContainer.Panel1MinSize = 177;
             // 
             // MajorContainer.Panel2
@@ -174,15 +174,6 @@
             this.prodstd_btn.Text = "Prod Std.";
             this.prodstd_btn.UseVisualStyleBackColor = true;
             this.prodstd_btn.Click += new System.EventHandler(this.prodstd_btn_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(291, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Labor Entry:";
             // 
             // LaborEntryMethod_cbo
             // 
@@ -223,15 +214,6 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Prod. Std:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Operation:";
-            // 
             // opmast_cbo
             // 
             this.opmast_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -241,6 +223,24 @@
             this.opmast_cbo.Size = new System.Drawing.Size(279, 21);
             this.opmast_cbo.TabIndex = 4;
             this.opmast_cbo.SelectedIndexChanged += new System.EventHandler(this.opmast_cbo_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(291, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Labor Entry:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Operation:";
             // 
             // groupBox1
             // 
@@ -367,21 +367,21 @@
             // subcon_grp
             // 
             this.subcon_grp.Controls.Add(this.quotesreq_num);
-            this.subcon_grp.Controls.Add(this.label7);
-            this.subcon_grp.Controls.Add(this.label8);
-            this.subcon_grp.Controls.Add(this.label9);
             this.subcon_grp.Controls.Add(this.qtyper_num);
-            this.subcon_grp.Controls.Add(this.label10);
             this.subcon_grp.Controls.Add(this.uom_cbo);
             this.subcon_grp.Controls.Add(this.refneeded_chk);
             this.subcon_grp.Controls.Add(this.daysout_num);
             this.subcon_grp.Controls.Add(this.unitcost_num);
             this.subcon_grp.Controls.Add(this.subcon_opsmast_cbo);
-            this.subcon_grp.Controls.Add(this.label11);
             this.subcon_grp.Controls.Add(this.supplieradd_txt);
             this.subcon_grp.Controls.Add(this.supplierid_txt);
             this.subcon_grp.Controls.Add(this.supplierid_btn);
-            this.subcon_grp.Location = new System.Drawing.Point(494, 22);
+            this.subcon_grp.Controls.Add(this.label7);
+            this.subcon_grp.Controls.Add(this.label8);
+            this.subcon_grp.Controls.Add(this.label9);
+            this.subcon_grp.Controls.Add(this.label10);
+            this.subcon_grp.Controls.Add(this.label11);
+            this.subcon_grp.Location = new System.Drawing.Point(562, 30);
             this.subcon_grp.Name = "subcon_grp";
             this.subcon_grp.Size = new System.Drawing.Size(578, 110);
             this.subcon_grp.TabIndex = 22;
