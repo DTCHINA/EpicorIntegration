@@ -73,116 +73,152 @@
   <ItemGroup>
     <Reference Include="Epicor.Mfg.BO.BomSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.BomSearch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.CCCountCycle">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.CCCountCycle.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.DashBoard">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.DashBoard.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.DynamicQuery">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.DynamicQuery.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.EngWorkBench">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.EngWorkBench.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.EpiSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.EpiSearch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.GenXData">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.GenXData.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.Menu">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Menu.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.OpMaster">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.OpMaster.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.Part">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Part.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.PartOnHandWhse">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.PartOnHandWhse.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.Plant">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Plant.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.QuickSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.QuickSearch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.SysMonitor">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.SysMonitor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.Vendor">
       <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Vendor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.VendorPPSearch">
       <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.VendorPPSearch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.Core.BLConnectionPool">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.BLConnectionPool.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.Core.CallContext, Version=2.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.CallContext.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.Core.Session">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.Session.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IBomSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IBomSearch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.ICCCountCycle">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.ICCCountCycle.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IEngWorkBench">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IEngWorkBench.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IEpiSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IEpiSearch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IGenXData">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IGenXData.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IOpMaster">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IOpMaster.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IPart, Version=9.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IPart.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IPartOnHandWhse">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IPartOnHandWhse.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IPlant">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IPlant.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IQuickSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IQuickSearch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IVendor">
       <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IVendor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IVendorPPSearch">
       <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IVendorPPSearch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.Lib.BOReader">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.BOReader.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.Lib.IBOReader">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.IBOReader.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.Lib.ISessionMod, Version=2.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.ISessionMod.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Epicor.Mfg.Lib.SessionMod, Version=2.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.SessionMod.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Progress.o4glrt, Version=10.2.1.1390, Culture=neutral, PublicKeyToken=1a0c0a15bd34807c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Progress.o4glrt.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -302,6 +338,12 @@
     </Compile>
     <Compile Include="Operations_Minutes.Designer.cs">
       <DependentUpon>Operations_Minutes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Item_SheetFactor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Item_SheetFactor.Designer.cs">
+      <DependentUpon>Item_SheetFactor.cs</DependentUpon>
     </Compile>
     <Compile Include="Operations_SupplierSearch.cs">
       <SubType>Form</SubType>
@@ -423,11 +465,14 @@
     <EmbeddedResource Include="Operations_Minutes.resx">
       <DependentUpon>Operations_Minutes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Item_SheetFactor.resx">
+      <DependentUpon>Item_SheetFactor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Operations_SupplierSearch.resx">
       <DependentUpon>Operations_SupplierSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -526,11 +571,62 @@
     <ProjectReference Include="..\..\TableAdapterHelper\TableAdapterHelper\TableAdapterHelper\TableAdapterHelper.csproj">
       <Project>{53bac01a-b21d-4b85-8746-99f84adf29b6}</Project>
       <Name>TableAdapterHelper</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.BomSearch.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.CCCountCycle.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.DashBoard.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.DynamicQuery.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.EngWorkBench.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.EpiSearch.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.GenXData.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.Menu.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.OpMaster.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.Part.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.PartOnHandWhse.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.Plant.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.QuickSearch.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.SysConfig.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.SysMonitor.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.UserFile.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.Vendor.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.VendorPPSearch.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Common.BOExceptions.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Core.BLConnectionPool.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Core.CallContext.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Core.Session.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Core.Version.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Diagnostics.Core.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.IBomSearch.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.ICCCountCycle.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.IEngWorkBench.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.IEpiSearch.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.IGenXData.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.IOpMaster.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.IPart.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.IPartOnHandWhse.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.IPlant.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.IQuickSearch.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.ISysConfig.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.ISysMonitor.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.IUserFile.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.IVendor.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.IF.IVendorPPSearch.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Lib.AppSettingsHandler.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Lib.BOReader.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Lib.BOUpdateExt.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Lib.Cryptography.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Lib.IBOReader.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Lib.ISessionMod.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Lib.SessionMod.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.Pro.Convert.dll" />
+    <EmbeddedResource Include="Embedded\Progress.Messages.dll" />
+    <EmbeddedResource Include="Embedded\Progress.o4glrt.dll" />
     <Content Include="Resources\N2.0_sm.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

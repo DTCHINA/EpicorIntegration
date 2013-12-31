@@ -3,7 +3,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace EPDM_EpicorIntegration
+namespace EPDMEpicorIntegration
 {
     public partial class Config_Select : Form
     {

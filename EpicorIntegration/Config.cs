@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace Epicor_Integration
 {
@@ -134,6 +136,33 @@ namespace Epicor_Integration
             ConfOps.ShowDialog();
 
             ConfOps.Dispose();
+        }
+
+        private void ServerName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SeverPort_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ServerDataChanged()
+        {
+            DialogResult dr = MessageBox.Show("Server information changed.  For these settings to take effect please restart Windows Explorer.\nDo you want to restart Explorer now?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+
+            if (dr == DialogResult.Yes)
+            {
+                foreach (Process p in Process.GetProcesses())
+                {
+                    if (p.MainModule.ModuleName == "explorer.exe")
+                    {
+                        p.Kill();
+                    }
+                }
+                Process.Start("explorer.exe");
+            }
         }
 
     }

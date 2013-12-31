@@ -64,6 +64,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.copy_btn = new System.Windows.Forms.Button();
             this.TemplatesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.factor_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -139,7 +140,7 @@
             0,
             262144});
             this.NetWeight.Name = "NetWeight";
-            this.NetWeight.Size = new System.Drawing.Size(102, 20);
+            this.NetWeight.Size = new System.Drawing.Size(80, 20);
             this.NetWeight.TabIndex = 13;
             this.NetWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -279,13 +280,14 @@
             // 
             this.uomweight_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.uomweight_cbo.FormattingEnabled = true;
-            this.uomweight_cbo.Location = new System.Drawing.Point(117, 149);
+            this.uomweight_cbo.Location = new System.Drawing.Point(150, 149);
             this.uomweight_cbo.Name = "uomweight_cbo";
             this.uomweight_cbo.Size = new System.Drawing.Size(72, 21);
             this.uomweight_cbo.TabIndex = 31;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.factor_btn);
             this.groupBox1.Controls.Add(this.phantom_chk);
             this.groupBox1.Controls.Add(this.qtybearing);
             this.groupBox1.Controls.Add(this.userevision);
@@ -317,7 +319,7 @@
             // phantom_chk
             // 
             this.phantom_chk.AutoSize = true;
-            this.phantom_chk.Location = new System.Drawing.Point(228, 206);
+            this.phantom_chk.Location = new System.Drawing.Point(224, 271);
             this.phantom_chk.Name = "phantom_chk";
             this.phantom_chk.Size = new System.Drawing.Size(95, 17);
             this.phantom_chk.TabIndex = 35;
@@ -327,7 +329,7 @@
             // qtybearing
             // 
             this.qtybearing.AutoSize = true;
-            this.qtybearing.Location = new System.Drawing.Point(228, 137);
+            this.qtybearing.Location = new System.Drawing.Point(224, 202);
             this.qtybearing.Name = "qtybearing";
             this.qtybearing.Size = new System.Drawing.Size(81, 17);
             this.qtybearing.TabIndex = 34;
@@ -337,7 +339,7 @@
             // userevision
             // 
             this.userevision.AutoSize = true;
-            this.userevision.Location = new System.Drawing.Point(228, 160);
+            this.userevision.Location = new System.Drawing.Point(224, 225);
             this.userevision.Name = "userevision";
             this.userevision.Size = new System.Drawing.Size(89, 17);
             this.userevision.TabIndex = 33;
@@ -347,7 +349,7 @@
             // trackserial
             // 
             this.trackserial.AutoSize = true;
-            this.trackserial.Location = new System.Drawing.Point(228, 183);
+            this.trackserial.Location = new System.Drawing.Point(224, 248);
             this.trackserial.Name = "trackserial";
             this.trackserial.Size = new System.Drawing.Size(123, 17);
             this.trackserial.TabIndex = 32;
@@ -414,6 +416,16 @@
             this.TemplatesMenu.Name = "TemplatesMenu";
             this.TemplatesMenu.Size = new System.Drawing.Size(61, 4);
             // 
+            // factor_btn
+            // 
+            this.factor_btn.Location = new System.Drawing.Point(95, 149);
+            this.factor_btn.Name = "factor_btn";
+            this.factor_btn.Size = new System.Drawing.Size(49, 21);
+            this.factor_btn.TabIndex = 36;
+            this.factor_btn.Text = "Factor";
+            this.factor_btn.UseVisualStyleBackColor = true;
+            this.factor_btn.Click += new System.EventHandler(this.factor_btn_Click);
+            // 
             // Item_Master
             // 
             this.AcceptButton = this.savebtn;
@@ -476,6 +488,7 @@
         private System.Windows.Forms.Button addwhse_btn;
         private System.Windows.Forms.ContextMenuStrip TemplatesMenu;
         private System.Windows.Forms.CheckBox phantom_chk;
+        private System.Windows.Forms.Button factor_btn;
     }
 }
 

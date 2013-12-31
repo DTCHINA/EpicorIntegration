@@ -1,15 +1,10 @@
-﻿using System;
+﻿using Epicor.Mfg.BO;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 //using System.Threading.Tasks;
 using System.Windows.Forms;
-using Epicor.Mfg.BO;
-using Epicor.Mfg.Core;
-using Epicor.Mfg.Lib;
 
 namespace Epicor_Integration
 {
@@ -399,6 +394,8 @@ namespace Epicor_Integration
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
 
             LaborEntryMethod_cbo.SelectedIndex = 1;
+
+            LaborEntryMethod_cbo_SelectedIndexChanged(LaborEntryMethod_cbo, null);
 
             resource_show.Enabled = false;
 

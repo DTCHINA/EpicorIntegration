@@ -1,4 +1,4 @@
-﻿namespace EPDM_EpicorIntegration
+﻿namespace EPDMEpicorIntegration
 {
     partial class Config_Select
     {

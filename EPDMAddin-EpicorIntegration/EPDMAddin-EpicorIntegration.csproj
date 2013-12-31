@@ -103,6 +103,7 @@
     <ProjectReference Include="..\EpicorIntegration\Epicor-Integration.csproj">
       <Project>{e20edb1a-3f4d-4f23-ac1a-f67d8ca4ccaa}</Project>
       <Name>Epicor-Integration</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +113,9 @@
     <EmbeddedResource Include="Update_Properties.resx">
       <DependentUpon>Update_Properties.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Epicor-Integration.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

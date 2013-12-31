@@ -92,7 +92,23 @@ namespace Epicor_Integration
 
         private void CheckIn_Master_Load(object sender, EventArgs e)
         {
+            string Message;
 
+            if (!DataList.PartCheckOutStatus(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text, out Message))
+            {
+                MessageBox.Show("Part must be checked out by selected Group ID to continue.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                this.Close();
+            }
+            else
+            {
+                if (Message != "Checked Out by GroupID")
+                {
+                    MessageBox.Show("Part must be checked out by selected Group ID to continue.\n\n" + Message, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    this.Close();
+                }
+            }
         }
     }
 }

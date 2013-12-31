@@ -32,8 +32,8 @@
             this.ServerName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.SeverPort = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.logininfobtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
@@ -52,6 +52,7 @@
             this.ServerName.Size = new System.Drawing.Size(144, 20);
             this.ServerName.TabIndex = 0;
             this.ServerName.Text = "EPAPP1";
+            this.ServerName.TextChanged += new System.EventHandler(this.ServerName_TextChanged);
             // 
             // label1
             // 
@@ -76,6 +77,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Server Info:";
             // 
+            // SeverPort
+            // 
+            this.SeverPort.Location = new System.Drawing.Point(9, 71);
+            this.SeverPort.MaxLength = 5;
+            this.SeverPort.Name = "SeverPort";
+            this.SeverPort.Size = new System.Drawing.Size(60, 20);
+            this.SeverPort.TabIndex = 2;
+            this.SeverPort.Text = "9411";
+            this.SeverPort.TextChanged += new System.EventHandler(this.SeverPort_TextChanged);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -85,15 +96,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Server Port:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // SeverPort
-            // 
-            this.SeverPort.Location = new System.Drawing.Point(9, 71);
-            this.SeverPort.MaxLength = 5;
-            this.SeverPort.Name = "SeverPort";
-            this.SeverPort.Size = new System.Drawing.Size(60, 20);
-            this.SeverPort.TabIndex = 2;
-            this.SeverPort.Text = "9411";
             // 
             // logininfobtn
             // 

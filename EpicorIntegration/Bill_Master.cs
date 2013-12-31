@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Epicor_Integration
 {
@@ -1364,13 +1364,17 @@ namespace Epicor_Integration
 
         private void reseq_btn_Click(object sender, EventArgs e)
         {
-            EngWB.Update(EngWBDS);
+            try
+            {
+                EngWB.Update(EngWBDS);
 
-            EngWB.ResequenceMaterials(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, Properties.Settings.Default.mtlreqtype, false, false, false);
+                EngWB.ResequenceMaterials(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, Properties.Settings.Default.mtlreqtype, false, false, false);
 
-            EngWB.Update(EngWBDS);
+                EngWB.Update(EngWBDS);
 
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);                    
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+            }
+            catch { }
         }
     }
 }

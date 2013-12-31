@@ -7,20 +7,20 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace EPDM_EpicorIntegration
+namespace EPDMEpicorIntegration
 {
     //Release GUID
-    //[Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
+    [Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
  
     //Test GUID
-    [Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
+    //[Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
 
     public class SWEPDMAddin : IEdmAddIn5
     {
         void IEdmAddIn5.GetAddInInfo(ref EdmAddInInfo poInfo, IEdmVault5 poVault, IEdmCmdMgr5 poCmdMgr)
         {
             //Fill in the AddIn's description
-            poInfo.mbsAddInName = "EpicorIntegration";
+            poInfo.mbsAddInName = "Epicor-Integration";
             poInfo.mbsCompany = "Norco Ind.";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
             poInfo.mlAddInVersion = 1;
@@ -30,9 +30,9 @@ namespace EPDM_EpicorIntegration
             poInfo.mlRequiredVersionMinor = 4;
 
 
-            // Epicor Integration\\
+            string MenuName = "Epicor Integration";
 
-            string MenuName = "Debug";
+            //string MenuName = "Debug";
 
             poCmdMgr.AddCmd(1, MenuName + "\\Part Master", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to create/update Item in Epicor", 0, 0); ;
 
@@ -52,7 +52,7 @@ namespace EPDM_EpicorIntegration
 
             poCmdMgr.AddCmd(-100, MenuName + "\\Templates", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to Add/Edit/Update Templates", 0, 0);
 
-            poCmdMgr.AddCmd(2, MenuName + "\\Add Item,OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to add an Item, a revision, an OOM and BOM in Epicor", 0, 0);
+            //poCmdMgr.AddCmd(2, MenuName + "\\Add Item,OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to add an Item, a revision, an OOM and BOM in Epicor", 0, 0);
             
             poCmdMgr.AddHook(EdmCmdType.EdmCmd_Menu, null);
         }
@@ -688,6 +688,9 @@ namespace EPDM_EpicorIntegration
 
                 if (class_val == null)
                     class_val = "";
+
+                if (desc_val == null)
+                    desc_val = "";
 
                 if (partnum_val != null)
                 {

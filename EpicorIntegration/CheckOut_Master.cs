@@ -84,7 +84,7 @@ namespace Epicor_Integration
 
                 if (rev_txt.Text == "")
                 {
-                    MessageBox.Show("Revision cannot be blank/null.  You must make a revision before checking an item out.\n\nThis form will now close.", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Revision cannot be blank/null.  This item requires a revision in Epicor and SolidWorks to proceed.\n\n\nThis form will now close.", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
                     this.Close();
                 }

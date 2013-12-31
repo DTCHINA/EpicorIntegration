@@ -721,5 +721,14 @@ namespace Epicor_Integration
                     SerialPrefix = SM.Prefix;
             }
         }
+
+        private void factor_btn_Click(object sender, EventArgs e)
+        {
+            Item_SheetFactor Sheet = new Item_SheetFactor(NetWeight.Value);
+
+            Sheet.ShowDialog();
+
+            NetWeight.Value = Sheet.FactoredWeight;
+        }
     }
 }

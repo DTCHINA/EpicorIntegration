@@ -124,7 +124,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 166);
+            this.label5.Location = new System.Drawing.Point(9, 175);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 9;
@@ -132,7 +132,7 @@
             // 
             // minpc_txt
             // 
-            this.minpc_txt.Location = new System.Drawing.Point(12, 182);
+            this.minpc_txt.Location = new System.Drawing.Point(12, 191);
             this.minpc_txt.Name = "minpc_txt";
             this.minpc_txt.ReadOnly = true;
             this.minpc_txt.Size = new System.Drawing.Size(211, 20);
@@ -141,7 +141,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 127);
+            this.label6.Location = new System.Drawing.Point(9, 127);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 11;
