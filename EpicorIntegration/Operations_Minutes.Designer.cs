@@ -47,6 +47,8 @@
             this.epicorMinutesTableAdapter = new Epicor_Integration.ENGDataDataSetTableAdapters.EpicorMinutesTableAdapter();
             this.engDataDataSet = new Epicor_Integration.ENGDataDataSet();
             this.epicorMinutesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mult_txt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epicorMinutesBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -191,6 +193,24 @@
             this.epicorMinutesBindingSource.DataMember = "EpicorMinutes";
             this.epicorMinutesBindingSource.DataSource = this.engDataDataSet;
             // 
+            // mult_txt
+            // 
+            this.mult_txt.Location = new System.Drawing.Point(74, 143);
+            this.mult_txt.Name = "mult_txt";
+            this.mult_txt.Size = new System.Drawing.Size(53, 20);
+            this.mult_txt.TabIndex = 14;
+            this.mult_txt.Text = "1";
+            this.mult_txt.TextChanged += new System.EventHandler(this.mult_txt_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(71, 127);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Multiplier";
+            // 
             // Operations_Minutes
             // 
             this.AcceptButton = this.ok_btn;
@@ -198,19 +218,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancel_btn;
             this.ClientSize = new System.Drawing.Size(338, 224);
+            this.Controls.Add(this.mult_txt);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.cancel_btn);
             this.Controls.Add(this.ok_btn);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.seconds_txt);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.minpc_txt);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.per_txt);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.efficiency_txt);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.type_txt);
             this.Controls.Add(this.operation_cbo);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -243,5 +265,7 @@
         private ENGDataDataSetTableAdapters.EpicorMinutesTableAdapter epicorMinutesTableAdapter;
         private ENGDataDataSet engDataDataSet;
         private System.Windows.Forms.BindingSource epicorMinutesBindingSource;
+        private System.Windows.Forms.TextBox mult_txt;
+        private System.Windows.Forms.Label label7;
     }
 }

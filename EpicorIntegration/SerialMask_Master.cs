@@ -15,6 +15,8 @@ namespace Epicor_Integration
     {
         public string Prefix;
 
+        public string Mask;
+
         public SerialMask_Master()
         {
             InitializeComponent();
@@ -56,6 +58,8 @@ namespace Epicor_Integration
             else
             {
                 Prefix = serialprefix_txt.Text;
+
+                Mask = mask_txt.Text;
 
                 this.DialogResult = DialogResult.OK;
 

@@ -1,15 +1,11 @@
-﻿using System;
+﻿using Epicor.Mfg.BO;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-//using System.Threading.Tasks;
-using System.Windows.Forms;
-using Epicor.Mfg.BO;
-using TableAdapterHelper;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Windows.Forms;
+using TableAdapterHelper;
 
 namespace Epicor_Integration
 {
@@ -210,8 +206,8 @@ namespace Epicor_Integration
             //Dialog to save changes
             if (Transaction == null)
                 this.Dispose();
-            else
-                ;//e.Cancel = true;
+            //else
+              //  ;//e.Cancel = true;
         }
 
         private void SaveProcess()

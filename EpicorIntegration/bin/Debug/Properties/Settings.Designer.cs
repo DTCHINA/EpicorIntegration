@@ -49,7 +49,7 @@ namespace Epicor_Integration.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("EPAPP1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("EPAPP")]
         public string svrname {
             get {
                 return ((string)(this["svrname"]));

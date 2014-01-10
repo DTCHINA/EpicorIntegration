@@ -24,6 +24,8 @@ Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "ECO_Helper_Setup", "ECO_Hel
 		{93191880-4B98-4C03-9CAE-4B9F450CA5C0} = {93191880-4B98-4C03-9CAE-4B9F450CA5C0}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopLevelReport", "TopLevelReport\TopLevelReport.csproj", "{A167D429-3F52-4026-8639-3D4702E585B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -123,6 +125,16 @@ Global
 		{B8ECECEF-24D7-4B1E-8B40-9F38CF885B80}.Release|Any CPU.Build.0 = SingleImage
 		{B8ECECEF-24D7-4B1E-8B40-9F38CF885B80}.SingleImage|Any CPU.ActiveCfg = SingleImage
 		{B8ECECEF-24D7-4B1E-8B40-9F38CF885B80}.SingleImage|Any CPU.Build.0 = SingleImage
+		{A167D429-3F52-4026-8639-3D4702E585B4}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{A167D429-3F52-4026-8639-3D4702E585B4}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{A167D429-3F52-4026-8639-3D4702E585B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A167D429-3F52-4026-8639-3D4702E585B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A167D429-3F52-4026-8639-3D4702E585B4}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{A167D429-3F52-4026-8639-3D4702E585B4}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{A167D429-3F52-4026-8639-3D4702E585B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A167D429-3F52-4026-8639-3D4702E585B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A167D429-3F52-4026-8639-3D4702E585B4}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{A167D429-3F52-4026-8639-3D4702E585B4}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

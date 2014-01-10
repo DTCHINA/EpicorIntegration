@@ -123,6 +123,9 @@
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.QuickSearch.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Epicor.Mfg.BO.ReportMonitor">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.ReportMonitor.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.BO.SysMonitor">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.SysMonitor.dll</HintPath>
       <Private>True</Private>

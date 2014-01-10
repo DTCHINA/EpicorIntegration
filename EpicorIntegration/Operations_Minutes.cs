@@ -52,7 +52,7 @@ namespace Epicor_Integration
 
             try
             {
-                MP = (decimal.Parse(seconds_txt.Text) / decimal.Parse(efficiency_txt.Text) / 60).ToString();
+                MP = ((decimal.Parse(seconds_txt.Text) / decimal.Parse(efficiency_txt.Text) / 60) * (decimal.Parse(mult_txt.ToString()))).ToString();
             }
             catch { MP = "Error!"; }
             finally { minpc_txt.Text = MP; }
@@ -65,6 +65,18 @@ namespace Epicor_Integration
                 RetVal = decimal.Parse(minpc_txt.Text);
             }
             catch { MessageBox.Show("Value is not valid!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+        }
+
+        private void mult_txt_TextChanged(object sender, EventArgs e)
+        {
+            string MP = null;
+
+            try
+            {
+                MP = ((decimal.Parse(seconds_txt.Text) / decimal.Parse(efficiency_txt.Text) / 60) * (decimal.Parse(mult_txt.ToString()))).ToString();
+            }
+            catch { MP = "Error!"; }
+            finally { minpc_txt.Text = MP; }
         }
     }
 }

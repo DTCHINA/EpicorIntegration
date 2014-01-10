@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PartWhereUsed1" msprop:Generator_TableClassName="PartWhereUsed1DataTable" msprop:Generator_TableVarName="tablePartWhereUsed1" msprop:Generator_RowChangedName="PartWhereUsed1RowChanged" msprop:Generator_TablePropName="PartWhereUsed1" msprop:Generator_RowDeletingName="PartWhereUsed1RowDeleting" msprop:Generator_RowChangingName="PartWhereUsed1RowChanging" msprop:Generator_RowEvHandlerName="PartWhereUsed1RowChangeEventHandler" msprop:Generator_RowDeletedName="PartWhereUsed1RowDeleted" msprop:Generator_RowClassName="PartWhereUsed1Row" msprop:Generator_UserTableName="PartWhereUsed1" msprop:Generator_RowEvArgName="PartWhereUsed1RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TopLevel" msprop:Generator_ColumnVarNameInTable="columnTopLevel" msprop:Generator_ColumnPropNameInRow="TopLevel" msprop:Generator_ColumnPropNameInTable="TopLevelColumn" msprop:Generator_UserColumnName="TopLevel" type="xs:string" minOccurs="0" />
+              <xs:element name="PartNum" msprop:Generator_ColumnVarNameInTable="columnPartNum" msprop:Generator_ColumnPropNameInRow="PartNum" msprop:Generator_ColumnPropNameInTable="PartNumColumn" msprop:Generator_UserColumnName="PartNum" type="xs:string" minOccurs="0" />
+              <xs:element name="RevisionNum" msprop:Generator_ColumnVarNameInTable="columnRevisionNum" msprop:Generator_ColumnPropNameInRow="RevisionNum" msprop:Generator_ColumnPropNameInTable="RevisionNumColumn" msprop:Generator_UserColumnName="RevisionNum" type="xs:string" minOccurs="0" />
+              <xs:element name="PartNumPartDescription" msprop:Generator_ColumnVarNameInTable="columnPartNumPartDescription" msprop:Generator_ColumnPropNameInRow="PartNumPartDescription" msprop:Generator_ColumnPropNameInTable="PartNumPartDescriptionColumn" msprop:Generator_UserColumnName="PartNumPartDescription" type="xs:string" minOccurs="0" />
+              <xs:element name="MtlPartNum" msprop:Generator_ColumnVarNameInTable="columnMtlPartNum" msprop:Generator_ColumnPropNameInRow="MtlPartNum" msprop:Generator_ColumnPropNameInTable="MtlPartNumColumn" msprop:Generator_UserColumnName="MtlPartNum" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

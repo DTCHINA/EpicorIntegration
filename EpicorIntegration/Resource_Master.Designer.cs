@@ -32,23 +32,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Resource_Master));
             this.MajorHorizSplit = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.resourcegrp_cbo = new System.Windows.Forms.ComboBox();
             this.resource_cbo = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.operation_txt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.gid_txt = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.rev_txt = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.partnumber_txt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.addbtn = new System.Windows.Forms.Button();
             this.removebtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.ResourceGrid = new System.Windows.Forms.DataGridView();
             this.ResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,15 +104,6 @@
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 13);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Resource Group:";
-            // 
             // resourcegrp_cbo
             // 
             this.resourcegrp_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -133,6 +124,15 @@
             this.resource_cbo.TabIndex = 19;
             this.resource_cbo.SelectedIndexChanged += new System.EventHandler(this.resource_cbo_SelectedIndexChanged);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Resource Group:";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -151,15 +151,6 @@
             this.operation_txt.Size = new System.Drawing.Size(220, 20);
             this.operation_txt.TabIndex = 26;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 68);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Operation:";
-            // 
             // gid_txt
             // 
             this.gid_txt.BackColor = System.Drawing.Color.White;
@@ -168,15 +159,6 @@
             this.gid_txt.ReadOnly = true;
             this.gid_txt.Size = new System.Drawing.Size(130, 20);
             this.gid_txt.TabIndex = 24;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 13);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Group ID:";
             // 
             // rev_txt
             // 
@@ -187,15 +169,6 @@
             this.rev_txt.Size = new System.Drawing.Size(48, 20);
             this.rev_txt.TabIndex = 20;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(223, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 13);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Rev:";
-            // 
             // partnumber_txt
             // 
             this.partnumber_txt.BackColor = System.Drawing.Color.White;
@@ -204,15 +177,6 @@
             this.partnumber_txt.ReadOnly = true;
             this.partnumber_txt.Size = new System.Drawing.Size(130, 20);
             this.partnumber_txt.TabIndex = 16;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Part Number:";
             // 
             // groupBox1
             // 
@@ -232,7 +196,7 @@
             this.addbtn.Name = "addbtn";
             this.addbtn.Size = new System.Drawing.Size(75, 23);
             this.addbtn.TabIndex = 0;
-            this.addbtn.Text = "&New";
+            this.addbtn.Text = "&Add";
             this.addbtn.UseVisualStyleBackColor = true;
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
@@ -266,6 +230,42 @@
             this.savebtn.Text = "&Save";
             this.savebtn.UseVisualStyleBackColor = true;
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Operation:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Group ID:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(223, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Rev:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Part Number:";
             // 
             // ResourceGrid
             // 

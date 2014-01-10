@@ -37,8 +37,8 @@
             this.LaborEntryMethod_cbo = new System.Windows.Forms.ComboBox();
             this.prodstd_cbo = new System.Windows.Forms.ComboBox();
             this.prodhrs_num = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.opmast_cbo = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -77,13 +77,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.OPDataGrid = new System.Windows.Forms.DataGridView();
+            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.OprSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdStandard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stdformat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrimaryResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LaborEntryDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LaborEntryDesc = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.LaborEntry = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SNRequiredOpr = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.AutoReceive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -104,7 +105,6 @@
             this.VendorNumTermsCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VendorNumCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubContract = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MajorContainer.Panel1.SuspendLayout();
             this.MajorContainer.Panel2.SuspendLayout();
             this.MajorContainer.SuspendLayout();
@@ -205,15 +205,6 @@
             this.prodhrs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.prodhrs_num.ValueChanged += new System.EventHandler(this.prodhrs_num_ValueChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(88, 66);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Prod. Std:";
-            // 
             // opmast_cbo
             // 
             this.opmast_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -223,6 +214,15 @@
             this.opmast_cbo.Size = new System.Drawing.Size(279, 21);
             this.opmast_cbo.TabIndex = 4;
             this.opmast_cbo.SelectedIndexChanged += new System.EventHandler(this.opmast_cbo_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(88, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Prod. Std:";
             // 
             // label6
             // 
@@ -298,7 +298,7 @@
             this.newbtn.Name = "newbtn";
             this.newbtn.Size = new System.Drawing.Size(75, 23);
             this.newbtn.TabIndex = 0;
-            this.newbtn.Text = "&New";
+            this.newbtn.Text = "&Add";
             this.newbtn.UseVisualStyleBackColor = true;
             this.newbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
@@ -655,6 +655,11 @@
             this.OPDataGrid.Size = new System.Drawing.Size(782, 288);
             this.OPDataGrid.TabIndex = 0;
             // 
+            // TemplateMenu
+            // 
+            this.TemplateMenu.Name = "TemplateMenu";
+            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
+            // 
             // OprSeq
             // 
             this.OprSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -714,14 +719,17 @@
             this.LaborEntryDesc.HeaderText = "Labor Entry";
             this.LaborEntryDesc.Name = "LaborEntryDesc";
             this.LaborEntryDesc.ReadOnly = true;
+            this.LaborEntryDesc.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.LaborEntryDesc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.LaborEntryDesc.Visible = false;
             // 
             // LaborEntry
             // 
             this.LaborEntry.DataPropertyName = "LaborEntryMethod";
-            this.LaborEntry.HeaderText = "LaborEntry";
+            this.LaborEntry.HeaderText = "Labor Entry";
             this.LaborEntry.Name = "LaborEntry";
             this.LaborEntry.ReadOnly = true;
-            this.LaborEntry.Visible = false;
+            this.LaborEntry.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // SNRequiredOpr
             // 
@@ -863,11 +871,6 @@
             this.SubContract.ReadOnly = true;
             this.SubContract.Visible = false;
             // 
-            // TemplateMenu
-            // 
-            this.TemplateMenu.Name = "TemplateMenu";
-            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
-            // 
             // Operations_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -956,7 +959,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProdStandard;
         private System.Windows.Forms.DataGridViewTextBoxColumn stdformat;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrimaryResourceGrpDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LaborEntryDesc;
+        private System.Windows.Forms.DataGridViewComboBoxColumn LaborEntryDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn LaborEntry;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SNRequiredOpr;
         private System.Windows.Forms.DataGridViewCheckBoxColumn AutoReceive;

@@ -409,6 +409,15 @@ namespace Epicor_Integration
             EpicClose();
         }
 
+        public static PartWhereUsedDataSet WhereUsed(string PartNumber)
+        {
+            Part Part = new Part(EpicConn);
+
+            bool morePages;
+
+            return Part.GetPartWhereUsed(PartNumber, 0, 0, out morePages);
+        }
+
         /// <summary>
         /// Search Function for retrieving Part lists
         /// </summary>

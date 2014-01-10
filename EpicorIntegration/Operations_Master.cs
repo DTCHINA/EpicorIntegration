@@ -187,7 +187,7 @@ namespace Epicor_Integration
                 if (OPDataGrid.Rows.Count > 0)
                     OPDataGrid.CurrentCell = OPDataGrid[0, 0];
             }
-            catch (Exception ex) { }//MessageBox.Show(ex.Message, ex.TargetSite.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch{ }
         }
 
         void SNRequiredOpr_chk_Click(object sender, EventArgs e)
@@ -237,7 +237,6 @@ namespace Epicor_Integration
 
                     OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
                 }
-                else ;
                     //e.Cancel = true;
             }
         }
@@ -264,6 +263,8 @@ namespace Epicor_Integration
             if (!Convert.ToBoolean(val))
                 try
                 {
+                    #region Not Sub Contract
+
                     ops_grp.Visible = true;
 
                     subcon_grp.Visible = false;
@@ -291,10 +292,14 @@ namespace Epicor_Integration
                         prodstd_cbo.SelectedIndex = 1;
 
                     prodhrs_num.Value = CurrentProd;
+
+                    #endregion
                 }
                 catch { }
             else
             {
+                #region Sub Contract
+
                 subcon_grp.Visible = true;
 
                 ops_grp.Visible = false;
@@ -328,11 +333,20 @@ namespace Epicor_Integration
                 supplierid_txt.Text = OPDataGrid["VendorNumVendorID", rowindex].Value.ToString();
 
                 supplieradd_txt.Text = OPDataGrid["DspBillAddr", rowindex].Value.ToString();
+
+                #endregion
             }
 
             bool checkval = bool.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowindex]["SNRequiredOpr"].ToString());
 
-            SNRequiredOpr_chk.Checked = checkval;
+            if (checkval)
+            {
+                SNRequiredOpr_chk.Checked = checkval;
+
+                SNRequiredOpr_chk_CheckedChanged(SNRequiredOpr_chk, null);
+            }
+
+            rowindex = OPDataGrid.CurrentCellAddress.Y;
 
             AutoRecieve_chk.Enabled = (rowindex == OPDataGrid.Rows.Count - 1);
 
@@ -362,7 +376,7 @@ namespace Epicor_Integration
 
                 SetSubConField();
 
-                FillLaborEntryGrid();
+                //FillLaborEntryGrid();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error!"); }
         }
@@ -410,6 +424,18 @@ namespace Epicor_Integration
             OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
             removebtn.Enabled = true;
+
+            for (int i = 0; i < OPDataGrid.Rows.Count; i++)
+            {
+                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["AutoReceive"] = (i == OPDataGrid.Rows.Count - 1);
+            }
+
+            try
+            {
+                OPDataGrid.CurrentCell = OPDataGrid.Rows[OPDataGrid.Rows.Count - 1].Cells[0];
+            }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
 
         private void removebtn_Click(object sender, EventArgs e)
@@ -484,7 +510,7 @@ namespace Epicor_Integration
             {
                 EngWB.Update(EngWBDS);
             }
-            catch (Exception ex) { }
+            catch { }
 
             //EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 

@@ -25,7 +25,7 @@ namespace Epicor_Integration.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("bhooper")]
         public string uname {
             get {
                 return ((string)(this["uname"]));
@@ -37,7 +37,7 @@ namespace Epicor_Integration.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Fortheswarm1")]
         public string passw {
             get {
                 return ((string)(this["passw"]));
@@ -61,7 +61,7 @@ namespace Epicor_Integration.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9401")]
+        [global::System.Configuration.DefaultSettingValueAttribute("9421")]
         public string svrport {
             get {
                 return ((string)(this["svrport"]));

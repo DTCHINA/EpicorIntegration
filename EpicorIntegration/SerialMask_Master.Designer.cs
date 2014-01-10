@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cancel_btn = new System.Windows.Forms.Button();
             this.ok_btn = new System.Windows.Forms.Button();
+            this.searchmask_btn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,10 +45,10 @@
             this.mask_txt.Location = new System.Drawing.Point(9, 32);
             this.mask_txt.Name = "mask_txt";
             this.mask_txt.ReadOnly = true;
-            this.mask_txt.Size = new System.Drawing.Size(99, 20);
+            this.mask_txt.Size = new System.Drawing.Size(62, 20);
             this.mask_txt.TabIndex = 0;
             this.mask_txt.TabStop = false;
-            this.mask_txt.Text = "ELK";
+            this.mask_txt.Text = "ELK1";
             // 
             // label1
             // 
@@ -60,11 +61,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.searchmask_btn);
             this.groupBox1.Controls.Add(this.mask_txt);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(118, 68);
+            this.groupBox1.Size = new System.Drawing.Size(136, 68);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -105,6 +107,15 @@
             this.ok_btn.UseVisualStyleBackColor = true;
             this.ok_btn.Click += new System.EventHandler(this.ok_btn_Click);
             // 
+            // searchmask_btn
+            // 
+            this.searchmask_btn.Location = new System.Drawing.Point(77, 32);
+            this.searchmask_btn.Name = "searchmask_btn";
+            this.searchmask_btn.Size = new System.Drawing.Size(53, 20);
+            this.searchmask_btn.TabIndex = 2;
+            this.searchmask_btn.Text = "Search";
+            this.searchmask_btn.UseVisualStyleBackColor = true;
+            // 
             // SerialMask_Master
             // 
             this.AcceptButton = this.ok_btn;
@@ -139,5 +150,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button cancel_btn;
         private System.Windows.Forms.Button ok_btn;
+        private System.Windows.Forms.Button searchmask_btn;
     }
 }

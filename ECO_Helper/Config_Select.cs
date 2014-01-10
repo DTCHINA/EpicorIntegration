@@ -7,8 +7,8 @@ namespace ECO_Helper
 {
     public partial class Config_Select : Form
     {
-        string StartMethod = "";
-
+        //string StartMethod { get; set; }
+        
         public string SelectedConfig;
 
         IEdmVault7 Vault;
@@ -33,7 +33,7 @@ namespace ECO_Helper
 
             //File = file;
 
-            StartMethod = "file";
+            //StartMethod = "file";
         }
 
         public Config_Select(IEdmVault7 vault, IEdmFile5 part, string SearchPart)
@@ -48,7 +48,7 @@ namespace ECO_Helper
 
             //SearchTerm = SearchPart;
 
-            StartMethod = "part";
+            //StartMethod = "part";
         }
 
         void Config_Select_SizeChanged(object sender, EventArgs e)

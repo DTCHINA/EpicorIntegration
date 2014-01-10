@@ -10,6 +10,8 @@ namespace Epicor_Integration
     {
         public string SerialPrefix;
 
+        public string SerialMask;
+
         public string _PartNumber;
 
         public string _Description;
@@ -383,7 +385,7 @@ namespace Epicor_Integration
 
                     Part.ChangePartSNBaseDataType("MASK", Pdata);
 
-                    Part.ChangeSNMask("ELK", Pdata);
+                    Part.ChangeSNMask(SerialMask, Pdata);
 
                     Part.ChangePartSNMaskPrefixSuffix(SerialPrefix, "", Pdata);
                 }
@@ -437,7 +439,8 @@ namespace Epicor_Integration
 
                     Pdata = UpdateDataSet(Pdata, DRState);
 
-                    Part.ChangePartTrackSerialNum(trackserial.Checked, Pdata);
+                    if (trackserial.Checked)
+                        Part.ChangePartTrackSerialNum(trackserial.Checked, Pdata);
 
                     //Add data to allow BO to create plant tables
                     Part.Update(Pdata);
@@ -459,12 +462,16 @@ namespace Epicor_Integration
 
                             DataList.UpdateDatum(Pdata, "PartPlant", 0, "DBRowIdent", null);
 
-                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "PartTrackSerialNum", trackserial.Checked.ToString());
+                            if (trackserial.Checked)
+                                DataList.UpdateDatum(Pdata, "PartPlant", 0, "PartTrackSerialNum", trackserial.Checked.ToString());
                         }
 
-                        Part.ChangePartSNBaseDataType("MASK", Pdata);
+                        if (trackserial.Checked)
+                        {
+                            Part.ChangePartSNBaseDataType("MASK", Pdata);
 
-                        Part.ChangeSNMask("ELK", Pdata);
+                            Part.ChangeSNMask(SerialMask, Pdata);
+                        }
 
                         Part.Update(Pdata);
 
@@ -513,6 +520,9 @@ namespace Epicor_Integration
             phantom_chk.Checked = bool.Parse(pdata.Tables[0].Rows[0]["PhantomBOM"].ToString());
 
             userevision.Checked = bool.Parse(pdata.Tables[0].Rows[0]["UsePartRev"].ToString());
+
+            //Cannot change UOM after initial save, will cause all sorts of problems
+            uom_cbo.Enabled = false;
         }
 
         private void copy_btn_Click(object sender, EventArgs e)
@@ -718,7 +728,11 @@ namespace Epicor_Integration
                 if (SM.DialogResult == DialogResult.Cancel)
                     trackserial.Checked = false;
                 else
+                {
                     SerialPrefix = SM.Prefix;
+
+                    SerialMask = SM.Mask;
+                }
             }
         }
 

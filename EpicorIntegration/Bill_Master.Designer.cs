@@ -32,9 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bill_Master));
             this.MajorHorizSplit = new System.Windows.Forms.SplitContainer();
-            this.label8 = new System.Windows.Forms.Label();
             this.parentrev_txt = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.gid_txt = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.reseq_btn = new System.Windows.Forms.Button();
@@ -43,9 +41,7 @@
             this.removebtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.parentdesc_txt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.parent_txt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.PullAsAsm_chk = new System.Windows.Forms.CheckBox();
@@ -63,11 +59,11 @@
             this.findpart_btn = new System.Windows.Forms.Button();
             this.mtlseq_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.BillDataGrid = new System.Windows.Forms.DataGridView();
-            this.PartTimer = new System.Windows.Forms.Timer(this.components);
-            this.EnableNew = new System.Windows.Forms.Timer(this.components);
-            this.RawMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MtlPartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +73,10 @@
             this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PullAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PartTimer = new System.Windows.Forms.Timer(this.components);
+            this.EnableNew = new System.Windows.Forms.Timer(this.components);
+            this.RawMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -114,15 +114,6 @@
             this.MajorHorizSplit.SplitterDistance = 262;
             this.MajorHorizSplit.TabIndex = 1;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(155, 48);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Parent Revision:";
-            // 
             // parentrev_txt
             // 
             this.parentrev_txt.BackColor = System.Drawing.Color.White;
@@ -131,15 +122,6 @@
             this.parentrev_txt.ReadOnly = true;
             this.parentrev_txt.Size = new System.Drawing.Size(82, 20);
             this.parentrev_txt.TabIndex = 10;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 48);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Group ID:";
             // 
             // gid_txt
             // 
@@ -191,7 +173,7 @@
             this.newbtn.Name = "newbtn";
             this.newbtn.Size = new System.Drawing.Size(75, 23);
             this.newbtn.TabIndex = 0;
-            this.newbtn.Text = "&New";
+            this.newbtn.Text = "&Add";
             this.newbtn.UseVisualStyleBackColor = true;
             this.newbtn.Click += new System.EventHandler(this.newbtn_Click);
             // 
@@ -226,15 +208,6 @@
             this.savebtn.UseVisualStyleBackColor = true;
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(155, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Description:";
-            // 
             // parentdesc_txt
             // 
             this.parentdesc_txt.BackColor = System.Drawing.Color.White;
@@ -243,15 +216,6 @@
             this.parentdesc_txt.ReadOnly = true;
             this.parentdesc_txt.Size = new System.Drawing.Size(226, 20);
             this.parentdesc_txt.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Parent Part:";
             // 
             // parent_txt
             // 
@@ -325,7 +289,7 @@
             this.ViewAsAsm_chk.TabIndex = 10;
             this.ViewAsAsm_chk.Text = "View As Assembly";
             this.ViewAsAsm_chk.UseVisualStyleBackColor = true;
-            this.ViewAsAsm_chk.CheckedChanged += new System.EventHandler(this.ViewAsAsm_chk_CheckedChanged);
+            //this.ViewAsAsm_chk.CheckedChanged += new System.EventHandler(this.ViewAsAsm_chk_CheckedChanged);
             // 
             // uom_cbo
             // 
@@ -335,7 +299,7 @@
             this.uom_cbo.Name = "uom_cbo";
             this.uom_cbo.Size = new System.Drawing.Size(74, 21);
             this.uom_cbo.TabIndex = 2;
-            this.uom_cbo.SelectedIndexChanged += new System.EventHandler(this.uom_cbo_SelectedIndexChanged);
+            //this.uom_cbo.SelectedIndexChanged += new System.EventHandler(this.uom_cbo_SelectedIndexChanged);
             // 
             // qty_num
             // 
@@ -427,6 +391,42 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Mtl Seq:";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(155, 48);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(85, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Parent Revision:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 48);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Group ID:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(155, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Description:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Parent Part:";
+            // 
             // BillDataGrid
             // 
             this.BillDataGrid.AllowUserToAddRows = false;
@@ -461,26 +461,7 @@
             this.BillDataGrid.ShowRowErrors = false;
             this.BillDataGrid.Size = new System.Drawing.Size(684, 200);
             this.BillDataGrid.TabIndex = 1;
-            // 
-            // PartTimer
-            // 
-            this.PartTimer.Interval = 500;
-            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
-            // 
-            // EnableNew
-            // 
-            this.EnableNew.Enabled = true;
-            this.EnableNew.Tick += new System.EventHandler(this.EnableNew_Tick);
-            // 
-            // RawMenu
-            // 
-            this.RawMenu.Name = "RawMenu";
-            this.RawMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // TemplateMenu
-            // 
-            this.TemplateMenu.Name = "TemplateMenu";
-            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
+            this.BillDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BillDataGrid_CellContentClick);
             // 
             // MtlSeq
             // 
@@ -507,7 +488,7 @@
             this.MtlPartNum.HeaderText = "Part Number";
             this.MtlPartNum.Name = "MtlPartNum";
             this.MtlPartNum.ReadOnly = true;
-            this.MtlPartNum.Width = 91;
+            this.MtlPartNum.Width = 84;
             // 
             // MtlPartNumPartDescription
             // 
@@ -534,7 +515,7 @@
             this.UOMCode.HeaderText = "UOM Code";
             this.UOMCode.Name = "UOMCode";
             this.UOMCode.ReadOnly = true;
-            this.UOMCode.Width = 85;
+            this.UOMCode.Width = 78;
             // 
             // ViewAsAsm
             // 
@@ -560,6 +541,26 @@
             this.OpDesc.Name = "OpDesc";
             this.OpDesc.ReadOnly = true;
             this.OpDesc.Width = 78;
+            // 
+            // PartTimer
+            // 
+            this.PartTimer.Interval = 500;
+            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
+            // 
+            // EnableNew
+            // 
+            this.EnableNew.Enabled = true;
+            this.EnableNew.Tick += new System.EventHandler(this.EnableNew_Tick);
+            // 
+            // RawMenu
+            // 
+            this.RawMenu.Name = "RawMenu";
+            this.RawMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // TemplateMenu
+            // 
+            this.TemplateMenu.Name = "TemplateMenu";
+            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // Bill_Master
             // 

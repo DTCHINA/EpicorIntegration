@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.IF.IReportMonitor</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.ReportMonitorDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ReportMonitorDataSet.SysRptLstDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ReportMonitorDataSet.SysRptLstRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ReportMonitorDataSet.SysRptLstRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.IF.IReportMonitor">
+            <summary>
+            Add your summary for this object here
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IReportMonitor.GetNewSysRptLst(Epicor.Mfg.BO.ReportMonitorDataSet,System.String,System.String,System.Nullable{System.DateTime},System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IReportMonitor.DeleteByID(System.String,System.String,System.Nullable{System.DateTime},System.Int32,System.Int32)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IReportMonitor.GetByID(System.String,System.String,System.Nullable{System.DateTime},System.Int32,System.Int32)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IReportMonitor.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IReportMonitor.GetRows(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IReportMonitor.Update(Epicor.Mfg.BO.ReportMonitorDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IReportMonitor.UpdateExt(Epicor.Mfg.BO.UpdExtReportMonitorDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IReportMonitor.GetReportData(System.String)">
+            <summary>
+            Get a report's data from the server
+            </summary>
+            <param name="sysRowID">The row ID of the report to get the data for</param>
+            <returns>Report data</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IReportMonitor.GetReportDefinition(System.String)">
+            <summary>
+            Get a report's data from the server
+            </summary>
+            <param name="sysRowID">The row ID of the report to get the data for</param>
+            <returns>Report data</returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IReportMonitor.GetRowsKeepIdleTime(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This method reverts the last used time so that we don't prevent
+            time-out from working. After that call base GetRows.
+            </summary>
+            <param name="whereClauseSysRptLst">The where clause to restrict data for </param>
+            <returns>The dataset with populated values</returns>
+            <param name="pageSize">The page size</param>
+            <param name="absolutePage">The absolute page</param>
+            <param name="morePages">More pages?</param>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SysRptLstListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SysRptLstListDataSet.SysRptLstListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SysRptLstListDataSet.SysRptLstListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.SysRptLstListDataSet.SysRptLstListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ReportDataDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ReportDataDataSet.ReportDataDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ReportDataDataSet.ReportDataRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.ReportDataDataSet.ReportDataRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtReportMonitorDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtReportMonitorDataSet.SysRptLstDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtReportMonitorDataSet.SysRptLstRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.UpdExtReportMonitorDataSet.SysRptLstRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>

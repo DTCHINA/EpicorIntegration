@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.BO.ReportMonitor</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.ReportMonitor">
+            <summary>
+            Client side business object for ReportMonitor.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.Proxy.ReportMonitorImpl">
+            <summary>
+            Add your summary for this object here
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.ReportMonitorImpl.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Proxy constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.ReportMonitorImpl.GetNewSysRptLst(Epicor.Mfg.BO.ReportMonitorDataSet,System.String,System.String,System.Nullable{System.DateTime},System.Int32)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.ReportMonitorImpl.DeleteByID(System.String,System.String,System.Nullable{System.DateTime},System.Int32,System.Int32)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.ReportMonitorImpl.GetByID(System.String,System.String,System.Nullable{System.DateTime},System.Int32,System.Int32)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.ReportMonitorImpl.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.ReportMonitorImpl.GetRows(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.ReportMonitorImpl.Update(Epicor.Mfg.BO.ReportMonitorDataSet)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.ReportMonitorImpl.UpdateExt(Epicor.Mfg.BO.UpdExtReportMonitorDataSet,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to BO by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occured during update process.</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.ReportMonitorImpl.GetReportData(System.String)">
+            <summary>
+            Get a report's data from the server
+            </summary>
+            <param name="sysRowID">The row ID of the report to get the data for</param>
+            <returns>Report data</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.ReportMonitorImpl.GetReportDefinition(System.String)">
+            <summary>
+            Get a report's data from the server
+            </summary>
+            <param name="sysRowID">The row ID of the report to get the data for</param>
+            <returns>Report data</returns>
+        </member>
+        <member name="M:Epicor.Mfg.Proxy.ReportMonitorImpl.GetRowsKeepIdleTime(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            This method reverts the last used time so that we don't prevent
+            time-out from working. After that call base GetRows.
+            </summary>
+            <param name="whereClauseSysRptLst">The where clause to restrict data for </param>
+            <returns>The dataset with populated values</returns>
+            <param name="pageSize">The page size</param>
+            <param name="absolutePage">The absolute page</param>
+            <param name="morePages">More pages?</param>
+        </member>
+        <member name="P:Epicor.Mfg.Proxy.ReportMonitorImpl.CallContext">
+            <summary>
+            Call context dataset
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.BO.ReportMonitor.#ctor(Epicor.Mfg.Core.BLConnectionPool)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connPool">Connection pool</param>
+        </member>
+        <member name="M:Epicor.Mfg.BO.ReportMonitor.TransferReport(System.String,System.String,System.String)">
+            <summary>
+            Transfer a report from the server and save it and its definition to a given path
+            </summary>
+            <param name="sysRowID"></param>
+            <param name="dataPath"></param>
+            <param name="definitionPath"></param>
+        </member>
+        <member name="M:Epicor.Mfg.BO.ReportMonitor.TransferReport(System.String,System.String)">
+            <summary>
+            Transfer a report from the server and save its definition to a given path
+            </summary>
+            <param name="sysRowID"></param>
+            <param name="definitionPath"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
