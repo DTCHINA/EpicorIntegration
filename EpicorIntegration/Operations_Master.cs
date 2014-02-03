@@ -362,6 +362,10 @@ namespace Epicor_Integration
 
         private void savebtn_Click(object sender, EventArgs e)
         {
+            bool AR = AutoRecieve_chk.Enabled;
+
+            bool SN = SNRequiredOpr_chk.Enabled;
+
             try
             {
                 EngWB.Update(EngWBDS);
@@ -377,6 +381,10 @@ namespace Epicor_Integration
                 SetSubConField();
 
                 //FillLaborEntryGrid();
+
+                AutoRecieve_chk.Enabled = AR;
+
+                SNRequiredOpr_chk.Enabled = SN;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error!"); }
         }
@@ -401,7 +409,7 @@ namespace Epicor_Integration
 
             DataList.EpicClose();
 
-            EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpCode"] = ds.Tables["OpMaster"].Rows[opmast_cbo.SelectedIndex + 1]["OpCode"].ToString();
+            EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpCode"] = ds.Tables["OpMaster"].Rows[opmast_cbo.SelectedIndex]["OpCode"].ToString();
 
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpDesc"] = opmast_cbo.Text;
 
@@ -634,6 +642,10 @@ namespace Epicor_Integration
                 EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["OpDesc"] = opmast_cbo.Text;
 
                 EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["ProdStandard"] = prodhrs_num.Value;
+
+                LaborEntryMethod_cbo.SelectedIndex = 1;
+
+                LaborEntryMethod_cbo_SelectedIndexChanged(LaborEntryMethod_cbo, null);
 
                 EngWB.Update(EngWBDS);
             }

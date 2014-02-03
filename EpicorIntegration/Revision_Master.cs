@@ -83,19 +83,26 @@ namespace Epicor_Integration
 
         private void savebtn_Click(object sender, EventArgs e)
         {
-            //Add revision
-            if (revdesc_txt.Text == "" || revdesc_txt.Text == null)
+            try
             {
-                MessageBox.Show("Revision Description is required", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                //Add revision
+                if (revdesc_txt.Text == "" || revdesc_txt.Text == null)
+                {
+                    MessageBox.Show("Revision Description is required", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+                else
+                {
+                    bool valid = DataList.CreatePartRevision(Searchtxt.Text, currev_txt.Text, newrev_txt.Text, revdesc_txt.Text, comments_txt.Text, econum_txt.Text);
+
+                    if (checkout_chk.Checked)
+                        DataList.CheckOutPart(gid_desc.Text, Searchtxt.Text, newrev_txt.Text);
+
+                    this.Close();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                bool valid = DataList.CreatePartRevision(Searchtxt.Text, currev_txt.Text, newrev_txt.Text, revdesc_txt.Text, comments_txt.Text, econum_txt.Text);
-
-                if (checkout_chk.Checked)
-                    DataList.CheckOutPart(gid_desc.Text, Searchtxt.Text, newrev_txt.Text);
-
-                this.Close();
+                MessageBox.Show(ex.Message + "\n An error occured!  Make sure that part master exists and revision is correct.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

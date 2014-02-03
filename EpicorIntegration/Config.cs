@@ -80,6 +80,14 @@ namespace Epicor_Integration
 
         private void logininfobtn_click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.mtlreqtype = mtlreseq_cbo.SelectedValue.ToString();
+
+            Properties.Settings.Default.svrname = ServerName.Text;
+
+            Properties.Settings.Default.svrport = SeverPort.Text;
+
+            Properties.Settings.Default.Save();
+
             EpicLogin LoginInfoForm = new EpicLogin();
 
             LoginInfoForm.ShowDialog();
@@ -117,6 +125,14 @@ namespace Epicor_Integration
 
         private void ecogp_btn_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.mtlreqtype = mtlreseq_cbo.SelectedValue.ToString();
+
+            Properties.Settings.Default.svrname = ServerName.Text;
+
+            Properties.Settings.Default.svrport = SeverPort.Text;
+
+            Properties.Settings.Default.Save();
+
             if (Properties.Settings.Default.validated)
             {
                 Config_DefaultGroup DefGroup = new Config_DefaultGroup();
@@ -131,6 +147,14 @@ namespace Epicor_Integration
 
         private void opsmin_btn_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.mtlreqtype = mtlreseq_cbo.SelectedValue.ToString();
+
+            Properties.Settings.Default.svrname = ServerName.Text;
+
+            Properties.Settings.Default.svrport = SeverPort.Text;
+
+            Properties.Settings.Default.Save();
+
             Config_OpsMins ConfOps = new Config_OpsMins();
 
             ConfOps.ShowDialog();

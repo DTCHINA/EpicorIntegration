@@ -461,7 +461,6 @@
             this.BillDataGrid.ShowRowErrors = false;
             this.BillDataGrid.Size = new System.Drawing.Size(684, 200);
             this.BillDataGrid.TabIndex = 1;
-            this.BillDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BillDataGrid_CellContentClick);
             // 
             // MtlSeq
             // 

@@ -8,7 +8,7 @@
     <ProjectGuid>{5725485A-A021-48B8-AD5A-08DFF45F65A2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EPDMEpicorIntegration</RootNamespace>
+    <RootNamespace>EPDM_EpicorIntegration</RootNamespace>
     <AssemblyName>EPDM-EpicorIntegration</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileUpgradeFlags>

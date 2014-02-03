@@ -35,9 +35,9 @@ namespace TopLevelReport
 
                 Result = (DataSet)DataList.WhereUsed(searchterm_txt.Text);
 
-                Result.Tables["PartWhereUsed"].Columns.Add("TopLevel");
+                //Result.Tables["PartWhereUsed"].Columns.Add("TopLevel");
 
-                foreach (DataRow dr in ((DataSet)DataList.WhereUsed(searchterm_txt.Text)).Tables["PartWhereUsed"].Rows)
+                foreach (DataRow dr in (Result.Tables["PartWhereUsed"].Rows))
                 {
                     string searchnum = dr["PartNum"].ToString();
 

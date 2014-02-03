@@ -159,6 +159,10 @@
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.ICCCountCycle.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Epicor.Mfg.IF.IDynamicQuery, Version=2.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\epapp1\Epicor905\Client\Epicor.Mfg.IF.IDynamicQuery.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.IF.IEngWorkBench">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IEngWorkBench.dll</HintPath>
       <Private>True</Private>

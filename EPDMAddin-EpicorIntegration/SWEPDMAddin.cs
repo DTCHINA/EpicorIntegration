@@ -10,10 +10,10 @@ using System.Windows.Forms;
 namespace EPDMEpicorIntegration
 {
     //Release GUID
-    //[Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
+    [Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
  
     //Test GUID
-    [Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
+    //[Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
 
     public class SWEPDMAddin : IEdmAddIn5
     {
@@ -21,9 +21,9 @@ namespace EPDMEpicorIntegration
         {
             //Fill in the AddIn's description
 
-            //poInfo.mbsAddInName = "Epicor-Integration";
+            poInfo.mbsAddInName = "Epicor-Integration";
 
-            poInfo.mbsAddInName = "EpicorIntegration";
+            //poInfo.mbsAddInName = "EpicorIntegration";
 
             poInfo.mbsCompany = "Norco Ind.";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
@@ -34,9 +34,9 @@ namespace EPDMEpicorIntegration
             poInfo.mlRequiredVersionMinor = 4;
 
 
-            //string MenuName = "Epicor Integration";
+            string MenuName = "Epicor Integration";
 
-            string MenuName = "Debug";
+            //string MenuName = "Debug";
 
             poCmdMgr.AddCmd(1, MenuName + "\\Part Master", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to create/update Item in Epicor", 0, 0); ;
 
@@ -518,7 +518,14 @@ namespace EPDMEpicorIntegration
 
                     if (Part != null)
                     {
-                        GetItemInfo(file,vault,Part);
+                        try
+                        {
+                            GetItemInfo(file, vault, Part);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message + "\nAn error has occured with this item. Check its properties to ensure no errors and try again","Error!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {

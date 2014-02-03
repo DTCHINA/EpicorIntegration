@@ -409,13 +409,27 @@ namespace Epicor_Integration
             EpicClose();
         }
 
-        public static PartWhereUsedDataSet WhereUsed(string PartNumber)
+        public static DataSet WhereUsed(string PartNumber)
         {
-            Part Part = new Part(EpicConn);
+            //Part Part = new Part(EpicConn);
 
-            bool morePages;
+            //bool morePages;
 
-            return Part.GetPartWhereUsed(PartNumber, 0, 0, out morePages);
+            Epicor.Mfg.Core.CallContext.CallContextDataSet Data = new Epicor.Mfg.Core.CallContext.CallContextDataSet();
+
+            DynamicQuery DynQ = new DynamicQuery(EpicConn);
+
+            QueryDesignDataSet QuerySet = new QueryDesignDataSet();
+
+            QuerySet = DynQ.GetDashBoardQuery("zPartWhereUsed");
+
+            QuerySet.Tables["QueryTable"].Rows[0]["WhereClause"] = "PartMtl.MtlPartNum = '" + PartNumber + "'";
+
+            DataSet ds =  DynQ.ExecuteDashBoardQuery(QuerySet);
+
+            return ds;
+
+            //return Part.GetPartWhereUsed(PartNumber, 0, 0, out morePages);
         }
 
         /// <summary>
@@ -447,6 +461,77 @@ namespace Epicor_Integration
             EpicClose();
 
             return MethodReturned;
+        }
+
+        public void BuildWhereUsedSet()
+        {
+            QueryDesignDataSet QuerySet = new QueryDesignDataSet();
+
+            DataRow dr = QuerySet.Tables["DynamicQuery"].NewRow();
+
+            dr["Approved"] = true;
+
+            dr["DcdUserID"] = "MANAGER";
+
+            dr["Description"] = "Part Where Used";
+
+            dr["ExportID"] = "zPartWhereUsed";
+
+            dr["SelFields"] = "PartMtl.MtlPartNum~PartMtl.PartNum~PartMtl.RevisionNum~Part.PartDescription~PartMtl.AltMethod~PartMtl.MtlSeq~PartMtl.QtyPer~=If PartMtl.ViewAsAsm = True Then 'Asm' Else 'Mtl'~PartRev.Approved~PartRev.ApprovedDate~PartMtl.ParentMtlSeq~PartMtl.ParentAltMethod~Part.Company~PartMtl.Company~PartRev.Company";
+
+            dr["Company"] = "NORCO";
+
+            dr["FileTypID"] = 18;
+
+            dr["foreground"] = true;
+
+            dr["OutputLabels"] = false;
+
+            dr["generatedQueryPhrase"] = "for each PartMtl no-lock , each PartRev where (PartRev.Company = PartMtl.Company and PartRev.PartNum = PartMtl.PartNum and PartRev.RevisionNum = PartMtl.RevisionNum and PartRev.AltMethod = PartMtl.AltMethod) no-lock , each Part where (Part.Company = PartRev.Company and Part.PartNum = PartRev.PartNum) no-lock by PartMtl.Company by PartMtl.MtlPartNum by PartMtl.PartNum by PartMtl.RevisionNum  Desc.";
+
+            dr["FileType"] = "CSV";
+
+            dr["IsShared"] = true;
+
+            dr["Delivered"] = true;
+
+            dr["IsFreeForm"] = false;
+
+            dr["GlobalQuery"] = false;
+
+            dr["IsTransient"] = false;
+
+            dr["Updatable"] = false;
+
+            dr["AllowAddNew"] = false;
+
+            dr["SupportMDR"] = false;
+
+            dr["ExtODBCQuery"] = false;
+
+            dr["XCompany"] = false;
+
+            dr["RowIndent"] = "0x003d024800010000574845524520282850524f47524553535f5245434944203d20000000320008fffb0000000000000000000000000000055329292000";
+
+            dr["DBRowIdent"] = "AD0CSAABAABXSEVSRSAoKFBST0dSRVNTX1JFQ0lEID0gAAAAMgAI//sAAAAAAAAAAAAAAAAAAAVTKSkgAA==";
+
+
+
+            dr = QuerySet.Tables["QueryTable"].NewRow();
+
+            dr["WhereClause"] = "PartMtl.MtlPartNum = '863965'";
+
+            dr["Approved"] = true;
+
+            dr["Company"] = "NORCO";
+
+            dr["DcdUserID"] = "MANAGER";
+
+            dr["ExportID"] = "zPartWhereUsed";
+
+            dr["DataTableID"] = "PartMtl";
+
+            dr["Seq"] = 1;
         }
 
         public string GetCodeDescList()

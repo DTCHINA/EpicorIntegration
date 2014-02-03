@@ -213,12 +213,11 @@ namespace Epicor_Integration
 
             //BillDataGrid.CurrentCell = BillDataGrid[0, 0];
 
-            BillDataGrid.CurrentCell = BillDataGrid.Rows[BillDataGrid.Rows.Count - 1].Cells[0];
+            //BillDataGrid.CurrentCell = BillDataGrid.Rows[BillDataGrid.Rows.Count - 1].Cells[0];
 
-            PullAsAsm_chk.Checked = false;
+            //PullAsAsm_chk.Checked = false;
         }
-
-        
+                
         /// <summary>
         /// Finds current safe parts within the current bill of materials and keeps a separate list of them to add after the bom has been updated (Sheets/Coils/E-Coat)
         /// </summary>
@@ -271,6 +270,7 @@ namespace Epicor_Integration
 
             return RetVal;
         }
+
 
         /// <summary>
         /// Sequence to determine if a part is a coil or a sheet based on Type
@@ -515,6 +515,7 @@ namespace Epicor_Integration
             int rowmod = EngWBDS.Tables["ECOMtl"].Rows.Count;
 
             #region Add missing items
+            
             try
             {
                 for (int i = 0; i < BillItems.Count; i++)
@@ -533,7 +534,9 @@ namespace Epicor_Integration
 
                             EngWBDS.Tables["ECOMtl"].Rows[rowmod]["RelatedOperation"] = ops_cbo.SelectedValue;
 
-                             partnum_txt.Text = BillItems[i];
+                            EngWBDS.Tables["ECOMtl"].Rows[rowmod]["PullAsAsm"] = false;
+
+                            partnum_txt.Text = BillItems[i];
 
                             DataTable ds = DataList.PartUOM(partnum_txt.Text);
 
@@ -580,9 +583,9 @@ namespace Epicor_Integration
 
                     char[] opts = AddBack_Opts[i].ToCharArray();
 
-                    //EngWBDS.Tables["ECOMtl"].Rows[rowmod]["ViewAsAsm"] = (opts[0] == '1' ? true : false);
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["ViewAsAsm"] = (opts[0] == '1' ? true : false);
 
-                    //EngWBDS.Tables["ECOMtl"].Rows[rowmod]["PullAsAsm"] = (opts[1] == '1' ? true : false);
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["PullAsAsm"] = (opts[1] == '1' ? true : false);
       
                     partnum_txt.Text = AddBack[i];
             
@@ -659,7 +662,9 @@ namespace Epicor_Integration
         {
             for (int i = 0; i < BillDataGrid.Rows.Count; i++)
             {
-                UpdateDataSet();
+                BillDataGrid.CurrentCell = BillDataGrid[0, i];
+
+                BillDataGrid_SelectionChanged(BillDataGrid, null);
             }
         }
 
@@ -673,6 +678,9 @@ namespace Epicor_Integration
             {
                 if (linechanged)
                 {
+                    if (ops_cbo.Text.Contains("ECOAT"))
+                        uom_cbo.Text = "FT2";
+
                     int rowindex = BillDataGrid.CurrentCellAddress.Y;
 
                     EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"] = ViewAsAsm_chk.Checked;
@@ -689,7 +697,7 @@ namespace Epicor_Integration
 
                     EngWBDS.Tables["ECOMtl"].Rows[rowindex]["QtyPer"] = qty_num.Value;
 
-                    //EngWBDS.Tables["ECOMtl"].Rows[rowindex]["PullAsAsm"] = PullAsAsm_chk.Checked;
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["PullAsAsm"] = PullAsAsm_chk.Checked;
 
                     linechanged = false;
                 }
@@ -730,6 +738,8 @@ namespace Epicor_Integration
 
                     partnum_txt.Text = EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlPartNum"].ToString();
 
+                    uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
+
                     DataTable ds = DataList.PartUOM(partnum_txt.Text);
 
                     uom_cbo.DataSource = ds;
@@ -740,9 +750,11 @@ namespace Epicor_Integration
 
                     uom_cbo.Text = EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"].ToString();
 
-                    //ViewAsAsm_chk.Checked = Boolean.Parse(EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"].ToString());
+                    uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
 
-                    //PullAsAsm_chk.Checked = Boolean.Parse(EngWBDS.Tables["ECOMtl"].Rows[rowindex]["PullAsAsm"].ToString());
+                    ViewAsAsm_chk.Checked = Boolean.Parse(EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"].ToString());
+
+                    PullAsAsm_chk.Checked = Boolean.Parse(EngWBDS.Tables["ECOMtl"].Rows[rowindex]["PullAsAsm"].ToString());
 
                     linechanged = true;
                 }
@@ -1164,6 +1176,10 @@ namespace Epicor_Integration
 
             DT = Templates.GetFullTemplate(TS.Name, "BOM");
 
+            button1.Enabled = true;
+
+            EnableItemDetails();
+
             try
             {
                 //line for each row
@@ -1394,20 +1410,13 @@ namespace Epicor_Integration
             }
             catch { }
         }
-
-        private void BillDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        
+       
         void BillDataGrid_SelectionChanged(object sender, EventArgs e)
         {
             linechanged = false;
 
-            if (ops_cbo.Text.Contains("ECOAT"))
-                uom_cbo.Text = "FT2";
-
-            UpdateFormFields();
+            if (Form_Update_Enabled)
+                UpdateFormFields();
 
             if (BillDataGrid.CurrentCell == null)
                 removebtn.Enabled = false;
