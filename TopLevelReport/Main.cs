@@ -29,6 +29,8 @@ namespace TopLevelReport
 
         private void search_btn_Click(object sender, EventArgs e)
         {
+            //DataList.GetCurrentDesc(searchterm_txt.Text);
+
             if (searchterm_txt.Text != null && searchterm_txt.Text != "")
             {
                 DataSet CleanSlate = new DataSet();
@@ -37,29 +39,29 @@ namespace TopLevelReport
 
                 //Result.Tables["PartWhereUsed"].Columns.Add("TopLevel");
 
-                foreach (DataRow dr in (Result.Tables["PartWhereUsed"].Rows))
+                foreach (DataRow dr in (Result.Tables["Results"].Rows))
                 {
-                    string searchnum = dr["PartNum"].ToString();
+                    string searchnum = dr["PartMtl.PartNum"].ToString();
 
                     SearchDS(searchnum);
                 }
 
-                Result.Tables["PartWhereUsed"].DefaultView.Sort = "PartNum";
+                Result.Tables["Results"].DefaultView.Sort = "PartMtl.PartNum";
 
-                dataGridView1.DataSource = Result.Tables["PartWhereUsed"];//.DefaultView.ToTable(true, "PartNum", "RevisionNum","MtlPartNum","PartNumPartDescription");
+                dataGridView1.DataSource = Result.Tables["Results"];//.DefaultView.ToTable(true, "PartNum", "RevisionNum","MtlPartNum","PartNumPartDescription");
             }
         }
 
         private void SearchDS(string Pnum)
         {
-            try            {
+            try
+            {
                 foreach (DataRow dr in ((DataSet)DataList.WhereUsed(Pnum)).Tables["PartWhereUsed"].Rows)
                 {
                     string newsearch = dr["PartNum"].ToString();
 
                     DataSet ds = (DataSet)DataList.WhereUsed(newsearch);
-
-
+                    
                     ds.Tables["PartWhereUsed"].Columns.Add("TopLevel");
 
                     if (ds.Tables["PartNum"] == null)

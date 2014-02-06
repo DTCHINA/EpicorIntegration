@@ -224,6 +224,13 @@ namespace Epicor_Integration
             {
                 UpdateFormSet(Partnumber_txt.Text);
 
+                /*if (trackserial.Checked)
+                {
+                    SerialMask = DataList.GetCurrentSNMask(Partnumber_txt.Text);
+
+                    SerialPrefix = DataList.GetCurrentSNMaskPrefix(Partnumber_txt.Text);
+                }*/
+
                 uom_cbo.Enabled = false;
 
                 if (Description_txt.Text != _Description || NetWeight.Value != _Weight || group_cbo.Text != _Group || class_cbo.Text != _Class || type_cbo.Text != _Type)
@@ -333,6 +340,8 @@ namespace Epicor_Integration
             }
 
             SerialPrefix = Pdata.Tables[0].Rows[0]["SNMaskPrefix"].ToString();
+
+            SerialMask = Pdata.Tables[0].Rows[0]["SNMask"].ToString();
 
             trackserial.CheckedChanged += trackserial_CheckedChanged;
         }

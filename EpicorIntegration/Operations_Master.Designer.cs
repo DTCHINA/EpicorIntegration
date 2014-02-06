@@ -77,7 +77,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.OPDataGrid = new System.Windows.Forms.DataGridView();
-            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.OprSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +104,7 @@
             this.VendorNumTermsCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VendorNumCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubContract = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MajorContainer.Panel1.SuspendLayout();
             this.MajorContainer.Panel2.SuspendLayout();
             this.MajorContainer.SuspendLayout();
@@ -356,6 +356,7 @@
             // 
             // resource_show
             // 
+            this.resource_show.Enabled = false;
             this.resource_show.Location = new System.Drawing.Point(6, 77);
             this.resource_show.Name = "resource_show";
             this.resource_show.Size = new System.Drawing.Size(75, 23);
@@ -655,11 +656,6 @@
             this.OPDataGrid.Size = new System.Drawing.Size(782, 288);
             this.OPDataGrid.TabIndex = 0;
             // 
-            // TemplateMenu
-            // 
-            this.TemplateMenu.Name = "TemplateMenu";
-            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
-            // 
             // OprSeq
             // 
             this.OprSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -870,6 +866,11 @@
             this.SubContract.Name = "SubContract";
             this.SubContract.ReadOnly = true;
             this.SubContract.Visible = false;
+            // 
+            // TemplateMenu
+            // 
+            this.TemplateMenu.Name = "TemplateMenu";
+            this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // Operations_Master
             // 

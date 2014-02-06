@@ -411,10 +411,12 @@ namespace Epicor_Integration
 
         public static DataSet WhereUsed(string PartNumber)
         {
-            //Part Part = new Part(EpicConn);
+            /*Part Part = new Part(EpicConn);
 
-            //bool morePages;
+            bool morePages;
 
+            DataSet ds = (DataSet)Part.GetPartWhereUsed(PartNumber, 1, 1,out morePages);
+            */
             Epicor.Mfg.Core.CallContext.CallContextDataSet Data = new Epicor.Mfg.Core.CallContext.CallContextDataSet();
 
             DynamicQuery DynQ = new DynamicQuery(EpicConn);
@@ -643,6 +645,48 @@ namespace Epicor_Integration
                 int LastRowIndex = PartData.Tables["Part"].Rows.Count - 1;
 
                 string PartDesc = PartData.Tables["Part"].Rows[LastRowIndex]["PartDescription"].ToString();
+
+                EpicClose();
+
+                return PartDesc;
+            }
+            catch { return null; }
+        }
+
+        public static string GetCurrentSNMask(string PartNumber)
+        {
+            try
+            {
+                Part Part = new Part(EpicConn);
+
+                PartDataSet PartData = new PartDataSet();
+
+                PartData = Part.GetByID(PartNumber);
+
+                int LastRowIndex = PartData.Tables["Part"].Rows.Count - 1;
+
+                string PartDesc = PartData.Tables["Part"].Rows[LastRowIndex]["SNMask"].ToString();
+
+                EpicClose();
+
+                return PartDesc;
+            }
+            catch { return null; }
+        }
+
+        public static string GetCurrentSNMaskPrefix(string PartNumber)
+        {
+            try
+            {
+                Part Part = new Part(EpicConn);
+
+                PartDataSet PartData = new PartDataSet();
+
+                PartData = Part.GetByID(PartNumber);
+
+                int LastRowIndex = PartData.Tables["Part"].Rows.Count - 1;
+
+                string PartDesc = PartData.Tables["Part"].Rows[LastRowIndex]["SNMaskPrefix"].ToString();
 
                 EpicClose();
 
@@ -1149,6 +1193,8 @@ namespace Epicor_Integration
 
         public string TrackSerial_Mask;
 
+        public string TrackSerial_Prefix;
+
         public string Planner;
     }
 
@@ -1292,6 +1338,8 @@ namespace Epicor_Integration
                     Pdata.TrackSerial = bool.Parse(Dr["PropertyValue"].ToString());
 
                     Pdata.TrackSerial_Mask = Dr["PropertyOptions"].ToString();
+
+                    Pdata.TrackSerial_Prefix = Dr["PropertyOptions1"].ToString();
                 }
 
                 if (Dr["PropertyType"].ToString() == "PLANT")

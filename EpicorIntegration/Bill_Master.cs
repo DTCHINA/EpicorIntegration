@@ -211,11 +211,21 @@ namespace Epicor_Integration
             if (BillDataGrid.Rows.Count == 0)
                 button1.Enabled = false;
 
+            uom_cbo.Click += uom_cbo_Click;
+
             //BillDataGrid.CurrentCell = BillDataGrid[0, 0];
 
             //BillDataGrid.CurrentCell = BillDataGrid.Rows[BillDataGrid.Rows.Count - 1].Cells[0];
 
             //PullAsAsm_chk.Checked = false;
+        }
+
+        void uom_cbo_Click(object sender, EventArgs e)
+        {
+            linechanged = true;
+
+            if (DB_Update_Enabled)
+                UpdateDataSet();
         }
                 
         /// <summary>
@@ -977,10 +987,7 @@ namespace Epicor_Integration
 
         private void uom_cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            linechanged = true;
 
-            if (DB_Update_Enabled)
-                UpdateDataSet();
         }
 
         private void qty_num_ValueChanged(object sender, EventArgs e)

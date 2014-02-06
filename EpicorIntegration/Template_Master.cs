@@ -224,8 +224,8 @@ namespace Epicor_Integration
 
         private void RefreshTransaction()
         {
-            if (Transaction == null)
-                Transaction = TableHelper.BeginTransaction(TemplateAdapter);
+            //if (Transaction == null)
+            //    Transaction = TableHelper.BeginTransaction(TemplateAdapter);
         }
 
         public DataTable GetFullTemplate(string Name, string Type)
@@ -334,15 +334,15 @@ namespace Epicor_Integration
 
             ItemTemplateList.CellClick += ItemTemplateList_CellClick;
 
-            Transaction = null;
+            Transaction = TableHelper.BeginTransaction(TemplateAdapter);
 
-            ItemTemplateList.DataSource = Templates.GetItemTemplates();
+            ItemTemplateList.DataSource = GetItemTemplates();
 
-            OpsTemplateList.DataSource = Templates.GetOomTemplates();
+            OpsTemplateList.DataSource = GetOomTemplates();
 
-            BillTemplateList.DataSource = Templates.GetBomTemplates();
+            BillTemplateList.DataSource = GetBomTemplates();
 
-            ResTemplateList.DataSource = Templates.GetResTemplates();
+            ResTemplateList.DataSource = GetResTemplates();
 
             //BillTemplateList.SelectionChanged += BillTemplateList_SelectionChanged;
 
@@ -856,7 +856,11 @@ namespace Epicor_Integration
 
                 userevision.Checked = pdata.UseRevision;
 
+                trackserial.CheckedChanged -= trackserial_CheckedChanged;
+
                 trackserial.Checked = pdata.TrackSerial;
+
+                trackserial.CheckedChanged += trackserial_CheckedChanged;
 
                 phantom_chk.Checked = pdata.Phantom;
 
@@ -903,7 +907,7 @@ namespace Epicor_Integration
         {
             if (trackserial.Checked)
             {
-                SerialMask_Master SM = new SerialMask_Master("");
+                SerialMask_Master SM = new SerialMask_Master(pdata.TrackSerial_Prefix);
 
                 SM.ShowDialog();
 
@@ -1243,54 +1247,71 @@ namespace Epicor_Integration
             {
                 prodhrs_num.ValueChanged -= prodhrs_num_ValueChanged;
 
+                object val = null;
+
                 seq_txt.TextChanged -= seq_txt_TextChanged;
 
-                if (OPDataGrid["OOMPropertyOptions", OPDataGrid.CurrentCellAddress.Y].Value == null)
+                try
                 {
-                    ops_grp.Visible = false;
-
-                    subcon_grp.Visible = true;
-
-                    subcon_grp.Location = new Point(ops_grp.Location.X, ops_grp.Location.Y);
-
-                    subcon_opsmast_cbo.SelectedValue = OPDataGrid["OOMPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
-
-                    refneeded_chk.Checked = (OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString() != "0".ToString());
-
-                    if (refneeded_chk.Checked)
-                        quotesreq_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString());
-
-                    supplierid_txt.Text = OPDataGrid["OOMPropertyOptions", OPDataGrid.CurrentRow.Index].Value.ToString();
-
-                    unitcost_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption2", OPDataGrid.CurrentRow.Index].Value.ToString());
-
-                    daysout_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption3", OPDataGrid.CurrentRow.Index].Value.ToString());
-
-                    qtyper_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption4", OPDataGrid.CurrentRow.Index].Value.ToString());
-
-                    subconuom_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
+                    val = OPDataGrid["OOMPropertyOptions", OPDataGrid.CurrentCellAddress.Y].Value;
                 }
-                else
-                {
-                    ops_grp.Visible = true;
+                catch (Exception ex)
+                { }//MessageBox.Show(ex.Message); }
 
-                    subcon_grp.Visible = false;
+                    if (val != null)
+                    {
+                        try
+                        {
+                            ops_grp.Visible = false;
 
-                    prodhrs_num.Value = decimal.Parse(OPDataGrid["OprPropertyQty", OPDataGrid.CurrentRow.Index].Value.ToString());
+                            subcon_grp.Visible = true;
 
-                    seq_txt.Text = OPDataGrid["OOMPropertyType", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            subcon_grp.Location = new Point(ops_grp.Location.X, ops_grp.Location.Y);
 
-                    opmast_cbo.SelectedValue = OPDataGrid["OOMPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            subcon_opsmast_cbo.SelectedValue = OPDataGrid["OOMPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
 
-                    prodstd_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
-                }
+                            refneeded_chk.Checked = (OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString() != "0".ToString());
 
-                prodhrs_num.ValueChanged += prodhrs_num_ValueChanged;
+                            if (refneeded_chk.Checked)
+                                quotesreq_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString());
 
-                seq_txt.TextChanged += seq_txt_TextChanged;
+                            supplierid_txt.Text = OPDataGrid["OOMPropertyOptions", OPDataGrid.CurrentRow.Index].Value.ToString();
+
+                            unitcost_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption2", OPDataGrid.CurrentRow.Index].Value.ToString());
+
+                            daysout_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption3", OPDataGrid.CurrentRow.Index].Value.ToString());
+
+                            qtyper_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption4", OPDataGrid.CurrentRow.Index].Value.ToString());
+
+                            subconuom_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
+                        }
+                        catch (Exception ex0) { MessageBox.Show("Sub Con Error: " + ex0.Message); }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            ops_grp.Visible = true;
+
+                            subcon_grp.Visible = false;
+
+                            prodhrs_num.Value = decimal.Parse(OPDataGrid["OprPropertyQty", OPDataGrid.CurrentRow.Index].Value.ToString());
+
+                            seq_txt.Text = OPDataGrid["OOMPropertyType", OPDataGrid.CurrentRow.Index].Value.ToString();
+
+                            opmast_cbo.SelectedValue = OPDataGrid["OOMPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
+
+                            prodstd_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
+                        }
+                        catch (Exception ex1) { MessageBox.Show("Operation Error:" + ex1.Message); }
+                    }
+
+                    prodhrs_num.ValueChanged += prodhrs_num_ValueChanged;
+
+                    seq_txt.TextChanged += seq_txt_TextChanged;
             }
-            catch { }
-        }
+            catch (Exception ex2) { MessageBox.Show("Error reading line!\n" + ex2.Message); }
+            }
 
         void seq_txt_TextChanged(object sender, EventArgs e)
         {
@@ -1709,6 +1730,42 @@ namespace Epicor_Integration
             BillDataGrid.CurrentRow.Cells["PropertyOptions2"].Value = PullAsAsm_chk.Checked.ToString();
 
             UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+        }
+
+        public DataTable GetOomTemplates()
+        {
+            ENGDataDataSet.TemplatesDataTable RetVal = new ENGDataDataSet.TemplatesDataTable();
+
+            TemplateAdapter.FillByType(RetVal, "OOM");
+
+            return (DataTable)RetVal;
+        }
+
+        public DataTable GetResTemplates()
+        {
+            ENGDataDataSet.TemplatesDataTable RetVal = new ENGDataDataSet.TemplatesDataTable();
+
+            TemplateAdapter.FillByType(RetVal, "RES");
+
+            return (DataTable)RetVal;
+        }
+
+        public DataTable GetItemTemplates()
+        {
+            ENGDataDataSet.TemplatesDataTable RetVal = new ENGDataDataSet.TemplatesDataTable();
+
+            TemplateAdapter.FillByType(RetVal, "ITEM");
+
+            return (DataTable)RetVal;
+        }
+
+        public DataTable GetBomTemplates()
+        {
+            ENGDataDataSet.TemplatesDataTable RetVal = new ENGDataDataSet.TemplatesDataTable();
+
+            TemplateAdapter.FillByType(RetVal, "BOM");
+
+            return (DataTable)RetVal;
         }
     }
 }

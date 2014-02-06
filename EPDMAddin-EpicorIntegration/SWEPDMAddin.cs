@@ -27,7 +27,7 @@ namespace EPDMEpicorIntegration
 
             poInfo.mbsCompany = "Norco Ind.";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = 1;
+            poInfo.mlAddInVersion = 2;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -677,7 +677,18 @@ namespace EPDMEpicorIntegration
 
                 var.GetVar("Number", selected_config, out partnum_val);
 
-                var.GetVar("Description", selected_config, out desc_val);
+                if (partnum_val.ToString().Substring(0, 3) == "201")
+                {
+                    object cust_val;
+                    var.GetVar("Customer", selected_config, out cust_val);
+
+                    object model_val;
+                    var.GetVar("Model",selected_config,out model_val);
+
+                    desc_val = cust_val.ToString() + " " + model_val.ToString() + " FRAME";
+                }
+                else
+                    var.GetVar("Description", selected_config, out desc_val);
 
                 var.GetVar("Product", selected_config, out product_val);
 

@@ -546,16 +546,15 @@ namespace Epicor_Integration
 
         private void saveclose_btn_Click(object sender, EventArgs e)
         {
-
             EngWB.Update(EngWBDS);
 
-            EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+            //EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
-            resource_show.Enabled = true;
+            //resource_show.Enabled = true;
 
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+            //EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
-            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+            //OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
             this.Close();
         }
@@ -695,7 +694,11 @@ namespace Epicor_Integration
             EngWB.Update(EngWBDS);
 
             if (OPDataGrid.Rows.Count > 0)
+            {
                 removebtn.Enabled = true;
+
+                resource_show.Enabled = true;
+            }
 
             opmast_cbo.SelectedIndexChanged += opmast_cbo_SelectedIndexChanged;
 
