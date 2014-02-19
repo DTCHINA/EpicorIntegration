@@ -1109,6 +1109,8 @@ namespace Epicor_Integration
             Form_Update_Enabled = true;
 
             DB_Update_Enabled = true;
+
+            EnableItemDetails();
         }
 
         private void savebtn_Click(object sender, EventArgs e)
@@ -1150,6 +1152,8 @@ namespace Epicor_Integration
             Form_Update_Enabled = true;
 
             DB_Update_Enabled = true;
+
+            EnableItemDetails();
         }
 
         private void copy_btn_Click(object sender, EventArgs e)

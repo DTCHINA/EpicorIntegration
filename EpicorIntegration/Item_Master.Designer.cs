@@ -54,6 +54,7 @@
             this.savebtn = new System.Windows.Forms.Button();
             this.uomweight_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.factor_btn = new System.Windows.Forms.Button();
             this.phantom_chk = new System.Windows.Forms.CheckBox();
             this.qtybearing = new System.Windows.Forms.CheckBox();
             this.userevision = new System.Windows.Forms.CheckBox();
@@ -64,7 +65,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.copy_btn = new System.Windows.Forms.Button();
             this.TemplatesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.factor_btn = new System.Windows.Forms.Button();
+            this.bflush_chk = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -287,6 +288,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.bflush_chk);
             this.groupBox1.Controls.Add(this.factor_btn);
             this.groupBox1.Controls.Add(this.phantom_chk);
             this.groupBox1.Controls.Add(this.qtybearing);
@@ -315,6 +317,16 @@
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detail";
+            // 
+            // factor_btn
+            // 
+            this.factor_btn.Location = new System.Drawing.Point(95, 149);
+            this.factor_btn.Name = "factor_btn";
+            this.factor_btn.Size = new System.Drawing.Size(49, 21);
+            this.factor_btn.TabIndex = 36;
+            this.factor_btn.Text = "Factor";
+            this.factor_btn.UseVisualStyleBackColor = true;
+            this.factor_btn.Click += new System.EventHandler(this.factor_btn_Click);
             // 
             // phantom_chk
             // 
@@ -416,15 +428,17 @@
             this.TemplatesMenu.Name = "TemplatesMenu";
             this.TemplatesMenu.Size = new System.Drawing.Size(61, 4);
             // 
-            // factor_btn
+            // bflush_chk
             // 
-            this.factor_btn.Location = new System.Drawing.Point(95, 149);
-            this.factor_btn.Name = "factor_btn";
-            this.factor_btn.Size = new System.Drawing.Size(49, 21);
-            this.factor_btn.TabIndex = 36;
-            this.factor_btn.Text = "Factor";
-            this.factor_btn.UseVisualStyleBackColor = true;
-            this.factor_btn.Click += new System.EventHandler(this.factor_btn_Click);
+            this.bflush_chk.AutoSize = true;
+            this.bflush_chk.Checked = true;
+            this.bflush_chk.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.bflush_chk.Location = new System.Drawing.Point(224, 179);
+            this.bflush_chk.Name = "bflush_chk";
+            this.bflush_chk.Size = new System.Drawing.Size(73, 17);
+            this.bflush_chk.TabIndex = 37;
+            this.bflush_chk.Text = "Backflush";
+            this.bflush_chk.UseVisualStyleBackColor = true;
             // 
             // Item_Master
             // 
@@ -489,6 +503,7 @@
         private System.Windows.Forms.ContextMenuStrip TemplatesMenu;
         private System.Windows.Forms.CheckBox phantom_chk;
         private System.Windows.Forms.Button factor_btn;
+        private System.Windows.Forms.CheckBox bflush_chk;
     }
 }
 

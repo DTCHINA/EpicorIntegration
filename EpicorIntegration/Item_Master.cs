@@ -279,8 +279,12 @@ namespace Epicor_Integration
             AllToUpper();
 
             //201XXXXX is a frame, 404XXXXX is a Flo-machine - both need to be serialized
-            if (Partnumber_txt.Text.Substring(0, 3) == "201" || Partnumber_txt.Text.Substring(0,3) == "404")
+            if (Partnumber_txt.Text.Substring(0, 3) == "201" || Partnumber_txt.Text.Substring(0, 3) == "404")
+            {
                 trackserial.Checked = true;
+
+                bflush_chk.Checked = false;
+            }
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -483,6 +487,8 @@ namespace Epicor_Integration
                         }
 
                         Part.Update(Pdata);
+
+                        DataList.UpdateDatum(Pdata, "PartPlant", 0, "BackFlush", bflush_chk.Checked.ToString());
 
                         DataList.UpdateDatum(Pdata, "PartPlant", 0, "PersonID", planner_cbo.Text);
 

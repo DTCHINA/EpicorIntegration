@@ -27,7 +27,7 @@ namespace EPDMEpicorIntegration
 
             poInfo.mbsCompany = "Norco Ind.";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = 2;
+            poInfo.mlAddInVersion = (int)201402191;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -657,7 +657,7 @@ namespace EPDMEpicorIntegration
 
             object partnum_val;
 
-            object desc_val;
+            object desc_val = "";
 
             object weight_val;
 
@@ -677,15 +677,22 @@ namespace EPDMEpicorIntegration
 
                 var.GetVar("Number", selected_config, out partnum_val);
 
-                if (partnum_val.ToString().Substring(0, 3) == "201")
+                if (partnum_val.ToString().Contains("201"))
                 {
-                    object cust_val;
-                    var.GetVar("Customer", selected_config, out cust_val);
+                    DialogResult DR = MessageBox.Show("Part number identified as a frame.  Do you want to use the Customer/Model instead of SolidWorks description custom property?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    object model_val;
-                    var.GetVar("Model",selected_config,out model_val);
+                    if (DR == DialogResult.Yes)
+                    {
+                        object cust_val;
+                        var.GetVar("Customer", selected_config, out cust_val);
 
-                    desc_val = cust_val.ToString() + " " + model_val.ToString() + " FRAME";
+                        object model_val;
+                        var.GetVar("Model", selected_config, out model_val);
+
+                        desc_val = "FRAME " + cust_val.ToString() + " " + model_val.ToString();
+                    }
+                    else
+                        var.GetVar("Description", selected_config, out desc_val);
                 }
                 else
                     var.GetVar("Description", selected_config, out desc_val);
@@ -736,15 +743,13 @@ namespace EPDMEpicorIntegration
 
         public DialogResult GetItemInfo(IEdmVault7 vault, EdmCmdData file)
         {                           
-            IEdmFile5 part;
- 
             IEdmEnumeratorVariable5 var;
 
             string selected_config;
 
             object partnum_val;
 
-            object desc_val;
+            object desc_val = "";
 
             object weight_val;
 
@@ -753,20 +758,38 @@ namespace EPDMEpicorIntegration
             object class_val;
 
             object type_val;
-                         
-            part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
 
-            if (UpdateItemRef(file,part, vault))
+            IEdmFile5 Part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
+
+            if (UpdateItemRef(file, Part, vault))
             {
-                var = part.GetEnumeratorVariable();
+                var = Part.GetEnumeratorVariable();
 
                 decimal weight_fallback = 0;
 
-                selected_config = DetermineConfig(part,vault,file);
+                selected_config = DetermineConfig(Part, vault, null);
 
                 var.GetVar("Number", selected_config, out partnum_val);
 
-                var.GetVar("Description", selected_config, out desc_val);
+                if (partnum_val.ToString().Contains("201"))
+                {
+                    DialogResult DR = MessageBox.Show("Part number identified as a frame.  Do you want to use the Customer/Model instead of SolidWorks description custom property?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (DR == DialogResult.Yes)
+                    {
+                        object cust_val;
+                        var.GetVar("Customer", selected_config, out cust_val);
+
+                        object model_val;
+                        var.GetVar("Model", selected_config, out model_val);
+
+                        desc_val = "FRAME " + cust_val.ToString() + " " + model_val.ToString();
+                    }
+                    else
+                        var.GetVar("Description", selected_config, out desc_val);
+                }
+                else
+                    var.GetVar("Description", selected_config, out desc_val);
 
                 var.GetVar("Product", selected_config, out product_val);
 
@@ -783,21 +806,18 @@ namespace EPDMEpicorIntegration
                 if (weight_val != null)
                     decimal.TryParse(weight_val.ToString(), out weight_fallback);
 
-                if (class_val == null)
-                    class_val = "";
-
-                if (type_val == null)
-                    type_val = "";
-
                 if (product_val == null)
                     product_val = "";
+
+                if (class_val == null)
+                    class_val = "";
 
                 if (desc_val == null)
                     desc_val = "";
 
                 if (partnum_val != null)
                 {
-                    Epicor_Integration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback,product_val.ToString(),class_val.ToString(),type_val.ToString());
+                    Epicor_Integration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback, product_val.ToString(), class_val.ToString(), type_val.ToString());
 
                     item.ShowDialog();
 
