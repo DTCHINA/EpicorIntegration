@@ -52,7 +52,7 @@ namespace Epicor_Integration
 
             try
             {
-                MP = ((decimal.Parse(seconds_txt.Text) / decimal.Parse(efficiency_txt.Text) / 60) * (decimal.Parse(mult_txt.ToString()))).ToString();
+                MP = ((decimal.Parse(seconds_txt.Text) / decimal.Parse(efficiency_txt.Text) / 60) * (decimal.Parse(mult_txt.Text))).ToString();
             }
             catch { MP = "Error!"; }
             finally { minpc_txt.Text = MP; }

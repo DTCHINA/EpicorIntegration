@@ -415,7 +415,9 @@ namespace Epicor_Integration
 
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
 
-            LaborEntryMethod_cbo.SelectedIndex = 1;
+            //LaborEntryMethod_cbo.SelectedIndex = 1;
+
+            LaborEntryMethod_cbo.SelectedValue = "Q";
 
             LaborEntryMethod_cbo_SelectedIndexChanged(LaborEntryMethod_cbo, null);
 
@@ -634,6 +636,8 @@ namespace Epicor_Integration
 
                 decimal dec = decimal.Parse(Dr["PropertyQty"].ToString());
 
+                LaborEntryMethod_cbo.SelectedValue = Dr["PropertyOptions5"].ToString();
+
                 prodhrs_num.Value = dec;
 
                 EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["OpCode"] = opmast_cbo.SelectedValue.ToString();
@@ -642,9 +646,11 @@ namespace Epicor_Integration
 
                 EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["ProdStandard"] = prodhrs_num.Value;
 
-                LaborEntryMethod_cbo.SelectedIndex = 1;
+                EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["LaborEntryMethod"] = LaborEntryMethod_cbo.SelectedValue;
 
-                LaborEntryMethod_cbo_SelectedIndexChanged(LaborEntryMethod_cbo, null);
+                //LaborEntryMethod_cbo.SelectedIndex = 1;
+
+                //LaborEntryMethod_cbo_SelectedIndexChanged(LaborEntryMethod_cbo, null);
 
                 EngWB.Update(EngWBDS);
             }

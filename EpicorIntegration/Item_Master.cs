@@ -728,7 +728,12 @@ namespace Epicor_Integration
         private void trackserial_CheckedChanged(object sender, EventArgs e)
         {
             if (trackserial.Checked)
+                bflush_chk.Checked = false;
+
+            if (trackserial.Checked)
             {
+                bflush_chk.Checked = false;
+
                 string prefix = "";
 
                 if (Partnumber_txt.Text.Substring(0, 3) == "201")
@@ -758,6 +763,12 @@ namespace Epicor_Integration
             Sheet.ShowDialog();
 
             NetWeight.Value = Sheet.FactoredWeight;
+        }
+
+        private void bflush_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            if (bflush_chk.Checked)
+                trackserial.Checked = false;
         }
     }
 }

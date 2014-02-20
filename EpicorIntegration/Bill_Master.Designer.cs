@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bill_Master));
             this.MajorHorizSplit = new System.Windows.Forms.SplitContainer();
+            this.area = new System.Windows.Forms.NumericUpDown();
+            this.weight = new System.Windows.Forms.NumericUpDown();
             this.parentrev_txt = new System.Windows.Forms.TextBox();
             this.gid_txt = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -80,6 +82,8 @@
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.area)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weight)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qty_num)).BeginInit();
@@ -96,6 +100,8 @@
             // 
             // MajorHorizSplit.Panel1
             // 
+            this.MajorHorizSplit.Panel1.Controls.Add(this.area);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.weight);
             this.MajorHorizSplit.Panel1.Controls.Add(this.parentrev_txt);
             this.MajorHorizSplit.Panel1.Controls.Add(this.gid_txt);
             this.MajorHorizSplit.Panel1.Controls.Add(this.groupBox2);
@@ -113,6 +119,28 @@
             this.MajorHorizSplit.Size = new System.Drawing.Size(684, 466);
             this.MajorHorizSplit.SplitterDistance = 262;
             this.MajorHorizSplit.TabIndex = 1;
+            // 
+            // area
+            // 
+            this.area.DecimalPlaces = 3;
+            this.area.InterceptArrowKeys = false;
+            this.area.Location = new System.Drawing.Point(322, 65);
+            this.area.Name = "area";
+            this.area.ReadOnly = true;
+            this.area.Size = new System.Drawing.Size(62, 20);
+            this.area.TabIndex = 17;
+            this.area.Visible = false;
+            // 
+            // weight
+            // 
+            this.weight.DecimalPlaces = 3;
+            this.weight.InterceptArrowKeys = false;
+            this.weight.Location = new System.Drawing.Point(249, 65);
+            this.weight.Name = "weight";
+            this.weight.ReadOnly = true;
+            this.weight.Size = new System.Drawing.Size(62, 20);
+            this.weight.TabIndex = 16;
+            this.weight.Visible = false;
             // 
             // parentrev_txt
             // 
@@ -289,7 +317,6 @@
             this.ViewAsAsm_chk.TabIndex = 10;
             this.ViewAsAsm_chk.Text = "View As Assembly";
             this.ViewAsAsm_chk.UseVisualStyleBackColor = true;
-            //this.ViewAsAsm_chk.CheckedChanged += new System.EventHandler(this.ViewAsAsm_chk_CheckedChanged);
             // 
             // uom_cbo
             // 
@@ -299,7 +326,6 @@
             this.uom_cbo.Name = "uom_cbo";
             this.uom_cbo.Size = new System.Drawing.Size(74, 21);
             this.uom_cbo.TabIndex = 2;
-            //this.uom_cbo.SelectedIndexChanged += new System.EventHandler(this.uom_cbo_SelectedIndexChanged);
             // 
             // qty_num
             // 
@@ -578,6 +604,8 @@
             this.MajorHorizSplit.Panel1.PerformLayout();
             this.MajorHorizSplit.Panel2.ResumeLayout(false);
             this.MajorHorizSplit.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.area)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weight)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -635,6 +663,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ViewAsAsm;
         private System.Windows.Forms.DataGridViewCheckBoxColumn PullAsAsm;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
+        private System.Windows.Forms.NumericUpDown area;
+        private System.Windows.Forms.NumericUpDown weight;
 
     }
 }

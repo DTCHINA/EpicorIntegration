@@ -206,6 +206,14 @@ namespace Epicor_Integration
             //Dialog to save changes
             if (Transaction == null)
                 this.Dispose();
+            else
+                try
+                {
+                    Transaction.Rollback();
+
+                    Transaction = null;
+                }
+                catch { }
             //else
               //  ;//e.Cancel = true;
         }
@@ -322,6 +330,8 @@ namespace Epicor_Integration
 
         private void Template_Master_Load(object sender, EventArgs e)
         {
+            FillLaborEntry();
+            
             FillItemLists();
 
             this.Size = new Size(538, 530);
@@ -472,6 +482,8 @@ namespace Epicor_Integration
 
             try
             {
+                fill.Text = BillDataGrid.CurrentRow.Cells["PropertyOptions5"].Value.ToString();
+
                 qty_num.Value = decimal.Parse(BillDataGrid.CurrentRow.Cells["PropertyQty"].Value.ToString());
 
                 partnum_txt.Text = BillDataGrid.CurrentRow.Cells["PropertyValue"].Value.ToString();
@@ -787,6 +799,15 @@ namespace Epicor_Integration
             TemplateAdapter.DeleteTemplate(billtemplatename_txt.Text, "BOM");
 
             TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)BillTemplateList.DataSource, "BOM");
+        }
+
+        private void fill_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshTransaction();
+
+            BillDataGrid.CurrentRow.Cells["PropertyOptions5"].Value = fill.Text;
+
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
         }
 
         #endregion
@@ -1302,6 +1323,8 @@ namespace Epicor_Integration
                             opmast_cbo.SelectedValue = OPDataGrid["OOMPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
 
                             prodstd_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
+
+                            laborentry_cbo.SelectedValue = OPDataGrid["OprPropertyOption5", OPDataGrid.CurrentRow.Index].Value.ToString();
                         }
                         catch (Exception ex1) { MessageBox.Show("Operation Error:" + ex1.Message); }
                     }
@@ -1370,6 +1393,62 @@ namespace Epicor_Integration
         private void saveop_btn_Click(object sender, EventArgs e)
         {
             SaveProcess();
+        }
+
+        private void laborentry_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                OPDataGrid["OprPropertyOption5", OPDataGrid.CurrentRow.Index].Value = laborentry_cbo.SelectedValue;
+            }
+            catch { }
+        }
+
+        private void FillLaborEntry()
+        {
+            DataTable Dt = new DataTable();
+
+            Dt.Columns.Add("Description");
+
+            Dt.Columns.Add("Code");
+
+            DataRow Dr = Dt.NewRow();
+
+            Dr["Description"] = "Backflush";
+
+            Dr["Code"] = "B";
+
+            Dt.Rows.Add(Dr);
+
+            Dr = Dt.NewRow();
+
+            Dr["Description"] = "Quantity Only";
+
+            Dr["Code"] = "Q";
+
+            Dt.Rows.Add(Dr);
+
+            Dr = Dt.NewRow();
+
+            Dr["Description"] = "Time and Quantity";
+
+            Dr["Code"] = "T";
+
+            Dt.Rows.Add(Dr);
+
+            laborentry_cbo.DataSource = Dt;
+
+            //LaborEntryMethod_cbo.Items.Add(new PartTypeCode("Backflush", "B"));
+
+            //LaborEntryMethod_cbo.Items.Add(new PartTypeCode("Quantity Only", "Q"));
+
+            //LaborEntryMethod_cbo.Items.Add(new PartTypeCode("Time and Quantity", "T"));
+
+            laborentry_cbo.DisplayMember = "Description";
+
+            laborentry_cbo.ValueMember = "Code";
+
+            laborentry_cbo.SelectedIndex = 1;
         }
 
         private void addop_btn_Click(object sender, EventArgs e)

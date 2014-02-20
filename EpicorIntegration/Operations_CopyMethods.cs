@@ -38,14 +38,21 @@ namespace Epicor_Integration
 
         void pnum_txt_Leave(object sender, EventArgs e)
         {
-            PartDataSet Pdata = new PartDataSet();
+            try
+            {
+                PartDataSet Pdata = new PartDataSet();
 
-            if (DataList.PartExists(pnum_txt.Text))
-                Pdata = DataList.GetPart(pnum_txt.Text);
+                if (DataList.PartExists(pnum_txt.Text))
+                    Pdata = DataList.GetPart(pnum_txt.Text);
 
-            RevGrid.DataSource = Pdata.Tables["PartRev"];
+                RevGrid.DataSource = Pdata.Tables["PartRev"];
 
-            desc_txt.Text = Pdata.Tables["Part"].Rows[0]["PartDescription"].ToString();
+                desc_txt.Text = Pdata.Tables["Part"].Rows[0]["PartDescription"].ToString();
+            }
+            catch
+            {
+                //nodata
+            }
 
         }
 

@@ -198,7 +198,7 @@ namespace ECO_Helper
 
                 ProcessBill(vault, BillNumbers, BillQty, out BillQty, partpath);
 
-                Bill_Master BM = new Bill_Master(BillNumbers, BillQty, ParentNumber, rev);
+                Bill_Master BM = new Bill_Master(BillNumbers, BillQty, ParentNumber, rev, 0, 0);
 
                 BM.ShowDialog();
             }

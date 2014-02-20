@@ -54,6 +54,7 @@
             this.savebtn = new System.Windows.Forms.Button();
             this.uomweight_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bflush_chk = new System.Windows.Forms.CheckBox();
             this.factor_btn = new System.Windows.Forms.Button();
             this.phantom_chk = new System.Windows.Forms.CheckBox();
             this.qtybearing = new System.Windows.Forms.CheckBox();
@@ -65,7 +66,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.copy_btn = new System.Windows.Forms.Button();
             this.TemplatesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.bflush_chk = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -318,6 +318,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detail";
             // 
+            // bflush_chk
+            // 
+            this.bflush_chk.AutoSize = true;
+            this.bflush_chk.Checked = true;
+            this.bflush_chk.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.bflush_chk.Location = new System.Drawing.Point(224, 179);
+            this.bflush_chk.Name = "bflush_chk";
+            this.bflush_chk.Size = new System.Drawing.Size(73, 17);
+            this.bflush_chk.TabIndex = 37;
+            this.bflush_chk.Text = "Backflush";
+            this.bflush_chk.UseVisualStyleBackColor = true;
+            this.bflush_chk.CheckedChanged += new System.EventHandler(this.bflush_chk_CheckedChanged);
+            // 
             // factor_btn
             // 
             this.factor_btn.Location = new System.Drawing.Point(95, 149);
@@ -427,18 +440,6 @@
             // 
             this.TemplatesMenu.Name = "TemplatesMenu";
             this.TemplatesMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // bflush_chk
-            // 
-            this.bflush_chk.AutoSize = true;
-            this.bflush_chk.Checked = true;
-            this.bflush_chk.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.bflush_chk.Location = new System.Drawing.Point(224, 179);
-            this.bflush_chk.Name = "bflush_chk";
-            this.bflush_chk.Size = new System.Drawing.Size(73, 17);
-            this.bflush_chk.TabIndex = 37;
-            this.bflush_chk.Text = "Backflush";
-            this.bflush_chk.UseVisualStyleBackColor = true;
             // 
             // Item_Master
             // 

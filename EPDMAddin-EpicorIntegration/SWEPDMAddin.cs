@@ -17,6 +17,10 @@ namespace EPDMEpicorIntegration
 
     public class SWEPDMAddin : IEdmAddIn5
     {
+        IEdmVault7 vault_ { get; set; }
+
+        EdmCmdData file_ { get; set; }
+
         void IEdmAddIn5.GetAddInInfo(ref EdmAddInInfo poInfo, IEdmVault5 poVault, IEdmCmdMgr5 poCmdMgr)
         {
             //Fill in the AddIn's description
@@ -27,7 +31,7 @@ namespace EPDMEpicorIntegration
 
             poInfo.mbsCompany = "Norco Ind.";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201402191;
+            poInfo.mlAddInVersion = (int)201402200;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -56,7 +60,7 @@ namespace EPDMEpicorIntegration
 
             poCmdMgr.AddCmd(-100, MenuName + "\\Templates", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to Add/Edit/Update Templates", 0, 0);
 
-            //poCmdMgr.AddCmd(2, MenuName + "\\Add Item,OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to add an Item, a revision, an OOM and BOM in Epicor", 0, 0);
+            poCmdMgr.AddCmd(2, MenuName + "\\Add Item,OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to add an Item, a revision, an OOM and BOM in Epicor", 0, 0);
             
             poCmdMgr.AddHook(EdmCmdType.EdmCmd_Menu, null);
         }
@@ -70,6 +74,14 @@ namespace EPDMEpicorIntegration
             EdmCmdData[] Temp = (EdmCmdData[])ppoData;
 
             IEdmVault7 vault = (IEdmVault7)poCmd.mpoVault;
+
+            vault_ = vault;
+
+            try
+            {
+                file_ = Temp[0];
+            }
+            catch { }
 
             DataHelper helper = new DataHelper();
 
@@ -469,7 +481,7 @@ namespace EPDMEpicorIntegration
                         //Get it, Add it
                         string Config = null;
 
-                        IEdmFile7 Part = FindPartinVault(vault, file, BillNumbers[i], out Config);
+                        IEdmFile7 Part = FindPartinVault(vault, BillNumbers[i], out Config);
 
                         DialogResult Dr = GetItemInfo(file,vault, Part);
 
@@ -514,7 +526,7 @@ namespace EPDMEpicorIntegration
                 {
                     string Config;
 
-                    IEdmFile7 Part = FindPartinVault(vault, file, BillNumbers[i], out Config);
+                    IEdmFile7 Part = FindPartinVault(vault, BillNumbers[i], out Config);
 
                     if (Part != null)
                     {
@@ -563,6 +575,17 @@ namespace EPDMEpicorIntegration
 
                 if (selected_config != "")
                 {
+                    object weight_val = "0";
+
+                    object area_val = "0";
+                    try
+                    {
+                        var.GetVar("NetWeight", selected_config, out weight_val);
+
+                        var.GetVar("SurfaceArea", selected_config, out area_val);
+                    }
+                    catch { }
+
                     #region Fill Bill
 
                     IEdmBomMgr BomMgr = (IEdmBomMgr)vault.CreateUtility(EdmUtility.EdmUtil_BomMgr);
@@ -639,7 +662,7 @@ namespace EPDMEpicorIntegration
 
                     ProcessBill(vault, file, BillNumbers, BillQty,out BillQty);
                     
-                    Bill_Master BM = new Bill_Master(BillNumbers, BillQty, ParentNumber, "");
+                    Bill_Master BM = new Bill_Master(BillNumbers, BillQty, ParentNumber, "", decimal.Parse(weight_val.ToString()),decimal.Parse(area_val.ToString()));
 
                     BM.ShowDialog();
 
@@ -647,6 +670,33 @@ namespace EPDMEpicorIntegration
                 }
             }
             return DialogResult.Cancel;
+        }
+
+        public string GetItemProperty(string PartNumber, string PropertyName)
+        {
+            string Config;
+
+            IEdmFile7 Part = FindPartinVault(vault_, PartNumber, out Config);
+
+            object property = "";
+
+            if (UpdateItemRef(file_, Part, vault_))
+            {
+                IEdmEnumeratorVariable5 var = Part.GetEnumeratorVariable();
+
+                var.GetVar(PropertyName, Config, out property);
+            }
+
+            if (property == "" || property == null)
+            {
+                Config = DetermineConfig(Part, vault_, null);
+
+                IEdmEnumeratorVariable5 var = Part.GetEnumeratorVariable();
+
+                var.GetVar(PropertyName, Config, out property);
+            }
+
+            return property.ToString();
         }
 
         public DialogResult GetItemInfo(EdmCmdData file, IEdmVault7 vault, IEdmFile7 Part)
@@ -743,6 +793,11 @@ namespace EPDMEpicorIntegration
 
         public DialogResult GetItemInfo(IEdmVault7 vault, EdmCmdData file)
         {                           
+            IEdmFile7 Part = (IEdmFile7)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
+
+            return GetItemInfo(file, vault, Part);
+
+            /*
             IEdmEnumeratorVariable5 var;
 
             string selected_config;
@@ -758,9 +813,7 @@ namespace EPDMEpicorIntegration
             object class_val;
 
             object type_val;
-
-            IEdmFile5 Part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
-
+            
             if (UpdateItemRef(file, Part, vault))
             {
                 var = Part.GetEnumeratorVariable();
@@ -832,7 +885,7 @@ namespace EPDMEpicorIntegration
                 }
             }
             else
-                return DialogResult.Cancel;
+                return DialogResult.Cancel;*/
         }
 
         public bool PartExistsSW(IEdmVault7 vault, string SearchPart)
@@ -859,7 +912,7 @@ namespace EPDMEpicorIntegration
                 return false;
         }
 
-        public IEdmFile7 FindPartinVault(IEdmVault7 vault, EdmCmdData file, string SearchPart,out string Config)
+        public IEdmFile7 FindPartinVault(IEdmVault7 vault, string SearchPart,out string Config)
         {
             string selected_config = null;
 

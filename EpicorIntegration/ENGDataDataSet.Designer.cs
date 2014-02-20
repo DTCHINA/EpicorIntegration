@@ -2910,9 +2910,9 @@ namespace Epicor_Integration.ENGDataDataSetTableAdapters {
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT Name, PropertyOptions, PropertyOptions1, PropertyQty, PropertyType, Proper" +
-                "tyUOM, PropertyValue, Type, row_id FROM Templates WHERE (Type LIKE @Type) AND (N" +
-                "ame LIKE @Name)";
+            this._commandCollection[4].CommandText = "SELECT Name, PropertyOptions, PropertyOptions5 ,PropertyOptions1, PropertyQty, Pr" +
+                "opertyType, PropertyUOM, PropertyValue, Type, row_id FROM Templates WHERE (Type " +
+                "LIKE @Type) AND (Name LIKE @Name)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
