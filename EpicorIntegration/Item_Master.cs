@@ -465,7 +465,11 @@ namespace Epicor_Integration
                     Pdata = UpdateDataSet(Pdata, DRState);
 
                     if (trackserial.Checked)
+                    {
                         Part.ChangePartTrackSerialNum(trackserial.Checked, Pdata);
+
+                        DataList.UpdateDatum(Pdata, "Part", 0, "UseMaskSeq", true.ToString());
+                    }
 
                     //Add data to allow BO to create plant tables
                     Part.Update(Pdata);

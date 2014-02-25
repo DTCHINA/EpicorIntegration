@@ -31,7 +31,7 @@ namespace EPDMEpicorIntegration
 
             poInfo.mbsCompany = "Norco Ind.";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201402250;
+            poInfo.mlAddInVersion = (int)201402251;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
