@@ -31,7 +31,7 @@ namespace EPDMEpicorIntegration
 
             poInfo.mbsCompany = "Norco Ind.";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201402200;
+            poInfo.mlAddInVersion = (int)201402250;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -645,18 +645,23 @@ namespace EPDMEpicorIntegration
 
                         if (itemlevel == 1)
                         {
-                            EdmBomColumnType ColType = EdmBomColumnType.EdmBomCol_RefCount;
-
-                            bominfo.GetVar(0, ColType, out Value, out CompVal, out Config, out RO);
+                            bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_RefCount, out Value, out CompVal, out Config, out RO);
 
                             BillQty.Add(Value.ToString());
 
-                            ColType = EdmBomColumnType.EdmBomCol_PartNumber;
-
-                            bominfo.GetVar(0, ColType, out Value, out CompVal, out Config, out RO);
+                            bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out Value, out CompVal, out Config, out RO);
 
                             BillNumbers.Add(Value.ToString());
                         }
+
+                        object Name;
+
+                        bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out Value, out CompVal, out Config, out RO);
+
+                        bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Name, out Name, out CompVal, out Config, out RO);
+
+                        Debug.Print(Value.ToString() + " / " + itemlevel.ToString() + " / " + Name.ToString());
+
                     }
                     #endregion
 
@@ -687,7 +692,7 @@ namespace EPDMEpicorIntegration
                 var.GetVar(PropertyName, Config, out property);
             }
 
-            if (property == "" || property == null)
+            if (property.ToString() == "" || property == null)
             {
                 Config = DetermineConfig(Part, vault_, null);
 
@@ -716,6 +721,8 @@ namespace EPDMEpicorIntegration
             object class_val;
 
             object type_val;
+
+            object planner_val;
 
             if (UpdateItemRef(file,Part, vault))
             {
@@ -747,6 +754,8 @@ namespace EPDMEpicorIntegration
                 else
                     var.GetVar("Description", selected_config, out desc_val);
 
+                var.GetVar("Brand", selected_config, out planner_val);
+
                 var.GetVar("Product", selected_config, out product_val);
 
                 var.GetVar("Class", selected_config, out class_val);
@@ -773,7 +782,7 @@ namespace EPDMEpicorIntegration
 
                 if (partnum_val != null)
                 {
-                    Epicor_Integration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback, product_val.ToString(), class_val.ToString(), type_val.ToString());
+                    Epicor_Integration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback, product_val.ToString(), class_val.ToString(), type_val.ToString(), planner_val.ToString());
 
                     item.ShowDialog();
 

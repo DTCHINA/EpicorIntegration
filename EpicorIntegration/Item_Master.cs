@@ -24,6 +24,8 @@ namespace Epicor_Integration
 
         public string _Type;
 
+        public string _Planner;
+
         public Item_Master()
         {
             InitializeComponent();
@@ -95,7 +97,7 @@ namespace Epicor_Integration
 
         }
 
-        public Item_Master(string PartNumber, string Description, decimal Weight, string Group, string Class, string Type)
+        public Item_Master(string PartNumber, string Description, decimal Weight, string Group, string Class, string Type, string Planner)
         {
             InitializeComponent();
 
@@ -120,6 +122,8 @@ namespace Epicor_Integration
                 _Class = Class;
 
                 _Type = Type;
+
+                _Planner = Planner;
 
                 //NetVolume.Value = Volume;
             }
@@ -233,9 +237,9 @@ namespace Epicor_Integration
 
                 uom_cbo.Enabled = false;
 
-                if (Description_txt.Text != _Description || NetWeight.Value != _Weight || group_cbo.Text != _Group || class_cbo.Text != _Class || type_cbo.Text != _Type)
+                if (Description_txt.Text != _Description || NetWeight.Value != _Weight || group_cbo.Text != _Group || class_cbo.Text != _Class || type_cbo.Text != _Type || planner_cbo.Text != _Planner)
                 {
-                    DialogResult DR = MessageBox.Show("Override Epicor values with values from the model?\n\n" + _Description + " → " + Description_txt.Text + "\n" + _Weight.ToString() + " → " + NetWeight.Value.ToString() + "\n" + _Group + " → " + group_cbo.Text + "\n" + _Class + " → " + class_cbo.Text + "\n" + _Type + " → " + type_cbo.Text, "Property Override", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult DR = MessageBox.Show("Override Epicor values with values from the model?\n\n" + _Description + " → " + Description_txt.Text + "\n" + _Weight.ToString() + " → " + NetWeight.Value.ToString() + "\n" + _Group + " → " + group_cbo.Text + "\n" + _Class + " → " + class_cbo.Text + "\n" + _Type + " → " + type_cbo.Text + "\n" + _Planner + " → " + planner_cbo.Text, "Property Override", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (DR == DialogResult.Yes)
                     {
@@ -246,6 +250,8 @@ namespace Epicor_Integration
                         group_cbo.Text = _Group;
 
                         class_cbo.Text = _Class;
+
+                        planner_cbo.Text = _Planner;
                     }
                 }
             }
@@ -265,6 +271,12 @@ namespace Epicor_Integration
             try
             {
                 type_cbo.Text = _Type;
+            }
+            catch { }
+
+            try
+            {
+                planner_cbo.Text = _Planner;
             }
             catch { }
         }

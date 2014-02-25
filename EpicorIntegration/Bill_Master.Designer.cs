@@ -47,7 +47,7 @@
             this.parent_txt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.PullAsAsm_chk = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.addraw = new System.Windows.Forms.Button();
             this.copy_btn = new System.Windows.Forms.Button();
             this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
             this.uom_cbo = new System.Windows.Forms.ComboBox();
@@ -257,7 +257,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.PullAsAsm_chk);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.addraw);
             this.groupBox1.Controls.Add(this.copy_btn);
             this.groupBox1.Controls.Add(this.ViewAsAsm_chk);
             this.groupBox1.Controls.Add(this.uom_cbo);
@@ -288,15 +288,15 @@
             this.PullAsAsm_chk.UseVisualStyleBackColor = true;
             this.PullAsAsm_chk.CheckedChanged += new System.EventHandler(this.PullAsAsm_chk_CheckedChanged);
             // 
-            // button1
+            // addraw
             // 
-            this.button1.Location = new System.Drawing.Point(485, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Add &Raw";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.addraw.Location = new System.Drawing.Point(485, 16);
+            this.addraw.Name = "addraw";
+            this.addraw.Size = new System.Drawing.Size(75, 23);
+            this.addraw.TabIndex = 11;
+            this.addraw.Text = "Add &Raw";
+            this.addraw.UseVisualStyleBackColor = true;
+            this.addraw.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // copy_btn
             // 
@@ -331,6 +331,11 @@
             // 
             this.qty_num.DecimalPlaces = 2;
             this.qty_num.Location = new System.Drawing.Point(75, 124);
+            this.qty_num.Maximum = new decimal(new int[] {
+            1316134911,
+            2328,
+            0,
+            0});
             this.qty_num.Name = "qty_num";
             this.qty_num.Size = new System.Drawing.Size(62, 20);
             this.qty_num.TabIndex = 9;
@@ -649,7 +654,7 @@
         private System.Windows.Forms.Timer PartTimer;
         private System.Windows.Forms.Button saveandclose_btn;
         private System.Windows.Forms.Timer EnableNew;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addraw;
         private System.Windows.Forms.ContextMenuStrip RawMenu;
         private System.Windows.Forms.ContextMenuStrip TemplateMenu;
         private System.Windows.Forms.CheckBox PullAsAsm_chk;

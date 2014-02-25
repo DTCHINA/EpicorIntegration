@@ -347,6 +347,8 @@ namespace ECO_Helper
 
             object type_val;
 
+            object planner_val;
+
             if (UpdateItemRef(Part, vault, Path))
             {
                 var = Part.GetEnumeratorVariable();
@@ -365,6 +367,8 @@ namespace ECO_Helper
 
                 var.GetVar("Type", selected_config, out type_val);
 
+                var.GetVar("Planner", selected_config, out planner_val);
+
                 //Weight is typically @ config
                 var.GetVar("NetWeight", selected_config, out weight_val);
 
@@ -376,7 +380,7 @@ namespace ECO_Helper
 
                 if (partnum_val != null)
                 {
-                    Epicor_Integration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback, product_val.ToString(), class_val.ToString(), type_val.ToString());
+                    Epicor_Integration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback, product_val.ToString(), class_val.ToString(), type_val.ToString(), planner_val.ToString());
 
                     item.ShowDialog();
 

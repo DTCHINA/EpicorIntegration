@@ -216,7 +216,7 @@ namespace Epicor_Integration
             FillRawMenu();
 
             if (BillDataGrid.Rows.Count == 0)
-                button1.Enabled = false;
+                addraw.Enabled = false;
 
             uom_cbo.Click += uom_cbo_Click;
 
@@ -1037,7 +1037,7 @@ namespace Epicor_Integration
 
         private void newbtn_Click(object sender, EventArgs e)
         {
-            button1.Enabled = true;
+            addraw.Enabled = true;
 
             Form_Update_Enabled = false;
 
@@ -1189,7 +1189,7 @@ namespace Epicor_Integration
 
             DT = Templates.GetFullTemplate(TS.Name, "BOM");
 
-            button1.Enabled = true;
+            addraw.Enabled = true;
 
             try
             {
@@ -1371,6 +1371,7 @@ namespace Epicor_Integration
                     retval = false;
 
                 if (EngWBDS.Tables["ECOMtl"].Rows[i]["UOMCode"].ToString() == "")
+
                     retval = false;
 
                 if (EngWBDS.Tables["ECOMtl"].Rows[i]["RelatedOperation"].ToString() == "")
@@ -1409,7 +1410,7 @@ namespace Epicor_Integration
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            RawMenu.Show(button1, new Point(0, button1.Height));
+            RawMenu.Show(addraw, new Point(0, addraw.Height));
         }
 
         private void PullAsAsm_chk_CheckedChanged(object sender, EventArgs e)
