@@ -33,8 +33,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.report_btn = new System.Windows.Forms.Button();
             this.searchterm_txt = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.search_btn = new System.Windows.Forms.Button();
+            this.loading_img = new System.Windows.Forms.PictureBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.PartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TopLevel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.RevisionNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +45,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loading_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +66,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.loading_img);
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer1.Size = new System.Drawing.Size(481, 554);
             this.splitContainer1.SplitterDistance = 34;
@@ -96,6 +99,30 @@
             this.searchterm_txt.Size = new System.Drawing.Size(100, 20);
             this.searchterm_txt.TabIndex = 4;
             // 
+            // search_btn
+            // 
+            this.search_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.search_btn.ForeColor = System.Drawing.SystemColors.Control;
+            this.search_btn.Image = global::TopLevelReport.Properties.Resources.Search_24;
+            this.search_btn.Location = new System.Drawing.Point(187, 3);
+            this.search_btn.Name = "search_btn";
+            this.search_btn.Size = new System.Drawing.Size(34, 30);
+            this.search_btn.TabIndex = 3;
+            this.search_btn.UseVisualStyleBackColor = true;
+            this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
+            // 
+            // loading_img
+            // 
+            this.loading_img.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.loading_img.Image = global::TopLevelReport.Properties.Resources.ajax_loader;
+            this.loading_img.Location = new System.Drawing.Point(129, 148);
+            this.loading_img.Name = "loading_img";
+            this.loading_img.Size = new System.Drawing.Size(200, 200);
+            this.loading_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.loading_img.TabIndex = 1;
+            this.loading_img.TabStop = false;
+            this.loading_img.Visible = false;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -120,21 +147,9 @@
             this.dataGridView1.Size = new System.Drawing.Size(481, 516);
             this.dataGridView1.TabIndex = 0;
             // 
-            // search_btn
-            // 
-            this.search_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.search_btn.ForeColor = System.Drawing.SystemColors.Control;
-            this.search_btn.Image = global::TopLevelReport.Properties.Resources.Search_24;
-            this.search_btn.Location = new System.Drawing.Point(187, 3);
-            this.search_btn.Name = "search_btn";
-            this.search_btn.Size = new System.Drawing.Size(34, 30);
-            this.search_btn.TabIndex = 3;
-            this.search_btn.UseVisualStyleBackColor = true;
-            this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
-            // 
             // PartNum
             // 
-            this.PartNum.DataPropertyName = "PartNum";
+            this.PartNum.DataPropertyName = "PartMtl.PartNum";
             this.PartNum.HeaderText = "Part Number";
             this.PartNum.Name = "PartNum";
             this.PartNum.ReadOnly = true;
@@ -149,14 +164,14 @@
             // 
             // RevisionNum
             // 
-            this.RevisionNum.DataPropertyName = "RevisionNum";
+            this.RevisionNum.DataPropertyName = "PartMtl.RevisionNum";
             this.RevisionNum.HeaderText = "Revision";
             this.RevisionNum.Name = "RevisionNum";
             this.RevisionNum.ReadOnly = true;
             // 
             // MtlPartNum
             // 
-            this.MtlPartNum.DataPropertyName = "MtlPartNum";
+            this.MtlPartNum.DataPropertyName = "PartMtl.MtlPartNum";
             this.MtlPartNum.HeaderText = "Sub-Part";
             this.MtlPartNum.Name = "MtlPartNum";
             this.MtlPartNum.ReadOnly = true;
@@ -164,7 +179,7 @@
             // PartNumPartDescription
             // 
             this.PartNumPartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.PartNumPartDescription.DataPropertyName = "PartNumPartDescription";
+            this.PartNumPartDescription.DataPropertyName = "Part.PartDescription";
             this.PartNumPartDescription.HeaderText = "Top Level Description";
             this.PartNumPartDescription.Name = "PartNumPartDescription";
             this.PartNumPartDescription.ReadOnly = true;
@@ -179,11 +194,14 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "main";
             this.Text = "Top Level Report";
+            this.TransparencyKey = System.Drawing.Color.Fuchsia;
+            this.Load += new System.EventHandler(this.main_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.loading_img)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -202,6 +220,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RevisionNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn PartNumPartDescription;
+        private System.Windows.Forms.PictureBox loading_img;
 
     }
 }

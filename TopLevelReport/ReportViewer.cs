@@ -23,6 +23,17 @@ namespace TopLevelReport
 
             DataSet1.Tables[0].Merge(Dt);
 
+            foreach (DataRow dr in DataSet1.Tables[0].Rows)
+            {
+                dr["PartDescription"] = dr["Part.PartDescription"];
+
+                dr["PartNum"] = dr["PartMtl.PartNum"];
+
+                dr["RevisionNum"] = dr["PartMtl.RevisionNum"];
+
+                dr["MtlPartNum"] = dr["PartMtl.MtlPartNum"];            
+            }
+
             reportViewer1.LocalReport.SetParameters(RP);
         }
 

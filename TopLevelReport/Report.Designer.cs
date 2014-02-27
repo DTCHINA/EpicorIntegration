@@ -285,7 +285,7 @@ namespace TopLevelReport {
             
             private global::System.Data.DataColumn columnRevisionNum;
             
-            private global::System.Data.DataColumn columnPartNumPartDescription;
+            private global::System.Data.DataColumn columnPartDescription;
             
             private global::System.Data.DataColumn columnMtlPartNum;
             
@@ -348,9 +348,9 @@ namespace TopLevelReport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PartNumPartDescriptionColumn {
+            public global::System.Data.DataColumn PartDescriptionColumn {
                 get {
-                    return this.columnPartNumPartDescription;
+                    return this.columnPartDescription;
                 }
             }
             
@@ -399,13 +399,13 @@ namespace TopLevelReport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PartWhereUsed1Row AddPartWhereUsed1Row(string TopLevel, string PartNum, string RevisionNum, string PartNumPartDescription, string MtlPartNum) {
+            public PartWhereUsed1Row AddPartWhereUsed1Row(bool TopLevel, string PartNum, string RevisionNum, string PartDescription, string MtlPartNum) {
                 PartWhereUsed1Row rowPartWhereUsed1Row = ((PartWhereUsed1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TopLevel,
                         PartNum,
                         RevisionNum,
-                        PartNumPartDescription,
+                        PartDescription,
                         MtlPartNum};
                 rowPartWhereUsed1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPartWhereUsed1Row);
@@ -432,21 +432,21 @@ namespace TopLevelReport {
                 this.columnTopLevel = base.Columns["TopLevel"];
                 this.columnPartNum = base.Columns["PartNum"];
                 this.columnRevisionNum = base.Columns["RevisionNum"];
-                this.columnPartNumPartDescription = base.Columns["PartNumPartDescription"];
+                this.columnPartDescription = base.Columns["PartDescription"];
                 this.columnMtlPartNum = base.Columns["MtlPartNum"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnTopLevel = new global::System.Data.DataColumn("TopLevel", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnTopLevel = new global::System.Data.DataColumn("TopLevel", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTopLevel);
                 this.columnPartNum = new global::System.Data.DataColumn("PartNum", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPartNum);
                 this.columnRevisionNum = new global::System.Data.DataColumn("RevisionNum", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRevisionNum);
-                this.columnPartNumPartDescription = new global::System.Data.DataColumn("PartNumPartDescription", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPartNumPartDescription);
+                this.columnPartDescription = new global::System.Data.DataColumn("PartDescription", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPartDescription);
                 this.columnMtlPartNum = new global::System.Data.DataColumn("MtlPartNum", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMtlPartNum);
             }
@@ -591,10 +591,10 @@ namespace TopLevelReport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TopLevel {
+            public bool TopLevel {
                 get {
                     try {
-                        return ((string)(this[this.tablePartWhereUsed1.TopLevelColumn]));
+                        return ((bool)(this[this.tablePartWhereUsed1.TopLevelColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TopLevel\' in table \'PartWhereUsed1\' is DBNull.", e);
@@ -639,18 +639,17 @@ namespace TopLevelReport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PartNumPartDescription {
+            public string PartDescription {
                 get {
                     try {
-                        return ((string)(this[this.tablePartWhereUsed1.PartNumPartDescriptionColumn]));
+                        return ((string)(this[this.tablePartWhereUsed1.PartDescriptionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PartNumPartDescription\' in table \'PartWhereUsed1\' is DBNull" +
-                                ".", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PartDescription\' in table \'PartWhereUsed1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePartWhereUsed1.PartNumPartDescriptionColumn] = value;
+                    this[this.tablePartWhereUsed1.PartDescriptionColumn] = value;
                 }
             }
             
@@ -708,14 +707,14 @@ namespace TopLevelReport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPartNumPartDescriptionNull() {
-                return this.IsNull(this.tablePartWhereUsed1.PartNumPartDescriptionColumn);
+            public bool IsPartDescriptionNull() {
+                return this.IsNull(this.tablePartWhereUsed1.PartDescriptionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPartNumPartDescriptionNull() {
-                this[this.tablePartWhereUsed1.PartNumPartDescriptionColumn] = global::System.Convert.DBNull;
+            public void SetPartDescriptionNull() {
+                this[this.tablePartWhereUsed1.PartDescriptionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

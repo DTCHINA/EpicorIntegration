@@ -1371,8 +1371,15 @@ namespace Epicor_Integration
                     retval = false;
 
                 if (EngWBDS.Tables["ECOMtl"].Rows[i]["UOMCode"].ToString() == "")
-
+                {
+                    try
+                    {
+                        if (uom_cbo.SelectedIndex != -1)
+                            EngWBDS.Tables["ECOMtl"].Rows[i]["UOMCode"] = uom_cbo.Text;
+                    }
+                    catch { }
                     retval = false;
+                }
 
                 if (EngWBDS.Tables["ECOMtl"].Rows[i]["RelatedOperation"].ToString() == "")
                     retval = false;

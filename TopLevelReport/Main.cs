@@ -18,6 +18,20 @@ namespace TopLevelReport
             InitializeComponent();
 
             dataGridView1.DataSourceChanged += dataGridView1_DataSourceChanged;
+
+            this.KeyPreview = true;
+
+            this.KeyDown += main_KeyDown;
+        }
+
+        void main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.Alt && e.KeyCode == Keys.C)
+            {
+                Config Conf = new Config();
+
+                Conf.ShowDialog();
+            }
         }
 
         void dataGridView1_DataSourceChanged(object sender, EventArgs e)
@@ -29,21 +43,25 @@ namespace TopLevelReport
 
         private void search_btn_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
+
+            dataGridView1.Refresh();
+
             //DataList.GetCurrentDesc(searchterm_txt.Text);
 
             if (searchterm_txt.Text != null && searchterm_txt.Text != "")
             {
-                DataSet CleanSlate = new DataSet();
-
                 Result = (DataSet)DataList.WhereUsed(searchterm_txt.Text);
 
-                //Result.Tables["PartWhereUsed"].Columns.Add("TopLevel");
+                Result.Tables["Results"].Columns.Add("TopLevel",typeof(Boolean));
 
-                foreach (DataRow dr in (Result.Tables["Results"].Rows))
+                for (int i = 0; i < Result.Tables["Results"].Rows.Count; i++)
                 {
+                    DataRow dr = Result.Tables["Results"].Rows[i];
+
                     string searchnum = dr["PartMtl.PartNum"].ToString();
 
-                    SearchDS(searchnum);
+                    Result.Tables["Results"].Rows[i]["TopLevel"] = (SearchDS(searchnum));
                 }
 
                 Result.Tables["Results"].DefaultView.Sort = "PartMtl.PartNum";
@@ -52,23 +70,25 @@ namespace TopLevelReport
             }
         }
 
-        private void SearchDS(string Pnum)
+        private bool SearchDS(string Pnum)
         {
             try
             {
-                foreach (DataRow dr in ((DataSet)DataList.WhereUsed(Pnum)).Tables["PartWhereUsed"].Rows)
+                DataSet data = (DataSet)DataList.WhereUsed(Pnum);
+
+                foreach (DataRow dr in data.Tables["Results"].Rows)
                 {
-                    string newsearch = dr["PartNum"].ToString();
+                    string newsearch = dr["PartMtl.MtlPartNum"].ToString();
 
                     DataSet ds = (DataSet)DataList.WhereUsed(newsearch);
-                    
-                    ds.Tables["PartWhereUsed"].Columns.Add("TopLevel");
 
-                    if (ds.Tables["PartNum"] == null)
+                    ds.Tables["Results"].Columns.Add("TopLevel", typeof(Boolean));
+
+                    if (ds.Tables["Results"] == null)
                     {
                         DataRow[] dr1 = new DataRow[1] { dr };
 
-                        dr["TopLevel"] = 1;
+                        dr["TopLevel"] = true;
 
                         Result.Merge(dr1);
                     }
@@ -79,16 +99,26 @@ namespace TopLevelReport
 
                     SearchDS(dr["PartNum"].ToString());
                 }
+
+                return true;
+
             }
             catch (Exception ex)
-            { Console.WriteLine(ex.Message); }
+            { Console.WriteLine(ex.Message);
+            return false;
+            }
         }
 
         private void report_btn_Click(object sender, EventArgs e)
         {
-            ReportViewer RV = new ReportViewer(searchterm_txt.Text, (DataTable)Result.Tables["PartWhereUsed"]);
+            ReportViewer RV = new ReportViewer(searchterm_txt.Text, (DataTable)Result.Tables["Results"]);
 
             RV.ShowDialog();
+        }
+
+        private void main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
