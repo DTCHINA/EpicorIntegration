@@ -1274,7 +1274,7 @@ namespace Epicor_Integration
 
                 try
                 {
-                    val = OPDataGrid["OOMPropertyOptions", OPDataGrid.CurrentCellAddress.Y].Value;
+                    val = OPDataGrid["OprPropertyOptions", OPDataGrid.CurrentCellAddress.Y].Value;
                 }
                 catch (Exception ex)
                 { }//MessageBox.Show(ex.Message); }
@@ -1289,14 +1289,14 @@ namespace Epicor_Integration
 
                             subcon_grp.Location = new Point(ops_grp.Location.X, ops_grp.Location.Y);
 
-                            subcon_opsmast_cbo.SelectedValue = OPDataGrid["OOMPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            subcon_opsmast_cbo.SelectedValue = OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
 
                             refneeded_chk.Checked = (OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString() != "0".ToString());
 
                             if (refneeded_chk.Checked)
                                 quotesreq_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString());
 
-                            supplierid_txt.Text = OPDataGrid["OOMPropertyOptions", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            supplierid_txt.Text = OPDataGrid["OprPropertyOptions", OPDataGrid.CurrentRow.Index].Value.ToString();
 
                             unitcost_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption2", OPDataGrid.CurrentRow.Index].Value.ToString());
 
@@ -1318,9 +1318,9 @@ namespace Epicor_Integration
 
                             prodhrs_num.Value = decimal.Parse(OPDataGrid["OprPropertyQty", OPDataGrid.CurrentRow.Index].Value.ToString());
 
-                            seq_txt.Text = OPDataGrid["OOMPropertyType", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            seq_txt.Text = OPDataGrid["OprPropertyType", OPDataGrid.CurrentRow.Index].Value.ToString();
 
-                            opmast_cbo.SelectedValue = OPDataGrid["OOMPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            opmast_cbo.SelectedValue = OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
 
                             prodstd_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
 
@@ -1344,7 +1344,7 @@ namespace Epicor_Integration
             {
                 if (i != OPDataGrid.CurrentRow.Index)
                 {
-                    if (OPDataGrid["OOMPropertyType", i].Value.ToString() == seq_txt.Text)
+                    if (OPDataGrid["OprPropertyType", i].Value.ToString() == seq_txt.Text)
                     {
                         valid = false;
 
@@ -1354,7 +1354,7 @@ namespace Epicor_Integration
             }
 
             if (valid)
-                OPDataGrid["OOMPropertyType", OPDataGrid.CurrentRow.Index].Value = seq_txt.Text;
+                OPDataGrid["OprPropertyType", OPDataGrid.CurrentRow.Index].Value = seq_txt.Text;
             else
                 MessageBox.Show("Sequences must be unique within a single operation template","Warning!",MessageBoxButtons.OK,MessageBoxIcon.Hand);
         }

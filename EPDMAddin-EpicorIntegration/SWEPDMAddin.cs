@@ -31,7 +31,7 @@ namespace EPDMEpicorIntegration
 
             poInfo.mbsCompany = "Norco Ind.";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201402251;
+            poInfo.mlAddInVersion = (int)201403031;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -584,7 +584,7 @@ namespace EPDMEpicorIntegration
 
                         var.GetVar("SurfaceArea", selected_config, out area_val);
                     }
-                    catch { }
+                    catch (Exception ex) { MessageBox.Show(ex.Message + "\nWeight or Area could not be retrieved"); weight_val = 0; area_val = 0; }
 
                     #region Fill Bill
 
@@ -679,29 +679,36 @@ namespace EPDMEpicorIntegration
 
         public string GetItemProperty(string PartNumber, string PropertyName)
         {
-            string Config;
-
-            IEdmFile7 Part = FindPartinVault(vault_, PartNumber, out Config);
-
             object property = "";
 
-            if (UpdateItemRef(file_, Part, vault_))
+            try
             {
-                IEdmEnumeratorVariable5 var = Part.GetEnumeratorVariable();
+                string Config;
 
-                var.GetVar(PropertyName, Config, out property);
+                IEdmFile7 Part = FindPartinVault(vault_, PartNumber, out Config);
+
+                if (UpdateItemRef(file_, Part, vault_))
+                {
+                    IEdmEnumeratorVariable5 var = Part.GetEnumeratorVariable();
+
+                    var.GetVar(PropertyName, Config, out property);
+                }
+
+                if (property.ToString() == "" || property == null)
+                {
+                    Config = DetermineConfig(Part, vault_, null);
+
+                    IEdmEnumeratorVariable5 var = Part.GetEnumeratorVariable();
+
+                    var.GetVar(PropertyName, Config, out property);
+                }
             }
-
-            if (property.ToString() == "" || property == null)
+            catch (Exception ex)
             {
-                Config = DetermineConfig(Part, vault_, null);
-
-                IEdmEnumeratorVariable5 var = Part.GetEnumeratorVariable();
-
-                var.GetVar(PropertyName, Config, out property);
+                MessageBox.Show(ex.Message + "\nPlease check the datacard to ensure that all fields are filled in the file.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
             return property.ToString();
+
         }
 
         public DialogResult GetItemInfo(EdmCmdData file, IEdmVault7 vault, IEdmFile7 Part)
@@ -726,76 +733,86 @@ namespace EPDMEpicorIntegration
 
             if (UpdateItemRef(file,Part, vault))
             {
-                var = Part.GetEnumeratorVariable();
-
-                decimal weight_fallback = 0;
-
-                selected_config = DetermineConfig(Part, vault, null);
-
-                var.GetVar("Number", selected_config, out partnum_val);
-
-                if (partnum_val.ToString().Contains("201"))
+                try
                 {
-                    DialogResult DR = MessageBox.Show("Part number identified as a frame.  Do you want to use the Customer/Model instead of SolidWorks description custom property?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var = Part.GetEnumeratorVariable();
 
-                    if (DR == DialogResult.Yes)
+                    decimal weight_fallback = 0;
+
+                    selected_config = DetermineConfig(Part, vault, null);
+
+                    var.GetVar("Number", selected_config, out partnum_val);
+
+                    if (partnum_val.ToString().Contains("201"))
                     {
-                        object cust_val;
-                        var.GetVar("Customer", selected_config, out cust_val);
+                        DialogResult DR = MessageBox.Show("Part number identified as a frame.  Do you want to use the Customer/Model instead of SolidWorks description custom property?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                        object model_val;
-                        var.GetVar("Model", selected_config, out model_val);
+                        if (DR == DialogResult.Yes)
+                        {
+                            object cust_val;
+                            var.GetVar("Customer", selected_config, out cust_val);
 
-                        desc_val = "FRAME " + cust_val.ToString() + " " + model_val.ToString();
+                            object model_val;
+                            var.GetVar("Model", selected_config, out model_val);
+
+                            desc_val = "FRAME " + cust_val.ToString() + " " + model_val.ToString();
+                        }
+                        else
+                            var.GetVar("Description", selected_config, out desc_val);
                     }
                     else
                         var.GetVar("Description", selected_config, out desc_val);
-                }
-                else
-                    var.GetVar("Description", selected_config, out desc_val);
 
-                var.GetVar("Brand", selected_config, out planner_val);
+                    var.GetVar("Brand", selected_config, out planner_val);
 
-                var.GetVar("Product", selected_config, out product_val);
+                    var.GetVar("Product", selected_config, out product_val);
 
-                var.GetVar("Class", selected_config, out class_val);
+                    var.GetVar("Class", selected_config, out class_val);
 
-                var.GetVar("Type", selected_config, out type_val);
+                    var.GetVar("Type", selected_config, out type_val);
 
-                //Weight is typically @ config
-                var.GetVar("NetWeight", selected_config, out weight_val);
-
-                if (weight_val == null)
+                    //Weight is typically @ config
                     var.GetVar("NetWeight", selected_config, out weight_val);
 
-                if (weight_val != null)
-                    decimal.TryParse(weight_val.ToString(), out weight_fallback);
+                    if (weight_val == null)
+                        var.GetVar("NetWeight", selected_config, out weight_val);
 
-                if (product_val == null)
-                    product_val = "";
+                    if (weight_val != null)
+                        decimal.TryParse(weight_val.ToString(), out weight_fallback);
 
-                if (class_val == null)
-                    class_val = "";
+                    if (product_val == null)
+                        product_val = "";
 
-                if (desc_val == null)
-                    desc_val = "";
+                    if (class_val == null)
+                        class_val = "";
 
-                if (partnum_val != null)
-                {
-                    Epicor_Integration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback, product_val.ToString(), class_val.ToString(), type_val.ToString(), planner_val.ToString());
+                    if (desc_val == null)
+                        desc_val = "";
 
-                    item.ShowDialog();
+                    if (partnum_val != null)
+                    {
+                        Epicor_Integration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback, product_val.ToString(), class_val.ToString(), type_val.ToString(), planner_val.ToString());
 
-                    return item.DialogResult;
+                        item.ShowDialog();
+
+                        return item.DialogResult;
+                    }
+                    else
+                    {
+                        //Not necessary anymore
+                        //MessageBox.Show("Part number was a null value!\n\nEnsure that custom properties are completely filled out.", "Missing Properties!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+
+                        return DialogResult.Cancel;
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    //Not necessary anymore
-                    //MessageBox.Show("Part number was a null value!\n\nEnsure that custom properties are completely filled out.", "Missing Properties!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show(ex.Message + "\nPlease check the datacard to ensure that all fields are filled in the file.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return DialogResult.Cancel;
                 }
             }
+
             else
                 return DialogResult.Cancel;
         }

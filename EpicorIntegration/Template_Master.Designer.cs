@@ -118,6 +118,8 @@
             this.remop_btn = new System.Windows.Forms.Button();
             this.oomtemplatename_txt = new System.Windows.Forms.TextBox();
             this.ops_grp = new System.Windows.Forms.GroupBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.laborentry_cbo = new System.Windows.Forms.ComboBox();
             this.SNRequiredOpr_chk = new System.Windows.Forms.CheckBox();
             this.AutoRecieve_chk = new System.Windows.Forms.CheckBox();
             this.seq_txt = new System.Windows.Forms.TextBox();
@@ -180,6 +182,8 @@
             this.AddBill = new System.Windows.Forms.Button();
             this.DelBill = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.fill = new System.Windows.Forms.ComboBox();
             this.PullAsAsm_chk = new System.Windows.Forms.CheckBox();
             this.billtemplatename_txt = new System.Windows.Forms.TextBox();
             this.operation_txt = new System.Windows.Forms.TextBox();
@@ -197,25 +201,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.BillDataGrid = new System.Windows.Forms.DataGridView();
-            this.RawMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.PartTimer = new System.Windows.Forms.Timer(this.components);
-            this.laborentry_cbo = new System.Windows.Forms.ComboBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.Oprrow_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OOMPropertyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OOMPropertyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyOption5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OOMPropertyOptions = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyOption1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyOption3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyOption4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPropertyOption2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.engDataDataSet = new Epicor_Integration.ENGDataDataSet();
-            this.fill = new System.Windows.Forms.ComboBox();
-            this.label36 = new System.Windows.Forms.Label();
             this.row_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -225,6 +210,21 @@
             this.PropertyOptions = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PropertyOptions1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PropertyOptions5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RawMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.PartTimer = new System.Windows.Forms.Timer(this.components);
+            this.engDataDataSet = new Epicor_Integration.ENGDataDataSet();
+            this.Oprrow_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOption5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOptions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOption1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOption3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOption4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OprPropertyOption2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.ItemTab.SuspendLayout();
             this.ItemSplit.Panel1.SuspendLayout();
@@ -1234,6 +1234,25 @@
             this.ops_grp.TabIndex = 9;
             this.ops_grp.TabStop = false;
             // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(10, 172);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(64, 13);
+            this.label35.TabIndex = 15;
+            this.label35.Text = "Labor Entry:";
+            // 
+            // laborentry_cbo
+            // 
+            this.laborentry_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.laborentry_cbo.FormattingEnabled = true;
+            this.laborentry_cbo.Location = new System.Drawing.Point(80, 169);
+            this.laborentry_cbo.Name = "laborentry_cbo";
+            this.laborentry_cbo.Size = new System.Drawing.Size(191, 21);
+            this.laborentry_cbo.TabIndex = 14;
+            this.laborentry_cbo.SelectedIndexChanged += new System.EventHandler(this.laborentry_cbo_SelectedIndexChanged);
+            // 
             // SNRequiredOpr_chk
             // 
             this.SNRequiredOpr_chk.AutoSize = true;
@@ -1340,13 +1359,13 @@
             this.OPDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OPDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Oprrow_id,
-            this.OOMPropertyType,
-            this.OOMPropertyValue,
+            this.OprPropertyType,
+            this.OprPropertyValue,
             this.OprDesc,
             this.OprPropertyQty,
             this.OprPropertyUOM,
             this.OprPropertyOption5,
-            this.OOMPropertyOptions,
+            this.OprPropertyOptions,
             this.OprPropertyOption1,
             this.OprPropertyOption3,
             this.OprPropertyOption4,
@@ -1976,6 +1995,30 @@
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(316, 118);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(47, 13);
+            this.label36.TabIndex = 18;
+            this.label36.Text = "Fill With:";
+            this.label36.Visible = false;
+            // 
+            // fill
+            // 
+            this.fill.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.fill.FormattingEnabled = true;
+            this.fill.Items.AddRange(new object[] {
+            "",
+            "Weight",
+            "Surface Area"});
+            this.fill.Location = new System.Drawing.Point(319, 134);
+            this.fill.Name = "fill";
+            this.fill.Size = new System.Drawing.Size(105, 21);
+            this.fill.TabIndex = 17;
+            this.fill.SelectedIndexChanged += new System.EventHandler(this.fill_SelectedIndexChanged);
+            // 
             // PullAsAsm_chk
             // 
             this.PullAsAsm_chk.AutoSize = true;
@@ -2165,159 +2208,6 @@
             this.BillDataGrid.Size = new System.Drawing.Size(582, 286);
             this.BillDataGrid.TabIndex = 2;
             // 
-            // RawMenuStrip
-            // 
-            this.RawMenuStrip.Name = "contextMenuStrip1";
-            this.RawMenuStrip.Size = new System.Drawing.Size(61, 4);
-            // 
-            // PartTimer
-            // 
-            this.PartTimer.Interval = 500;
-            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
-            // 
-            // laborentry_cbo
-            // 
-            this.laborentry_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.laborentry_cbo.FormattingEnabled = true;
-            this.laborentry_cbo.Location = new System.Drawing.Point(80, 169);
-            this.laborentry_cbo.Name = "laborentry_cbo";
-            this.laborentry_cbo.Size = new System.Drawing.Size(191, 21);
-            this.laborentry_cbo.TabIndex = 14;
-            this.laborentry_cbo.SelectedIndexChanged += new System.EventHandler(this.laborentry_cbo_SelectedIndexChanged);
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(10, 172);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(64, 13);
-            this.label35.TabIndex = 15;
-            this.label35.Text = "Labor Entry:";
-            // 
-            // Oprrow_id
-            // 
-            this.Oprrow_id.DataPropertyName = "row_id";
-            this.Oprrow_id.HeaderText = "row_id";
-            this.Oprrow_id.Name = "Oprrow_id";
-            this.Oprrow_id.ReadOnly = true;
-            this.Oprrow_id.Visible = false;
-            // 
-            // OOMPropertyType
-            // 
-            this.OOMPropertyType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.OOMPropertyType.DataPropertyName = "PropertyType";
-            this.OOMPropertyType.HeaderText = "Sequence";
-            this.OOMPropertyType.Name = "OOMPropertyType";
-            this.OOMPropertyType.ReadOnly = true;
-            this.OOMPropertyType.Width = 81;
-            // 
-            // OOMPropertyValue
-            // 
-            this.OOMPropertyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OOMPropertyValue.DataPropertyName = "PropertyValue";
-            this.OOMPropertyValue.HeaderText = "Code";
-            this.OOMPropertyValue.Name = "OOMPropertyValue";
-            this.OOMPropertyValue.ReadOnly = true;
-            this.OOMPropertyValue.Width = 57;
-            // 
-            // OprDesc
-            // 
-            this.OprDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.OprDesc.DataPropertyName = "OpDesc";
-            this.OprDesc.HeaderText = "Operation Description";
-            this.OprDesc.MinimumWidth = 75;
-            this.OprDesc.Name = "OprDesc";
-            this.OprDesc.ReadOnly = true;
-            // 
-            // OprPropertyQty
-            // 
-            this.OprPropertyQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.OprPropertyQty.DataPropertyName = "PropertyQty";
-            this.OprPropertyQty.HeaderText = "Production Hours";
-            this.OprPropertyQty.Name = "OprPropertyQty";
-            this.OprPropertyQty.ReadOnly = true;
-            this.OprPropertyQty.Width = 105;
-            // 
-            // OprPropertyUOM
-            // 
-            this.OprPropertyUOM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OprPropertyUOM.DataPropertyName = "PropertyUOM";
-            this.OprPropertyUOM.HeaderText = "Std. Format";
-            this.OprPropertyUOM.Name = "OprPropertyUOM";
-            this.OprPropertyUOM.ReadOnly = true;
-            this.OprPropertyUOM.Width = 79;
-            // 
-            // OprPropertyOption5
-            // 
-            this.OprPropertyOption5.DataPropertyName = "PropertyOption5";
-            this.OprPropertyOption5.HeaderText = "Labor Entry";
-            this.OprPropertyOption5.Name = "OprPropertyOption5";
-            this.OprPropertyOption5.ReadOnly = true;
-            // 
-            // OOMPropertyOptions
-            // 
-            this.OOMPropertyOptions.DataPropertyName = "PropertyOption";
-            this.OOMPropertyOptions.HeaderText = "Supplier ID";
-            this.OOMPropertyOptions.Name = "OOMPropertyOptions";
-            this.OOMPropertyOptions.ReadOnly = true;
-            // 
-            // OprPropertyOption1
-            // 
-            this.OprPropertyOption1.DataPropertyName = "PropertyOption1";
-            this.OprPropertyOption1.HeaderText = "Quotes Req";
-            this.OprPropertyOption1.Name = "OprPropertyOption1";
-            this.OprPropertyOption1.ReadOnly = true;
-            // 
-            // OprPropertyOption3
-            // 
-            this.OprPropertyOption3.DataPropertyName = "PropertyOption3";
-            this.OprPropertyOption3.HeaderText = "Days Out";
-            this.OprPropertyOption3.Name = "OprPropertyOption3";
-            this.OprPropertyOption3.ReadOnly = true;
-            // 
-            // OprPropertyOption4
-            // 
-            this.OprPropertyOption4.DataPropertyName = "PropertyOption4";
-            this.OprPropertyOption4.HeaderText = "Qty Per";
-            this.OprPropertyOption4.Name = "OprPropertyOption4";
-            this.OprPropertyOption4.ReadOnly = true;
-            // 
-            // OprPropertyOption2
-            // 
-            this.OprPropertyOption2.DataPropertyName = "PropertyOption2";
-            this.OprPropertyOption2.HeaderText = "Cost";
-            this.OprPropertyOption2.Name = "OprPropertyOption2";
-            this.OprPropertyOption2.ReadOnly = true;
-            // 
-            // engDataDataSet
-            // 
-            this.engDataDataSet.DataSetName = "ENGDataDataSet";
-            this.engDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // fill
-            // 
-            this.fill.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.fill.FormattingEnabled = true;
-            this.fill.Items.AddRange(new object[] {
-            "",
-            "Weight",
-            "Surface Area"});
-            this.fill.Location = new System.Drawing.Point(319, 134);
-            this.fill.Name = "fill";
-            this.fill.Size = new System.Drawing.Size(105, 21);
-            this.fill.TabIndex = 17;
-            this.fill.SelectedIndexChanged += new System.EventHandler(this.fill_SelectedIndexChanged);
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(316, 118);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(47, 13);
-            this.label36.TabIndex = 18;
-            this.label36.Text = "Fill With:";
-            this.label36.Visible = false;
-            // 
             // row_id
             // 
             this.row_id.DataPropertyName = "row_id";
@@ -2368,7 +2258,7 @@
             this.PropertyUOM.HeaderText = "UOM Code";
             this.PropertyUOM.Name = "PropertyUOM";
             this.PropertyUOM.ReadOnly = true;
-            this.PropertyUOM.Width = 85;
+            this.PropertyUOM.Width = 78;
             // 
             // PropertyOptions
             // 
@@ -2392,6 +2282,116 @@
             this.PropertyOptions5.HeaderText = "Fill With";
             this.PropertyOptions5.Name = "PropertyOptions5";
             this.PropertyOptions5.ReadOnly = true;
+            // 
+            // RawMenuStrip
+            // 
+            this.RawMenuStrip.Name = "contextMenuStrip1";
+            this.RawMenuStrip.Size = new System.Drawing.Size(61, 4);
+            // 
+            // PartTimer
+            // 
+            this.PartTimer.Interval = 500;
+            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
+            // 
+            // engDataDataSet
+            // 
+            this.engDataDataSet.DataSetName = "ENGDataDataSet";
+            this.engDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // Oprrow_id
+            // 
+            this.Oprrow_id.DataPropertyName = "row_id";
+            this.Oprrow_id.HeaderText = "row_id";
+            this.Oprrow_id.Name = "Oprrow_id";
+            this.Oprrow_id.ReadOnly = true;
+            this.Oprrow_id.Visible = false;
+            // 
+            // OprPropertyType
+            // 
+            this.OprPropertyType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.OprPropertyType.DataPropertyName = "PropertyType";
+            this.OprPropertyType.HeaderText = "Sequence";
+            this.OprPropertyType.Name = "OprPropertyType";
+            this.OprPropertyType.ReadOnly = true;
+            this.OprPropertyType.Width = 81;
+            // 
+            // OprPropertyValue
+            // 
+            this.OprPropertyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OprPropertyValue.DataPropertyName = "PropertyValue";
+            this.OprPropertyValue.HeaderText = "Code";
+            this.OprPropertyValue.Name = "OprPropertyValue";
+            this.OprPropertyValue.ReadOnly = true;
+            this.OprPropertyValue.Width = 57;
+            // 
+            // OprDesc
+            // 
+            this.OprDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.OprDesc.DataPropertyName = "OpDesc";
+            this.OprDesc.HeaderText = "Operation Description";
+            this.OprDesc.MinimumWidth = 75;
+            this.OprDesc.Name = "OprDesc";
+            this.OprDesc.ReadOnly = true;
+            // 
+            // OprPropertyQty
+            // 
+            this.OprPropertyQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.OprPropertyQty.DataPropertyName = "PropertyQty";
+            this.OprPropertyQty.HeaderText = "Production Hours";
+            this.OprPropertyQty.Name = "OprPropertyQty";
+            this.OprPropertyQty.ReadOnly = true;
+            this.OprPropertyQty.Width = 105;
+            // 
+            // OprPropertyUOM
+            // 
+            this.OprPropertyUOM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OprPropertyUOM.DataPropertyName = "PropertyUOM";
+            this.OprPropertyUOM.HeaderText = "Std. Format";
+            this.OprPropertyUOM.Name = "OprPropertyUOM";
+            this.OprPropertyUOM.ReadOnly = true;
+            this.OprPropertyUOM.Width = 79;
+            // 
+            // OprPropertyOption5
+            // 
+            this.OprPropertyOption5.DataPropertyName = "PropertyOptions5";
+            this.OprPropertyOption5.HeaderText = "Labor Entry";
+            this.OprPropertyOption5.Name = "OprPropertyOption5";
+            this.OprPropertyOption5.ReadOnly = true;
+            // 
+            // OprPropertyOptions
+            // 
+            this.OprPropertyOptions.DataPropertyName = "PropertyOption";
+            this.OprPropertyOptions.HeaderText = "Supplier ID";
+            this.OprPropertyOptions.Name = "OprPropertyOptions";
+            this.OprPropertyOptions.ReadOnly = true;
+            // 
+            // OprPropertyOption1
+            // 
+            this.OprPropertyOption1.DataPropertyName = "PropertyOption1";
+            this.OprPropertyOption1.HeaderText = "Quotes Req";
+            this.OprPropertyOption1.Name = "OprPropertyOption1";
+            this.OprPropertyOption1.ReadOnly = true;
+            // 
+            // OprPropertyOption3
+            // 
+            this.OprPropertyOption3.DataPropertyName = "PropertyOption3";
+            this.OprPropertyOption3.HeaderText = "Days Out";
+            this.OprPropertyOption3.Name = "OprPropertyOption3";
+            this.OprPropertyOption3.ReadOnly = true;
+            // 
+            // OprPropertyOption4
+            // 
+            this.OprPropertyOption4.DataPropertyName = "PropertyOption4";
+            this.OprPropertyOption4.HeaderText = "Qty Per";
+            this.OprPropertyOption4.Name = "OprPropertyOption4";
+            this.OprPropertyOption4.ReadOnly = true;
+            // 
+            // OprPropertyOption2
+            // 
+            this.OprPropertyOption2.DataPropertyName = "PropertyOption2";
+            this.OprPropertyOption2.HeaderText = "Cost";
+            this.OprPropertyOption2.Name = "OprPropertyOption2";
+            this.OprPropertyOption2.ReadOnly = true;
             // 
             // Template_Master
             // 
@@ -2653,18 +2653,6 @@
         private System.Windows.Forms.CheckBox PullAsAsm_chk;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.ComboBox laborentry_cbo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Oprrow_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OOMPropertyType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OOMPropertyValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OprDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyUOM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OOMPropertyOptions;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption2;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.ComboBox fill;
         private System.Windows.Forms.DataGridViewTextBoxColumn row_id;
@@ -2676,5 +2664,17 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn PropertyOptions;
         private System.Windows.Forms.DataGridViewCheckBoxColumn PropertyOptions1;
         private System.Windows.Forms.DataGridViewTextBoxColumn PropertyOptions5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Oprrow_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyUOM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOptions;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OprPropertyOption2;
     }
 }
