@@ -366,6 +366,8 @@ namespace Epicor_Integration
                 Transaction = TableHelper.BeginTransaction(TemplateAdapter);
 
             ItemTemplateList_CellClick(ItemTemplateList, new DataGridViewCellEventArgs(0, 1));
+
+            this.KeyPreview = true;
         }
 
         void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -789,6 +791,22 @@ namespace Epicor_Integration
                 TemplateAdapter.InsertNewLine(TemplateName, "BOM");
 
                 TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)BillTemplateList.DataSource, "BOM");
+
+                partnum_txt.Text = "";
+
+                desc_txt.Text = "";
+
+                operation_txt.Text = "";
+
+                qty_num.Value = 0;
+
+                bill_uom_cbo.SelectedIndex = -1;
+
+                fill.SelectedIndex = -1;
+
+                ViewAsAsm_chk.Checked = false;
+
+                PullAsAsm_chk.Checked = false;
             }
         }
 
@@ -919,9 +937,9 @@ namespace Epicor_Integration
             if (Transaction == null)
                 Transaction = TableHelper.BeginTransaction(TemplateAdapter);
 
-            TemplateAdapter.DeleteTemplate(billtemplatename_txt.Text, "ITEM");
+            TemplateAdapter.DeleteTemplate(itemtemplatename_txt.Text, "ITEM");
 
-            TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)BillTemplateList.DataSource, "ITEM");
+            TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)ItemTemplateList.DataSource, "ITEM");
         }
 
         private void trackserial_CheckedChanged(object sender, EventArgs e)
@@ -1008,8 +1026,7 @@ namespace Epicor_Integration
 
         private void add_item_btn_Click(object sender, EventArgs e)
         {
-            if (Transaction == null)
-                Transaction = TableHelper.BeginTransaction(TemplateAdapter);
+            RefreshTransaction();
 
             Template_Title TT = new Template_Title();
 
@@ -1361,8 +1378,7 @@ namespace Epicor_Integration
 
         private void add_op_btn_Click(object sender, EventArgs e)
         {
-            if (Transaction == null)
-                Transaction = TableHelper.BeginTransaction(TemplateAdapter);
+            RefreshTransaction();
 
             Template_Title TT = new Template_Title();
 
@@ -1376,18 +1392,55 @@ namespace Epicor_Integration
 
                 TemplateAdapter.InsertNewLine(TemplateName, "OOM");
 
-                TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)BillTemplateList.DataSource, "OOM");
+                TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)OpsTemplateList.DataSource, "OOM");
+
+                OpsTemplateList.CurrentCell = OpsTemplateList[0, OpsTemplateList.Rows.Count - 1];
+
+                OPDataGrid.DataSource = GetFullTemplate(OpsTemplateList.CurrentCell.Value.ToString(), "OOM");
+
+                oomtemplatename_txt.Text = OpsTemplateList.CurrentCell.Value.ToString();
+
+                seq_txt.Text = "";
+
+                opmast_cbo.SelectedIndex = -1;
+
+                prodhrs_num.Value = 0;
+
+                prodstd_cbo.SelectedValue = -1;
+
+                SNRequiredOpr_chk.Checked = false;
+
+                AutoRecieve_chk.Checked = false;
+
+                laborentry_cbo.SelectedIndex = -1;
+
+                subcon_opsmast_cbo.SelectedIndex = -1;
+
+                refneeded_chk.Checked = false;
+
+                qtyper_num.Value = 0;
+
+                supplierid_txt.Text = "";
+
+                quotesreq_num.Value = 0;
+
+                unitcost_num.Value = 0;
+
+                daysout_num.Value = 0;
+
+                subconuom_cbo.SelectedIndex = -1;
+
+                OPDataGrid_CellClick(OPDataGrid, new DataGridViewCellEventArgs(0, 0));
             }
         }
 
         private void del_op_btn_Click(object sender, EventArgs e)
         {
-            if (Transaction == null)
-                Transaction = TableHelper.BeginTransaction(TemplateAdapter);
+            RefreshTransaction();
 
-            TemplateAdapter.DeleteTemplate(billtemplatename_txt.Text, "ITEM");
+            TemplateAdapter.DeleteTemplate(oomtemplatename_txt.Text, "OOM");
 
-            TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)BillTemplateList.DataSource, "OOM");
+            TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)OpsTemplateList.DataSource, "OOM");
         }
 
         private void saveop_btn_Click(object sender, EventArgs e)
@@ -1451,7 +1504,7 @@ namespace Epicor_Integration
             laborentry_cbo.SelectedIndex = 1;
         }
 
-        private void addop_btn_Click(object sender, EventArgs e)
+        private void add_subcon_btn_Click(object sender, EventArgs e)
         {
             if (Transaction == null)
                 Transaction = TableHelper.BeginTransaction(TemplateAdapter);
@@ -1466,14 +1519,85 @@ namespace Epicor_Integration
 
             OPDataGrid.CurrentCell = OPDataGrid.Rows[OPDataGrid.Rows.Count - 1].Cells[1];
 
-            //Set default values to basics
-            MessageBox.Show("HEY");
+            seq_txt.Text = "";
+
+            opmast_cbo.SelectedIndex = -1;
+
+            prodhrs_num.Value = 0;
+
+            prodstd_cbo.SelectedValue = -1;
+
+            SNRequiredOpr_chk.Checked = false;
+
+            AutoRecieve_chk.Checked = false;
+
+            laborentry_cbo.SelectedIndex = -1;
+
+            subcon_opsmast_cbo.SelectedIndex = -1;
+
+            refneeded_chk.Checked = false;
+
+            qtyper_num.Value = 0;
+
+            supplierid_txt.Text = "";
+
+            quotesreq_num.Value = 0;
+
+            unitcost_num.Value = 0;
+
+            daysout_num.Value = 0;
+
+            subconuom_cbo.SelectedIndex = -1;
+        }
+
+        private void addop_btn_Click(object sender, EventArgs e)
+        {
+            RefreshTransaction();
+
+            TemplateAdapter.InsertNewLine(oomtemplatename_txt.Text, "OOM");
+
+            TemplateAdapter.FillByNameType(engDataDataSet.Templates, "OOM", oomtemplatename_txt.Text);
+
+            OPDataGrid.DataSource = engDataDataSet.Templates;
+
+            OPDataGrid.ClearSelection();
+
+            OPDataGrid.CurrentCell = OPDataGrid.Rows[OPDataGrid.Rows.Count - 1].Cells[1];
+
+            seq_txt.Text = "";
+
+            opmast_cbo.SelectedIndex = -1;
+
+            prodhrs_num.Value = 0;
+
+            prodstd_cbo.SelectedValue = -1;
+
+            SNRequiredOpr_chk.Checked = false;
+
+            AutoRecieve_chk.Checked = false;
+
+            laborentry_cbo.SelectedIndex = -1;
+
+            subcon_opsmast_cbo.SelectedIndex = -1;
+
+            refneeded_chk.Checked = false;
+
+            qtyper_num.Value = 0;
+
+            supplierid_txt.Text = "";
+
+            quotesreq_num.Value = 0;
+
+            unitcost_num.Value = 0;
+
+            daysout_num.Value = 0;
+
+            subconuom_cbo.SelectedIndex = -1;
         }
 
         private void remop_btn_Click(object sender, EventArgs e)
         {
-            if (Transaction == null)
-                Transaction = TableHelper.BeginTransaction(TemplateAdapter);
+            RefreshTransaction();
 
             int rowindex = OPDataGrid.CurrentCellAddress.Y;
 
@@ -1495,7 +1619,7 @@ namespace Epicor_Integration
         {
             try
             {
-                OPDataGrid["OOMPropertyValue", OPDataGrid.CurrentRow.Index].Value = opmast_cbo.SelectedValue;
+                OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value = opmast_cbo.SelectedValue.ToString();
 
                 OPDataGrid["OpDesc", OPDataGrid.CurrentRow.Index].Value = opmast_cbo.Text;
             }
@@ -1638,8 +1762,7 @@ namespace Epicor_Integration
 
         private void add_res_btn_Click(object sender, EventArgs e)
         {
-            if (Transaction == null)
-                Transaction = TableHelper.BeginTransaction(TemplateAdapter);
+            RefreshTransaction();
 
             Template_Title TT = new Template_Title();
 
@@ -1653,18 +1776,17 @@ namespace Epicor_Integration
 
                 TemplateAdapter.InsertNewLine(TemplateName, "RES");
 
-                TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)BillTemplateList.DataSource, "RES");
+                TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)ResTemplateList.DataSource, "RES");
             }
         }
 
         private void del_res_btn_Click(object sender, EventArgs e)
         {
-            if (Transaction == null)
-                Transaction = TableHelper.BeginTransaction(TemplateAdapter);
+            RefreshTransaction();
 
-            TemplateAdapter.DeleteTemplate(billtemplatename_txt.Text, "RES");
+            TemplateAdapter.DeleteTemplate(restemplatename_txt.Text, "RES");
 
-            TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)BillTemplateList.DataSource, "RES");
+            TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)ResTemplateList.DataSource, "RES");
         }
 
         private void save_res_btn_Click(object sender, EventArgs e)
@@ -1672,10 +1794,28 @@ namespace Epicor_Integration
             SaveProcess();
         }
 
+        private void opr_txt_TextChanged(object sender, EventArgs e)
+        {
+            ResDataGrid.CurrentRow.Cells["ResPropertyType"].Value = opr_txt.Text;
+        }
+
+        private void rank_txt_TextChanged(object sender, EventArgs e)
+        {
+            rank_txt.KeyPress += rank_txt_KeyPress;
+
+            ResDataGrid.CurrentRow.Cells["ResPropertyQty"].Value = rank_txt.Text;
+        }
+
+        void rank_txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b')
+                if (e.KeyChar.ToString() != "0" && e.KeyChar.ToString() != "1")
+                    e.Handled = true;
+        }
+
         private void delres_btn_Click(object sender, EventArgs e)
         {
-            if (Transaction == null)
-                Transaction = TableHelper.BeginTransaction(TemplateAdapter);
+            RefreshTransaction();
 
             int rowindex = ResDataGrid.CurrentCellAddress.Y;
 
@@ -1686,8 +1826,7 @@ namespace Epicor_Integration
 
         private void addres_btn_Click(object sender, EventArgs e)
         {
-            if (Transaction == null)
-                Transaction = TableHelper.BeginTransaction(TemplateAdapter);
+            RefreshTransaction();
 
             TemplateAdapter.InsertNewLine(restemplatename_txt.Text, "RES");
 
@@ -1700,7 +1839,13 @@ namespace Epicor_Integration
             ResDataGrid.CurrentCell = ResDataGrid.Rows[ResDataGrid.Rows.Count - 1].Cells[1];
 
             //Set default values to basics
-            MessageBox.Show("HEY");
+            rank_txt.Text = "";
+
+            opr_txt.Text = "";
+
+            resource_cbo.SelectedIndex = -1;
+
+            resourcegrp_cbo.SelectedIndex = -1;
         }
 
         private void FillResourceList()
@@ -1743,6 +1888,8 @@ namespace Epicor_Integration
         {
             opr_txt.Text = ResDataGrid["ResPropertyType", e.RowIndex].Value.ToString();
 
+            rank_txt.Text = ResDataGrid["ResPropertyQty", e.RowIndex].Value.ToString();
+
             resourcegrp_cbo.SelectedValue = ResDataGrid["ResPropertyValue", e.RowIndex].Value.ToString();
 
             resource_cbo.SelectedValue = ResDataGrid["ResPropertyUOM", e.RowIndex].Value.ToString();
@@ -1753,23 +1900,25 @@ namespace Epicor_Integration
             resource_cbo.SelectedIndexChanged -= resource_cbo_SelectedIndexChanged;
 
             #region Fill Datalist
+            try
+            {
+                DataSet ds = DataList.Resource(resourcegrp_cbo.SelectedValue.ToString());
 
-            DataSet ds = DataList.Resource(resourcegrp_cbo.SelectedValue.ToString());
+                DataRow dr = ds.Tables[0].NewRow();
 
-            DataRow dr = ds.Tables[0].NewRow();
+                dr["Description"] = "";
 
-            dr["Description"] = "";
+                dr["ResourceID"] = "";
 
-            dr["ResourceID"] = "";
+                ds.Tables[0].Rows.InsertAt(dr, 0);
 
-            ds.Tables[0].Rows.InsertAt(dr, 0);
+                resource_cbo.DataSource = ds.Tables[0];
 
-            resource_cbo.DataSource = ds.Tables[0];
+                resource_cbo.DisplayMember = ds.Tables[0].Columns["Description"].ToString();
 
-            resource_cbo.DisplayMember = ds.Tables[0].Columns["Description"].ToString();
-
-            resource_cbo.ValueMember = ds.Tables[0].Columns["ResourceID"].ToString();
-
+                resource_cbo.ValueMember = ds.Tables[0].Columns["ResourceID"].ToString();
+            }
+            catch { }
             #endregion
 
             RefreshTransaction();

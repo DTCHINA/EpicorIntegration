@@ -48,14 +48,7 @@ namespace Epicor_Integration
 
         private void seconds_txt_TextChanged(object sender, EventArgs e)
         {
-            string MP = null;
-
-            try
-            {
-                MP = ((decimal.Parse(seconds_txt.Text) / decimal.Parse(efficiency_txt.Text) / 60) * (decimal.Parse(mult_txt.Text))).ToString();
-            }
-            catch { MP = "Error!"; }
-            finally { minpc_txt.Text = MP; }
+            CalculateVals();
         }
 
         private void ok_btn_Click(object sender, EventArgs e)
@@ -69,14 +62,29 @@ namespace Epicor_Integration
 
         private void mult_txt_TextChanged(object sender, EventArgs e)
         {
+            CalculateVals();
+        }
+
+        void CalculateVals()
+        {
             string MP = null;
+
+            double railfactor = 1;
+
+            if (rails_chk.Checked)
+                railfactor = .5;
 
             try
             {
-                MP = ((decimal.Parse(seconds_txt.Text) / decimal.Parse(efficiency_txt.Text) / 60) * (decimal.Parse(mult_txt.Text))).ToString();
+                MP = ((double.Parse(seconds_txt.Text) / double.Parse(efficiency_txt.Text) / 60) * (double.Parse(mult_txt.Text)) * railfactor).ToString();
             }
             catch { MP = "Error!"; }
             finally { minpc_txt.Text = MP; }
+        }
+
+        private void rails_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            CalculateVals();
         }
     }
 }

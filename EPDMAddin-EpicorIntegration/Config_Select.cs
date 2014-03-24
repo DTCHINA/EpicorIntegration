@@ -130,7 +130,19 @@ namespace EPDMEpicorIntegration
             {
                 config_cbo.SelectedIndex = i;
 
-                if (pnum_txt.Text == "")
+                object area;
+
+                object mass;
+
+                IEdmFile5 part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
+
+                IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
+
+                var.GetVar("NetWeight", config_cbo.Text, out mass);
+
+                var.GetVar("SurfaceArea", config_cbo.Text, out area);
+                
+                if (pnum_txt.Text == "" || mass == null || area == null)
                     config_cbo.Items.RemoveAt(i);
             }
 
@@ -195,6 +207,10 @@ namespace EPDMEpicorIntegration
 
             object number;
 
+            object area;
+
+            object mass;
+
             Configuration_Name = null;
 
             int j = 0;
@@ -205,7 +221,11 @@ namespace EPDMEpicorIntegration
 
                 var.GetVar("Number", config_cbo.Text, out number);
 
-                if (number != null)
+                var.GetVar("NetWeight", config_cbo.Text, out mass);
+
+                var.GetVar("SurfaceArea", config_cbo.Text, out area);
+
+                if (number != null && mass != null && area != null)
                 {
                     Configuration_Name = config_cbo.Text;
 

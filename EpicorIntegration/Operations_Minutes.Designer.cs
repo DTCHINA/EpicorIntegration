@@ -49,6 +49,7 @@
             this.epicorMinutesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mult_txt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.rails_chk = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epicorMinutesBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -211,6 +212,17 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "Multiplier";
             // 
+            // rails_chk
+            // 
+            this.rails_chk.AutoSize = true;
+            this.rails_chk.Location = new System.Drawing.Point(133, 145);
+            this.rails_chk.Name = "rails_chk";
+            this.rails_chk.Size = new System.Drawing.Size(49, 17);
+            this.rails_chk.TabIndex = 16;
+            this.rails_chk.Text = "Rails";
+            this.rails_chk.UseVisualStyleBackColor = true;
+            this.rails_chk.CheckedChanged += new System.EventHandler(this.rails_chk_CheckedChanged);
+            // 
             // Operations_Minutes
             // 
             this.AcceptButton = this.ok_btn;
@@ -218,6 +230,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancel_btn;
             this.ClientSize = new System.Drawing.Size(338, 224);
+            this.Controls.Add(this.rails_chk);
             this.Controls.Add(this.mult_txt);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cancel_btn);
@@ -267,5 +280,6 @@
         private System.Windows.Forms.BindingSource epicorMinutesBindingSource;
         private System.Windows.Forms.TextBox mult_txt;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox rails_chk;
     }
 }

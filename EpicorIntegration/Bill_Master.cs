@@ -101,6 +101,7 @@ namespace Epicor_Integration
         public Bill_Master(List<string> BillParts, List<string> BillQty, string ParentNumber, string Rev, decimal weight_val, decimal area_val)
         {
             InitializeComponent();
+
             try
             {
                 weight.Value = weight_val;
@@ -233,8 +234,7 @@ namespace Epicor_Integration
 
             uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
 
-            if (DB_Update_Enabled)
-                UpdateDataSet();
+            UpdateDataSet();
         }
 
         private void uom_cbo_SelectedIndexChanged(object sender, EventArgs e)
@@ -791,7 +791,7 @@ namespace Epicor_Integration
 
             try
             {
-                uom_cbo.Text = EngWBDS.Tables["ECOMtl"].Rows[BillDataGrid.CurrentCellAddress.Y]["UOMCode"].ToString();
+                //uom_cbo.Text = EngWBDS.Tables["ECOMtl"].Rows[BillDataGrid.CurrentCellAddress.Y]["UOMCode"].ToString();
             }
             catch { }
 
@@ -1455,7 +1455,5 @@ namespace Epicor_Integration
             else
                 removebtn.Enabled = true;
         }
-
-
     }
 }
