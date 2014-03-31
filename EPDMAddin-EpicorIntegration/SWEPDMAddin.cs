@@ -25,21 +25,30 @@ namespace EPDMEpicorIntegration
         {
             //Fill in the AddIn's description
 
-            poInfo.mbsAddInName = "Epicor-Integration";
+            string MenuName;
 
-            //poInfo.mbsAddInName = "EpicorIntegration";
+            bool test = true;
 
-            poInfo.mbsCompany = "Norco Ind.";
+            if (test)
+            {
+                poInfo.mbsAddInName = "EpicorIntegration";
+
+                MenuName = "Epicor Integration";
+            }
+            else
+            {
+                poInfo.mbsAddInName = "Epicor-Integration";
+
+                MenuName = "Debug";
+            }
+            
+            poInfo.mbsCompany = "Norco Industries";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201403241;
+            poInfo.mlAddInVersion = (int)201403310;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
             poInfo.mlRequiredVersionMinor = 4;
-            
-            string MenuName = "Epicor Integration";
-
-            //string MenuName = "Debug";
 
             poCmdMgr.AddCmd(1, MenuName + "\\Part Master", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to create/update Item in Epicor", 0, 0); ;
 
@@ -97,7 +106,7 @@ namespace EPDMEpicorIntegration
                                 foreach (EdmCmdData file in Temp)
                                 {
                                     if (ValidSelection(file))
-                                        GetItemInfo(vault, file);
+                                        GetItemInfo(vault, file,"");
                                 }
                                 #endregion
                                 break;
@@ -108,19 +117,23 @@ namespace EPDMEpicorIntegration
                                 {
                                     if (ValidSelection(file))
                                     {
-                                        if (GetItemInfo(vault, file) == DialogResult.Cancel)
+                                        IEdmFile5 part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
+
+                                        string selected_config = DetermineConfig(part, vault, file, "");
+                                        
+                                        if (GetItemInfo(vault, file,selected_config) == DialogResult.Cancel)
                                             break;
 
-                                        if (AddRevision(vault, file) == DialogResult.Cancel)
+                                        if (AddRevision(vault, file, selected_config) == DialogResult.Cancel)
                                             break;
 
-                                        if (AddOOM(vault, file) == DialogResult.Cancel)
+                                        if (AddOOM(vault, file, selected_config) == DialogResult.Cancel)
                                             break;
 
-                                        if (AddBill(vault, file) == DialogResult.Cancel)
+                                        if (AddBill(vault, file, selected_config) == DialogResult.Cancel)
                                             break;
 
-                                        if (CheckInPart(vault, file) == DialogResult.Cancel)
+                                        if (CheckInPart(vault, file, selected_config) == DialogResult.Cancel)
                                             break;
                                     }
                                 }
@@ -143,7 +156,7 @@ namespace EPDMEpicorIntegration
                                 foreach (EdmCmdData file in Temp)
                                 {
                                     if (ValidSelection(file))
-                                        AddRevision(vault, file);
+                                        AddRevision(vault, file, "");
                                 }
 
                                 #endregion
@@ -154,7 +167,7 @@ namespace EPDMEpicorIntegration
                                 foreach (EdmCmdData file in Temp)
                                 {
                                     if (ValidSelection(file))
-                                        AddOOM(vault, file);
+                                        AddOOM(vault, file, "");
                                 }
 
                                 #endregion
@@ -165,7 +178,7 @@ namespace EPDMEpicorIntegration
                                 foreach (EdmCmdData file in Temp)
                                 {
                                     //if (ValidSelection(file))
-                                        AddBill(vault, file);
+                                        AddBill(vault, file, "");
                                 }
                                 #endregion
                                 break;
@@ -175,7 +188,7 @@ namespace EPDMEpicorIntegration
                                 foreach (EdmCmdData file in Temp)
                                 {
                                     if (ValidSelection(file))
-                                        CheckInPart(vault, file);
+                                        CheckInPart(vault, file, "");
                                 }
                                 #endregion
                                 break;
@@ -240,7 +253,7 @@ namespace EPDMEpicorIntegration
 
             IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
 
-            string selected_config = DetermineConfig(part,vault,file);
+            string selected_config = DetermineConfig(part, vault, file, "");
 
             var.GetVar("Number", selected_config, out partnum_val);
 
@@ -256,7 +269,7 @@ namespace EPDMEpicorIntegration
                 return DialogResult.Cancel;
         }
 
-        public DialogResult CheckInPart(IEdmVault7 vault, EdmCmdData file)
+        public DialogResult CheckInPart(IEdmVault7 vault, EdmCmdData file,string selected_config)
         {
             object partnum_val;
 
@@ -264,7 +277,8 @@ namespace EPDMEpicorIntegration
 
             IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
 
-            string selected_config = DetermineConfig(part,vault,file);
+            if (selected_config == null || selected_config == "")
+                selected_config = DetermineConfig(part, vault, file, "");
 
             var.GetVar("Number", selected_config, out partnum_val);
 
@@ -309,7 +323,7 @@ namespace EPDMEpicorIntegration
             return retval;
         }
 
-        public string DetermineConfig(IEdmFile5 Part, IEdmVault7 vault, EdmCmdData file)
+        public string DetermineConfig(IEdmFile5 Part, IEdmVault7 vault,EdmCmdData file, string SearchTerm)
         {
             string retval = "@";
 
@@ -317,50 +331,39 @@ namespace EPDMEpicorIntegration
 
             IEdmPos5 pos = list.GetHeadPosition();
 
-            Config_Select config = new Config_Select(vault, file);
+            Config_Select config;
 
-            pos = list.GetHeadPosition();
-
-            for (int i = 0; i < list.Count; i++)
-            {
-                string itemtoadd = list.GetNext(pos);
-
-                if (itemtoadd != "@")
-                    config.config_cbo.Items.Add(itemtoadd);
-            }
-
-            config.config_cbo.SelectedIndex = 0;
-
-            config.ShowDialog();
-
-            retval = config.SelectedConfig;
-
-            if (config.DialogResult == System.Windows.Forms.DialogResult.Cancel)
-                return "";
-
-            return retval;        
-        }
-
-        public string DetermineConfig(IEdmFile5 Part, IEdmVault7 vault, string SearchTerm)
-        {
-            string retval = "@";
-
-            EdmStrLst5 list = Part.GetConfigurations();
-
-            IEdmPos5 pos = list.GetHeadPosition();
-
-            Config_Select config = new Config_Select(vault, Part,SearchTerm);
-
-            //pos = list.GetHeadPosition();
+            if (SearchTerm != "")
+                config = new Config_Select(vault, Part, SearchTerm);
+            else
+                config = new Config_Select(vault, file);
 
             for (int i = 0; i < list.Count; i++)
             {
                 string name = list.GetNext(pos);
 
-                if (name != "@")
-                    config.config_cbo.Items.Add(name);
-            }
+                    if (name != "@")
+                    {
+                        object number;
 
+                        object area;
+
+                        object mass;
+
+                        IEdmEnumeratorVariable5 var = Part.GetEnumeratorVariable();
+
+                        var.GetVar("Number", name, out number);
+
+                        var.GetVar("NetWeight", name, out mass);
+
+                        var.GetVar("SurfaceArea", name, out area);
+
+                        if (number != null && mass != null && area != null)
+                        {
+                            config.config_cbo.Items.Add(name);
+                        }
+                    }
+            }
 
             config.config_cbo.SelectedIndex = 0;
 
@@ -374,7 +377,7 @@ namespace EPDMEpicorIntegration
             return retval;
         }
 
-        public DialogResult AddRevision(IEdmVault7 vault, EdmCmdData file)
+        public DialogResult AddRevision(IEdmVault7 vault, EdmCmdData file, string selected_config)
         {
             object partnum_val;
 
@@ -385,8 +388,8 @@ namespace EPDMEpicorIntegration
             IEdmFile5 part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
 
             IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
-
-            string selected_config = DetermineConfig(part,vault,file);
+            if (selected_config == null || selected_config == "")
+                selected_config = DetermineConfig(part, vault, file, "");
 
             if (selected_config != "")
             {
@@ -411,7 +414,7 @@ namespace EPDMEpicorIntegration
             return RetVal;
         }
 
-        public DialogResult AddOOM(IEdmVault7 vault, EdmCmdData file)
+        public DialogResult AddOOM(IEdmVault7 vault, EdmCmdData file, string selected_config)
         {
             object partnum_val;
 
@@ -422,8 +425,8 @@ namespace EPDMEpicorIntegration
             IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
 
             DialogResult RetVal = DialogResult.Cancel;
-
-            string selected_config = DetermineConfig(part,vault,file);
+            if (selected_config == null || selected_config == "")
+                selected_config = DetermineConfig(part, vault, file, "");
 
             if (selected_config != "")
             {
@@ -482,7 +485,7 @@ namespace EPDMEpicorIntegration
 
                         IEdmFile7 Part = FindPartinVault(vault, BillNumbers[i], out Config);
 
-                        DialogResult Dr = GetItemInfo(file,vault, Part);
+                        DialogResult Dr = GetItemInfo(file,vault, Part,"");
 
                         if (Dr == DialogResult.Cancel)
                             BillNumbers.RemoveAt(i);
@@ -531,7 +534,7 @@ namespace EPDMEpicorIntegration
                     {
                         try
                         {
-                            GetItemInfo(file, vault, Part);
+                            GetItemInfo(file, vault, Part, "");
                         }
                         catch (Exception ex)
                         {
@@ -556,15 +559,13 @@ namespace EPDMEpicorIntegration
             return true;
         }
 
-        public DialogResult AddBill(IEdmVault7 vault, EdmCmdData file)
+        public DialogResult AddBill(IEdmVault7 vault, EdmCmdData file,string selected_config)
         {
             object weight_val = "0";
 
             object area_val = "0";
 
             IEdmEnumeratorVariable5 var;
-
-            string selected_config;
 
             IEdmFile7 part = (IEdmFile7)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
 
@@ -643,7 +644,7 @@ namespace EPDMEpicorIntegration
                 {
                     var = part.GetEnumeratorVariable();
 
-                    selected_config = DetermineConfig(part, vault, file);
+                    selected_config = DetermineConfig(part, vault, file, "");
 
 
                     if (selected_config != "")
@@ -770,7 +771,7 @@ namespace EPDMEpicorIntegration
 
                 if (property.ToString() == "" || property == null)
                 {
-                    Config = DetermineConfig(Part, vault_, null);
+                    Config = DetermineConfig(Part, vault_, file_, "");
 
                     IEdmEnumeratorVariable5 var = Part.GetEnumeratorVariable();
 
@@ -785,11 +786,9 @@ namespace EPDMEpicorIntegration
 
         }
 
-        public DialogResult GetItemInfo(EdmCmdData file, IEdmVault7 vault, IEdmFile7 Part)
+        public DialogResult GetItemInfo(EdmCmdData file, IEdmVault7 vault, IEdmFile7 Part, string selected_config)
         {
-            IEdmEnumeratorVariable5 var;
-
-            string selected_config;
+            IEdmEnumeratorVariable5 var;  
 
             object partnum_val;
 
@@ -813,71 +812,76 @@ namespace EPDMEpicorIntegration
 
                     decimal weight_fallback = 0;
 
-                    selected_config = DetermineConfig(Part, vault, null);
-
-                    var.GetVar("Number", selected_config, out partnum_val);
-
-                    if (partnum_val.ToString().Contains("201"))
+                    if (selected_config == "" || selected_config == null)
+                        selected_config = DetermineConfig(Part, vault, file, "");
+                    if (selected_config != "")
                     {
-                        DialogResult DR = MessageBox.Show("Part number identified as a frame.  Do you want to use the Customer/Model instead of SolidWorks description custom property?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        var.GetVar("Number", selected_config, out partnum_val);
 
-                        if (DR == DialogResult.Yes)
+                        if (partnum_val.ToString().Contains("201"))
                         {
-                            object cust_val;
-                            var.GetVar("Customer", selected_config, out cust_val);
+                            DialogResult DR = MessageBox.Show("Part number identified as a frame.  Do you want to use the Customer/Model instead of SolidWorks description custom property?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                            object model_val;
-                            var.GetVar("Model", selected_config, out model_val);
+                            if (DR == DialogResult.Yes)
+                            {
+                                object cust_val;
+                                var.GetVar("Customer", selected_config, out cust_val);
 
-                            desc_val = "FRAME " + cust_val.ToString() + " " + model_val.ToString();
+                                object model_val;
+                                var.GetVar("Model", selected_config, out model_val);
+
+                                desc_val = "FRAME " + cust_val.ToString() + " " + model_val.ToString();
+                            }
+                            else
+                                var.GetVar("Description", selected_config, out desc_val);
                         }
                         else
                             var.GetVar("Description", selected_config, out desc_val);
-                    }
-                    else
-                        var.GetVar("Description", selected_config, out desc_val);
 
-                    var.GetVar("Brand", selected_config, out planner_val);
+                        var.GetVar("Brand", selected_config, out planner_val);
 
-                    var.GetVar("Product", selected_config, out product_val);
+                        var.GetVar("Product", selected_config, out product_val);
 
-                    var.GetVar("Class", selected_config, out class_val);
+                        var.GetVar("Class", selected_config, out class_val);
 
-                    var.GetVar("Type", selected_config, out type_val);
+                        var.GetVar("Type", selected_config, out type_val);
 
-                    //Weight is typically @ config
-                    var.GetVar("NetWeight", selected_config, out weight_val);
-
-                    if (weight_val == null)
+                        //Weight is typically @ config
                         var.GetVar("NetWeight", selected_config, out weight_val);
 
-                    if (weight_val != null)
-                        decimal.TryParse(weight_val.ToString(), out weight_fallback);
+                        if (weight_val == null)
+                            var.GetVar("NetWeight", selected_config, out weight_val);
 
-                    if (product_val == null)
-                        product_val = "";
+                        if (weight_val != null)
+                            decimal.TryParse(weight_val.ToString(), out weight_fallback);
 
-                    if (class_val == null)
-                        class_val = "";
+                        if (product_val == null)
+                            product_val = "";
 
-                    if (desc_val == null)
-                        desc_val = "";
+                        if (class_val == null)
+                            class_val = "";
 
-                    if (partnum_val != null)
-                    {
-                        Epicor_Integration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback, product_val.ToString(), class_val.ToString(), type_val.ToString(), planner_val.ToString());
+                        if (desc_val == null)
+                            desc_val = "";
 
-                        item.ShowDialog();
+                        if (partnum_val != null)
+                        {
+                            Epicor_Integration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback, product_val.ToString(), class_val.ToString(), type_val.ToString(), planner_val.ToString());
 
-                        return item.DialogResult;
+                            item.ShowDialog();
+
+                            return item.DialogResult;
+                        }
+                        else
+                        {
+                            //Not necessary anymore
+                            //MessageBox.Show("Part number was a null value!\n\nEnsure that custom properties are completely filled out.", "Missing Properties!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+
+                            return DialogResult.Cancel;
+                        }
                     }
                     else
-                    {
-                        //Not necessary anymore
-                        //MessageBox.Show("Part number was a null value!\n\nEnsure that custom properties are completely filled out.", "Missing Properties!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-
                         return DialogResult.Cancel;
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -891,11 +895,11 @@ namespace EPDMEpicorIntegration
                 return DialogResult.Cancel;
         }
 
-        public DialogResult GetItemInfo(IEdmVault7 vault, EdmCmdData file)
+        public DialogResult GetItemInfo(IEdmVault7 vault, EdmCmdData file, string selected_config)
         {                           
             IEdmFile7 Part = (IEdmFile7)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
 
-            return GetItemInfo(file, vault, Part);
+            return GetItemInfo(file, vault, Part, selected_config);
         }
 
         public bool PartExistsSW(IEdmVault7 vault, string SearchPart)
@@ -924,6 +928,8 @@ namespace EPDMEpicorIntegration
 
         public IEdmFile7 FindPartinVault(IEdmVault7 vault, string SearchPart,out string Config)
         {
+            EdmCmdData file;
+
             string selected_config = null;
 
             object partnum_val = "";
@@ -951,7 +957,7 @@ namespace EPDMEpicorIntegration
                 DialogResult DR = MessageBox.Show("A component not entered into Epicor has been located in the vault.\nThe system will attempt to select the correct configuration if necessary.\n\nSearch Part Number: " + SearchPart, "Warning!", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
 
                 if (DR == DialogResult.OK)
-                    selected_config = DetermineConfig(part, vault, SearchPart);
+                    selected_config = DetermineConfig(part, vault, file_, SearchPart);
                 else
                 {
                     Config = null;
@@ -969,7 +975,7 @@ namespace EPDMEpicorIntegration
 
                     var = part.GetEnumeratorVariable();
 
-                    selected_config = DetermineConfig(part, vault, SearchPart);
+                    selected_config = DetermineConfig(part, vault, file_, SearchPart);
 
                     var.GetVar("Number", selected_config, out partnum_val);
                 }

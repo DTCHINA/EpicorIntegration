@@ -57,7 +57,7 @@
             this.savebtn.Location = new System.Drawing.Point(263, 262);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
-            this.savebtn.TabIndex = 36;
+            this.savebtn.TabIndex = 7;
             this.savebtn.Text = "&Save";
             this.savebtn.UseVisualStyleBackColor = true;
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
@@ -68,7 +68,7 @@
             this.cancelbtn.Location = new System.Drawing.Point(344, 262);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
-            this.cancelbtn.TabIndex = 35;
+            this.cancelbtn.TabIndex = 8;
             this.cancelbtn.Text = "&Cancel";
             this.cancelbtn.UseVisualStyleBackColor = true;
             this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
@@ -141,7 +141,7 @@
             this.comments_txt.Multiline = true;
             this.comments_txt.Name = "comments_txt";
             this.comments_txt.Size = new System.Drawing.Size(178, 101);
-            this.comments_txt.TabIndex = 6;
+            this.comments_txt.TabIndex = 5;
             // 
             // newrev_txt
             // 
@@ -162,7 +162,7 @@
             this.revdesc_txt.Location = new System.Drawing.Point(9, 151);
             this.revdesc_txt.Name = "revdesc_txt";
             this.revdesc_txt.Size = new System.Drawing.Size(375, 20);
-            this.revdesc_txt.TabIndex = 5;
+            this.revdesc_txt.TabIndex = 6;
             // 
             // label5
             // 

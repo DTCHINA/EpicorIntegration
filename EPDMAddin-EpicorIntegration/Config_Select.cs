@@ -105,17 +105,7 @@ namespace EPDMEpicorIntegration
         {
             #region No selectable part numbers
 
-            int j = 0;
-
-            for (int i = 0; i < config_cbo.Items.Count; i++)
-            {
-                config_cbo.SelectedIndex = i;
-
-                if (pnum_txt.Text != "")
-                    j++;
-            }
-
-            if (j == 0)
+            if (config_cbo.Items.Count == 0)
             {
                 this.DialogResult = DialogResult.Cancel;
 
@@ -125,35 +115,6 @@ namespace EPDMEpicorIntegration
             }
 
             #endregion
-
-            for (int i = config_cbo.Items.Count - 1; i > -1; i--)
-            {
-                config_cbo.SelectedIndex = i;
-
-                object area;
-
-                object mass;
-
-                IEdmFile5 part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
-
-                IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
-
-                var.GetVar("NetWeight", config_cbo.Text, out mass);
-
-                var.GetVar("SurfaceArea", config_cbo.Text, out area);
-                
-                if (pnum_txt.Text == "" || mass == null || area == null)
-                    config_cbo.Items.RemoveAt(i);
-            }
-
-            if (config_cbo.Items.Count == 2 && config_cbo.Items[0].ToString() == "@" && config_cbo.Items[1].ToString() == "Default")
-            {
-                SelectedConfig = "Default";
-
-                this.DialogResult = DialogResult.OK;
-
-                this.Close();
-            }
 
             if (SearchTerm != null)
             {
@@ -181,62 +142,16 @@ namespace EPDMEpicorIntegration
                 }
             }
             else
-                if (OnetoRuleThemAll(out SelectedConfig))
+                if (config_cbo.Items.Count == 1)
                 {
+                    config_cbo.SelectedIndex = 0;
+
+                    SelectedConfig = config_cbo.Text;
+
                     this.DialogResult = DialogResult.OK;
 
                     this.Close();
                 }
-        }
-
-        public bool OnetoRuleThemAll(out string Configuration_Name)
-        {
-            IEdmFile5 part;
-
-            try
-            {
-                //if (File.mbsStrData1 != "")
-                part = (IEdmFile5)Vault.GetObject(EdmObjectType.EdmObject_File, File.mlObjectID1);
-            }
-            catch
-            {
-                part = Part;
-            }
-
-            IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
-
-            object number;
-
-            object area;
-
-            object mass;
-
-            Configuration_Name = null;
-
-            int j = 0;
-
-            for (int i = 0; i < config_cbo.Items.Count; i++)
-            {
-                config_cbo.SelectedIndex = i;
-
-                var.GetVar("Number", config_cbo.Text, out number);
-
-                var.GetVar("NetWeight", config_cbo.Text, out mass);
-
-                var.GetVar("SurfaceArea", config_cbo.Text, out area);
-
-                if (number != null && mass != null && area != null)
-                {
-                    Configuration_Name = config_cbo.Text;
-
-                    j++;
-                }
-            }
-
-            if (j > 1)
-                return false;
-            else
-                return true;
         }
     }
 }
