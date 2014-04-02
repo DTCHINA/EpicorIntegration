@@ -27,7 +27,7 @@ namespace EPDMEpicorIntegration
 
             string MenuName;
 
-            bool test = true;
+            bool test = false;
 
             if (test)
             {
@@ -44,7 +44,7 @@ namespace EPDMEpicorIntegration
             
             poInfo.mbsCompany = "Norco Industries";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201403310;
+            poInfo.mlAddInVersion = (int)201404020;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -579,7 +579,7 @@ namespace EPDMEpicorIntegration
 
                 EdmBomInfo[] BOMs = (EdmBomInfo[])bom_array;
 
-                IEdmBom bom = (IEdmBom)vault.GetObject(EdmObjectType.EdmObject_BOM, BOMs[0].mlBomID);
+                IEdmBom bom = (IEdmBom)vault.GetObject(EdmObjectType.EdmObject_BOM, BOMs[BOMs.GetUpperBound(0)].mlBomID);
 
                 EdmBomView bomView = bom.GetView();
 

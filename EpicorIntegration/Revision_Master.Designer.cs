@@ -79,7 +79,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 51);
-            this.groupBox1.TabIndex = 37;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ECO Group";
             // 
@@ -96,6 +96,7 @@
             this.Searchbtn.Name = "Searchbtn";
             this.Searchbtn.Size = new System.Drawing.Size(75, 23);
             this.Searchbtn.TabIndex = 38;
+            this.Searchbtn.TabStop = false;
             this.Searchbtn.Text = "&Search";
             this.Searchbtn.UseVisualStyleBackColor = true;
             this.Searchbtn.Click += new System.EventHandler(this.Searchbtn_Click);
@@ -124,7 +125,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 69);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(407, 187);
-            this.groupBox2.TabIndex = 40;
+            this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part";
             // 
@@ -218,6 +219,7 @@
             this.checkout_chk.Name = "checkout_chk";
             this.checkout_chk.Size = new System.Drawing.Size(99, 17);
             this.checkout_chk.TabIndex = 100;
+            this.checkout_chk.TabStop = false;
             this.checkout_chk.Text = "Check Out Part";
             this.checkout_chk.UseVisualStyleBackColor = true;
             // 

@@ -1130,32 +1130,39 @@ namespace Epicor_Integration
 
         private void removebtn_Click(object sender, EventArgs e)
         {
-            Form_Update_Enabled = false;
+            try
+            {
+                Form_Update_Enabled = false;
 
-            DB_Update_Enabled = false;
-            if (partnum_txt.Text != "")
+                DB_Update_Enabled = false;
+                if (partnum_txt.Text != "")
+                    SaveChanges(false);
+
+                int rowindex = BillDataGrid.CurrentCellAddress.Y;
+
+                EngWBDS.Tables["ECOMtl"].Rows[rowindex].Delete();
+
                 SaveChanges(false);
+            }
+            catch
+            {
+                MessageBox.Show("An error occured removing an item from the bill of materials.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                //EngWB.Update(EngWBDS);
 
-            int rowindex = BillDataGrid.CurrentCellAddress.Y;
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
 
-            EngWBDS.Tables["ECOMtl"].Rows[rowindex].Delete();
+                BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
 
-            SaveChanges(false);
+                if (BillDataGrid.Rows.Count == 0)
+                    removebtn.Enabled = false;
 
-            //EngWB.Update(EngWBDS);
+                Form_Update_Enabled = true;
 
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
+                DB_Update_Enabled = true;
 
-            BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+                EnableItemDetails();
 
-            if (BillDataGrid.Rows.Count == 0)
-                removebtn.Enabled = false;
-
-            Form_Update_Enabled = true;
-
-            DB_Update_Enabled = true;
-
-            EnableItemDetails();
         }
 
         private void copy_btn_Click(object sender, EventArgs e)
