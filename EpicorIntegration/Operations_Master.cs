@@ -498,6 +498,69 @@ namespace Epicor_Integration
 
                     if (opmast_cbo.Text == "TURRET")// || opmast_cbo.Text == "SHEAR")
                         LaborEntryMethod_cbo.Text = "Backflush";
+
+                    try
+                    {
+                        string PrimaryProdOpDtlDesc = "";
+
+                        string ResourceGroupCode = "";
+
+                        #region Find the Code
+
+                        foreach (DataRow row in EngWBDS.Tables["ECOOpDtl"].Rows)
+                        {
+                            if (row["OprSeq"].ToString() == EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OprSeq"].ToString())
+                            {
+                                bool morePages;
+
+                                DataSet res_ds = DataList.ResourceGroup();
+
+                                OpMaster OpMaster = new Epicor.Mfg.BO.OpMaster(DataList.EpicConn);
+
+                                DataSet op_ds = (DataSet)OpMaster.GetRows("", "", "", "", "", "", 100, 0, out morePages);
+
+                                foreach (DataRow op_row in op_ds.Tables["OPMaster"].Rows)
+                                {
+                                    if (op_row["OpDesc"].ToString() == opmast_cbo.Text)
+                                    {
+                                        PrimaryProdOpDtlDesc = op_row["PrimaryProdOpDtlDesc"].ToString();
+
+                                        break;
+                                    }
+                                }
+
+                                foreach (DataRow res_row in res_ds.Tables[0].Rows)
+                                {
+                                    if (res_row["Description"].ToString() == PrimaryProdOpDtlDesc)
+                                    {
+                                        ResourceGroupCode = res_row["ResourceGrpID"].ToString();
+                                    }
+                                }
+
+                                break;
+                            }
+                        }
+
+                        #endregion
+
+                        //Do we need to save the table before we can do this?
+
+                        if (ResourceGroupCode == "")
+                        {
+                            foreach (DataRow row in EngWBDS.Tables["ECOOpDtl"].Rows)
+                            {
+                                if (row["OprSeq"] == opmast_cbo.Text)
+                                {
+                                    row["ResourceGrpID"] = ResourceGroupCode;
+
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); MessageBox.Show("Setting resource default didn't work, tell him to fix it"); }
+
+
                 }
             }
             catch { }
@@ -606,7 +669,7 @@ namespace Epicor_Integration
 
             DataList.GetDetailsFromMethods(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, OpCopy.retPart, OpCopy.retRev);
 
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, true, true);
 
             OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
         }
@@ -637,6 +700,18 @@ namespace Epicor_Integration
                 decimal dec = decimal.Parse(Dr["PropertyQty"].ToString());
 
                 LaborEntryMethod_cbo.SelectedValue = Dr["PropertyOptions5"].ToString();
+
+                bool SNReq = false;
+
+                bool.TryParse(Dr["ProperyOptions6"].ToString(), out SNReq);
+
+                bool AutoRec = false;
+
+                bool.TryParse(Dr["PropertyOptions7"].ToString(), out AutoRec);
+
+                SNRequiredOpr_chk.Checked = SNReq;
+
+                AutoRecieve_chk.Checked = AutoRec;
 
                 prodhrs_num.Value = dec;
 

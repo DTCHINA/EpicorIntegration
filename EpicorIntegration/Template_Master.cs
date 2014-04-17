@@ -378,27 +378,49 @@ namespace Epicor_Integration
 
                 this.CancelButton = close_item_btn;
 
-                ItemTemplateList_CellClick(ItemTemplateList, new DataGridViewCellEventArgs(0, 1));
+                ItemTemplateList_CellClick(ItemTemplateList, new DataGridViewCellEventArgs(0, 0));
             }
             else
                 this.Size = new Size(731, 542);
 
             if (tabControl.SelectedTab == tabControl.TabPages["BillTab"])
             {
-                BillTemplateList_CellClick(BillTemplateList, new DataGridViewCellEventArgs(0, 1));
+                BillTemplateList_CellClick(BillTemplateList, new DataGridViewCellEventArgs(0, 0));
+
+                partnum_txt.Leave += partnum_txt_Leave;
+
+                operation_txt.Leave += operation_txt_Leave;
+
+                qty_num.Leave += qty_num_Leave;
+
+                bill_uom_cbo.Click += bill_uom_cbo_Click;
+
+                fill.Click += fill_Click;
+
+                ViewAsAsm_chk.Click += ViewAsAsm_chk_Click;
+
+                PullAsAsm_chk.Click += PullAsAsm_chk_Click;
 
                 CancelButton = close_bill_btn;
             }
 
             if (tabControl.SelectedTab == tabControl.TabPages["OprTab"])
             {
-                OpsTemplateList_CellClick(OpsTemplateList, new DataGridViewCellEventArgs(0, 1));
+                OpsTemplateList_CellClick(OpsTemplateList, new DataGridViewCellEventArgs(0, 0));
 
                 CancelButton = close_op_btn;
 
                 opmast_cbo.Click += opmast_cbo_Click;
 
                 prodstd_cbo.Click += prodstd_cbo_Click;
+
+                laborentry_cbo.Click += laborentry_cbo_Click;
+
+                prodhrs_num.Click += prodhrs_num_Click;
+
+                SNRequiredOpr_chk.Click += SNRequiredOpr_chk_Click;
+
+                AutoRecieve_chk.Click += AutoRecieve_chk_Click;
 
                 subcon_opsmast_cbo.Click += subcon_opsmast_cbo_Click;
 
@@ -424,6 +446,10 @@ namespace Epicor_Integration
                 resource_cbo.Click += resource_cbo_Click;
 
                 resourcegrp_cbo.Click += resourcegrp_cbo_Click;
+
+                rank_txt.Leave += rank_txt_Leave;
+
+                opr_txt.Leave += opr_txt_Leave;
             }
         }
 
@@ -462,65 +488,82 @@ namespace Epicor_Integration
 
             int row_id = int.Parse(DGV[0, rowindex].Value.ToString());
 
-            if (DGV[Prefix + "PropertyOptions",rowindex].Value == null)
+            if (DGV[Prefix + "PropertyOptions", rowindex].Value == null)
                 TemplateAdapter.UpdateQueryNoOptions(TemplateName, DGV[Prefix + "PropertyType", rowindex].Value.ToString(), DGV[Prefix + "PropertyValue", rowindex].Value.ToString(), DGV[Prefix + "PropertyQty", rowindex].Value.ToString(), DGV[Prefix + "PropertyUOM", rowindex].Value.ToString(), row_id);
             else
-                TemplateAdapter.UpdateQuery(TemplateName, DGV[Prefix + "PropertyType", rowindex].Value.ToString(), DGV[Prefix + "PropertyValue", rowindex].Value.ToString(), DGV[Prefix + "PropertyQty", rowindex].Value.ToString(), DGV[Prefix + "PropertyUOM", rowindex].Value.ToString(), DGV[Prefix + "PropertyOptions", rowindex].Value.ToString(), row_id);
+                TemplateAdapter.UpdateQuery(TemplateName, DGV[Prefix + "PropertyType", rowindex].Value.ToString(), DGV[Prefix + "PropertyValue", rowindex].Value.ToString(), DGV[Prefix + "PropertyQty", rowindex].Value.ToString(), DGV[Prefix + "PropertyUOM", rowindex].Value.ToString(), DGV[Prefix + "PropertyOptions", rowindex].Value.ToString(), DGV[Prefix + "PropertyOptions1", rowindex].Value.ToString(), DGV[Prefix + "PropertyOptions2", rowindex].Value.ToString(), DGV[Prefix + "PropertyOptions3", rowindex].Value.ToString(), DGV[Prefix + "PropertyOptions4", rowindex].Value.ToString(), DGV[Prefix + "PropertyOptions5", rowindex].Value.ToString(), DGV[Prefix + "PropertyOptions6", rowindex].Value.ToString(), DGV[Prefix + "PropertyOptions7", rowindex].Value.ToString(), row_id);
         }
 
         #region Bill Functions
 
         void BillDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            qty_num.ValueChanged -= qty_num_ValueChanged;
-
-            partnum_txt.TextChanged -= partnum_txt_TextChanged;
-
-            operation_txt.TextChanged -= operation_txt_TextChanged;
-
-            ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
-
-            bill_uom_cbo.SelectedIndexChanged -= bill_uom_cbo_SelectedIndexChanged;
-
             try
             {
-                fill.Text = BillDataGrid.CurrentRow.Cells["PropertyOptions5"].Value.ToString();
+                qty_num.ValueChanged -= qty_num_ValueChanged;
 
-                qty_num.Value = decimal.Parse(BillDataGrid.CurrentRow.Cells["PropertyQty"].Value.ToString());
+                partnum_txt.TextChanged -= partnum_txt_TextChanged;
 
-                partnum_txt.Text = BillDataGrid.CurrentRow.Cells["PropertyValue"].Value.ToString();
+                operation_txt.TextChanged -= operation_txt_TextChanged;
 
-                operation_txt.Text = BillDataGrid.CurrentRow.Cells["PropertyType"].Value.ToString();
+                ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
 
-                ViewAsAsm_chk.Checked = bool.Parse(BillDataGrid.CurrentRow.Cells["PropertyOptions"].Value.ToString());
+                bill_uom_cbo.SelectedIndexChanged -= bill_uom_cbo_SelectedIndexChanged;
 
-                DataTable ds = DataList.PartUOM(partnum_txt.Text);
+                try
+                {
+                    fill.Text = BillDataGrid.CurrentRow.Cells["PropertyOptions5"].Value.ToString();
 
-                bill_uom_cbo.DataSource = ds;
+                    try
+                    {
+                        qty_num.Value = decimal.Parse(BillDataGrid.CurrentRow.Cells["PropertyQty"].Value.ToString());
+                    }
+                    catch {/*qty is null*/}
 
-                bill_uom_cbo.DisplayMember = "UOMCode";
+                    partnum_txt.Text = BillDataGrid.CurrentRow.Cells["PropertyValue"].Value.ToString();
 
-                bill_uom_cbo.ValueMember = "UOMCode";
+                    operation_txt.Text = BillDataGrid.CurrentRow.Cells["PropertyType"].Value.ToString();
 
-                bill_uom_cbo.SelectedValue = BillDataGrid.CurrentRow.Cells["PropertyUOM"].Value.ToString();
+                    try
+                    {
+                        ViewAsAsm_chk.Checked = bool.Parse(BillDataGrid.CurrentRow.Cells["PropertyOptions"].Value.ToString());
+                    }
+                    catch { ViewAsAsm_chk.Checked = false; }
+
+                    DataTable ds = DataList.PartUOM(partnum_txt.Text);
+
+                    bill_uom_cbo.DataSource = ds;
+
+                    bill_uom_cbo.DisplayMember = "UOMCode";
+
+                    bill_uom_cbo.ValueMember = "UOMCode";
+
+                    bill_uom_cbo.SelectedValue = BillDataGrid.CurrentRow.Cells["PropertyUOM"].Value.ToString();
+                }
+                catch { }
+
+                qty_num.ValueChanged += qty_num_ValueChanged;
+
+                partnum_txt.TextChanged += partnum_txt_TextChanged;
+
+                operation_txt.TextChanged += operation_txt_TextChanged;
+
+                ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
+
+                bill_uom_cbo.SelectedIndexChanged += bill_uom_cbo_SelectedIndexChanged;
             }
-            catch { }
-
-            qty_num.ValueChanged += qty_num_ValueChanged;
-
-            partnum_txt.TextChanged += partnum_txt_TextChanged;
-
-            operation_txt.TextChanged += operation_txt_TextChanged;
-
-            ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
-
-            bill_uom_cbo.SelectedIndexChanged += bill_uom_cbo_SelectedIndexChanged;
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(ex.Message);
+            }
         }
 
         void BillTemplateList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
+                BillTemplateList.CurrentCell = BillTemplateList[0, e.RowIndex];
+
                 billtemplatename_txt.Text = BillTemplateList.CurrentCell.Value.ToString();
 
                 //BillDataGrid.DataSource = Templates.GetFullTemplate(billtemplatename_txt.Text, "BOM");
@@ -672,6 +715,15 @@ namespace Epicor_Integration
         {
             RefreshTransaction();
 
+            foreach (DataGridViewRow row in BillDataGrid.Rows)
+            {
+                BillDataGrid.ClearSelection();
+
+                BillDataGrid.CurrentCell = row.Cells[1];
+
+                UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+            }
+
             TemplateAdapter.InsertNewLine(billtemplatename_txt.Text, "BOM");
 
             TemplateAdapter.FillByNameType(engDataDataSet.Templates, "BOM", billtemplatename_txt.Text);
@@ -689,8 +741,14 @@ namespace Epicor_Integration
             qty_num.Value = 0;
 
             ViewAsAsm_chk.Checked = false;
-
-            bill_uom_cbo.SelectedIndex = 0;
+            try
+            {
+                bill_uom_cbo.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(ex.Message);
+            }
         }
 
         private void DelBill_Click(object sender, EventArgs e)
@@ -760,9 +818,27 @@ namespace Epicor_Integration
         {
             RefreshTransaction();
 
-            BillDataGrid.CurrentRow.Cells["PropertyOptions"].Value = ViewAsAsm_chk.Checked.ToString();
+            try
+            {
 
-            UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+                BillDataGrid.CurrentRow.Cells["PropertyOptions"].Value = ViewAsAsm_chk.Checked.ToString();
+
+                UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+            }
+            catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
+        }
+
+        private void PullAsAsm_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                RefreshTransaction();
+
+                BillDataGrid.CurrentRow.Cells["PropertyOptions1"].Value = PullAsAsm_chk.Checked.ToString();
+
+                UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+            }
+            catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
         }
 
         private void operation_txt_TextChanged(object sender, EventArgs e)
@@ -791,6 +867,12 @@ namespace Epicor_Integration
                 TemplateAdapter.InsertNewLine(TemplateName, "BOM");
 
                 TemplateAdapter.FillByType((ENGDataDataSet.TemplatesDataTable)BillTemplateList.DataSource, "BOM");
+
+                BillTemplateList.ClearSelection();
+
+                BillTemplateList[0, BillTemplateList.Rows.Count - 1].Selected = true;
+
+                BillTemplateList_CellClick(BillTemplateList, new DataGridViewCellEventArgs(0, BillTemplateList.Rows.Count - 1));
 
                 partnum_txt.Text = "";
 
@@ -828,6 +910,41 @@ namespace Epicor_Integration
             UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
         }
 
+        void PullAsAsm_chk_Click(object sender, EventArgs e)
+        {
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+        }
+
+        void ViewAsAsm_chk_Click(object sender, EventArgs e)
+        {
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+        }
+
+        void fill_Click(object sender, EventArgs e)
+        {
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+        }
+
+        void bill_uom_cbo_Click(object sender, EventArgs e)
+        {
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+        }
+
+        void qty_num_Leave(object sender, EventArgs e)
+        {
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+        }
+
+        void operation_txt_Leave(object sender, EventArgs e)
+        {
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+        }
+
+        void partnum_txt_Leave(object sender, EventArgs e)
+        {
+            UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+        }
+
         #endregion
 
         #region Item Functions
@@ -861,7 +978,7 @@ namespace Epicor_Integration
 
                 itemtemplatename_txt.Text = ItemTemplateList.CurrentCell.Value.ToString();
 
-                pdata = ParseItemTemplate(itemtemplatename_txt.Text);
+                PartData pdata = ParseItemTemplate(itemtemplatename_txt.Text);
 
                 type_cbo.DisplayMember = "Description";
 
@@ -989,17 +1106,29 @@ namespace Epicor_Integration
                     Pdata.PartGroup = Dr["PropertyValue"].ToString();
 
                 if (Dr["PropertyType"].ToString() == "QTYBEARING")
-                    Pdata.QtyBearing = bool.Parse(Dr["PropertyValue"].ToString());
+                    try
+                    {
+                        Pdata.QtyBearing = bool.Parse(Dr["PropertyValue"].ToString());
+                    }
+                    catch { pdata.QtyBearing = false; }
 
                 if (Dr["PropertyType"].ToString() == "CLASS")
                     Pdata.PartClass = Dr["PropertyValue"].ToString();
 
                 if (Dr["PropertyType"].ToString() == "USEREV")
-                    Pdata.UseRevision = bool.Parse(Dr["PropertyValue"].ToString());
+                    try
+                    {
+                        Pdata.UseRevision = bool.Parse(Dr["PropertyValue"].ToString());
+                    }
+                    catch { pdata.UseRevision = false; }
 
                 if (Dr["PropertyType"].ToString() == "TRACKSERIAL")
                 {
-                    Pdata.TrackSerial = bool.Parse(Dr["PropertyValue"].ToString());
+                    try
+                    {
+                        Pdata.TrackSerial = bool.Parse(Dr["PropertyValue"].ToString());
+                    }
+                    catch { pdata.TrackSerial = false; }
 
                     Pdata.TrackSerial_Mask = Dr["PropertyOptions"].ToString();
                 }
@@ -1056,7 +1185,7 @@ namespace Epicor_Integration
 
             int i = int.Parse(TemplateAdapter.GetRowID(itemtemplatename_txt.Text, "ITEM", "TYPE", "%").ToString());
 
-            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "TYPE", type_cbo.Text, null, null, null, i);
+            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "TYPE", type_cbo.Text, null, null, null,null,null,null,null,null,null,null, i);
 
             type_cbo.SelectedIndexChanged -= type_cbo_SelectedIndexChanged;
         }
@@ -1077,7 +1206,7 @@ namespace Epicor_Integration
 
             int i = int.Parse(TemplateAdapter.GetRowID(itemtemplatename_txt.Text, "ITEM", "WEIGHT_UOM", "%").ToString());
 
-            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "WEIGHT_UOM", uomweight_cbo.Text, null, null, null, i);
+            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "WEIGHT_UOM", uomweight_cbo.Text, null, null, null, null, null, null, null, null, null, null, i);
 
             uomweight_cbo.SelectedIndexChanged -= uomweight_cbo_SelectedIndexChanged;
         }
@@ -1088,7 +1217,7 @@ namespace Epicor_Integration
 
             int i = int.Parse(TemplateAdapter.GetRowID(itemtemplatename_txt.Text, "ITEM", "UOM", "%").ToString());
 
-            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "UOM", uom_cbo.Text, null, null, null, i);
+            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "UOM", uom_cbo.Text, null, null, null, null, null, null, null, null, null, null, i);
 
             uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
         }
@@ -1099,7 +1228,7 @@ namespace Epicor_Integration
 
             int i = int.Parse(TemplateAdapter.GetRowID(itemtemplatename_txt.Text, "ITEM", "GROUP", "%").ToString());
 
-            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "GROUP", group_cbo.Text, null, null, null, i);
+            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "GROUP", group_cbo.Text, null, null, null, null, null, null, null, null, null, null, i);
 
             group_cbo.SelectedIndexChanged -= group_cbo_SelectedIndexChanged;
         }
@@ -1110,7 +1239,7 @@ namespace Epicor_Integration
 
             int i = int.Parse(TemplateAdapter.GetRowID(itemtemplatename_txt.Text, "ITEM", "CLASS", "%").ToString());
 
-            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "CLASS", class_cbo.Text, null, null, null, i);
+            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "CLASS", class_cbo.Text, null, null, null, null, null, null, null, null, null, null, i);
 
             class_cbo.SelectedIndexChanged -= class_cbo_SelectedIndexChanged;
         }
@@ -1121,7 +1250,7 @@ namespace Epicor_Integration
 
             int i = int.Parse(TemplateAdapter.GetRowID(itemtemplatename_txt.Text, "ITEM", "PLANT", "%").ToString());
 
-            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "PLANT", plant_cbo.Text, null, null, null, i);
+            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "PLANT", plant_cbo.Text, null, null, null, null, null, null, null, null, null, null, i);
 
             plant_cbo.SelectedIndexChanged -= plant_cbo_SelectedIndexChanged;
         }
@@ -1132,7 +1261,7 @@ namespace Epicor_Integration
 
             int i = int.Parse(TemplateAdapter.GetRowID(itemtemplatename_txt.Text, "ITEM", "PLANNER", "%").ToString());
 
-            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "PLANNER", planner_cbo.Text, null, null, null, i);
+            TemplateAdapter.UpdateQuery(itemtemplatename_txt.Text, "PLANNER", planner_cbo.Text, null, null, null, null, null, null, null, null, null, null, i);
 
             planner_cbo.SelectedIndexChanged -= planner_cbo_SelectedIndexChanged;
         }
@@ -1269,7 +1398,9 @@ namespace Epicor_Integration
 
             for (int i = 0; i < whse_cbo.Items.Count; i++)
             {
-                TemplateAdapter.InsertPropertyLine(itemtemplatename_txt.Text, "ITEM", "WAREHOUSE", whse_cbo.Items[i].ToString(), "", "", "");
+                whse_cbo.SelectedIndex = i;
+
+                TemplateAdapter.InsertPropertyLine(itemtemplatename_txt.Text, "ITEM", "WAREHOUSE", whse_cbo.Text, whse_cbo.SelectedValue.ToString(), "", "");
             }
 
             #endregion
@@ -1296,7 +1427,15 @@ namespace Epicor_Integration
                 catch (Exception ex)
                 { }//MessageBox.Show(ex.Message); }
 
-                    if (val != null)
+                if (val == "{}")
+                {
+                    //New lines created get {} as value, this corrects to blank value
+                    OPDataGrid["OprPropertyOptions", OPDataGrid.CurrentCellAddress.Y].Value = "";
+
+                    val = "";
+                }
+
+                    if (val != null && val != "")
                     {
                         try
                         {
@@ -1308,22 +1447,22 @@ namespace Epicor_Integration
 
                             subcon_opsmast_cbo.SelectedValue = OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
 
-                            refneeded_chk.Checked = (OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString() != "0".ToString());
+                            refneeded_chk.Checked = (OPDataGrid["OprPropertyOptions1", OPDataGrid.CurrentRow.Index].Value.ToString() != "0".ToString());
 
                             if (refneeded_chk.Checked)
-                                quotesreq_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value.ToString());
+                                quotesreq_num.Value = decimal.Parse(OPDataGrid["OprPropertyOptions1", OPDataGrid.CurrentRow.Index].Value.ToString());
 
                             supplierid_txt.Text = OPDataGrid["OprPropertyOptions", OPDataGrid.CurrentRow.Index].Value.ToString();
 
-                            unitcost_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption2", OPDataGrid.CurrentRow.Index].Value.ToString());
+                            unitcost_num.Value = decimal.Parse(OPDataGrid["OprPropertyOptions2", OPDataGrid.CurrentRow.Index].Value.ToString());
 
-                            daysout_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption3", OPDataGrid.CurrentRow.Index].Value.ToString());
+                            daysout_num.Value = decimal.Parse(OPDataGrid["OprPropertyOptions3", OPDataGrid.CurrentRow.Index].Value.ToString());
 
-                            qtyper_num.Value = decimal.Parse(OPDataGrid["OprPropertyOption4", OPDataGrid.CurrentRow.Index].Value.ToString());
+                            qtyper_num.Value = decimal.Parse(OPDataGrid["OprPropertyOptions4", OPDataGrid.CurrentRow.Index].Value.ToString());
 
                             subconuom_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
                         }
-                        catch (Exception ex0) { MessageBox.Show("Sub Con Error: " + ex0.Message); }
+                        catch (Exception ex0) { System.Diagnostics.Debug.Print(ex0.Message); }
                     }
                     else
                     {
@@ -1332,16 +1471,47 @@ namespace Epicor_Integration
                             ops_grp.Visible = true;
 
                             subcon_grp.Visible = false;
+                            try
+                            {
+                                prodhrs_num.Value = decimal.Parse(OPDataGrid["OprPropertyQty", OPDataGrid.CurrentRow.Index].Value.ToString());
+                            }
+                            catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
 
-                            prodhrs_num.Value = decimal.Parse(OPDataGrid["OprPropertyQty", OPDataGrid.CurrentRow.Index].Value.ToString());
+                            try
+                            {
+                                seq_txt.Text = OPDataGrid["OprPropertyType", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            }
+                            catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
 
-                            seq_txt.Text = OPDataGrid["OprPropertyType", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            try
+                            {
+                                opmast_cbo.SelectedValue = OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            }
+                            catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
 
-                            opmast_cbo.SelectedValue = OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            try
+                            {
+                                prodstd_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            }
+                            catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
 
-                            prodstd_cbo.SelectedValue = OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            try
+                            {
+                                laborentry_cbo.SelectedValue = OPDataGrid["OprPropertyOptions5", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            }
+                            catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
 
-                            laborentry_cbo.SelectedValue = OPDataGrid["OprPropertyOption5", OPDataGrid.CurrentRow.Index].Value.ToString();
+                            try
+                            {
+                                SNRequiredOpr_chk.Checked = Convert.ToBoolean(OPDataGrid["OprPropertyOptions6", OPDataGrid.CurrentRow.Index].Value.ToString());
+                            }
+                            catch { SNRequiredOpr_chk.Checked = false; }
+
+                            try
+                            {
+                                AutoRecieve_chk.Checked = Convert.ToBoolean(OPDataGrid["OprPropertyOptions7", OPDataGrid.CurrentRow.Index].Value.ToString());
+                            }
+                            catch { AutoRecieve_chk.Checked = false; }
                         }
                         catch (Exception ex1) { MessageBox.Show("Operation Error:" + ex1.Message); }
                     }
@@ -1371,9 +1541,13 @@ namespace Epicor_Integration
             }
 
             if (valid)
+            {
                 OPDataGrid["OprPropertyType", OPDataGrid.CurrentRow.Index].Value = seq_txt.Text;
+
+                UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
+            }
             else
-                MessageBox.Show("Sequences must be unique within a single operation template","Warning!",MessageBoxButtons.OK,MessageBoxIcon.Hand);
+                MessageBox.Show("Sequences must be unique within a single operation template", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
         }
 
         private void add_op_btn_Click(object sender, EventArgs e)
@@ -1452,7 +1626,7 @@ namespace Epicor_Integration
         {
             try
             {
-                OPDataGrid["OprPropertyOption5", OPDataGrid.CurrentRow.Index].Value = laborentry_cbo.SelectedValue;
+                OPDataGrid["OprPropertyOptions5", OPDataGrid.CurrentRow.Index].Value = laborentry_cbo.SelectedValue;
             }
             catch { }
         }
@@ -1601,7 +1775,7 @@ namespace Epicor_Integration
 
             int rowindex = OPDataGrid.CurrentCellAddress.Y;
 
-            TemplateAdapter.DeleteLine(int.Parse(OPDataGrid.CurrentRow.Cells["row_id"].Value.ToString()));
+            TemplateAdapter.DeleteLine(int.Parse(OPDataGrid.CurrentRow.Cells["Oprrow_id"].Value.ToString()));
 
             OPDataGrid.Rows.RemoveAt(rowindex);
         }
@@ -1654,7 +1828,7 @@ namespace Epicor_Integration
         {
             try
             {
-                OPDataGrid["OOMPropertyValue", OPDataGrid.CurrentRow.Index].Value = subcon_opsmast_cbo.SelectedValue;
+                OPDataGrid["OprPropertyValue", OPDataGrid.CurrentRow.Index].Value = subcon_opsmast_cbo.SelectedValue;
 
                 OPDataGrid["OpDesc", OPDataGrid.CurrentRow.Index].Value = subcon_opsmast_cbo.Text;
             }
@@ -1671,7 +1845,7 @@ namespace Epicor_Integration
 
         private void quotesreq_num_ValueChanged(object sender, EventArgs e)
         {
-            OPDataGrid["OprPropertyOption1", OPDataGrid.CurrentRow.Index].Value = quotesreq_num.Value;
+            OPDataGrid["OprPropertyOptions1", OPDataGrid.CurrentRow.Index].Value = quotesreq_num.Value;
         }
 
         private void subconuom_cbo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1688,19 +1862,19 @@ namespace Epicor_Integration
         {
             try
             {
-                OPDataGrid["OOMPropertyOptions", OPDataGrid.CurrentRow.Index].Value = supplierid_txt.Text;
+                OPDataGrid["OprPropertyOptions", OPDataGrid.CurrentRow.Index].Value = supplierid_txt.Text;
             }
             catch { }
         }
 
         private void unitcost_num_ValueChanged(object sender, EventArgs e)
         {
-            OPDataGrid["OprPropertyOption2", OPDataGrid.CurrentRow.Index].Value = unitcost_num.Value;
+            OPDataGrid["OprPropertyOptions2", OPDataGrid.CurrentRow.Index].Value = unitcost_num.Value;
         }
 
         private void daysout_num_ValueChanged(object sender, EventArgs e)
         {
-            OPDataGrid["OprPropertyOption3", OPDataGrid.CurrentRow.Index].Value = daysout_num.Value;
+            OPDataGrid["OprPropertyOptions3", OPDataGrid.CurrentRow.Index].Value = daysout_num.Value;
         }
 
         private void supplierid_btn_Click(object sender, EventArgs e)
@@ -1716,44 +1890,92 @@ namespace Epicor_Integration
 
             supplieradd_txt.Text = OpsSupSearch.ReturnDdsBillAddr;
 
-            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
 
             OpsSupSearch.Dispose();
         }
 
         void quotesreq_num_Click(object sender, EventArgs e)
         {
-            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
         }
 
         void subconuom_cbo_Click(object sender, EventArgs e)
         {
-            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
         }
 
         void qtyper_num_Click(object sender, EventArgs e)
         {
-            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
         }
 
         void supplierid_txt_Click(object sender, EventArgs e)
         {
-            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
         }
 
         void daysout_num_Click(object sender, EventArgs e)
         {
-            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
         }
 
         void unitcost_num_Click(object sender, EventArgs e)
         {
-            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
         }
 
         void subcon_opsmast_cbo_Click(object sender, EventArgs e)
         {
-            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "OOM");
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
+        }
+
+        void AutoRecieve_chk_Click(object sender, EventArgs e)
+        {
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
+        }
+
+        void SNRequiredOpr_chk_Click(object sender, EventArgs e)
+        {
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
+        }
+
+        void prodhrs_num_Click(object sender, EventArgs e)
+        {
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
+        }
+
+        void laborentry_cbo_Click(object sender, EventArgs e)
+        {
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
+        }
+
+        private void AutoRecieve_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            SNRequiredOpr_chk.CheckedChanged -= SNRequiredOpr_chk_CheckedChanged;
+
+            if (SNRequiredOpr_chk.Checked)
+                SNRequiredOpr_chk.Checked = false;
+
+            SNRequiredOpr_chk.Enabled = !AutoRecieve_chk.Checked;
+
+            OPDataGrid["OprPropertyOptions7", OPDataGrid.CurrentRow.Index].Value = AutoRecieve_chk.Checked;
+
+            SNRequiredOpr_chk.CheckedChanged += SNRequiredOpr_chk_CheckedChanged;
+        }
+
+        private void SNRequiredOpr_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoRecieve_chk.CheckedChanged -= AutoRecieve_chk_CheckedChanged;
+
+            if (AutoRecieve_chk.Checked)
+                AutoRecieve_chk.Checked = false;
+
+            AutoRecieve_chk.Enabled = !SNRequiredOpr_chk.Checked;
+
+            OPDataGrid["OprPropertyOptions6", OPDataGrid.CurrentRow.Index].Value = SNRequiredOpr_chk.Checked;
+
+            AutoRecieve_chk.CheckedChanged += AutoRecieve_chk_CheckedChanged;
         }
 
         #endregion
@@ -1819,7 +2041,7 @@ namespace Epicor_Integration
 
             int rowindex = ResDataGrid.CurrentCellAddress.Y;
 
-            TemplateAdapter.DeleteLine(int.Parse(ResDataGrid.CurrentRow.Cells["row_id"].Value.ToString()));
+            TemplateAdapter.DeleteLine(int.Parse(ResDataGrid.CurrentRow.Cells["Resrow_id"].Value.ToString()));
 
             ResDataGrid.Rows.RemoveAt(rowindex);
         }
@@ -1827,6 +2049,15 @@ namespace Epicor_Integration
         private void addres_btn_Click(object sender, EventArgs e)
         {
             RefreshTransaction();
+
+            foreach (DataGridViewRow row in ResDataGrid.Rows)
+            {
+                ResDataGrid.ClearSelection();
+
+                ResDataGrid.CurrentCell = row.Cells[1];
+
+                UpdateLine(ResDataGrid, restemplatename_txt.Text, "Res");
+            }
 
             TemplateAdapter.InsertNewLine(restemplatename_txt.Text, "RES");
 
@@ -1949,16 +2180,17 @@ namespace Epicor_Integration
             UpdateLine(ResDataGrid, restemplatename_txt.Text, "Res");
         }
 
-        #endregion
-
-        private void PullAsAsm_chk_CheckedChanged(object sender, EventArgs e)
+        void rank_txt_Leave(object sender, EventArgs e)
         {
-            RefreshTransaction();
-
-            BillDataGrid.CurrentRow.Cells["PropertyOptions2"].Value = PullAsAsm_chk.Checked.ToString();
-
-            UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+            UpdateLine(ResDataGrid, restemplatename_txt.Text, "RES");
         }
+
+        void opr_txt_Leave(object sender, EventArgs e)
+        {
+            UpdateLine(ResDataGrid, restemplatename_txt.Text, "RES");
+        }
+
+        #endregion
 
         public DataTable GetOomTemplates()
         {

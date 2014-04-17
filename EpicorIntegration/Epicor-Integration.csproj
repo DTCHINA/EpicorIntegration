@@ -280,6 +280,10 @@
     <Compile Include="Config_OpsMins.Designer.cs">
       <DependentUpon>Config_OpsMins.cs</DependentUpon>
     </Compile>
+    <Compile Include="ENGDataDataSet.cs">
+      <DependentUpon>ENGDataDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ENGDataDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

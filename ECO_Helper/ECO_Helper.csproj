@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>N2.0_sm.ico</ApplicationIcon>
+    <ApplicationIcon>A Proper Journal_Blue.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Epicor.Mfg.BO.EngWorkBench, Version=9.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
@@ -156,6 +156,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="A Proper Journal_Blue.ico" />
     <Content Include="N2.0_sm.ico" />
   </ItemGroup>
   <ItemGroup>

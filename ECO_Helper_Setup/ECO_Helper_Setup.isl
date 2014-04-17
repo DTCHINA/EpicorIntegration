@@ -1905,6 +1905,7 @@
 		<col def="S255">Data</col>
 		<row><td>PROJECT_ASSISTANT_DEFAULT_FEATURE</td><td>AlwaysInstall</td></row>
 		<row><td>PROJECT_ASSISTANT_FEATURES</td><td>NonSelectable</td></row>
+		<row><td>_Built</td><td/></row>
 	</table>
 
 	<table name="ISBillBoard">
@@ -2780,7 +2781,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>Norco Ind.</td><td>0</td><td/><td>421713455</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>Norco</td><td>0</td><td/><td>438455048</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>1579280649</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>1579280649</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION35</td><td>1033</td><td>Microsoft .NET Framework 3.5 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1713439339</td></row>
@@ -3882,7 +3883,7 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>1579280649</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1579280649</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>1579280649</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.NorcoInd..com</td><td>0</td><td/><td>421713455</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.NorcoInd.com</td><td>0</td><td/><td>438450952</td></row>
 		<row><td>ID_STRING2</td><td>1033</td><td>Norco Ind.</td><td>0</td><td/><td>421713455</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>1579248041</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>1579280649</td></row>
@@ -3994,8 +3995,8 @@
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>C:\Users\bhooper\Downloads\Engineering Suite Source Code\Images Used for Program Icons\N2.0_sm.ico</td><td>0</td></row>
 		<row><td>UNINST_Uninstall_E_29BC13D381AE44AA956F845B49252651.exe</td><td/><td>C:\Program Files (x86)\InstallShield\2012SpringLE\Redist\Language Independent\OS Independent\uninstall.ico</td><td>0</td></row>
-		<row><td>_Built1_FD54AA2EE3AE401F9830A4F38FDD8522.exe</td><td/><td>C:\Users\bhooper\Downloads\Engineering Suite Source Code\Images Used for Program Icons\N2.0_sm.ico</td><td>0</td></row>
-		<row><td>_Built_A796ABF01CFE4C8DA8B7231D931C1F95.exe</td><td/><td>C:\Users\bhooper\Downloads\Engineering Suite Source Code\Images Used for Program Icons\N2.0_sm.ico</td><td>0</td></row>
+		<row><td>_Built1_3AD8C5AFAC544866BFDB744DAD79B5EA.exe</td><td/><td>C:\Users\bhooper\Downloads\A Proper Journal_Blue.ico</td><td>0</td></row>
+		<row><td>_Built_95EC846410FC4B53A6F2749ACA9ACD7B.exe</td><td/><td>C:\Users\bhooper\Downloads\A Proper Journal_Blue.ico</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
@@ -4505,7 +4506,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKAPPPOOLS</td><td>##IDS_PROGMSG_IIS_ROLLBACKAPPPOOLS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
-		<row><td>ProductCode</td><td>{FBFF66D5-9099-442F-A33A-4C341DFADDD3}</td><td/></row>
+		<row><td>ProductCode</td><td>{E1DD6C75-2837-46A6-ACA7-B187696D783E}</td><td/></row>
 		<row><td>ProductName</td><td>ECO Helper</td><td/></row>
 		<row><td>ProductVersion</td><td>1.00.1000</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
@@ -4671,8 +4672,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
 		<row><td>UNINST_Uninstall_ECO_Helper</td><td>eco_helper</td><td>UNINST|Uninstall ECO Helper</td><td>NewComponent2</td><td>[SystemFolder]msiexec.exe</td><td>/x {FBFF66D5-9099-442F-A33A-4C341DFADDD3}</td><td/><td/><td>UNINST_Uninstall_E_29BC13D381AE44AA956F845B49252651.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>_Built</td><td>eco_helper</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>ECO_Helper.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built_A796ABF01CFE4C8DA8B7231D931C1F95.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>ECO_Helper.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built1_FD54AA2EE3AE401F9830A4F38FDD8522.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built</td><td>eco_helper</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>ECO_Helper.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built_95EC846410FC4B53A6F2749ACA9ACD7B.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>ECO_Helper.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built1_3AD8C5AFAC544866BFDB744DAD79B5EA.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

@@ -402,6 +402,18 @@ namespace Epicor_Integration {
             
             private global::System.Data.DataColumn columnPropertyOptions1;
             
+            private global::System.Data.DataColumn columnPropertyOptions2;
+            
+            private global::System.Data.DataColumn columnPropertyOptions3;
+            
+            private global::System.Data.DataColumn columnPropertyOptions4;
+            
+            private global::System.Data.DataColumn columnPropertyOptions5;
+            
+            private global::System.Data.DataColumn columnPropertyOptions6;
+            
+            private global::System.Data.DataColumn columnPropertyOptions7;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TemplatesDataTable() {
@@ -509,6 +521,54 @@ namespace Epicor_Integration {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PropertyOptions2Column {
+                get {
+                    return this.columnPropertyOptions2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PropertyOptions3Column {
+                get {
+                    return this.columnPropertyOptions3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PropertyOptions4Column {
+                get {
+                    return this.columnPropertyOptions4;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PropertyOptions5Column {
+                get {
+                    return this.columnPropertyOptions5;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PropertyOptions6Column {
+                get {
+                    return this.columnPropertyOptions6;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PropertyOptions7Column {
+                get {
+                    return this.columnPropertyOptions7;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -544,7 +604,7 @@ namespace Epicor_Integration {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TemplatesRow AddTemplatesRow(string Name, string Type, string PropertyType, string PropertyValue, string PropertyQty, string PropertyUOM, string PropertyOptions, string PropertyOptions1) {
+            public TemplatesRow AddTemplatesRow(string Name, string Type, string PropertyType, string PropertyValue, string PropertyQty, string PropertyUOM, string PropertyOptions, string PropertyOptions1, string PropertyOptions2, string PropertyOptions3, string PropertyOptions4, string PropertyOptions5, string PropertyOptions6, string PropertyOptions7) {
                 TemplatesRow rowTemplatesRow = ((TemplatesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name,
@@ -555,7 +615,13 @@ namespace Epicor_Integration {
                         PropertyUOM,
                         PropertyOptions,
                         null,
-                        PropertyOptions1};
+                        PropertyOptions1,
+                        PropertyOptions2,
+                        PropertyOptions3,
+                        PropertyOptions4,
+                        PropertyOptions5,
+                        PropertyOptions6,
+                        PropertyOptions7};
                 rowTemplatesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTemplatesRow);
                 return rowTemplatesRow;
@@ -587,6 +653,12 @@ namespace Epicor_Integration {
                 this.columnPropertyOptions = base.Columns["PropertyOptions"];
                 this.columnrow_id = base.Columns["row_id"];
                 this.columnPropertyOptions1 = base.Columns["PropertyOptions1"];
+                this.columnPropertyOptions2 = base.Columns["PropertyOptions2"];
+                this.columnPropertyOptions3 = base.Columns["PropertyOptions3"];
+                this.columnPropertyOptions4 = base.Columns["PropertyOptions4"];
+                this.columnPropertyOptions5 = base.Columns["PropertyOptions5"];
+                this.columnPropertyOptions6 = base.Columns["PropertyOptions6"];
+                this.columnPropertyOptions7 = base.Columns["PropertyOptions7"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -610,6 +682,18 @@ namespace Epicor_Integration {
                 base.Columns.Add(this.columnrow_id);
                 this.columnPropertyOptions1 = new global::System.Data.DataColumn("PropertyOptions1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPropertyOptions1);
+                this.columnPropertyOptions2 = new global::System.Data.DataColumn("PropertyOptions2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPropertyOptions2);
+                this.columnPropertyOptions3 = new global::System.Data.DataColumn("PropertyOptions3", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPropertyOptions3);
+                this.columnPropertyOptions4 = new global::System.Data.DataColumn("PropertyOptions4", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPropertyOptions4);
+                this.columnPropertyOptions5 = new global::System.Data.DataColumn("PropertyOptions5", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPropertyOptions5);
+                this.columnPropertyOptions6 = new global::System.Data.DataColumn("PropertyOptions6", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPropertyOptions6);
+                this.columnPropertyOptions7 = new global::System.Data.DataColumn("PropertyOptions7", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPropertyOptions7);
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 1073741823;
                 this.columnType.MaxLength = 1073741823;
@@ -624,6 +708,12 @@ namespace Epicor_Integration {
                 this.columnrow_id.AllowDBNull = false;
                 this.columnrow_id.ReadOnly = true;
                 this.columnPropertyOptions1.MaxLength = 2147483647;
+                this.columnPropertyOptions2.MaxLength = 2147483647;
+                this.columnPropertyOptions3.MaxLength = 2147483647;
+                this.columnPropertyOptions4.MaxLength = 2147483647;
+                this.columnPropertyOptions5.MaxLength = 2147483647;
+                this.columnPropertyOptions6.MaxLength = 2147483647;
+                this.columnPropertyOptions7.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1925,6 +2015,102 @@ namespace Epicor_Integration {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PropertyOptions2 {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplates.PropertyOptions2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PropertyOptions2\' in table \'Templates\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplates.PropertyOptions2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PropertyOptions3 {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplates.PropertyOptions3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PropertyOptions3\' in table \'Templates\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplates.PropertyOptions3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PropertyOptions4 {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplates.PropertyOptions4Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PropertyOptions4\' in table \'Templates\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplates.PropertyOptions4Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PropertyOptions5 {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplates.PropertyOptions5Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PropertyOptions5\' in table \'Templates\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplates.PropertyOptions5Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PropertyOptions6 {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplates.PropertyOptions6Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PropertyOptions6\' in table \'Templates\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplates.PropertyOptions6Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PropertyOptions7 {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplates.PropertyOptions7Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PropertyOptions7\' in table \'Templates\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplates.PropertyOptions7Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTypeNull() {
                 return this.IsNull(this.tableTemplates.TypeColumn);
             }
@@ -2005,6 +2191,78 @@ namespace Epicor_Integration {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPropertyOptions1Null() {
                 this[this.tableTemplates.PropertyOptions1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPropertyOptions2Null() {
+                return this.IsNull(this.tableTemplates.PropertyOptions2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPropertyOptions2Null() {
+                this[this.tableTemplates.PropertyOptions2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPropertyOptions3Null() {
+                return this.IsNull(this.tableTemplates.PropertyOptions3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPropertyOptions3Null() {
+                this[this.tableTemplates.PropertyOptions3Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPropertyOptions4Null() {
+                return this.IsNull(this.tableTemplates.PropertyOptions4Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPropertyOptions4Null() {
+                this[this.tableTemplates.PropertyOptions4Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPropertyOptions5Null() {
+                return this.IsNull(this.tableTemplates.PropertyOptions5Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPropertyOptions5Null() {
+                this[this.tableTemplates.PropertyOptions5Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPropertyOptions6Null() {
+                return this.IsNull(this.tableTemplates.PropertyOptions6Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPropertyOptions6Null() {
+                this[this.tableTemplates.PropertyOptions6Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPropertyOptions7Null() {
+                return this.IsNull(this.tableTemplates.PropertyOptions7Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPropertyOptions7Null() {
+                this[this.tableTemplates.PropertyOptions7Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -2860,10 +3118,16 @@ namespace Epicor_Integration.ENGDataDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("PropertyOptions", "PropertyOptions");
             tableMapping.ColumnMappings.Add("row_id", "row_id");
             tableMapping.ColumnMappings.Add("PropertyOptions1", "PropertyOptions1");
+            tableMapping.ColumnMappings.Add("PropertyOptions2", "PropertyOptions2");
+            tableMapping.ColumnMappings.Add("PropertyOptions3", "PropertyOptions3");
+            tableMapping.ColumnMappings.Add("PropertyOptions4", "PropertyOptions4");
+            tableMapping.ColumnMappings.Add("PropertyOptions5", "PropertyOptions5");
+            tableMapping.ColumnMappings.Add("PropertyOptions6", "PropertyOptions6");
+            tableMapping.ColumnMappings.Add("PropertyOptions7", "PropertyOptions7");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Templates] ([Name], [Type], [PropertyType], [PropertyValue], [PropertyQty], [PropertyUOM], [PropertyOptions], [PropertyOptions1]) VALUES (@Name, @Type, @PropertyType, @PropertyValue, @PropertyQty, @PropertyUOM, @PropertyOptions, @PropertyOptions1)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Templates] ([Name], [Type], [PropertyType], [PropertyValue], [PropertyQty], [PropertyUOM], [PropertyOptions], [PropertyOptions1], [PropertyOptions2], [PropertyOptions3], [PropertyOptions4], [PropertyOptions5], [PropertyOptions6], [PropertyOptions7]) VALUES (@Name, @Type, @PropertyType, @PropertyValue, @PropertyQty, @PropertyUOM, @PropertyOptions, @PropertyOptions1, @PropertyOptions2, @PropertyOptions3, @PropertyOptions4, @PropertyOptions5, @PropertyOptions6, @PropertyOptions7)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2873,6 +3137,12 @@ namespace Epicor_Integration.ENGDataDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyUOM", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyUOM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions2", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions3", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions3", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions4", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions4", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions5", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions5", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions6", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions6", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions7", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions7", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2888,8 +3158,9 @@ namespace Epicor_Integration.ENGDataDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[12];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        row_id, Name, Type, PropertyType, PropertyValue, PropertyQty, Prope" +
-                "rtyUOM, PropertyOptions, PropertyOptions1\r\nFROM            Templates";
+            this._commandCollection[0].CommandText = @"SELECT        row_id, Name, Type, PropertyType, PropertyValue, PropertyQty, PropertyUOM, PropertyOptions, PropertyOptions1, PropertyOptions2, PropertyOptions3, 
+                         PropertyOptions4, PropertyOptions5, PropertyOptions6, PropertyOptions7
+FROM            Templates";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -2904,15 +3175,13 @@ namespace Epicor_Integration.ENGDataDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "DELETE FROM Templates\r\nWHERE        (Name = @Name) AND (Type = N\'[ITEM]\') AND (Pr" +
-                "opertyType = N\'[WAREHOUSE]\')";
+            this._commandCollection[3].CommandText = "DELETE FROM Templates\r\nWHERE        (Name = @Name) AND (Type = N\'ITEM\') AND (Prop" +
+                "ertyType = N\'WAREHOUSE\')";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT Name, PropertyOptions, PropertyOptions5 ,PropertyOptions1, PropertyQty, Pr" +
-                "opertyType, PropertyUOM, PropertyValue, Type, row_id FROM Templates WHERE (Type " +
-                "LIKE @Type) AND (Name LIKE @Name)";
+            this._commandCollection[4].CommandText = @"SELECT Name, PropertyOptions, PropertyOptions1, PropertyOptions2, PropertyOptions3, PropertyOptions4, PropertyOptions5, PropertyOptions6, PropertyOptions7, PropertyQty, PropertyType, PropertyUOM, PropertyValue, Type, row_id FROM Templates WHERE (Type LIKE @Type) AND (Name LIKE @Name)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2970,7 +3239,9 @@ WHERE        (row_id = @row_id)";
             this._commandCollection[10].Connection = this.Connection;
             this._commandCollection[10].CommandText = @"UPDATE       Templates
 SET                Name = @Name, PropertyType = @PropertyType, PropertyValue = @PropertyValue, PropertyQty = @PropertyQty, PropertyUOM = @PropertyUOM, 
-                         PropertyOptions = @PropertyOptions
+                         PropertyOptions = @PropertyOptions, PropertyOptions1 = @PropertyOptions1, PropertyOptions2 = @PropertyOptions2, PropertyOptions3 = @PropertyOptions3, 
+                         PropertyOptions4 = @PropertyOptions4, PropertyOptions5 = @PropertyOptions5, PropertyOptions6 = @PropertyOptions6, 
+                         PropertyOptions7 = @PropertyOptions7
 WHERE        (row_id = @row_id)";
             this._commandCollection[10].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2979,6 +3250,13 @@ WHERE        (row_id = @row_id)";
             this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyQty", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyQty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyUOM", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyUOM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions1", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions2", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions3", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions3", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions4", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions4", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions5", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions5", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions6", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions6", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PropertyOptions7", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "PropertyOptions7", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@row_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "row_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[11] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[11].Connection = this.Connection;
@@ -3135,7 +3413,7 @@ WHERE        (row_id = @row_id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name, string Type, string PropertyType, string PropertyValue, string PropertyQty, string PropertyUOM, string PropertyOptions, string PropertyOptions1) {
+        public virtual int Insert(string Name, string Type, string PropertyType, string PropertyValue, string PropertyQty, string PropertyUOM, string PropertyOptions, string PropertyOptions1, string PropertyOptions2, string PropertyOptions3, string PropertyOptions4, string PropertyOptions5, string PropertyOptions6, string PropertyOptions7) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
@@ -3183,6 +3461,42 @@ WHERE        (row_id = @row_id)";
             }
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = ((string)(PropertyOptions1));
+            }
+            if ((PropertyOptions2 == null)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(PropertyOptions2));
+            }
+            if ((PropertyOptions3 == null)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(PropertyOptions3));
+            }
+            if ((PropertyOptions4 == null)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(PropertyOptions4));
+            }
+            if ((PropertyOptions5 == null)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(PropertyOptions5));
+            }
+            if ((PropertyOptions6 == null)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(PropertyOptions6));
+            }
+            if ((PropertyOptions7 == null)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(PropertyOptions7));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3510,7 +3824,7 @@ WHERE        (row_id = @row_id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateQuery(string Name, string PropertyType, string PropertyValue, string PropertyQty, string PropertyUOM, string PropertyOptions, int row_id) {
+        public virtual int UpdateQuery(string Name, string PropertyType, string PropertyValue, string PropertyQty, string PropertyUOM, string PropertyOptions, string PropertyOptions1, string PropertyOptions2, string PropertyOptions3, string PropertyOptions4, string PropertyOptions5, string PropertyOptions6, string PropertyOptions7, int row_id) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[10];
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -3548,7 +3862,49 @@ WHERE        (row_id = @row_id)";
             else {
                 command.Parameters[5].Value = ((string)(PropertyOptions));
             }
-            command.Parameters[6].Value = ((int)(row_id));
+            if ((PropertyOptions1 == null)) {
+                command.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[6].Value = ((string)(PropertyOptions1));
+            }
+            if ((PropertyOptions2 == null)) {
+                command.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[7].Value = ((string)(PropertyOptions2));
+            }
+            if ((PropertyOptions3 == null)) {
+                command.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[8].Value = ((string)(PropertyOptions3));
+            }
+            if ((PropertyOptions4 == null)) {
+                command.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[9].Value = ((string)(PropertyOptions4));
+            }
+            if ((PropertyOptions5 == null)) {
+                command.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[10].Value = ((string)(PropertyOptions5));
+            }
+            if ((PropertyOptions6 == null)) {
+                command.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[11].Value = ((string)(PropertyOptions6));
+            }
+            if ((PropertyOptions7 == null)) {
+                command.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[12].Value = ((string)(PropertyOptions7));
+            }
+            command.Parameters[13].Value = ((int)(row_id));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
