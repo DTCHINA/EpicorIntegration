@@ -321,8 +321,6 @@
             // bflush_chk
             // 
             this.bflush_chk.AutoSize = true;
-            this.bflush_chk.Checked = true;
-            this.bflush_chk.CheckState = System.Windows.Forms.CheckState.Checked;
             this.bflush_chk.Location = new System.Drawing.Point(224, 179);
             this.bflush_chk.Name = "bflush_chk";
             this.bflush_chk.Size = new System.Drawing.Size(73, 17);

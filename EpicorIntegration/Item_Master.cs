@@ -335,6 +335,9 @@ namespace Epicor_Integration
 
             group_cbo.SelectedValue = Pdata.Tables["Part"].Rows[0]["ProdCode"].ToString();
 
+            //Should set backflush flag correctly on load now.
+            bflush_chk.Checked = bool.Parse(Pdata.Tables["PartPlant"].Rows[0]["Backflush"].ToString());
+
             trackserial.Checked = bool.Parse(Pdata.Tables[0].Rows[0]["TrackSerialNum"].ToString());
 
             qtybearing.Checked = bool.Parse(Pdata.Tables[0].Rows[0]["QtyBearing"].ToString());
@@ -464,15 +467,71 @@ namespace Epicor_Integration
 
                     Pdata = UpdateDataSet(Pdata, DRState);
 
+                    #region Clear Bflush/SN Settings
+
+                    try
+                    {
+                        DataList.UpdateDatum(Pdata, "Part", 0, "TrackSerialNum", false.ToString());
+
+                        DataList.UpdateDatum(Pdata, "Part", 0, "UseMaskSeq", false.ToString());
+
+                        DataList.UpdateDatum(Pdata, "PartPlant", 0, "PartTrackSerialNum", false.ToString());
+
+                        DataList.UpdateDatum(Pdata, "PartPlant", 0, "BackFlush", false.ToString());
+
+                        Part.Update(Pdata);
+
+                        Pdata = Part.GetByID(PartNumber);
+                    }
+                    catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
+
+                    #endregion
+
+                    //Add data to allow BO to create plant tables
+                    try
+                    {
+                        Part.Update(Pdata);
+
+                        if (bflush_chk.Checked)
+                        {
+                            //try to eliminate backflush if necessary
+                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "BackFlush", bflush_chk.Checked.ToString());
+                        }
+                        Part.Update(Pdata);
+                    }
+                    catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
+
                     if (trackserial.Checked)
                     {
-                        Part.ChangePartTrackSerialNum(trackserial.Checked, Pdata);
+                        Pdata = Part.GetByID(PartNumber);
+
+                        try
+                        {
+                            Part.ChangePartTrackSerialNum(trackserial.Checked, Pdata);
+                        }
+                        catch
+                        {
+                            //If the neat process fails, do it the hard way.
+
+                            DataList.UpdateDatum(Pdata, "Part", 0, "TrackSerialNum", true.ToString());
+
+                            DataList.UpdateDatum(Pdata, "Part", 0, "UseMaskSeq", true.ToString());
+
+                            Part.Update(Pdata);
+
+                            Pdata = Part.GetByID(PartNumber);
+
+                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "EnableSerialNum", true.ToString());
+
+                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "PartTrackSerialNum", true.ToString());
+
+                            Part.Update(Pdata);
+
+                            Pdata = Part.GetByID(PartNumber);
+                        }
 
                         DataList.UpdateDatum(Pdata, "Part", 0, "UseMaskSeq", true.ToString());
                     }
-
-                    //Add data to allow BO to create plant tables
-                    Part.Update(Pdata);
 
                     //retrieve the new copy of the data
                     Pdata = Part.GetByID(PartNumber);
@@ -483,7 +542,7 @@ namespace Epicor_Integration
 
                         for (int i = 0; i < whse_cbo.Items.Count; i++)
                         {
-                            whse_cbo.SelectedIndex = i;                        
+                            whse_cbo.SelectedIndex = i;
 
                             DataList.UpdateDatum(Pdata, "PartPlant", 0, "PrimWhse", whse_cbo.SelectedValue.ToString());
 
@@ -491,8 +550,9 @@ namespace Epicor_Integration
 
                             DataList.UpdateDatum(Pdata, "PartPlant", 0, "DBRowIdent", null);
 
-                            if (trackserial.Checked)
-                                DataList.UpdateDatum(Pdata, "PartPlant", 0, "PartTrackSerialNum", trackserial.Checked.ToString());
+                            //if (trackserial.Checked)
+
+                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "PartTrackSerialNum", trackserial.Checked.ToString());
                         }
 
                         if (trackserial.Checked)

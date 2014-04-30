@@ -87,6 +87,7 @@
             // 
             this.gid_desc.Location = new System.Drawing.Point(6, 19);
             this.gid_desc.Name = "gid_desc";
+            this.gid_desc.ReadOnly = true;
             this.gid_desc.Size = new System.Drawing.Size(181, 20);
             this.gid_desc.TabIndex = 0;
             // 

@@ -61,7 +61,7 @@ namespace Epicor_Integration.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9421")]
+        [global::System.Configuration.DefaultSettingValueAttribute("9401")]
         public string svrport {
             get {
                 return ((string)(this["svrport"]));

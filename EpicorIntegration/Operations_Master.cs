@@ -20,6 +20,15 @@ namespace Epicor_Integration
             set { _EngWBDS = value; }
         }
 
+        private DataSet ResourceTable
+        {
+            get;
+            set;
+        }
+
+        private List<string> OperationDefaults
+        { get; set; }
+
         public void FillProdStd()
         {
             List<ProdStdType> ProdStdDS = new List<ProdStdType>();
@@ -138,6 +147,10 @@ namespace Epicor_Integration
 
             this.FormClosing += Operations_Master_FormClosing;
 
+            opmast_cbo.Click += opmast_cbo_Click;
+
+            ResourceTable = DataList.ResourceGroup();
+
             FillLaborEntryGrid();
 
             FillProdStd();
@@ -146,9 +159,13 @@ namespace Epicor_Integration
 
             string Message;
 
-            if (!DataList.PartCheckOutStatus(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, out Message))
+            bool status = !DataList.PartCheckOutStatus(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, out Message);
+
+            if (status)
             {
-                if (rev_txt.Text == DataList.GetCurrentRev(partnumber_txt.Text))
+                string cur = DataList.GetCurrentRev(partnumber_txt.Text);
+
+                if (rev_txt.Text == cur)
                 {
                     MessageBox.Show("Revisions of Epicor and SolidWorks do not match.  Please correct this and try again.", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -450,10 +467,12 @@ namespace Epicor_Integration
 
         private void removebtn_Click(object sender, EventArgs e)
         {
+            int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+
+            DataRow del_row = EngWBDS.Tables["ECOOpr"].Rows[RowIndex];
+
             try
             {
-                int RowIndex = OPDataGrid.CurrentCell.RowIndex;
-
                 EngWBDS.Tables["ECOOpr"].Rows[RowIndex].Delete();
 
                 EngWB.Update(EngWBDS);
@@ -469,7 +488,17 @@ namespace Epicor_Integration
 
                 resource_show.Enabled = false;
             }
-            catch { MessageBox.Show("Error Deleting Row!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch
+            {
+                MessageBox.Show("Error Deleting Row!\n\nCheck to see that there are not materials attached to this operation and try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+
+                OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+
+                if (EngWBDS.Tables["ECOOpr"].Rows.Count == 0)
+                    removebtn.Enabled = false;
+            }
         }
 
         private void refresh_btn_Click(object sender, EventArgs e)
@@ -505,35 +534,25 @@ namespace Epicor_Integration
 
                         string ResourceGroupCode = "";
 
+                        string ResourceDesc = "";
+
                         #region Find the Code
 
                         foreach (DataRow row in EngWBDS.Tables["ECOOpDtl"].Rows)
                         {
                             if (row["OprSeq"].ToString() == EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OprSeq"].ToString())
                             {
-                                bool morePages;
+                                PrimaryProdOpDtlDesc = ((DataTable)opmast_cbo.DataSource).Rows[opmast_cbo.SelectedIndex]["PrimaryProdOpDtlDesc"].ToString();//[OperationDefaults[opmast_cbo.SelectedIndex];
 
-                                DataSet res_ds = DataList.ResourceGroup();
-
-                                OpMaster OpMaster = new Epicor.Mfg.BO.OpMaster(DataList.EpicConn);
-
-                                DataSet op_ds = (DataSet)OpMaster.GetRows("", "", "", "", "", "", 100, 0, out morePages);
-
-                                foreach (DataRow op_row in op_ds.Tables["OPMaster"].Rows)
+                                foreach (DataRow res_row in ResourceTable.Tables[0].Rows)
                                 {
-                                    if (op_row["OpDesc"].ToString() == opmast_cbo.Text)
-                                    {
-                                        PrimaryProdOpDtlDesc = op_row["PrimaryProdOpDtlDesc"].ToString();
-
-                                        break;
-                                    }
-                                }
-
-                                foreach (DataRow res_row in res_ds.Tables[0].Rows)
-                                {
-                                    if (res_row["Description"].ToString() == PrimaryProdOpDtlDesc)
+                                    if (res_row["Description"].ToString() == PrimaryProdOpDtlDesc || res_row["ResourceGrpID"].ToString() == PrimaryProdOpDtlDesc)
                                     {
                                         ResourceGroupCode = res_row["ResourceGrpID"].ToString();
+
+                                        ResourceDesc = res_row["Description"].ToString();
+
+                                        break;
                                     }
                                 }
 
@@ -543,15 +562,21 @@ namespace Epicor_Integration
 
                         #endregion
 
-                        //Do we need to save the table before we can do this?
-
-                        if (ResourceGroupCode == "")
+                        if (ResourceGroupCode != "")
                         {
                             foreach (DataRow row in EngWBDS.Tables["ECOOpDtl"].Rows)
                             {
-                                if (row["OprSeq"] == opmast_cbo.Text)
+                                if (row["OprSeq"].ToString() == EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OprSeq"].ToString())
                                 {
                                     row["ResourceGrpID"] = ResourceGroupCode;
+
+                                    row["ResourceGrpDesc"] = ResourceDesc;
+
+                                    row["OpDtlDesc"] = ResourceDesc;
+
+                                    EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["PrimaryResourceGrpDesc"] = ResourceDesc;
+
+                                    EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["PrimaryResourceGrpID"] = ResourceGroupCode;
 
                                     break;
                                 }
@@ -559,11 +584,16 @@ namespace Epicor_Integration
                         }
                     }
                     catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); MessageBox.Show("Setting resource default didn't work, tell him to fix it"); }
-
-
                 }
             }
-            catch { }
+            catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
+
+            opmast_cbo.SelectedIndexChanged -= opmast_cbo_SelectedIndexChanged;
+        }
+
+        void opmast_cbo_Click(object sender, EventArgs e)
+        {
+            opmast_cbo.SelectedIndexChanged += opmast_cbo_SelectedIndexChanged;
         }
 
         private void prodhrs_num_ValueChanged(object sender, EventArgs e)
@@ -624,11 +654,6 @@ namespace Epicor_Integration
             this.Close();
         }
 
-        private void bom_btn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void copy_btn_Click(object sender, EventArgs e)
         {
             TemplateMenu.Items.Clear();
@@ -662,7 +687,7 @@ namespace Epicor_Integration
         }
 
         void CopyMethod_Click(object sender, EventArgs e)
-        {
+       {
             Operations_CopyMethods OpCopy = new Operations_CopyMethods(partnumber_txt.Text);
 
             OpCopy.ShowDialog();
@@ -703,7 +728,7 @@ namespace Epicor_Integration
 
                 bool SNReq = false;
 
-                bool.TryParse(Dr["ProperyOptions6"].ToString(), out SNReq);
+                bool.TryParse(Dr["PropertyOptions6"].ToString(), out SNReq);
 
                 bool AutoRec = false;
 
@@ -870,8 +895,11 @@ namespace Epicor_Integration
             LaborEntryMethod_cbo.DisplayMember = "Description";
 
             LaborEntryMethod_cbo.ValueMember = "Code";
-
-            LaborEntryMethod_cbo.SelectedIndex = 1;
+            try
+            {
+                LaborEntryMethod_cbo.SelectedIndex = 1;
+            }
+            catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
         }
 
         private void FillLaborEntryGrid()
