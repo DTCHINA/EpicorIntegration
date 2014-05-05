@@ -1462,5 +1462,14 @@ namespace Epicor_Integration
             else
                 removebtn.Enabled = true;
         }
+
+        private void factor_btn_Click(object sender, EventArgs e)
+        {
+            Item_SheetFactor Sheet = new Item_SheetFactor(qty_num.Value);
+
+            Sheet.ShowDialog();
+
+            qty_num.Value = Sheet.FactoredWeight;
+        }
     }
 }

@@ -79,6 +79,7 @@
             this.EnableNew = new System.Windows.Forms.Timer(this.components);
             this.RawMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.factor_btn = new System.Windows.Forms.Button();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -124,7 +125,7 @@
             // 
             this.area.DecimalPlaces = 3;
             this.area.InterceptArrowKeys = false;
-            this.area.Location = new System.Drawing.Point(322, 65);
+            this.area.Location = new System.Drawing.Point(322, 64);
             this.area.Name = "area";
             this.area.ReadOnly = true;
             this.area.Size = new System.Drawing.Size(62, 20);
@@ -135,7 +136,7 @@
             // 
             this.weight.DecimalPlaces = 3;
             this.weight.InterceptArrowKeys = false;
-            this.weight.Location = new System.Drawing.Point(249, 65);
+            this.weight.Location = new System.Drawing.Point(246, 64);
             this.weight.Name = "weight";
             this.weight.ReadOnly = true;
             this.weight.Size = new System.Drawing.Size(62, 20);
@@ -256,6 +257,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.factor_btn);
             this.groupBox1.Controls.Add(this.PullAsAsm_chk);
             this.groupBox1.Controls.Add(this.addraw);
             this.groupBox1.Controls.Add(this.copy_btn);
@@ -322,9 +324,9 @@
             // 
             this.uom_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.uom_cbo.FormattingEnabled = true;
-            this.uom_cbo.Location = new System.Drawing.Point(143, 123);
+            this.uom_cbo.Location = new System.Drawing.Point(195, 123);
             this.uom_cbo.Name = "uom_cbo";
-            this.uom_cbo.Size = new System.Drawing.Size(74, 21);
+            this.uom_cbo.Size = new System.Drawing.Size(91, 21);
             this.uom_cbo.TabIndex = 2;
             // 
             // qty_num
@@ -592,6 +594,16 @@
             this.TemplateMenu.Name = "TemplateMenu";
             this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
             // 
+            // factor_btn
+            // 
+            this.factor_btn.Location = new System.Drawing.Point(143, 124);
+            this.factor_btn.Name = "factor_btn";
+            this.factor_btn.Size = new System.Drawing.Size(46, 20);
+            this.factor_btn.TabIndex = 37;
+            this.factor_btn.Text = "Factor Qty";
+            this.factor_btn.UseVisualStyleBackColor = true;
+            this.factor_btn.Click += new System.EventHandler(this.factor_btn_Click);
+            // 
             // Bill_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -670,6 +682,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
         private System.Windows.Forms.NumericUpDown area;
         private System.Windows.Forms.NumericUpDown weight;
+        private System.Windows.Forms.Button factor_btn;
 
     }
 }

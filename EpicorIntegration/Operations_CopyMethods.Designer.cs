@@ -228,8 +228,10 @@
             // 
             // Operations_CopyMethods
             // 
+            this.AcceptButton = this.ok_btn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cancel_btn;
             this.ClientSize = new System.Drawing.Size(397, 216);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cancel_btn);

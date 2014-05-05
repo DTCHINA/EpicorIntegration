@@ -244,9 +244,9 @@
             this.sheetcoilinput_lbl.AutoSize = true;
             this.sheetcoilinput_lbl.Location = new System.Drawing.Point(6, 16);
             this.sheetcoilinput_lbl.Name = "sheetcoilinput_lbl";
-            this.sheetcoilinput_lbl.Size = new System.Drawing.Size(23, 13);
+            this.sheetcoilinput_lbl.Size = new System.Drawing.Size(73, 13);
             this.sheetcoilinput_lbl.TabIndex = 15;
-            this.sheetcoilinput_lbl.Text = "Qty";
+            this.sheetcoilinput_lbl.Text = "Qty Per Sheet";
             // 
             // factor_txt
             // 

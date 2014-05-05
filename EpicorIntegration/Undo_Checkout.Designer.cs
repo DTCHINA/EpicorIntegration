@@ -72,6 +72,7 @@
             // 
             this.gid_txt.Location = new System.Drawing.Point(15, 25);
             this.gid_txt.Name = "gid_txt";
+            this.gid_txt.ReadOnly = true;
             this.gid_txt.Size = new System.Drawing.Size(100, 20);
             this.gid_txt.TabIndex = 3;
             // 

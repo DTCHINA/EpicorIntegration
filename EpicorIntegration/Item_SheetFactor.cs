@@ -65,7 +65,6 @@ namespace Epicor_Integration
             partnumber_cbo.SelectedIndexChanged += partnumber_cbo_SelectedIndexChanged;
         }
 
-
         private void reset_btn_Click(object sender, EventArgs e)
         {
             partnumber_cbo.SelectedIndexChanged -= partnumber_cbo_SelectedIndexChanged;

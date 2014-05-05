@@ -413,12 +413,6 @@
     <Compile Include="Template_Master.Designer.cs">
       <DependentUpon>Template_Master.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestTableViewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestTableViewer.Designer.cs">
-      <DependentUpon>TestTableViewer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Undo_Checkout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -515,9 +509,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Template_Master.resx">
       <DependentUpon>Template_Master.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TestTableViewer.resx">
-      <DependentUpon>TestTableViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Undo_Checkout.resx">
       <DependentUpon>Undo_Checkout.cs</DependentUpon>

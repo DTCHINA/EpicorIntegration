@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Item_Approve));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.currev_chk = new System.Windows.Forms.CheckBox();
             this.rev_txt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.partnumber_txt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gid_desc = new System.Windows.Forms.TextBox();
             this.gid_cbo = new System.Windows.Forms.ComboBox();
@@ -61,15 +61,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Part Number:";
-            // 
             // currev_chk
             // 
             this.currev_chk.AutoSize = true;
@@ -92,6 +83,23 @@
             this.rev_txt.Size = new System.Drawing.Size(128, 20);
             this.rev_txt.TabIndex = 6;
             // 
+            // partnumber_txt
+            // 
+            this.partnumber_txt.Location = new System.Drawing.Point(6, 32);
+            this.partnumber_txt.Name = "partnumber_txt";
+            this.partnumber_txt.Size = new System.Drawing.Size(128, 20);
+            this.partnumber_txt.TabIndex = 5;
+            this.partnumber_txt.TextChanged += new System.EventHandler(this.partnumber_txt_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Part Number:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -100,14 +108,6 @@
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Revision:";
-            // 
-            // partnumber_txt
-            // 
-            this.partnumber_txt.Location = new System.Drawing.Point(6, 32);
-            this.partnumber_txt.Name = "partnumber_txt";
-            this.partnumber_txt.Size = new System.Drawing.Size(128, 20);
-            this.partnumber_txt.TabIndex = 5;
-            this.partnumber_txt.TextChanged += new System.EventHandler(this.partnumber_txt_TextChanged);
             // 
             // groupBox1
             // 
@@ -124,12 +124,14 @@
             // 
             this.gid_desc.Location = new System.Drawing.Point(6, 46);
             this.gid_desc.Name = "gid_desc";
+            this.gid_desc.ReadOnly = true;
             this.gid_desc.Size = new System.Drawing.Size(186, 20);
             this.gid_desc.TabIndex = 1;
             // 
             // gid_cbo
             // 
             this.gid_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.gid_cbo.Enabled = false;
             this.gid_cbo.FormattingEnabled = true;
             this.gid_cbo.Location = new System.Drawing.Point(6, 19);
             this.gid_cbo.Name = "gid_cbo";

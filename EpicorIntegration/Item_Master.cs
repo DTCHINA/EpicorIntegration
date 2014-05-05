@@ -463,29 +463,29 @@ namespace Epicor_Integration
                         Pdata = Part.GetByID(PartNumber);
 
                         DRState = DataViewRowState.Unchanged;
+
+                        #region Clear Bflush/SN Settings
+
+                        try
+                        {
+                            DataList.UpdateDatum(Pdata, "Part", 0, "TrackSerialNum", false.ToString());
+
+                            DataList.UpdateDatum(Pdata, "Part", 0, "UseMaskSeq", false.ToString());
+
+                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "PartTrackSerialNum", false.ToString());
+
+                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "BackFlush", false.ToString());
+
+                            Part.Update(Pdata);
+
+                            Pdata = Part.GetByID(PartNumber);
+                        }
+                        catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
+
+                        #endregion
                     }
 
                     Pdata = UpdateDataSet(Pdata, DRState);
-
-                    #region Clear Bflush/SN Settings
-
-                    try
-                    {
-                        DataList.UpdateDatum(Pdata, "Part", 0, "TrackSerialNum", false.ToString());
-
-                        DataList.UpdateDatum(Pdata, "Part", 0, "UseMaskSeq", false.ToString());
-
-                        DataList.UpdateDatum(Pdata, "PartPlant", 0, "PartTrackSerialNum", false.ToString());
-
-                        DataList.UpdateDatum(Pdata, "PartPlant", 0, "BackFlush", false.ToString());
-
-                        Part.Update(Pdata);
-
-                        Pdata = Part.GetByID(PartNumber);
-                    }
-                    catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
-
-                    #endregion
 
                     //Add data to allow BO to create plant tables
                     try
@@ -830,15 +830,6 @@ namespace Epicor_Integration
                     SerialMask = SM.Mask;
                 }
             }
-        }
-
-        private void factor_btn_Click(object sender, EventArgs e)
-        {
-            Item_SheetFactor Sheet = new Item_SheetFactor(NetWeight.Value);
-
-            Sheet.ShowDialog();
-
-            NetWeight.Value = Sheet.FactoredWeight;
         }
 
         private void bflush_chk_CheckedChanged(object sender, EventArgs e)

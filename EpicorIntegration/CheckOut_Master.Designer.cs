@@ -130,12 +130,14 @@
             // 
             this.gid_desc.Location = new System.Drawing.Point(6, 46);
             this.gid_desc.Name = "gid_desc";
+            this.gid_desc.ReadOnly = true;
             this.gid_desc.Size = new System.Drawing.Size(186, 20);
             this.gid_desc.TabIndex = 1;
             // 
             // gid_cbo
             // 
             this.gid_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.gid_cbo.Enabled = false;
             this.gid_cbo.FormattingEnabled = true;
             this.gid_cbo.Location = new System.Drawing.Point(6, 19);
             this.gid_cbo.Name = "gid_cbo";
