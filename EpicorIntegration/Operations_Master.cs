@@ -460,6 +460,8 @@ namespace Epicor_Integration
             try
             {
                 OPDataGrid.CurrentCell = OPDataGrid.Rows[OPDataGrid.Rows.Count - 1].Cells[0];
+
+                prodhrs_num.Value = 0;
             }
             catch (Exception ex)
             { MessageBox.Show(ex.Message); }
@@ -1148,6 +1150,11 @@ namespace Epicor_Integration
             prodhrs_num.Value = OpMin.RetVal;
 
             OpMin.Dispose();
+        }
+
+        private void resource_timer_Tick(object sender, EventArgs e)
+        {
+            resource_show.Enabled = (EngWBDS.Tables["ECOOpr"].Rows.Count != 0);
         }
     }
 }

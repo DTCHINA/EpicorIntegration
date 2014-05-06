@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Operations_Master));
             this.MajorContainer = new System.Windows.Forms.SplitContainer();
             this.ops_grp = new System.Windows.Forms.GroupBox();
@@ -105,6 +105,7 @@
             this.VendorNumCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubContract = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.resource_timer = new System.Windows.Forms.Timer(this.components);
             this.MajorContainer.Panel1.SuspendLayout();
             this.MajorContainer.Panel2.SuspendLayout();
             this.MajorContainer.SuspendLayout();
@@ -608,8 +609,8 @@
             this.OPDataGrid.AllowUserToAddRows = false;
             this.OPDataGrid.AllowUserToDeleteRows = false;
             this.OPDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.OPDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.OPDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.OPDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.OPDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OPDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -872,6 +873,12 @@
             this.TemplateMenu.Name = "TemplateMenu";
             this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
             // 
+            // resource_timer
+            // 
+            this.resource_timer.Enabled = true;
+            this.resource_timer.Interval = 500;
+            this.resource_timer.Tick += new System.EventHandler(this.resource_timer_Tick);
+            // 
             // Operations_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -981,5 +988,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VendorNumTermsCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn VendorNumCity;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SubContract;
+        private System.Windows.Forms.Timer resource_timer;
     }
 }

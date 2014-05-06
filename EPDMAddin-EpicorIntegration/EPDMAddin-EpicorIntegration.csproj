@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EPDMEpicorIntegration</RootNamespace>
-    <AssemblyName>EPDMEpicorIntegration</AssemblyName>
+    <AssemblyName>EPDM-EpicorIntegration</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
