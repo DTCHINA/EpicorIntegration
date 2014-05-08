@@ -696,7 +696,7 @@ namespace Epicor_Integration
 
             DataList.GetDetailsFromMethods(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, OpCopy.retPart, OpCopy.retRev);
 
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, true, true);
+            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
             OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
         }

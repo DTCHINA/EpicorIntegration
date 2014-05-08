@@ -32,11 +32,11 @@
             this.mask_txt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.searchmask_btn = new System.Windows.Forms.Button();
             this.serialprefix_txt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cancel_btn = new System.Windows.Forms.Button();
             this.ok_btn = new System.Windows.Forms.Button();
-            this.searchmask_btn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,6 +69,17 @@
             this.groupBox1.Size = new System.Drawing.Size(136, 68);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // searchmask_btn
+            // 
+            this.searchmask_btn.Location = new System.Drawing.Point(77, 32);
+            this.searchmask_btn.Name = "searchmask_btn";
+            this.searchmask_btn.Size = new System.Drawing.Size(53, 20);
+            this.searchmask_btn.TabIndex = 2;
+            this.searchmask_btn.Text = "Search";
+            this.searchmask_btn.UseVisualStyleBackColor = true;
+            this.searchmask_btn.Visible = false;
+            this.searchmask_btn.Click += new System.EventHandler(this.searchmask_btn_Click);
             // 
             // serialprefix_txt
             // 
@@ -106,15 +117,6 @@
             this.ok_btn.Text = "&Ok";
             this.ok_btn.UseVisualStyleBackColor = true;
             this.ok_btn.Click += new System.EventHandler(this.ok_btn_Click);
-            // 
-            // searchmask_btn
-            // 
-            this.searchmask_btn.Location = new System.Drawing.Point(77, 32);
-            this.searchmask_btn.Name = "searchmask_btn";
-            this.searchmask_btn.Size = new System.Drawing.Size(53, 20);
-            this.searchmask_btn.TabIndex = 2;
-            this.searchmask_btn.Text = "Search";
-            this.searchmask_btn.UseVisualStyleBackColor = true;
             // 
             // SerialMask_Master
             // 

@@ -66,5 +66,10 @@ namespace Epicor_Integration
                 this.Close();
             }
         }
+
+        private void searchmask_btn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

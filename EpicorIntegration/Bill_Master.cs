@@ -697,7 +697,11 @@ namespace Epicor_Integration
                 if (linechanged)
                 {
                     if (ops_cbo.Text.Contains("ECOAT"))
+                    {
                         uom_cbo.Text = "FT2";
+
+                        EngWBDS.Tables["ECOMtl"].Rows[BillDataGrid.CurrentCellAddress.Y]["UOMCode"] = uom_cbo.Text;
+                    }
 
                     int rowindex = BillDataGrid.CurrentCellAddress.Y;
 
@@ -709,7 +713,7 @@ namespace Epicor_Integration
 
                     EngWBDS.Tables["ECOMtl"].Rows[rowindex]["OpDesc"] = EngWBDS.Tables["ECOOpr"].Rows[ops_cbo.SelectedIndex]["OpDesc"];
 
-                    //EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"] = uom_cbo.Text;
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"] = uom_cbo.Text;
 
                     EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlPartNumPartDescription"] = desc_txt.Text;
 
@@ -985,7 +989,11 @@ namespace Epicor_Integration
             PartTimer.Enabled = true;
 
             if (ops_cbo.Text.Contains("ECOAT"))
+            {
                 uom_cbo.Text = "FT2";
+
+                EngWBDS.Tables["ECOMtl"].Rows[BillDataGrid.CurrentCellAddress.Y]["UOMCode"] = uom_cbo.Text;
+            }
         }
 
         private void ViewAsAsm_chk_CheckedChanged(object sender, EventArgs e)
@@ -1012,7 +1020,11 @@ namespace Epicor_Integration
                 UpdateDataSet();
 
             if (ops_cbo.Text.Contains("ECOAT"))
+            {
                 uom_cbo.Text = "FT2";
+
+                EngWBDS.Tables["ECOMtl"].Rows[BillDataGrid.CurrentCellAddress.Y]["UOMCode"] = uom_cbo.Text;
+            }
         }
 
         #endregion
