@@ -469,9 +469,13 @@ namespace Epicor_Integration
 
         private void removebtn_Click(object sender, EventArgs e)
         {
+            savebtn_Click(savebtn, null);
+
             int RowIndex = OPDataGrid.CurrentCell.RowIndex;
 
             DataRow del_row = EngWBDS.Tables["ECOOpr"].Rows[RowIndex];
+
+            OPDataGrid.SelectionChanged -= OPDataGrid_SelectionChanged;
 
             try
             {
@@ -493,13 +497,16 @@ namespace Epicor_Integration
             catch
             {
                 MessageBox.Show("Error Deleting Row!\n\nCheck to see that there are not materials attached to this operation and try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             
+
                 EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
                 OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
                 if (EngWBDS.Tables["ECOOpr"].Rows.Count == 0)
                     removebtn.Enabled = false;
+            }
+            finally {
+                OPDataGrid.SelectionChanged += OPDataGrid_SelectionChanged;
             }
         }
 
@@ -703,114 +710,133 @@ namespace Epicor_Integration
 
         void TS_Click(object sender, EventArgs e)
         {
-            opmast_cbo.SelectedIndexChanged -= opmast_cbo_SelectedIndexChanged;
-
-            prodhrs_num.ValueChanged -= prodhrs_num_ValueChanged;
-
-            for (int i = EngWBDS.Tables["ECOOpr"].Rows.Count - 1; i > -1; i--)
-            {
-                EngWBDS.Tables["ECOOpr"].Rows[i].Delete();
-            }
-
-            ToolStripMenuItem TS = (ToolStripMenuItem)sender;
-
-            //retrieve and update form per template
-            DataTable DT = Templates.GetFullTemplate(TS.Name, "OOM");
-
-            //Add all required operations
-            foreach (DataRow Dr in DT.Rows)
-            {
-                EngWB.GetNewECOOpr(EngWBDS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "");
-
-                opmast_cbo.SelectedValue = Dr["PropertyValue"].ToString();
-
-                decimal dec = decimal.Parse(Dr["PropertyQty"].ToString());
-
-                LaborEntryMethod_cbo.SelectedValue = Dr["PropertyOptions5"].ToString();
-
-                bool SNReq = false;
-
-                bool.TryParse(Dr["PropertyOptions6"].ToString(), out SNReq);
-
-                bool AutoRec = false;
-
-                bool.TryParse(Dr["PropertyOptions7"].ToString(), out AutoRec);
-
-                SNRequiredOpr_chk.Checked = SNReq;
-
-                AutoRecieve_chk.Checked = AutoRec;
-
-                prodhrs_num.Value = dec;
-
-                EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["OpCode"] = opmast_cbo.SelectedValue.ToString();
-
-                EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["OpDesc"] = opmast_cbo.Text;
-
-                EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["ProdStandard"] = prodhrs_num.Value;
-
-                EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["LaborEntryMethod"] = LaborEntryMethod_cbo.SelectedValue;
-
-                //LaborEntryMethod_cbo.SelectedIndex = 1;
-
-                //LaborEntryMethod_cbo_SelectedIndexChanged(LaborEntryMethod_cbo, null);
-
                 EngWB.Update(EngWBDS);
-            }
 
-            EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Now, false, false, false, false);
+                opmast_cbo.SelectedIndexChanged -= opmast_cbo_SelectedIndexChanged;
 
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                prodhrs_num.ValueChanged -= prodhrs_num_ValueChanged;
 
-            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
-
-            //save
-
-            EngWB.Update(EngWBDS);
-
-            DT = Templates.GetFullTemplate(TS.Name, "RES");
-
-            //Add all required resources
-            foreach (DataRow Dr in DT.Rows)
-            {
-                //EngWB.GetNewECOOpDtl(EngWBDS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", int.Parse(Dr["PropertyType"].ToString()));
-
-                int row = 0;
-
-                for (int i = 0; i < EngWBDS.Tables["ECOOpDtl"].Rows.Count; i++)
+                for (int i = EngWBDS.Tables["ECOOpr"].Rows.Count - 1; i > -1; i--)
                 {
-                    int PropQty = (int.Parse(Dr["PropertyQty"].ToString()) + 1) * 10;
+                    EngWBDS.Tables["ECOOpr"].Rows[i].Delete();
+                }
 
-                    if ((Dr["PropertyType"].ToString() == EngWBDS.Tables["ECOOpDtl"].Rows[i]["OprSeq"].ToString()) && (PropQty.ToString() == EngWBDS.Tables["ECOOpDtl"].Rows[i]["OpDtlSeq"].ToString()))
+                ToolStripMenuItem TS = (ToolStripMenuItem)sender;
+
+                //retrieve and update form per template
+                DataTable DT = Templates.GetFullTemplate(TS.Name, "OOM");
+
+                //Add all required operations
+                //foreach (DataRow Dr in DT.Rows)
+                for (int i = 0; i < DT.Rows.Count; i++)
+                {
+                    DataRow Dr = DT.Rows[i];
+
+                    EngWB.GetNewECOOpr(EngWBDS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "");
+
+                    opmast_cbo.SelectedValue = Dr["PropertyValue"].ToString();
+
+                    decimal dec = decimal.Parse(Dr["PropertyQty"].ToString());
+
+                    LaborEntryMethod_cbo.SelectedValue = Dr["PropertyOptions5"].ToString();
+
+                    bool SNReq = false;
+
+                    bool.TryParse(Dr["PropertyOptions6"].ToString(), out SNReq);
+
+                    bool AutoRec = false;
+
+                    bool.TryParse(Dr["PropertyOptions7"].ToString(), out AutoRec);          
+
+                    prodhrs_num.Value = dec;
+
+                    EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["OpCode"] = opmast_cbo.SelectedValue.ToString();
+
+                    EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["OpDesc"] = opmast_cbo.Text;
+
+                    EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["ProdStandard"] = prodhrs_num.Value;
+
+                    EngWBDS.Tables["ECOOpr"].Rows[EngWBDS.Tables["ECOOpr"].Rows.Count - 1]["LaborEntryMethod"] = LaborEntryMethod_cbo.SelectedValue;
+
+                    EngWB.Update(EngWBDS);
+
+                    if (AutoRec)
                     {
-                        row = i;
-                        break;
+                        EngWBDS.Tables["ECOOpr"].Rows[i]["AutoReceive"] = AutoRec;
+
+                        AutoRecieve_chk.Checked = AutoRec;
+
+                        EngWB.Update(EngWBDS);
+                    }
+
+                    if (SNReq)
+                    {
+                        EngWBDS.Tables["ECOOpr"].Rows[i]["SNRequiredOpr"] = SNReq;
+
+                        SNRequiredOpr_chk.Checked = SNReq;
+
+                        EngWB.Update(EngWBDS);
                     }
                 }
 
-                EngWBDS.Tables["ECOOpDtl"].Rows[row]["ResourceID"] = Dr["PropertyUOM"].ToString();
+                EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Now, false, false, false, false);
 
-                EngWBDS.Tables["ECOOpDtl"].Rows[row]["ResourceGrpID"] = Dr["PropertyValue"].ToString();
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
-                try
+                OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+
+                //save
+
+                EngWB.Update(EngWBDS);
+
+                DT = Templates.GetFullTemplate(TS.Name, "RES");
+
+                //Add all required resources
+                foreach (DataRow Dr in DT.Rows)
                 {
-                    EngWB.Update(EngWBDS);
+                    //EngWB.GetNewECOOpDtl(EngWBDS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", int.Parse(Dr["PropertyType"].ToString()));
+
+                    int row = 0;
+
+                    for (int i = 0; i < EngWBDS.Tables["ECOOpDtl"].Rows.Count; i++)
+                    {
+                        int PropQty = (int.Parse(Dr["PropertyQty"].ToString()) + 1) * 10;
+
+                        if ((Dr["PropertyType"].ToString() == EngWBDS.Tables["ECOOpDtl"].Rows[i]["OprSeq"].ToString()) && (PropQty.ToString() == EngWBDS.Tables["ECOOpDtl"].Rows[i]["OpDtlSeq"].ToString()))
+                        {
+                            row = i;
+                            break;
+                        }
+                    }
+
+                    EngWBDS.Tables["ECOOpDtl"].Rows[row]["ResourceID"] = Dr["PropertyUOM"].ToString();
+
+                    EngWBDS.Tables["ECOOpDtl"].Rows[row]["ResourceGrpID"] = Dr["PropertyValue"].ToString();
+
+                    try
+                    {
+                        EngWB.Update(EngWBDS);
+                    }
+                    catch { }
                 }
-                catch { }
-            }
 
-            //save
-            EngWB.Update(EngWBDS);
+                //save
+                EngWB.Update(EngWBDS);
 
-            if (OPDataGrid.Rows.Count > 0)
-            {
-                removebtn.Enabled = true;
+                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
-                resource_show.Enabled = true;
-            }
+                OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
-            opmast_cbo.SelectedIndexChanged += opmast_cbo_SelectedIndexChanged;
+                if (OPDataGrid.Rows.Count > 0)
+                {
+                    removebtn.Enabled = true;
 
-            prodhrs_num.ValueChanged += prodhrs_num_ValueChanged;
+                    resource_show.Enabled = true;
+                }
+
+                opmast_cbo.SelectedIndexChanged += opmast_cbo_SelectedIndexChanged;
+
+                prodhrs_num.ValueChanged += prodhrs_num_ValueChanged;
         }
 
         private void SNRequiredOpr_chk_CheckedChanged(object sender, EventArgs e)

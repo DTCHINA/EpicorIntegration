@@ -46,6 +46,7 @@
             this.parentdesc_txt = new System.Windows.Forms.TextBox();
             this.parent_txt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.factor_btn = new System.Windows.Forms.Button();
             this.PullAsAsm_chk = new System.Windows.Forms.CheckBox();
             this.addraw = new System.Windows.Forms.Button();
             this.copy_btn = new System.Windows.Forms.Button();
@@ -79,7 +80,9 @@
             this.EnableNew = new System.Windows.Forms.Timer(this.components);
             this.RawMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.factor_btn = new System.Windows.Forms.Button();
+            this.sheetCoilUsageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eNGDataDataSet = new Epicor_Integration.ENGDataDataSet();
+            this.sheetCoil_UsageTableAdapter = new Epicor_Integration.ENGDataDataSetTableAdapters.SheetCoil_UsageTableAdapter();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -89,6 +92,8 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qty_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BillDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sheetCoilUsageBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eNGDataDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // MajorHorizSplit
@@ -279,6 +284,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // factor_btn
+            // 
+            this.factor_btn.Location = new System.Drawing.Point(143, 124);
+            this.factor_btn.Name = "factor_btn";
+            this.factor_btn.Size = new System.Drawing.Size(46, 20);
+            this.factor_btn.TabIndex = 37;
+            this.factor_btn.Text = "Factor Qty";
+            this.factor_btn.UseVisualStyleBackColor = true;
+            this.factor_btn.Click += new System.EventHandler(this.factor_btn_Click);
+            // 
             // PullAsAsm_chk
             // 
             this.PullAsAsm_chk.AutoSize = true;
@@ -386,7 +401,6 @@
             this.ops_cbo.Name = "ops_cbo";
             this.ops_cbo.Size = new System.Drawing.Size(211, 21);
             this.ops_cbo.TabIndex = 4;
-            this.ops_cbo.SelectedIndexChanged += new System.EventHandler(this.ops_cbo_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -594,15 +608,19 @@
             this.TemplateMenu.Name = "TemplateMenu";
             this.TemplateMenu.Size = new System.Drawing.Size(61, 4);
             // 
-            // factor_btn
+            // sheetCoilUsageBindingSource
             // 
-            this.factor_btn.Location = new System.Drawing.Point(143, 124);
-            this.factor_btn.Name = "factor_btn";
-            this.factor_btn.Size = new System.Drawing.Size(46, 20);
-            this.factor_btn.TabIndex = 37;
-            this.factor_btn.Text = "Factor Qty";
-            this.factor_btn.UseVisualStyleBackColor = true;
-            this.factor_btn.Click += new System.EventHandler(this.factor_btn_Click);
+            this.sheetCoilUsageBindingSource.DataMember = "SheetCoil_Usage";
+            this.sheetCoilUsageBindingSource.DataSource = this.eNGDataDataSet;
+            // 
+            // eNGDataDataSet
+            // 
+            this.eNGDataDataSet.DataSetName = "ENGDataDataSet";
+            this.eNGDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sheetCoil_UsageTableAdapter
+            // 
+            this.sheetCoil_UsageTableAdapter.ClearBeforeFill = true;
             // 
             // Bill_Master
             // 
@@ -628,6 +646,8 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qty_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BillDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sheetCoilUsageBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eNGDataDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -683,6 +703,9 @@
         private System.Windows.Forms.NumericUpDown area;
         private System.Windows.Forms.NumericUpDown weight;
         private System.Windows.Forms.Button factor_btn;
+        private System.Windows.Forms.BindingSource sheetCoilUsageBindingSource;
+        private ENGDataDataSet eNGDataDataSet;
+        private ENGDataDataSetTableAdapters.SheetCoil_UsageTableAdapter sheetCoil_UsageTableAdapter;
 
     }
 }

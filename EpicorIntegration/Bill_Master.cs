@@ -221,29 +221,21 @@ namespace Epicor_Integration
 
             uom_cbo.Click += uom_cbo_Click;
 
+            ops_cbo.Click += ops_cbo_Click;
+
+            qty_num.Click += qty_num_Click;
+
+            ViewAsAsm_chk.Click += ViewAsAsm_chk_Click;
+
+            PullAsAsm_chk.Click += PullAsAsm_chk_Click;
+
             //BillDataGrid.CurrentCell = BillDataGrid[0, 0];
 
             //BillDataGrid.CurrentCell = BillDataGrid.Rows[BillDataGrid.Rows.Count - 1].Cells[0];
 
             //PullAsAsm_chk.Checked = false;
         }
-
-        void uom_cbo_Click(object sender, EventArgs e)
-        {
-            linechanged = true;
-
-            uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
-
-            UpdateDataSet();
-        }
-
-        private void uom_cbo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            EngWBDS.Tables["ECOMtl"].Rows[BillDataGrid.CurrentCellAddress.Y]["UOMCode"] = uom_cbo.Text;
-
-            uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
-        }
-                
+                       
         /// <summary>
         /// Finds current safe parts within the current bill of materials and keeps a separate list of them to add after the bom has been updated (Sheets/Coils/E-Coat)
         /// </summary>
@@ -251,13 +243,15 @@ namespace Epicor_Integration
         /// <param name="BillQty">Current Epicor Bill of Materials Qty</param>
         /// <param name="Bill_Qty">Bill of Materials Qty for only Safe items</param>
         /// <returns>Bill of Materials for only safe items</returns>
-        public List<string> SafeParts(List<string> BillParts, List<string> BillQty,List <string> BillOps, out List<string> Bill_Qty, out List<string> BillOpts, out List<string> Bill_Ops)
+        public List<string> SafeParts(List<string> BillParts, List<string> BillQty,List <string> BillOps, List<string> BillUOM, out List<string> Bill_Qty, out List<string> BillOpts, out List<string> Bill_Ops, out List<string>Bill_UOM)
         {
             List<string> RetVal = new List<string>();
 
             List<string> RetVal_Qty = new List<string>();
 
             List<string> RetVal_Ops = new List<string>();
+
+            List<string> RetVal_UOM = new List<string>();
 
             BillOpts = new List<string>();
 
@@ -286,6 +280,8 @@ namespace Epicor_Integration
                         BillOpts.Add(view + pull);
 
                         RetVal_Ops.Add(BillOps[i]);
+
+                        RetVal_UOM.Add(EngWBDS.Tables["ECOMtl"].Rows[i]["UOMCode"].ToString());
                     }
                 }
             }
@@ -294,10 +290,11 @@ namespace Epicor_Integration
 
             Bill_Qty = RetVal_Qty;
 
+            Bill_UOM = RetVal_UOM;
+
             return RetVal;
         }
-
-
+        
         /// <summary>
         /// Sequence to determine if a part is a coil or a sheet based on Type
         /// </summary>
@@ -355,19 +352,13 @@ namespace Epicor_Integration
             }
         }
 
-        private void SaveChanges(bool fromNew)
+        private void SaveChanges()
         {
             string opMessage;
 
             string opMsgType;
 
-            qty_num.ValueChanged -= qty_num_ValueChanged;
-
             partnum_txt.TextChanged -= partnum_txt_TextChanged;
-
-            ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
-
-            ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
 
             foreach (DataRow DR in EngWBDS.Tables["ECOMtl"].Rows)
             {
@@ -397,30 +388,10 @@ namespace Epicor_Integration
 
             EngWB.Update(EngWBDS);
 
-            /*if (!fromNew)
-            {
-                try
-                {
-                    EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
-
-                    EngWB.ResequenceMaterials(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, Properties.Settings.Default.mtlreqtype, false, false, false);
-
-                    EngWB.Update(EngWBDS);
-
-                    EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);                    
-                }
-                catch (Exception ex) { MessageBox.Show(ex.Message); }
-             }*/
-
             BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
-
-            qty_num.ValueChanged += qty_num_ValueChanged;
 
             partnum_txt.TextChanged += partnum_txt_TextChanged;
 
-            ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
-
-            ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
         }
 
         public int GetNextSeq()
@@ -470,6 +441,8 @@ namespace Epicor_Integration
 
             List<string> AddBack_Ops = new List<string>();
 
+            List<string> AddBack_Uom = new List<string>();
+
             #region Locate items
 
 
@@ -480,13 +453,15 @@ namespace Epicor_Integration
             //See if the part exists in the Epicor data
             for (int i = 0; i < EngWBDS.Tables["ECOMtl"].Rows.Count; i++)
             {
-                FindItemEpicor .Add(false);
+                FindItemEpicor.Add(false);
 
                 AddBack.Add(EngWBDS.Tables["ECOMtl"].Rows[i]["MtlPartNum"].ToString());
 
                 AddBack_Qty.Add(EngWBDS.Tables["ECOMtl"].Rows[i]["QtyPer"].ToString());
 
                 AddBack_Ops.Add(EngWBDS.Tables["ECOMtl"].Rows[i]["RelatedOperation"].ToString());
+
+                AddBack_Uom.Add(EngWBDS.Tables["ECOMtl"].Rows[i]["UOMCode"].ToString());
             }
         
 
@@ -513,7 +488,7 @@ namespace Epicor_Integration
 
             #region Determine what needs to be saved
 
-            AddBack = SafeParts(AddBack, AddBack_Qty, AddBack_Ops, out AddBack_Qty, out AddBack_Opts, out AddBack_Ops);
+            AddBack = SafeParts(AddBack, AddBack_Qty, AddBack_Ops,AddBack_Uom, out AddBack_Qty, out AddBack_Opts, out AddBack_Ops, out AddBack_Uom);
 
             #endregion
 
@@ -619,7 +594,9 @@ namespace Epicor_Integration
      
                     uom_cbo.SelectedIndex = 0;
        
-                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["UOMCode"] = uom_cbo.SelectedValue;
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["UOMCode"] = AddBack_Uom[i];
+
+                    uom_cbo.Text = AddBack_Uom[i];
       
                     decimal qty_val = decimal.Parse(AddBack_Qty[i]);
        
@@ -760,21 +737,17 @@ namespace Epicor_Integration
 
                     partnum_txt.Text = EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlPartNum"].ToString();
 
-                    DataTable ds = DataList.PartUOM(partnum_txt.Text);
+                    string uom_orig = EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"].ToString();
 
-                    uom_cbo.DataSource = ds;
-
-                    uom_cbo.DisplayMember = "UOMCode";
-
-                    uom_cbo.ValueMember = "UOMCode";
-
-                    uom_cbo.Text = EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"].ToString();
+                    //uom_cbo.Text = EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"].ToString();
 
                     ViewAsAsm_chk.Checked = Boolean.Parse(EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"].ToString());
 
                     PullAsAsm_chk.Checked = Boolean.Parse(EngWBDS.Tables["ECOMtl"].Rows[rowindex]["PullAsAsm"].ToString());
 
                     linechanged = true;
+
+                    uom_cbo.Text = uom_orig;
                 }
             }
 
@@ -785,6 +758,8 @@ namespace Epicor_Integration
 
         private void UpdateUOM()
         {
+            string uom_orig = uom_cbo.Text;
+
             DataTable ds = DataList.PartUOM(partnum_txt.Text);
 
             uom_cbo.DataSource = ds;
@@ -792,6 +767,8 @@ namespace Epicor_Integration
             uom_cbo.DisplayMember = "UOMCode";
 
             uom_cbo.ValueMember = "UOMCode";
+
+            uom_cbo.Text = uom_orig;
 
             try
             {
@@ -982,6 +959,50 @@ namespace Epicor_Integration
 
         #region Changed Values
 
+        void PullAsAsm_chk_Click(object sender, EventArgs e)
+        {
+            linechanged = true;
+
+            PullAsAsm_chk.CheckedChanged += PullAsAsm_chk_CheckedChanged;
+        }
+
+        void ViewAsAsm_chk_Click(object sender, EventArgs e)
+        {
+            linechanged = true;
+
+            ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
+        }
+
+        void qty_num_Click(object sender, EventArgs e)
+        {
+            linechanged = true;
+
+            qty_num.ValueChanged += qty_num_ValueChanged;
+        }
+
+        void ops_cbo_Click(object sender, EventArgs e)
+        {
+            linechanged = true;
+
+            ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
+        }
+
+        void uom_cbo_Click(object sender, EventArgs e)
+        {
+            linechanged = true;
+
+            uom_cbo.SelectedIndexChanged += uom_cbo_SelectedIndexChanged;
+        }
+
+        private void uom_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EngWBDS.Tables["ECOMtl"].Rows[BillDataGrid.CurrentCellAddress.Y]["UOMCode"] = uom_cbo.Text;
+
+            uom_cbo.SelectedIndexChanged -= uom_cbo_SelectedIndexChanged;
+
+            UpdateDataSet();
+        }
+
         private void partnum_txt_TextChanged(object sender, EventArgs e)
         {
             linechanged = true;
@@ -1002,6 +1023,8 @@ namespace Epicor_Integration
 
             if (DB_Update_Enabled)
                 UpdateDataSet();
+
+            ViewAsAsm_chk.CheckedChanged -= ViewAsAsm_chk_CheckedChanged;
         }
 
         private void qty_num_ValueChanged(object sender, EventArgs e)
@@ -1010,6 +1033,8 @@ namespace Epicor_Integration
 
             if (DB_Update_Enabled)
                 UpdateDataSet();
+
+            qty_num.ValueChanged -= qty_num_ValueChanged;
         }
 
         private void ops_cbo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1025,6 +1050,18 @@ namespace Epicor_Integration
 
                 EngWBDS.Tables["ECOMtl"].Rows[BillDataGrid.CurrentCellAddress.Y]["UOMCode"] = uom_cbo.Text;
             }
+
+            ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
+        }
+
+        private void PullAsAsm_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            linechanged = true;
+
+            if (DB_Update_Enabled)
+                UpdateDataSet();
+
+            PullAsAsm_chk.CheckedChanged -= PullAsAsm_chk_CheckedChanged;
         }
 
         #endregion
@@ -1042,7 +1079,7 @@ namespace Epicor_Integration
 
         private void saveandclose_btn_Click(object sender, EventArgs e)
         {
-            SaveChanges(false);
+            SaveChanges();
 
             this.Close();
         }
@@ -1059,7 +1096,7 @@ namespace Epicor_Integration
             {
                 BillDataGrid.ClearSelection();
 
-                SaveChanges(true);
+                SaveChanges();
 
                 EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
 
@@ -1096,15 +1133,7 @@ namespace Epicor_Integration
 
                 ViewAsAsm_chk.Checked = false;
 
-                qty_num.ValueChanged += qty_num_ValueChanged;
-
                 partnum_txt.TextChanged += partnum_txt_TextChanged;
-
-                ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
-
-                ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
-
-                PullAsAsm_chk.CheckedChanged += PullAsAsm_chk_CheckedChanged;
 
                 EngWBDS.Tables["ECOMtl"].Rows[rowindex]["RelatedOperation"] = ops_cbo.SelectedValue;
 
@@ -1133,7 +1162,7 @@ namespace Epicor_Integration
 
             DB_Update_Enabled = false;
 
-            SaveChanges(false);
+            SaveChanges();
 
             Form_Update_Enabled = true;
 
@@ -1148,13 +1177,13 @@ namespace Epicor_Integration
 
                 DB_Update_Enabled = false;
                 if (partnum_txt.Text != "")
-                    SaveChanges(false);
+                    SaveChanges();
 
                 int rowindex = BillDataGrid.CurrentCellAddress.Y;
 
                 EngWBDS.Tables["ECOMtl"].Rows[rowindex].Delete();
 
-                SaveChanges(false);
+                SaveChanges();
             }
             catch
             {
@@ -1239,7 +1268,32 @@ namespace Epicor_Integration
                             EngWBDS.Tables["ECOMtl"].Rows[row]["QtyPer"] = area.Value;
 
                         if (Dr["PropertyOptions5"].ToString() == "WEIGHT")
-                            EngWBDS.Tables["ECOMtl"].Rows[row]["QtyPer"] = weight.Value;
+                        {
+                            try
+                            {
+                                Part Part = new Part(DataList.EpicConn);
+
+                                PartDataSet Pdata = new PartDataSet();
+
+                                Pdata = Part.GetByID(parent_txt.Text);
+
+                                string Length = RailLength(Pdata.Tables["Part"].Rows[0]["PartDescription"].ToString());
+
+                                string partnumber = Dr["PropertyValue"].ToString();
+
+                                double density = double.Parse(sheetCoil_UsageTableAdapter.GetDensity(partnumber,"%","%","%","%").ToString());
+
+                                double width = double.Parse(sheetCoil_UsageTableAdapter.GetWidth(partnumber, "%", "%", "%","%","%").ToString());
+
+                                double thickness = double.Parse(sheetCoil_UsageTableAdapter.GetLength(partnumber, "%", "%", "%", "%", "%").ToString());
+
+                                weight.Value = (decimal)(double.Parse(Length) * density * width * thickness) / 2;
+                            }
+                            finally
+                            {
+                                EngWBDS.Tables["ECOMtl"].Rows[row]["QtyPer"] = weight.Value;
+                            }
+                        }
                     }
 
                     EngWB.Update(EngWBDS);
@@ -1250,6 +1304,13 @@ namespace Epicor_Integration
                 uom_cbo.Click += uom_cbo_Click;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private string RailLength(string description)
+        {
+            description = description.Replace("RAIL", "").Replace("FRONT","").Replace("REAR","").Replace("RS,","").Replace("CS,","").Substring(description.IndexOf("X")).Trim();
+
+            return description;
         }
 
         private void findpart_btn_Click(object sender, EventArgs e)
@@ -1344,6 +1405,8 @@ namespace Epicor_Integration
                     
                     ViewAsAsm_chk.Checked = (Type == "M");
 
+                    PullAsAsm_chk.Checked = bool.Parse(Pdata.Tables[0].Rows[0]["PhantomBOM"].ToString());
+
                     UpdateDataSet();
                 }
             }
@@ -1366,7 +1429,7 @@ namespace Epicor_Integration
 
                         if (DR == DialogResult.No)
                         {
-                            SaveChanges(false);
+                            SaveChanges();
 
                             break;
                         }
@@ -1437,14 +1500,6 @@ namespace Epicor_Integration
         private void button1_Click_1(object sender, EventArgs e)
         {
             RawMenu.Show(addraw, new Point(0, addraw.Height));
-        }
-
-        private void PullAsAsm_chk_CheckedChanged(object sender, EventArgs e)
-        {
-            linechanged = true;
-
-            if (DB_Update_Enabled)
-                UpdateDataSet();
         }
 
         private void reseq_btn_Click(object sender, EventArgs e)

@@ -72,7 +72,7 @@
             // 
             this.partnumber_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.partnumber_cbo.FormattingEnabled = true;
-            this.partnumber_cbo.Location = new System.Drawing.Point(6, 32);
+            this.partnumber_cbo.Location = new System.Drawing.Point(12, 25);
             this.partnumber_cbo.Name = "partnumber_cbo";
             this.partnumber_cbo.Size = new System.Drawing.Size(121, 21);
             this.partnumber_cbo.TabIndex = 0;
@@ -97,7 +97,7 @@
             this.gauge_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.gauge_cbo.Enabled = false;
             this.gauge_cbo.FormattingEnabled = true;
-            this.gauge_cbo.Location = new System.Drawing.Point(6, 112);
+            this.gauge_cbo.Location = new System.Drawing.Point(6, 72);
             this.gauge_cbo.Name = "gauge_cbo";
             this.gauge_cbo.Size = new System.Drawing.Size(121, 20);
             this.gauge_cbo.TabIndex = 1;
@@ -125,7 +125,7 @@
             this.density_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.density_cbo.Enabled = false;
             this.density_cbo.FormattingEnabled = true;
-            this.density_cbo.Location = new System.Drawing.Point(6, 152);
+            this.density_cbo.Location = new System.Drawing.Point(6, 112);
             this.density_cbo.Name = "density_cbo";
             this.density_cbo.Size = new System.Drawing.Size(121, 20);
             this.density_cbo.TabIndex = 3;
@@ -158,7 +158,7 @@
             this.material_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.material_cbo.Enabled = false;
             this.material_cbo.FormattingEnabled = true;
-            this.material_cbo.Location = new System.Drawing.Point(6, 72);
+            this.material_cbo.Location = new System.Drawing.Point(6, 32);
             this.material_cbo.Name = "material_cbo";
             this.material_cbo.Size = new System.Drawing.Size(121, 20);
             this.material_cbo.TabIndex = 6;
@@ -166,7 +166,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 7;
@@ -175,7 +175,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 56);
+            this.label2.Location = new System.Drawing.Point(6, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 8;
@@ -184,7 +184,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 96);
+            this.label3.Location = new System.Drawing.Point(6, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 9;
@@ -211,7 +211,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 136);
+            this.label6.Location = new System.Drawing.Point(6, 96);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 13);
             this.label6.TabIndex = 12;
@@ -255,6 +255,7 @@
             this.factor_txt.ReadOnly = true;
             this.factor_txt.Size = new System.Drawing.Size(100, 20);
             this.factor_txt.TabIndex = 16;
+            this.factor_txt.TextChanged += new System.EventHandler(this.factor_txt_TextChanged);
             // 
             // label9
             // 
@@ -284,30 +285,27 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.reset_btn);
-            this.groupBox1.Controls.Add(this.partnumber_cbo);
             this.groupBox1.Controls.Add(this.gauge_cbo);
             this.groupBox1.Controls.Add(this.density_cbo);
             this.groupBox1.Controls.Add(this.length_cbo);
             this.groupBox1.Controls.Add(this.width_cbo);
             this.groupBox1.Controls.Add(this.type_cbo);
             this.groupBox1.Controls.Add(this.material_cbo);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 52);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(267, 189);
+            this.groupBox1.Size = new System.Drawing.Size(267, 140);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             // 
             // reset_btn
             // 
-            this.reset_btn.Location = new System.Drawing.Point(133, 150);
+            this.reset_btn.Location = new System.Drawing.Point(145, 23);
             this.reset_btn.Name = "reset_btn";
             this.reset_btn.Size = new System.Drawing.Size(121, 23);
             this.reset_btn.TabIndex = 14;
@@ -323,7 +321,7 @@
             this.groupBox2.Controls.Add(this.sheetcoilinput_lbl);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Location = new System.Drawing.Point(12, 207);
+            this.groupBox2.Location = new System.Drawing.Point(12, 198);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(267, 104);
             this.groupBox2.TabIndex = 21;
@@ -331,7 +329,7 @@
             // 
             // accept_btn
             // 
-            this.accept_btn.Location = new System.Drawing.Point(123, 317);
+            this.accept_btn.Location = new System.Drawing.Point(123, 308);
             this.accept_btn.Name = "accept_btn";
             this.accept_btn.Size = new System.Drawing.Size(75, 23);
             this.accept_btn.TabIndex = 22;
@@ -342,7 +340,7 @@
             // cancel_btn
             // 
             this.cancel_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancel_btn.Location = new System.Drawing.Point(204, 317);
+            this.cancel_btn.Location = new System.Drawing.Point(204, 308);
             this.cancel_btn.Name = "cancel_btn";
             this.cancel_btn.Size = new System.Drawing.Size(75, 23);
             this.cancel_btn.TabIndex = 23;
@@ -362,11 +360,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancel_btn;
-            this.ClientSize = new System.Drawing.Size(290, 363);
+            this.ClientSize = new System.Drawing.Size(286, 339);
             this.Controls.Add(this.cancel_btn);
-            this.Controls.Add(this.accept_btn);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.reset_btn);
+            this.Controls.Add(this.partnumber_cbo);
+            this.Controls.Add(this.accept_btn);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -383,6 +384,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

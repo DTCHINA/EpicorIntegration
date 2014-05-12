@@ -166,5 +166,10 @@ namespace Epicor_Integration
 
             this.Close();
         }
+
+        private void factor_txt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

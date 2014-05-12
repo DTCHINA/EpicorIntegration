@@ -50,8 +50,26 @@
             this.mult_txt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.rails_chk = new System.Windows.Forms.CheckBox();
+            this.assembly_group = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.rivet_txt = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.heat_txt = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.zhooks_txt = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.springs_txt = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.bolt_txt = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tec_txt = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.hucks_txt = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.band_txt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epicorMinutesBindingSource)).BeginInit();
+            this.assembly_group.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -127,7 +145,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 175);
+            this.label5.Location = new System.Drawing.Point(10, 246);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 9;
@@ -135,7 +153,7 @@
             // 
             // minpc_txt
             // 
-            this.minpc_txt.Location = new System.Drawing.Point(12, 191);
+            this.minpc_txt.Location = new System.Drawing.Point(10, 262);
             this.minpc_txt.Name = "minpc_txt";
             this.minpc_txt.ReadOnly = true;
             this.minpc_txt.Size = new System.Drawing.Size(211, 20);
@@ -161,7 +179,7 @@
             // ok_btn
             // 
             this.ok_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ok_btn.Location = new System.Drawing.Point(251, 160);
+            this.ok_btn.Location = new System.Drawing.Point(249, 231);
             this.ok_btn.Name = "ok_btn";
             this.ok_btn.Size = new System.Drawing.Size(75, 23);
             this.ok_btn.TabIndex = 12;
@@ -172,7 +190,7 @@
             // cancel_btn
             // 
             this.cancel_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancel_btn.Location = new System.Drawing.Point(251, 189);
+            this.cancel_btn.Location = new System.Drawing.Point(249, 260);
             this.cancel_btn.Name = "cancel_btn";
             this.cancel_btn.Size = new System.Drawing.Size(75, 23);
             this.cancel_btn.TabIndex = 13;
@@ -223,13 +241,167 @@
             this.rails_chk.UseVisualStyleBackColor = true;
             this.rails_chk.CheckedChanged += new System.EventHandler(this.rails_chk_CheckedChanged);
             // 
+            // assembly_group
+            // 
+            this.assembly_group.Controls.Add(this.label16);
+            this.assembly_group.Controls.Add(this.rivet_txt);
+            this.assembly_group.Controls.Add(this.label17);
+            this.assembly_group.Controls.Add(this.heat_txt);
+            this.assembly_group.Controls.Add(this.label15);
+            this.assembly_group.Controls.Add(this.zhooks_txt);
+            this.assembly_group.Controls.Add(this.label14);
+            this.assembly_group.Controls.Add(this.springs_txt);
+            this.assembly_group.Controls.Add(this.label13);
+            this.assembly_group.Controls.Add(this.bolt_txt);
+            this.assembly_group.Controls.Add(this.label12);
+            this.assembly_group.Controls.Add(this.tec_txt);
+            this.assembly_group.Controls.Add(this.label11);
+            this.assembly_group.Controls.Add(this.hucks_txt);
+            this.assembly_group.Controls.Add(this.label8);
+            this.assembly_group.Controls.Add(this.band_txt);
+            this.assembly_group.Location = new System.Drawing.Point(10, 49);
+            this.assembly_group.Name = "assembly_group";
+            this.assembly_group.Size = new System.Drawing.Size(227, 178);
+            this.assembly_group.TabIndex = 25;
+            this.assembly_group.TabStop = false;
+            this.assembly_group.Text = "Assembly";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(112, 133);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(32, 13);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "Rivet";
+            // 
+            // rivet_txt
+            // 
+            this.rivet_txt.Location = new System.Drawing.Point(115, 149);
+            this.rivet_txt.Name = "rivet_txt";
+            this.rivet_txt.Size = new System.Drawing.Size(100, 20);
+            this.rivet_txt.TabIndex = 14;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 133);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(81, 13);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "Heat Seal-Bags";
+            // 
+            // heat_txt
+            // 
+            this.heat_txt.Location = new System.Drawing.Point(9, 149);
+            this.heat_txt.Name = "heat_txt";
+            this.heat_txt.Size = new System.Drawing.Size(100, 20);
+            this.heat_txt.TabIndex = 12;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(112, 94);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(48, 13);
+            this.label15.TabIndex = 11;
+            this.label15.Text = "Z Hooks";
+            // 
+            // zhooks_txt
+            // 
+            this.zhooks_txt.Location = new System.Drawing.Point(115, 110);
+            this.zhooks_txt.Name = "zhooks_txt";
+            this.zhooks_txt.Size = new System.Drawing.Size(100, 20);
+            this.zhooks_txt.TabIndex = 10;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(112, 55);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(42, 13);
+            this.label14.TabIndex = 9;
+            this.label14.Text = "Springs";
+            // 
+            // springs_txt
+            // 
+            this.springs_txt.Location = new System.Drawing.Point(115, 71);
+            this.springs_txt.Name = "springs_txt";
+            this.springs_txt.Size = new System.Drawing.Size(100, 20);
+            this.springs_txt.TabIndex = 8;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(112, 16);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(25, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Bolt";
+            // 
+            // bolt_txt
+            // 
+            this.bolt_txt.Location = new System.Drawing.Point(115, 32);
+            this.bolt_txt.Name = "bolt_txt";
+            this.bolt_txt.Size = new System.Drawing.Size(100, 20);
+            this.bolt_txt.TabIndex = 6;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 94);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(59, 13);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Tec Screw";
+            // 
+            // tec_txt
+            // 
+            this.tec_txt.Location = new System.Drawing.Point(9, 110);
+            this.tec_txt.Name = "tec_txt";
+            this.tec_txt.Size = new System.Drawing.Size(100, 20);
+            this.tec_txt.TabIndex = 4;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 55);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 13);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Hucks";
+            // 
+            // hucks_txt
+            // 
+            this.hucks_txt.Location = new System.Drawing.Point(9, 71);
+            this.hucks_txt.Name = "hucks_txt";
+            this.hucks_txt.Size = new System.Drawing.Size(100, 20);
+            this.hucks_txt.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Band";
+            // 
+            // band_txt
+            // 
+            this.band_txt.Location = new System.Drawing.Point(9, 32);
+            this.band_txt.Name = "band_txt";
+            this.band_txt.Size = new System.Drawing.Size(100, 20);
+            this.band_txt.TabIndex = 0;
+            // 
             // Operations_Minutes
             // 
             this.AcceptButton = this.ok_btn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancel_btn;
-            this.ClientSize = new System.Drawing.Size(338, 224);
+            this.ClientSize = new System.Drawing.Size(335, 294);
+            this.Controls.Add(this.assembly_group);
             this.Controls.Add(this.rails_chk);
             this.Controls.Add(this.mult_txt);
             this.Controls.Add(this.label7);
@@ -254,6 +426,8 @@
             this.Load += new System.EventHandler(this.Operations_Minutes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epicorMinutesBindingSource)).EndInit();
+            this.assembly_group.ResumeLayout(false);
+            this.assembly_group.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,5 +455,22 @@
         private System.Windows.Forms.TextBox mult_txt;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox rails_chk;
+        private System.Windows.Forms.GroupBox assembly_group;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox rivet_txt;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox heat_txt;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox zhooks_txt;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox springs_txt;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox bolt_txt;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tec_txt;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox hucks_txt;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox band_txt;
     }
 }

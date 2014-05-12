@@ -330,6 +330,8 @@ namespace Epicor_Integration
 
         private void Template_Master_Load(object sender, EventArgs e)
         {
+            rank_txt.MouseHover += rank_txt_MouseHover;
+
             FillLaborEntry();
             
             FillItemLists();
@@ -368,6 +370,11 @@ namespace Epicor_Integration
             ItemTemplateList_CellClick(ItemTemplateList, new DataGridViewCellEventArgs(0, 1));
 
             this.KeyPreview = true;
+        }
+
+        void rank_txt_MouseHover(object sender, EventArgs e)
+        {
+            rank_tooltip.Show("Zero based count", this, 3000);
         }
 
         void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -599,6 +606,9 @@ namespace Epicor_Integration
 
         private void RawMenu_Click(object sender, EventArgs e)
         {
+            if (RawMenuStrip.Items.Count == 0)
+                FillRawMenu();
+
             RawMenuStrip.Show(RawMenu, new Point(0, RawMenu.Height));
         }
 
@@ -741,6 +751,7 @@ namespace Epicor_Integration
             qty_num.Value = 0;
 
             ViewAsAsm_chk.Checked = false;
+
             try
             {
                 bill_uom_cbo.SelectedIndex = 0;
@@ -943,6 +954,14 @@ namespace Epicor_Integration
         void partnum_txt_Leave(object sender, EventArgs e)
         {
             UpdateLine(BillDataGrid, billtemplatename_txt.Text, "");
+
+            DataTable ds = DataList.PartUOM(partnum_txt.Text);
+
+            bill_uom_cbo.DataSource = ds;
+
+            bill_uom_cbo.DisplayMember = "UOMCode";
+
+            bill_uom_cbo.ValueMember = "UOMCode";
         }
 
         #endregion
@@ -1604,7 +1623,19 @@ namespace Epicor_Integration
 
                 subconuom_cbo.SelectedIndex = -1;
 
-                OPDataGrid_CellClick(OPDataGrid, new DataGridViewCellEventArgs(0, 0));
+                //OPDataGrid_CellClick(OPDataGrid, new DataGridViewCellEventArgs(0, 0));
+
+                bool morePages;
+
+                OpMaster OpMaster = new Epicor.Mfg.BO.OpMaster(DataList.EpicConn);
+
+                DataSet ds = (DataSet)OpMaster.GetRows("", "", "", "", "", "", 100, 0, out morePages);
+
+                opmast_cbo.DataSource = ds.Tables["OPMaster"];
+
+                opmast_cbo.ValueMember = "OPCode";
+
+                opmast_cbo.DisplayMember = "OPDesc";
             }
         }
 
@@ -1626,7 +1657,7 @@ namespace Epicor_Integration
         {
             try
             {
-                OPDataGrid["OprPropertyOptions5", OPDataGrid.CurrentRow.Index].Value = laborentry_cbo.SelectedValue;
+                OPDataGrid["OprPropertyOptions5", OPDataGrid.CurrentRow.Index].Value = laborentry_cbo.SelectedValue.ToString();
             }
             catch { }
         }
@@ -1804,7 +1835,7 @@ namespace Epicor_Integration
         {
             try
             {
-                OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value = prodstd_cbo.SelectedValue;
+                OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value = prodstd_cbo.SelectedValue.ToString();
             }
             catch { }
         }
