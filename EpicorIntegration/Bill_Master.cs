@@ -358,6 +358,10 @@ namespace Epicor_Integration
 
             string opMsgType;
 
+            List<bool> Modded = new List<bool>();
+
+            List<bool> Added = new List<bool>();
+
             partnum_txt.TextChanged -= partnum_txt_TextChanged;
 
             foreach (DataRow DR in EngWBDS.Tables["ECOMtl"].Rows)
@@ -365,7 +369,17 @@ namespace Epicor_Integration
                 if (DR.RowState == DataRowState.Modified || DR.RowState == DataRowState.Added)
                 {
                     #region Validate all data
-                    
+                    if (DR.RowState == DataRowState.Modified)
+                    {
+                        Modded.Add(true);
+                        Added.Add(false);
+                    }
+                    else
+                    {
+                        Added.Add(true);
+                        Modded.Add(false);
+                    }
+
                     string partnumber = DR["MtlPartNum"].ToString();
 
                     string ops = DR["RelatedOperation"].ToString();
@@ -380,15 +394,35 @@ namespace Epicor_Integration
 
                     EngWB.ChangeECOMtlRelatedOperation(int.Parse(ops), EngWBDS);
 
+                    //Set changes to accepted to run ECOMtlRelated or it will change all modified rows to equal the last modified rows related operations
                     DR.AcceptChanges();
 
                     //EngWB.ChangeECOMtlMtlPartNum(EngWBDS);
 
                     #endregion
                 }
+                else
+                {
+                    Modded.Add(false);
+
+                    Added.Add(false);
+                }
             }
 
-            EngWB.Update(EngWBDS);
+            for (int i = 0; i < EngWBDS.Tables["ECOMtl"].Rows.Count; i++)
+            {
+                if (Modded[i])
+                {
+                    EngWBDS.Tables["ECOMtl"].Rows[i].SetModified();
+                }
+                if (Added[i])
+                    EngWBDS.Tables["ECOMtl"].Rows[i].SetAdded();
+            }
+            try
+            {
+                EngWB.Update(EngWBDS);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
 
             BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
 
