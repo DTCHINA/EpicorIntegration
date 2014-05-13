@@ -61,6 +61,7 @@
             this.checkedout_chk = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.legacy_chk = new System.Windows.Forms.CheckBox();
+            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.RightClickMenu.SuspendLayout();
             this.SuspendLayout();
@@ -169,7 +170,7 @@
             // useswrev_chk
             // 
             this.useswrev_chk.AutoSize = true;
-            this.useswrev_chk.Location = new System.Drawing.Point(60, 71);
+            this.useswrev_chk.Location = new System.Drawing.Point(60, 73);
             this.useswrev_chk.Name = "useswrev_chk";
             this.useswrev_chk.Size = new System.Drawing.Size(110, 17);
             this.useswrev_chk.TabIndex = 5;
@@ -292,28 +293,29 @@
             this.RightClickMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resetFormToolStripMenuItem,
             this.configurationToolStripMenuItem,
+            this.checkForUpdatesToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.RightClickMenu.Name = "RightClickMenu";
-            this.RightClickMenu.Size = new System.Drawing.Size(149, 70);
+            this.RightClickMenu.Size = new System.Drawing.Size(172, 92);
             // 
             // resetFormToolStripMenuItem
             // 
             this.resetFormToolStripMenuItem.Name = "resetFormToolStripMenuItem";
-            this.resetFormToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.resetFormToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.resetFormToolStripMenuItem.Text = "Reset Form";
             this.resetFormToolStripMenuItem.Click += new System.EventHandler(this.resetFormToolStripMenuItem_Click);
             // 
             // configurationToolStripMenuItem
             // 
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.configurationToolStripMenuItem.Text = "Configuration";
             this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -365,6 +367,14 @@
             this.legacy_chk.Text = "Legacy File";
             this.legacy_chk.UseVisualStyleBackColor = true;
             this.legacy_chk.CheckedChanged += new System.EventHandler(this.legacy_chk_CheckedChanged);
+            // 
+            // checkForUpdatesToolStripMenuItem
+            // 
+            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.checkForUpdatesToolStripMenuItem.Text = "Check for Updates";
+            this.checkForUpdatesToolStripMenuItem.Visible = false;
+            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -434,6 +444,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox legacy_chk;
+        private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
     }
 }
 

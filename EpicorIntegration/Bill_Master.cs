@@ -223,7 +223,7 @@ namespace Epicor_Integration
 
             ops_cbo.Click += ops_cbo_Click;
 
-            qty_num.Click += qty_num_Click;
+            //qty_num.Click += qty_num_Click;
 
             ViewAsAsm_chk.Click += ViewAsAsm_chk_Click;
 
@@ -379,6 +379,8 @@ namespace Epicor_Integration
                     EngWB.ChangeECOMtlQtyPer(EngWBDS);
 
                     EngWB.ChangeECOMtlRelatedOperation(int.Parse(ops), EngWBDS);
+
+                    DR.AcceptChanges();
 
                     //EngWB.ChangeECOMtlMtlPartNum(EngWBDS);
 
@@ -977,7 +979,21 @@ namespace Epicor_Integration
         {
             linechanged = true;
 
-            qty_num.ValueChanged += qty_num_ValueChanged;
+            //qty_num.ValueChanged += qty_num_ValueChanged;
+
+            qty_num.Leave += qty_num_Leave;
+        }
+
+        void qty_num_Leave(object sender, EventArgs e)
+        {
+            if (qty_num.Focused)
+            {
+                linechanged = true;
+
+                if (DB_Update_Enabled)
+                    UpdateDataSet();
+            }
+            //qty_num.Leave -= qty_num_Leave;
         }
 
         void ops_cbo_Click(object sender, EventArgs e)
@@ -1029,12 +1045,15 @@ namespace Epicor_Integration
 
         private void qty_num_ValueChanged(object sender, EventArgs e)
         {
-            linechanged = true;
+            if (qty_num.Focused)
+            {
+                linechanged = true;
 
-            if (DB_Update_Enabled)
-                UpdateDataSet();
+                if (DB_Update_Enabled)
+                    UpdateDataSet();
 
-            qty_num.ValueChanged -= qty_num_ValueChanged;
+                //qty_num.ValueChanged -= qty_num_ValueChanged;
+            }
         }
 
         private void ops_cbo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1405,7 +1424,11 @@ namespace Epicor_Integration
                     
                     ViewAsAsm_chk.Checked = (Type == "M");
 
-                    PullAsAsm_chk.Checked = bool.Parse(Pdata.Tables[0].Rows[0]["PhantomBOM"].ToString());
+                    bool PullAsAssy = false;
+
+                    bool.TryParse(Pdata.Tables[0].Rows[0]["PhantomBOM"].ToString(),out PullAsAssy);
+
+                    PullAsAsm_chk.Checked = PullAsAssy;
 
                     UpdateDataSet();
                 }
@@ -1519,6 +1542,8 @@ namespace Epicor_Integration
        
         void BillDataGrid_SelectionChanged(object sender, EventArgs e)
         {
+            partnum_txt.TextChanged -= partnum_txt_TextChanged;
+
             linechanged = false;
 
             if (Form_Update_Enabled)
@@ -1528,6 +1553,8 @@ namespace Epicor_Integration
                 removebtn.Enabled = false;
             else
                 removebtn.Enabled = true;
+
+            partnum_txt.TextChanged += partnum_txt_TextChanged;
         }
 
         private void factor_btn_Click(object sender, EventArgs e)

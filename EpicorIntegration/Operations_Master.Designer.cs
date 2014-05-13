@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Operations_Master));
             this.MajorContainer = new System.Windows.Forms.SplitContainer();
             this.ops_grp = new System.Windows.Forms.GroupBox();
@@ -369,7 +369,6 @@
             // AutoRecieve_chk
             // 
             this.AutoRecieve_chk.AutoSize = true;
-            this.AutoRecieve_chk.Enabled = false;
             this.AutoRecieve_chk.Location = new System.Drawing.Point(313, 12);
             this.AutoRecieve_chk.Name = "AutoRecieve_chk";
             this.AutoRecieve_chk.Size = new System.Drawing.Size(158, 17);
@@ -609,8 +608,8 @@
             this.OPDataGrid.AllowUserToAddRows = false;
             this.OPDataGrid.AllowUserToDeleteRows = false;
             this.OPDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.OPDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.OPDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.OPDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.OPDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OPDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

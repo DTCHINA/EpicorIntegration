@@ -365,7 +365,7 @@ namespace Epicor_Integration
 
             rowindex = OPDataGrid.CurrentCellAddress.Y;
 
-            AutoRecieve_chk.Enabled = (rowindex == OPDataGrid.Rows.Count - 1);
+            //AutoRecieve_chk.Enabled = (rowindex == OPDataGrid.Rows.Count - 1);
 
             AutoRecieve_chk.Checked = bool.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowindex]["AutoReceive"].ToString());
         }
@@ -399,9 +399,9 @@ namespace Epicor_Integration
 
                 //FillLaborEntryGrid();
 
-                AutoRecieve_chk.Enabled = AR;
+                //AutoRecieve_chk.Enabled = AR;
 
-                SNRequiredOpr_chk.Enabled = SN;
+                //SNRequiredOpr_chk.Enabled = SN;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error!"); }
         }
@@ -857,8 +857,8 @@ namespace Epicor_Integration
                 }
             }
 
-            if (OPDataGrid.CurrentCellAddress.Y == OPDataGrid.Rows.Count - 1)
-                AutoRecieve_chk.Enabled = !SNRequiredOpr_chk.Checked;
+            //if (OPDataGrid.CurrentCellAddress.Y == OPDataGrid.Rows.Count - 1)
+                //AutoRecieve_chk.Enabled = !SNRequiredOpr_chk.Checked;
 
             AutoRecieve_chk.Checked = (SNRequiredOpr_chk.Checked ? false : AutoRecieve_chk.Checked);
         }
@@ -869,15 +869,17 @@ namespace Epicor_Integration
 
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["AutoReceive"] = AutoRecieve_chk.Checked;
 
-            EnableSNChk();
+            //EnableSNChk();
         }
 
         private void EnableSNChk()
         {
-            SNRequiredOpr_chk.Enabled = DataList.GetSerialized(partnumber_txt.Text);
+            bool SerialCapable = DataList.GetSerialized(partnumber_txt.Text);
 
-            if (AutoRecieve_chk.Checked)
-                SNRequiredOpr_chk.Enabled = false;
+            SNRequiredOpr_chk.Enabled = SerialCapable;
+
+            //if (AutoRecieve_chk.Checked)
+            //    SNRequiredOpr_chk.Enabled = false;
         }
 
         private void FillLaborEntry()
