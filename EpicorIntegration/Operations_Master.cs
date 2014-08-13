@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-//using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Epicor_Integration
@@ -607,6 +606,33 @@ namespace Epicor_Integration
 
         private void prodhrs_num_ValueChanged(object sender, EventArgs e)
         {
+            prodhrs_num.Leave += prodhrs_num_Leave;
+
+            prodhrs_num.KeyDown +=  prodhrs_num_KeyDown;
+        }
+
+        void prodhrs_num_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                try
+                {
+                    int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+
+                    EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
+                }
+                catch { }
+                finally 
+                { 
+                    prodhrs_num.Leave -= prodhrs_num_Leave;
+
+                    prodhrs_num.KeyDown -= prodhrs_num_KeyDown;
+                }
+            }
+        }
+
+        void prodhrs_num_Leave(object sender, EventArgs e)
+        {
             try
             {
                 int RowIndex = OPDataGrid.CurrentCell.RowIndex;
@@ -614,6 +640,12 @@ namespace Epicor_Integration
                 EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
             }
             catch { }
+            finally 
+            {
+                prodhrs_num.Leave -= prodhrs_num_Leave;
+
+                prodhrs_num.KeyDown -= prodhrs_num_KeyDown;
+            }
         }
 
         private void resource_show_Click(object sender, EventArgs e)

@@ -999,12 +999,20 @@ namespace Epicor_Integration
         {
             linechanged = true;
 
+            int rowindex = BillDataGrid.CurrentCellAddress.Y;
+
+            EngWBDS.Tables["ECOMtl"].Rows[rowindex]["PullAsAsm"] = PullAsAsm_chk.Checked;
+
             PullAsAsm_chk.CheckedChanged += PullAsAsm_chk_CheckedChanged;
         }
 
         void ViewAsAsm_chk_Click(object sender, EventArgs e)
         {
             linechanged = true;
+
+            int rowindex = BillDataGrid.CurrentCellAddress.Y;
+
+            EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"] = ViewAsAsm_chk.Checked;
 
             ViewAsAsm_chk.CheckedChanged += ViewAsAsm_chk_CheckedChanged;
         }
@@ -1589,6 +1597,24 @@ namespace Epicor_Integration
                 removebtn.Enabled = true;
 
             partnum_txt.TextChanged += partnum_txt_TextChanged;
+
+            try
+            {
+                int rowmod = EngWBDS.Tables["ECOMtl"].Rows.Count;
+
+                DataTable ds = DataList.PartUOM(partnum_txt.Text);
+
+                uom_cbo.DataSource = ds;
+
+                uom_cbo.DisplayMember = "UOMCode";
+
+                uom_cbo.ValueMember = "UOMCode";
+
+                uom_cbo.SelectedIndex = 0;
+
+                EngWBDS.Tables["ECOMtl"].Rows[rowmod]["UOMCode"] = uom_cbo.SelectedValue;
+            }
+            catch { }
         }
 
         private void factor_btn_Click(object sender, EventArgs e)
