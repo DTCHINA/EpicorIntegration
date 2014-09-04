@@ -83,6 +83,8 @@
             this.sheetCoilUsageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.eNGDataDataSet = new Epicor_Integration.ENGDataDataSet();
             this.sheetCoil_UsageTableAdapter = new Epicor_Integration.ENGDataDataSetTableAdapters.SheetCoil_UsageTableAdapter();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -106,6 +108,8 @@
             // 
             // MajorHorizSplit.Panel1
             // 
+            this.MajorHorizSplit.Panel1.Controls.Add(this.label10);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.label9);
             this.MajorHorizSplit.Panel1.Controls.Add(this.area);
             this.MajorHorizSplit.Panel1.Controls.Add(this.weight);
             this.MajorHorizSplit.Panel1.Controls.Add(this.parentrev_txt);
@@ -130,23 +134,21 @@
             // 
             this.area.DecimalPlaces = 3;
             this.area.InterceptArrowKeys = false;
-            this.area.Location = new System.Drawing.Point(322, 64);
+            this.area.Location = new System.Drawing.Point(325, 64);
             this.area.Name = "area";
             this.area.ReadOnly = true;
             this.area.Size = new System.Drawing.Size(62, 20);
             this.area.TabIndex = 17;
-            this.area.Visible = false;
             // 
             // weight
             // 
             this.weight.DecimalPlaces = 3;
             this.weight.InterceptArrowKeys = false;
-            this.weight.Location = new System.Drawing.Point(246, 64);
+            this.weight.Location = new System.Drawing.Point(257, 64);
             this.weight.Name = "weight";
             this.weight.ReadOnly = true;
             this.weight.Size = new System.Drawing.Size(62, 20);
             this.weight.TabIndex = 16;
-            this.weight.Visible = false;
             // 
             // parentrev_txt
             // 
@@ -248,7 +250,7 @@
             this.parentdesc_txt.Location = new System.Drawing.Point(158, 25);
             this.parentdesc_txt.Name = "parentdesc_txt";
             this.parentdesc_txt.ReadOnly = true;
-            this.parentdesc_txt.Size = new System.Drawing.Size(226, 20);
+            this.parentdesc_txt.Size = new System.Drawing.Size(229, 20);
             this.parentdesc_txt.TabIndex = 3;
             // 
             // parent_txt
@@ -622,6 +624,24 @@
             // 
             this.sheetCoil_UsageTableAdapter.ClearBeforeFill = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(254, 48);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Weight:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(322, 48);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(32, 13);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Area:";
+            // 
             // Bill_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -706,6 +726,8 @@
         private System.Windows.Forms.BindingSource sheetCoilUsageBindingSource;
         private ENGDataDataSet eNGDataDataSet;
         private ENGDataDataSetTableAdapters.SheetCoil_UsageTableAdapter sheetCoil_UsageTableAdapter;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
 
     }
 }

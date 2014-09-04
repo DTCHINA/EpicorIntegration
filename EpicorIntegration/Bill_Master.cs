@@ -1063,6 +1063,44 @@ namespace Epicor_Integration
 
         private void partnum_txt_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                bool useweight = false;
+                bool raw = false;
+                while (!raw)
+                {
+                    foreach (MenuItem item in RawMenu.Items)
+                    {
+                        foreach (MenuItem sub in item.MenuItems)
+                        {
+                            useweight = (item.Name != "E-Coat");
+
+                            raw = (sub.Name == partnum_txt.Text);
+                        }
+                    }
+                }
+
+                if ((qty_num.Value == 0 || qty_num.Value == 1) && raw && useweight)
+                {
+                    Item_SheetFactor Sheet = new Item_SheetFactor(qty_num.Value, partnum_txt.Text);
+
+                    Sheet.ShowDialog();
+
+                    qty_num.Value = Sheet.FactoredWeight;
+                }
+                else
+                {
+                    if ((qty_num.Value == 0 || qty_num.Value == 1) && raw && !useweight)
+                    {
+                        qty_num.Value = area.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             linechanged = true;
 
             PartTimer.Enabled = true;
@@ -1619,7 +1657,7 @@ namespace Epicor_Integration
 
         private void factor_btn_Click(object sender, EventArgs e)
         {
-            Item_SheetFactor Sheet = new Item_SheetFactor(qty_num.Value);
+            Item_SheetFactor Sheet = new Item_SheetFactor(qty_num.Value,partnum_txt.Text);
 
             Sheet.ShowDialog();
 

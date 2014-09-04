@@ -54,7 +54,7 @@
             this.resource_show = new System.Windows.Forms.Button();
             this.AutoRecieve_chk = new System.Windows.Forms.CheckBox();
             this.SNRequiredOpr_chk = new System.Windows.Forms.CheckBox();
-            this.gid_txt = new System.Windows.Forms.TextBox();
+            this.desc_txt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.rev_txt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -134,7 +134,7 @@
             this.MajorContainer.Panel1.Controls.Add(this.groupBox1);
             this.MajorContainer.Panel1.Controls.Add(this.AutoRecieve_chk);
             this.MajorContainer.Panel1.Controls.Add(this.SNRequiredOpr_chk);
-            this.MajorContainer.Panel1.Controls.Add(this.gid_txt);
+            this.MajorContainer.Panel1.Controls.Add(this.desc_txt);
             this.MajorContainer.Panel1.Controls.Add(this.label5);
             this.MajorContainer.Panel1.Controls.Add(this.rev_txt);
             this.MajorContainer.Panel1.Controls.Add(this.label4);
@@ -369,7 +369,7 @@
             // AutoRecieve_chk
             // 
             this.AutoRecieve_chk.AutoSize = true;
-            this.AutoRecieve_chk.Location = new System.Drawing.Point(313, 12);
+            this.AutoRecieve_chk.Location = new System.Drawing.Point(421, 12);
             this.AutoRecieve_chk.Name = "AutoRecieve_chk";
             this.AutoRecieve_chk.Size = new System.Drawing.Size(158, 17);
             this.AutoRecieve_chk.TabIndex = 10;
@@ -380,7 +380,7 @@
             // SNRequiredOpr_chk
             // 
             this.SNRequiredOpr_chk.AutoSize = true;
-            this.SNRequiredOpr_chk.Location = new System.Drawing.Point(313, 35);
+            this.SNRequiredOpr_chk.Location = new System.Drawing.Point(421, 37);
             this.SNRequiredOpr_chk.Name = "SNRequiredOpr_chk";
             this.SNRequiredOpr_chk.Size = new System.Drawing.Size(126, 17);
             this.SNRequiredOpr_chk.TabIndex = 11;
@@ -388,28 +388,28 @@
             this.SNRequiredOpr_chk.UseVisualStyleBackColor = true;
             this.SNRequiredOpr_chk.CheckedChanged += new System.EventHandler(this.SNRequiredOpr_chk_CheckedChanged);
             // 
-            // gid_txt
+            // desc_txt
             // 
-            this.gid_txt.BackColor = System.Drawing.Color.White;
-            this.gid_txt.Location = new System.Drawing.Point(87, 35);
-            this.gid_txt.Name = "gid_txt";
-            this.gid_txt.ReadOnly = true;
-            this.gid_txt.Size = new System.Drawing.Size(130, 20);
-            this.gid_txt.TabIndex = 13;
+            this.desc_txt.BackColor = System.Drawing.Color.White;
+            this.desc_txt.Location = new System.Drawing.Point(87, 35);
+            this.desc_txt.Name = "desc_txt";
+            this.desc_txt.ReadOnly = true;
+            this.desc_txt.Size = new System.Drawing.Size(280, 20);
+            this.desc_txt.TabIndex = 13;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 38);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Group ID:";
+            this.label5.Text = "Description:";
             // 
             // rev_txt
             // 
             this.rev_txt.BackColor = System.Drawing.Color.White;
-            this.rev_txt.Location = new System.Drawing.Point(259, 9);
+            this.rev_txt.Location = new System.Drawing.Point(319, 10);
             this.rev_txt.Name = "rev_txt";
             this.rev_txt.ReadOnly = true;
             this.rev_txt.Size = new System.Drawing.Size(48, 20);
@@ -418,7 +418,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(223, 12);
+            this.label4.Location = new System.Drawing.Point(283, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 10;
@@ -430,7 +430,7 @@
             this.partnumber_txt.Location = new System.Drawing.Point(87, 9);
             this.partnumber_txt.Name = "partnumber_txt";
             this.partnumber_txt.ReadOnly = true;
-            this.partnumber_txt.Size = new System.Drawing.Size(130, 20);
+            this.partnumber_txt.Size = new System.Drawing.Size(165, 20);
             this.partnumber_txt.TabIndex = 9;
             // 
             // label2
@@ -927,7 +927,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox rev_txt;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox gid_txt;
+        private System.Windows.Forms.TextBox desc_txt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown prodhrs_num;
         private System.Windows.Forms.Label label3;

@@ -59,21 +59,48 @@ namespace Epicor_Integration
             prodstd_cbo.SelectedIndex = 0;
         }
 
+        private string UpdateParentDesc()
+        {
+            Part Part = new Part(DataList.EpicConn);
+
+            PartListDataSet PartList = new PartListDataSet();
+
+            string WhereClause = "PartNum = '" + partnumber_txt.Text + "'";
+
+            int pagesize = 1;
+
+            bool morePages;
+
+            PartList = Part.GetList(WhereClause, pagesize, 0, out morePages);
+
+            DataList.EpicClose();
+
+            string desc = PartList.Tables[0].Rows[0]["PartDescription"].ToString();
+
+            Part = null;
+
+            PartList.Dispose();
+
+            PartList = null;
+
+            return desc;
+        }
+
         public Operations_Master(string PartNumber, string Rev)
         {
             InitializeComponent();
 
             supplierid_txt.Leave += supplierid_txt_Leave;
 
-            string GroupID = Properties.Settings.Default.ecogroup;
+            //string GroupID = Properties.Settings.Default.ecogroup;
 
             OPDataGrid.AutoGenerateColumns = false;
-
+            
             partnumber_txt.Text = PartNumber;
 
             rev_txt.Text = Rev;
 
-            gid_txt.Text = GroupID;
+            desc_txt.Text = UpdateParentDesc() ;
 
             bool morePages;
 
@@ -101,7 +128,7 @@ namespace Epicor_Integration
 
             try
             {
-                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
             }
             catch (Exception ex) 
             {
@@ -158,7 +185,7 @@ namespace Epicor_Integration
 
             string Message;
 
-            bool status = !DataList.PartCheckOutStatus(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, out Message);
+            bool status = !DataList.PartCheckOutStatus(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, out Message);
 
             if (status)
             {
@@ -245,11 +272,11 @@ namespace Epicor_Integration
                 {
                     EngWB.Update(EngWBDS);
 
-                    EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+                    EngWB.ResequenceOperations(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
                     resource_show.Enabled = true;
 
-                    EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                    EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
                     OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
                 }
@@ -390,7 +417,7 @@ namespace Epicor_Integration
 
                 resource_show.Enabled = true;
 
-                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
                 OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
@@ -407,7 +434,7 @@ namespace Epicor_Integration
 
         private void addbtn_Click(object sender, EventArgs e)
         {
-            EngWB.GetNewECOOpr(EngWBDS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "");
+            EngWB.GetNewECOOpr(EngWBDS, Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "");
 
             int RowIndex = OPDataGrid.Rows.Count - 1;
 
@@ -441,11 +468,11 @@ namespace Epicor_Integration
 
             EngWB.Update(EngWBDS);
 
-            EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+            EngWB.ResequenceOperations(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
             resource_show.Enabled = true;
 
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+            EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
             OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
@@ -482,7 +509,7 @@ namespace Epicor_Integration
 
                 EngWB.Update(EngWBDS);
 
-                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
                 OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
@@ -497,7 +524,7 @@ namespace Epicor_Integration
             {
                 MessageBox.Show("Error Deleting Row!\n\nCheck to see that there are not materials attached to this operation and try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
                 OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
@@ -511,7 +538,7 @@ namespace Epicor_Integration
 
         private void refresh_btn_Click(object sender, EventArgs e)
         {
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+            EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
             OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
         }
@@ -664,7 +691,7 @@ namespace Epicor_Integration
 
             string operation = OPDataGrid["OprSeq", OPDataGrid.CurrentCellAddress.Y].Value.ToString();
 
-            Resource_Master Resource_Mast = new Resource_Master(partnumber_txt.Text, rev_txt.Text, gid_txt.Text, operation, EngWBDS);
+            Resource_Master Resource_Mast = new Resource_Master(partnumber_txt.Text, rev_txt.Text, Properties.Settings.Default.ecogroup, operation, EngWBDS);
 
             Resource_Mast.ShowDialog();
         }
@@ -733,9 +760,9 @@ namespace Epicor_Integration
 
             OpCopy.ShowDialog();
 
-            DataList.GetDetailsFromMethods(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, OpCopy.retPart, OpCopy.retRev);
+            DataList.GetDetailsFromMethods(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, OpCopy.retPart, OpCopy.retRev);
 
-            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+            EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
             OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
         }
@@ -764,7 +791,7 @@ namespace Epicor_Integration
                 {
                     DataRow Dr = DT.Rows[i];
 
-                    EngWB.GetNewECOOpr(EngWBDS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "");
+                    EngWB.GetNewECOOpr(EngWBDS, Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "");
 
                     opmast_cbo.SelectedValue = Dr["PropertyValue"].ToString();
 
@@ -811,9 +838,9 @@ namespace Epicor_Integration
                     }
                 }
 
-                EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Now, false, false, false, false);
+                EngWB.ResequenceOperations(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Now, false, false, false, false);
 
-                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
                 OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
@@ -855,7 +882,7 @@ namespace Epicor_Integration
                 //save
                 EngWB.Update(EngWBDS);
 
-                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
                 OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
@@ -1007,7 +1034,7 @@ namespace Epicor_Integration
 
         private void Subcontract_btn_Click(object sender, EventArgs e)
         {
-            EngWB.GetNewECOOpr(EngWBDS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "");
+            EngWB.GetNewECOOpr(EngWBDS, Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "");
 
             EngWB.EcoOprInitSNReqSubConShip(EngWBDS);
 
@@ -1170,7 +1197,7 @@ namespace Epicor_Integration
 
                 EngWB.Update(EngWBDS);
 
-                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
             }
             catch { }
         }
@@ -1190,11 +1217,11 @@ namespace Epicor_Integration
                 if (EngWBDS.Tables["ECOOpr"].Rows[0]["OprSeq"].ToString() != "10".ToString())
                     EngWBDS.Tables["ECOOpr"].Rows[0]["OprSeq"] = 10;
 
-                EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+                EngWB.ResequenceOperations(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
                 EngWB.Update(EngWBDS);
 
-                EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
                 OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
             }

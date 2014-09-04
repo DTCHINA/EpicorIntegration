@@ -15,13 +15,15 @@ namespace Epicor_Integration
 
         public decimal OriginalWeight { get; set; }
 
-        public Item_SheetFactor(decimal Weight)
+        public Item_SheetFactor(decimal Weight, string Material)
         {
             InitializeComponent();
 
             OriginalWeight = Weight;
 
             type_cbo.TextChanged += type_cbo_TextChanged;
+
+            partnumber_cbo.Text = Material;
         }
 
         void type_cbo_TextChanged(object sender, EventArgs e)
