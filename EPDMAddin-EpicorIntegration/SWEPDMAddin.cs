@@ -46,7 +46,7 @@ namespace EPDMEpicorIntegration
             
             poInfo.mbsCompany = "Norco Industries";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201409040;
+            poInfo.mlAddInVersion = (int)201410301;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -573,6 +573,7 @@ namespace EPDMEpicorIntegration
 
             string file_ext = file.mbsStrData1.Substring(file.mbsStrData1.LastIndexOf('.') + 1).ToUpper();
 
+            #region Drawing Bill
             if (file_ext == "SLDDRW")
             {
                 Array bom_array;
@@ -639,6 +640,7 @@ namespace EPDMEpicorIntegration
 
                 return BM.DialogResult;
             }
+            #endregion
             else
             {
                 //Get the lastest version to continue
@@ -737,10 +739,11 @@ namespace EPDMEpicorIntegration
 
                             if (itemlevel == 1)
                             {
+                                
                                 bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_RefCount, out QtyValue, out CompVal, out Config, out RO);
 
                                 bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
-
+                                
                                 if (PnumValue.ToString() == PConfig)
                                 {
                                     bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Configuration, out ConfValue, out CompVal, out Config, out RO);
@@ -790,6 +793,7 @@ namespace EPDMEpicorIntegration
 
                                     BillNumbers.Add(PnumValue.ToString());
                                 }
+                                
                             }
 
                             bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
@@ -802,7 +806,10 @@ namespace EPDMEpicorIntegration
                         #endregion
 
                         List<string> CondBillNumbers = BillNumbers;
-
+                        
+                        //This doesn't work - it sets a loop that never finishes and unorganizes the relationship of qty to part number
+                        //FIX THIS
+                        /*
                         CondBillNumbers.Sort();
 
                         int k = 0;
@@ -830,10 +837,10 @@ namespace EPDMEpicorIntegration
                                     CondBillQty[k] = (int.Parse(BillQty[j]) + int.Parse(CondBillQty[k])).ToString();
                             }
                         }
-
+                        */
                         BillNumbers = CondBillNumbers;
 
-                        BillQty = CondBillQty;
+                        //BillQty = CondBillQty;
 
                         ProcessBill(vault, file, BillNumbers, BillQty, out BillQty);
 

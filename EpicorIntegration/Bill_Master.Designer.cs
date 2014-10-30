@@ -32,8 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bill_Master));
             this.MajorHorizSplit = new System.Windows.Forms.SplitContainer();
-            this.area = new System.Windows.Forms.NumericUpDown();
             this.weight = new System.Windows.Forms.NumericUpDown();
+            this.area = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.parentrev_txt = new System.Windows.Forms.TextBox();
             this.gid_txt = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -83,13 +85,11 @@
             this.sheetCoilUsageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.eNGDataDataSet = new Epicor_Integration.ENGDataDataSet();
             this.sheetCoil_UsageTableAdapter = new Epicor_Integration.ENGDataDataSetTableAdapters.SheetCoil_UsageTableAdapter();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.area)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.area)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qty_num)).BeginInit();
@@ -108,10 +108,10 @@
             // 
             // MajorHorizSplit.Panel1
             // 
+            this.MajorHorizSplit.Panel1.Controls.Add(this.weight);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.area);
             this.MajorHorizSplit.Panel1.Controls.Add(this.label10);
             this.MajorHorizSplit.Panel1.Controls.Add(this.label9);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.area);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.weight);
             this.MajorHorizSplit.Panel1.Controls.Add(this.parentrev_txt);
             this.MajorHorizSplit.Panel1.Controls.Add(this.gid_txt);
             this.MajorHorizSplit.Panel1.Controls.Add(this.groupBox2);
@@ -130,8 +130,20 @@
             this.MajorHorizSplit.SplitterDistance = 262;
             this.MajorHorizSplit.TabIndex = 1;
             // 
+            // weight
+            // 
+            this.weight.BackColor = System.Drawing.Color.White;
+            this.weight.DecimalPlaces = 3;
+            this.weight.InterceptArrowKeys = false;
+            this.weight.Location = new System.Drawing.Point(257, 64);
+            this.weight.Name = "weight";
+            this.weight.ReadOnly = true;
+            this.weight.Size = new System.Drawing.Size(62, 20);
+            this.weight.TabIndex = 16;
+            // 
             // area
             // 
+            this.area.BackColor = System.Drawing.Color.White;
             this.area.DecimalPlaces = 3;
             this.area.InterceptArrowKeys = false;
             this.area.Location = new System.Drawing.Point(325, 64);
@@ -140,15 +152,23 @@
             this.area.Size = new System.Drawing.Size(62, 20);
             this.area.TabIndex = 17;
             // 
-            // weight
+            // label10
             // 
-            this.weight.DecimalPlaces = 3;
-            this.weight.InterceptArrowKeys = false;
-            this.weight.Location = new System.Drawing.Point(257, 64);
-            this.weight.Name = "weight";
-            this.weight.ReadOnly = true;
-            this.weight.Size = new System.Drawing.Size(62, 20);
-            this.weight.TabIndex = 16;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(322, 48);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(32, 13);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Area:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(254, 48);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Weight:";
             // 
             // parentrev_txt
             // 
@@ -305,7 +325,7 @@
             this.PullAsAsm_chk.TabIndex = 15;
             this.PullAsAsm_chk.Text = "Pull As Assembly";
             this.PullAsAsm_chk.UseVisualStyleBackColor = true;
-            this.PullAsAsm_chk.CheckedChanged += new System.EventHandler(this.PullAsAsm_chk_CheckedChanged);
+            this.PullAsAsm_chk.Click += new System.EventHandler(this.PullAsAsm_chk_Click);
             // 
             // addraw
             // 
@@ -315,7 +335,7 @@
             this.addraw.TabIndex = 11;
             this.addraw.Text = "Add &Raw";
             this.addraw.UseVisualStyleBackColor = true;
-            this.addraw.Click += new System.EventHandler(this.button1_Click_1);
+            this.addraw.Click += new System.EventHandler(this.addraw_Click);
             // 
             // copy_btn
             // 
@@ -336,6 +356,7 @@
             this.ViewAsAsm_chk.TabIndex = 10;
             this.ViewAsAsm_chk.Text = "View As Assembly";
             this.ViewAsAsm_chk.UseVisualStyleBackColor = true;
+            this.ViewAsAsm_chk.Click += new System.EventHandler(this.ViewAsAsm_chk_Click);
             // 
             // uom_cbo
             // 
@@ -345,6 +366,8 @@
             this.uom_cbo.Name = "uom_cbo";
             this.uom_cbo.Size = new System.Drawing.Size(91, 21);
             this.uom_cbo.TabIndex = 2;
+            this.uom_cbo.Enter += new System.EventHandler(this.uom_cbo_Enter);
+            this.uom_cbo.Leave += new System.EventHandler(this.uom_cbo_Leave);
             // 
             // qty_num
             // 
@@ -358,7 +381,7 @@
             this.qty_num.Name = "qty_num";
             this.qty_num.Size = new System.Drawing.Size(62, 20);
             this.qty_num.TabIndex = 9;
-            this.qty_num.ValueChanged += new System.EventHandler(this.qty_num_ValueChanged);
+            this.qty_num.Enter += new System.EventHandler(this.qty_num_Enter);
             // 
             // label6
             // 
@@ -389,11 +412,13 @@
             // 
             // partnum_txt
             // 
+            this.partnum_txt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.partnum_txt.Location = new System.Drawing.Point(75, 45);
             this.partnum_txt.Name = "partnum_txt";
             this.partnum_txt.Size = new System.Drawing.Size(211, 20);
             this.partnum_txt.TabIndex = 5;
-            this.partnum_txt.TextChanged += new System.EventHandler(this.partnum_txt_TextChanged);
+            this.partnum_txt.Enter += new System.EventHandler(this.partnum_txt_Enter);
+            this.partnum_txt.Leave += new System.EventHandler(this.partnum_txt_Leave);
             // 
             // ops_cbo
             // 
@@ -403,6 +428,8 @@
             this.ops_cbo.Name = "ops_cbo";
             this.ops_cbo.Size = new System.Drawing.Size(211, 21);
             this.ops_cbo.TabIndex = 4;
+            this.ops_cbo.Enter += new System.EventHandler(this.ops_cbo_Enter);
+            this.ops_cbo.Leave += new System.EventHandler(this.ops_cbo_Leave);
             // 
             // label4
             // 
@@ -500,16 +527,17 @@
             this.BillDataGrid.Location = new System.Drawing.Point(0, 0);
             this.BillDataGrid.MultiSelect = false;
             this.BillDataGrid.Name = "BillDataGrid";
-            this.BillDataGrid.ReadOnly = true;
             this.BillDataGrid.RowHeadersVisible = false;
             this.BillDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.BillDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.BillDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.BillDataGrid.ShowCellErrors = false;
             this.BillDataGrid.ShowCellToolTips = false;
             this.BillDataGrid.ShowEditingIcon = false;
             this.BillDataGrid.ShowRowErrors = false;
             this.BillDataGrid.Size = new System.Drawing.Size(684, 200);
             this.BillDataGrid.TabIndex = 1;
+            this.BillDataGrid.VirtualMode = true;
+            this.BillDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BillDataGrid_CellContentClick);
             // 
             // MtlSeq
             // 
@@ -536,7 +564,7 @@
             this.MtlPartNum.HeaderText = "Part Number";
             this.MtlPartNum.Name = "MtlPartNum";
             this.MtlPartNum.ReadOnly = true;
-            this.MtlPartNum.Width = 84;
+            this.MtlPartNum.Width = 91;
             // 
             // MtlPartNumPartDescription
             // 
@@ -563,7 +591,7 @@
             this.UOMCode.HeaderText = "UOM Code";
             this.UOMCode.Name = "UOMCode";
             this.UOMCode.ReadOnly = true;
-            this.UOMCode.Width = 78;
+            this.UOMCode.Width = 85;
             // 
             // ViewAsAsm
             // 
@@ -624,24 +652,6 @@
             // 
             this.sheetCoil_UsageTableAdapter.ClearBeforeFill = true;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(254, 48);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 13);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Weight:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(322, 48);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(32, 13);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Area:";
-            // 
             // Bill_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -659,8 +669,8 @@
             this.MajorHorizSplit.Panel1.PerformLayout();
             this.MajorHorizSplit.Panel2.ResumeLayout(false);
             this.MajorHorizSplit.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.area)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.area)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

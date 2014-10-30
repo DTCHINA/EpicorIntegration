@@ -60,6 +60,7 @@
             this.cancel_btn = new System.Windows.Forms.Button();
             this.gaugeRefTableAdapter = new Epicor_Integration.ENGDataDataSetTableAdapters.GaugeRefTableAdapter();
             this.sheetCoil_UsageTableAdapter = new Epicor_Integration.ENGDataDataSetTableAdapters.SheetCoil_UsageTableAdapter();
+            this.rail_chk = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.sheetCoilUsageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eNGDataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gaugeRefBindingSource)).BeginInit();
@@ -238,6 +239,7 @@
             this.weight_num.Name = "weight_num";
             this.weight_num.Size = new System.Drawing.Size(86, 20);
             this.weight_num.TabIndex = 14;
+            this.weight_num.ValueChanged += new System.EventHandler(this.weight_num_ValueChanged);
             // 
             // sheetcoilinput_lbl
             // 
@@ -315,6 +317,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.rail_chk);
             this.groupBox2.Controls.Add(this.weight_num);
             this.groupBox2.Controls.Add(this.factor_txt);
             this.groupBox2.Controls.Add(this.factoredweight_txt);
@@ -354,6 +357,16 @@
             // sheetCoil_UsageTableAdapter
             // 
             this.sheetCoil_UsageTableAdapter.ClearBeforeFill = true;
+            // 
+            // rail_chk
+            // 
+            this.rail_chk.AutoSize = true;
+            this.rail_chk.Location = new System.Drawing.Point(6, 71);
+            this.rail_chk.Name = "rail_chk";
+            this.rail_chk.Size = new System.Drawing.Size(77, 17);
+            this.rail_chk.TabIndex = 20;
+            this.rail_chk.Text = "Rail Factor";
+            this.rail_chk.UseVisualStyleBackColor = true;
             // 
             // Item_SheetFactor
             // 
@@ -420,5 +433,6 @@
         private System.Windows.Forms.BindingSource sheetCoilUsageBindingSource;
         private System.Windows.Forms.BindingSource gaugeRefBindingSource;
         private System.Windows.Forms.Button reset_btn;
+        private System.Windows.Forms.CheckBox rail_chk;
     }
 }

@@ -100,7 +100,7 @@ namespace Epicor_Integration
 
             rev_txt.Text = Rev;
 
-            desc_txt.Text = UpdateParentDesc() ;
+            desc_txt.Text = UpdateParentDesc();
 
             bool morePages;
 
@@ -631,34 +631,12 @@ namespace Epicor_Integration
             opmast_cbo.SelectedIndexChanged += opmast_cbo_SelectedIndexChanged;
         }
 
+        private void prodhrs_num_Enter(object sender, EventArgs e)
+        {
+            prodhrs_num.ValueChanged += prodhrs_num_ValueChanged;
+        }
+
         private void prodhrs_num_ValueChanged(object sender, EventArgs e)
-        {
-            prodhrs_num.Leave += prodhrs_num_Leave;
-
-            prodhrs_num.KeyDown +=  prodhrs_num_KeyDown;
-        }
-
-        void prodhrs_num_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
-            {
-                try
-                {
-                    int RowIndex = OPDataGrid.CurrentCell.RowIndex;
-
-                    EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
-                }
-                catch { }
-                finally 
-                { 
-                    prodhrs_num.Leave -= prodhrs_num_Leave;
-
-                    prodhrs_num.KeyDown -= prodhrs_num_KeyDown;
-                }
-            }
-        }
-
-        void prodhrs_num_Leave(object sender, EventArgs e)
         {
             try
             {
@@ -667,12 +645,11 @@ namespace Epicor_Integration
                 EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
             }
             catch { }
-            finally 
-            {
-                prodhrs_num.Leave -= prodhrs_num_Leave;
+        }
 
-                prodhrs_num.KeyDown -= prodhrs_num_KeyDown;
-            }
+        void prodhrs_num_Leave(object sender, EventArgs e)
+        {
+            prodhrs_num.ValueChanged -= prodhrs_num_ValueChanged;
         }
 
         private void resource_show_Click(object sender, EventArgs e)

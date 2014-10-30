@@ -19,23 +19,6 @@ namespace Epicor_Integration
         {
             InitializeComponent();
 
-            OriginalWeight = Weight;
-
-            type_cbo.TextChanged += type_cbo_TextChanged;
-
-            partnumber_cbo.Text = Material;
-        }
-
-        void type_cbo_TextChanged(object sender, EventArgs e)
-        {
-            if (type_cbo.Text == "Coil")
-                sheetcoilinput_lbl.Text = "Length";
-            else
-                sheetcoilinput_lbl.Text = "Qty Nested";
-        }
-
-        private void Operations_SheetFactor_Load(object sender, EventArgs e)
-        {
             partnumber_cbo.SelectedIndexChanged -= partnumber_cbo_SelectedIndexChanged;
 
             gaugeRefTableAdapter.Fill(eNGDataDataSet.GaugeRef);
@@ -65,6 +48,27 @@ namespace Epicor_Integration
             width_cbo.DisplayMember = "width";
 
             partnumber_cbo.SelectedIndexChanged += partnumber_cbo_SelectedIndexChanged;
+
+            OriginalWeight = Weight;
+
+            type_cbo.TextChanged += type_cbo_TextChanged;
+
+            partnumber_cbo.Text = Material;
+        }
+
+        void type_cbo_TextChanged(object sender, EventArgs e)
+        {
+            rail_chk.Checked = (type_cbo.Text == "Coil");
+
+            if (type_cbo.Text == "Coil")
+                sheetcoilinput_lbl.Text = "Length";
+            else
+                sheetcoilinput_lbl.Text = "Qty Nested";
+        }
+
+        private void Operations_SheetFactor_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void reset_btn_Click(object sender, EventArgs e)
@@ -157,7 +161,14 @@ namespace Epicor_Integration
             factor_txt.Text = (width * length * thickness * density).ToString();
 
             if (type_cbo.Text == "Coil")
-                factoredweight_txt.Text = ((width * length * thickness * density) * (double)weight_num.Value).ToString();
+            {
+                int div = 1;
+
+                if (rail_chk.Checked)
+                    div = 2;
+
+                factoredweight_txt.Text = (((width * thickness * density) * (double)weight_num.Value) / div).ToString();
+            }
             else
                 factoredweight_txt.Text = ((width * length * thickness * density) / (double)weight_num.Value).ToString();
         }
@@ -172,6 +183,41 @@ namespace Epicor_Integration
         private void factor_txt_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void weight_num_ValueChanged(object sender, EventArgs e)
+        {
+            double width = 1;
+
+            if (width_cbo.Text != "")
+                double.TryParse(width_cbo.Text, out width);
+
+            double length = 1;
+
+            if (length_cbo.Text != "")
+                double.TryParse(length_cbo.Text, out length);
+
+            double thickness = 1;
+
+            if (gauge_cbo.Text != "")
+                double.TryParse(gauge_cbo.SelectedValue.ToString(), out thickness);
+
+            double density = 1;
+
+            if (density_cbo.Text != "")
+                double.TryParse(density_cbo.Text, out density);
+
+            if (type_cbo.Text == "Coil")
+            {
+                int div = 1;
+
+                if (rail_chk.Checked)
+                    div = 2;
+
+                factoredweight_txt.Text = (((width * thickness * density) * (double)weight_num.Value) / div).ToString();
+            }
+            else
+                factoredweight_txt.Text = ((width * length * thickness * density) / (double)weight_num.Value).ToString();
         }
     }
 }

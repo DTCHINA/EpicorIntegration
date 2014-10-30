@@ -65,8 +65,6 @@ namespace Epicor_Integration
         {
             Part Part = new Part(EpicConn);
 
-            PartDataSet Pdata = new PartDataSet();
-
             bool retval;
 
             try
@@ -102,6 +100,27 @@ namespace Epicor_Integration
             EpicClose();
 
             return Pdata;
+        }
+
+        public static string PartIUM(string partnumber)
+        {
+            string retval="";
+
+            Part Part = new Part(EpicConn);
+
+            PartDataSet Pdata = new PartDataSet();
+
+            try
+            {
+                Pdata = Part.GetByID(partnumber);
+
+                retval = Pdata.Tables["Part"].Rows[0]["IUM"].ToString();
+            }
+            catch { }
+
+            EpicClose();
+
+            return retval;
         }
 
         public static string AdvanceRevision(string CurrentRevision)
