@@ -108,6 +108,12 @@ namespace ECO_Helper
             return retval;
         }
 
+        /// <summary>
+        /// Obsolete
+        /// </summary>
+        /// <param name="partpath"></param>
+        /// <param name="partnumber"></param>
+        /// <param name="rev"></param>
         public static void GetBill(string partpath, string partnumber,string rev)
         {
             string selected_config;
@@ -198,9 +204,9 @@ namespace ECO_Helper
 
                 ProcessBill(vault, BillNumbers, BillQty, out BillQty, partpath);
 
-                Bill_Master BM = new Bill_Master(BillNumbers, BillQty, ParentNumber, rev, 0, 0);
+                //Bill_Master BM = new Bill_Master(Bill, BillNumbers, BillQty, ParentNumber, rev, 0, 0);
 
-                BM.ShowDialog();
+                //BM.ShowDialog();
             }
         }
 

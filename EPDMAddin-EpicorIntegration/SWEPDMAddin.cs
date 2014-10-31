@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using EPDM_EPICOR_LIB;
+using System.ComponentModel;
 
 namespace EPDMEpicorIntegration
 {
@@ -17,9 +19,21 @@ namespace EPDMEpicorIntegration
 
     public class SWEPDMAddin : IEdmAddIn5
     {
+        BackgroundWorker BW = new BackgroundWorker();
+
+        Waiting BWForm = new Waiting("Retrieving Bill of Materials from SolidWorks...");
+
         IEdmVault7 vault_ { get; set; }
 
         EdmCmdData file_ { get; set; }
+
+        private List<BillItem> Bill { get; set; }
+
+        private decimal Weight { get; set; }
+
+        private decimal Area { get; set; }
+
+        private string ParentNumber { get; set; }
 
         void IEdmAddIn5.GetAddInInfo(ref EdmAddInInfo poInfo, IEdmVault5 poVault, IEdmCmdMgr5 poCmdMgr)
         {
@@ -46,7 +60,7 @@ namespace EPDMEpicorIntegration
             
             poInfo.mbsCompany = "Norco Industries";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201410301;
+            poInfo.mlAddInVersion = (int)201411030;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -73,10 +87,17 @@ namespace EPDMEpicorIntegration
             poCmdMgr.AddCmd(2, MenuName + "\\Add Item,OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to add an Item, a revision, an OOM and BOM in Epicor", 0, 0);
             
             poCmdMgr.AddHook(EdmCmdType.EdmCmd_Menu, null);
+
+            Bill = new List<BillItem>();
+
         }
 
         void IEdmAddIn5.OnCmd(ref EdmCmd poCmd, ref System.Array ppoData)
         {
+           // BW.DoWork += BW_DoWork;
+
+            BW.RunWorkerCompleted += BW_RunWorkerCompleted;
+
             Debug.Print("Command Type: " + poCmd.meCmdType.ToString() + "\n  " + System.DateTime.Now.ToString());
 
             IEdmVault5 edmVault = poCmd.mpoVault as IEdmVault5;
@@ -131,8 +152,11 @@ namespace EPDMEpicorIntegration
 
                                         if (AddOOM(vault, file, selected_config) == DialogResult.Cancel)
                                             break;
+                                        AddBill(vault, file, selected_config);
 
-                                        if (AddBill(vault, file, selected_config) == DialogResult.Cancel)
+                                        Bill_Master BM = new Bill_Master(Bill, ParentNumber, "",Weight, Area);
+
+                                        if (BM.ShowDialog() == DialogResult.Cancel)
                                             break;
 
                                         if (CheckInPart(vault, file, selected_config) == DialogResult.Cancel)
@@ -179,8 +203,19 @@ namespace EPDMEpicorIntegration
 
                                 foreach (EdmCmdData file in Temp)
                                 {
-                                    //if (ValidSelection(file))
-                                        AddBill(vault, file, "");
+                                    Bill.Clear();
+
+                                    ParentNumber = "";
+
+                                    Area = 0;
+
+                                    Weight = 0;
+
+                                    AddBill(vault, file, "");
+
+                                    Bill_Master BM = new Bill_Master(Bill, ParentNumber, "", Weight, Area);
+
+                                    BM.ShowDialog();
                                 }
                                 #endregion
                                 break;
@@ -230,6 +265,292 @@ namespace EPDMEpicorIntegration
                 string errorName, errorDesc;
                 edmVault.GetErrorString(exp.ErrorCode, out errorName, out errorDesc);
                 edmVault.MsgBox(0, errorDesc, EdmMBoxType.EdmMbt_OKOnly, errorName);
+            }
+        }
+
+        void BW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            BWForm.Close();
+        }
+
+        void BW_DoWorkAssy(object sender, DoWorkEventArgs e)
+        {
+            object weight_val = "0";
+
+            object area_val = "0";
+
+            object[] args = new object[3];
+
+            args = (object[])e.Argument;
+
+            IEdmVault7 vault = (IEdmVault7)args[1];
+
+            IEdmFile7 part = (IEdmFile7)args[0];
+
+            string selected_config = args[2].ToString();
+
+            IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
+
+            try
+            {
+                var.GetVar("NetWeight", selected_config, out weight_val);
+
+                Weight = decimal.Parse(weight_val.ToString());
+
+                var.GetVar("SurfaceArea", selected_config, out area_val);
+
+                Area = decimal.Parse(area_val.ToString());
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message + "\nWeight or Area could not be retrieved"); Weight = 0; Area = 0; }
+
+            #region Fill Bill
+
+            IEdmBomMgr BomMgr = (IEdmBomMgr)vault.CreateUtility(EdmUtility.EdmUtil_BomMgr);
+
+            Array LayoutVal;
+
+            Array BomVal = Array.CreateInstance(typeof(EdmBomInfo), 1);
+
+            Array ColumnVal;
+
+            BomMgr.GetBomLayouts(out LayoutVal);
+
+            IEdmBomMgr EdmBomMgr = (IEdmBomMgr)vault.CreateUtility(EdmUtility.EdmUtil_BomMgr);
+
+            Array BomLayouts;
+
+            EdmBomMgr.GetBomLayouts(out BomLayouts);
+
+            //selected_config = something;
+
+            EdmBomView BomView = part.GetComputedBOM(1, 0, selected_config, 2);
+
+            BomView.GetRows(out BomVal);
+
+            BomView.GetColumns(out ColumnVal);
+
+            EdmBomColumn ColVal = (EdmBomColumn)ColumnVal.GetValue(0);
+
+            List<string> BillLevel = new List<string>();
+
+            string PConfig = "";
+
+            for (int i = 0; i < BomVal.Length; i++)
+            {
+                IEdmBomCell bominfo = (IEdmBomCell)BomVal.GetValue(i);
+
+                object QtyValue;
+
+                object PnumValue;
+
+                object FnameValue;
+
+                object ConfValue;
+
+                object ParentConfig;
+
+                object Name;
+
+                object CompVal;
+
+                string Config;
+
+                bool RO;
+
+                int itemlevel = bominfo.GetTreeLevel();
+
+                if (itemlevel == 0)
+                {
+                    bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
+
+                    ParentNumber = PnumValue.ToString();
+
+                    bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Configuration, out ParentConfig, out CompVal, out Config, out RO);
+
+                    PConfig = ParentConfig.ToString();
+                }
+
+                if (itemlevel == 1)
+                {
+
+                    bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_RefCount, out QtyValue, out CompVal, out Config, out RO);
+
+                    bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
+
+                    if (PnumValue.ToString() == PConfig)
+                    {
+                        bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Configuration, out ConfValue, out CompVal, out Config, out RO);
+
+                        bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Name, out FnameValue, out CompVal, out Config, out RO);
+
+                        //MessageBox.Show(PnumValue.ToString());
+
+                        IEdmFile7 subpart = FindPartinVault(vault, FnameValue.ToString(), ConfValue.ToString());
+
+                        EdmBomView SubBomView = subpart.GetComputedBOM(1, 0, ConfValue.ToString(), 2);
+
+                        Array SubBomVal = Array.CreateInstance(typeof(EdmBomInfo), 1);
+
+                        Array SubColumnVal;
+
+                        SubBomView.GetRows(out SubBomVal);
+
+                        SubBomView.GetColumns(out SubColumnVal);
+
+                        for (int j = 0; j < SubBomVal.Length; j++)
+                        {
+                            IEdmBomCell subbominfo = (IEdmBomCell)SubBomVal.GetValue(j);
+
+                            int subitemlevel = subbominfo.GetTreeLevel();
+
+                            if (subitemlevel == 1)
+                            {
+                                subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_RefCount, out QtyValue, out CompVal, out Config, out RO);
+
+                                subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
+
+                                if (PnumValue == "")
+                                    subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Configuration, out PnumValue, out CompVal, out Config, out RO);
+
+                                subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Name, out Name, out CompVal, out Config, out RO);
+
+                                BillItem Item = new BillItem();
+
+                                Item.Qty = QtyValue.ToString();
+
+                                Item.PartNumber = PnumValue.ToString();
+
+                                Bill.Add(Item);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        BillItem Item = new BillItem();
+
+                        Item.Qty = QtyValue.ToString();
+
+                        Item.PartNumber = PnumValue.ToString();
+
+                        Bill.Add(Item);
+                    }
+
+                }
+
+                bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
+
+                bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Name, out Name, out CompVal, out Config, out RO);
+
+                Debug.Print(PnumValue.ToString() + "\t" + itemlevel.ToString() + "\t" + Name.ToString());
+
+            }
+            #endregion
+
+            //List<string> CondBillNumbers = BillNumbers;
+
+            //This doesn't work - it sets a loop that never finishes and unorganizes the relationship of qty to part number
+            //FIX THIS
+            /*
+            CondBillNumbers.Sort();
+
+            int k = 0;
+
+            while (k < CondBillNumbers.Count - 1)
+            {
+                if (CondBillNumbers[k] == CondBillNumbers[k + 1] || CondBillNumbers[k] == "")
+                    CondBillNumbers.RemoveAt(k);
+                else
+                    k++;
+            }
+
+            List<string> CondBillQty = new List<string>(CondBillNumbers.Count);
+
+            for (int i = 0; i < CondBillNumbers.Count; i++)
+            {
+                CondBillQty.Add("0");
+            }
+
+            for (k = 0; k < CondBillNumbers.Count; k++)
+            {
+                for (int j = 0; j < BillNumbers.Count; j++)
+                {
+                    if (BillNumbers[j] == CondBillNumbers[k])
+                        CondBillQty[k] = (int.Parse(BillQty[j]) + int.Parse(CondBillQty[k])).ToString();
+                }
+            }
+            */
+            //BillNumbers = CondBillNumbers;
+
+            //BillQty = CondBillQty;
+
+        }
+
+        void BW_DoWorkDrawing(object sender, DoWorkEventArgs e)
+        {
+            object[] args = new object [2];
+
+            args = (object[])e.Argument ;
+
+            IEdmVault7 vault = (IEdmVault7)args[1];
+
+            IEdmFile7 part = (IEdmFile7)args[0];
+
+            Array bom_array;
+
+            part.GetDerivedBOMs(out bom_array);
+
+            EdmBomInfo[] BOMs = (EdmBomInfo[])bom_array;
+
+            IEdmBom bom = (IEdmBom)vault.GetObject(EdmObjectType.EdmObject_BOM, BOMs[BOMs.GetUpperBound(0)].mlBomID);
+
+            EdmBomView bomView = bom.GetView();
+
+            Array BomVal;
+
+            bomView.GetRows(out BomVal);
+
+            Bill = null;
+
+            List<string> BillLevel = new List<string>();
+
+            ParentNumber = BOMs[0].mbsBomName;
+
+            ParentNumber = ParentNumber.Substring(0, BOMs[0].mbsBomName.IndexOf(".SLDDRW"));
+
+            for (int i = 0; i < BomVal.Length; i++)
+            {
+                IEdmBomCell bominfo = (IEdmBomCell)BomVal.GetValue(i);
+
+                object Value;
+
+                object Val_Qty;
+
+                object CompVal;
+
+                string Config;
+
+                bool RO;
+
+                bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_RefCount, out Val_Qty, out CompVal, out Config, out RO);
+
+                bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out Value, out CompVal, out Config, out RO);
+
+                if (!Value.ToString().Contains("PART"))
+                {
+                    try
+                    {
+                        double QtyInt = double.Parse(Val_Qty.ToString());
+
+                        BillItem Item = new BillItem();
+
+                        Item.PartNumber = Value.ToString();
+
+                        Item.Qty = Val_Qty.ToString();
+
+                        Bill.Add(Item);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -472,52 +793,53 @@ namespace EPDMEpicorIntegration
             return false;
         }
 
-        public List<string> ProcessBill(IEdmVault7 vault, EdmCmdData file, List<string> BillNumbers, List<string> _BillQty, out List<string> BillQty)
+        public void ProcessBill(IEdmVault7 vault, EdmCmdData file)//, List<string> BillNumbers, List<string> _BillQty, out List<string> BillQty)
         {
-            for (int i = 0; i < BillNumbers.Count; i++)
+            for (int i = 0; i < Bill.Count; i++)
             {
-                if (DataList.PartExists(BillNumbers[i]))
-                {/*Part exists and we are good*/}
+                if (DataList.PartExists(Bill[i].ToString()))
+                { /*Part exists and we are good*/}
                 else
                 {
-                    if (PartExistsSW(vault, BillNumbers[i]))
+                    if (PartExistsSW(vault, Bill[i].ToString()))
                     {
                         //Get it, Add it
                         string Config = null;
 
-                        IEdmFile7 Part = FindPartinVault(vault, BillNumbers[i], out Config);
+                        IEdmFile7 Part = FindPartinVault(vault, Bill[i].ToString(), out Config);
 
-                        DialogResult Dr = GetItemInfo(file,vault, Part,"");
+                        DialogResult Dr = GetItemInfo(file, vault, Part, "");
 
                         if (Dr == DialogResult.Cancel)
-                            BillNumbers.RemoveAt(i);
+                            Bill.RemoveAt(i);
                     }
                     else
                     {
-                        DialogResult Dr = MessageBox.Show(BillNumbers[i] + " was not found in the vault/Epicor database.  Do you want to manually add it?", "Missing Item!", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                        DialogResult Dr = MessageBox.Show(Bill[i].ToString() + " was not found in the vault/Epicor database.  Do you want to manually add it?", "Missing Item!", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
 
                         if (Dr == DialogResult.Yes)
                         {
                             //Blank item master
-                            Item_Master IM = new Item_Master(BillNumbers[i], "", 0);
+                            Item_Master IM = new Item_Master(Bill[i].ToString(), "", 0);
 
                             IM.ShowDialog();
 
                             if (IM.DialogResult == DialogResult.Cancel)
-                                BillNumbers.RemoveAt(i);
+                                Bill.RemoveAt(i);
                         }
                         else
                         {
                             //Remove from the bill to proceed
-                            BillNumbers.RemoveAt(i);
+                            Bill.RemoveAt(i);
                         }
                     }
                 }
             }
 
-            BillQty = _BillQty;
+            //BillQty = _BillQty;
 
-            return BillNumbers;
+            //return BillNumbers;
+
         }
 
         public bool CheckBill(List<string> BillNumbers, IEdmVault7 vault, EdmCmdData file)
@@ -561,297 +883,63 @@ namespace EPDMEpicorIntegration
             return true;
         }
 
-        public DialogResult AddBill(IEdmVault7 vault, EdmCmdData file,string selected_config)
+        public void AddBill(IEdmVault7 vault, EdmCmdData file,string selected_config)
         {
-            object weight_val = "0";
-
-            object area_val = "0";
-
             IEdmEnumeratorVariable5 var;
 
             IEdmFile7 part = (IEdmFile7)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
 
             string file_ext = file.mbsStrData1.Substring(file.mbsStrData1.LastIndexOf('.') + 1).ToUpper();
 
+            if (file_ext != "SLDDRW" || UpdateItemRef(file, part, vault))
+            {
+                var = part.GetEnumeratorVariable();
+
+                selected_config = DetermineConfig(part, vault, file, "");
+            }
+
             #region Drawing Bill
             if (file_ext == "SLDDRW")
             {
-                Array bom_array;
+                BW.DoWork += BW_DoWorkDrawing;
 
-                part.GetDerivedBOMs(out bom_array);
+                object[] args = new object[2];
 
-                EdmBomInfo[] BOMs = (EdmBomInfo[])bom_array;
+                args[0] = part;
 
-                IEdmBom bom = (IEdmBom)vault.GetObject(EdmObjectType.EdmObject_BOM, BOMs[BOMs.GetUpperBound(0)].mlBomID);
+                args[1] = vault;
 
-                EdmBomView bomView = bom.GetView();
+                BW.RunWorkerAsync(args);
 
-                Array BomVal;
+                BWForm.ShowDialog();
 
-                bomView.GetRows(out BomVal);
+                ProcessBill(vault, file);
 
-                List<string> BillQty = new List<string>();
-
-                List<string> BillNumbers = new List<string>();
-
-                List<string> BillLevel = new List<string>();
-
-                string ParentNumber = BOMs[0].mbsBomName;
-
-                ParentNumber = ParentNumber.Substring(0, BOMs[0].mbsBomName.IndexOf(".SLDDRW"));
-
-                for (int i = 0; i < BomVal.Length; i++)
-                {
-                    IEdmBomCell bominfo = (IEdmBomCell)BomVal.GetValue(i);
-
-                    object Value;
-
-                    object Val_Qty;
-
-                    object CompVal;
-
-                    string Config;
-
-                    bool RO;
-
-                    bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_RefCount, out Val_Qty, out CompVal, out Config, out RO);
-
-                    bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out Value, out CompVal, out Config, out RO);
-
-                    if (!Value.ToString().Contains("PART"))
-                    {
-                        try
-                        {
-                            double QtyInt = double.Parse(Val_Qty.ToString());
-
-                            BillQty.Add(Val_Qty.ToString());
-
-                            BillNumbers.Add(Value.ToString());
-                        }
-                        catch { }
-                    }
-                }
-
-                ProcessBill(vault, file, BillNumbers, BillQty, out BillQty);
-
-                Bill_Master BM = new Bill_Master(BillNumbers, BillQty, ParentNumber, "", decimal.Parse(weight_val.ToString()), decimal.Parse(area_val.ToString()));
-
-                BM.ShowDialog();
-
-                return BM.DialogResult;
+                BW.DoWork -= BW_DoWorkDrawing;
             }
             #endregion
             else
             {
-                //Get the lastest version to continue
-                if (UpdateItemRef(file, part, vault))
-                {
-                    var = part.GetEnumeratorVariable();
-
-                    selected_config = DetermineConfig(part, vault, file, "");
-
-
                     if (selected_config != "")
                     {
-                        //object weight_val = "0";
+                        BW.DoWork += BW_DoWorkAssy;
 
-                        //object area_val = "0";
-                        try
-                        {
-                            var.GetVar("NetWeight", selected_config, out weight_val);
+                        object[] args = new object[3];
 
-                            var.GetVar("SurfaceArea", selected_config, out area_val);
-                        }
-                        catch (Exception ex) { MessageBox.Show(ex.Message + "\nWeight or Area could not be retrieved"); weight_val = 0; area_val = 0; }
+                        args[0] = part;
 
-                        #region Fill Bill
+                        args[1] = vault;
 
-                        IEdmBomMgr BomMgr = (IEdmBomMgr)vault.CreateUtility(EdmUtility.EdmUtil_BomMgr);
+                        args[2] = selected_config;
 
-                        Array LayoutVal;
+                        BW.RunWorkerAsync(args);
 
-                        Array BomVal = Array.CreateInstance(typeof(EdmBomInfo), 1);
+                        BWForm.ShowDialog();
 
-                        Array ColumnVal;
+                        ProcessBill(vault, file);
 
-                        BomMgr.GetBomLayouts(out LayoutVal);
-
-                        IEdmBomMgr EdmBomMgr = (IEdmBomMgr)vault.CreateUtility(EdmUtility.EdmUtil_BomMgr);
-
-                        Array BomLayouts;
-
-                        EdmBomMgr.GetBomLayouts(out BomLayouts);
-
-                        //selected_config = something;
-
-                        EdmBomView BomView = part.GetComputedBOM(1, 0, selected_config, 2);
-
-                        BomView.GetRows(out BomVal);
-
-                        BomView.GetColumns(out ColumnVal);
-
-                        EdmBomColumn ColVal = (EdmBomColumn)ColumnVal.GetValue(0);
-
-                        List<string> BillQty = new List<string>();
-
-                        List<string> BillNumbers = new List<string>();
-
-                        List<string> BillLevel = new List<string>();
-
-                        string ParentNumber = "";
-
-                        string PConfig = "";
-
-                        for (int i = 0; i < BomVal.Length; i++)
-                        {
-                            IEdmBomCell bominfo = (IEdmBomCell)BomVal.GetValue(i);
-
-                            object QtyValue;
-
-                            object PnumValue;
-
-                            object FnameValue;
-
-                            object ConfValue;
-
-                            object ParentConfig;
-
-                            object Name;
-
-                            object CompVal;
-
-                            string Config;
-                            
-                            bool RO;
-
-                            int itemlevel = bominfo.GetTreeLevel();
-
-                            if (itemlevel == 0)
-                            {
-                                bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
-
-                                ParentNumber = PnumValue.ToString();
-
-                                bominfo.GetVar(0,EdmBomColumnType.EdmBomCol_Configuration,out ParentConfig, out CompVal, out Config, out RO);
-
-                                PConfig = ParentConfig.ToString();
-                            }
-
-                            if (itemlevel == 1)
-                            {
-                                
-                                bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_RefCount, out QtyValue, out CompVal, out Config, out RO);
-
-                                bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
-                                
-                                if (PnumValue.ToString() == PConfig)
-                                {
-                                    bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Configuration, out ConfValue, out CompVal, out Config, out RO);
-
-                                    bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Name, out FnameValue, out CompVal, out Config, out RO);
-
-                                    //MessageBox.Show(PnumValue.ToString());
-
-                                    IEdmFile7 subpart = FindPartinVault(vault, FnameValue.ToString(), ConfValue.ToString());
-
-                                    EdmBomView SubBomView = subpart.GetComputedBOM(1, 0, ConfValue.ToString(), 2);
-
-                                    Array SubBomVal = Array.CreateInstance(typeof(EdmBomInfo), 1);
-
-                                    Array SubColumnVal;
-
-                                    SubBomView.GetRows(out SubBomVal);
-
-                                    SubBomView.GetColumns(out SubColumnVal);
-
-                                    for (int j = 0; j < SubBomVal.Length; j++)
-                                    {
-                                        IEdmBomCell subbominfo = (IEdmBomCell)SubBomVal.GetValue(j);
-
-                                        int subitemlevel = subbominfo.GetTreeLevel();
-
-                                        if (subitemlevel == 1)
-                                        {
-                                            subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_RefCount, out QtyValue, out CompVal, out Config, out RO);
-
-                                            subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
-
-                                            if (PnumValue == "")
-                                                subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Configuration, out PnumValue, out CompVal, out Config, out RO);
-
-                                            subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Name, out Name, out CompVal, out Config, out RO);
-
-                                            BillQty.Add(QtyValue.ToString());
-
-                                            BillNumbers.Add(PnumValue.ToString());
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    BillQty.Add(QtyValue.ToString());
-
-                                    BillNumbers.Add(PnumValue.ToString());
-                                }
-                                
-                            }
-
-                            bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
-
-                            bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Name, out Name, out CompVal, out Config, out RO);
-
-                            Debug.Print(PnumValue.ToString() + "\t" + itemlevel.ToString() + "\t" + Name.ToString());
-
-                        }
-                        #endregion
-
-                        List<string> CondBillNumbers = BillNumbers;
-                        
-                        //This doesn't work - it sets a loop that never finishes and unorganizes the relationship of qty to part number
-                        //FIX THIS
-                        /*
-                        CondBillNumbers.Sort();
-
-                        int k = 0;
-
-                        while (k < CondBillNumbers.Count - 1)
-                        {
-                            if (CondBillNumbers[k] == CondBillNumbers[k + 1] || CondBillNumbers[k] == "")
-                                CondBillNumbers.RemoveAt(k);
-                            else
-                                k++;
-                        }
-
-                        List<string> CondBillQty = new List<string>(CondBillNumbers.Count);
-
-                        for (int i = 0; i < CondBillNumbers.Count; i++)
-                        {
-                            CondBillQty.Add("0");
-                        }
-
-                        for (k = 0; k < CondBillNumbers.Count; k++)
-                        {
-                            for (int j = 0; j < BillNumbers.Count; j++)
-                            {
-                                if (BillNumbers[j] == CondBillNumbers[k])
-                                    CondBillQty[k] = (int.Parse(BillQty[j]) + int.Parse(CondBillQty[k])).ToString();
-                            }
-                        }
-                        */
-                        BillNumbers = CondBillNumbers;
-
-                        //BillQty = CondBillQty;
-
-                        ProcessBill(vault, file, BillNumbers, BillQty, out BillQty);
-
-                        Bill_Master BM = new Bill_Master(BillNumbers, BillQty, ParentNumber, "", decimal.Parse(weight_val.ToString()), decimal.Parse(area_val.ToString()));
-
-                        BM.ShowDialog();
-
-                        return BM.DialogResult;
+                        BW.DoWork -= BW_DoWorkAssy;
                     }
-                }
-                return DialogResult.Cancel;
             }
         }
 

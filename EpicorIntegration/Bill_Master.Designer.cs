@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bill_Master));
             this.MajorHorizSplit = new System.Windows.Forms.SplitContainer();
             this.weight = new System.Windows.Forms.NumericUpDown();
@@ -85,6 +85,7 @@
             this.sheetCoilUsageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.eNGDataDataSet = new Epicor_Integration.ENGDataDataSet();
             this.sheetCoil_UsageTableAdapter = new Epicor_Integration.ENGDataDataSetTableAdapters.SheetCoil_UsageTableAdapter();
+            this.BW = new System.ComponentModel.BackgroundWorker();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
@@ -508,8 +509,8 @@
             this.BillDataGrid.AllowUserToAddRows = false;
             this.BillDataGrid.AllowUserToDeleteRows = false;
             this.BillDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.BillDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.BillDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BillDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -564,7 +565,7 @@
             this.MtlPartNum.HeaderText = "Part Number";
             this.MtlPartNum.Name = "MtlPartNum";
             this.MtlPartNum.ReadOnly = true;
-            this.MtlPartNum.Width = 91;
+            this.MtlPartNum.Width = 84;
             // 
             // MtlPartNumPartDescription
             // 
@@ -591,7 +592,7 @@
             this.UOMCode.HeaderText = "UOM Code";
             this.UOMCode.Name = "UOMCode";
             this.UOMCode.ReadOnly = true;
-            this.UOMCode.Width = 85;
+            this.UOMCode.Width = 78;
             // 
             // ViewAsAsm
             // 
@@ -651,6 +652,12 @@
             // sheetCoil_UsageTableAdapter
             // 
             this.sheetCoil_UsageTableAdapter.ClearBeforeFill = true;
+            // 
+            // BW
+            // 
+            this.BW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BW_DoWork);
+            this.BW.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BW_ProcessChanged);
+            this.BW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BW_RunWorkerCompleted);
             // 
             // Bill_Master
             // 
@@ -738,6 +745,7 @@
         private ENGDataDataSetTableAdapters.SheetCoil_UsageTableAdapter sheetCoil_UsageTableAdapter;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
+        private System.ComponentModel.BackgroundWorker BW;
 
     }
 }

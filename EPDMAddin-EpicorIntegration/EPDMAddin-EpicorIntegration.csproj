@@ -53,6 +53,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.EdmLib">
+      <HintPath>obj\Debug\Interop.EdmLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -75,17 +79,12 @@
     <Compile Include="Update_Properties.Designer.cs">
       <DependentUpon>Update_Properties.cs</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="EdmLib">
-      <Guid>{5FA2C692-8393-4F31-9BDB-05E6F807D0D3}</Guid>
-      <VersionMajor>5</VersionMajor>
-      <VersionMinor>16</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
+    <Compile Include="Waiting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Waiting.Designer.cs">
+      <DependentUpon>Waiting.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -100,6 +99,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EPDM_EPICOR_LIB\EPDM_EPICOR_LIB.csproj">
+      <Project>{f24400dd-44a4-4995-a09f-53e6368fca34}</Project>
+      <Name>EPDM_EPICOR_LIB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EpicorIntegration\Epicor-Integration.csproj">
       <Project>{e20edb1a-3f4d-4f23-ac1a-f67d8ca4ccaa}</Project>
       <Name>Epicor-Integration</Name>
@@ -112,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Update_Properties.resx">
       <DependentUpon>Update_Properties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Waiting.resx">
+      <DependentUpon>Waiting.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

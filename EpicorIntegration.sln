@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopLevelReport", "TopLevelR
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "TopLevelReport_Setup", "TopLevelReport_Setup\TopLevelReport_Setup.isproj", "{1C2FCE34-C37E-4EFF-9E1F-09FA8F4E6B25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPDM_EPICOR_LIB", "EPDM_EPICOR_LIB\EPDM_EPICOR_LIB.csproj", "{F24400DD-44A4-4995-A09F-53E6368FCA34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -147,8 +149,21 @@ Global
 		{1C2FCE34-C37E-4EFF-9E1F-09FA8F4E6B25}.Release|Any CPU.Build.0 = SingleImage
 		{1C2FCE34-C37E-4EFF-9E1F-09FA8F4E6B25}.SingleImage|Any CPU.ActiveCfg = SingleImage
 		{1C2FCE34-C37E-4EFF-9E1F-09FA8F4E6B25}.SingleImage|Any CPU.Build.0 = SingleImage
+		{F24400DD-44A4-4995-A09F-53E6368FCA34}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{F24400DD-44A4-4995-A09F-53E6368FCA34}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{F24400DD-44A4-4995-A09F-53E6368FCA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24400DD-44A4-4995-A09F-53E6368FCA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F24400DD-44A4-4995-A09F-53E6368FCA34}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24400DD-44A4-4995-A09F-53E6368FCA34}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{F24400DD-44A4-4995-A09F-53E6368FCA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F24400DD-44A4-4995-A09F-53E6368FCA34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F24400DD-44A4-4995-A09F-53E6368FCA34}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{F24400DD-44A4-4995-A09F-53E6368FCA34}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
