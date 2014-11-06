@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Norco Industries")]
 [assembly: AssemblyProduct("Epicor Integration")]
-[assembly: AssemblyCopyright("Copyright © Norco Ind. 2013")]
+[assembly: AssemblyCopyright("Copyright © Norco Ind. 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2014.10.31.0")]
-[assembly: AssemblyFileVersion("2014.10.31.0")]
+[assembly: AssemblyVersion("2014.11.5.0")]
+[assembly: AssemblyFileVersion("2014.11.5.0")]

@@ -6,7 +6,7 @@ using System.Text;
 namespace EPDM_EPICOR_LIB
 {
 
-    public class BillItem
+    public class BillItem : IComparable<BillItem>
     {
         public string PartNumber { get; set; }
 
@@ -15,6 +15,11 @@ namespace EPDM_EPICOR_LIB
         public override string ToString()
         {
             return PartNumber;
+        }
+
+        public int CompareTo(BillItem other)
+        {
+            return this.PartNumber.CompareTo(other.PartNumber);
         }
     }
 }

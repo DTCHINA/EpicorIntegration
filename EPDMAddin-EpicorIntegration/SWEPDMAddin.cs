@@ -60,7 +60,7 @@ namespace EPDMEpicorIntegration
             
             poInfo.mbsCompany = "Norco Industries";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201411030;
+            poInfo.mlAddInVersion = (int)201411050;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -212,6 +212,10 @@ namespace EPDMEpicorIntegration
                                     Weight = 0;
 
                                     AddBill(vault, file, "");
+
+                                    Bill.Sort((x, y) => x.PartNumber.CompareTo(y.PartNumber));
+
+                                    CombineBill();
 
                                     Bill_Master BM = new Bill_Master(Bill, ParentNumber, "", Weight, Area);
 
@@ -405,7 +409,9 @@ namespace EPDMEpicorIntegration
 
                             if (subitemlevel == 1)
                             {
-                                subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_RefCount, out QtyValue, out CompVal, out Config, out RO);
+                                object QtyValue2;
+
+                                subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_RefCount, out QtyValue2, out CompVal, out Config, out RO);
 
                                 subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
 
@@ -416,7 +422,9 @@ namespace EPDMEpicorIntegration
 
                                 BillItem Item = new BillItem();
 
-                                Item.Qty = QtyValue.ToString();
+                                QtyValue2 = decimal.Parse(QtyValue.ToString()) * decimal.Parse(QtyValue2.ToString());
+
+                                Item.Qty = QtyValue2.ToString();
 
                                 Item.PartNumber = PnumValue.ToString();
 
@@ -835,11 +843,6 @@ namespace EPDMEpicorIntegration
                     }
                 }
             }
-
-            //BillQty = _BillQty;
-
-            //return BillNumbers;
-
         }
 
         public bool CheckBill(List<string> BillNumbers, IEdmVault7 vault, EdmCmdData file)
@@ -1229,6 +1232,25 @@ namespace EPDMEpicorIntegration
             }
             else
                 return true;
+        }
+
+        public void CombineBill()
+        {
+            for (int i = 0; i < Bill.Count; i++)
+            {
+                for (int j = 0; j < Bill.Count; j++)
+                {
+                    if (i != j)
+                    {
+                        if (Bill[i].PartNumber == Bill[j].PartNumber)
+                        {
+                            Bill[i].Qty = (decimal.Parse(Bill[j].Qty) + decimal.Parse(Bill[i].Qty)).ToString();
+
+                            Bill.RemoveAt(j);
+                        }
+                    }
+                }
+            }
         }
     }
 }

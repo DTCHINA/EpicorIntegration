@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bill_Master));
             this.MajorHorizSplit = new System.Windows.Forms.SplitContainer();
             this.weight = new System.Windows.Forms.NumericUpDown();
@@ -509,8 +509,8 @@
             this.BillDataGrid.AllowUserToAddRows = false;
             this.BillDataGrid.AllowUserToDeleteRows = false;
             this.BillDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.BillDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.BillDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BillDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -626,7 +626,6 @@
             // 
             // EnableNew
             // 
-            this.EnableNew.Enabled = true;
             this.EnableNew.Tick += new System.EventHandler(this.EnableNew_Tick);
             // 
             // RawMenu

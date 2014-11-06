@@ -206,6 +206,8 @@ namespace Epicor_Integration
 
             if (BillDataGrid.Rows.Count == 0)
                 addraw.Enabled = false;
+
+            EnableNew.Enabled = true;
         }
                        
         /// <summary>
