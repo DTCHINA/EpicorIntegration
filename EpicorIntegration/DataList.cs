@@ -416,6 +416,19 @@ namespace Epicor_Integration
             }
             catch { }
         }
+
+        public static DataSet GetRevList(string Pnumber)
+        {
+            DataSet PRev = new DataSet();
+
+            PartRevSearch PrevSearch = new PartRevSearch(EpicConn);
+
+            bool morePages;
+
+            PRev = (DataSet)PrevSearch.GetList("PartNum = '" + Pnumber + "'", 0, 0, out morePages);
+
+            return PRev;
+        }
         
         public static void CheckInPart(string GroupID, string PartNumber, string Revision)
         {

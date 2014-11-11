@@ -655,7 +655,6 @@
             // BW
             // 
             this.BW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BW_DoWork);
-            this.BW.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BW_ProcessChanged);
             this.BW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BW_RunWorkerCompleted);
             // 
             // Bill_Master

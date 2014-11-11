@@ -206,7 +206,7 @@
             this.uom_cbo.FormattingEnabled = true;
             this.uom_cbo.Location = new System.Drawing.Point(8, 189);
             this.uom_cbo.Name = "uom_cbo";
-            this.uom_cbo.Size = new System.Drawing.Size(180, 21);
+            this.uom_cbo.Size = new System.Drawing.Size(159, 21);
             this.uom_cbo.TabIndex = 23;
             // 
             // label9

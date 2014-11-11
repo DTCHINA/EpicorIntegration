@@ -1477,11 +1477,6 @@ namespace Epicor_Integration
             Setbill((List<BillItem>)e.Argument);
         }
 
-        private void BW_ProcessChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
-        {
-
-        }
-
         private void BW_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             BWForm.Close();

@@ -19,6 +19,10 @@ namespace Epicor_Integration
             set { _EngWBDS = value; }
         }
 
+        private string _PartNumber { get; set; }
+
+        private string _Rev { get; set; }
+
         private DataSet ResourceTable
         {
             get;
@@ -90,9 +94,11 @@ namespace Epicor_Integration
         {
             InitializeComponent();
 
-            supplierid_txt.Leave += supplierid_txt_Leave;
+            _PartNumber = PartNumber;
 
-            //string GroupID = Properties.Settings.Default.ecogroup;
+            _Rev = Rev;
+
+            supplierid_txt.Leave += supplierid_txt_Leave;
 
             OPDataGrid.AutoGenerateColumns = false;
             
@@ -102,46 +108,40 @@ namespace Epicor_Integration
 
             desc_txt.Text = UpdateParentDesc();
 
-            bool morePages;
-
-            OpMaster OpMaster = new Epicor.Mfg.BO.OpMaster(DataList.EpicConn);
-
-            DataSet ds = (DataSet)OpMaster.GetRows("", "", "", "", "", "", 100, 0, out morePages);
-
-            opmast_cbo.DataSource = ds.Tables["OPMaster"];
-
-            subcon_opsmast_cbo.DataSource = ds.Tables["OPMaster"];
-
-            opmast_cbo.ValueMember = "OPCode";
-
-            opmast_cbo.DisplayMember = "OPDesc";
-
-            subcon_opsmast_cbo.ValueMember = "OPCode";
-
-            subcon_opsmast_cbo.DisplayMember = "OPDesc";
-
-            uom_cbo.DataSource = DataList.PartUOM(partnumber_txt.Text);
-
-            uom_cbo.DisplayMember = "UOMCode";
-
-            uom_cbo.ValueMember = "UOMCode";
-
             try
             {
-                EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+                bool morePages;
+
+                OpMaster OpMaster = new Epicor.Mfg.BO.OpMaster(DataList.EpicConn);
+
+                DataSet ds = (DataSet)OpMaster.GetRows("", "", "", "", "", "", 100, 0, out morePages);
+
+                opmast_cbo.DataSource = ds.Tables["OPMaster"];
+
+                subcon_opsmast_cbo.DataSource = ds.Tables["OPMaster"];
+
+                opmast_cbo.ValueMember = "OPCode";
+
+                opmast_cbo.DisplayMember = "OPDesc";
+
+                subcon_opsmast_cbo.ValueMember = "OPCode";
+
+                subcon_opsmast_cbo.DisplayMember = "OPDesc";
+
+                uom_cbo.DataSource = DataList.PartUOM(_PartNumber);
+
+                uom_cbo.DisplayMember = "UOMCode";
+
+                uom_cbo.ValueMember = "UOMCode";
+
+                BW.RunWorkerAsync();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Data Inconsistency!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
                 this.Close();
             }
-
-            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
-            
-            DataList.EpicClose();
-
-            FillLaborEntry();
         }
 
         public Operations_Master()
@@ -172,8 +172,6 @@ namespace Epicor_Integration
             OPDataGrid.SelectionChanged += OPDataGrid_SelectionChanged;
 
             this.FormClosing += Operations_Master_FormClosing;
-
-            opmast_cbo.Click += opmast_cbo_Click;
 
             ResourceTable = DataList.ResourceGroup();
 
@@ -220,8 +218,6 @@ namespace Epicor_Integration
             }
 
             OPDataGrid.ClearSelection();
-
-            SetSubConField();
 
             SNRequiredOpr_chk.Click += SNRequiredOpr_chk_Click;
 
@@ -284,21 +280,9 @@ namespace Epicor_Integration
             }
         }
 
-        void SetSubConField()
-        {/*
-            for (int i = 0; i < OPDataGrid.Rows.Count; i++)
-            {
-                string val = EngWBDS.Tables["ECOOpr"].Rows[i]["VendorNumVendorID"].ToString();
-
-                if (val != null && val != "")
-                {
-                    OPDataGrid["subcon", i].Value = true;
-                }
-            }*/
-        }
-
         void OPDataGrid_SelectionChanged(object sender, EventArgs e)
         {
+
             int rowindex = OPDataGrid.CurrentCellAddress.Y;
 
             object val = OPDataGrid["SubContract", rowindex].Value;
@@ -380,20 +364,49 @@ namespace Epicor_Integration
                 #endregion
             }
 
-            bool checkval = bool.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowindex]["SNRequiredOpr"].ToString());
-
-            if (checkval)
-            {
-                SNRequiredOpr_chk.Checked = checkval;
-
-                SNRequiredOpr_chk_CheckedChanged(SNRequiredOpr_chk, null);
-            }
-
-            rowindex = OPDataGrid.CurrentCellAddress.Y;
-
-            //AutoRecieve_chk.Enabled = (rowindex == OPDataGrid.Rows.Count - 1);
+            SNRequiredOpr_chk.Checked = bool.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowindex]["SNRequiredOpr"].ToString());
 
             AutoRecieve_chk.Checked = bool.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowindex]["AutoReceive"].ToString());
+        }
+
+        private void SNRequiredOpr_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+
+            EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
+
+            OPDataGrid["SNRequiredOpr", RowIndex].Value = SNRequiredOpr_chk.Checked;
+            try
+            {
+                if (SNRequiredOpr_chk.Checked)
+                {
+                    for (int i = RowIndex; i < EngWBDS.Tables["ECOOpr"].Rows.Count; i++)
+                    {
+                        EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
+
+                        OPDataGrid["SNRequiredOpr", i].Value = SNRequiredOpr_chk.Checked;
+                    }
+                }
+            }
+            catch { }
+
+            AutoRecieve_chk.Checked = (SNRequiredOpr_chk.Checked ? false : AutoRecieve_chk.Checked);
+        }
+
+        private void AutoRecieve_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+
+            EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["AutoReceive"] = AutoRecieve_chk.Checked;
+
+            if (AutoRecieve_chk.Checked)
+            {
+                foreach (DataGridViewRow dr in OPDataGrid.Rows)
+                {
+                    dr.Cells["AutoReceive"].Value = (dr.Index == RowIndex);
+                    //EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["AutoReceive"] = (
+                }
+            }
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -405,29 +418,15 @@ namespace Epicor_Integration
 
         private void savebtn_Click(object sender, EventArgs e)
         {
-            bool AR = AutoRecieve_chk.Enabled;
-
-            bool SN = SNRequiredOpr_chk.Enabled;
-
             try
             {
                 EngWB.Update(EngWBDS);
-
-                //EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
                 resource_show.Enabled = true;
 
                 EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
                 OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
-
-                SetSubConField();
-
-                //FillLaborEntryGrid();
-
-                //AutoRecieve_chk.Enabled = AR;
-
-                //SNRequiredOpr_chk.Enabled = SN;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error!"); }
         }
@@ -444,6 +443,8 @@ namespace Epicor_Integration
 
             opmast_cbo.SelectedIndex = 0;
 
+            prodhrs_num.Value = 0;
+
             OpMaster OpMaster = new Epicor.Mfg.BO.OpMaster(DataList.EpicConn);
 
             bool morePages;
@@ -457,8 +458,6 @@ namespace Epicor_Integration
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpDesc"] = opmast_cbo.Text;
 
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
-
-            //LaborEntryMethod_cbo.SelectedIndex = 1;
 
             LaborEntryMethod_cbo.SelectedValue = "Q";
 
@@ -478,6 +477,19 @@ namespace Epicor_Integration
 
             removebtn.Enabled = true;
 
+            bool serialized = false;
+
+            for (int i = 0; i < OPDataGrid.Rows.Count; i++)
+            {
+                if (OPDataGrid["SNRequiredOpr", i].Value.ToString() == "true")
+                {
+                    serialized = true;
+
+                    break;
+                }
+            }
+
+            if (!serialized)
             for (int i = 0; i < OPDataGrid.Rows.Count; i++)
             {
                 EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["AutoReceive"] = (i == OPDataGrid.Rows.Count - 1);
@@ -486,8 +498,6 @@ namespace Epicor_Integration
             try
             {
                 OPDataGrid.CurrentCell = OPDataGrid.Rows[OPDataGrid.Rows.Count - 1].Cells[0];
-
-                prodhrs_num.Value = 0;
             }
             catch (Exception ex)
             { MessageBox.Show(ex.Message); }
@@ -495,10 +505,10 @@ namespace Epicor_Integration
 
         private void removebtn_Click(object sender, EventArgs e)
         {
-            savebtn_Click(savebtn, null);
-
             int RowIndex = OPDataGrid.CurrentCell.RowIndex;
 
+            savebtn_Click(savebtn, null);
+            
             DataRow del_row = EngWBDS.Tables["ECOOpr"].Rows[RowIndex];
 
             OPDataGrid.SelectionChanged -= OPDataGrid_SelectionChanged;
@@ -541,6 +551,16 @@ namespace Epicor_Integration
             EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
             OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+        }
+
+        private void opmast_cbo_Enter(object sender, EventArgs e)
+        {
+            opmast_cbo.SelectedIndexChanged += opmast_cbo_SelectedIndexChanged;
+        }
+
+        private void opmast_cbo_Leave(object sender, EventArgs e)
+        {
+            opmast_cbo.SelectedIndexChanged -= opmast_cbo_SelectedIndexChanged;
         }
 
         private void opmast_cbo_SelectedIndexChanged(object sender, EventArgs e)
@@ -622,13 +642,6 @@ namespace Epicor_Integration
                 }
             }
             catch (Exception ex) { System.Diagnostics.Debug.Print(ex.Message); }
-
-            opmast_cbo.SelectedIndexChanged -= opmast_cbo_SelectedIndexChanged;
-        }
-
-        void opmast_cbo_Click(object sender, EventArgs e)
-        {
-            opmast_cbo.SelectedIndexChanged += opmast_cbo_SelectedIndexChanged;
         }
 
         private void prodhrs_num_Enter(object sender, EventArgs e)
@@ -747,8 +760,6 @@ namespace Epicor_Integration
         void TS_Click(object sender, EventArgs e)
         {
                 EngWB.Update(EngWBDS);
-
-                opmast_cbo.SelectedIndexChanged -= opmast_cbo_SelectedIndexChanged;
 
                 prodhrs_num.ValueChanged -= prodhrs_num_ValueChanged;
 
@@ -870,42 +881,7 @@ namespace Epicor_Integration
                     resource_show.Enabled = true;
                 }
 
-                opmast_cbo.SelectedIndexChanged += opmast_cbo_SelectedIndexChanged;
-
                 prodhrs_num.ValueChanged += prodhrs_num_ValueChanged;
-        }
-
-        private void SNRequiredOpr_chk_CheckedChanged(object sender, EventArgs e)
-        {
-            int RowIndex = OPDataGrid.CurrentCell.RowIndex;
-
-            EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
-
-            OPDataGrid["SNRequiredOpr", RowIndex].Value = SNRequiredOpr_chk.Checked;
-
-            if (SNRequiredOpr_chk.Checked)
-            {
-                for (int i = RowIndex; i < EngWBDS.Tables["ECOOpr"].Rows.Count; i++)
-                {
-                    EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["SNRequiredOpr"] = SNRequiredOpr_chk.Checked;
-
-                    OPDataGrid["SNRequiredOpr", i].Value = SNRequiredOpr_chk.Checked;
-                }
-            }
-
-            //if (OPDataGrid.CurrentCellAddress.Y == OPDataGrid.Rows.Count - 1)
-                //AutoRecieve_chk.Enabled = !SNRequiredOpr_chk.Checked;
-
-            AutoRecieve_chk.Checked = (SNRequiredOpr_chk.Checked ? false : AutoRecieve_chk.Checked);
-        }
-
-        private void AutoRecieve_chk_CheckedChanged(object sender, EventArgs e)
-        {
-            int RowIndex = OPDataGrid.CurrentCell.RowIndex;
-
-            EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["AutoReceive"] = AutoRecieve_chk.Checked;
-
-            //EnableSNChk();
         }
 
         private void EnableSNChk()
@@ -987,6 +963,16 @@ namespace Epicor_Integration
             }
         }
 
+        private void LaborEntryMethod_cbo_Leave(object sender, EventArgs e)
+        {
+            LaborEntryMethod_cbo.SelectedIndexChanged -= LaborEntryMethod_cbo_SelectedIndexChanged;
+        }
+
+        private void LaborEntryMethod_cbo_Enter(object sender, EventArgs e)
+        {
+            LaborEntryMethod_cbo.SelectedIndexChanged += LaborEntryMethod_cbo_SelectedIndexChanged;
+        }
+
         private void LaborEntryMethod_cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -1009,6 +995,8 @@ namespace Epicor_Integration
             catch { }
         }
 
+        #region SubCon Stuff
+
         private void Subcontract_btn_Click(object sender, EventArgs e)
         {
             EngWB.GetNewECOOpr(EngWBDS, Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "");
@@ -1016,8 +1004,6 @@ namespace Epicor_Integration
             EngWB.EcoOprInitSNReqSubConShip(EngWBDS);
 
             OPDataGrid["SubContract", OPDataGrid.Rows.Count - 1].Value = true;
-
-            SetSubConField();
         }
 
         private void refneeded_chk_CheckedChanged(object sender, EventArgs e)
@@ -1158,6 +1144,8 @@ namespace Epicor_Integration
             }
         }
 
+        #endregion
+
         private void moveup_btn_Click(object sender, EventArgs e)
         {
             try
@@ -1214,11 +1202,62 @@ namespace Epicor_Integration
             prodhrs_num.Value = OpMin.RetVal;
 
             OpMin.Dispose();
+
+            opmast_cbo_SelectedIndexChanged(this, null);
         }
 
         private void resource_timer_Tick(object sender, EventArgs e)
         {
             resource_show.Enabled = (EngWBDS.Tables["ECOOpr"].Rows.Count != 0);
+        }
+
+        private void prodstd_cbo_Leave(object sender, EventArgs e)
+        {
+            prodstd_cbo.SelectedIndexChanged -= prodstd_cbo_SelectedIndexChanged;
+        }
+
+        private void prodstd_cbo_Enter(object sender, EventArgs e)
+        {
+            prodstd_cbo.SelectedIndexChanged += prodstd_cbo_SelectedIndexChanged;
+        }
+
+        private void AutoRecieve_chk_Enter(object sender, EventArgs e)
+        {
+            AutoRecieve_chk.CheckedChanged += AutoRecieve_chk_CheckedChanged;
+        }
+
+        private void AutoRecieve_chk_Leave(object sender, EventArgs e)
+        {
+            AutoRecieve_chk.CheckedChanged -= AutoRecieve_chk_CheckedChanged;
+        }
+
+        private void SNRequiredOpr_chk_Enter(object sender, EventArgs e)
+        {
+            SNRequiredOpr_chk.CheckedChanged += SNRequiredOpr_chk_CheckedChanged;
+        }
+
+        private void SNRequiredOpr_chk_Leave(object sender, EventArgs e)
+        {
+            SNRequiredOpr_chk.CheckedChanged -= SNRequiredOpr_chk_CheckedChanged;
+        }
+
+        private void DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, _PartNumber, _Rev, "", DateTime.Today, false, false);
+        }
+
+        private void WorkFinished(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+
+            DataList.EpicClose();
+
+            FillLaborEntry();
+        }
+
+        private void ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+
         }
     }
 }

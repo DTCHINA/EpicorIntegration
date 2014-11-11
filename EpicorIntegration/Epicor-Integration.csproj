@@ -115,6 +115,9 @@
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.PartOnHandWhse.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Epicor.Mfg.BO.PartRevSearch">
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.PartRevSearch.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.BO.Plant">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Plant.dll</HintPath>
       <Private>True</Private>
@@ -151,9 +154,9 @@
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.Session.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Epicor.Mfg.IF.IBomSearch">
-      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IBomSearch.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Epicor.Mfg.IF.IBomSearch, Version=9.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IBomSearch.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.ICCCountCycle">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.ICCCountCycle.dll</HintPath>
@@ -187,6 +190,10 @@
     <Reference Include="Epicor.Mfg.IF.IPartOnHandWhse">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IPartOnHandWhse.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IPartRevSearch, Version=9.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IPartRevSearch.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IPlant">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IPlant.dll</HintPath>
@@ -238,6 +245,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RevCompare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RevCompare.Designer.cs">
+      <DependentUpon>RevCompare.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bill_CopyFrom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -425,6 +438,9 @@
     <Compile Include="Undo_Checkout.Designer.cs">
       <DependentUpon>Undo_Checkout.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RevCompare.resx">
+      <DependentUpon>RevCompare.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bill_CopyFrom.resx">
       <DependentUpon>Bill_CopyFrom.cs</DependentUpon>
     </EmbeddedResource>

@@ -159,5 +159,17 @@ namespace Epicor_Integration.Properties {
                 this["mtlreqtype"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool comparemsg {
+            get {
+                return ((bool)(this["comparemsg"]));
+            }
+            set {
+                this["comparemsg"] = value;
+            }
+        }
     }
 }

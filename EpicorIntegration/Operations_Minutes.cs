@@ -34,6 +34,29 @@ namespace Epicor_Integration
             InitializeComponent();
         }
 
+        public Operations_Minutes(string _huck, string _tec, string _bolt, string _rivet, string _band, string _heat, string _spring, string _hooks)
+        {
+            InitializeComponent();
+
+            hucks_txt.Text = _huck;
+
+            tec_txt.Text = _tec;
+
+            bolt_txt.Text = _bolt;
+
+            rivet_txt.Text = _rivet;
+
+            heat_txt.Text = _heat;
+
+            band_txt.Text = _band;
+
+            springs_txt.Text = _spring;
+
+            zhooks_txt.Text = _hooks;
+
+            CalculateAssemble();
+        }
+
         private void Operations_Minutes_Load(object sender, EventArgs e)
         {
             this.epicorMinutesTableAdapter.Fill(this.engDataDataSet.EpicorMinutes);
@@ -65,7 +88,7 @@ namespace Epicor_Integration
                     Band.Seconds = double.Parse(dr["Seconds"].ToString());
                 }
 
-                if (dr["Name"].ToString() == "Time Per Huck")
+                if (dr["Name"].ToString() == "Time per HUCK")
                 {
                     Huck.Efficiency = double.Parse(dr["Efficiency"].ToString());
 
@@ -132,6 +155,8 @@ namespace Epicor_Integration
 
             double rivet_time = 0;
 
+            double heat_time = 0;
+
             try
             {
                 band_time = ((Band.Seconds / Band.Efficiency) / 60) * int.Parse(band_txt.Text);
@@ -174,7 +199,13 @@ namespace Epicor_Integration
             }
             catch { }
 
-            minpc_txt.Text = (band_time + huck_time + tec_time + bolt_time + spring_time + zhook_time + rivet_time).ToString();
+            try
+            {
+                heat_time = ((Heat.Seconds / Heat.Efficiency) / 60) * int.Parse(heat_txt.Text);
+            }
+            catch { }
+
+            minpc_txt.Text = (band_time + huck_time + tec_time + bolt_time + spring_time + zhook_time + rivet_time + heat_time).ToString();
         }
 
         void heat_txt_TextChanged(object sender, EventArgs e)
@@ -252,6 +283,11 @@ namespace Epicor_Integration
             CalculateVals();
         }
 
+        private void rivet_txt_TextChanged(object sender, EventArgs e)
+        {
+            CalculateVals();
+        }
+
         private void ok_btn_Click(object sender, EventArgs e)
         {
             try
@@ -287,6 +323,8 @@ namespace Epicor_Integration
         {
             CalculateVals();
         }
+
+
     }
 
     public class OperationsType

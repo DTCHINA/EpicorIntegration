@@ -517,6 +517,8 @@ namespace Epicor_Integration
 
                             DataList.UpdateDatum(Pdata, "Part", 0, "UseMaskSeq", true.ToString());
 
+                            DataList.UpdateDatum(Pdata, "Part", 0, "SNLastUsedSeq", "");
+
                             Part.Update(Pdata);
 
                             Pdata = Part.GetByID(PartNumber);

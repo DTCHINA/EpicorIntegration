@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Operations_Master));
             this.MajorContainer = new System.Windows.Forms.SplitContainer();
             this.ops_grp = new System.Windows.Forms.GroupBox();
@@ -85,8 +85,8 @@
             this.PrimaryResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LaborEntryDesc = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.LaborEntry = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SNRequiredOpr = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.AutoReceive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SNRequiredOpr = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstUnitCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,6 +106,7 @@
             this.SubContract = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.resource_timer = new System.Windows.Forms.Timer(this.components);
+            this.BW = new System.ComponentModel.BackgroundWorker();
             this.MajorContainer.Panel1.SuspendLayout();
             this.MajorContainer.Panel2.SuspendLayout();
             this.MajorContainer.SuspendLayout();
@@ -184,7 +185,8 @@
             this.LaborEntryMethod_cbo.Name = "LaborEntryMethod_cbo";
             this.LaborEntryMethod_cbo.Size = new System.Drawing.Size(150, 21);
             this.LaborEntryMethod_cbo.TabIndex = 12;
-            this.LaborEntryMethod_cbo.SelectedIndexChanged += new System.EventHandler(this.LaborEntryMethod_cbo_SelectedIndexChanged);
+            this.LaborEntryMethod_cbo.Enter += new System.EventHandler(this.LaborEntryMethod_cbo_Enter);
+            this.LaborEntryMethod_cbo.Leave += new System.EventHandler(this.LaborEntryMethod_cbo_Leave);
             // 
             // prodstd_cbo
             // 
@@ -194,7 +196,8 @@
             this.prodstd_cbo.Name = "prodstd_cbo";
             this.prodstd_cbo.Size = new System.Drawing.Size(191, 21);
             this.prodstd_cbo.TabIndex = 9;
-            this.prodstd_cbo.SelectedIndexChanged += new System.EventHandler(this.prodstd_cbo_SelectedIndexChanged);
+            this.prodstd_cbo.Enter += new System.EventHandler(this.prodstd_cbo_Enter);
+            this.prodstd_cbo.Leave += new System.EventHandler(this.prodstd_cbo_Leave);
             // 
             // prodhrs_num
             // 
@@ -204,7 +207,7 @@
             this.prodhrs_num.Size = new System.Drawing.Size(82, 20);
             this.prodhrs_num.TabIndex = 8;
             this.prodhrs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.prodhrs_num.Enter+= new System.EventHandler(this.prodhrs_num_Enter);
+            this.prodhrs_num.Enter += new System.EventHandler(this.prodhrs_num_Enter);
             this.prodhrs_num.Leave += new System.EventHandler(this.prodhrs_num_Leave);
             // 
             // opmast_cbo
@@ -215,7 +218,8 @@
             this.opmast_cbo.Name = "opmast_cbo";
             this.opmast_cbo.Size = new System.Drawing.Size(279, 21);
             this.opmast_cbo.TabIndex = 4;
-            this.opmast_cbo.SelectedIndexChanged += new System.EventHandler(this.opmast_cbo_SelectedIndexChanged);
+            this.opmast_cbo.Enter += new System.EventHandler(this.opmast_cbo_Enter);
+            this.opmast_cbo.Leave += new System.EventHandler(this.opmast_cbo_Leave);
             // 
             // label3
             // 
@@ -376,7 +380,8 @@
             this.AutoRecieve_chk.TabIndex = 10;
             this.AutoRecieve_chk.Text = "Auto Recieve into Inventory";
             this.AutoRecieve_chk.UseVisualStyleBackColor = true;
-            this.AutoRecieve_chk.CheckedChanged += new System.EventHandler(this.AutoRecieve_chk_CheckedChanged);
+            this.AutoRecieve_chk.Enter += new System.EventHandler(this.AutoRecieve_chk_Enter);
+            this.AutoRecieve_chk.Leave += new System.EventHandler(this.AutoRecieve_chk_Leave);
             // 
             // SNRequiredOpr_chk
             // 
@@ -387,7 +392,8 @@
             this.SNRequiredOpr_chk.TabIndex = 11;
             this.SNRequiredOpr_chk.Text = "Serial Num. Required";
             this.SNRequiredOpr_chk.UseVisualStyleBackColor = true;
-            this.SNRequiredOpr_chk.CheckedChanged += new System.EventHandler(this.SNRequiredOpr_chk_CheckedChanged);
+            this.SNRequiredOpr_chk.Enter += new System.EventHandler(this.SNRequiredOpr_chk_Enter);
+            this.SNRequiredOpr_chk.Leave += new System.EventHandler(this.SNRequiredOpr_chk_Leave);
             // 
             // desc_txt
             // 
@@ -609,8 +615,8 @@
             this.OPDataGrid.AllowUserToAddRows = false;
             this.OPDataGrid.AllowUserToDeleteRows = false;
             this.OPDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.OPDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.OPDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.OPDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.OPDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OPDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -622,8 +628,8 @@
             this.PrimaryResourceGrpDesc,
             this.LaborEntryDesc,
             this.LaborEntry,
-            this.SNRequiredOpr,
             this.AutoReceive,
+            this.SNRequiredOpr,
             this.QtyPer,
             this.IUM,
             this.EstUnitCost,
@@ -679,19 +685,19 @@
             // 
             this.OpDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.OpDesc.DataPropertyName = "OpDesc";
-            this.OpDesc.HeaderText = "Operation Description";
+            this.OpDesc.HeaderText = "Description";
             this.OpDesc.Name = "OpDesc";
             this.OpDesc.ReadOnly = true;
-            this.OpDesc.Width = 123;
+            this.OpDesc.Width = 85;
             // 
             // ProdStandard
             // 
             this.ProdStandard.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.ProdStandard.DataPropertyName = "ProdStandard";
-            this.ProdStandard.HeaderText = "Production Hours";
+            this.ProdStandard.HeaderText = "Prod Hours";
             this.ProdStandard.Name = "ProdStandard";
             this.ProdStandard.ReadOnly = true;
-            this.ProdStandard.Width = 105;
+            this.ProdStandard.Width = 78;
             // 
             // stdformat
             // 
@@ -728,6 +734,15 @@
             this.LaborEntry.ReadOnly = true;
             this.LaborEntry.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // AutoReceive
+            // 
+            this.AutoReceive.DataPropertyName = "AutoReceive";
+            this.AutoReceive.HeaderText = "Auto Recieve";
+            this.AutoReceive.Name = "AutoReceive";
+            this.AutoReceive.ReadOnly = true;
+            this.AutoReceive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.AutoReceive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // SNRequiredOpr
             // 
             this.SNRequiredOpr.DataPropertyName = "SNRequiredOpr";
@@ -736,15 +751,6 @@
             this.SNRequiredOpr.ReadOnly = true;
             this.SNRequiredOpr.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.SNRequiredOpr.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // AutoReceive
-            // 
-            this.AutoReceive.DataPropertyName = "AutoReceive";
-            this.AutoReceive.HeaderText = "Auto Recieve in Inv";
-            this.AutoReceive.Name = "AutoReceive";
-            this.AutoReceive.ReadOnly = true;
-            this.AutoReceive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.AutoReceive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // QtyPer
             // 
@@ -879,6 +885,12 @@
             this.resource_timer.Interval = 500;
             this.resource_timer.Tick += new System.EventHandler(this.resource_timer_Tick);
             // 
+            // BW
+            // 
+            this.BW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.DoWork);
+            this.BW.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.BW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.WorkFinished);
+            // 
             // Operations_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -961,6 +973,7 @@
         private System.Windows.Forms.Button moveup_btn;
         private System.Windows.Forms.Button movedown_btn;
         private System.Windows.Forms.Button prodstd_btn;
+        private System.Windows.Forms.Timer resource_timer;
         private System.Windows.Forms.DataGridViewTextBoxColumn OprSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
@@ -969,8 +982,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PrimaryResourceGrpDesc;
         private System.Windows.Forms.DataGridViewComboBoxColumn LaborEntryDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn LaborEntry;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn SNRequiredOpr;
         private System.Windows.Forms.DataGridViewCheckBoxColumn AutoReceive;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn SNRequiredOpr;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyPer;
         private System.Windows.Forms.DataGridViewTextBoxColumn IUM;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstUnitCost;
@@ -988,6 +1001,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VendorNumTermsCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn VendorNumCity;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SubContract;
-        private System.Windows.Forms.Timer resource_timer;
+        private System.ComponentModel.BackgroundWorker BW;
     }
 }

@@ -57,7 +57,7 @@
             this.savebtn.Location = new System.Drawing.Point(263, 262);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
-            this.savebtn.TabIndex = 7;
+            this.savebtn.TabIndex = 3;
             this.savebtn.Text = "&Save";
             this.savebtn.UseVisualStyleBackColor = true;
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
@@ -90,9 +90,11 @@
             this.gid_desc.ReadOnly = true;
             this.gid_desc.Size = new System.Drawing.Size(181, 20);
             this.gid_desc.TabIndex = 0;
+            this.gid_desc.TabStop = false;
             // 
             // Searchbtn
             // 
+            this.Searchbtn.Enabled = false;
             this.Searchbtn.Location = new System.Drawing.Point(6, 19);
             this.Searchbtn.Name = "Searchbtn";
             this.Searchbtn.Size = new System.Drawing.Size(75, 23);
@@ -106,8 +108,10 @@
             // 
             this.Searchtxt.Location = new System.Drawing.Point(87, 21);
             this.Searchtxt.Name = "Searchtxt";
+            this.Searchtxt.ReadOnly = true;
             this.Searchtxt.Size = new System.Drawing.Size(100, 20);
             this.Searchtxt.TabIndex = 1;
+            this.Searchtxt.TabStop = false;
             // 
             // groupBox2
             // 
@@ -135,7 +139,7 @@
             this.econum_txt.Location = new System.Drawing.Point(9, 112);
             this.econum_txt.Name = "econum_txt";
             this.econum_txt.Size = new System.Drawing.Size(178, 20);
-            this.econum_txt.TabIndex = 4;
+            this.econum_txt.TabIndex = 0;
             // 
             // comments_txt
             // 
@@ -143,7 +147,7 @@
             this.comments_txt.Multiline = true;
             this.comments_txt.Name = "comments_txt";
             this.comments_txt.Size = new System.Drawing.Size(178, 101);
-            this.comments_txt.TabIndex = 5;
+            this.comments_txt.TabIndex = 2;
             // 
             // newrev_txt
             // 
@@ -151,20 +155,23 @@
             this.newrev_txt.Name = "newrev_txt";
             this.newrev_txt.Size = new System.Drawing.Size(100, 20);
             this.newrev_txt.TabIndex = 3;
+            this.newrev_txt.TabStop = false;
             // 
             // currev_txt
             // 
             this.currev_txt.Location = new System.Drawing.Point(87, 47);
             this.currev_txt.Name = "currev_txt";
+            this.currev_txt.ReadOnly = true;
             this.currev_txt.Size = new System.Drawing.Size(100, 20);
             this.currev_txt.TabIndex = 2;
+            this.currev_txt.TabStop = false;
             // 
             // revdesc_txt
             // 
             this.revdesc_txt.Location = new System.Drawing.Point(9, 151);
             this.revdesc_txt.Name = "revdesc_txt";
             this.revdesc_txt.Size = new System.Drawing.Size(375, 20);
-            this.revdesc_txt.TabIndex = 6;
+            this.revdesc_txt.TabIndex = 1;
             // 
             // label5
             // 

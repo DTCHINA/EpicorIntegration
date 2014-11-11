@@ -281,6 +281,7 @@
             this.rivet_txt.Name = "rivet_txt";
             this.rivet_txt.Size = new System.Drawing.Size(100, 20);
             this.rivet_txt.TabIndex = 14;
+            this.rivet_txt.TextChanged += new System.EventHandler(this.rivet_txt_TextChanged);
             // 
             // label17
             // 

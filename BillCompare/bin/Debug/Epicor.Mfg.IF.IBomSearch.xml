@@ -1,0 +1,308 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Mfg.IF.IBomSearch</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartRevDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartRevAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlInspDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlRestrictionDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlRestrictSubstDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprAttchDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOpDtlDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprInspDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprRestrictionDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprRestrictSubstDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartCOPartDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlRefDesDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartRevRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartRevAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlInspRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlRestrictionRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlRestrictSubstRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprAttchRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOpDtlRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprInspRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprRestrictionRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprRestrictSubstRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartCOPartRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlRefDesRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartRevRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartRevAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlInspRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlRestrictionRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlRestrictSubstRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprAttchRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOpDtlRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprInspRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprRestrictionRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartOprRestrictSubstRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartCOPartRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.BomSearchDataSet.PartMtlRefDesRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.IF.IBomSearch">
+            <summary> bo/BomSearch/BomSearch.p
+            To return records from the bom option for drag/drop inside
+            Job Entry, QuoteAsm Entry, and Engineering Work Bench and any
+            other places that may need to search this data.
+            </summary>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IBomSearch.createPartMtlRefDes">
+            <remarks>
+            &amp;QTableName - MANDATORY - Name of table to find
+            &amp;QLock - type of lock to put on record NO-LOCK (default) or EXCLUSIVE-LOCK
+            &amp;QWhere - MANDATORY - criteria to find record
+            &amp;QFind - type of find to perform, unique, first, next or last
+            &amp;Columns - List of columns
+            </remarks>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IBomSearch.GetAllAlternateTrees(System.String,System.String,System.Boolean,System.Nullable{System.DateTime},System.Boolean)">
+            <summary>
+            This methods will return a dataset that will include PartRev, PartOpr, PartOpDtl, PartMtl,
+            PartMtlRestriction, PartMtlRestrictSubst, PartMtlRefDes, PartOprRestriction and PartOprRestrictSubst if those
+            records exist for the appropriate input parameters.
+            ALL ALTERNATES OF THE PARTREVISION WILL BE RETURNED if ipcomplete is true
+            This method will also allow you to return the whole dataset or allow the user to specify how
+            far down the tree they would like to return possible "part" records for.
+            </summary>
+            <param name="ipPartNum">The Part Number to return data for. </param>
+            <param name="ipRevisionNum">The Revision Number to return data for. </param>
+            <param name="ipUseDefaultMethod">For partrev records other than the first one,
+            would you like to use the default alternate method or the inputted one? </param>
+            <param name="ipAsOfDate">The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this group? </param>
+            <returns type="Epicor.Mfg.BO.BomSearchDataSet">Dataset to search for Bom records. </returns>
+        </member>
+        <member name="M:Epicor.Mfg.IF.IBomSearch.GetDatasetForTree(System.String,System.String,System.String,System.Boolean,System.Nullable{System.DateTime},System.Boolean)">
+            <summary>
+            This methods will return a dataset that will include PartRev, PartOpr, PartOpDtl, PartMtl,
+            PartMtlRestriction, PartMtlRestrictSubst, PartOprRestriction and PartOprRestrictSubst if those
+            records exist for the appropriate input parameters.
+            This method will also allow you to return the whole dataset or allow the user to specify how
+            the revision to return possible "part" records for.
+            </summary>
+            <param name="ipPartNum">The Part Number to return data for. </param>
+            <param name="ipRevisionNum">The Revision Number to return data for. </param>
+            <param name="ipAltMethod">The Alternate Method to return data for. </param>
+            <param name="ipUseDefaultMethod">For partrev records other than the first one,
+            would you like to use the default alternate method or the inputted one? </param>
+            <param name="ipAsOfDate">The as of date for the revisions, what would this look as of this date</param>
+            <param name="ipCompleteTree">Would you like to retun a complete dataset for this group? </param>
+            <returns type="Epicor.Mfg.BO.BomSearchDataSet">Dataset to search for Bom records. </returns>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartRevListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartRevListDataSet.PartRevListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartRevListDataSet.PartRevListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Epicor.Mfg.BO.PartRevListDataSet.PartRevListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>
