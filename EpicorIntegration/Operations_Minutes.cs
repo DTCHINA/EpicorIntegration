@@ -11,6 +11,8 @@ namespace Epicor_Integration
 {
     public partial class Operations_Minutes : Form
     {
+        private bool fromSW = false;
+
         public OperationsType Band = new OperationsType();
 
         public OperationsType Huck = new OperationsType();
@@ -38,6 +40,12 @@ namespace Epicor_Integration
         {
             InitializeComponent();
 
+            fromSW = true;
+
+            operation_cbo.Visible = false;
+
+            ok_btn.Text = "to Clipboard";
+
             hucks_txt.Text = _huck;
 
             tec_txt.Text = _tec;
@@ -53,8 +61,6 @@ namespace Epicor_Integration
             springs_txt.Text = _spring;
 
             zhooks_txt.Text = _hooks;
-
-            CalculateAssemble();
         }
 
         private void Operations_Minutes_Load(object sender, EventArgs e)
@@ -137,6 +143,8 @@ namespace Epicor_Integration
                     Rivet.Seconds = double.Parse(dr["Seconds"].ToString());
                 }
             }
+
+            CalculateAssemble();
         }
 
         private void CalculateAssemble()
@@ -295,6 +303,8 @@ namespace Epicor_Integration
                 RetVal = decimal.Parse(minpc_txt.Text);
             }
             catch { MessageBox.Show("Value is not valid!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+            if (fromSW)
+                Clipboard.SetText(RetVal.ToString());
         }
 
         private void mult_txt_TextChanged(object sender, EventArgs e)

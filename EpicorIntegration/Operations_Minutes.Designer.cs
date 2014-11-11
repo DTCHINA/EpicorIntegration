@@ -156,7 +156,7 @@
             this.minpc_txt.Location = new System.Drawing.Point(10, 262);
             this.minpc_txt.Name = "minpc_txt";
             this.minpc_txt.ReadOnly = true;
-            this.minpc_txt.Size = new System.Drawing.Size(211, 20);
+            this.minpc_txt.Size = new System.Drawing.Size(137, 20);
             this.minpc_txt.TabIndex = 8;
             // 
             // label6
@@ -179,7 +179,7 @@
             // ok_btn
             // 
             this.ok_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ok_btn.Location = new System.Drawing.Point(249, 231);
+            this.ok_btn.Location = new System.Drawing.Point(162, 233);
             this.ok_btn.Name = "ok_btn";
             this.ok_btn.Size = new System.Drawing.Size(75, 23);
             this.ok_btn.TabIndex = 12;
@@ -190,7 +190,7 @@
             // cancel_btn
             // 
             this.cancel_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancel_btn.Location = new System.Drawing.Point(249, 260);
+            this.cancel_btn.Location = new System.Drawing.Point(162, 262);
             this.cancel_btn.Name = "cancel_btn";
             this.cancel_btn.Size = new System.Drawing.Size(75, 23);
             this.cancel_btn.TabIndex = 13;
@@ -401,7 +401,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancel_btn;
-            this.ClientSize = new System.Drawing.Size(335, 294);
+            this.ClientSize = new System.Drawing.Size(248, 294);
             this.Controls.Add(this.assembly_group);
             this.Controls.Add(this.rails_chk);
             this.Controls.Add(this.mult_txt);
