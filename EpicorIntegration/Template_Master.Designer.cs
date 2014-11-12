@@ -1313,6 +1313,7 @@
             this.prodhrs_num.TabIndex = 8;
             this.prodhrs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.prodhrs_num.ValueChanged += new System.EventHandler(this.prodhrs_num_ValueChanged);
+            this.prodhrs_num.Leave += new System.EventHandler(this.prodhrs_num_Leave);
             // 
             // opmast_cbo
             // 

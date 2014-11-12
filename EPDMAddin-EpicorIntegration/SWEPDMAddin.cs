@@ -12,10 +12,10 @@ using System.ComponentModel;
 namespace EPDMEpicorIntegration
 {
     //Release GUID
-    [Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
+    //[Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
  
     //Test GUID
-    //[Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
+    [Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
 
     public class SWEPDMAddin : IEdmAddIn5
     {
@@ -41,9 +41,9 @@ namespace EPDMEpicorIntegration
         {
             string MenuName;
 
-            bool test = false;
+            //bool test = false;
 
-            //bool test = true;
+            bool test = true;
 
             if (!test)
             {
@@ -60,7 +60,7 @@ namespace EPDMEpicorIntegration
             
             poInfo.mbsCompany = "Norco Industries";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201411110;
+            poInfo.mlAddInVersion = (int)201411120;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;

@@ -1658,6 +1658,8 @@ namespace Epicor_Integration
             try
             {
                 OPDataGrid["OprPropertyOptions5", OPDataGrid.CurrentRow.Index].Value = laborentry_cbo.SelectedValue.ToString();
+
+                UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
             }
             catch { }
         }
@@ -1836,6 +1838,8 @@ namespace Epicor_Integration
             try
             {
                 OPDataGrid["OprPropertyUOM", OPDataGrid.CurrentRow.Index].Value = prodstd_cbo.SelectedValue.ToString();
+
+               // UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
             }
             catch { }
         }
@@ -2199,6 +2203,8 @@ namespace Epicor_Integration
             RefreshTransaction();
 
             ResDataGrid.CurrentRow.Cells["ResPropertyUOM"].Value = resource_cbo.SelectedValue;
+
+            UpdateLine(ResDataGrid, restemplatename_txt.Text, "Res");
         }
 
         void resourcegrp_cbo_Click(object sender, EventArgs e)
@@ -2257,6 +2263,13 @@ namespace Epicor_Integration
             TemplateAdapter.FillByType(RetVal, "BOM");
 
             return (DataTable)RetVal;
+        }
+
+        private void prodhrs_num_Leave(object sender, EventArgs e)
+        {
+            OPDataGrid["OprPropertyQty", OPDataGrid.CurrentRow.Index].Value = prodhrs_num.Value;
+
+            UpdateLine(OPDataGrid, oomtemplatename_txt.Text, "Opr");
         }
     }
 }

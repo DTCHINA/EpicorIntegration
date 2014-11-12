@@ -57,7 +57,7 @@
             this.savebtn.Location = new System.Drawing.Point(263, 262);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
-            this.savebtn.TabIndex = 3;
+            this.savebtn.TabIndex = 1;
             this.savebtn.Text = "&Save";
             this.savebtn.UseVisualStyleBackColor = true;
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
@@ -68,7 +68,7 @@
             this.cancelbtn.Location = new System.Drawing.Point(344, 262);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
-            this.cancelbtn.TabIndex = 8;
+            this.cancelbtn.TabIndex = 2;
             this.cancelbtn.Text = "&Cancel";
             this.cancelbtn.UseVisualStyleBackColor = true;
             this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
@@ -130,7 +130,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 69);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(407, 187);
-            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part";
             // 
@@ -139,7 +139,7 @@
             this.econum_txt.Location = new System.Drawing.Point(9, 112);
             this.econum_txt.Name = "econum_txt";
             this.econum_txt.Size = new System.Drawing.Size(178, 20);
-            this.econum_txt.TabIndex = 0;
+            this.econum_txt.TabIndex = 1;
             // 
             // comments_txt
             // 
@@ -154,7 +154,7 @@
             this.newrev_txt.Location = new System.Drawing.Point(87, 73);
             this.newrev_txt.Name = "newrev_txt";
             this.newrev_txt.Size = new System.Drawing.Size(100, 20);
-            this.newrev_txt.TabIndex = 3;
+            this.newrev_txt.TabIndex = 0;
             this.newrev_txt.TabStop = false;
             // 
             // currev_txt
@@ -171,7 +171,7 @@
             this.revdesc_txt.Location = new System.Drawing.Point(9, 151);
             this.revdesc_txt.Name = "revdesc_txt";
             this.revdesc_txt.Size = new System.Drawing.Size(375, 20);
-            this.revdesc_txt.TabIndex = 1;
+            this.revdesc_txt.TabIndex = 3;
             // 
             // label5
             // 
