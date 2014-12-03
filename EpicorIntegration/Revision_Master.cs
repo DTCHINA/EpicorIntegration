@@ -42,14 +42,6 @@ namespace Epicor_Integration
         public Revision_Master(string PartNumber, string Revision, string RevisionDesc, string GroupID)
         {
             InitializeComponent();
-            /*
-            gid_cbo.DataSource = DataList.GroupIDDataSet().Tables[0];
-
-            gid_cbo.ValueMember = "Description";
-
-            gid_cbo.DisplayMember = "GroupID";
-            */
-            //MessageBox.Show("Auto-select groupID still missing");
 
             Searchtxt.Text = PartNumber;
 
@@ -125,6 +117,5 @@ namespace Epicor_Integration
             Searchfrm.Dispose();
                 
         }
-
     }
 }

@@ -55,13 +55,13 @@
             this.RightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.resetFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gid_cbo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.checkedout_chk = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.legacy_chk = new System.Windows.Forms.CheckBox();
-            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.RightClickMenu.SuspendLayout();
             this.SuspendLayout();
@@ -92,6 +92,7 @@
             this.pnum_txt.Name = "pnum_txt";
             this.pnum_txt.Size = new System.Drawing.Size(131, 20);
             this.pnum_txt.TabIndex = 2;
+            this.pnum_txt.Leave += new System.EventHandler(this.pnum_txt_Leave);
             // 
             // groupBox1
             // 
@@ -312,6 +313,14 @@
             this.configurationToolStripMenuItem.Text = "Configuration";
             this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
             // 
+            // checkForUpdatesToolStripMenuItem
+            // 
+            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.checkForUpdatesToolStripMenuItem.Text = "Check for Updates";
+            this.checkForUpdatesToolStripMenuItem.Visible = false;
+            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -367,14 +376,6 @@
             this.legacy_chk.Text = "Legacy File";
             this.legacy_chk.UseVisualStyleBackColor = true;
             this.legacy_chk.CheckedChanged += new System.EventHandler(this.legacy_chk_CheckedChanged);
-            // 
-            // checkForUpdatesToolStripMenuItem
-            // 
-            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.checkForUpdatesToolStripMenuItem.Text = "Check for Updates";
-            this.checkForUpdatesToolStripMenuItem.Visible = false;
-            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
             // Main
             // 

@@ -41,9 +41,9 @@ namespace EPDMEpicorIntegration
         {
             string MenuName;
 
-            //bool test = false;
+            bool test = false;
 
-            bool test = true;
+            test = true;
 
             if (!test)
             {
@@ -60,7 +60,7 @@ namespace EPDMEpicorIntegration
             
             poInfo.mbsCompany = "Norco Industries";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201411120;
+            poInfo.mlAddInVersion = (int)201412031;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -97,267 +97,305 @@ namespace EPDMEpicorIntegration
 
         void IEdmAddIn5.OnCmd(ref EdmCmd poCmd, ref System.Array ppoData)
         {
-            BW.RunWorkerCompleted += BW_RunWorkerCompleted;
-
-            Debug.Print("Command Type: " + poCmd.meCmdType.ToString() + "\n  " + System.DateTime.Now.ToString());
-
-            IEdmVault5 edmVault = poCmd.mpoVault as IEdmVault5;
-
-            EdmCmdData[] Temp = (EdmCmdData[])ppoData;
-
-            IEdmVault7 vault = (IEdmVault7)poCmd.mpoVault;
-
-            vault_ = vault;
-
             try
             {
-                file_ = Temp[0];
-            }
-            catch { }
+                BW.RunWorkerCompleted += BW_RunWorkerCompleted;
 
-            DataHelper helper = new DataHelper();
+                BW.WorkerSupportsCancellation = true;
 
-            try
-            {
-                switch (poCmd.meCmdType)
+                Debug.Print("Command Type: " + poCmd.meCmdType.ToString() + "\n  " + System.DateTime.Now.ToString());
+
+                IEdmVault5 edmVault = poCmd.mpoVault as IEdmVault5;
+
+                EdmCmdData[] Temp = (EdmCmdData[])ppoData;
+
+                IEdmVault7 vault = (IEdmVault7)poCmd.mpoVault;
+
+                vault_ = vault;
+
+                try
                 {
-                    case EdmCmdType.EdmCmd_Menu:
-                        switch (poCmd.mlCmdID)
-                        {
-                            case 1:
-                                #region Item Master
+                    file_ = Temp[0];
+                }
+                catch { }
 
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
-                                        GetItemInfo(vault, file,"");
-                                }
-                                #endregion
-                                break;
-                            case 2:
-                                #region Add Item/Rev/OOM/BOM
+                DataHelper helper = new DataHelper();
 
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
+                try
+                {
+                    switch (poCmd.meCmdType)
+                    {
+                        case EdmCmdType.EdmCmd_Menu:
+                            switch (poCmd.mlCmdID)
+                            {
+                                case 1:
+                                    #region Item Master
+
+                                    foreach (EdmCmdData file in Temp)
                                     {
-                                        IEdmFile5 part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
-
-                                        string selected_config = DetermineConfig(part, vault, file, "");
-                                        
-                                        if (GetItemInfo(vault, file,selected_config) == DialogResult.Cancel)
-                                            break;
-
-                                        if (AddRevision(vault, file, selected_config) == DialogResult.Cancel)
-                                            break;
-
-                                        if (AddOOM(vault, file, selected_config) == DialogResult.Cancel)
-                                            break;
-                                        AddBill(vault, file, selected_config);
-
-                                        Bill.Sort((x, y) => x.PartNumber.CompareTo(y.PartNumber));
-
-                                        CombineBill();
-
-                                        Bill_Master BM = new Bill_Master(Bill, ParentNumber, "",Weight, Area);
-
-                                        if (BM.ShowDialog() == DialogResult.Cancel)
-                                            break;
-
-                                        if (CheckInPart(vault, file, selected_config) == DialogResult.Cancel)
-                                            break;
+                                        if (ValidSelection(file))
+                                            GetItemInfo(vault, file, "");
                                     }
-                                }
+                                    #endregion
+                                    break;
+                                case 2:
+                                    #region Add Item/Rev/OOM/BOM
 
-                                #endregion
-                                break;
-                            case 3:
-                                #region CheckOut_Master
-
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
-                                        CheckOutPart(vault, file);
-                                }
-                                #endregion
-                                break;
-                            case 4:
-                                #region Add Revision
-
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
-                                        AddRevision(vault, file, "");
-                                }
-
-                                #endregion
-                                break;
-                            case 5:
-                                #region OOM_Master
-
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
-                                        AddOOM(vault, file, "");
-                                }
-
-                                #endregion
-                                break;
-                            case 6:
-                                #region Bill Master
-
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    Bill.Clear();
-
-                                    ParentNumber = "";
-
-                                    Area = 0;
-
-                                    Weight = 0;
-
-                                    AddBill(vault, file, "");
-
-                                    Bill.Sort((x, y) => x.PartNumber.CompareTo(y.PartNumber));
-
-                                    CombineBill();
-
-                                    Bill_Master BM = new Bill_Master(Bill, ParentNumber, "", Weight, Area);
-
-                                    BM.ShowDialog();
-                                }
-                                #endregion
-                                break;
-                            case 7:
-                                #region CheckIn_Master
-
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
-                                        CheckInPart(vault, file, "");
-                                }
-                                #endregion
-                                break;
-                            case 0:
-                                #region RevCompare
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    string file_ext = file.mbsStrData1.Substring(file.mbsStrData1.LastIndexOf('.') + 1).ToUpper();
-                                    if (file_ext == "SLDASM")
+                                    foreach (EdmCmdData file in Temp)
                                     {
-                                        if (file.mlObjectID1 != null)
+                                        if (ValidSelection(file))
                                         {
-                                            System.Data.DataSet DS = new System.Data.DataSet();
+                                            IEdmFile5 part = (IEdmFile5)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
 
-                                            DS.Tables.Add("PartMtl");
+                                            string selected_config = DetermineConfig(part, vault, file, "");
 
-                                            DS.Tables[0].Columns.Add("MtlPartNum");
+                                            if (GetItemInfo(vault, file, selected_config) == DialogResult.Cancel)
+                                                break;
 
-                                            DS.Tables[0].Columns.Add("QtyPer");
+                                            if (AddRevision(vault, file, selected_config) == DialogResult.Cancel)
+                                                break;
 
-                                            Bill.Clear();
+                                            if (AddOOM(vault, file, selected_config) == DialogResult.Cancel)
+                                                break;
+                                            AddBill(vault, file, selected_config);
 
-                                            ParentNumber = "";
+                                            Bill.Sort((x, y) => x.PartNumber.CompareTo(y.PartNumber));
+
+                                            CombineBill();
+
+                                            Bill_Master BM = new Bill_Master(Bill, ParentNumber, "", Weight, Area);
+
+                                            if (BM.ShowDialog() == DialogResult.Cancel)
+                                                break;
+
+                                            if (CheckInPart(vault, file, selected_config) == DialogResult.Cancel)
+                                                break;
+                                        }
+                                    }
+
+                                    #endregion
+                                    break;
+                                case 3:
+                                    #region CheckOut_Master
+
+                                    foreach (EdmCmdData file in Temp)
+                                    {
+                                        if (ValidSelection(file))
+                                            CheckOutPart(vault, file);
+                                    }
+                                    #endregion
+                                    break;
+                                case 4:
+                                    #region Add Revision
+
+                                    foreach (EdmCmdData file in Temp)
+                                    {
+                                        if (ValidSelection(file))
+                                            AddRevision(vault, file, "");
+                                    }
+
+                                    #endregion
+                                    break;
+                                case 5:
+                                    #region OOM_Master
+
+                                    foreach (EdmCmdData file in Temp)
+                                    {
+                                        if (ValidSelection(file))
+                                            AddOOM(vault, file, "");
+                                    }
+
+                                    #endregion
+                                    break;
+                                case 6:
+                                    #region Bill Master
+
+                                    foreach (EdmCmdData file in Temp)
+                                    {
+                                        Bill.Clear();
+
+                                        ParentNumber = "";
+
+                                        Area = 0;
+
+                                        Weight = 0;
+
+                                        try
+                                        {
+
+                                            //BW = null;
+
+                                            //BW = new BackgroundWorker();
 
                                             AddBill(vault, file, "");
-                                            try
+
+                                            Bill.Sort((x, y) => x.PartNumber.CompareTo(y.PartNumber));
+
+                                            CombineBill();
+
+                                            Bill_Master BM = new Bill_Master(Bill, ParentNumber, "", Weight, Area);
+
+                                            BM.ShowDialog();
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            MessageBox.Show(ex.Message);
+                                        }
+                                    }
+                                    #endregion
+                                    break;
+                                case 7:
+                                    #region CheckIn_Master
+
+                                    foreach (EdmCmdData file in Temp)
+                                    {
+                                        if (ValidSelection(file))
+                                            CheckInPart(vault, file, "");
+                                    }
+                                    #endregion
+                                    break;
+                                case 0:
+                                    #region RevCompare
+                                    foreach (EdmCmdData file in Temp)
+                                    {
+                                        try
+                                        {
+                                            string file_ext = file.mbsStrData1.Substring(file.mbsStrData1.LastIndexOf('.') + 1).ToUpper();
+                                            if (file_ext == "SLDASM")
                                             {
-                                                Bill.Sort((x, y) => x.PartNumber.CompareTo(y.PartNumber));
-
-                                                CombineBill();
-
-                                                foreach (BillItem item in Bill)
+                                                if (file.mlObjectID1 != null)
                                                 {
-                                                    System.Data.DataRow dr = DS.Tables[0].NewRow();
+                                                    System.Data.DataSet DS = new System.Data.DataSet();
 
-                                                    dr["MtlPartNum"] = item.PartNumber;
+                                                    DS.Tables.Add("PartMtl");
 
-                                                    dr["QtyPer"] = item.Qty;
+                                                    DS.Tables[0].Columns.Add("MtlPartNum");
 
-                                                    DS.Tables[0].Rows.Add(dr);
+                                                    DS.Tables[0].Columns.Add("QtyPer");
+
+                                                    Bill.Clear();
+
+                                                    ParentNumber = "";
+
+                                                    AddBill(vault, file, "");
+
+                                                    try
+                                                    {
+                                                        Bill.Sort((x, y) => x.PartNumber.CompareTo(y.PartNumber));
+
+                                                        CombineBill();
+
+                                                        foreach (BillItem item in Bill)
+                                                        {
+                                                            System.Data.DataRow dr = DS.Tables[0].NewRow();
+
+                                                            dr["MtlPartNum"] = item.PartNumber;
+
+                                                            dr["QtyPer"] = item.Qty;
+
+                                                            DS.Tables[0].Rows.Add(dr);
+                                                        }
+                                                    }
+                                                    catch (Exception ex)
+                                                    { MessageBox.Show(ex.Message); }
+
+                                                    try
+                                                    {
+                                                        RevCompare RC = new RevCompare(DS, ParentNumber);
+
+                                                        RC.ShowDialog();
+                                                    }
+                                                    catch (Exception ex)
+                                                    { MessageBox.Show(ex.Message); }
+                                                }
+                                                else
+                                                {
+                                                    RevCompare RC = new RevCompare();
+
+                                                    RC.ShowDialog();
                                                 }
                                             }
-                                            catch (Exception ex)
-                                            { MessageBox.Show(ex.Message); }
-
-                                            try
+                                            else
                                             {
-                                                RevCompare RC = new RevCompare(DS, ParentNumber);
-
-                                                RC.ShowDialog();
+                                                MessageBox.Show("This function cannot be used on Parts.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                                             }
-                                            catch (Exception ex)
-                                            { MessageBox.Show(ex.Message); }
                                         }
-                                        else
+                                        catch (Exception ex)
                                         {
-                                            RevCompare RC = new RevCompare();
-
-                                            RC.ShowDialog();
+                                            MessageBox.Show(ex.Message);
                                         }
                                     }
-                                    else
+                                    break;
+                                    #endregion
+                                case -2:
+                                    foreach (EdmCmdData file in Temp)
                                     {
-                                        MessageBox.Show("This function cannot be used on Parts.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                        try
+                                        {
+                                            Mins[0] = 0; //Huck
+                                            Mins[1] = 0; //Tec
+                                            Mins[2] = 0; //Bolt
+                                            Mins[3] = 0; //Rivet
+                                            Mins[4] = 0; //Band
+                                            Mins[5] = 0; //Heat
+                                            Mins[6] = 0; //Spring
+                                            Mins[7] = 0; //Zhooks
+
+                                            BW = null;
+
+                                            BW = new BackgroundWorker();
+
+                                            CalcMins(vault, file, "");
+
+                                            Epicor_Integration.Operations_Minutes OpsMins = new Operations_Minutes(Mins[0].ToString(), Mins[1].ToString(), Mins[2].ToString(), Mins[3].ToString(), Mins[4].ToString(), Mins[5].ToString(), Mins[6].ToString(), Mins[7].ToString());
+
+                                            OpsMins.Show();
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            MessageBox.Show(ex.Message);
+                                        }
                                     }
-                                }
-                                break;
-                                #endregion
-                            case -2:
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    Mins[0] = 0; //Huck
-                                    Mins[1] = 0; //Tec
-                                    Mins[2] = 0; //Bolt
-                                    Mins[3] = 0; //Rivet
-                                    Mins[4] = 0; //Band
-                                    Mins[5] = 0; //Heat
-                                    Mins[6] = 0; //Spring
-                                    Mins[7] = 0; //Zhooks
+                                    break;
+                                case -1:
+                                    Config conf = new Config();
 
-                                    CalcMins(vault, file, "");
+                                    conf.ShowDialog();
 
-                                    Epicor_Integration.Operations_Minutes OpsMins = new Operations_Minutes(Mins[0].ToString(), Mins[1].ToString(), Mins[2].ToString(), Mins[3].ToString(), Mins[4].ToString(), Mins[5].ToString(), Mins[6].ToString(),Mins[7].ToString());
-
-                                    OpsMins.Show();
-                                }
-                                break;
-                            case -1:
-                                Config conf = new Config();
-
-                                conf.ShowDialog();
-
-                                break;
-                            case -10:
-                                foreach (EdmCmdData file in Temp)
-                                {
-                                    if (ValidSelection(file))
+                                    break;
+                                case -10:
+                                    foreach (EdmCmdData file in Temp)
                                     {
-                                        Update_Properties Update = new Update_Properties(vault, file);
+                                        if (ValidSelection(file))
+                                        {
+                                            Update_Properties Update = new Update_Properties(vault, file);
 
-                                        Update.ShowDialog();
+                                            Update.ShowDialog();
+                                        }
                                     }
-                                }
-                                break;
-                            case -100:
-                                Template_Master TM = new Template_Master();
+                                    break;
+                                case -100:
+                                    Template_Master TM = new Template_Master();
 
-                                TM.ShowDialog();
+                                    TM.ShowDialog();
 
-                                break;
-                            default:
-                                break;
-                        }                        break;
-                    default:
-                        break;
+                                    break;
+                                default:
+                                    break;
+                            } break;
+                        default:
+                            break;
+                    }
+                }
+                catch (COMException exp)
+                {
+                    string errorName, errorDesc;
+                    edmVault.GetErrorString(exp.ErrorCode, out errorName, out errorDesc);
+                    edmVault.MsgBox(0, errorDesc, EdmMBoxType.EdmMbt_OKOnly, errorName);
                 }
             }
-            catch (COMException exp)
-            {
-                string errorName, errorDesc;
-                edmVault.GetErrorString(exp.ErrorCode, out errorName, out errorDesc);
-                edmVault.MsgBox(0, errorDesc, EdmMBoxType.EdmMbt_OKOnly, errorName);
-            }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
 
         void BW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -479,7 +517,7 @@ namespace EPDMEpicorIntegration
 
                         IEdmFile7 subpart = FindPartinVault(vault, FnameValue.ToString(), ConfValue.ToString());
 
-                        EdmBomView SubBomView = subpart.GetComputedBOM(1, 0, ConfValue.ToString(), 2);
+                        EdmBomView SubBomView = subpart.GetComputedBOM(1, 0, ConfValue.ToString(), 1);
 
                         Array SubBomVal = Array.CreateInstance(typeof(EdmBomInfo), 1);
 
@@ -1432,7 +1470,9 @@ namespace EPDMEpicorIntegration
 
             Search.Clear();
 
-            Search.AddVariable("Number", SearchPart);
+            Search.FileName = SearchPart;
+
+            //Search.AddVariable("Number", SearchPart);
 
             //Search.AddVariable("Number", SearchPart);
 

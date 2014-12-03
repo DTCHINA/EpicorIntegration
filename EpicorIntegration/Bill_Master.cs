@@ -336,76 +336,82 @@ namespace Epicor_Integration
 
         private void SaveChanges()
         {
-            string opMessage;
-
-            string opMsgType;
-
-            List<bool> Modded = new List<bool>();
-
-            List<bool> Added = new List<bool>();
-
-            foreach (DataRow DR in EngWBDS.Tables["ECOMtl"].Rows)
+            try
             {
-                if (DR.RowState == DataRowState.Modified || DR.RowState == DataRowState.Added)
+                string opMessage;
+
+                string opMsgType;
+
+                List<bool> Modded = new List<bool>();
+
+                List<bool> Added = new List<bool>();
+
+                foreach (DataRow DR in EngWBDS.Tables["ECOMtl"].Rows)
                 {
-                    #region Validate all data
-                    if (DR.RowState == DataRowState.Modified)
+                    if (DR.RowState == DataRowState.Modified || DR.RowState == DataRowState.Added)
                     {
-                        Modded.Add(true);
-                        Added.Add(false);
+                        #region Validate all data
+                        if (DR.RowState == DataRowState.Modified)
+                        {
+                            Modded.Add(true);
+                            Added.Add(false);
+                        }
+                        else
+                        {
+                            Added.Add(true);
+                            Modded.Add(false);
+                        }
+
+                        string partnumber = DR["MtlPartNum"].ToString();
+
+                        string ops = DR["RelatedOperation"].ToString();
+
+                        string mtlseq = DR["MtlSeq"].ToString();
+
+                        EngWB.CheckECOMtlMtlPartNum(partnumber, out opMessage, out opMsgType, EngWBDS);
+
+                        EngWB.CheckECOMtlMtlSeqRelatedOperation(int.Parse(mtlseq), int.Parse(ops), "", out opMessage, out opMsgType, EngWBDS);
+
+                        EngWB.ChangeECOMtlQtyPer(EngWBDS);
+
+                        EngWB.ChangeECOMtlRelatedOperation(int.Parse(ops), EngWBDS);
+
+                        //Set changes to accepted to run ECOMtlRelated or it will change all modified rows to equal the last modified rows related operations
+                        DR.AcceptChanges();
+
+                        //EngWB.ChangeECOMtlMtlPartNum(EngWBDS);
+
+                        #endregion
                     }
                     else
                     {
-                        Added.Add(true);
                         Modded.Add(false);
+
+                        Added.Add(false);
                     }
-
-                    string partnumber = DR["MtlPartNum"].ToString();
-
-                    string ops = DR["RelatedOperation"].ToString();
-
-                    string mtlseq = DR["MtlSeq"].ToString();
-
-                    EngWB.CheckECOMtlMtlPartNum(partnumber, out opMessage, out opMsgType, EngWBDS);
-
-                    EngWB.CheckECOMtlMtlSeqRelatedOperation(int.Parse(mtlseq), int.Parse(ops), "", out opMessage, out opMsgType, EngWBDS);
-
-                    EngWB.ChangeECOMtlQtyPer(EngWBDS);
-
-                    EngWB.ChangeECOMtlRelatedOperation(int.Parse(ops), EngWBDS);
-
-                    //Set changes to accepted to run ECOMtlRelated or it will change all modified rows to equal the last modified rows related operations
-                    DR.AcceptChanges();
-
-                    //EngWB.ChangeECOMtlMtlPartNum(EngWBDS);
-
-                    #endregion
                 }
-                else
+
+                for (int i = 0; i < EngWBDS.Tables["ECOMtl"].Rows.Count; i++)
                 {
-                    Modded.Add(false);
-
-                    Added.Add(false);
+                    if (Modded[i])
+                    {
+                        EngWBDS.Tables["ECOMtl"].Rows[i].SetModified();
+                    }
+                    if (Added[i])
+                        EngWBDS.Tables["ECOMtl"].Rows[i].SetAdded();
                 }
-            }
-
-            for (int i = 0; i < EngWBDS.Tables["ECOMtl"].Rows.Count; i++)
-            {
-                if (Modded[i])
+                try
                 {
-                    EngWBDS.Tables["ECOMtl"].Rows[i].SetModified();
+                    EngWB.Update(EngWBDS);
                 }
-                if (Added[i])
-                    EngWBDS.Tables["ECOMtl"].Rows[i].SetAdded();
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+                BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
             }
-            try
+            catch (Exception ex)
             {
-                EngWB.Update(EngWBDS);
+                MessageBox.Show(ex.Message);
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-
-            BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
-
         }
 
         public int GetNextSeq()

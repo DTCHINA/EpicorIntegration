@@ -11,13 +11,14 @@ using EdmLib;
 using Epicor.Mfg.BO;
 using Epicor.Mfg.Core;
 using System.Deployment.Application;
+using EPDM_EPICOR_LIB;
 
 
 namespace ECO_Helper
 {
     public partial class Main : Form
     {
-
+        SWHelper SWHelper = new SWHelper();
 
         public Main()
         {
@@ -99,6 +100,8 @@ namespace ECO_Helper
         void pnum_txt_Leave(object sender, EventArgs e)
         {
             AlreadyCheckedOut();
+
+            desc_txt.Text = SWHelper.GetCurrentDescription(filedir_txt.Text ,pnum_txt.Text);            
         }
 
         void checkedout_chk_Click(object sender, EventArgs e)
@@ -156,6 +159,61 @@ namespace ECO_Helper
 
         private void addrev_btn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DialogResult DR = MessageBox.Show("Would you like to get the revision comments from the model?", "Revision Comments", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (DR == DialogResult.Yes)
+                {
+                    if (!legacy_chk.Checked)
+                    {
+                        if (filedir_txt.Text != null && filedir_txt.Text != "")
+                        {
+                            SWHelper.GetBill(filedir_txt.Text, pnum_txt.Text);
+
+                            List<BillItem> Bill = SWHelper.Bill;
+
+                            System.Data.DataSet DS = new System.Data.DataSet();
+
+                            DS.Tables.Add("PartMtl");
+
+                            DS.Tables[0].Columns.Add("MtlPartNum");
+
+                            DS.Tables[0].Columns.Add("QtyPer");
+
+                            try
+                            {
+                                Bill.Sort((x, y) => x.PartNumber.CompareTo(y.PartNumber));
+
+                                Bill = SWHelper.CombineBill(Bill);
+
+                                foreach (BillItem item in Bill)
+                                {
+                                    System.Data.DataRow dr = DS.Tables[0].NewRow();
+
+                                    dr["MtlPartNum"] = item.PartNumber;
+
+                                    dr["QtyPer"] = item.Qty;
+
+                                    DS.Tables[0].Rows.Add(dr);
+                                }
+                            }
+                            catch (Exception ex)
+                            { MessageBox.Show(ex.Message); }
+
+                                RevCompare RC = new RevCompare(DS, pnum_txt.Text);
+
+                                RC.ShowDialog();
+
+                        }
+                        else
+                            browse_btn_Click(browse_btn, null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
+
             try
             {
                 string CurrentRev = DataList.GetCurrentRev(pnum_txt.Text);
@@ -265,7 +323,7 @@ namespace ECO_Helper
             if (!legacy_chk.Checked)
             {
                 if (filedir_txt.Text != null && filedir_txt.Text != "")
-                    SWHelper.GetBill(filedir_txt.Text, pnum_txt.Text, rev_txt.Text);
+                    SWHelper.GetBill(filedir_txt.Text, pnum_txt.Text);
                 else
                     browse_btn_Click(browse_btn, null);
             }

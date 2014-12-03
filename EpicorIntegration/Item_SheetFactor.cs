@@ -54,6 +54,8 @@ namespace Epicor_Integration
             type_cbo.TextChanged += type_cbo_TextChanged;
 
             partnumber_cbo.Text = Material;
+
+            partnumber_cbo_SelectedIndexChanged(this, null);
         }
 
         void type_cbo_TextChanged(object sender, EventArgs e)
@@ -61,9 +63,17 @@ namespace Epicor_Integration
             rail_chk.Checked = (type_cbo.Text == "Coil");
 
             if (type_cbo.Text == "Coil")
+            {
                 sheetcoilinput_lbl.Text = "Length";
+
+                rail_chk.Enabled = true;
+            }
             else
+            {
                 sheetcoilinput_lbl.Text = "Qty Nested";
+
+                rail_chk.Enabled = false;
+            }
         }
 
         private void Operations_SheetFactor_Load(object sender, EventArgs e)
@@ -187,6 +197,97 @@ namespace Epicor_Integration
 
         private void weight_num_ValueChanged(object sender, EventArgs e)
         {
+            try
+            {
+                length_cbo.DataSource = sheetCoil_UsageTableAdapter.GetPartNumberDetails(partnumber_cbo.Text);
+
+                length_cbo.DisplayMember = "length";
+
+                width_cbo.DataSource = sheetCoil_UsageTableAdapter.GetPartNumberDetails(partnumber_cbo.Text);
+
+                width_cbo.DisplayMember = "width";
+
+                material_cbo.DataSource = sheetCoil_UsageTableAdapter.GetPartNumberDetails(partnumber_cbo.Text);
+
+                material_cbo.DisplayMember = "material";
+
+                type_cbo.DataSource = sheetCoil_UsageTableAdapter.GetPartNumberDetails(partnumber_cbo.Text);
+
+                type_cbo.DisplayMember = "type";
+
+                density_cbo.DataSource = sheetCoil_UsageTableAdapter.GetPartNumberDetails(partnumber_cbo.Text);
+
+                density_cbo.DisplayMember = "density";
+
+                DataTable dt = sheetCoil_UsageTableAdapter.GetPartNumberDetails(partnumber_cbo.Text);
+
+                gauge_cbo.Text = dt.Rows[0]["gauge"].ToString();
+            }
+            catch { }
+
+            double width = 1;
+
+            if (width_cbo.Text != "")
+                double.TryParse(width_cbo.Text, out width);
+
+            double length = 1;
+
+            if (length_cbo.Text != "")
+                double.TryParse(length_cbo.Text, out length);
+
+            double thickness = 1;
+
+            if (gauge_cbo.Text != "")
+                double.TryParse(gauge_cbo.SelectedValue.ToString(), out thickness);
+
+            double density = 1;
+
+            if (density_cbo.Text != "")
+                double.TryParse(density_cbo.Text, out density);
+
+            if (type_cbo.Text == "Coil")
+            {
+                int div = 1;
+
+                if (rail_chk.Checked)
+                    div = 2;
+
+                factoredweight_txt.Text = (((width * thickness * density) * (double)weight_num.Value) / div).ToString();
+            }
+            else
+                factoredweight_txt.Text = ((width * length * thickness * density) / (double)weight_num.Value).ToString();
+        }
+
+        private void rail_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                length_cbo.DataSource = sheetCoil_UsageTableAdapter.GetPartNumberDetails(partnumber_cbo.Text);
+
+                length_cbo.DisplayMember = "length";
+
+                width_cbo.DataSource = sheetCoil_UsageTableAdapter.GetPartNumberDetails(partnumber_cbo.Text);
+
+                width_cbo.DisplayMember = "width";
+
+                material_cbo.DataSource = sheetCoil_UsageTableAdapter.GetPartNumberDetails(partnumber_cbo.Text);
+
+                material_cbo.DisplayMember = "material";
+
+                type_cbo.DataSource = sheetCoil_UsageTableAdapter.GetPartNumberDetails(partnumber_cbo.Text);
+
+                type_cbo.DisplayMember = "type";
+
+                density_cbo.DataSource = sheetCoil_UsageTableAdapter.GetPartNumberDetails(partnumber_cbo.Text);
+
+                density_cbo.DisplayMember = "density";
+
+                DataTable dt = sheetCoil_UsageTableAdapter.GetPartNumberDetails(partnumber_cbo.Text);
+
+                gauge_cbo.Text = dt.Rows[0]["gauge"].ToString();
+            }
+            catch { }
+
             double width = 1;
 
             if (width_cbo.Text != "")

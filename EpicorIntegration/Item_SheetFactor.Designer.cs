@@ -56,11 +56,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.reset_btn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rail_chk = new System.Windows.Forms.CheckBox();
             this.accept_btn = new System.Windows.Forms.Button();
             this.cancel_btn = new System.Windows.Forms.Button();
             this.gaugeRefTableAdapter = new Epicor_Integration.ENGDataDataSetTableAdapters.GaugeRefTableAdapter();
             this.sheetCoil_UsageTableAdapter = new Epicor_Integration.ENGDataDataSetTableAdapters.SheetCoil_UsageTableAdapter();
-            this.rail_chk = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.sheetCoilUsageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eNGDataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gaugeRefBindingSource)).BeginInit();
@@ -330,6 +330,17 @@
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             // 
+            // rail_chk
+            // 
+            this.rail_chk.AutoSize = true;
+            this.rail_chk.Location = new System.Drawing.Point(6, 71);
+            this.rail_chk.Name = "rail_chk";
+            this.rail_chk.Size = new System.Drawing.Size(77, 17);
+            this.rail_chk.TabIndex = 20;
+            this.rail_chk.Text = "Rail Factor";
+            this.rail_chk.UseVisualStyleBackColor = true;
+            this.rail_chk.CheckedChanged += new System.EventHandler(this.rail_chk_CheckedChanged);
+            // 
             // accept_btn
             // 
             this.accept_btn.Location = new System.Drawing.Point(123, 308);
@@ -357,16 +368,6 @@
             // sheetCoil_UsageTableAdapter
             // 
             this.sheetCoil_UsageTableAdapter.ClearBeforeFill = true;
-            // 
-            // rail_chk
-            // 
-            this.rail_chk.AutoSize = true;
-            this.rail_chk.Location = new System.Drawing.Point(6, 71);
-            this.rail_chk.Name = "rail_chk";
-            this.rail_chk.Size = new System.Drawing.Size(77, 17);
-            this.rail_chk.TabIndex = 20;
-            this.rail_chk.Text = "Rail Factor";
-            this.rail_chk.UseVisualStyleBackColor = true;
             // 
             // Item_SheetFactor
             // 

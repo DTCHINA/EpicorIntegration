@@ -133,51 +133,59 @@ namespace Epicor_Integration
 
         private void refresh_btn_Click(object sender, EventArgs e)
         {
-            this.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            try
+            {
+                this.Cursor = System.Windows.Forms.Cursors.AppStarting;
 
-            status.Text = "Status: Working";
+                status.Text = "Status: Working";
 
-            Epicor.Mfg.BO.BomSearch BomSearch = new Epicor.Mfg.BO.BomSearch(DataList.EpicConn);
+                Epicor.Mfg.BO.BomSearch BomSearch = new Epicor.Mfg.BO.BomSearch(DataList.EpicConn);
 
-            DS0 = new DataSet();
+                DS0 = new DataSet();
 
-            DS0.Tables.Add();
+                DS0.Tables.Add();
 
-            DS0.Tables[0].Columns.Add("Pnum");
+                DS0.Tables[0].Columns.Add("Pnum");
 
-            DS0.Tables[0].Columns.Add("Qty1");
+                DS0.Tables[0].Columns.Add("Qty1");
 
-            DS0.Tables[0].Columns.Add("Qty2");
+                DS0.Tables[0].Columns.Add("Qty2");
 
-            DS0.Tables[0].Columns.Add("Desc");
+                DS0.Tables[0].Columns.Add("Desc");
 
-            DS0.Tables.Add();
+                DS0.Tables.Add();
 
-            DS0.Tables[1].Columns.Add("Seq");
+                DS0.Tables[1].Columns.Add("Seq");
 
-            DS0.Tables[1].Columns.Add("Code");
+                DS0.Tables[1].Columns.Add("Code");
 
-            DS0.Tables[1].Columns.Add("ProdHrs1");
+                DS0.Tables[1].Columns.Add("ProdHrs1");
 
-            DS0.Tables[1].Columns.Add("ProdHrs2");
+                DS0.Tables[1].Columns.Add("ProdHrs2");
 
-            DS1 = (DataSet)BomSearch.GetDatasetForTree(pnum_txt.Text, rev1.SelectedValue.ToString(), "", true, DateTime.Now, false);
+                DS1 = (DataSet)BomSearch.GetDatasetForTree(pnum_txt.Text, rev1.SelectedValue.ToString(), "", true, DateTime.Now, false);
 
-            if (rev2.Enabled)
-                DS2 = (DataSet)BomSearch.GetDatasetForTree(pnum_txt.Text, rev2.SelectedValue.ToString(), "", true, DateTime.Now, false);
+                if (rev2.Enabled)
+                    DS2 = (DataSet)BomSearch.GetDatasetForTree(pnum_txt.Text, rev2.SelectedValue.ToString(), "", true, DateTime.Now, false);
 
-            backgroundWorker1.RunWorkerAsync();
+                backgroundWorker1.RunWorkerAsync();
 
-            refresh_btn.Enabled = !backgroundWorker1.IsBusy;
+                refresh_btn.Enabled = !backgroundWorker1.IsBusy;
 
-            pnum_txt.Enabled = !backgroundWorker1.IsBusy;
+                pnum_txt.Enabled = !backgroundWorker1.IsBusy;
 
-            rev1.Enabled = !backgroundWorker1.IsBusy;
+                rev1.Enabled = !backgroundWorker1.IsBusy;
 
-            if (!FromSW)
-                rev2.Enabled = (!backgroundWorker1.IsBusy);
+                if (!FromSW)
+                    rev2.Enabled = (!backgroundWorker1.IsBusy);
 
-            toClipboard_btn.Enabled = !backgroundWorker1.IsBusy;
+                toClipboard_btn.Enabled = !backgroundWorker1.IsBusy;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("This item may not have a revision already approved.", "Error!");
+            }
+
         }
 
         private void FormResize(object sender, EventArgs e)
@@ -337,7 +345,7 @@ namespace Epicor_Integration
 
                     Dr["Seq"] = dr["OprSeq"].ToString();
 
-                    Dr["ProdHrs1"] = dr["EstProdHours"].ToString();
+                    Dr["ProdHrs1"] = dr["ProdStandard"].ToString();
 
                     //Dr["ProdHrs2"] = "0";
 
@@ -359,7 +367,7 @@ namespace Epicor_Integration
 
                         if (dr["OpCode"].ToString() == Dr["Code"].ToString() && dr["OprSeq"].ToString() == Dr["Seq"].ToString())
                         {
-                            Dr["ProdHrs2"] = dr["EstProdHours"].ToString();
+                            Dr["ProdHrs2"] = dr["ProdStandard"].ToString();
 
                             found = true;
 
@@ -375,7 +383,7 @@ namespace Epicor_Integration
 
                         Dr["Seq"] = dr["OprSeq"].ToString();
 
-                        Dr["ProdHrs2"] = dr["EstProdHours"].ToString();
+                        Dr["ProdHrs2"] = dr["ProdStandard"].ToString();
 
                         //Dr["ProdHrs1"] = "0";
 

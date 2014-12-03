@@ -5,12 +5,26 @@ using System.Text;
 using EdmLib;
 using Epicor_Integration;
 using System.Windows.Forms;
+using System.ComponentModel;
+using EPDM_EPICOR_LIB;
 
 namespace ECO_Helper
 {
-    public static class SWHelper
+    public class SWHelper
     {
-        public static string GetCurrentRevision(string path, string partnumber)
+        Waiting BWForm = new Waiting("Retrieving Bill of Materials from SolidWorks...");
+
+        BackgroundWorker BW = new BackgroundWorker();
+
+        public List<BillItem> Bill = new List<BillItem>();
+
+        private decimal Weight = 0;
+
+        private decimal Area = 0;
+
+        private string ParentNumber = "";
+
+        public string GetCurrentRevision(string path, string partnumber)
         {
             object rev_val;
 
@@ -29,7 +43,7 @@ namespace ECO_Helper
             return rev_val.ToString();
         }
 
-        public static string GetCurrentDescription(string path, string partnumber)
+        public string GetCurrentDescription(string path, string partnumber)
         {
             object rev_val;
 
@@ -48,7 +62,7 @@ namespace ECO_Helper
             return rev_val.ToString();
         }
 
-        public static decimal GetCurrentWeight(string path, string partnumber)
+        public decimal GetCurrentWeight(string path, string partnumber)
         {
             object rev_val;
 
@@ -67,7 +81,7 @@ namespace ECO_Helper
             return decimal.Parse(rev_val.ToString());
         }
 
-        public static IEdmVault7 LogInVault()
+        public IEdmVault7 LogInVault()
         {
             EdmVault5 vault = new EdmVault5();
 
@@ -76,7 +90,7 @@ namespace ECO_Helper
             return vault;
         }
 
-        public static string DetermineConfig(IEdmFile5 Part, IEdmVault7 vault, string partnumber)
+        public string DetermineConfig(IEdmFile5 Part, IEdmVault7 vault, string partnumber)
         {
             string retval = "@";
 
@@ -114,8 +128,12 @@ namespace ECO_Helper
         /// <param name="partpath"></param>
         /// <param name="partnumber"></param>
         /// <param name="rev"></param>
-        public static void GetBill(string partpath, string partnumber,string rev)
+        public void GetBill(string partpath, string partnumber)
         {
+            Bill.Clear();
+
+            BW.WorkerReportsProgress = true;
+
             string selected_config;
 
             IEdmVault7 vault = LogInVault();
@@ -126,8 +144,106 @@ namespace ECO_Helper
 
             selected_config = DetermineConfig(part, vault, partnumber);
 
+            IEdmEnumeratorVariable5 var;
+
             if (selected_config != "")
             {
+                BW.DoWork += BW_DoWorkAssy;
+
+                object[] args = new object[3];
+
+                args[0] = part;
+
+                args[1] = vault;
+
+                args[2] = selected_config;
+
+                BW.RunWorkerCompleted += BW_RunWorkerCompleted;
+
+                BW.RunWorkerAsync(args);
+
+                BWForm.ShowDialog();
+
+                ProcessBill(vault);
+
+                BW.DoWork -= BW_DoWorkAssy;
+            }
+        }
+
+        void BW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            BWForm.Close();
+        }
+
+        public IEdmFile7 FindPartinVault(IEdmVault7 vault, string SearchPart, string Config)
+        {
+            string selected_config = Config;
+
+            object partnum_val = "";
+
+            IEdmSearch5 Search = vault.CreateSearch();
+
+            Search.Clear();
+
+            Search.FileName = SearchPart;
+
+            //Search.AddVariable("Number", SearchPart);
+
+            //Search.AddVariable("Number", SearchPart);
+
+            Search.FindFolders = false;
+
+            Search.FindFiles = true;
+
+            IEdmSearchResult5 Result = Search.GetFirstResult();
+
+            if (Result != null)
+            {
+                IEdmFile7 part = (IEdmFile7)vault.GetObject(EdmObjectType.EdmObject_File, Result.ID);
+
+                return part;
+            }
+            else
+            {
+                Config = null;
+
+                return null;
+            }
+        }
+
+        void BW_DoWorkAssy(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+
+                object weight_val = "0";
+
+                object area_val = "0";
+
+                object[] args = new object[3];
+
+                args = (object[])e.Argument;
+
+                IEdmVault7 vault = (IEdmVault7)args[1];
+
+                IEdmFile7 part = (IEdmFile7)args[0];
+
+                string selected_config = args[2].ToString();
+
+                IEdmEnumeratorVariable5 var = part.GetEnumeratorVariable();
+
+                try
+                {
+                    var.GetVar("NetWeight", selected_config, out weight_val);
+
+                    Weight = decimal.Parse(weight_val.ToString());
+
+                    var.GetVar("SurfaceArea", selected_config, out area_val);
+
+                    Area = decimal.Parse(area_val.ToString());
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message + "\nWeight or Area could not be retrieved"); Weight = 0; Area = 0; }
+
                 #region Fill Bill
 
                 IEdmBomMgr BomMgr = (IEdmBomMgr)vault.CreateUtility(EdmUtility.EdmUtil_BomMgr);
@@ -156,19 +272,25 @@ namespace ECO_Helper
 
                 EdmBomColumn ColVal = (EdmBomColumn)ColumnVal.GetValue(0);
 
-                List<string> BillQty = new List<string>();
-
-                List<string> BillNumbers = new List<string>();
-
                 List<string> BillLevel = new List<string>();
 
-                string ParentNumber = "";
+                string PConfig = "";
 
                 for (int i = 0; i < BomVal.Length; i++)
                 {
                     IEdmBomCell bominfo = (IEdmBomCell)BomVal.GetValue(i);
 
-                    object Value;
+                    object QtyValue;
+
+                    object PnumValue;
+
+                    object FnameValue;
+
+                    object ConfValue;
+
+                    object ParentConfig;
+
+                    object Name;
 
                     object CompVal;
 
@@ -180,37 +302,101 @@ namespace ECO_Helper
 
                     if (itemlevel == 0)
                     {
-                        bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out Value, out CompVal, out Config, out RO);
+                        bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
 
-                        ParentNumber = Value.ToString();
+                        ParentNumber = PnumValue.ToString();
+
+                        bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Configuration, out ParentConfig, out CompVal, out Config, out RO);
+
+                        PConfig = ParentConfig.ToString();
                     }
 
                     if (itemlevel == 1)
                     {
-                        EdmBomColumnType ColType = EdmBomColumnType.EdmBomCol_RefCount;
 
-                        bominfo.GetVar(0, ColType, out Value, out CompVal, out Config, out RO);
+                        bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_RefCount, out QtyValue, out CompVal, out Config, out RO);
 
-                        BillQty.Add(Value.ToString());
+                        bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
 
-                        ColType = EdmBomColumnType.EdmBomCol_PartNumber;
+                        if (PnumValue.ToString() == PConfig)
+                        {
+                            bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Configuration, out ConfValue, out CompVal, out Config, out RO);
 
-                        bominfo.GetVar(0, ColType, out Value, out CompVal, out Config, out RO);
+                            bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Name, out FnameValue, out CompVal, out Config, out RO);
 
-                        BillNumbers.Add(Value.ToString());
+
+                            IEdmFile7 subpart = FindPartinVault(vault, FnameValue.ToString(), ConfValue.ToString());
+
+                            EdmBomView SubBomView = subpart.GetComputedBOM(1, 0, ConfValue.ToString(), 1);
+
+                            Array SubBomVal = Array.CreateInstance(typeof(EdmBomInfo), 1);
+
+                            Array SubColumnVal;
+
+                            SubBomView.GetRows(out SubBomVal);
+
+                            SubBomView.GetColumns(out SubColumnVal);
+
+                            for (int j = 0; j < SubBomVal.Length; j++)
+                            {
+                                IEdmBomCell subbominfo = (IEdmBomCell)SubBomVal.GetValue(j);
+
+                                int subitemlevel = subbominfo.GetTreeLevel();
+
+                                if (subitemlevel == 1)
+                                {
+                                    object QtyValue2;
+
+                                    subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_RefCount, out QtyValue2, out CompVal, out Config, out RO);
+
+                                    subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
+
+                                    if (PnumValue == "")
+                                        subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Configuration, out PnumValue, out CompVal, out Config, out RO);
+
+                                    subbominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Name, out Name, out CompVal, out Config, out RO);
+
+                                    BillItem Item = new BillItem();
+
+                                    QtyValue2 = decimal.Parse(QtyValue.ToString()) * decimal.Parse(QtyValue2.ToString());
+
+                                    Item.Qty = QtyValue2.ToString();
+
+                                    Item.PartNumber = PnumValue.ToString();
+
+                                    Bill.Add(Item);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            BillItem Item = new BillItem();
+
+                            Item.Qty = QtyValue.ToString();
+
+                            Item.PartNumber = PnumValue.ToString();
+
+                            Bill.Add(Item);
+                        }
+
                     }
+
+                    bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_PartNumber, out PnumValue, out CompVal, out Config, out RO);
+
+                    bominfo.GetVar(0, EdmBomColumnType.EdmBomCol_Name, out Name, out CompVal, out Config, out RO);
+
+                    System.Diagnostics.Debug.Print(PnumValue.ToString() + "\t" + itemlevel.ToString() + "\t" + Name.ToString());
+
                 }
                 #endregion
 
-                ProcessBill(vault, BillNumbers, BillQty, out BillQty, partpath);
-
-                //Bill_Master BM = new Bill_Master(Bill, BillNumbers, BillQty, ParentNumber, rev, 0, 0);
-
-                //BM.ShowDialog();
+                BW.ReportProgress(100);
             }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
 
-        public static bool PartExistsSW(IEdmVault7 vault, string SearchPart)
+        public bool PartExistsSW(IEdmVault7 vault, string SearchPart)
         {
             object partnum_val = "";
 
@@ -234,7 +420,7 @@ namespace ECO_Helper
                 return false;
         }
 
-        public static IEdmFile7 FindPartinVault(IEdmVault7 vault, string SearchPart, out string Config)
+        public IEdmFile7 FindPartinVault(IEdmVault7 vault, string SearchPart, out string Config)
         {
             string selected_config = null;
 
@@ -298,11 +484,11 @@ namespace ECO_Helper
             }
         }
 
-        public static bool HaveUpToDateItemRef(IEdmFile5 Part, IEdmVault7 vault, string Path)
+        public bool HaveUpToDateItemRef(IEdmFile5 Part, IEdmVault7 vault, string Path)
         {
             bool retval = false;
 
-            long Local = Part.GetLocalVersionNo(Path);//file.mlObjectID3);
+            long Local = Part.GetLocalVersionNo(Path);
 
             int Server = Part.CurrentVersion;
 
@@ -312,7 +498,7 @@ namespace ECO_Helper
             return retval;
         }
 
-        public static bool UpdateItemRef(IEdmFile5 Part, IEdmVault7 vault, string Path)
+        public bool UpdateItemRef(IEdmFile5 Part, IEdmVault7 vault, string Path)
         {
             bool retval = false;
 
@@ -335,7 +521,7 @@ namespace ECO_Helper
             return retval;
         }
 
-        public static DialogResult GetItemInfo(IEdmVault7 vault, IEdmFile7 Part, string Path)
+        public DialogResult GetItemInfobyPath(IEdmVault7 vault, IEdmFile7 Part, string Path)
         {
             IEdmEnumeratorVariable5 var;
 
@@ -404,7 +590,7 @@ namespace ECO_Helper
                 return DialogResult.Cancel;
         }
 
-        public static List<string> ProcessBill(IEdmVault7 vault, List<string> BillNumbers, List<string> _BillQty, out List<string> BillQty, string Path)
+        public List<string> ProcessBill(IEdmVault7 vault, List<string> BillNumbers, List<string> _BillQty, out List<string> BillQty, string Path)
         {
             for (int i = 0; i < BillNumbers.Count; i++)
             {
@@ -419,7 +605,7 @@ namespace ECO_Helper
 
                         IEdmFile7 Part = FindPartinVault(vault, BillNumbers[i], out Config);
 
-                        DialogResult Dr = GetItemInfo(vault, Part, Path);
+                        DialogResult Dr = GetItemInfobyPath(vault, Part, Path);
 
                         if (Dr == DialogResult.Cancel)
                             BillNumbers.RemoveAt(i);
@@ -450,6 +636,223 @@ namespace ECO_Helper
             BillQty = _BillQty;
 
             return BillNumbers;
+        }
+
+        public void ProcessBill(IEdmVault7 vault)//, List<string> BillNumbers, List<string> _BillQty, out List<string> BillQty)
+        {
+            for (int i = 0; i < Bill.Count; i++)
+            {
+                if (DataList.PartExists(Bill[i].ToString()))
+                { /*Part exists and we are good*/}
+                else
+                {
+                    if (PartExistsSW(vault, Bill[i].ToString()))
+                    {
+                        //Get it, Add it
+                        string Config = null;
+
+                        IEdmFile7 Part = FindPartinVault(vault, Bill[i].ToString(), out Config);
+
+                        DialogResult Dr = GetItemInfo(vault, Part, "");
+
+                        if (Dr == DialogResult.Cancel)
+                            Bill.RemoveAt(i);
+                    }
+                    else
+                    {
+                        DialogResult Dr = MessageBox.Show(Bill[i].ToString() + " was not found in the vault/Epicor database.  Do you want to manually add it?", "Missing Item!", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+
+                        if (Dr == DialogResult.Yes)
+                        {
+                            //Blank item master
+                            Item_Master IM = new Item_Master(Bill[i].ToString(), "", 0);
+
+                            IM.ShowDialog();
+
+                            if (IM.DialogResult == DialogResult.Cancel)
+                                Bill.RemoveAt(i);
+                        }
+                        else
+                        {
+                            //Remove from the bill to proceed
+                            Bill.RemoveAt(i);
+                        }
+                    }
+                }
+            }
+        }
+
+        public DialogResult GetItemInfo(IEdmVault7 vault, IEdmFile7 Part, string selected_config)
+        {
+            IEdmEnumeratorVariable5 var;
+
+            object partnum_val;
+
+            object desc_val = "";
+
+            object weight_val;
+
+            object product_val;
+
+            object class_val;
+
+            object type_val;
+
+            object planner_val;
+
+            if (UpdateItemRef(Part, vault))
+            {
+                try
+                {
+                    var = Part.GetEnumeratorVariable();
+
+                    decimal weight_fallback = 0;
+
+                    if (selected_config == "" || selected_config == null)
+                        selected_config = DetermineConfig(Part, vault, "");
+                    if (selected_config != "")
+                    {
+                        var.GetVar("Number", selected_config, out partnum_val);
+
+                        if (partnum_val.ToString().Contains("201"))
+                        {
+                            DialogResult DR = MessageBox.Show("Part number identified as a frame.  Do you want to use the Customer/Model instead of SolidWorks description custom property?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            if (DR == DialogResult.Yes)
+                            {
+                                object cust_val;
+                                var.GetVar("Customer", selected_config, out cust_val);
+
+                                object model_val;
+                                var.GetVar("Model", selected_config, out model_val);
+
+                                desc_val = "FRAME " + cust_val.ToString() + " " + model_val.ToString();
+                            }
+                            else
+                                var.GetVar("Description", selected_config, out desc_val);
+                        }
+                        else
+                            var.GetVar("Description", selected_config, out desc_val);
+
+                        var.GetVar("Brand", selected_config, out planner_val);
+
+                        var.GetVar("Product", selected_config, out product_val);
+
+                        var.GetVar("Class", selected_config, out class_val);
+
+                        var.GetVar("Type", selected_config, out type_val);
+
+                        //Weight is typically @ config
+                        var.GetVar("NetWeight", selected_config, out weight_val);
+
+                        if (weight_val == null)
+                            var.GetVar("NetWeight", selected_config, out weight_val);
+
+                        if (weight_val != null)
+                            decimal.TryParse(weight_val.ToString(), out weight_fallback);
+
+                        if (product_val == null)
+                            product_val = "";
+
+                        if (class_val == null)
+                            class_val = "";
+
+                        if (desc_val == null)
+                            desc_val = "";
+
+                        if (partnum_val != null)
+                        {
+                            Epicor_Integration.Item_Master item = new Item_Master(partnum_val.ToString(), desc_val.ToString(), weight_fallback, product_val.ToString(), class_val.ToString(), type_val.ToString(), planner_val.ToString());
+
+                            item.ShowDialog();
+
+                            return item.DialogResult;
+                        }
+                        else
+                        {
+                            //Not necessary anymore
+                            //MessageBox.Show("Part number was a null value!\n\nEnsure that custom properties are completely filled out.", "Missing Properties!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+
+                            return DialogResult.Cancel;
+                        }
+                    }
+                    else
+                        return DialogResult.Cancel;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "\nPlease check the datacard to ensure that all fields are filled in the file.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return DialogResult.Cancel;
+                }
+            }
+
+            else
+                return DialogResult.Cancel;
+        }
+
+        /// <summary>
+        /// Syncs local version of a file with the current version in the vault
+        /// </summary>
+        /// <param name="Part"></param>
+        /// <param name="vault"></param>
+        /// <returns></returns>
+        public bool UpdateItemRef(IEdmFile5 Part, IEdmVault7 vault)
+        {
+            bool retval = false;
+
+            if (!HaveUpToDateItemRef(Part, vault))
+            {
+                DialogResult dr = MessageBox.Show("This requires that you get the latest version of this file. Continue?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dr == DialogResult.Yes)
+                {
+                    Part.GetFileCopy(0, 0, 0, (int)EdmGetFlag.EdmGet_RefsVerLatest, "");
+
+                    retval = true;
+                }
+                else
+                    retval = false;
+            }
+            else
+                retval = true;
+
+            return retval;
+        }
+
+        public bool HaveUpToDateItemRef(IEdmFile5 Part, IEdmVault7 vault)
+        {
+            bool retval = false;
+
+            long Local = Part.GetLocalVersionNo(Part.GetLocalPath(0));
+
+            int Server = Part.CurrentVersion;
+
+            if (Local == Server)
+                retval = true;
+
+            return retval;
+        }
+
+        public List<BillItem> CombineBill(List<BillItem> Bill)
+        {
+            for (int i = 0; i < Bill.Count; i++)
+            {
+                for (int j = 0; j < Bill.Count; j++)
+                {
+                    if (i != j)
+                    {
+                        if (Bill[i].PartNumber == Bill[j].PartNumber)
+                        {
+                            Bill[i].Qty = (decimal.Parse(Bill[j].Qty) + decimal.Parse(Bill[i].Qty)).ToString();
+
+                            Bill.RemoveAt(j);
+                        }
+                    }
+                }
+            }
+
+            return Bill;
         }
     }
 }
