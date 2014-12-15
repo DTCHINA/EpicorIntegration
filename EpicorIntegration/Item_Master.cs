@@ -527,6 +527,12 @@ namespace Epicor_Integration
 
                             DataList.UpdateDatum(Pdata, "PartPlant", 0, "PartTrackSerialNum", true.ToString());
 
+                            try
+                            {
+                                DataList.UpdateDatum(Pdata, "PartPlant", 0, "PhantomBOM", false.ToString());
+                            }
+                            catch { }
+
                             Part.Update(Pdata);
 
                             Pdata = Part.GetByID(PartNumber);

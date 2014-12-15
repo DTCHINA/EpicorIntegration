@@ -610,7 +610,9 @@
     <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.CCCountCycle.dll" />
     <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.DashBoard.dll" />
     <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.DynamicQuery.dll" />
-    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.EngWorkBench.dll" />
+    <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.EngWorkBench.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.EpiSearch.dll" />
     <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.GenXData.dll" />
     <EmbeddedResource Include="Embedded\Epicor.Mfg.BO.Menu.dll" />

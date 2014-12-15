@@ -332,6 +332,7 @@
             // phantom_chk
             // 
             this.phantom_chk.AutoSize = true;
+            this.phantom_chk.Enabled = false;
             this.phantom_chk.Location = new System.Drawing.Point(224, 271);
             this.phantom_chk.Name = "phantom_chk";
             this.phantom_chk.Size = new System.Drawing.Size(95, 17);

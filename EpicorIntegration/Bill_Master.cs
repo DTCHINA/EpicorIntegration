@@ -31,7 +31,7 @@ namespace Epicor_Integration
         List<string> BillOps { get; set; }
 
         #endregion
-
+        
         public Bill_Master(string ParentNumber, string Rev)
         {
             InitializeComponent();
@@ -162,7 +162,20 @@ namespace Epicor_Integration
 
             BW.RunWorkerAsync(Bill);
 
-            BWForm.ShowDialog();
+            try
+            {
+                BWForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Bill Master Error!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+                BWForm.Dispose();
+
+                BWForm = new Waiting("Loading Bill of Materials into Epicor...");
+
+                BWForm.ShowDialog();
+            }
         }
 
         private void Bill_Master_Load(object sender, EventArgs e)
@@ -1171,6 +1184,8 @@ namespace Epicor_Integration
 
         private void removebtn_Click(object sender, EventArgs e)
         {
+            BillDataGrid.SelectionChanged -= BillDataGrid_SelectionChanged;
+
             try
             {
                 if (partnum_txt.Text != "")
@@ -1196,6 +1211,8 @@ namespace Epicor_Integration
                     removebtn.Enabled = false;
 
                 EnableItemDetails();
+
+                BillDataGrid.SelectionChanged += BillDataGrid_SelectionChanged;
 
         }
 
