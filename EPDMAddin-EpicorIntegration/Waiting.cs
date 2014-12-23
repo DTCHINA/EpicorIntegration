@@ -11,6 +11,8 @@ namespace Epicor_Integration
 {
     public partial class Waiting : Form
     {
+        public int timecount;
+
         public Waiting(string Text)
         {
             InitializeComponent();
@@ -24,6 +26,11 @@ namespace Epicor_Integration
 
             if (progressBar1.Value == progressBar1.Maximum)
                 progressBar1.Value = 0;
+
+            timecount++;
+
+            if (timecount == 600)
+                this.Close();
         }
     }
 }
