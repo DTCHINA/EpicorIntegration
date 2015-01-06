@@ -19,9 +19,9 @@ namespace EPDMEpicorIntegration
 
     public class SWEPDMAddin : IEdmAddIn5
     {
-        BackgroundWorker BW = new BackgroundWorker();
+        Waiting BWForm { get; set; }
 
-        Waiting BWForm = new Waiting("Retrieving Bill of Materials from SolidWorks...");
+        BackgroundWorker BW = new BackgroundWorker();
 
         IEdmVault7 vault_ { get; set; }
 
@@ -60,7 +60,7 @@ namespace EPDMEpicorIntegration
             
             poInfo.mbsCompany = "Norco Industries";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201412220;
+            poInfo.mlAddInVersion = (int)201501060;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -210,6 +210,8 @@ namespace EPDMEpicorIntegration
                                 case 6:
                                     #region Bill Master
 
+                                    BWForm = new Waiting("Retrieving Bill of Materials from SolidWorks...");
+
                                     foreach (EdmCmdData file in Temp)
                                     {
                                         Bill.Clear();
@@ -256,6 +258,9 @@ namespace EPDMEpicorIntegration
                                     break;
                                 case 0:
                                     #region RevCompare
+
+                                    BWForm = new Waiting("Retrieving Bill of Materials from SolidWorks...");
+
                                     foreach (EdmCmdData file in Temp)
                                     {
                                         try

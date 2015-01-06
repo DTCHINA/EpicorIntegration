@@ -30,7 +30,12 @@ namespace Epicor_Integration
             timecount++;
 
             if (timecount == 600)
-                this.Close();
+                this.Hide();
+        }
+
+        private void Waiting_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

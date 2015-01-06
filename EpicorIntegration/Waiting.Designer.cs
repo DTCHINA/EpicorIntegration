@@ -50,6 +50,7 @@
             this.label1.Size = new System.Drawing.Size(420, 30);
             this.label1.TabIndex = 1;
             this.label1.Text = "Loading Bill of Materials into Somewhere";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Refresh
             // 

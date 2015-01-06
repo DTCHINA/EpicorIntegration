@@ -306,6 +306,8 @@ namespace Epicor_Integration
 
                     decimal CurrentProd = (decimal)double.Parse(OPDataGrid["ProdStandard", rowindex].Value.ToString());
 
+                    decimal CurrentSeq = (decimal)double.Parse(OPDataGrid["OprSeq", rowindex].Value.ToString());
+
                     if (CurrentOp != null)
                         opmast_cbo.SelectedIndex = opmast_cbo.FindStringExact(CurrentOp);
                     else
@@ -1154,11 +1156,13 @@ namespace Epicor_Integration
 
                 int rowseq = int.Parse(EngWBDS.Tables["ECOOpr"].Rows[rowid]["OprSeq"].ToString());
 
-                EngWBDS.Tables["ECOOpr"].Rows[rowid]["OprSeq"] = (rowseq + 9).ToString();
+                EngWBDS.Tables["ECOOpr"].Rows[rowid - 1]["OprSeq"] = (rowseq + 9).ToString();
 
-                EngWBDS.Tables["ECOOpr"].Rows[rowid + 1]["OprSeq"] = rowseq.ToString();
+                EngWBDS.Tables["ECOOpr"].Rows[rowid]["OprSeq"] = (rowseq - 10).ToString();
 
-                EngWBDS.Tables["ECOOpr"].Rows[rowid]["OprSeq"] = (rowseq + 10).ToString();
+                EngWBDS.Tables["ECOOpr"].Rows[rowid - 1]["OprSeq"] = rowseq.ToString();
+
+                EngWBDS = EngWB.ResequenceOperations(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
                 EngWB.Update(EngWBDS);
 

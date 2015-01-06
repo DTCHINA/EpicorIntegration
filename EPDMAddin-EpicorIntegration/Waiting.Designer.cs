@@ -67,6 +67,7 @@
             this.Name = "Waiting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Waiting";
+            this.Load += new System.EventHandler(this.Waiting_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
