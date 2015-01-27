@@ -12,10 +12,10 @@ using System.ComponentModel;
 namespace EPDMEpicorIntegration
 {
     //Release GUID
-    [Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
+    //[Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
  
     //Test GUID
-    //[Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
+    [Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
 
     public class SWEPDMAddin : IEdmAddIn5
     {
@@ -43,7 +43,7 @@ namespace EPDMEpicorIntegration
 
             bool test = false;
 
-            //test = true;
+            test = true;
 
             if (!test)
             {
@@ -60,7 +60,7 @@ namespace EPDMEpicorIntegration
             
             poInfo.mbsCompany = "Norco Industries";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201501060;
+            poInfo.mlAddInVersion = (int)201501260;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -87,6 +87,8 @@ namespace EPDMEpicorIntegration
             poCmdMgr.AddCmd(-10, MenuName + "\\Update Properties from Epicor", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to update file properties from current Epicor values", 0, 0);
 
             poCmdMgr.AddCmd(-100, MenuName + "\\Templates", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Launches a dialog to Add/Edit/Update Templates", 0, 0);
+
+            //poCmdMgr.AddCmd(-101, MenuName + "\\Search", (int)EdmMenuFlags.EdmMenu_Nothing, "", "Temp", 0, 0);
 
             poCmdMgr.AddCmd(2, MenuName + "\\Add Item,OOM & BOM", (int)EdmMenuFlags.EdmMenu_OnlyFiles + (int)EdmMenuFlags.EdmMenu_MustHaveSelection + (int)EdmMenuFlags.EdmMenu_OnlySingleSelection, "", "Launches a dialog to add an Item, a revision, an OOM and BOM in Epicor", 0, 0);
             
@@ -141,6 +143,8 @@ namespace EPDMEpicorIntegration
                                 case 2:
                                     #region Add Item/Rev/OOM/BOM
 
+                                    string config;
+
                                     foreach (EdmCmdData file in Temp)
                                     {
                                         if (ValidSelection(file))
@@ -157,13 +161,30 @@ namespace EPDMEpicorIntegration
 
                                             if (AddOOM(vault, file, selected_config) == DialogResult.Cancel)
                                                 break;
-                                            AddBill(vault, file, selected_config);
 
-                                            Bill.Sort((x, y) => x.PartNumber.CompareTo(y.PartNumber));
+                                            #region Bill Master
+                                            ParentNumber = "";
 
-                                            CombineBill();
+                                            Area = 0;
 
-                                            Bill_Master BM = new Bill_Master(Bill, ParentNumber, "", Weight, Area);
+                                            Weight = 0;
+
+                                            Bill.Clear();
+
+                                                string sconfig;
+
+                                                AddBill(vault, file, "", out sconfig);
+
+                                                if (sconfig == null)
+                                                    break;
+
+                                                Bill.Sort((x, y) => x.PartNumber.CompareTo(y.PartNumber));
+
+                                                CombineBill();
+
+                                                Bill_Master BM = new Bill_Master(Bill, ParentNumber, "", Weight, Area);
+
+                                            #endregion
 
                                             if (BM.ShowDialog() == DialogResult.Cancel)
                                                 break;
@@ -214,8 +235,6 @@ namespace EPDMEpicorIntegration
 
                                     foreach (EdmCmdData file in Temp)
                                     {
-                                        Bill.Clear();
-
                                         ParentNumber = "";
 
                                         Area = 0;
@@ -229,7 +248,14 @@ namespace EPDMEpicorIntegration
 
                                             //BW = new BackgroundWorker();
 
-                                            AddBill(vault, file, "");
+                                            Bill.Clear();
+
+                                            string sconfig;
+
+                                            AddBill(vault, file, "", out sconfig);
+
+                                            if (sconfig == null)
+                                                break;
 
                                             Bill.Sort((x, y) => x.PartNumber.CompareTo(y.PartNumber));
 
@@ -282,7 +308,12 @@ namespace EPDMEpicorIntegration
 
                                                     ParentNumber = "";
 
-                                                    AddBill(vault, file, "");
+                                                    string rconfig;
+
+                                                    AddBill(vault, file, "", out rconfig);
+
+                                                    if (rconfig == null)
+                                                        break;
 
                                                     try
                                                     {
@@ -350,6 +381,8 @@ namespace EPDMEpicorIntegration
 
                                             BW = new BackgroundWorker();
 
+                                            BW.WorkerSupportsCancellation = true;
+
                                             CalcMins(vault, file, "");
 
                                             Epicor_Integration.Operations_Minutes OpsMins = new Operations_Minutes(Mins[0].ToString(), Mins[1].ToString(), Mins[2].ToString(), Mins[3].ToString(), Mins[4].ToString(), Mins[5].ToString(), Mins[6].ToString(), Mins[7].ToString());
@@ -385,6 +418,12 @@ namespace EPDMEpicorIntegration
                                     TM.ShowDialog();
 
                                     break;
+                                case - 101:
+                                    SearchPart SP = new SearchPart();
+
+                                    SP.ShowDialog();
+
+                                    break;
                                 default:
                                     break;
                             } break;
@@ -410,6 +449,8 @@ namespace EPDMEpicorIntegration
 
         void BW_DoWorkAssy(object sender, DoWorkEventArgs e)
         {
+            List<BillItem> WorkingBill = new List<BillItem>();
+
             object weight_val = "0";
 
             object area_val = "0";
@@ -559,7 +600,7 @@ namespace EPDMEpicorIntegration
 
                                 Item.PartNumber = PnumValue.ToString();
 
-                                Bill.Add(Item);
+                                WorkingBill.Add(Item);
                             }
                         }
                     }
@@ -571,7 +612,7 @@ namespace EPDMEpicorIntegration
 
                         Item.PartNumber = PnumValue.ToString();
 
-                        Bill.Add(Item);
+                        WorkingBill.Add(Item);
                     }
 
                 }
@@ -584,6 +625,11 @@ namespace EPDMEpicorIntegration
 
             }
             #endregion
+
+            Bill = WorkingBill;
+
+            if (BW.IsBusy)
+                BW.CancelAsync();
         }
 
         void BW_DoWorkCalc(object sender, DoWorkEventArgs e)
@@ -750,6 +796,9 @@ namespace EPDMEpicorIntegration
 
             }
             #endregion
+
+            if (BW.IsBusy)
+                BW.CancelAsync();
         }
 
         void BW_DoWorkDrawing(object sender, DoWorkEventArgs e)
@@ -1145,8 +1194,10 @@ namespace EPDMEpicorIntegration
             return true;
         }
 
-        public void AddBill(IEdmVault7 vault, EdmCmdData file,string selected_config)
+        public void AddBill(IEdmVault7 vault, EdmCmdData file,string selected_config, out string config)
         {
+            config = null;
+
             IEdmEnumeratorVariable5 var;
 
             IEdmFile7 part = (IEdmFile7)vault.GetObject(EdmObjectType.EdmObject_File, file.mlObjectID1);
@@ -1158,11 +1209,15 @@ namespace EPDMEpicorIntegration
                 var = part.GetEnumeratorVariable();
 
                 selected_config = DetermineConfig(part, vault, file, "");
+
+                config = selected_config;
             }
 
             #region Drawing Bill
             if (file_ext == "SLDDRW")
             {
+                config = "DRAWING";
+
                 BW.DoWork += BW_DoWorkDrawing;
 
                 object[] args = new object[2];
@@ -1182,8 +1237,11 @@ namespace EPDMEpicorIntegration
             #endregion
             else
             {
-                    if (selected_config != "")
+                    if (selected_config == "")
                     {
+                        config = null;
+                        return; 
+                    }
                         BW.DoWork += BW_DoWorkAssy;
 
                         object[] args = new object[3];
@@ -1194,14 +1252,28 @@ namespace EPDMEpicorIntegration
 
                         args[2] = selected_config;
 
-                        BW.RunWorkerAsync(args);
+                        try
+                        {
+                            BW.RunWorkerAsync(args);
+                        }
+                        catch {
 
+                            if (BW.IsBusy == true)
+                            {
+                                BW.CancelAsync();
+
+                                while (!BW.CancellationPending)
+                                {
+                                    BW.RunWorkerAsync(args);
+                                }
+                            }
+                        
+                        }
                         BWForm.ShowDialog();
 
                         ProcessBill(vault, file);
 
                         BW.DoWork -= BW_DoWorkAssy;
-                    }
             }
         }
 

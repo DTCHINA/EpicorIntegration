@@ -349,6 +349,10 @@ namespace Epicor_Integration
 
         private void SaveChanges()
         {
+            BillDataGrid.SelectionChanged -= BillDataGrid_SelectionChanged;
+
+            groupBox1.Enabled = false;
+
             try
             {
                 string opMessage;
@@ -404,14 +408,18 @@ namespace Epicor_Integration
                     }
                 }
 
+                
                 for (int i = 0; i < EngWBDS.Tables["ECOMtl"].Rows.Count; i++)
                 {
-                    if (Modded[i])
+                    if (EngWBDS.Tables["ECOMtl"].Rows[i].RowState == DataRowState.Unchanged)
                     {
-                        EngWBDS.Tables["ECOMtl"].Rows[i].SetModified();
+                        if (Modded[i])
+                        {
+                            EngWBDS.Tables["ECOMtl"].Rows[i].SetModified();
+                        }
+                        if (Added[i])
+                            EngWBDS.Tables["ECOMtl"].Rows[i].SetAdded();
                     }
-                    if (Added[i])
-                        EngWBDS.Tables["ECOMtl"].Rows[i].SetAdded();
                 }
                 try
                 {
@@ -425,6 +433,10 @@ namespace Epicor_Integration
             {
                 MessageBox.Show(ex.Message);
             }
+
+            groupBox1.Enabled = true;
+
+            BillDataGrid.SelectionChanged += BillDataGrid_SelectionChanged;
         }
 
         public int GetNextSeq()
