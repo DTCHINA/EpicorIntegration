@@ -26,7 +26,7 @@ namespace EPDMEpicorIntegration
             {
                 string ver = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-                ver = ver.Replace(".", "");
+                ver = ver.Replace(".", "0");
 
                 return int.Parse(ver);
             }

@@ -576,6 +576,8 @@ namespace Epicor_Integration
 
                             EngWBDS.Tables["ECOMtl"].Rows[EngWBDS.Tables["ECOMtl"].Rows.Count-1]["RelatedOperation"] = ops_cbo.SelectedValue;
 
+                            EngWBDS.Tables["ECOMtl"].Rows[EngWBDS.Tables["ECOMtl"].Rows.Count - 1]["OpDesc"] = EngWBDS.Tables["ECOOpr"].Rows[ops_cbo.SelectedIndex]["OpDesc"];
+
                             EngWBDS.Tables["ECOMtl"].Rows[EngWBDS.Tables["ECOMtl"].Rows.Count - 1]["PullAsAsm"] = false;
 
                             partnum_txt.Text = Bill[i].PartNumber;
@@ -625,6 +627,8 @@ namespace Epicor_Integration
 
                     EngWBDS.Tables["ECOMtl"].Rows[rowmod]["RelatedOperation"] = AddBack_Ops[i];
 
+                    EngWBDS.Tables["ECOMtl"].Rows[rowmod]["OpDesc"] = EngWBDS.Tables["ECOOpr"].Rows[ops_cbo.SelectedIndex]["OpDesc"];
+
                     char[] opts = AddBack_Opts[i].ToCharArray();
 
                     EngWBDS.Tables["ECOMtl"].Rows[rowmod]["ViewAsAsm"] = (opts[0] == '1' ? true : false);
@@ -667,6 +671,8 @@ namespace Epicor_Integration
             {
                 for (int j = 0; j < EngWBDS.Tables["ECOMtl"].Rows.Count; j++)
                 {
+                    EngWBDS.Tables["ECOMtl"].Rows[j]["OpDesc"] = EngWBDS.Tables["ECOOpr"].Rows[((int.Parse(EngWBDS.Tables["ECOMtl"].Rows[j]["RelatedOperation"].ToString())/10)-1)]["OpDesc"];
+
                     string EpicValue = EngWBDS.Tables["ECOMtl"].Rows[j]["MtlPartNum"].ToString();
 
                     string _BillItem = Bill[i].PartNumber;

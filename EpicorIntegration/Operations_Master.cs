@@ -621,7 +621,7 @@ namespace Epicor_Integration
 
                         #endregion
 
-                        if (ResourceGroupCode != "")
+                        if (ResourceGroupCode == "")
                         {
                             foreach (DataRow row in EngWBDS.Tables["ECOOpDtl"].Rows)
                             {

@@ -427,7 +427,23 @@ namespace Epicor_Integration
 
             PRev = (DataSet)PrevSearch.GetList("PartNum = '" + Pnumber + "'", 0, 0, out morePages);
 
+            EpicClose();
+
             return PRev;
+        }
+
+        public static void UnApproveOld(string PartNumber, string Revision)
+        {
+            EngWorkBench EngWb = new EngWorkBench(EpicConn);
+
+            DataSet Part = GetRevList(PartNumber);
+
+            foreach (DataRow dr in Part.Tables[0].Rows)
+            {
+
+            }
+
+            EpicClose();
         }
         
         public static void CheckInPart(string GroupID, string PartNumber, string Revision)
@@ -437,6 +453,8 @@ namespace Epicor_Integration
             string opMessage;
 
             EngWb.CheckIn(GroupID, PartNumber, Revision, "", DateTime.Now, false, false, true, true, false, "FOR EPICOR INTEGRATION MODULE", out opMessage);
+
+            UnApproveOldRevisions(GroupID, PartNumber, Revision);
 
             EpicClose();
         }

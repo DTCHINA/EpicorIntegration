@@ -235,11 +235,13 @@ namespace Epicor_Integration
                     SerialPrefix = DataList.GetCurrentSNMaskPrefix(Partnumber_txt.Text);
                 }*/
 
+                planner_cbo.Enabled = false;
+
                 uom_cbo.Enabled = false;
 
-                if (Description_txt.Text != _Description || NetWeight.Value != _Weight || group_cbo.Text != _Group || class_cbo.Text != _Class || type_cbo.Text != _Type || planner_cbo.Text != _Planner)
+                if (Description_txt.Text != _Description || NetWeight.Value != _Weight || group_cbo.Text != _Group || class_cbo.Text != _Class || type_cbo.Text != _Type)
                 {
-                    DialogResult DR = MessageBox.Show("Override Epicor values with values from the model?\n\n" + _Description + " → " + Description_txt.Text + "\n" + _Weight.ToString() + " → " + NetWeight.Value.ToString() + "\n" + _Group + " → " + group_cbo.Text + "\n" + _Class + " → " + class_cbo.Text + "\n" + _Type + " → " + type_cbo.Text + "\n" + _Planner + " → " + planner_cbo.Text, "Property Override", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult DR = MessageBox.Show("Override Epicor values with values from the model?\n\n" + _Description + " → " + Description_txt.Text + "\n" + _Weight.ToString() + " → " + NetWeight.Value.ToString() + "\n" + _Group + " → " + group_cbo.Text + "\n" + _Class + " → " + class_cbo.Text + "\n" + _Type + " → " + type_cbo.Text, "Property Override", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (DR == DialogResult.Yes)
                     {
@@ -251,7 +253,7 @@ namespace Epicor_Integration
 
                         class_cbo.Text = _Class;
 
-                        planner_cbo.Text = _Planner;
+                        //planner_cbo.Text = _Planner;
                     }
                 }
             }
@@ -276,7 +278,7 @@ namespace Epicor_Integration
 
             try
             {
-                planner_cbo.Text = _Planner;
+                //planner_cbo.Text = _Planner;
             }
             catch { }
         }
@@ -574,9 +576,12 @@ namespace Epicor_Integration
 
                         DataList.UpdateDatum(Pdata, "PartPlant", 0, "BackFlush", bflush_chk.Checked.ToString());
 
-                        DataList.UpdateDatum(Pdata, "PartPlant", 0, "PersonID", planner_cbo.Text);
+                        if (planner_cbo.Enabled)
+                        {
+                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "PersonID", planner_cbo.Text);
 
-                        DataList.UpdateDatum(Pdata, "PartPlant", 0, "PersonName", planner_cbo.Text);
+                            DataList.UpdateDatum(Pdata, "PartPlant", 0, "PersonName", planner_cbo.Text);
+                        }
 
                         //Update with warehouse information
                         Part.Update(Pdata);
@@ -622,6 +627,8 @@ namespace Epicor_Integration
 
             //Cannot change UOM after initial save, will cause all sorts of problems
             uom_cbo.Enabled = false;
+
+            planner_cbo.Enabled = false;
         }
 
         private void copy_btn_Click(object sender, EventArgs e)
