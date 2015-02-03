@@ -169,6 +169,7 @@
             // revdesc_txt
             // 
             this.revdesc_txt.Location = new System.Drawing.Point(9, 151);
+            this.revdesc_txt.MaxLength = 30;
             this.revdesc_txt.Name = "revdesc_txt";
             this.revdesc_txt.Size = new System.Drawing.Size(375, 20);
             this.revdesc_txt.TabIndex = 3;

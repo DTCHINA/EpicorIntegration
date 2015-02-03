@@ -703,15 +703,17 @@ namespace Epicor_Integration
 
         private void saveclose_btn_Click(object sender, EventArgs e)
         {
-            EngWB.Update(EngWBDS);
+            try
+            {
+                EngWB.Update(EngWBDS);
 
-            //EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+                resource_show.Enabled = true;
 
-            //resource_show.Enabled = true;
+                EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
-            //EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
-
-            //OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+                OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error!"); }
 
             this.Close();
         }

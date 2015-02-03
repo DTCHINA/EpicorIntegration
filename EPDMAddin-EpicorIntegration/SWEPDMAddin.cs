@@ -8,17 +8,30 @@ using System.Text;
 using System.Windows.Forms;
 using EPDM_EPICOR_LIB;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace EPDMEpicorIntegration
 {
     //Release GUID
-    //[Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
+    [Guid("9e974a5f-3bd9-4d32-9976-44efa09d6ee7"), ComVisible(true)]
  
     //Test GUID
-    [Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
-
+    //[Guid("194D5C17-3B13-40EA-B695-15E502AA6412"), ComVisible(true)]
+    
     public class SWEPDMAddin : IEdmAddIn5
     {
+        public int AssemblyVersion
+        {
+            get
+            {
+                string ver = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
+                ver = ver.Replace(".", "");
+
+                return int.Parse(ver);
+            }
+        }
+
         Waiting BWForm { get; set; }
 
         BackgroundWorker BW = new BackgroundWorker();
@@ -43,7 +56,7 @@ namespace EPDMEpicorIntegration
 
             bool test = false;
 
-            test = true;
+            //test = true;
 
             if (!test)
             {
@@ -60,7 +73,7 @@ namespace EPDMEpicorIntegration
             
             poInfo.mbsCompany = "Norco Industries";
             poInfo.mbsDescription = "Epicor Integration Enterprise PDM Add-in";
-            poInfo.mlAddInVersion = (int)201501260;
+            poInfo.mlAddInVersion = (int)AssemblyVersion;
 
             //Minimum Conisio version needed for .Net Add-Ins is 6.4
             poInfo.mlRequiredVersionMajor = 6;
@@ -163,6 +176,9 @@ namespace EPDMEpicorIntegration
                                                 break;
 
                                             #region Bill Master
+
+                                            BWForm = new Waiting("Retrieving Bill of Materials from SolidWorks...");
+
                                             ParentNumber = "";
 
                                             Area = 0;
@@ -364,6 +380,7 @@ namespace EPDMEpicorIntegration
                                     break;
                                     #endregion
                                 case -2:
+                                    #region Op Minutes
                                     foreach (EdmCmdData file in Temp)
                                     {
                                         try
@@ -395,6 +412,7 @@ namespace EPDMEpicorIntegration
                                         }
                                     }
                                     break;
+                                    #endregion
                                 case -1:
                                     Config conf = new Config();
 
@@ -629,7 +647,12 @@ namespace EPDMEpicorIntegration
             Bill = WorkingBill;
 
             if (BW.IsBusy)
-                BW.CancelAsync();
+                try
+                {
+                    BW.CancelAsync();
+                }
+                catch (Exception ex)
+                { Debug.Print(ex.Message); }
         }
 
         void BW_DoWorkCalc(object sender, DoWorkEventArgs e)

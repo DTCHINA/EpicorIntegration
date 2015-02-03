@@ -137,6 +137,11 @@
             this.weight.DecimalPlaces = 3;
             this.weight.InterceptArrowKeys = false;
             this.weight.Location = new System.Drawing.Point(257, 64);
+            this.weight.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.weight.Name = "weight";
             this.weight.ReadOnly = true;
             this.weight.Size = new System.Drawing.Size(62, 20);
@@ -148,6 +153,11 @@
             this.area.DecimalPlaces = 3;
             this.area.InterceptArrowKeys = false;
             this.area.Location = new System.Drawing.Point(325, 64);
+            this.area.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.area.Name = "area";
             this.area.ReadOnly = true;
             this.area.Size = new System.Drawing.Size(62, 20);
