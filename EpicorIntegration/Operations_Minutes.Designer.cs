@@ -243,22 +243,22 @@
             // 
             // assembly_group
             // 
-            this.assembly_group.Controls.Add(this.label16);
             this.assembly_group.Controls.Add(this.rivet_txt);
-            this.assembly_group.Controls.Add(this.label17);
             this.assembly_group.Controls.Add(this.heat_txt);
-            this.assembly_group.Controls.Add(this.label15);
             this.assembly_group.Controls.Add(this.zhooks_txt);
-            this.assembly_group.Controls.Add(this.label14);
             this.assembly_group.Controls.Add(this.springs_txt);
-            this.assembly_group.Controls.Add(this.label13);
             this.assembly_group.Controls.Add(this.bolt_txt);
-            this.assembly_group.Controls.Add(this.label12);
             this.assembly_group.Controls.Add(this.tec_txt);
-            this.assembly_group.Controls.Add(this.label11);
             this.assembly_group.Controls.Add(this.hucks_txt);
-            this.assembly_group.Controls.Add(this.label8);
             this.assembly_group.Controls.Add(this.band_txt);
+            this.assembly_group.Controls.Add(this.label16);
+            this.assembly_group.Controls.Add(this.label17);
+            this.assembly_group.Controls.Add(this.label15);
+            this.assembly_group.Controls.Add(this.label14);
+            this.assembly_group.Controls.Add(this.label13);
+            this.assembly_group.Controls.Add(this.label12);
+            this.assembly_group.Controls.Add(this.label11);
+            this.assembly_group.Controls.Add(this.label8);
             this.assembly_group.Location = new System.Drawing.Point(10, 49);
             this.assembly_group.Name = "assembly_group";
             this.assembly_group.Size = new System.Drawing.Size(227, 178);
@@ -354,7 +354,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(59, 13);
             this.label12.TabIndex = 5;
-            this.label12.Text = "Tec Screw";
+            this.label12.Text = "Tek Screw";
             // 
             // tec_txt
             // 

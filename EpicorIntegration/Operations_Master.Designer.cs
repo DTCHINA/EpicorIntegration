@@ -107,6 +107,9 @@
             this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.resource_timer = new System.Windows.Forms.Timer(this.components);
             this.BW = new System.ComponentModel.BackgroundWorker();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.MajorContainer.Panel1.SuspendLayout();
             this.MajorContainer.Panel2.SuspendLayout();
             this.MajorContainer.SuspendLayout();
@@ -119,6 +122,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.daysout_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitcost_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MajorContainer
@@ -147,6 +151,7 @@
             // MajorContainer.Panel2
             // 
             this.MajorContainer.Panel2.Controls.Add(this.OPDataGrid);
+            this.MajorContainer.Panel2.Controls.Add(this.statusStrip1);
             this.MajorContainer.Size = new System.Drawing.Size(782, 469);
             this.MajorContainer.SplitterDistance = 177;
             this.MajorContainer.TabIndex = 0;
@@ -660,7 +665,7 @@
             this.OPDataGrid.ShowCellToolTips = false;
             this.OPDataGrid.ShowEditingIcon = false;
             this.OPDataGrid.ShowRowErrors = false;
-            this.OPDataGrid.Size = new System.Drawing.Size(782, 288);
+            this.OPDataGrid.Size = new System.Drawing.Size(782, 266);
             this.OPDataGrid.TabIndex = 0;
             // 
             // OprSeq
@@ -887,9 +892,33 @@
             // 
             // BW
             // 
+            this.BW.WorkerSupportsCancellation = true;
             this.BW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.DoWork);
             this.BW.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
             this.BW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.WorkFinished);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ProgressBar,
+            this.StatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 266);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(782, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // StatusLabel
+            // 
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(42, 17);
+            this.StatusLabel.Text = "Ready:";
+            // 
+            // ProgressBar
+            // 
+            this.ProgressBar.Name = "ProgressBar";
+            this.ProgressBar.RightToLeftLayout = true;
+            this.ProgressBar.Size = new System.Drawing.Size(100, 16);
             // 
             // Operations_Master
             // 
@@ -908,6 +937,7 @@
             this.MajorContainer.Panel1.ResumeLayout(false);
             this.MajorContainer.Panel1.PerformLayout();
             this.MajorContainer.Panel2.ResumeLayout(false);
+            this.MajorContainer.Panel2.PerformLayout();
             this.MajorContainer.ResumeLayout(false);
             this.ops_grp.ResumeLayout(false);
             this.ops_grp.PerformLayout();
@@ -920,6 +950,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.daysout_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitcost_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1002,5 +1034,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VendorNumCity;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SubContract;
         private System.ComponentModel.BackgroundWorker BW;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripProgressBar ProgressBar;
+        private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
     }
 }

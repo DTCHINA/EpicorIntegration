@@ -285,7 +285,14 @@ namespace Epicor_Integration
 
             int rowindex = OPDataGrid.CurrentCellAddress.Y;
 
-            object val = OPDataGrid["SubContract", rowindex].Value;
+            object val = null;
+
+            try
+            {
+                val = OPDataGrid["SubContract", rowindex].Value;
+            }
+            catch
+            { val = Boolean.FalseString; }
 
             if (!Convert.ToBoolean(val))
                 try
@@ -422,6 +429,8 @@ namespace Epicor_Integration
         {
             try
             {
+                StatusLabel.Text = "Saving...";
+
                 EngWB.Update(EngWBDS);
 
                 resource_show.Enabled = true;
@@ -431,6 +440,8 @@ namespace Epicor_Integration
                 OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error!"); }
+
+            StatusLabel.Text = "Ready:";
         }
 
         private void addbtn_Click(object sender, EventArgs e)
@@ -507,19 +518,25 @@ namespace Epicor_Integration
 
         private void removebtn_Click(object sender, EventArgs e)
         {
-            int RowIndex = OPDataGrid.CurrentCell.RowIndex;
-
-            savebtn_Click(savebtn, null);
-            
-            DataRow del_row = EngWBDS.Tables["ECOOpr"].Rows[RowIndex];
+            //savebtn_Click(savebtn, null);
 
             OPDataGrid.SelectionChanged -= OPDataGrid_SelectionChanged;
 
             try
             {
+                int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+
                 EngWBDS.Tables["ECOOpr"].Rows[RowIndex].Delete();
 
                 EngWB.Update(EngWBDS);
+
+                if (EngWBDS.Tables["ECOOpr"].Rows.Count > 1)
+                if (MessageBox.Show("Would you like to resequence the operations now?", "Resequence?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    EngWB.ResequenceOperations(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+
+                    EngWB.Update(EngWBDS);
+                }
 
                 EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
@@ -528,11 +545,9 @@ namespace Epicor_Integration
                 if (EngWBDS.Tables["ECOOpr"].Rows.Count == 0)
                     removebtn.Enabled = false;
 
-                //EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
-
                 resource_show.Enabled = false;
 
-                //Delete rows for RESOURCE GROUP
+                
             }
             catch
             {
@@ -545,7 +560,8 @@ namespace Epicor_Integration
                 if (EngWBDS.Tables["ECOOpr"].Rows.Count == 0)
                     removebtn.Enabled = false;
             }
-            finally {
+            finally 
+            {
                 OPDataGrid.SelectionChanged += OPDataGrid_SelectionChanged;
             }
         }
@@ -666,6 +682,14 @@ namespace Epicor_Integration
 
         void prodhrs_num_Leave(object sender, EventArgs e)
         {
+            try
+            {
+                int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+
+                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
+            }
+            catch { }
+
             prodhrs_num.ValueChanged -= prodhrs_num_ValueChanged;
         }
 
@@ -765,13 +789,17 @@ namespace Epicor_Integration
 
         void TS_Click(object sender, EventArgs e)
         {
+                StatusLabel.Text = "Adding From Template...";
+
                 EngWB.Update(EngWBDS);
 
-                prodhrs_num.ValueChanged -= prodhrs_num_ValueChanged;
+                OPDataGrid.SelectionChanged -= OPDataGrid_SelectionChanged;
 
                 for (int i = EngWBDS.Tables["ECOOpr"].Rows.Count - 1; i > -1; i--)
                 {
                     EngWBDS.Tables["ECOOpr"].Rows[i].Delete();
+
+                    ProgressBarAdvance();
                 }
 
                 ToolStripMenuItem TS = (ToolStripMenuItem)sender;
@@ -780,9 +808,10 @@ namespace Epicor_Integration
                 DataTable DT = Templates.GetFullTemplate(TS.Name, "OOM");
 
                 //Add all required operations
-                //foreach (DataRow Dr in DT.Rows)
                 for (int i = 0; i < DT.Rows.Count; i++)
                 {
+                    ProgressBarAdvance();
+
                     DataRow Dr = DT.Rows[i];
 
                     EngWB.GetNewECOOpr(EngWBDS, Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "");
@@ -834,7 +863,11 @@ namespace Epicor_Integration
 
                 EngWB.ResequenceOperations(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Now, false, false, false, false);
 
+                ProgressBarAdvance();
+
                 EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+
+                ProgressBarAdvance();
 
                 OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
 
@@ -842,17 +875,19 @@ namespace Epicor_Integration
 
                 EngWB.Update(EngWBDS);
 
+                ProgressBarAdvance();
+
                 DT = Templates.GetFullTemplate(TS.Name, "RES");
 
                 //Add all required resources
                 foreach (DataRow Dr in DT.Rows)
                 {
-                    //EngWB.GetNewECOOpDtl(EngWBDS, gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", int.Parse(Dr["PropertyType"].ToString()));
-
                     int row = 0;
 
                     for (int i = 0; i < EngWBDS.Tables["ECOOpDtl"].Rows.Count; i++)
                     {
+                        ProgressBarAdvance();
+
                         int PropQty = (int.Parse(Dr["PropertyQty"].ToString()) + 1) * 10;
 
                         if ((Dr["PropertyType"].ToString() == EngWBDS.Tables["ECOOpDtl"].Rows[i]["OprSeq"].ToString()) && (PropQty.ToString() == EngWBDS.Tables["ECOOpDtl"].Rows[i]["OpDtlSeq"].ToString()))
@@ -866,15 +901,21 @@ namespace Epicor_Integration
 
                     EngWBDS.Tables["ECOOpDtl"].Rows[row]["ResourceGrpID"] = Dr["PropertyValue"].ToString();
 
+                    ProgressBarAdvance();
+
                     try
                     {
                         EngWB.Update(EngWBDS);
+
+                        ProgressBarAdvance();
                     }
                     catch { }
                 }
 
                 //save
                 EngWB.Update(EngWBDS);
+
+                ProgressBarAdvance();
 
                 EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
@@ -887,7 +928,23 @@ namespace Epicor_Integration
                     resource_show.Enabled = true;
                 }
 
-                prodhrs_num.ValueChanged += prodhrs_num_ValueChanged;
+                OPDataGrid.SelectionChanged += OPDataGrid_SelectionChanged;
+
+                StatusLabel.Text = "Ready:";
+
+                ProgressBar.Value = 0;
+        }
+
+        private void ProgressBarAdvance()
+        {
+            try
+            {
+                ProgressBar.Value++;
+            }
+            catch
+            {
+                ProgressBar.Value = 0;
+            }
         }
 
         private void EnableSNChk()

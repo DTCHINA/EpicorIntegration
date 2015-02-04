@@ -4133,7 +4133,7 @@ WHERE        (row_id = @row_id)";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        row_id, Type, Name, Efficiency, Seconds, Per, MP\r\nFROM            E" +
-                "picorMinutes";
+                "picorMinutes\r\nORDER BY Name";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;

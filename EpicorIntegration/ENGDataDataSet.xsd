@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ENGDataConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="ENGDataConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Epicor_Integration.Properties.Settings.GlobalReference.Default.ENGDataConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ENGDataConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ENGDataConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Epicor_Integration.Properties.Settings.GlobalReference.Default.ENGDataConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TemplatesTableAdapter" GeneratorDataComponentClassName="TemplatesTableAdapter" Name="Templates" UserDataComponentName="TemplatesTableAdapter">
@@ -248,7 +248,8 @@ WHERE        (row_id = @row_id)</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        row_id, Type, Name, Efficiency, Seconds, Per, MP
-FROM            EpicorMinutes</CommandText>
+FROM            EpicorMinutes
+ORDER BY Name</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -525,7 +526,7 @@ WHERE        (partnumber LIKE @partnumber)</CommandText>
   <xs:element name="ENGDataDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ENGDataDataSet" msprop:Generator_UserDSName="ENGDataDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Templates" msprop:Generator_TableClassName="TemplatesDataTable" msprop:Generator_TableVarName="tableTemplates" msprop:Generator_TablePropName="Templates" msprop:Generator_RowDeletingName="TemplatesRowDeleting" msprop:Generator_RowChangingName="TemplatesRowChanging" msprop:Generator_RowEvHandlerName="TemplatesRowChangeEventHandler" msprop:Generator_RowDeletedName="TemplatesRowDeleted" msprop:Generator_UserTableName="Templates" msprop:Generator_RowChangedName="TemplatesRowChanged" msprop:Generator_RowEvArgName="TemplatesRowChangeEvent" msprop:Generator_RowClassName="TemplatesRow">
+        <xs:element name="Templates" msprop:Generator_TableClassName="TemplatesDataTable" msprop:Generator_TableVarName="tableTemplates" msprop:Generator_RowChangedName="TemplatesRowChanged" msprop:Generator_TablePropName="Templates" msprop:Generator_RowDeletingName="TemplatesRowDeleting" msprop:Generator_RowChangingName="TemplatesRowChanging" msprop:Generator_RowEvHandlerName="TemplatesRowChangeEventHandler" msprop:Generator_RowDeletedName="TemplatesRowDeleted" msprop:Generator_RowClassName="TemplatesRow" msprop:Generator_UserTableName="Templates" msprop:Generator_RowEvArgName="TemplatesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
@@ -630,7 +631,7 @@ WHERE        (partnumber LIKE @partnumber)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="EpicorMinutes" msprop:Generator_TableClassName="EpicorMinutesDataTable" msprop:Generator_TableVarName="tableEpicorMinutes" msprop:Generator_TablePropName="EpicorMinutes" msprop:Generator_RowDeletingName="EpicorMinutesRowDeleting" msprop:Generator_RowChangingName="EpicorMinutesRowChanging" msprop:Generator_RowEvHandlerName="EpicorMinutesRowChangeEventHandler" msprop:Generator_RowDeletedName="EpicorMinutesRowDeleted" msprop:Generator_UserTableName="EpicorMinutes" msprop:Generator_RowChangedName="EpicorMinutesRowChanged" msprop:Generator_RowEvArgName="EpicorMinutesRowChangeEvent" msprop:Generator_RowClassName="EpicorMinutesRow">
+        <xs:element name="EpicorMinutes" msprop:Generator_TableClassName="EpicorMinutesDataTable" msprop:Generator_TableVarName="tableEpicorMinutes" msprop:Generator_RowChangedName="EpicorMinutesRowChanged" msprop:Generator_TablePropName="EpicorMinutes" msprop:Generator_RowDeletingName="EpicorMinutesRowDeleting" msprop:Generator_RowChangingName="EpicorMinutesRowChanging" msprop:Generator_RowEvHandlerName="EpicorMinutesRowChangeEventHandler" msprop:Generator_RowDeletedName="EpicorMinutesRowDeleted" msprop:Generator_RowClassName="EpicorMinutesRow" msprop:Generator_UserTableName="EpicorMinutes" msprop:Generator_RowEvArgName="EpicorMinutesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="row_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnrow_id" msprop:Generator_ColumnPropNameInRow="row_id" msprop:Generator_ColumnPropNameInTable="row_idColumn" msprop:Generator_UserColumnName="row_id" type="xs:int" />
@@ -679,7 +680,7 @@ WHERE        (partnumber LIKE @partnumber)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GaugeRef" msprop:Generator_TableClassName="GaugeRefDataTable" msprop:Generator_TableVarName="tableGaugeRef" msprop:Generator_TablePropName="GaugeRef" msprop:Generator_RowDeletingName="GaugeRefRowDeleting" msprop:Generator_RowChangingName="GaugeRefRowChanging" msprop:Generator_RowEvHandlerName="GaugeRefRowChangeEventHandler" msprop:Generator_RowDeletedName="GaugeRefRowDeleted" msprop:Generator_UserTableName="GaugeRef" msprop:Generator_RowChangedName="GaugeRefRowChanged" msprop:Generator_RowEvArgName="GaugeRefRowChangeEvent" msprop:Generator_RowClassName="GaugeRefRow">
+        <xs:element name="GaugeRef" msprop:Generator_TableClassName="GaugeRefDataTable" msprop:Generator_TableVarName="tableGaugeRef" msprop:Generator_RowChangedName="GaugeRefRowChanged" msprop:Generator_TablePropName="GaugeRef" msprop:Generator_RowDeletingName="GaugeRefRowDeleting" msprop:Generator_RowChangingName="GaugeRefRowChanging" msprop:Generator_RowEvHandlerName="GaugeRefRowChangeEventHandler" msprop:Generator_RowDeletedName="GaugeRefRowDeleted" msprop:Generator_RowClassName="GaugeRefRow" msprop:Generator_UserTableName="GaugeRef" msprop:Generator_RowEvArgName="GaugeRefRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="rowid" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnrowid" msprop:Generator_ColumnPropNameInRow="rowid" msprop:Generator_ColumnPropNameInTable="rowidColumn" msprop:Generator_UserColumnName="rowid" type="xs:int" />
@@ -694,7 +695,7 @@ WHERE        (partnumber LIKE @partnumber)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SheetCoil_Usage" msprop:Generator_TableClassName="SheetCoil_UsageDataTable" msprop:Generator_TableVarName="tableSheetCoil_Usage" msprop:Generator_TablePropName="SheetCoil_Usage" msprop:Generator_RowDeletingName="SheetCoil_UsageRowDeleting" msprop:Generator_RowChangingName="SheetCoil_UsageRowChanging" msprop:Generator_RowEvHandlerName="SheetCoil_UsageRowChangeEventHandler" msprop:Generator_RowDeletedName="SheetCoil_UsageRowDeleted" msprop:Generator_UserTableName="SheetCoil_Usage" msprop:Generator_RowChangedName="SheetCoil_UsageRowChanged" msprop:Generator_RowEvArgName="SheetCoil_UsageRowChangeEvent" msprop:Generator_RowClassName="SheetCoil_UsageRow">
+        <xs:element name="SheetCoil_Usage" msprop:Generator_TableClassName="SheetCoil_UsageDataTable" msprop:Generator_TableVarName="tableSheetCoil_Usage" msprop:Generator_RowChangedName="SheetCoil_UsageRowChanged" msprop:Generator_TablePropName="SheetCoil_Usage" msprop:Generator_RowDeletingName="SheetCoil_UsageRowDeleting" msprop:Generator_RowChangingName="SheetCoil_UsageRowChanging" msprop:Generator_RowEvHandlerName="SheetCoil_UsageRowChangeEventHandler" msprop:Generator_RowDeletedName="SheetCoil_UsageRowDeleted" msprop:Generator_RowClassName="SheetCoil_UsageRow" msprop:Generator_UserTableName="SheetCoil_Usage" msprop:Generator_RowEvArgName="SheetCoil_UsageRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="rowid" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnrowid" msprop:Generator_ColumnPropNameInRow="rowid" msprop:Generator_ColumnPropNameInTable="rowidColumn" msprop:Generator_UserColumnName="rowid" type="xs:int" />
