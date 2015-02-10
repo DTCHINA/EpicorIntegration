@@ -253,7 +253,7 @@ namespace Epicor_Integration
 
                         class_cbo.Text = _Class;
 
-                        //planner_cbo.Text = _Planner;
+                        planner_cbo.Text = _Planner;
                     }
                 }
             }
@@ -278,7 +278,7 @@ namespace Epicor_Integration
 
             try
             {
-                //planner_cbo.Text = _Planner;
+                planner_cbo.Text = _Planner;
             }
             catch { }
         }

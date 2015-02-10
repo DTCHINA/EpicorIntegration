@@ -533,6 +533,8 @@ namespace Epicor_Integration
                 if (EngWBDS.Tables["ECOOpr"].Rows.Count > 1)
                 if (MessageBox.Show("Would you like to resequence the operations now?", "Resequence?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    EngWBDS = EngWB.GetDatasetForTree(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+
                     EngWB.ResequenceOperations(Properties.Settings.Default.ecogroup, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
 
                     EngWB.Update(EngWBDS);

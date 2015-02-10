@@ -1043,7 +1043,7 @@ namespace Epicor_Integration
             //Remove Handle to change grid information
             partnum_txt.TextChanged -= partnum_txt_TextChanged;
 
-            PartTimer.Enabled = false;
+            PartTimer.Enabled = true;
         }
 
         private void PartTimer_Tick(object sender, EventArgs e)
@@ -1053,8 +1053,6 @@ namespace Epicor_Integration
             {
                 try
                 {
-                    PartTimer.Enabled = false;
-
                     UpdateDescField();
 
                     EngWBDS.Tables["ECOMtl"].Rows[BillDataGrid.CurrentCellAddress.Y]["MtlPartNum"] = partnum_txt.Text;
@@ -1119,6 +1117,8 @@ namespace Epicor_Integration
                 }
                 catch { desc_txt.Text = ""; }
             }
+
+            PartTimer.Enabled = false;
         }
 
         #endregion
@@ -1453,8 +1453,11 @@ namespace Epicor_Integration
                 removebtn.Enabled = false;
             else
                 removebtn.Enabled = true;
-
-            UpdateFormFields();
+            try
+            {
+                UpdateFormFields();
+            }
+            catch { }
         }
 
         private void factor_btn_Click(object sender, EventArgs e)
