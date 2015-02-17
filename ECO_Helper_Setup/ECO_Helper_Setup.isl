@@ -4506,7 +4506,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKAPPPOOLS</td><td>##IDS_PROGMSG_IIS_ROLLBACKAPPPOOLS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
-		<row><td>ProductCode</td><td>{63B6599C-47E8-4C84-9A24-49BC9E4422EB}</td><td/></row>
+		<row><td>ProductCode</td><td>{58F4DE45-39A8-41E4-800B-3C990F0AB9D5}</td><td/></row>
 		<row><td>ProductName</td><td>ECO Helper</td><td/></row>
 		<row><td>ProductVersion</td><td>2.0</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
@@ -4520,7 +4520,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>RestartManagerOption</td><td>CloseRestart</td><td/></row>
 		<row><td>SERIALNUMBER</td><td/><td/></row>
 		<row><td>SERIALNUMVALSUCCESSRETVAL</td><td>1</td><td/></row>
-		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION35;ISACTIONPROP1;ISACTIONPROP2;ISACTIONPROP3;ISACTIONPROP4</td><td/></row>
+		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION35;ISACTIONPROP1;ISACTIONPROP2;ISACTIONPROP3;ISACTIONPROP4;ISACTIONPROP5</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
 		<row><td>UpgradeCode</td><td>{BD2C61AB-B7EA-45E8-AABE-2BB83E1CB6EB}</td><td/></row>
@@ -4797,6 +4797,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S72">ISDisplayName</col>
 		<row><td>{00000000-0000-0000-0000-000000000000}</td><td>***ALL_VERSIONS***</td><td></td><td></td><td>2</td><td/><td>ISFOUNDNEWERPRODUCTVERSION</td><td>ISPreventDowngrade</td></row>
 		<row><td>{0BB342D9-7ADD-49A3-A48F-25DB6E10F704}</td><td>1.13</td><td>1.13</td><td>1033</td><td>512</td><td/><td>ISACTIONPROP3</td><td>1.14</td></row>
+		<row><td>{0BB342D9-7ADD-49A3-A48F-25DB6E10F704}</td><td>1.27.1</td><td>1.27.1</td><td>1033</td><td>768</td><td/><td>ISACTIONPROP5</td><td>1.27.1</td></row>
 		<row><td>{BD2C61AB-B7EA-45E8-AABE-2BB83E1CB6EB}</td><td>1.00.1000</td><td>1.00.1000</td><td>1033</td><td>768</td><td/><td>ISACTIONPROP1</td><td>MSI Upgrade</td></row>
 		<row><td>{BD2C61AB-B7EA-45E8-AABE-2BB83E1CB6EB}</td><td>1.01.000</td><td>1.01.000</td><td>1033</td><td>512</td><td/><td>ISACTIONPROP2</td><td>1.01</td></row>
 		<row><td>{BD2C61AB-B7EA-45E8-AABE-2BB83E1CB6EB}</td><td>1.14.000</td><td>1.14.000</td><td>1033</td><td>768</td><td/><td>ISACTIONPROP4</td><td>2.0</td></row>

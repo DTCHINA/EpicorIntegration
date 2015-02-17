@@ -41,6 +41,7 @@
             this.mtlreseq_cbo = new System.Windows.Forms.ComboBox();
             this.ecogp_btn = new System.Windows.Forms.Button();
             this.opsmin_btn = new System.Windows.Forms.Button();
+            this.sql_btn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -149,7 +150,7 @@
             // 
             // ecogp_btn
             // 
-            this.ecogp_btn.Location = new System.Drawing.Point(177, 41);
+            this.ecogp_btn.Location = new System.Drawing.Point(177, 70);
             this.ecogp_btn.Name = "ecogp_btn";
             this.ecogp_btn.Size = new System.Drawing.Size(75, 23);
             this.ecogp_btn.TabIndex = 7;
@@ -159,7 +160,7 @@
             // 
             // opsmin_btn
             // 
-            this.opsmin_btn.Location = new System.Drawing.Point(177, 70);
+            this.opsmin_btn.Location = new System.Drawing.Point(177, 99);
             this.opsmin_btn.Name = "opsmin_btn";
             this.opsmin_btn.Size = new System.Drawing.Size(75, 23);
             this.opsmin_btn.TabIndex = 8;
@@ -167,13 +168,24 @@
             this.opsmin_btn.UseVisualStyleBackColor = true;
             this.opsmin_btn.Click += new System.EventHandler(this.opsmin_btn_Click);
             // 
+            // sql_btn
+            // 
+            this.sql_btn.Location = new System.Drawing.Point(177, 41);
+            this.sql_btn.Name = "sql_btn";
+            this.sql_btn.Size = new System.Drawing.Size(75, 23);
+            this.sql_btn.TabIndex = 8;
+            this.sql_btn.Text = "SQL Login";
+            this.sql_btn.UseVisualStyleBackColor = true;
+            this.sql_btn.Click += new System.EventHandler(this.opsmin_btn_Click);
+            // 
             // Config
             // 
             this.AcceptButton = this.savebtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelbtn;
-            this.ClientSize = new System.Drawing.Size(273, 199);
+            this.ClientSize = new System.Drawing.Size(273, 193);
+            this.Controls.Add(this.sql_btn);
             this.Controls.Add(this.opsmin_btn);
             this.Controls.Add(this.ecogp_btn);
             this.Controls.Add(this.groupBox2);
@@ -209,5 +221,6 @@
         private System.Windows.Forms.ComboBox mtlreseq_cbo;
         private System.Windows.Forms.Button ecogp_btn;
         private System.Windows.Forms.Button opsmin_btn;
+        private System.Windows.Forms.Button sql_btn;
     }
 }

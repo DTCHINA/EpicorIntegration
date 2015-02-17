@@ -43,6 +43,7 @@
     <RegisterForComInterop>true</RegisterForComInterop>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -71,7 +72,7 @@
       <DependentUpon>Config_Select.cs</DependentUpon>
     </Compile>
     <Compile Include="DataHelper.cs" />
-    <Compile Include="SWEPDMAddin.cs" />
+    <Compile Include="Addin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Update_Properties.cs">
       <SubType>Form</SubType>

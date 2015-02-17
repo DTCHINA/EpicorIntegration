@@ -31,14 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Operations_CopyMethods));
             this.RevGrid = new System.Windows.Forms.DataGridView();
-            this.RevisionNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Approved = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ApprovedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApprovedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ECO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Effective = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RevShortDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.part_txt = new System.Windows.Forms.Button();
             this.ok_btn = new System.Windows.Forms.Button();
             this.cancel_btn = new System.Windows.Forms.Button();
@@ -46,6 +38,14 @@
             this.desc_txt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Approved = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.RevisionNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApprovedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApprovedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ECO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Effective = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RevShortDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.RevGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -61,9 +61,9 @@
             this.RevGrid.BackgroundColor = System.Drawing.Color.White;
             this.RevGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.RevGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Approved,
             this.RevisionNum,
             this.Description,
-            this.Approved,
             this.ApprovedBy,
             this.ApprovedDate,
             this.ECO,
@@ -76,87 +76,6 @@
             this.RevGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.RevGrid.Size = new System.Drawing.Size(373, 108);
             this.RevGrid.TabIndex = 0;
-            // 
-            // RevisionNum
-            // 
-            this.RevisionNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.RevisionNum.DataPropertyName = "RevisionNum";
-            this.RevisionNum.HeaderText = "Rev";
-            this.RevisionNum.MinimumWidth = 50;
-            this.RevisionNum.Name = "RevisionNum";
-            this.RevisionNum.ReadOnly = true;
-            this.RevisionNum.Width = 52;
-            // 
-            // Description
-            // 
-            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Description.DataPropertyName = "RevDescription";
-            this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 85;
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 85;
-            // 
-            // Approved
-            // 
-            this.Approved.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Approved.DataPropertyName = "Approved";
-            this.Approved.HeaderText = "Approved";
-            this.Approved.MinimumWidth = 75;
-            this.Approved.Name = "Approved";
-            this.Approved.ReadOnly = true;
-            this.Approved.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Approved.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Approved.Width = 78;
-            // 
-            // ApprovedBy
-            // 
-            this.ApprovedBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ApprovedBy.DataPropertyName = "ApprovedBy";
-            this.ApprovedBy.HeaderText = "Approved By";
-            this.ApprovedBy.MinimumWidth = 100;
-            this.ApprovedBy.Name = "ApprovedBy";
-            this.ApprovedBy.ReadOnly = true;
-            // 
-            // ApprovedDate
-            // 
-            this.ApprovedDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ApprovedDate.DataPropertyName = "ApprovedDate";
-            this.ApprovedDate.HeaderText = "Approved Date";
-            this.ApprovedDate.MinimumWidth = 105;
-            this.ApprovedDate.Name = "ApprovedDate";
-            this.ApprovedDate.ReadOnly = true;
-            this.ApprovedDate.Width = 105;
-            // 
-            // ECO
-            // 
-            this.ECO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ECO.DataPropertyName = "ECO";
-            this.ECO.HeaderText = "ECO";
-            this.ECO.MinimumWidth = 54;
-            this.ECO.Name = "ECO";
-            this.ECO.ReadOnly = true;
-            this.ECO.Width = 54;
-            // 
-            // Effective
-            // 
-            this.Effective.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Effective.DataPropertyName = "EffectiveDate";
-            this.Effective.HeaderText = "Effective";
-            this.Effective.MinimumWidth = 74;
-            this.Effective.Name = "Effective";
-            this.Effective.ReadOnly = true;
-            this.Effective.Width = 74;
-            // 
-            // RevShortDesc
-            // 
-            this.RevShortDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.RevShortDesc.DataPropertyName = "RevShortDesc";
-            this.RevShortDesc.HeaderText = "Short Desc";
-            this.RevShortDesc.MinimumWidth = 85;
-            this.RevShortDesc.Name = "RevShortDesc";
-            this.RevShortDesc.ReadOnly = true;
-            this.RevShortDesc.Width = 85;
             // 
             // part_txt
             // 
@@ -226,6 +145,87 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
+            // Approved
+            // 
+            this.Approved.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Approved.DataPropertyName = "Approved";
+            this.Approved.HeaderText = "Approved";
+            this.Approved.MinimumWidth = 75;
+            this.Approved.Name = "Approved";
+            this.Approved.ReadOnly = true;
+            this.Approved.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Approved.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Approved.Width = 78;
+            // 
+            // RevisionNum
+            // 
+            this.RevisionNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.RevisionNum.DataPropertyName = "RevisionNum";
+            this.RevisionNum.HeaderText = "Rev";
+            this.RevisionNum.MinimumWidth = 50;
+            this.RevisionNum.Name = "RevisionNum";
+            this.RevisionNum.ReadOnly = true;
+            this.RevisionNum.Width = 52;
+            // 
+            // Description
+            // 
+            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Description.DataPropertyName = "RevDescription";
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 85;
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 85;
+            // 
+            // ApprovedBy
+            // 
+            this.ApprovedBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ApprovedBy.DataPropertyName = "ApprovedBy";
+            this.ApprovedBy.HeaderText = "Approved By";
+            this.ApprovedBy.MinimumWidth = 100;
+            this.ApprovedBy.Name = "ApprovedBy";
+            this.ApprovedBy.ReadOnly = true;
+            // 
+            // ApprovedDate
+            // 
+            this.ApprovedDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ApprovedDate.DataPropertyName = "ApprovedDate";
+            this.ApprovedDate.HeaderText = "Approved Date";
+            this.ApprovedDate.MinimumWidth = 105;
+            this.ApprovedDate.Name = "ApprovedDate";
+            this.ApprovedDate.ReadOnly = true;
+            this.ApprovedDate.Width = 105;
+            // 
+            // ECO
+            // 
+            this.ECO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ECO.DataPropertyName = "ECO";
+            this.ECO.HeaderText = "ECO";
+            this.ECO.MinimumWidth = 54;
+            this.ECO.Name = "ECO";
+            this.ECO.ReadOnly = true;
+            this.ECO.Width = 54;
+            // 
+            // Effective
+            // 
+            this.Effective.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Effective.DataPropertyName = "EffectiveDate";
+            this.Effective.HeaderText = "Effective";
+            this.Effective.MinimumWidth = 74;
+            this.Effective.Name = "Effective";
+            this.Effective.ReadOnly = true;
+            this.Effective.Width = 74;
+            // 
+            // RevShortDesc
+            // 
+            this.RevShortDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.RevShortDesc.DataPropertyName = "RevShortDesc";
+            this.RevShortDesc.HeaderText = "Short Desc";
+            this.RevShortDesc.MinimumWidth = 85;
+            this.RevShortDesc.Name = "RevShortDesc";
+            this.RevShortDesc.ReadOnly = true;
+            this.RevShortDesc.Width = 85;
+            // 
             // Operations_CopyMethods
             // 
             this.AcceptButton = this.ok_btn;
@@ -261,9 +261,9 @@
         private System.Windows.Forms.TextBox desc_txt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Approved;
         private System.Windows.Forms.DataGridViewTextBoxColumn RevisionNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Approved;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApprovedBy;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApprovedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ECO;
