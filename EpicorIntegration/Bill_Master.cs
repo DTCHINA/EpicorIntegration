@@ -583,7 +583,7 @@ namespace Epicor_Integration
 
                             EngWBDS.Tables["ECOMtl"].Rows[EngWBDS.Tables["ECOMtl"].Rows.Count - 1]["PullAsAsm"] = false;
 
-                            if (DataList.GetType(partnum_txt.Text) == "Purchased")
+                            if (DataList.GetType(Bill[i].PartNumber) == "Purchased")
                                 EngWBDS.Tables["ECOMtl"].Rows[EngWBDS.Tables["ECOMtl"].Rows.Count - 1]["ViewAsAsm"] = false;
                             else
                                 EngWBDS.Tables["ECOMtl"].Rows[EngWBDS.Tables["ECOMtl"].Rows.Count - 1]["ViewAsAsm"] = true;
