@@ -429,6 +429,7 @@
             this.partnum_txt.Size = new System.Drawing.Size(211, 20);
             this.partnum_txt.TabIndex = 5;
             this.partnum_txt.Enter += new System.EventHandler(this.partnum_txt_Enter);
+            this.partnum_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.partnum_txt_KeyDown);
             this.partnum_txt.Leave += new System.EventHandler(this.partnum_txt_Leave);
             // 
             // ops_cbo

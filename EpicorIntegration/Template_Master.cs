@@ -746,6 +746,8 @@ namespace Epicor_Integration
 
             BillDataGrid.CurrentRow.Cells["PropertyType"].Value = operation_txt.Text;
 
+            BillDataGrid.CurrentRow.Cells["PropertyQty"].Value = 0;
+
             partnum_txt.Text = "";
 
             qty_num.Value = 0;
@@ -1776,6 +1778,8 @@ namespace Epicor_Integration
             opmast_cbo.SelectedIndex = -1;
 
             prodhrs_num.Value = 0;
+
+            OPDataGrid.CurrentRow.Cells["OprPropertyQty"].Value = 0;
 
             prodstd_cbo.SelectedValue = -1;
 

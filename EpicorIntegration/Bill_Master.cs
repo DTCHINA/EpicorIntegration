@@ -337,7 +337,10 @@ namespace Epicor_Integration
 
                     EngWBDS.Tables["ECOMtl"].Rows[rowindex]["QtyPer"] = 1;
 
-                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"] = false;
+                    if (DataList.GetType(partnum_txt.Text) == "Purchased")
+                        EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"] = false;
+                    else
+                        EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"] = true;
 
                     EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"] = uom_cbo.Text;
 
@@ -579,6 +582,11 @@ namespace Epicor_Integration
                             EngWBDS.Tables["ECOMtl"].Rows[EngWBDS.Tables["ECOMtl"].Rows.Count - 1]["OpDesc"] = EngWBDS.Tables["ECOOpr"].Rows[ops_cbo.SelectedIndex]["OpDesc"];
 
                             EngWBDS.Tables["ECOMtl"].Rows[EngWBDS.Tables["ECOMtl"].Rows.Count - 1]["PullAsAsm"] = false;
+
+                            if (DataList.GetType(partnum_txt.Text) == "Purchased")
+                                EngWBDS.Tables["ECOMtl"].Rows[EngWBDS.Tables["ECOMtl"].Rows.Count - 1]["ViewAsAsm"] = false;
+                            else
+                                EngWBDS.Tables["ECOMtl"].Rows[EngWBDS.Tables["ECOMtl"].Rows.Count - 1]["ViewAsAsm"] = true;
 
                             partnum_txt.Text = Bill[i].PartNumber;
 
@@ -1524,6 +1532,14 @@ namespace Epicor_Integration
         private void BW_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             BWForm.Close();
+        }
+
+        private void partnum_txt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                PartTimer.Enabled = true;
+            }
         }
     }
 }
