@@ -104,12 +104,12 @@
             this.VendorNumTermsCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VendorNumCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubContract = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.ProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.TemplateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.resource_timer = new System.Windows.Forms.Timer(this.components);
             this.BW = new System.ComponentModel.BackgroundWorker();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.MajorContainer.Panel1.SuspendLayout();
             this.MajorContainer.Panel2.SuspendLayout();
             this.MajorContainer.SuspendLayout();
@@ -208,6 +208,11 @@
             // 
             this.prodhrs_num.DecimalPlaces = 6;
             this.prodhrs_num.Location = new System.Drawing.Point(91, 82);
+            this.prodhrs_num.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.prodhrs_num.Name = "prodhrs_num";
             this.prodhrs_num.Size = new System.Drawing.Size(82, 20);
             this.prodhrs_num.TabIndex = 8;
@@ -879,6 +884,29 @@
             this.SubContract.ReadOnly = true;
             this.SubContract.Visible = false;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ProgressBar,
+            this.StatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 266);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(782, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // ProgressBar
+            // 
+            this.ProgressBar.Name = "ProgressBar";
+            this.ProgressBar.RightToLeftLayout = true;
+            this.ProgressBar.Size = new System.Drawing.Size(100, 16);
+            // 
+            // StatusLabel
+            // 
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(42, 17);
+            this.StatusLabel.Text = "Ready:";
+            // 
             // TemplateMenu
             // 
             this.TemplateMenu.Name = "TemplateMenu";
@@ -896,29 +924,6 @@
             this.BW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.DoWork);
             this.BW.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
             this.BW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.WorkFinished);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ProgressBar,
-            this.StatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 266);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(782, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // StatusLabel
-            // 
-            this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(42, 17);
-            this.StatusLabel.Text = "Ready:";
-            // 
-            // ProgressBar
-            // 
-            this.ProgressBar.Name = "ProgressBar";
-            this.ProgressBar.RightToLeftLayout = true;
-            this.ProgressBar.Size = new System.Drawing.Size(100, 16);
             // 
             // Operations_Master
             // 

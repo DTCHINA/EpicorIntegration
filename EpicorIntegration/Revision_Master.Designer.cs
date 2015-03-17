@@ -47,6 +47,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.checkout_chk = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.effectivedatepicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +56,7 @@
             // savebtn
             // 
             this.savebtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.savebtn.Location = new System.Drawing.Point(263, 262);
+            this.savebtn.Location = new System.Drawing.Point(263, 288);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 1;
@@ -65,7 +67,7 @@
             // cancelbtn
             // 
             this.cancelbtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelbtn.Location = new System.Drawing.Point(344, 262);
+            this.cancelbtn.Location = new System.Drawing.Point(344, 288);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
             this.cancelbtn.TabIndex = 2;
@@ -115,6 +117,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.effectivedatepicker);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.econum_txt);
             this.groupBox2.Controls.Add(this.comments_txt);
             this.groupBox2.Controls.Add(this.newrev_txt);
@@ -129,14 +133,14 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(12, 69);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(407, 187);
+            this.groupBox2.Size = new System.Drawing.Size(407, 213);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part";
             // 
             // econum_txt
             // 
-            this.econum_txt.Location = new System.Drawing.Point(9, 112);
+            this.econum_txt.Location = new System.Drawing.Point(9, 144);
             this.econum_txt.Name = "econum_txt";
             this.econum_txt.Size = new System.Drawing.Size(178, 20);
             this.econum_txt.TabIndex = 1;
@@ -146,7 +150,7 @@
             this.comments_txt.Location = new System.Drawing.Point(206, 40);
             this.comments_txt.Multiline = true;
             this.comments_txt.Name = "comments_txt";
-            this.comments_txt.Size = new System.Drawing.Size(178, 101);
+            this.comments_txt.Size = new System.Drawing.Size(178, 124);
             this.comments_txt.TabIndex = 2;
             // 
             // newrev_txt
@@ -168,7 +172,7 @@
             // 
             // revdesc_txt
             // 
-            this.revdesc_txt.Location = new System.Drawing.Point(9, 151);
+            this.revdesc_txt.Location = new System.Drawing.Point(9, 183);
             this.revdesc_txt.MaxLength = 30;
             this.revdesc_txt.Name = "revdesc_txt";
             this.revdesc_txt.Size = new System.Drawing.Size(375, 20);
@@ -177,7 +181,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 96);
+            this.label5.Location = new System.Drawing.Point(6, 128);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 13);
             this.label5.TabIndex = 49;
@@ -213,7 +217,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 135);
+            this.label1.Location = new System.Drawing.Point(6, 167);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 13);
             this.label1.TabIndex = 42;
@@ -232,13 +236,30 @@
             this.checkout_chk.Text = "Check Out Part";
             this.checkout_chk.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 105);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 13);
+            this.label6.TabIndex = 50;
+            this.label6.Text = "Effective Date:";
+            // 
+            // effectivedatepicker
+            // 
+            this.effectivedatepicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.effectivedatepicker.Location = new System.Drawing.Point(87, 99);
+            this.effectivedatepicker.Name = "effectivedatepicker";
+            this.effectivedatepicker.Size = new System.Drawing.Size(100, 20);
+            this.effectivedatepicker.TabIndex = 51;
+            // 
             // Revision_Master
             // 
             this.AcceptButton = this.Searchbtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelbtn;
-            this.ClientSize = new System.Drawing.Size(431, 299);
+            this.ClientSize = new System.Drawing.Size(427, 322);
             this.Controls.Add(this.checkout_chk);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -280,5 +301,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox econum_txt;
+        private System.Windows.Forms.DateTimePicker effectivedatepicker;
+        private System.Windows.Forms.Label label6;
     }
 }

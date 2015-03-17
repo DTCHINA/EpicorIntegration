@@ -218,7 +218,7 @@ namespace ECO_Helper
             {
                 string CurrentRev = DataList.GetCurrentRev(pnum_txt.Text);
 
-                bool valid = DataList.CreatePartRevision(pnum_txt.Text, CurrentRev, rev_txt.Text, desc_txt.Text, revcomments_txt.Text, eco_txt.Text);
+                bool valid = DataList.CreatePartRevision(pnum_txt.Text, CurrentRev, rev_txt.Text, desc_txt.Text, revcomments_txt.Text, eco_txt.Text, DateTime.Today.ToString());
 
                 DataList.CheckOutPart(gid_cbo.Text, pnum_txt.Text, rev_txt.Text);
 

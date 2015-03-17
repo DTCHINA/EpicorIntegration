@@ -1113,6 +1113,9 @@ namespace Epicor_Integration
                         {
                             Item_SheetFactor Sheet = new Item_SheetFactor(qty_num.Value, partnum_txt.Text);
 
+                            //if you don't shut it off before the dialog it keeps popping up
+                            PartTimer.Enabled = false;
+
                             Sheet.ShowDialog();
 
                             qty_num.Value = Sheet.FactoredWeight;

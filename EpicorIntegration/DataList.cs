@@ -924,7 +924,7 @@ namespace Epicor_Integration
             return EngWBDS;
         }
 
-        public static bool CreatePartRevision(string PartNumber, string CurrentRev, string NewRev, string RevDesc, string RevComment, string ECOnum)
+        public static bool CreatePartRevision(string PartNumber, string CurrentRev, string NewRev, string RevDesc, string RevComment, string ECOnum, string EffectiveDate)
         {
             bool _results;
 
@@ -949,6 +949,8 @@ namespace Epicor_Integration
                 DataList.UpdateDatum(PartData, "PartRev", Y, "AltMethod", "");
 
                 DataList.UpdateDatum(PartData, "PartRev", Y, "ECO", ECOnum);
+
+                DataList.UpdateDatum(PartData, "PartRev", Y, "EffectiveDate", EffectiveDate);
 
                 Part.Update(PartData);
 

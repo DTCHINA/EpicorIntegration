@@ -63,6 +63,8 @@ namespace Epicor_Integration
 
         private void Revision_Master_Load(object sender, EventArgs e)
         {
+            effectivedatepicker.Value = DateTime.Today;
+
             gid_cbo_SelectedIndexChanged(null, null);
 
             if (currev_txt.Text == newrev_txt.Text)
@@ -84,7 +86,7 @@ namespace Epicor_Integration
                 }
                 else
                 {
-                    bool valid = DataList.CreatePartRevision(Searchtxt.Text, currev_txt.Text, newrev_txt.Text, revdesc_txt.Text, comments_txt.Text, econum_txt.Text);
+                    bool valid = DataList.CreatePartRevision(Searchtxt.Text, currev_txt.Text, newrev_txt.Text, revdesc_txt.Text, comments_txt.Text, econum_txt.Text, effectivedatepicker.Value.ToString());
 
                     if (checkout_chk.Checked)
                         DataList.CheckOutPart(gid_desc.Text, Searchtxt.Text, newrev_txt.Text);
