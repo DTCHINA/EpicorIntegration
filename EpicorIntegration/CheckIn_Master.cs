@@ -33,7 +33,11 @@ namespace Epicor_Integration
         private void confirm_btn_Click(object sender, EventArgs e)
         {
             try { DataList.CheckInPart(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text); }
-            catch (Exception ex) { MessageBox.Show("Could not check in part\n\n" + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (Exception ex) 
+            { 
+                //Error handled in Datalist.CheckInPart now
+                //MessageBox.Show("Could not check in part\n\n" + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            }
             finally { this.Close(); }
         }
 

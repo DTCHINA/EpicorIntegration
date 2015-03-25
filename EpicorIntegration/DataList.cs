@@ -448,15 +448,24 @@ namespace Epicor_Integration
         
         public static void CheckInPart(string GroupID, string PartNumber, string Revision)
         {
-            EngWorkBench EngWb = new EngWorkBench(EpicConn);
+            try
+            {
+                EngWorkBench EngWb = new EngWorkBench(EpicConn);
 
-            string opMessage;
+                string opMessage;
 
-            EngWb.CheckIn(GroupID, PartNumber, Revision, "", DateTime.Now, false, false, true, true, false, "FOR EPICOR INTEGRATION MODULE", out opMessage);
+                EngWb.CheckIn(GroupID, PartNumber, Revision, "", DateTime.Now, false, false, true, true, false, "FOR EPICOR INTEGRATION MODULE", out opMessage);
 
-            UnApproveOldRevisions(GroupID, PartNumber, Revision);
-
-            EpicClose();
+                UnApproveOldRevisions(GroupID, PartNumber, Revision);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Could not check in part\n\n" + ex.Message, "Error!", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            finally
+            {
+                EpicClose();
+            }
         }
 
         public static DataSet WhereUsed(string PartNumber)

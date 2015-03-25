@@ -36,6 +36,8 @@
             this.Searchbtn = new System.Windows.Forms.Button();
             this.Searchtxt = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.effectivedatepicker = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
             this.econum_txt = new System.Windows.Forms.TextBox();
             this.comments_txt = new System.Windows.Forms.TextBox();
             this.newrev_txt = new System.Windows.Forms.TextBox();
@@ -47,8 +49,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.checkout_chk = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.effectivedatepicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -138,6 +138,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part";
             // 
+            // effectivedatepicker
+            // 
+            this.effectivedatepicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.effectivedatepicker.Location = new System.Drawing.Point(87, 99);
+            this.effectivedatepicker.Name = "effectivedatepicker";
+            this.effectivedatepicker.Size = new System.Drawing.Size(100, 20);
+            this.effectivedatepicker.TabIndex = 5100;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 105);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 13);
+            this.label6.TabIndex = 50;
+            this.label6.Text = "Effective Date:";
+            // 
             // econum_txt
             // 
             this.econum_txt.Location = new System.Drawing.Point(9, 144);
@@ -151,7 +168,7 @@
             this.comments_txt.Multiline = true;
             this.comments_txt.Name = "comments_txt";
             this.comments_txt.Size = new System.Drawing.Size(178, 124);
-            this.comments_txt.TabIndex = 2;
+            this.comments_txt.TabIndex = 200;
             // 
             // newrev_txt
             // 
@@ -176,7 +193,7 @@
             this.revdesc_txt.MaxLength = 30;
             this.revdesc_txt.Name = "revdesc_txt";
             this.revdesc_txt.Size = new System.Drawing.Size(375, 20);
-            this.revdesc_txt.TabIndex = 3;
+            this.revdesc_txt.TabIndex = 2;
             // 
             // label5
             // 
@@ -235,23 +252,6 @@
             this.checkout_chk.TabStop = false;
             this.checkout_chk.Text = "Check Out Part";
             this.checkout_chk.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 105);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 13);
-            this.label6.TabIndex = 50;
-            this.label6.Text = "Effective Date:";
-            // 
-            // effectivedatepicker
-            // 
-            this.effectivedatepicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.effectivedatepicker.Location = new System.Drawing.Point(87, 99);
-            this.effectivedatepicker.Name = "effectivedatepicker";
-            this.effectivedatepicker.Size = new System.Drawing.Size(100, 20);
-            this.effectivedatepicker.TabIndex = 51;
             // 
             // Revision_Master
             // 
