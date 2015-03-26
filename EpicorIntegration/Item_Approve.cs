@@ -99,10 +99,12 @@ namespace Epicor_Integration
             ds = EngWb.GetDatasetForTree(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
             DataList.EpicClose();
+            try
+            {
+                DataList.ApprovePart(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text);
 
-            DataList.ApprovePart(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text);
-
-            try { DataList.CheckInPart(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text); }
+                DataList.CheckInPart(gid_cbo.Text, partnumber_txt.Text, rev_txt.Text);
+            }
             catch (Exception ex) { MessageBox.Show("Could not check in part\n\n" + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             finally { this.Close(); }
         }
